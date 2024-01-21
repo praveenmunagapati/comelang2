@@ -439,6 +439,8 @@ bool run(char* source)
             if(info.rcode == 127) {
                 fprintf(stderr, "command not found (%s)\n", info->args[0]);
             }
+            
+            setenv("?", xsprintf("%d", info.rcode), 1);
         }
         
         if(*info->p == '|' && *(info->p+1) == '|') {
@@ -906,7 +908,7 @@ int main(int argc, char** argv)
         rl_startup_hook = readline_init_text;
         
         while(true) {
-            char* line = readline(getenv("PWD") + " > ");
+            char* line = readline(getenv("PWD") + " " + getenv("?") + " > ");
             
             if(line == null || line === "exit") {
                 break;
