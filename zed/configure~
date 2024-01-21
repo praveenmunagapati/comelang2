@@ -3894,7 +3894,6 @@ printf %s "checking Operating System... " >&6; }
 
 CFLAGS='-DPREFIX="\"${DESTDIR}/\""'
 CFLAGS="-fPIC $CFLAGS"
-CFLAGS="-no-common-header $CFLAGS"
 
 AR_LIB=
 
@@ -3997,7 +3996,7 @@ fi
 
 #if test -d /usr/local/lib
 #then
-#    CFLAGS="$CFLAGS -L /usr/local/lib"
+#    CFLAGS="$CFLAGS -L/usr/local/lib"
 #fi
 
 if test -d /opt/local/include
@@ -4007,7 +4006,7 @@ fi
 
 if test -d /opt/local/lib
 then
-    CFLAGS="$CFLAGS -L /opt/local/lib"
+    CFLAGS="$CFLAGS -L/opt/local/lib"
 fi
 
 if test -d /usr/include/i386-linux-gnu/
@@ -4017,7 +4016,7 @@ fi
 
 if test -d /usr/lib/i386-linux-gnu/
 then
-    CFLAGS="$CFLAGS -L /usr/lib/i386-linux-gnu/"
+    CFLAGS="$CFLAGS -L/usr/lib/i386-linux-gnu/"
 fi
 
 
