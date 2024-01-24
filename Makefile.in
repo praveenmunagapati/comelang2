@@ -32,7 +32,7 @@ SELF_HOST_OBJS=@SELF_HOST_OBJS@
 #########################################
 all: comelang2-sh
 
-comelang2: 01main.c.o 02transpile.c.o 03transpile2.c.o 04heap.c.o 05function.c.o 05function2.c.o 05function3.c.o 05function4.c.o 06str.c.o 07var.c.o 08if.c.o 09while.c.o 10do_while.c.o 11for.c.o 12switch.c.o 13op.c.o 14struct.c.o 15union.c.o 16enum.c.o 17typedef.c.o 18field.c.o 19eq.c.o 20method.c.o 21obj.c.o 22impl.c.o 23interface.c.o libcomelang2.a libcomelang2-str.a
+comelang2: 01main.c.o 02transpile.c.o 03transpile2.c.o 04heap.c.o 05function.c.o 05function2.c.o 05function3.c.o 05function4.c.o 06str.c.o 07var.c.o 08if.c.o 09while.c.o 10do_while.c.o 11for.c.o 12switch.c.o 13op.c.o 14struct.c.o 15union.c.o 16enum.c.o 17typedef.c.o 18field.c.o 19eq.c.o 20method.c.o 21obj.c.o 22impl.c.o 23interface.c.o libcomelang2.a libcomelang2-gc.a libcomelang2-str.a libcomelang2-str-gc.a
 	comelang2 -o comelang2  01main.c.o 02transpile.c.o 03transpile2.c.o 04heap.c.o 05function.c.o 05function2.c.o 05function3.c.o 05function4.c.o 06str.c.o 07var.c.o 08if.c.o 09while.c.o 10do_while.c.o 11for.c.o 12switch.c.o 13op.c.o 14struct.c.o 15union.c.o 16enum.c.o 17typedef.c.o 18field.c.o 19eq.c.o 20method.c.o 21obj.c.o 22impl.c.o 23interface.c.o $(CFLAGS) $(COME_CFLAGS)
 
 01main.c.o: 01main.c
@@ -117,9 +117,17 @@ libcomelang2.a: libcomelang2.c
 	comelang2 -c libcomelang2.c $(CFLAGS) $(COME_CFLAGS)
 	ar r libcomelang2.a libcomelang2.c.o
 
+libcomelang2-gc.a: libcomelang2.c
+	comelang2 -gc -o libcomelang2-gc.c.o -c libcomelang2.c $(CFLAGS) $(COME_CFLAGS) -DEANBLE_GC
+	ar r libcomelang2-gc.a libcomelang2-gc.c.o
+
 libcomelang2-str.a: libcomelang2-str.c
 	comelang2 -c libcomelang2-str.c $(CFLAGS) $(COME_CFLAGS)
 	ar r libcomelang2-str.a libcomelang2-str.c.o
+
+libcomelang2-str-gc.a: libcomelang2-str.c
+	comelang2 -o libcomelang2-str-gc.c.o -gc -c libcomelang2-str.c $(CFLAGS) $(COME_CFLAGS) -DENABLE_GC
+	ar r libcomelang2-str-gc.a libcomelang2-str-gc.c.o
 
 comelang2-sh: 01main.c.o.tmp 02transpile.c.o.tmp 03transpile2.c.o.tmp 04heap.c.o.tmp 05function.c.o.tmp 05function2.c.o.tmp 05function3.c.o.tmp 05function4.c.o.tmp 06str.c.o.tmp 07var.c.o.tmp 08if.c.o.tmp 09while.c.o.tmp 10do_while.c.o.tmp 11for.c.o.tmp 12switch.c.o.tmp 13op.c.o.tmp 14struct.c.o.tmp 15union.c.o.tmp 16enum.c.o.tmp 17typedef.c.o.tmp 18field.c.o.tmp 19eq.c.o.tmp 20method.c.o.tmp 21obj.c.o.tmp 22impl.c.o.tmp 23interface.c.o.tmp libcomelang2.c.o.tmp libcomelang2-str.c.o.tmp
 	clang -o comelang2-sh  01main.c.o.tmp 02transpile.c.o.tmp 03transpile2.c.o.tmp 04heap.c.o.tmp 05function.c.o.tmp 05function2.c.o.tmp 05function3.c.o.tmp 05function4.c.o.tmp 06str.c.o.tmp 07var.c.o.tmp 08if.c.o.tmp 09while.c.o.tmp 10do_while.c.o.tmp 11for.c.o.tmp 12switch.c.o.tmp 13op.c.o.tmp 14struct.c.o.tmp 15union.c.o.tmp 16enum.c.o.tmp 17typedef.c.o.tmp 18field.c.o.tmp 19eq.c.o.tmp 20method.c.o.tmp 21obj.c.o.tmp 22impl.c.o.tmp 23interface.c.o.tmp libcomelang2.c.o.tmp -lgc
@@ -223,6 +231,8 @@ install:
 	mkdir -p "$(DESTDIR)/lib"
 	$(INSTALL) -m 644 ./libcomelang2.a "$(DESTDIR)/lib"
 	$(INSTALL) -m 644 ./libcomelang2-str.a "$(DESTDIR)/lib"
+	if [ -e ./libcomelang2-gc.a ]; then $(INSTALL) -m 644 ./libcomelang2-gc.a "$(DESTDIR)/lib"; fi
+	if [ -e ./libcomelang2-str-gc.a ]; then $(INSTALL) -m 644 ./libcomelang2-str-gc.a "$(DESTDIR)/lib"; fi
 	mkdir -p "$(DESTDIR)/share/doc/comelang2"
 	$(INSTALL) -m 644 README.md "$(DESTDIR)/share/doc/comelang2/README.md"
 
@@ -230,7 +240,7 @@ install:
 # clean
 #########################################
 clean:
-	rm -fR *.log *.c.o comelang2 libcomelang2.a libcomelang2-str.a *.o a *.tmp comelang2-val comelang2-sh comelang2-inf *.i *.val *.out *.log a.c.c b.c.c b c c.c.c
+	rm -fR *.log *.c.o comelang2 libcomelang2.a libcomelang2-str.a libcomelang2-gc.a libcomelang2-str-gc.a *.o a *.tmp comelang2-val comelang2-sh comelang2-inf *.i *.val *.out *.log a.c.c b.c.c b c c.c.c
 
 distclean: clean
 	rm -fR  config.h Makefile autom4te.cache 

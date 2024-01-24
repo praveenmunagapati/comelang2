@@ -233,9 +233,12 @@ static bool linker(sInfo* info, list<string>* object_files)
         command.append_str(xsprintf("%s ", it));
     }
     
-#ifndef COMPILING_LIBRARY
-    command.append_str("-L/usr/local/lib -lcomelang2 ");
-#endif
+    if(gComeGC) {
+        command.append_str("-L/usr/local/lib -lcomelang2-gc ");
+    }
+    else {
+        command.append_str("-L/usr/local/lib -lcomelang2 ");
+    }
     string cmd = xsprintf("which /opt/homebrew/opt/llvm/bin/clang-cpp 1> /dev/null 2>/dev/null"); // Is Mac?
 
     int rc = system(cmd);
@@ -244,11 +247,9 @@ static bool linker(sInfo* info, list<string>* object_files)
     }
     command.append_str(xsprintf(" %s ", info.clang_option));
     
-    //if(gComeGC) {
-#ifdef ENABLE_GC
+    if(gComeGC) {
         command.append_str(xsprintf(" -lgc "));
-#endif
-    //}
+    }
     
     if(info.verbose) puts(command.to_string());
     rc = system(command.to_string());
@@ -626,13 +627,14 @@ int come_main(int argc, char** argv) version 2
         bool prohibit_common_header = false;
         bool come_debug = false;
         bool come_malloc = false;
+        bool come_str = false;
         for(int i=2; i<argc; i++) {
             if(argv[i] === "-o" && i+1 < argc) {
                 output_file_name = string(argv[i+1]);
                 i++;
             }
             else if(argv[i] === "-str") {
-                clang_option.append_str(" -lcomelang2-str -lpcre ");
+                come_str = true;
             }
             else if(argv[i] === "-leak") {
                 come_malloc = true;
@@ -693,6 +695,15 @@ int come_main(int argc, char** argv) version 2
         
         gComeDebug = come_debug;
         gComeMalloc = come_malloc;
+        
+        if(come_str) {
+            if(gComeGC) {
+                clang_option.append_str(" -lcomelang2-str-gc -lpcre ");
+            }
+            else {
+                clang_option.append_str(" -lcomelang2-str -lpcre ");
+            }
+        }
         
         FILE* f = fopen(output_file_name, "w") and die("fopen");
         fclose(f);
@@ -807,13 +818,14 @@ int come_main(int argc, char** argv) version 2
         bool verbose = false;
         bool come_debug = false;
         bool come_malloc = false;
+        bool come_str = false;
         for(int i=1; i<argc; i++) {
             if(argv[i] === "-o" && i+1 < argc) {
                 output_file_name = string(argv[i+1]);
                 i++;
             }
             else if(argv[i] === "-str") {
-                clang_option.append_str(" -lcomelang2-str -lpcre ");
+                come_str = true;
             }
             else if(argv[i] === "-leak") {
                 come_malloc = true;
@@ -874,6 +886,15 @@ int come_main(int argc, char** argv) version 2
         
         gComeDebug = come_debug;
         gComeMalloc = come_malloc;
+        
+        if(come_str) {
+            if(gComeGC) {
+                clang_option.append_str(" -lcomelang2-str-gc -lpcre ");
+            }
+            else {
+                clang_option.append_str(" -lcomelang2-str -lpcre ");
+            }
+        }
         
         come_init();
         

@@ -254,13 +254,6 @@ then
     COME_CFLAGS="$COME_CFLAGS -original-position"
 fi
 
-if test $GC = 1
-then
-    COME_CFLAGS="$COME_CFLAGS -gc"
-    COME_CFLAGS="$COME_CFLAGS -DENABLE_GC"
-    CFLAGS="$CFLAGS -DENABLE_GC"
-fi
-
 AC_SUBST(OS)
 
 LIBS="$LIBS"
