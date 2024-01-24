@@ -386,7 +386,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 if(param_types[i].mHeap && obj_value.type.mHeap) {
                     std_move(param_types[i], obj_value.type, obj_value);
                 }
-                else if(param_types[i].mHeap && !obj_value.type.mHeap) {
+                else if(param_types[i].mHeap && !obj_value.type.mHeap && !gComeGC) {
                     err_msg(info, "require heap parametor(%s)", fun.mParamNames[i]);
                     exit(2);
                 }

@@ -236,7 +236,7 @@ bool sStoreFieldNode*::compile(sStoreFieldNode* self, sInfo* info)
         {
         }
         else {
-            if(!right_type->mDelegate && !right_type->mShare) {
+            if(!right_type->mDelegate && !right_type->mShare && !gComeGC) {
                 err_msg(info, "require right value as heap object(%s)", name);
                 return false;
             }

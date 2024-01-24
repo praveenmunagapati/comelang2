@@ -7,9 +7,7 @@ Yet another modern compiler. It has a collection library with reffrence count gc
 
 もう一つのモダンなコンパイラ。オリジナルのリファレンスカウントGCを持ったコレクションライブラリがあります。C言語と互換性があります。
 
-version 8.0.0
-
-version 10.0.0で完全に完成したとします。
+version 10.0.0
 
 When coming version 10.0.0, comelang2 will be complete project.
 
@@ -383,6 +381,7 @@ bash self-host.sh
 5.0.4 Original malloc removed. 
 7.0.5 boehm GC supported.
 8.0.0 comelang2 memory leak is 0
+10.0.0 comelang2 is complete
 
 # Language specifications
 
@@ -1228,7 +1227,7 @@ int main(int argc, char* argv)
 
 # BoehmGC
 
-If you use -gc option, you can use memory management of boehm GC. For this, compile comelang2 with ./configure --with-gc
+If you use -gc option, you can use memory management of boehm GC.
 
 # Exception
 

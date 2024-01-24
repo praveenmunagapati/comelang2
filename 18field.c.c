@@ -4304,7 +4304,7 @@ memset(&right_value123, 0, sizeof(void*));
         if(_if_conditional144=string_operator_equals(right_type_64->mClass->mName,"void")&&right_type_64->mPointerNum==1,        _if_conditional144) {
         }
         else {
-            if(_if_conditional145=!right_type_64->mDelegate&&!right_type_64->mShare,            _if_conditional145) {
+            if(_if_conditional145=!right_type_64->mDelegate&&!right_type_64->mShare&&!gComeGC,            _if_conditional145) {
                 err_msg(info,"require right value as heap object(%s)",name_61);
                 __result62__ = (_Bool)0;
                 if(name_61 && !__freed_obj__) { name_61 = come_decrement_ref_count(name_61, (void*)0, (void*)0, 0, 0, 0); }

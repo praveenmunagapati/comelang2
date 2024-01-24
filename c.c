@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv)
 {
-    printf("%d\n", sizeof(void*));
+    puts(string("ABC"));
     
     return 0;
 }

@@ -6294,7 +6294,7 @@ memset(&right_value270, 0, sizeof(void*));
                     std_move(list$1sTypephp_operator_load_element(param_types_189,i_205),obj_value_138->type,obj_value_138,info);
                 }
                 else {
-                    if(_if_conditional261=list$1sTypephp_operator_load_element(param_types_189,i_205)->mHeap&&!obj_value_138->type->mHeap,                    _if_conditional261) {
+                    if(_if_conditional261=list$1sTypephp_operator_load_element(param_types_189,i_205)->mHeap&&!obj_value_138->type->mHeap&&!gComeGC,                    _if_conditional261) {
                         err_msg(info,"require heap parametor(%s)",list$1charphp_operator_load_element(fun_179->mParamNames,i_205));
                         exit(2);
                     }

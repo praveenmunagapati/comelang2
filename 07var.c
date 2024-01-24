@@ -544,7 +544,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                     {
                     }
                     else {
-                        if(!right_type->mDelegate && !right_type->mShare) {
+                        if(!right_type->mDelegate && !right_type->mShare && !gComeGC) {
                             err_msg(info, "require right value as heap object(%s)", self.name);
                             return false;
                         }
