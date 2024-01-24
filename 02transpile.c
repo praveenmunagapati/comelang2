@@ -657,6 +657,10 @@ int come_main(int argc, char** argv) version 2
                 clang_option.append_str(s" \{argv[i]} ");
                 come_debug = false;
             }
+            else if(argv[i][0..2] === "-D") {
+                cpp_option.append_str(s" \{argv[i]} ");
+                clang_option.append_str(s" \{argv[i]} ");
+            }
             else if(argv[i] === "-v") {
                 clang_option.append_str("-v ");
                 verbose = true;
@@ -830,6 +834,10 @@ int come_main(int argc, char** argv) version 2
             else if(argv[i][0..2] === "-O") {
                 clang_option.append_str(s" \{argv[i]} ");
                 come_debug = false;
+            }
+            else if(argv[i][0..2] === "-D") {
+                cpp_option.append_str(s" \{argv[i]} ");
+                clang_option.append_str(s" \{argv[i]} ");
             }
             else if(argv[i] === "-g") {
                 clang_option.append_str("-g ");
