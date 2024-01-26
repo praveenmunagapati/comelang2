@@ -14,19 +14,32 @@
 #include <unistd.h>
 #include <limits.h>
 
+struct sCommand
+{
+    list<string>*% args;
+    
+    bool mix_stdout;
+    tuple2<string,bool>*% redirect_stdout;
+    tuple2<string,bool>*% redirect_stderr;
+};
+
+sCommand*% sCommand*::initialize(sCommand*% self)
+{
+    self.args = new list<string>();
+    
+    self.mix_stdout = false;
+    self.redirect_stdout = null;
+    self.redirect_stderr = null;
+    
+    return self;
+}
+
 struct sInfo
 {
     char* p;
-    list<string>*% args;
-    list<list<string>*%>*% args_list;
-    list<bool>*% args_mix_stdout;
-    list<tuple2<string, bool>*?>*% args_redirect_stdout;
-    list<tuple2<string, bool>*?>*% args_redirect_stderr;
     int rcode;
     
-    bool mix_stdout;
-    tuple2<string,bool>*%? redirect_stdout;
-    tuple2<string,bool>*%? redirect_stderr;
+    list<sCommand*%>*% commands;
 };
 
 void skip_spaces(sInfo* info)
@@ -45,7 +58,7 @@ void parse_redirect(sInfo* info)
             
             string file_name = parse_word(info);
             
-            info->redirect_stdout = (file_name, true);
+            info.commands[-1].redirect_stdout = (file_name, true);
         }
         else if(*info->p == '>') {
             info->p ++;
@@ -53,7 +66,7 @@ void parse_redirect(sInfo* info)
             
             string file_name = parse_word(info);
             
-            info->redirect_stdout = (file_name, false);
+            info.commands[-1].redirect_stdout = (file_name, false);
         }
         else if(*info->p == '2' && *(info->p+1) == '>' && *(info->p+2) == '>') {
             info->p += 3;
@@ -61,12 +74,12 @@ void parse_redirect(sInfo* info)
             
             string file_name = parse_word(info);
             
-            info->redirect_stderr = (file_name, true);
+            info.commands[-1].redirect_stderr = (file_name, true);
         }
         else if(memcmp(info->p, "2>&1", 4) == 0) {
             info->p += 4;
             skip_spaces(info);
-            info->mix_stdout = true;
+            info.commands[-1].mix_stdout = true;
         }
         else if(*info->p == '2' && *(info->p+1) == '>') {
             info->p += 2;
@@ -74,7 +87,7 @@ void parse_redirect(sInfo* info)
             
             string file_name = parse_word(info);
             
-            info->redirect_stderr = (file_name, false);
+            info.commands[-1].redirect_stderr = (file_name, false);
         }
         else {
             break;
@@ -120,7 +133,7 @@ string parse_word(sInfo* info)
     skip_spaces(info);
     
     parse_redirect(info);
-  
+    
     bool squort = false;
     bool dquort = false;
     
@@ -186,14 +199,40 @@ string parse_word(sInfo* info)
     return result.to_string();
 }
 
-bool parse(sInfo* info)
+int parse_cmp(char* str, char* str2)
 {
-    info->args = new list<string>();
+    int len = strlen(str2);
+    
+    char* p = str;
+    
+    int i;
+    for(i=0; i<len; i++) {
+        if(*(str + i) == '\0') {
+            break;
+        }
+        else {
+            p++;
+        }
+    }
+    
+    if(i < len) {
+        return -1;
+    }
+    else {
+        return memcmp(str, str2, len);
+    }
+}
 
+int, bool run(char* source);
+
+bool parse_statment(sInfo* info)
+{
+    info->commands.add(new sCommand());
+    
     while(true) {
         buffer*% buf = new buffer();
         char* p = info->p;
-        while(*info->p != '\n' && *info->p != '\0') {
+        while(*info->p != '\n' && *info->p != '\0' && *info->p != ';') {
             buf.append_char(*info->p);
             info->p++;
         }
@@ -204,6 +243,108 @@ bool parse(sInfo* info)
             chdir(path);
             
             setenv("PWD", path, 1);
+        }
+        else if(line.match(/^if /)) {
+            info->p = p;
+            
+            info->p += 2;
+            skip_spaces(info);
+            
+            char* head = info->p;
+            char* tail = null;
+            
+            while(*info->p) {
+                if(parse_cmp(info->p, "then") == 0) {
+                    tail = info->p -1;
+                    break;
+                }
+                else {
+                    info->p++;
+                }
+            }
+            
+            info->p += 4;
+            
+            if(tail == null) {
+                puts("if statment error");
+                return false;
+            }
+            
+            buffer*% source = new buffer();
+            
+            source.append(head, tail - head);
+            
+            var rcode, err = run(source.to_string());
+            
+            if(err) {
+                puts("if statment error");
+                return false;
+            }
+            
+            if(rcode == 0) {
+                char* head = info->p;
+                char* tail = null;
+                
+                while(*info->p) {
+                    if(parse_cmp(info->p, "fi") == 0) {
+                        tail = info->p -1;
+                        break;
+                    }
+                    else {
+                        info->p++;
+                    }
+                }
+                
+                info->p += 2;
+                
+                if(tail == null) {
+                    puts("if statment error");
+                    return false;
+                }
+                
+                buffer*% source = new buffer();
+                
+                source.append(head, tail - head);
+            
+                var rcode, err = run(source.to_string());
+                
+                if(err) {
+                    puts("if statment error");
+                    return false;
+                }
+            }
+            else {
+                char* head = info->p;
+                char* tail = null;
+                
+                while(*info->p) {
+                    if(parse_cmp(info->p, "fi") == 0) {
+                        tail = info->p -1;
+                        break;
+                    }
+                    else {
+                        info->p++;
+                    }
+                }
+                
+                info->p += 2;
+                
+                if(tail == null) {
+                    puts("if statment error");
+                    return false;
+                }
+            }
+        }
+        else if(line.match(/^cd /)) {
+            var str = line.scan(/^cd +(.+)/).item(1, null);
+            
+            if(str) {
+                char path[PATH_MAX];
+                realpath(str, path);
+                chdir(path);
+                
+                setenv("PWD", path, 1);
+            }
         }
         else if(line.match(/^cd /)) {
             var str = line.scan(/^cd +(.+)/).item(1, null);
@@ -241,18 +382,16 @@ bool parse(sInfo* info)
             }
             
             foreach(it, words) {
-                info->args.push_back(string(it));
+                info->commands[-1].args.push_back(string(it));
             }
         }
     }
-    
-    return true;
 }
 
 bool redirect(int n, sInfo* info)
 {
-    tuple2<string,bool>*%? redirect_stdout = dummy_heap info->args_redirect_stdout[n];
-    tuple2<string,bool>*%? redirect_stderr = dummy_heap info->args_redirect_stderr[n];
+    tuple2<string,bool>*% redirect_stdout = dummy_heap info->commands[n].redirect_stdout;
+    tuple2<string,bool>*% redirect_stderr = dummy_heap info->commands[n].redirect_stderr;
     
     if(redirect_stdout) {
         string file_name = redirect_stdout.v1;
@@ -303,18 +442,18 @@ bool run_command(int n, sInfo* info)
     
     memset(pipes, 0, sizeof(int)*2);
     
-    if(n == info->args_list.length()-1) {
+    if(n == info->commands.length()-1) {
         if(!redirect(0, info)) {
             return false;
         }
         
-        bool mix_stdout = info->args_mix_stdout[0];
+        bool mix_stdout = info->commands[0].mix_stdout;
         
         if(mix_stdout) {
             dup2(1, 2);
         }
         
-        list<string>* args = info->args_list[0];
+        list<string>* args = info->commands[0].args;
         
         char* argv[1024];
         int i;
@@ -332,13 +471,13 @@ bool run_command(int n, sInfo* info)
         pid_t pid = fork();
         
         if(pid == 0) {
-            bool mix_stdout = info->args_mix_stdout[info->args_list.length()-n-1];
+            bool mix_stdout = info->commands[info->commands.length()-n-1];
             
             if(mix_stdout) {
                 dup2(1, 2);
             }
             
-            if(!redirect(info->args_list.length()-n-1, info)) {
+            if(!redirect(info->commands.length()-n-1, info)) {
                 return false;
             }
             
@@ -353,7 +492,7 @@ bool run_command(int n, sInfo* info)
             dup2(pipes[0], 0);
             close(pipes[0]);
             
-            list<string>* args = info->args_list[info->args_list.length()-n-1];
+            list<string>* args = info->commands[info->commands.length()-n-1].args;
             char* argv[1024];
             int i;
             for(i=0; i<args.length(); i++) {
@@ -369,37 +508,22 @@ bool run_command(int n, sInfo* info)
     return true;
 }
 
-bool run(char* source)
+int, bool run(char* source)
 {
     sInfo info;
     
+    info.commands = new list<sCommand*%>();
     info.p = source;
     
     while(*info->p) {
         while(*info->p == '\n' || *info->p == ';') info->p++;
         
-        info->args_list = new list<list<string>*%>();
-        info->args_mix_stdout = new list<bool>();
-        info->args_redirect_stdout = new list<tuple2<string,bool>*?>();
-        info->args_redirect_stderr = new list<tuple2<string,bool>*?>();
-        
         while(true) {
-            info->mix_stdout = false;
-            info->redirect_stdout = null;
-            info->redirect_stderr = null;
+            parse_statment(&info);
             
-            if(!parse(&info)) {
-                return false;
-            }
-            
-            if(info->args.length() == 0) {
+            if(info->commands[-1].args.length() == 0) {
                 break;
             }
-            
-            info->args_list.push_back(info->args);
-            info->args_mix_stdout.push_back(info->mix_stdout);
-            info->args_redirect_stdout.push_back(info->redirect_stdout);
-            info->args_redirect_stderr.push_back(info->redirect_stderr);
             
             if(*info->p == '|' && *(info->p+1) != '|') {
                 info->p++;
@@ -410,7 +534,7 @@ bool run(char* source)
             }
         }
         
-        if(info->args_list.length() == 0) {
+        if(info->commands.length() == 0) {
             break;
         }
     
@@ -437,7 +561,7 @@ bool run(char* source)
             info.rcode = WEXITSTATUS(status);
             
             if(info.rcode == 127) {
-                fprintf(stderr, "command not found (%s)\n", info->args[0]);
+                fprintf(stderr, "command not found (%s)\n", info->commands[-1].args[0]);
             }
             
             setenv("?", xsprintf("%d", info.rcode), 1);
@@ -459,9 +583,8 @@ bool run(char* source)
         while(*info->p == '\n' || *info->p == ';') info->p++;
     }
     
-    return true;
+    return (info->rcode, false);
 }
-
 
 void sigchld_action(int signum, siginfo_t* info, void* ctx)
 {
@@ -858,7 +981,7 @@ int main(int argc, char** argv)
     setlocale(LC_ALL, "");
     
     bool command = false;
-    string? file_name = null;
+    string file_name = null;
     bool run_once = false;
     for(int i=1; i<argc; i++) {
         if(argv[i] === "-c") {
@@ -890,7 +1013,9 @@ int main(int argc, char** argv)
     if(f) {
         string command_str = f.read();
         
-        run(command_str).except {
+        var rcode, err = run(command_str);
+        
+        if(err) {
             fprintf(stderr, "error\n");
             exit(1);
         }
@@ -908,13 +1033,21 @@ int main(int argc, char** argv)
         rl_startup_hook = readline_init_text;
         
         while(true) {
-            char* line = readline(getenv("PWD") + " " + getenv("?") + " > ");
+            char* line;
+            if(getenv("?")) {
+                line = readline(getenv("PWD") + " " + getenv("?") + " > ");
+            }
+            else {
+                line = readline(getenv("PWD") + " 0 > ");
+            }
             
             if(line == null || line === "exit") {
                 break;
             }
             
-            run(line).except {
+            var rcode, err = run(line);
+            
+            if(err) {
                 fprintf(stderr, "error\n");
                 exit(1);
             }
@@ -939,7 +1072,9 @@ int main(int argc, char** argv)
         
         set_signal_optc();
         
-        run(command_str).except {
+        var rcode, err = run(command_str);
+        
+        if(err) {
             fprintf(stderr, "error\n");
             exit(1);
         }
