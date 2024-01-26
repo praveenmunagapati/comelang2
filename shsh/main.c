@@ -288,14 +288,21 @@ bool parse_statment(sInfo* info)
                 while(*info->p) {
                     if(parse_cmp(info->p, "fi") == 0) {
                         tail = info->p -1;
+                        info->p += 2;
+                        break;
+                    }
+                    else if(parse_cmp(info->p, "else") == 0) {
+                        tail = info->p -1;
+                        break;
+                    }
+                    else if(parse_cmp(info->p, "elif") == 0) {
+                        tail = info->p -1;
                         break;
                     }
                     else {
                         info->p++;
                     }
                 }
-                
-                info->p += 2;
                 
                 if(tail == null) {
                     puts("if statment error");
@@ -320,6 +327,15 @@ bool parse_statment(sInfo* info)
                 while(*info->p) {
                     if(parse_cmp(info->p, "fi") == 0) {
                         tail = info->p -1;
+                        info->p += 2;
+                        break;
+                    }
+                    else if(parse_cmp(info->p, "else") == 0) {
+                        tail = info->p -1;
+                        break;
+                    }
+                    else if(parse_cmp(info->p, "elif") == 0) {
+                        tail = info->p -1;
                         break;
                     }
                     else {
@@ -327,11 +343,157 @@ bool parse_statment(sInfo* info)
                     }
                 }
                 
-                info->p += 2;
-                
                 if(tail == null) {
                     puts("if statment error");
                     return false;
+                }
+            }
+            
+            while(true) {
+                if(parse_cmp(info->p, "else") == 0) {
+                    info->p += 4;
+                    
+                    char* head = info->p;
+                    char* tail = null;
+                    
+                    while(*info->p) {
+                        if(parse_cmp(info->p, "fi") == 0) {
+                            tail = info->p -1;
+                            info->p += 2;
+                            break;
+                        }
+                        else {
+                            info->p++;
+                        }
+                    }
+                    
+                    if(tail == null) {
+                        puts("if statment error");
+                        return false;
+                    }
+                    
+                    if(rcode != 0) {
+                        buffer*% source = new buffer();
+                        
+                        source.append(head, tail - head);
+                    
+                        var rcode2, err = run(source.to_string());
+                        
+                        if(err) {
+                            puts("if statment error");
+                            return false;
+                        }
+                        
+                        rcode = rcode2;
+                    }
+                }
+                else if(parse_cmp(info->p, "elif") == 0) {
+                    info->p += 4;
+                    skip_spaces(info);
+                    
+                    char* head = info->p;
+                    char* tail = null;
+                    
+                    while(*info->p) {
+                        if(parse_cmp(info->p, "then") == 0) {
+                            tail = info->p -1;
+                            break;
+                        }
+                        else {
+                            info->p++;
+                        }
+                    }
+                    
+                    info->p += 4;
+                    
+                    if(tail == null) {
+                        puts("if statment error");
+                        return false;
+                    }
+                    
+                    buffer*% source = new buffer();
+                    
+                    source.append(head, tail - head);
+                    
+                    var rcode2, err = run(source.to_string());
+                    
+                    if(err) {
+                        puts("if statment error");
+                        return false;
+                    }
+                    
+                    if(rcode2 == 0) {
+                        char* head = info->p;
+                        char* tail = null;
+                        
+                        while(*info->p) {
+                            if(parse_cmp(info->p, "fi") == 0) {
+                                tail = info->p -1;
+                                info->p += 2;
+                                break;
+                            }
+                            else if(parse_cmp(info->p, "else") == 0) {
+                                tail = info->p -1;
+                                break;
+                            }
+                            else if(parse_cmp(info->p, "elif") == 0) {
+                                tail = info->p -1;
+                                break;
+                            }
+                            else {
+                                info->p++;
+                            }
+                        }
+                        
+                        if(tail == null) {
+                            puts("if statment error");
+                            return false;
+                        }
+                        
+                        buffer*% source = new buffer();
+                        
+                        source.append(head, tail - head);
+                    
+                        var rcode3, err = run(source.to_string());
+                        
+                        if(err) {
+                            puts("if statment error");
+                            return false;
+                        }
+                    }
+                    else {
+                        char* head = info->p;
+                        char* tail = null;
+                        
+                        while(*info->p) {
+                            if(parse_cmp(info->p, "fi") == 0) {
+                                tail = info->p -1;
+                                info->p += 2;
+                                break;
+                            }
+                            else if(parse_cmp(info->p, "else") == 0) {
+                                tail = info->p -1;
+                                break;
+                            }
+                            else if(parse_cmp(info->p, "elif") == 0) {
+                                tail = info->p -1;
+                                break;
+                            }
+                            else {
+                                info->p++;
+                            }
+                        }
+                        
+                        if(tail == null) {
+                            puts("if statment error");
+                            return false;
+                        }
+                    }
+                    
+                    rcode = rcode2;
+                }
+                else {
+                    break;
                 }
             }
         }
