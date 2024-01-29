@@ -2929,13 +2929,11 @@ memset(&it2_18, 0, sizeof(struct sMemHeader*));
 memset(&i_19, 0, sizeof(int));
     new_size_13=gSizeMemHeaders*3;
     new_table_14=calloc(1,sizeof(struct sMemHeader)*new_size_13);
-    printf("rehash new_table calloc %p\n",new_table_14);
     it_15=gAllocMem;
     new_alloc_it_16=((void*)0);
     while(_while_condtional2=it_15,    _while_condtional2) {
         key_17=(unsigned int)it_15->mem%new_size_13;
         it2_18=new_table_14+key_17;
-        printf("rehash key %u mem %p table %p it %p\n",key_17,it_15->mem,new_table_14,it2_18);
         while(_while_condtional3=(_Bool)1,        _while_condtional3) {
             if(_if_conditional31=it2_18->mem==((void*)0),            _if_conditional31) {
                 break;
@@ -2969,7 +2967,6 @@ memset(&i_19, 0, sizeof(int));
         new_alloc_it_16=it2_18;
         it_15=it_15->next;
     }
-    printf("rehash free %p\n",gMemHeaderTable);
     free(gMemHeaderTable);
     gMemHeaderTable=new_table_14;
     gSizeMemHeaders=new_size_13;
@@ -3029,7 +3026,6 @@ memset(&i_23, 0, sizeof(int));
                 }
             }
         }
-        printf("alloc key %u mem %p table %p it %p\n",key_21,result_20,gMemHeaderTable,it_22);
         it_22->mem=result_20;
         it_22->size=size;
         come_push_stackframe(sname,sline);
@@ -3090,12 +3086,10 @@ memset(&next_it_27, 0, sizeof(struct sMemHeader*));
                 while(_while_condtional5=(_Bool)1,                _while_condtional5) {
                     if(_if_conditional44=it_25->mem==((void*)0),                    _if_conditional44) {
                         return;
-                        printf("null free key %u mem %p gMemHeaderTable %p it %p\n",key_24,mem,gMemHeaderTable,it_25);
                         exit(2);
                     }
                     else {
                         if(_if_conditional45=it_25->mem==mem,                        _if_conditional45) {
-                            printf("free key %u mem %p gMemHeaderTable %p it %p\n",key_24,mem,gMemHeaderTable,it_25);
                             break;
                         }
                         else {
