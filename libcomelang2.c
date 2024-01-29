@@ -2,9 +2,6 @@
 using C
 {
 #include <libgen.h>
-#ifdef ENABLE_GC
-#include <gc.h>
-#endif
 }
 
 //////////////////////////////
@@ -219,12 +216,19 @@ struct sMemHeader
 {
     void* mem;
     size_t size;
+    
+    struct sMemHeader* next;
+    struct sMemHeader* prev;
+    
+    char* sname[COME_STACKFRAME_MAX];
+    int sline[COME_STACKFRAME_MAX];
 };
 
 sMemHeader* gMemHeaderTable;
+sMemHeader* gAllocMem;
 
-size_t gSizeMemHeaders = 0;
-size_t gNumMemHeaders = 0;
+unsigned int gSizeMemHeaders = 0;
+unsigned int gNumMemHeaders = 0;
 
 void come_heap_init(int come_malloc, int come_debug, int come_gc)
 {
@@ -233,19 +237,13 @@ void come_heap_init(int come_malloc, int come_debug, int come_gc)
     gComeGCLib = come_gc;
     
     if(gComeMallocLib) {
-        gSizeMemHeaders = 1024;
+        gSizeMemHeaders = 4;
         
         gMemHeaderTable = calloc(1, sizeof(sMemHeader)*gSizeMemHeaders);
         gNumMemHeaders = 0;
+        
+        gAllocMem = NULL;
     }
-    
-#ifdef ENABLE_GC
-    if(gComeGCLib) {
-        GC_init();
-        GC_set_warn_proc(GC_ignore_warn_proc);
-        GC_enable_incremental();
-    }
-#endif
     
     gComeStackFrameBuffer = NULL;
 }
@@ -257,14 +255,23 @@ void come_heap_final()
     }
     
     if(gComeMallocLib) {
-        sMemHeader* it = gMemHeaderTable;
+        sMemHeader* it = gAllocMem;
         int n = 0;
-        while(it < gMemHeaderTable + gSizeMemHeaders) {
-            if(it->mem) {
+        while(it) {
+            bool flag = false;
+            for(int i=0; i<COME_STACKFRAME_MAX; i++) {
+                if(it->sname[i]) {
+                    printf("%s %d, ", it->sname[i], it->sline[i]);
+                    flag = true;
+                }
+            }
+            
+            if(flag) {
+                puts("");
                 n++;
             }
             
-            it++;
+            it = it->next;
         }
         if(n > 0) {
             printf("%d memory leaks\n", n);
@@ -276,57 +283,63 @@ void come_heap_final()
 
 static void come_mem_header_rehash()
 {
-    size_t new_size = gSizeMemHeaders * 3;
+    unsigned int new_size = gSizeMemHeaders * 3;
     sMemHeader* new_table = calloc(1, sizeof(sMemHeader)*new_size);
     
-    sMemHeader* it = gMemHeaderTable;
-    while(it < gMemHeaderTable + gSizeMemHeaders) {
-        if(it->mem) {
-            unsigned int key = (size_t)it->mem % (size_t)new_size;
-            
-            sMemHeader* it2 = new_table + key;
-            
-            while(true) {
-                if(it2->mem == null) {
-                    break;
+    sMemHeader* it = gAllocMem;
+    sMemHeader* new_alloc_it = NULL;
+    while(it) {
+        unsigned int key = (unsigned int)it->mem % new_size;
+        
+        sMemHeader* it2 = new_table + key;
+        
+        while(true) {
+            if(it2->mem == null) {
+                break;
+            }
+            else {
+                it2++;
+                
+                if(it2 == new_table + new_size) {
+                    it2 = new_table;
                 }
-                else {
-                    it2++;
-                    
-                    if(it2 == new_table + new_size) {
-                        it2 = new_table;
-                    }
-                    else if(it2 == new_table + key) {
-                        puts("mem header unexpected error");
-                        stackframe();
-                        exit(2);
-                    }
+                else if(it2 == new_table + key) {
+                    puts("mem header unexpected error");
+                    stackframe();
+                    exit(2);
                 }
             }
-            
-            it2->mem = it->mem;
-            it2->size = it->size;
         }
         
-        it++;
+        it2.mem = it->mem;
+        it2.size = it->size;
+        
+        for(int i=0; i<COME_STACKFRAME_MAX; i++) {
+            it2.sname[i] = it.sname[i];
+            it2.sline[i] = it.sline[i];
+        }
+        
+        it2->next = new_alloc_it;
+        it2->prev = null;
+        
+        if(new_alloc_it) {
+            new_alloc_it->prev = it2;
+        }
+        
+        new_alloc_it = it2;
+        
+        it = it->next;
     }
     
     free(gMemHeaderTable);
     
     gMemHeaderTable = new_table;
     gSizeMemHeaders = new_size;
+    gAllocMem = new_alloc_it
 }
 
 static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0)
 {
-#ifdef ENABLE_GC
-    if(gComeGCLib) {
-        void* result = GC_malloc(size);
-        memset(result, 0, size);
-        return result;
-    }
-    else 
-#endif
     if(!gComeMallocLib) {
         return calloc(1, size);
     }
@@ -337,7 +350,8 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
             come_mem_header_rehash();
         }
         
-        unsigned int key = (size_t)result % gSizeMemHeaders;
+        unsigned int key = (unsigned int)result % gSizeMemHeaders;
+        
         
         sMemHeader* it = gMemHeaderTable + key;
         
@@ -359,8 +373,27 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
             }
         }
         
+        
         it.mem = result;
         it.size = size;
+        
+        come_push_stackframe(sname, sline);
+        
+        for(int i=0; i<gNumComeStackFrame; i++) {
+            it.sname[i] = gComeStackFrameSName[i];
+            it.sline[i] = gComeStackFrameSLine[i];
+        }
+        
+        come_pop_stackframe();
+        
+        it->next = gAllocMem;
+        it->prev = null;
+        
+        if(gAllocMem) {
+            gAllocMem->prev = it;
+        }
+        
+        gAllocMem = it;
         
         gNumMemHeaders++;
         
@@ -377,13 +410,14 @@ static void come_free_mem_of_heap_pool(char* mem)
             free(mem);
         }
         else {
-            unsigned int key = (size_t)mem % gSizeMemHeaders;
+            unsigned int key = (unsigned int)mem % gSizeMemHeaders;
             
             sMemHeader* it = gMemHeaderTable + key;
             
             while(true) {
                 if(it->mem == null) {
-                    break;
+                    puts("mem header unexpected error(2)");
+                    exit(2);
                 }
                 else if(it->mem == mem) {
                     break;
@@ -401,8 +435,30 @@ static void come_free_mem_of_heap_pool(char* mem)
                 }
             }
             
+            sMemHeader* prev_it = it->prev;
+            sMemHeader* next_it = it->next;
+            
             it->mem = null;
             it->size = 0;
+            
+            it->prev = null;
+            it->next = null;
+            
+            if(gAllocMem == it) {
+                gAllocMem = next_it;
+                
+                if(gAllocMem) {
+                    gAllocMem->prev = null;
+                }
+            }
+            else {
+                if(prev_it) {
+                    prev_it->next = next_it;
+                }
+                if(next_it) {
+                    next_it->prev = prev_it;
+                }
+            }
             
             free(mem);
             
@@ -411,7 +467,6 @@ static void come_free_mem_of_heap_pool(char* mem)
     }
 }
 
-/*
 static bool is_valid_object(char* mem) 
 {
     if(mem) {
@@ -421,7 +476,7 @@ static bool is_valid_object(char* mem)
         else {
             char* mem2 = mem - sizeof(size_t) - sizeof(size_t);
             
-            unsigned key = (size_t)mem2 % gSizeMemHeaders;
+            unsigned int key = (size_t)mem2 % gSizeMemHeaders;
             
             sMemHeader* it = gMemHeaderTable + key;
             
@@ -429,7 +484,7 @@ static bool is_valid_object(char* mem)
                 if(it->mem == null) {
                     return false;
                 }
-                else if(it->mem == mem2) {
+                else if(it->mem == mem) {
                     return true;
                 }
                 else {
@@ -439,7 +494,8 @@ static bool is_valid_object(char* mem)
                         it = gMemHeaderTable;
                     }
                     else if(it == gMemHeaderTable + key) {
-                        return false;
+                        puts("mem header unexpected error");
+                        exit(2);
                     }
                 }
             }
@@ -448,7 +504,6 @@ static bool is_valid_object(char* mem)
     
     return false;
 }
-*/
 
 void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
 {
@@ -470,6 +525,13 @@ void come_free_object(void* mem)
     if(mem == NULL) {
         return;
     }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem)) {
+            return ;
+        }
+    }
+*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     

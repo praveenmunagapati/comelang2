@@ -3,13 +3,11 @@
 
 come together!
 
-Yet another modern compiler. It has a collection library with reffrence count gc. It has compatibility for C language.
+Yet another modern C compiler. It has librares with automatically-free-system.
 
-もう一つのモダンなコンパイラ。オリジナルのリファレンスカウントGCを持ったコレクションライブラリがあります。C言語と互換性があります。
+もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
 version 10.0.0
-
-When coming version 10.0.0, comelang2 will be complete project.
 
 ``` C
 #include <comelang2.h>
@@ -224,9 +222,9 @@ int main()
 
 C言語と互換性があります。Cプリプロセッサーも動きます。
 
-2. The default heap system is my original refference count heap system like rust or v or nim
+2. It has automatically-free-system like rust or v or nim
 
-RustやVやNimのようなヒープシステムがあります。
+RustやVやNimのようなautomatically-free-systemがあります。
 
 3. It has Generics, inline function
 
@@ -303,7 +301,6 @@ git clone https://github.com/ab25cq/comelang2
 cd comelang2
 bash fast_build.sh
 bash self-host.sh
-(bash fast_build.sh)   # for getting fast comelang2. It's optimized
 ```
 
 # Histories
@@ -407,11 +404,11 @@ HELLO WORLD
 
 # Grammer
 
-Compatible with C language. If you can write C, you should be able to write it right away as long as you understand the rules for reference count GC.
+Compatible with C language. If you can write C, you should be able to write it right away as long as you understand the rules for automatically-free system.
 
-リファレンスカウントGCの規則さえわかればCプログラマーならすぐ使えると思います。
+automatically-free-systemの規則さえわかればCプログラマーならすぐ使えると思います。
 
-# Reference Count GC
+# Automatically-free-system
 
 Basically, if the return value of a function that generates a heap or the return value of new is assigned to a variable, the reference count will be increased by 1. A heap with a reference count of 0 will be freed if it is not assigned to a variable after executing one statement.
 
@@ -1201,7 +1198,7 @@ int main(int argc, char** argv)
 }
 ```
 
-# Heap String
+# Emmbeded expression string
 
 ```
 int main(int argc, char* argv)
@@ -1570,7 +1567,7 @@ a.c 11
 a.c 16
 ```
 
-for debug
+for debugging.
 require -cg option.
 
 # range check
@@ -1624,9 +1621,7 @@ LLVM-C++, LLVM-C, Cトランスパイラと、このコンパイラは実は３�
 
 結局僕はRubyが好きだったのでしょう。好きすぎてRubyっぽいシェル、RubyっぽいJava、Rubyっぽいコンパイラと３作もRubyっぽいものを作ってしまいました。
 
-余生はRubyクローンを作って過ごしたいと思います。Rubyクローンを作って、Rubyの作者のまつもとゆきひろさんにお会いできればなと思います。
-
-それで今までやってきたことも肯定されるかもしれません。
+余生はRubyクローンを作って過ごしたいと思います。Rubyクローンを作って、Rubyの作者のまつもとゆきひろさんにお会いできればなと思います。それで今までやってきたことも肯定されるかもしれません。 
 
 まあ、プログラミングを楽しんでください。社会生活も楽しんでください。社会生活を犠牲にするほどはプログラミングはしないでください。
 

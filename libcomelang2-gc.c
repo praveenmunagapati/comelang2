@@ -213,29 +213,11 @@ static bool gComeMallocLib = false;
 static bool gComeDebugLib = false;
 bool gComeGCLib = false;
 
-struct sMemHeader
-{
-    void* mem;
-    size_t size;
-};
-
-sMemHeader* gMemHeaderTable;
-
-size_t gSizeMemHeaders = 0;
-size_t gNumMemHeaders = 0;
-
 void come_heap_init(int come_malloc, int come_debug, int come_gc)
 {
-    gComeMallocLib = come_malloc;
+    gComeMallocLib = false;
     gComeDebugLib = come_debug
     gComeGCLib = come_gc;
-    
-    if(gComeMallocLib) {
-        gSizeMemHeaders = 1024;
-        
-        gMemHeaderTable = calloc(1, sizeof(sMemHeader)*gSizeMemHeaders);
-        gNumMemHeaders = 0;
-    }
     
     if(gComeGCLib) {
         GC_init();
@@ -251,66 +233,6 @@ void come_heap_final()
     if(gComeStackFrameBuffer) {
         free(gComeStackFrameBuffer);
     }
-    
-    if(gComeMallocLib) {
-        sMemHeader* it = gMemHeaderTable;
-        int n = 0;
-        while(it < gMemHeaderTable + gSizeMemHeaders) {
-            if(it->mem) {
-                n++;
-            }
-            
-            it++;
-        }
-        if(n > 0) {
-            printf("%d memory leaks\n", n);
-        }
-        
-        free(gMemHeaderTable);
-    }
-}
-
-static void come_mem_header_rehash()
-{
-    size_t new_size = gSizeMemHeaders * 3;
-    sMemHeader* new_table = calloc(1, sizeof(sMemHeader)*new_size);
-    
-    sMemHeader* it = gMemHeaderTable;
-    while(it < gMemHeaderTable + gSizeMemHeaders) {
-        if(it->mem) {
-            unsigned int key = (size_t)it->mem % (size_t)new_size;
-            
-            sMemHeader* it2 = new_table + key;
-            
-            while(true) {
-                if(it2->mem == null) {
-                    break;
-                }
-                else {
-                    it2++;
-                    
-                    if(it2 == new_table + new_size) {
-                        it2 = new_table;
-                    }
-                    else if(it2 == new_table + key) {
-                        puts("mem header unexpected error");
-                        stackframe();
-                        exit(2);
-                    }
-                }
-            }
-            
-            it2->mem = it->mem;
-            it2->size = it->size;
-        }
-        
-        it++;
-    }
-    
-    free(gMemHeaderTable);
-    
-    gMemHeaderTable = new_table;
-    gSizeMemHeaders = new_size;
 }
 
 static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0)
@@ -320,44 +242,8 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         memset(result, 0, size);
         return result;
     }
-    else if(!gComeMallocLib) {
-        return calloc(1, size);
-    }
     else {
-        void* result = calloc(1, size);
-        
-        if(gNumMemHeaders >= gSizeMemHeaders / 3) {
-            come_mem_header_rehash();
-        }
-        
-        unsigned int key = (size_t)result % gSizeMemHeaders;
-        
-        sMemHeader* it = gMemHeaderTable + key;
-        
-        while(true) {
-            if(it->mem == null) {
-                break;
-            }
-            else {
-                it++;
-                
-                if(it == gMemHeaderTable + gSizeMemHeaders) {
-                    it = gMemHeaderTable;
-                }
-                else if(it == gMemHeaderTable + key) {
-                    puts("mem header unexpected error");
-                    stackframe();
-                    exit(2);
-                }
-            }
-        }
-        
-        it.mem = result;
-        it.size = size;
-        
-        gNumMemHeaders++;
-        
-        return result;
+        return calloc(1, size);
     }
 }
 
@@ -366,82 +252,11 @@ static void come_free_mem_of_heap_pool(char* mem)
     if(mem) {
         if(gComeGCLib) {
         }
-        else if(!gComeMallocLib) {
-            free(mem);
-        }
         else {
-            unsigned int key = (size_t)mem % gSizeMemHeaders;
-            
-            sMemHeader* it = gMemHeaderTable + key;
-            
-            while(true) {
-                if(it->mem == null) {
-                    break;
-                }
-                else if(it->mem == mem) {
-                    break;
-                }
-                else {
-                    it++;
-                    
-                    if(it == gMemHeaderTable + gSizeMemHeaders) {
-                        it = gMemHeaderTable;
-                    }
-                    else if(it == gMemHeaderTable + key) {
-                        puts("mem header unexpected error");
-                        exit(2);
-                    }
-                }
-            }
-            
-            it->mem = null;
-            it->size = 0;
-            
             free(mem);
-            
-            gNumMemHeaders--;
         }
     }
 }
-
-/*
-static bool is_valid_object(char* mem) 
-{
-    if(mem) {
-        if(!gComeMallocLib) {
-            return true;
-        }
-        else {
-            char* mem2 = mem - sizeof(size_t) - sizeof(size_t);
-            
-            unsigned key = (size_t)mem2 % gSizeMemHeaders;
-            
-            sMemHeader* it = gMemHeaderTable + key;
-            
-            while(true) {
-                if(it->mem == null) {
-                    return false;
-                }
-                else if(it->mem == mem2) {
-                    return true;
-                }
-                else {
-                    it++;
-                    
-                    if(it == gMemHeaderTable + gSizeMemHeaders) {
-                        it = gMemHeaderTable;
-                    }
-                    else if(it == gMemHeaderTable + key) {
-                        return false;
-                    }
-                }
-            }
-        }
-    }
-    
-    return false;
-}
-*/
 
 void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
 {
@@ -474,13 +289,6 @@ void* come_memdup(void* block, char* sname=null, int sline=0)
     if(!block) {
         return null;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(block)) {
-            return null;
-        }
-    }
-*/
 
     char* mem = (char*)block - sizeof(size_t) - sizeof(size_t);
     
@@ -500,13 +308,6 @@ void* come_increment_ref_count(void* mem)
     if(mem == NULL) {
         return mem;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return mem;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -520,13 +321,6 @@ void* come_print_ref_count(void* mem)
     if(mem == NULL) {
         return mem;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return mem;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -540,13 +334,6 @@ void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj
     if(mem == NULL) {
         return NULL;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return mem;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -574,13 +361,6 @@ void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protoco
     if(mem == NULL) {
         return;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem) && !call_finalizer_only) {
-            return;
-        }
-    }
-*/
     
     if(call_finalizer_only) {
         if(fun) {

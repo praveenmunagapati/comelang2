@@ -1,5 +1,6 @@
 #include <comelang2.h>
 
+/*
 int fun(int argc)
 {
     list<string>*% l = [s"AAA", s"BBB"];
@@ -14,6 +15,7 @@ int fun(int argc)
     
     return 0;
 }
+*/
 
 /*
 int gArray[3][2] = { 1, 2, 3, 4,5,6 };
@@ -37,7 +39,15 @@ int main(int argc, char** argv)
 {
 //    printf("%s\n", fun(1, 2)!);
 
-    int*% a = new int;
+    int* a = borrow gc_inc(new int);
+    int* b = borrow gc_inc(new int);
+    int* c = borrow gc_inc(new int);
+    int* d = borrow gc_inc(new int);
+    int* e = borrow gc_inc(new int);
+    
+    delete a;
+    delete c;
+    delete d;
     
     return 0;
 }
