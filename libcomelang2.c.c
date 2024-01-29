@@ -2934,7 +2934,7 @@ memset(&i_19, 0, sizeof(int));
     while(_while_condtional2=it_15,    _while_condtional2) {
         key_17=(unsigned int)it_15->mem%new_size_13;
         it2_18=new_table_14+key_17;
-        printf("key %u mem %p\n",key_17,it_15->mem);
+        printf("rehash key %u mem %p\n",key_17,it_15->mem);
         while(_while_condtional3=(_Bool)1,        _while_condtional3) {
             if(_if_conditional31=it2_18->mem==((void*)0),            _if_conditional31) {
                 break;
@@ -3027,7 +3027,7 @@ memset(&i_23, 0, sizeof(int));
                 }
             }
         }
-        printf("key %u mem %p\n",key_21,result_20);
+        printf("alloc key %u mem %p\n",key_21,result_20);
         it_22->mem=result_20;
         it_22->size=size;
         come_push_stackframe(sname,sline);
@@ -3087,7 +3087,7 @@ memset(&next_it_27, 0, sizeof(struct sMemHeader*));
                 it_25=gMemHeaderTable+key_24;
                 while(_while_condtional5=(_Bool)1,                _while_condtional5) {
                     if(_if_conditional44=it_25->mem==((void*)0),                    _if_conditional44) {
-                        printf("key %u mem %p\n",key_24,mem);
+                        printf("free key %u mem %p\n",key_24,mem);
                         exit(2);
                     }
                     else {
