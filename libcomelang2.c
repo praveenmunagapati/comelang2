@@ -451,6 +451,22 @@ printf("free key %u mem %p gMemHeaderTable %p it %p\n", key, mem, gMemHeaderTabl
             it->prev = null;
             it->next = null;
             
+            if(it == gAllocMem) {
+                gAllocMem = null;
+            }
+            else {
+                sMemHeader* it3 = gAllocMem;
+                sMemHeader* it3_prev = gAllocMem;
+                while(it3) {
+                    if(it3 == it) {
+                        it3_prev.next = it.next;
+                        break;
+                    }
+                    it3_prev = it3;
+                    it3 = it3->next;
+                }
+            }
+/*
             if(gAllocMem == it) {
                 gAllocMem = next_it;
                 
@@ -466,6 +482,7 @@ printf("free key %u mem %p gMemHeaderTable %p it %p\n", key, mem, gMemHeaderTabl
                     next_it->prev = prev_it;
                 }
             }
+*/
             
             free(mem);
             
