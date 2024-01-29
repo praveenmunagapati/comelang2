@@ -293,6 +293,8 @@ static void come_mem_header_rehash()
         
         sMemHeader* it2 = new_table + key;
         
+//printf("key %u mem %p\n", key, it->mem);
+        
         while(true) {
             if(it2->mem == null) {
                 break;
@@ -352,8 +354,9 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         unsigned int key = (unsigned int)result % gSizeMemHeaders;
         
-        
         sMemHeader* it = gMemHeaderTable + key;
+        
+//printf("key %u mem %p\n", key, result);
         
         while(true) {
             if(it->mem == null) {
@@ -413,11 +416,11 @@ static void come_free_mem_of_heap_pool(char* mem)
             unsigned int key = (unsigned int)mem % gSizeMemHeaders;
             
             sMemHeader* it = gMemHeaderTable + key;
+//printf("key %u mem %p\n", key, mem);
             
             while(true) {
                 if(it->mem == null) {
                     puts("mem header unexpected error(2)");
-                    exit(2);
                 }
                 else if(it->mem == mem) {
                     break;
