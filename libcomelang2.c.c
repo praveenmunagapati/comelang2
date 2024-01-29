@@ -3029,7 +3029,7 @@ memset(&i_23, 0, sizeof(int));
                 }
             }
         }
-        printf("alloc key %u mem %p table %p it %p\n",key_21,result_20,gMemHeaderTable,it_22);
+        printf("alloc key %u mem %p table %p it %p sname %s sline %d\n",key_21,result_20,gMemHeaderTable,it_22,sname,sline);
         it_22->mem=result_20;
         it_22->size=size;
         come_push_stackframe(sname,sline);

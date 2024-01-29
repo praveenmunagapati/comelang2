@@ -377,7 +377,7 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
             }
         }
         
-printf("alloc key %u mem %p table %p it %p\n", key, result, gMemHeaderTable, it);
+printf("alloc key %u mem %p table %p it %p sname %s sline %d\n", key, result, gMemHeaderTable, it, sname, sline);
         
         it.mem = result;
         it.size = size;
