@@ -285,6 +285,7 @@ static void come_mem_header_rehash()
 {
     unsigned int new_size = gSizeMemHeaders * 3;
     sMemHeader* new_table = calloc(1, sizeof(sMemHeader)*new_size);
+printf("rehash new_table calloc %p\n", new_table);
     
     sMemHeader* it = gAllocMem;
     sMemHeader* new_alloc_it = NULL;
@@ -293,7 +294,7 @@ static void come_mem_header_rehash()
         
         sMemHeader* it2 = new_table + key;
         
-printf("rehash key %u mem %p\n", key, it->mem);
+printf("rehash key %u mem %p table %p it %p\n", key, it->mem, new_table, it2);
         
         while(true) {
             if(it2->mem == null) {
@@ -333,6 +334,7 @@ printf("rehash key %u mem %p\n", key, it->mem);
         it = it->next;
     }
     
+printf("rehash free %p\n", gMemHeaderTable);
     free(gMemHeaderTable);
     
     gMemHeaderTable = new_table;
@@ -375,7 +377,7 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
             }
         }
         
-printf("alloc key %u mem %p\n", key, result);
+printf("alloc key %u mem %p table %p it %p\n", key, result, gMemHeaderTable, it);
         
         it.mem = result;
         it.size = size;
@@ -419,7 +421,7 @@ static void come_free_mem_of_heap_pool(char* mem)
             
             while(true) {
                 if(it->mem == null) {
-printf("free key %u mem %p\n", key, mem);
+printf("free key %u mem %p gMemHeaderTable %p it %p\n", key, mem, gMemHeaderTable, it);
                       exit(2);
 //                    puts("mem header unexpected error(2)");
                 }
