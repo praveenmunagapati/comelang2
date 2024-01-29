@@ -421,6 +421,7 @@ static void come_free_mem_of_heap_pool(char* mem)
             
             while(true) {
                 if(it->mem == null) {
+                      return;
 printf("null free key %u mem %p gMemHeaderTable %p it %p\n", key, mem, gMemHeaderTable, it);
                       exit(2);
 //                    puts("mem header unexpected error(2)");
