@@ -794,6 +794,11 @@ bool sLoadFieldNode*::compile(sLoadFieldNode* self, sInfo* info)
     come_value.type = clone field_type;
     come_value.var = null;
     
+    if(field_type == null) {
+        err_msg(info, "no field(%s)\n", name);
+        return false;
+    }
+    
     if(come_value.type->mArrayNum.length() == 1) {
         come_value.type->mOriginalLoadVarType.v1 = clone come_value.type;
         

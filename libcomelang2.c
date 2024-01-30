@@ -214,9 +214,6 @@ bool gComeGCLib = false;
 
 struct sMemHeader
 {
-    void* mem;
-    size_t size;
-    
     struct sMemHeader* next;
     struct sMemHeader* prev;
     
@@ -224,11 +221,7 @@ struct sMemHeader
     int sline[COME_STACKFRAME_MAX];
 };
 
-sMemHeader* gMemHeaderTable;
 sMemHeader* gAllocMem;
-
-unsigned int gSizeMemHeaders = 0;
-unsigned int gNumMemHeaders = 0;
 
 void come_heap_init(int come_malloc, int come_debug, int come_gc)
 {
@@ -236,16 +229,9 @@ void come_heap_init(int come_malloc, int come_debug, int come_gc)
     gComeDebugLib = come_debug
     gComeGCLib = come_gc;
     
-    if(gComeMallocLib) {
-        gSizeMemHeaders = 4;
-        
-        gMemHeaderTable = calloc(1, sizeof(sMemHeader)*gSizeMemHeaders);
-        gNumMemHeaders = 0;
-        
-        gAllocMem = NULL;
-    }
-    
     gComeStackFrameBuffer = NULL;
+    
+    gAllocMem = NULL;
 }
 
 void come_heap_final()
@@ -258,88 +244,13 @@ void come_heap_final()
         sMemHeader* it = gAllocMem;
         int n = 0;
         while(it) {
-            bool flag = false;
-            for(int i=0; i<COME_STACKFRAME_MAX; i++) {
-                if(it->sname[i]) {
-                    printf("%s %d, ", it->sname[i], it->sline[i]);
-                    flag = true;
-                }
-            }
-            
-            if(flag) {
-                printf("%p\n", it->mem);
-                n++;
-            }
-            
+            n++;
             it = it->next;
         }
         if(n > 0) {
             printf("%d memory leaks\n", n);
         }
-        
-        free(gMemHeaderTable);
     }
-}
-
-static void come_mem_header_rehash()
-{
-    unsigned int new_size = gSizeMemHeaders * 3;
-    sMemHeader* new_table = calloc(1, sizeof(sMemHeader)*new_size);
-//printf("rehash new_table calloc %p\n", new_table);
-    
-    sMemHeader* it = gAllocMem;
-    sMemHeader* new_alloc_it = NULL;
-    while(it) {
-        unsigned int key = (unsigned int)it->mem % new_size;
-        
-        sMemHeader* it2 = new_table + key;
-        
-//printf("rehash key %u mem %p table %p it %p\n", key, it->mem, new_table, it2);
-        
-        while(true) {
-            if(it2->mem == null) {
-                break;
-            }
-            else {
-                it2++;
-                
-                if(it2 == new_table + new_size) {
-                    it2 = new_table;
-                }
-                else if(it2 == new_table + key) {
-                    puts("mem header unexpected error");
-                    stackframe();
-                    exit(2);
-                }
-            }
-        }
-        
-        it2.mem = it->mem;
-        it2.size = it->size;
-        
-        for(int i=0; i<COME_STACKFRAME_MAX; i++) {
-            it2.sname[i] = it.sname[i];
-            it2.sline[i] = it.sline[i];
-        }
-        
-        it2->next = new_alloc_it;
-        it2->prev = null;
-        
-        if(new_alloc_it) {
-            new_alloc_it->prev = it2;
-        }
-        
-        new_alloc_it = it2;
-        
-        it = it->next;
-    }
-    
-//printf("rehash free %p\n", gMemHeaderTable);
-    free(gMemHeaderTable);
-    
-    gMemHeaderTable = new_table;
-    gSizeMemHeaders = new_size;
-    gAllocMem = new_alloc_it
 }
 
 static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0)
@@ -348,48 +259,18 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         return calloc(1, size);
     }
     else {
-        void* result = calloc(1, size);
+        void* result = calloc(1, size + sizeof(sMemHeader));
         
-        if(gNumMemHeaders >= gSizeMemHeaders / 3) {
-            come_mem_header_rehash();
-        }
+        sMemHeader* it = result;
         
-        unsigned int key = (unsigned int)result % gSizeMemHeaders;
-        
-        sMemHeader* it = gMemHeaderTable + key;
-        
-        
-        while(true) {
-            if(it->mem == null) {
-                break;
-            }
-            else {
-                it++;
-                
-                if(it == gMemHeaderTable + gSizeMemHeaders) {
-                    it = gMemHeaderTable;
-                }
-                else if(it == gMemHeaderTable + key) {
-                    puts("mem header unexpected error");
-                    stackframe();
-                    exit(2);
-                }
-            }
-        }
-        
-//printf("alloc key %u mem %p table %p it %p sname %s sline %d\n", key, result, gMemHeaderTable, it, sname, sline);
-        
-        it.mem = result;
-        it.size = size;
-        
+/*
         come_push_stackframe(sname, sline);
         
-        for(int i=0; i<gNumComeStackFrame; i++) {
-            it.sname[i] = gComeStackFrameSName[i];
-            it.sline[i] = gComeStackFrameSLine[i];
-        }
+        memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
+        memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
         
         come_pop_stackframe();
+*/
         
         it->next = gAllocMem;
         it->prev = null;
@@ -400,13 +281,11 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         gAllocMem = it;
         
-        gNumMemHeaders++;
-        
-        return result;
+        return (char*)result + sizeof(sMemHeader);
     }
 }
 
-static void come_free_mem_of_heap_pool(char* mem)
+static void come_free_mem_of_heap_pool(void* mem)
 {
     if(mem) {
         if(gComeGCLib) {
@@ -415,39 +294,11 @@ static void come_free_mem_of_heap_pool(char* mem)
             free(mem);
         }
         else {
-            unsigned int key = (unsigned int)mem % gSizeMemHeaders;
-            
-            sMemHeader* it = gMemHeaderTable + key;
-            
-            while(true) {
-                if(it->mem == null) {
-//printf("null free key %u mem %p gMemHeaderTable %p it %p\n", key, mem, gMemHeaderTable, it);
-                }
-                else if(it->mem == mem) {
-//printf("free key %u mem %p gMemHeaderTable %p it %p\n", key, mem, gMemHeaderTable, it);
-                    break;
-                }
-                else {
-                    it++;
-                    
-                    if(it == gMemHeaderTable + gSizeMemHeaders) {
-                        it = gMemHeaderTable;
-                    }
-                    else if(it == gMemHeaderTable + key) {
-                        puts("mem header unexpected error");
-                        exit(2);
-                    }
-                }
-            }
+            sMemHeader* it = (sMemHeader*)((char*)mem - sizeof(sMemHeader));
             
             sMemHeader* prev_it = it->prev;
             sMemHeader* next_it = it->next;
             
-            it->mem = null;
-            it->size = 0;
-            
-            it->prev = null;
-            it->next = null;
             if(gAllocMem == it) {
                 gAllocMem = next_it;
                 
@@ -464,13 +315,12 @@ static void come_free_mem_of_heap_pool(char* mem)
                 }
             }
             
-            free(mem);
-            
-            gNumMemHeaders--;
+            free((char*)mem - sizeof(sMemHeader));
         }
     }
 }
 
+/*
 static bool is_valid_object(char* mem) 
 {
     if(mem) {
@@ -508,6 +358,7 @@ static bool is_valid_object(char* mem)
     
     return false;
 }
+*/
 
 void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
 {
