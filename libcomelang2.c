@@ -212,6 +212,9 @@ static bool gComeMallocLib = false;
 static bool gComeDebugLib = false;
 bool gComeGCLib = false;
 
+static int gNumAlloc = 0;
+static int gNumFree = 0;
+
 struct sMemHeader
 {
     struct sMemHeader* next;
@@ -245,11 +248,20 @@ void come_heap_final()
         int n = 0;
         while(it) {
             n++;
+            
+            bool flag = false;
+            for(int i=0; i<COME_STACKFRAME_MAX; i++) {
+                if(it->sname[i]) {
+                    printf("%s %d, ", it->sname[i], it->sline[i]);
+                    flag = true;
+                }
+            }
+            if(flag) {
+                puts("");
+            }
             it = it->next;
         }
-        if(n > 0) {
-            printf("%d memory leaks\n", n);
-        }
+        printf("%d memory leaks. %d alloc, %d free.\n", n, gNumAlloc, gNumFree);
     }
 }
 
@@ -263,14 +275,12 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         sMemHeader* it = result;
         
-/*
         come_push_stackframe(sname, sline);
         
         memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
         memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
         
         come_pop_stackframe();
-*/
         
         it->next = gAllocMem;
         it->prev = null;
@@ -280,6 +290,8 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         }
         
         gAllocMem = it;
+        
+        gNumAlloc++;
         
         return (char*)result + sizeof(sMemHeader);
     }
@@ -316,6 +328,8 @@ static void come_free_mem_of_heap_pool(void* mem)
             }
             
             free((char*)mem - sizeof(sMemHeader));
+            
+            gNumFree++;
         }
     }
 }
