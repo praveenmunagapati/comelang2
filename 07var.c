@@ -130,7 +130,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                 
                 if(!var_->mType->mConstant && !var_->mType->mStatic) {
                     if(left_type2->mArrayNum.length() > 0) {
-                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(left_type2)!);
+                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(left_type2));
                         foreach(it, left_type2->mArrayNum) {
                             if(!node_compile(it)) {
                                 err_msg(info, "invalid array num");
@@ -144,7 +144,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                         add_come_code(info, ");\n");
                     }
                     else {
-                        add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(left_type2)!);
+                        add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(left_type2));
                     }
                 }
             }
@@ -168,7 +168,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                 add_come_code(info, "%s;\n", make_define_var(left_type, var_->mCValueName));
                 if(!left_type->mStatic) {
                     if(left_type->mArrayNum.length() > 0) {
-                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(left_type)!);
+                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(left_type));
                         foreach(it, left_type->mArrayNum) {
                             if(!node_compile(it)) {
                                 err_msg(info, "invalid array num");
@@ -194,7 +194,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                 
                 if(!var_->mType->mConstant && !var_->mType->mStatic) {
                     if(left_type2->mArrayNum.length() > 0) {
-                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(left_type2)!);
+                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(left_type2));
                         foreach(it, left_type2->mArrayNum) {
                             if(!node_compile(it)) {
                                 err_msg(info, "invalid array num");
@@ -208,7 +208,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                         add_come_code(info, ");\n");
                     }
                     else {
-                        add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(left_type2)!);
+                        add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(left_type2));
                     }
                 }
             }
@@ -264,7 +264,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                         
                         if(!var_type->mConstant && !var_type->mStatic) {
                             if(var_type->mArrayNum.length() > 0) {
-                                add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(var_type)!);
+                                add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(var_type));
                                 foreach(it, var_type->mArrayNum) {
                                     if(!node_compile(it)) {
                                         err_msg(info, "invalid array num");
@@ -278,7 +278,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                                 add_come_code(info, ");\n");
                             }
                             else {
-                                add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(var_type)!);
+                                add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(var_type));
                             }
                         }
                     }
@@ -305,7 +305,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                 
                 if(!var_->mType->mStatic && !var_type->mConstant && var_type->mArrayNum.length() == 0) {
                     if(var_type->mArrayNum.length() > 0) {
-                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(var_type)!);
+                        add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(var_type));
                         foreach(it, var_type->mArrayNum) {
                             if(!node_compile(it)) {
                                 err_msg(info, "invalid array num");
@@ -319,7 +319,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                         add_come_code(info, ");\n");
                     }
                     else {
-                        add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(var_type)!);
+                        add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(var_type));
                     }
                 }
             }
@@ -395,7 +395,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                     
                     if(!var_type->mConstant) {
                         if(var_type->mArrayNum.length() > 0) {
-                            add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(var_type)!);
+                            add_come_code(info, "memset(&%s, 0, sizeof(%s)", var_->mCValueName, make_type_name_string(var_type));
                             foreach(it, var_type->mArrayNum) {
                                 if(!node_compile(it)) {
                                     err_msg(info, "invalid array num");
@@ -409,7 +409,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                             add_come_code(info, ");\n");
                         }
                         else {
-                            add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(var_type)!);
+                            add_come_code_at_function_head2(info, "memset(&%s, 0, sizeof(%s));\n", var_->mCValueName, make_type_name_string(var_type));
                         }
                     }
                     
@@ -833,7 +833,7 @@ void add_variable_to_global_table_with_int_value(char* name, sType*% type, char*
     info.gv_table.mVars.insert(string(name), self);
 }
 
-exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 7
+sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 7
 {
     bool is_type_name_flag = is_type_name(buf);
     
@@ -948,11 +948,11 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
     
             //result = post_position_operator4(result, info);
             
-            return some(result);
+            return result;
         }
         else {
             err_msg(info, "var requires a right value(%c)", *info->p);
-            return none(null);
+            exit(1);
         }
     }
     else if(multiple_declare) {
@@ -984,7 +984,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
     
         //result = post_position_operator4(result, info);
         
-        return some(result);
+        return result;
     }
     else if(multiple_declare2) {
         info.p = head;
@@ -1046,7 +1046,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
     
         //result = post_position_operator4(result, info);
         
-        return some(result);
+        return result;
     }
     else if(!is_type_name_flag && *info->p == '=' && *(info->p+1) != '=' && !info->no_assign) {
         info.p++;
@@ -1064,7 +1064,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
     
         //result = post_position_operator4(result, info);
         
-        return some(result);
+        return result;
     }
     else if(!is_type_name_flag || info.funcs[buf]) {
         sNode*% node = new sLoadNode(string(buf)@name, info) implements sNode;
@@ -1073,7 +1073,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
         
         node = post_position_operator3(node, info);
         
-        return some(node);
+        return node;
     }
     else {
         info.p = head;
@@ -1095,7 +1095,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
             
             if(!err) {
                 printf("%s %d: parse_type failed\n", info->sname, info->sline);
-                return none(null);
+                exit(2);
             }
             parse_sharp();
             
@@ -1117,7 +1117,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
                     while(1) {
                         if(*info->p == '\0') {
                             err_msg(info, "unexpected source end in array initiailizer");
-                            return none(null);
+                            exit(2);
                         }
                         else if(*info->p == '\\') {
                             buf2.append_char(*info->p);
@@ -1165,7 +1165,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
     
                     //result = post_position_operator4(result, info);
                     
-                    return some(result);
+                    return result;
                 }
                 else {
                     parse_sharp();
@@ -1183,7 +1183,7 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
     
                     //result = post_position_operator4(result, info);
                     
-                    return some(result);
+                    return result;
                 }
             }
             else {
@@ -1191,15 +1191,11 @@ exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info
     
                 //result = post_position_operator4(result, info);
                 
-                return some(result);
+                return result;
             }
         }
     }
     
-    sNode*% result = inherit(buf, head,head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head,head_sline, info);
 }
 

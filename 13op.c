@@ -2780,15 +2780,11 @@ sNode*% expression(sInfo* info=info) version 13
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 13
 {
     if(buf === "null") {
-        return some(new sNullNode(info) implements sNode);
+        return new sNullNode(info) implements sNode;
     }
     else if(buf === "nil") {
-        return some(new sNilNode(info) implements sNode);
+        return new sNilNode(info) implements sNode;
     }
     
-    sNode*% result = inherit(buf, head,head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head,head_sline, info);
 }

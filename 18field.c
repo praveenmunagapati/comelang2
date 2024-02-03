@@ -530,7 +530,7 @@ bool sRangeCheckNode*::compile(sRangeCheckNode* self, sInfo* info)
         if(!gComeDebug) {
             CVALUE*% come_value = new CVALUE;
             
-            come_value.c_value = xsprintf("(*((%s)%s))", make_type_name_string(left_value.type)!, left_value.c_value);
+            come_value.c_value = xsprintf("(*((%s)%s))", make_type_name_string(left_value.type), left_value.c_value);
             
             left_value.type->mPointerNum--;
             come_value.type = clone left_value.type;
@@ -543,7 +543,7 @@ bool sRangeCheckNode*::compile(sRangeCheckNode* self, sInfo* info)
         else {
             CVALUE*% come_value = new CVALUE;
             
-            come_value.c_value = xsprintf("(*((%s)come_range_check(%s, %s, %s, \"%s\", %d)))", make_type_name_string(left_value.type)!, left_value.c_value, begin_value.c_value, end_value.c_value, info->sname, info->sline);
+            come_value.c_value = xsprintf("(*((%s)come_range_check(%s, %s, %s, \"%s\", %d)))", make_type_name_string(left_value.type), left_value.c_value, begin_value.c_value, end_value.c_value, info->sname, info->sline);
             left_value.type->mPointerNum--;
             come_value.type = clone left_value.type;
             come_value.var = null;

@@ -103,12 +103,8 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         
         expected_next_character(')');
     
-        return some(new sDoWhileNode(expression_node, block, info) implements sNode);
+        return new sDoWhileNode(expression_node, block, info) implements sNode;
     }
     
-    sNode*% result = inherit(buf, head,head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head,head_sline, info);
 }

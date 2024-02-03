@@ -10,7 +10,7 @@ void come_final() version 3
 
 
 
-exception string make_type_name_string(sType* type, bool in_header=false, bool array_cast_pointer=false, bool no_pointer=false, sInfo* info=info)
+string make_type_name_string(sType* type, bool in_header=false, bool array_cast_pointer=false, bool no_pointer=false, sInfo* info=info)
 {
     var buf = new buffer();
     
@@ -19,7 +19,7 @@ exception string make_type_name_string(sType* type, bool in_header=false, bool a
     if(type->mAlignas) {
         if(!node_compile(type->mAlignas)) {
             printf("_Alignas error\n");
-            return none(string(""));
+            return string("");
         }
         
         CVALUE*% come_value = get_value_from_stack(-1, info);
@@ -100,13 +100,13 @@ exception string make_type_name_string(sType* type, bool in_header=false, bool a
         buf.append_str("_Bool");
     }
     else if(class_name === "lambda") {
-        string result_type_str = make_type_name_string(type->mResultType.v1, in_header)!;
+        string result_type_str = make_type_name_string(type->mResultType.v1, in_header);
         buf.append_str(result_type_str);
         buf.append_str(" (*)(");
         
         int j = 0;
         foreach(it, type->mParamTypes) {
-            string param_type_str = make_type_name_string(it, in_header)!;
+            string param_type_str = make_type_name_string(it, in_header);
             
             buf.append_str(param_type_str);
             
@@ -120,7 +120,7 @@ exception string make_type_name_string(sType* type, bool in_header=false, bool a
     else {
         if(class_name == null) {
             err_msg(info, "class name is null");
-            return none(string(""));
+            return string("");
         }
         buf.append_str(class_name);
     }
@@ -139,7 +139,7 @@ exception string make_type_name_string(sType* type, bool in_header=false, bool a
         buf.append_str("restrict");
     }
     
-    return some(buf.to_string());
+    return buf.to_string();
 }
 
 string make_come_type_name_string(sType* type, sInfo* info=info)
@@ -180,15 +180,15 @@ string make_come_type_name_string(sType* type, sInfo* info=info)
 
 void show_type(sType* type, sInfo* info)
 {
-    puts(make_type_name_string(type)!);
+    puts(make_type_name_string(type));
 }
 
-exception string make_lambda_type_name_string(sType* type, char* var_name, sInfo* info)
+static string make_lambda_type_name_string(sType* type, char* var_name, sInfo* info)
 {
     var buf = new buffer();
     if(type->mResultType == null) {
         err_msg(info, "invalid lambda type");
-        return none(string(""));
+        return string("");
     }
     
     if(type->mResultType.v1 && type->mResultType.v1.mClass->mName === "lambda") 
@@ -197,7 +197,7 @@ exception string make_lambda_type_name_string(sType* type, char* var_name, sInfo
         
         int i = 0;
         foreach(it, type->mParamTypes) {
-            buf.append_str(make_type_name_string(it)!);
+            buf.append_str(make_type_name_string(it));
             if(i != type->mParamTypes.length()-1) {
                 buf.append_str(",");
             }
@@ -207,14 +207,14 @@ exception string make_lambda_type_name_string(sType* type, char* var_name, sInfo
         
         buf.append_str(")");
         
-        return some(make_lambda_type_name_string(type->mResultType.v1, buf.to_string(), info));
+        return make_lambda_type_name_string(type->mResultType.v1, buf.to_string(), info);
     }
     else {
-        buf.append_str(xsprintf("%s (*%s)(", make_type_name_string(type->mResultType.v1)!, var_name));
+        buf.append_str(xsprintf("%s (*%s)(", make_type_name_string(type->mResultType.v1), var_name));
         
         int i = 0;
         foreach(it, type->mParamTypes) {
-            buf.append_str(make_type_name_string(it)!);
+            buf.append_str(make_type_name_string(it));
             if(i != type->mParamTypes.length()-1) {
                 buf.append_str(",");
             }
@@ -224,15 +224,15 @@ exception string make_lambda_type_name_string(sType* type, char* var_name, sInfo
         
         buf.append_str(")");
         
-        return some(buf.to_string());
+        return buf.to_string();
     }
     
-    return some(buf.to_string());
+    return buf.to_string();
 }
 
 string header_lambda(sType* lambda_type, string name, sInfo* info);
 
-exception string make_define_var(sType* type, char* name, bool in_header=false, sInfo* info=info)
+string make_define_var(sType* type, char* name, bool in_header=false, sInfo* info=info)
 {
     var buf = new buffer();
     
@@ -249,13 +249,13 @@ exception string make_define_var(sType* type, char* name, bool in_header=false, 
     else if(type->mSizeNum != null) {
         if(!node_compile(type->mSizeNum)) {
             err_msg(info, "invalid bit field number");
-            return none(string(""));
+            return string("");
         }
         
         CVALUE*% come_value = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
     
-        var type_str = make_type_name_string(type, in_header)!;
+        var type_str = make_type_name_string(type, in_header);
         buf.append_str(xsprintf("%s ", type_str));
         buf.append_str(xsprintf("%s:%s", name, come_value.c_value));
         
@@ -268,7 +268,7 @@ exception string make_define_var(sType* type, char* name, bool in_header=false, 
         }
     }
     else if(type->mOmitArrayNum) {
-        var type_str = make_type_name_string(type, in_header)!;
+        var type_str = make_type_name_string(type, in_header);
         
         buf.append_str(type_str);
         
@@ -298,7 +298,7 @@ exception string make_define_var(sType* type, char* name, bool in_header=false, 
         foreach(it, type->mArrayNum) {
             if(!node_compile(it)) {
                 err_msg(info, "invalid array number");
-                return none(string(""));
+                return string("");
             }
             CVALUE*% cvalue = get_value_from_stack(-1, info);
             dec_stack_ptr(1, info);
@@ -314,7 +314,7 @@ exception string make_define_var(sType* type, char* name, bool in_header=false, 
         var type_str = make_type_name_string(type, in_header);
         
         if(type_str === "") {
-            return none(string(""));
+            return string("");
         }
         
         buf.append_str(type_str);
@@ -333,7 +333,7 @@ exception string make_define_var(sType* type, char* name, bool in_header=false, 
         }
     }
     
-    return some(buf.to_string());
+    return buf.to_string();
 }
 
 string output_function(sFun* fun, sInfo* info)
@@ -409,7 +409,7 @@ string output_function(sFun* fun, sInfo* info)
         
         if(!node_compile(node)) {
             err_msg(info, "invalid array number");
-            return none(string(""));
+            return string("");
         }
         CVALUE*% cvalue = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
@@ -525,7 +525,7 @@ string header_function(sFun* fun, sInfo* info)
         sNode* node = fun->mResultType->mArrayNum[0];
         if(!node_compile(node)) {
             err_msg(info, "invalid array number");
-            return none(string(""));
+            return string("");
         }
         CVALUE*% cvalue = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
@@ -569,7 +569,7 @@ string header_lambda(sType* lambda_type, string name, sInfo* info)
 {
     var output = new buffer();
     
-    string result_type_str = make_type_name_string(lambda_type->mResultType.v1, in_header:true)!;
+    string result_type_str = make_type_name_string(lambda_type->mResultType.v1, in_header:true);
     
     output.append_str(result_type_str);
     output.append_str(" ");

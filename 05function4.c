@@ -140,7 +140,7 @@ bool parsecmp(char* str, sInfo* info)
     return strmemcmp(info.p, str) && (c == ';' || c == ' ' || c == '\t' || c == '\n' || c == '\n');
 }
 
-exception string parse_word(sInfo* info=info)
+string parse_word(sInfo* info=info)
 {
     var buf = new buffer();
     parse_sharp();
@@ -157,7 +157,7 @@ exception string parse_word(sInfo* info=info)
         return string("");
     }
     
-    return some(buf.to_string());
+    return buf.to_string();
 }
 
 void skip_spaces_and_lf(sInfo* info=info)
@@ -191,7 +191,7 @@ bool is_contained_generics_class(sType* type, sInfo* info)
     return false;
 }
 
-exception list<sType*%>*%, list<string>*%, list<string>*%, bool parse_params(sInfo* info)
+list<sType*%>*%, list<string>*%, list<string>*%, bool parse_params(sInfo* info)
 {
     var param_types = new list<sType*%>();
     var param_names = new list<string>();
@@ -244,7 +244,7 @@ exception list<sType*%>*%, list<string>*%, list<string>*%, bool parse_params(sIn
             
             if(!err) {
                 printf("%s %d: failed to function parametor\n", info->sname, info->sline);
-                return none((null, null, null, false));
+                return (null, null, null, false);
             }
             
             var param_type2 = solve_generics(param_type, info->generics_type, info);
@@ -304,7 +304,7 @@ exception list<sType*%>*%, list<string>*%, list<string>*%, bool parse_params(sIn
         }
     }
     
-    return some((param_types, param_names, param_default_parametors, var_args));
+    return (param_types, param_names, param_default_parametors, var_args);
 }
 
 void check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* come_value, bool check_no_pointer=false, sInfo* info=info)

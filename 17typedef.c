@@ -70,7 +70,7 @@ bool sTypedefNode*::compile(sTypedefNode* self, sInfo* info)
             if(info.output_header_file && self.mDeclareSName !== info->base_sname) {
             }
             else {
-                add_come_code_at_source_head(info, "typedef %s;\n", make_define_var(type, type_name, in_header:true)!);
+                add_come_code_at_source_head(info, "typedef %s;\n", make_define_var(type, type_name, in_header:true));
             }
         }
     }
@@ -86,7 +86,7 @@ bool sTypedefNode*::compile(sTypedefNode* self, sInfo* info)
         if(info.output_header_file && self.mDeclareSName !== info->base_sname) {
         }
         else {
-            add_come_code_at_source_head(info, "typedef %s;\n", make_define_var(type, type_name, in_header:true)!);
+            add_come_code_at_source_head(info, "typedef %s;\n", make_define_var(type, type_name, in_header:true));
         }
     }
 

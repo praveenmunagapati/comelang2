@@ -270,18 +270,18 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         sNode*% node = expression();
         expected_next_character(':');
         
-        return some(new sCaseNode(node, info) implements sNode);
+        return new sCaseNode(node, info) implements sNode;
     }
     else if(buf === "default") {
         expected_next_character(':');
         
-        return some(new sDefaultNode(info) implements sNode);
+        return new sDefaultNode(info) implements sNode;
     }
     else if(buf === "break") {
-        return some(new sBreakNode(info) implements sNode);
+        return new sBreakNode(info) implements sNode;
     }
     else if(buf === "continue") {
-        return some(new sContinueNode(info) implements sNode);
+        return new sContinueNode(info) implements sNode;
     }
     else if(buf === "switch") {
         expected_next_character('(');
@@ -292,12 +292,8 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         
         sBlock*% block = parse_block();
     
-        return some(new sSwitchNode(expression_node, block, info) implements sNode);
+        return new sSwitchNode(expression_node, block, info) implements sNode;
     }
     
-    sNode*% result = inherit(buf, head ,head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head ,head_sline, info);
 }

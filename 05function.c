@@ -1657,10 +1657,10 @@ sNode*% parse_function_call(char* fun_name, sInfo* info)
     return node;
 }
 
-exception sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 5
+sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 5
 {
     err_msg(info, "unexpected word(%s)(1)\n", buf);
-    return none(null);
+    exit(2);
 }
 
 sNode*% post_position_operator(sNode*% node, sInfo* info) version 5
@@ -2409,7 +2409,7 @@ sNode*% expression_node(sInfo* info=info) version 99
             return new sCallerSNameNode(info) implements sNode;
         }
         else if((buf === "sizeof" || buf === "_Alignof" || buf === "_Alignas" || buf === "__alignof__") && *info->p == '(') {
-            sNode*% node = string_node(buf, head, head_sline, info)!
+            sNode*% node = string_node(buf, head, head_sline, info)
             
             node = post_position_operator(node, info);
             
@@ -2490,7 +2490,7 @@ sNode*% expression_node(sInfo* info=info) version 99
             return node;
         }
         else {
-            sNode*% node = string_node(buf, head, head_sline, info)!;
+            sNode*% node = string_node(buf, head, head_sline, info);
             
             node = post_position_operator(node, info);
             

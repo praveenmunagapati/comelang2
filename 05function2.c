@@ -43,12 +43,12 @@ bool sLambdaNode*::compile(sLambdaNode* self, sInfo* info)
     sType*% result_type = new sType("void*");
     
     add_come_code_at_function_head(info, "%s;\n", make_define_var(result_type, "__result_obj__"));
-    add_come_code_at_function_head2(info, "memset(&__result_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type)!);
+    add_come_code_at_function_head2(info, "memset(&__result_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type));
     
     if(!gComeGC) {
         sType*% result_type2 = new sType("bool");
         add_come_code_at_function_head(info, "%s;\n", make_define_var(result_type2, "__freed_obj__"));
-        add_come_code_at_function_head2(info, "memset(&__freed_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type2)!);
+        add_come_code_at_function_head2(info, "memset(&__freed_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type2));
     }
 
     if(!gComeGC) {
@@ -140,11 +140,11 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
         sType*% result_type = new sType("void*");
         
         add_come_code_at_function_head(info, "%s;\n", make_define_var(result_type, "__result_obj__"));
-        add_come_code_at_function_head2(info, "memset(&__result_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type)!);
+        add_come_code_at_function_head2(info, "memset(&__result_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type));
         
         sType*% result_type2 = new sType("bool");
         add_come_code_at_function_head(info, "%s;\n", make_define_var(result_type2, "__freed_obj__"));
-        add_come_code_at_function_head2(info, "memset(&__freed_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type2)!);
+        add_come_code_at_function_head2(info, "memset(&__freed_obj__, 0, sizeof(%s));\n", make_type_name_string(result_type2));
     
         //if(!gComeMalloc) {
             add_come_code_at_function_head(info, "void* __right_value_freed_obj[%d];\n", RIGHT_VALUE_OBJECT_NUM_MAX);
@@ -380,20 +380,20 @@ void arrange_stack(sInfo* info, int top)
     }
 }
 
-exception int expected_next_character(char c, sInfo* info=info)
+int expected_next_character(char c, sInfo* info=info)
 {
     parse_sharp();
     if(*info->p != c) {
         if(!info.no_output_err) {
             err_msg(info, "expected next charaster is %c, but %c\n", c, *info->p);
-            return none(2);
+            exit(2);
         }
     }
     
     info->p++;
     skip_spaces_and_lf();
     
-    return some(0);
+    return 0;
 }
 
 string skip_block(sInfo* info=info)

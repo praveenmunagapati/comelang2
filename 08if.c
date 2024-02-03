@@ -516,14 +516,10 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
     
         sNode*% result = new sIfNode(expression_node, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, info) implements sNode;
         
-        return some(result);
+        return result;
     }
     
-    sNode*% result = inherit(buf, head,head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head,head_sline, info);
 }
 
 sNode*% parse_or_statment(sNode*% expression_node, sInfo* info)

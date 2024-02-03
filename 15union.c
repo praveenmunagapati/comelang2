@@ -185,12 +185,8 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
     if(define_struct) {
         string type_name = parse_word();
         
-        return some(parse_union(type_name, info));
+        return parse_union(type_name, info);
     }
     
-    sNode*% result = inherit(buf, head, head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head, head_sline, info);
 }

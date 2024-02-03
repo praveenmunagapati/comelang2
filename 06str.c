@@ -511,7 +511,7 @@ bool sListNode*::compile(sListNode* self, sInfo* info)
     
     sType*% type2 = solve_generics(type, type, info);
     
-    string type_name = make_type_name_string(type2, array_cast_pointer:true)!;
+    string type_name = make_type_name_string(type2, array_cast_pointer:true);
     
     obj_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d)", type_name, type_name, num_string.to_string(), info.sname, info.sline);
     
@@ -652,7 +652,7 @@ bool sTupleNode*::compile(sTupleNode* self, sInfo* info)
     
     sType*% type2 = solve_generics(type, type, info);
     
-    string type_name = make_type_name_string(type2, array_cast_pointer:true)!;
+    string type_name = make_type_name_string(type2, array_cast_pointer:true);
     
     obj_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d)", type_name, type_name, num_string.to_string(), info.sname, info.sline);
     
@@ -828,7 +828,7 @@ bool sNoneNode*::compile(sNoneNode* self, sInfo* info)
         
         sType*% type2 = solve_generics(type, type, info);
         
-        string type_name = make_type_name_string(type2, array_cast_pointer:true)!;
+        string type_name = make_type_name_string(type2, array_cast_pointer:true);
         
         obj_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d)", type_name, type_name, num_string.to_string(), info.sname, info.sline);
         
@@ -1012,7 +1012,7 @@ bool sSomeNode*::compile(sSomeNode* self, sInfo* info)
         
         sType*% type2 = solve_generics(type, type, info);
         
-        string type_name = make_type_name_string(type2, array_cast_pointer:true)!;
+        string type_name = make_type_name_string(type2, array_cast_pointer:true);
         
         obj_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d)", type_name, type_name, num_string.to_string(), info.sname, info.sline);
         
@@ -1265,7 +1265,7 @@ bool sMapNode*::compile(sMapNode* self, sInfo* info)
     
     sType*% type2 = solve_generics(type, type, info);
     
-    string type_name = make_type_name_string(type2, array_cast_pointer:true)!;
+    string type_name = make_type_name_string(type2, array_cast_pointer:true);
     
     obj_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d)", type_name, type_name, num_string.to_string(), info.sname, info.sline);
     

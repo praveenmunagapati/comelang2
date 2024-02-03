@@ -202,12 +202,8 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         
         sBlock*% block = parse_block();
         
-        return some(new sForNode(expression_node, expression_node2, expression_node3, block, info) implements sNode);
+        return new sForNode(expression_node, expression_node2, expression_node3, block, info) implements sNode;
     }
     
-    sNode*% result = inherit(buf, head,head_sline,info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head,head_sline,info);
 }

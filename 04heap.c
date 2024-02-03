@@ -225,7 +225,7 @@ string increment_ref_count_object(sType* type, char* obj, sInfo* info)
     }
     sClass* klass = type->mClass;
     
-    string type_name = make_type_name_string(type)!;
+    string type_name = make_type_name_string(type);
     
     return xsprintf("(%s)come_increment_ref_count(%s)", type_name, obj);
 }
@@ -313,7 +313,7 @@ void decrement_ref_count_object(sType* type, char* obj, sInfo* info, bool force_
         /// call finalizer ///
         if(finalizer != null) {
             if(klass->mProtocol && type->mPointerNum == 1) {
-                string type_name = make_type_name_string(type)!;
+                string type_name = make_type_name_string(type);
                 if(c_value) {
                     add_come_last_code2(info, "if(%s) { come_call_finalizer(%s, %s, ((%s)%s)->finalize, ((%s)%s)->_protocol_obj, %d, %d, %d, %d); }\n", c_value, fun_name2, c_value, type_name, c_value, type_name, c_value, type->mAllocaValue, no_decrement, no_free, force_delete_);
                 }
@@ -326,7 +326,7 @@ void decrement_ref_count_object(sType* type, char* obj, sInfo* info, bool force_
         }
         else {
             if(klass->mProtocol && type->mPointerNum == 1) {
-                string type_name = make_type_name_string(type)!;
+                string type_name = make_type_name_string(type);
                 add_come_last_code2(info, xsprintf("if(%s) { %s = come_decrement_ref_count(%s, ((%s)%s)->finalize, ((%s)%s)->_protocol_obj, 0,0,0); }\n", name, name, name, type_name, name, type_name, name));
             }
             else {
@@ -417,7 +417,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
             /// call finalizer ///
             if(finalizer != null) {
                 if(klass->mProtocol && type->mPointerNum == 1) {
-                    string type_name = make_type_name_string(type)!;
+                    string type_name = make_type_name_string(type);
                     if(c_value) {
                         if(no_decrement) {
                             if(comma) {
@@ -465,7 +465,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
                         var name, field_type = it;
                         
                         if(field_type->mHeap && field_type->mPointerNum > 0) {
-                            string obj = xsprintf("(((%s)%s).%s)", make_type_name_string(type)!, c_value, name);
+                            string obj = xsprintf("(((%s)%s).%s)", make_type_name_string(type), c_value, name);
                             free_object(field_type, obj, no_decrement, no_free, info);
                         }
                     }
@@ -476,7 +476,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
                         var name, field_type = it;
                         
                         if(field_type->mHeap && field_type->mPointerNum > 0) {
-                            string obj = xsprintf("(((%s)%s)->%s)", make_type_name_string(type)!, c_value, name);
+                            string obj = xsprintf("(((%s)%s)->%s)", make_type_name_string(type), c_value, name);
                             free_object(field_type, obj, no_decrement, no_free, info);
                         }
                     }
@@ -486,7 +486,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
                 if(!type->mAllocaValue) {
                     if(klass->mProtocol && type->mPointerNum == 1) {
                         if(c_value) {
-                            string type_name = make_type_name_string(type)!;
+                            string type_name = make_type_name_string(type);
                             if(no_decrement) {
                                 if(comma) {
                                     add_come_code(info, "(%s && %s != __result_obj__ && !__freed_obj__) ? %s = come_decrement_ref_count(%s, ((%s)%s)->finalize, ((%s)%s)->_protocol_obj, %d, %d,%d):0,\n", c_value, c_value, c_value, c_value, type_name, c_value, type_name, c_value, no_decrement, no_free, force_delete_);
@@ -590,7 +590,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
             /// call finalizer ///
             if(finalizer != null) {
                 if(klass->mProtocol && type->mPointerNum == 1) {
-                    string type_name = make_type_name_string(type)!;
+                    string type_name = make_type_name_string(type);
                     if(c_value) {
                         if(no_decrement) {
                             if(comma) {
@@ -638,7 +638,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
                         var name, field_type = it;
                         
                         if(field_type->mHeap && field_type->mPointerNum > 0) {
-                            string obj = xsprintf("(((%s)%s).%s)", make_type_name_string(type)!, c_value, name);
+                            string obj = xsprintf("(((%s)%s).%s)", make_type_name_string(type), c_value, name);
                             free_object(field_type, obj, no_decrement, no_free, info);
                         }
                     }
@@ -649,7 +649,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
                         var name, field_type = it;
                         
                         if(field_type->mHeap && field_type->mPointerNum > 0) {
-                            string obj = xsprintf("(((%s)%s)->%s)", make_type_name_string(type)!, c_value, name);
+                            string obj = xsprintf("(((%s)%s)->%s)", make_type_name_string(type), c_value, name);
                             free_object(field_type, obj, no_decrement, no_free, info);
                         }
                     }
@@ -659,7 +659,7 @@ void free_object(sType* type, char* obj, bool no_decrement, bool no_free, sInfo*
                 if(!type->mAllocaValue) {
                     if(klass->mProtocol && type->mPointerNum == 1) {
                         if(c_value) {
-                            string type_name = make_type_name_string(type)!;
+                            string type_name = make_type_name_string(type);
                             if(no_decrement) {
                                 if(comma) {
                                     add_come_code(info, "(%s && %s != __result_obj__ && !__freed_obj__) ? %s = come_decrement_ref_count(%s, ((%s)%s)->finalize, ((%s)%s)->_protocol_obj, %d, %d,%d):0,\n", c_value, c_value, c_value, c_value, type_name, c_value, type_name, c_value, no_decrement, no_free, force_delete_);
@@ -782,7 +782,7 @@ sType*%, string clone_object(sType* type, char* obj, sInfo* info)
     }
     else {
         type2->mHeap = true;
-        string type_name = make_type_name_string(type2)!;
+        string type_name = make_type_name_string(type2);
         result = xsprintf("(%s)come_memdup(%s, \"%s\", %d)", type_name, c_value, info.sname, info.sline);
         result_type = clone type;
     }

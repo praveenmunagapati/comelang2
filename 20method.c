@@ -550,7 +550,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 }
             }
             
-            method_block2.append_str(xsprintf("%s method_block%d_%s(", make_type_name_string(result_type)!, info->num_method_block, all_alhabet_sname.to_string()));
+            method_block2.append_str(xsprintf("%s method_block%d_%s(", make_type_name_string(result_type), info->num_method_block, all_alhabet_sname.to_string()));
             
             int i = 0;
             foreach(it, param_types) {
@@ -830,14 +830,10 @@ sNode*% parse_method_call(sNode*% obj, string fun_name, sInfo* info) version 20
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 20
 {
     if(buf === "__current__") {
-        return some(new sCurrentNode(info) implements sNode);
+        return new sCurrentNode(info) implements sNode;
     }
     
-    sNode*% result = inherit(buf, head, head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head, head_sline, info);
 }
 
 

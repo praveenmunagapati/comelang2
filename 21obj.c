@@ -108,7 +108,7 @@ bool sNewNode*::compile(sNewNode* self, sInfo* info)
 */
     type2->mArrayNum.reset();
     
-    string type_name = make_type_name_string(type2, array_cast_pointer:true)!;
+    string type_name = make_type_name_string(type2, array_cast_pointer:true);
     
     come_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d)", type_name, type_name, num_string.to_string(), info.sname, info.sline);
     
@@ -197,8 +197,8 @@ bool sImplementsNode*::compile(sImplementsNode* self, sInfo* info)
     
     sType*% type2 = clone inf_type;
     
-    string type_name = make_type_name_string(inf_type, array_cast_pointer:true)!;
-    string type_name2 = make_type_name_string(type, array_cast_pointer:true)!;
+    string type_name = make_type_name_string(inf_type, array_cast_pointer:true);
+    string type_name2 = make_type_name_string(type, array_cast_pointer:true);
     
     static int inf_num = 0;
     
@@ -393,7 +393,7 @@ bool sSizeOfNode*::compile(sSizeOfNode* self, sInfo* info)
     
     var type2 = solve_generics(type, info->generics_type, info);
     
-    string type_name = make_type_name_string(type2)!;
+    string type_name = make_type_name_string(type2);
     
     come_value.c_value = xsprintf("sizeof(%s)", type_name);
     come_value.type = new sType("long");
@@ -512,7 +512,7 @@ bool sAlignOfNode*::compile(sAlignOfNode* self, sInfo* info)
     
     var type2 = solve_generics(type, info->generics_type, info);
     
-    string type_name = make_type_name_string(type2)!;
+    string type_name = make_type_name_string(type2);
     
     come_value.c_value = xsprintf("_Alignof(%s)", type_name);
     come_value.type = new sType("long");
@@ -631,7 +631,7 @@ bool sAlignOfNode2*::compile(sAlignOfNode2* self, sInfo* info)
     
     var type2 = solve_generics(type, info->generics_type, info);
     
-    string type_name = make_type_name_string(type2)!;
+    string type_name = make_type_name_string(type2);
     
     come_value.c_value = xsprintf("__alignof__(%s)", type_name);
     come_value.type = new sType("long");
@@ -750,7 +750,7 @@ bool sAlignAsNode*::compile(sAlignAsNode* self, sInfo* info)
     
     var type2 = solve_generics(type, info->generics_type, info);
     
-    string type_name = make_type_name_string(type2)!;
+    string type_name = make_type_name_string(type2);
     
     come_value.c_value = xsprintf("_Alignas(%s)", type_name);
     come_value.type = new sType("long");
@@ -1362,7 +1362,7 @@ bool sGCIncNode*::compile(sGCIncNode* self, sInfo* info)
     sType* type = come_value.type;
     
     if(come_value.type.mHeap) {
-        string type_name = make_type_name_string(type)!;
+        string type_name = make_type_name_string(type);
         come_value.c_value = increment_ref_count_object(come_value.type, come_value.c_value, info);
     }
     
@@ -1499,7 +1499,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         var type, name, err = parse_type();
         if(!err) {
             err_msg(info, "parse_type failed");
-            return none(null);
+            exit(2);
         }
         
         if(*info->p == '(') {
@@ -1513,65 +1513,65 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
                 
                 expected_next_character(')');
                 
-                return some(new sImplementsNode(node, inf_type, info) implements sNode);
+                return new sImplementsNode(node, inf_type, info) implements sNode;
             }
             else {
                 sNode*% obj = new sNewNode(type, info) implements sNode;
                 string fun_name = string("initialize");
                 
-                return some(parse_method_call(clone obj, fun_name, info));
+                return parse_method_call(clone obj, fun_name, info);
             }
         }
         else {
-            return some(new sNewNode(type, info) implements sNode);
+            return new sNewNode(type, info) implements sNode;
         }
     }
     else if(buf === "true") {
-        return some(new sTrueNode(info) implements sNode);
+        return new sTrueNode(info) implements sNode;
     }
     else if(buf === "false") {
-        return some(new sFalseNode(info) implements sNode);
+        return new sFalseNode(info) implements sNode;
     }
     else if(buf === "delete") {
          sNode*% node = expression();
          
-         return some(new sDeleteNode(node, info) implements sNode);
+         return new sDeleteNode(node, info) implements sNode;
     }
     else if(buf === "force_delete") {
          sNode*% node = expression();
          
-         return some(new sForceDeleteNode(node, info) implements sNode);
+         return new sForceDeleteNode(node, info) implements sNode;
         
     }
     else if(buf === "borrow") {
          sNode*% node = expression();
          
-         return some(new sBorrowNode(node, info) implements sNode);
+         return new sBorrowNode(node, info) implements sNode;
     }
     else if(buf === "delegate") {
          sNode*% node = expression();
          
-         return some(new sDelegateNode(node, info) implements sNode);
+         return new sDelegateNode(node, info) implements sNode;
     }
     else if(buf === "share") {
          sNode*% node = expression();
          
-         return some(new sShareNode(node, info) implements sNode);
+         return new sShareNode(node, info) implements sNode;
     }
     else if(buf === "clone") {
          sNode*% node = expression();
          
-         return some(new sCloneNode(node, info) implements sNode);
+         return new sCloneNode(node, info) implements sNode;
     }
     else if(buf === "dupe") {
          sNode*% node = expression();
          
-         return some(new sDupeNode(node, info) implements sNode);
+         return new sDupeNode(node, info) implements sNode;
     }
     else if(buf === "dummy_heap") {
          sNode*% node = expression();
          
-         return some(new sDummyHeapNode(node, info) implements sNode);
+         return new sDummyHeapNode(node, info) implements sNode;
     }
     else if(buf === "gc_inc" && *info->p == '(') {
          info->p++;
@@ -1581,7 +1581,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
          
          expected_next_character(')');
          
-         return some(new sGCIncNode(node, info) implements sNode);
+         return new sGCIncNode(node, info) implements sNode;
     }
     else if(buf === "gc_dec" && *info->p == '(') {
          info->p++;
@@ -1591,7 +1591,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
          
          expected_next_character(')');
          
-         return some(new sGCDecNode(node, info) implements sNode);
+         return new sGCDecNode(node, info) implements sNode;
     }
     else if(buf === "isheap" && *info->p == '(') {
         info->p++;
@@ -1600,14 +1600,14 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         var param_type, param_name,err = parse_type();
         if(!err) {
             err_msg(info, "parse_type failed");
-            return none(null);
+            exit(2);
         }
         
         var type2 = solve_generics(param_type, info->generics_type, info);
         
         expected_next_character(')');
         
-        return some(new sIsHeap(type2, info) implements sNode);
+        return new sIsHeap(type2, info) implements sNode;
     }
     else if(buf === "using") {
         if(strmemcmp(info->p, "comelang")) {
@@ -1616,7 +1616,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             
             gComeC = false;
         
-            return some(new sNullNodeX(info) implements sNode);
+            return new sNullNodeX(info) implements sNode;
         }
         else if(strmemcmp(info->p, "c") || strmemcmp(info->p, "C")) {
             info->p += strlen("c");
@@ -1629,40 +1629,40 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
                 
                 gComeC = false;
                 
-                return some(node);
+                return node;
             }
             else {
-                return some(new sNullNodeX(info) implements sNode);
+                return new sNullNodeX(info) implements sNode;
             }
         }
         else if(strmemcmp(info->p, "gc")) {
             info->p += strlen("gc");
             skip_spaces_and_lf();
         
-            return some(new sNullNodeX(info) implements sNode);
+            return new sNullNodeX(info) implements sNode;
         }
         else if(strmemcmp(info->p, "no-gc")) {
             info->p += strlen("no-gc");
             skip_spaces_and_lf();
             
         
-            return some(new sNullNodeX(info) implements sNode);
+            return new sNullNodeX(info) implements sNode;
         }
         else if(strmemcmp(info->p, "unsafe")) {
             info->p += strlen("unsafe");
             skip_spaces_and_lf();
         
-            return some(new sNullNodeX(info) implements sNode);
+            return new sNullNodeX(info) implements sNode;
         }
         else if(strmemcmp(info->p, "no-null-check")) {
             info->p += strlen("no-null-check");
             skip_spaces_and_lf();
         
-            return some(new sNullNodeX(info) implements sNode);
+            return new sNullNodeX(info) implements sNode;
         }
         else {
             err_msg(info, "invalid using");
-            return none(null);
+            exit(2);
         }
     }
     else if(buf === "sizeof") {
@@ -1690,19 +1690,19 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             var type, name, err = parse_type();
             if(!err) {
                 err_msg(info, "parse type");
-                return none(null);
+                exit(2);
             }
             
             expected_next_character(')');
             
-            return some(new sSizeOfNode(type, info) implements sNode);
+            return new sSizeOfNode(type, info) implements sNode;
         }
         else {
             var exp = expression();
             
             expected_next_character(')');
             
-            return some(new sSizeOfExpNode(exp, info) implements sNode);
+            return new sSizeOfExpNode(exp, info) implements sNode;
         }
     }
     else if(buf === "_Alignof") {
@@ -1730,19 +1730,19 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             var type, name, err = parse_type();
             if(!err) {
                 err_msg(info, "parse type");
-                return none(null);
+                exit(2);
             }
             
             expected_next_character(')');
             
-            return some(new sAlignOfNode(type, info) implements sNode);
+            return new sAlignOfNode(type, info) implements sNode;
         }
         else {
             var exp = expression();
             
             expected_next_character(')');
             
-            return some(new sAlignOfExpNode(exp, info) implements sNode);
+            return new sAlignOfExpNode(exp, info) implements sNode;
         }
     }
     else if(buf === "__alignof__") {
@@ -1770,19 +1770,19 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             var type, name, err = parse_type();
             if(!err) {
                 err_msg(info, "parse type");
-                return none(null);
+                exit(2);
             }
             
             expected_next_character(')');
             
-            return some(new sAlignOfNode2(type, info) implements sNode);
+            return new sAlignOfNode2(type, info) implements sNode;
         }
         else {
             var exp = expression();
             
             expected_next_character(')');
             
-            return some(new sAlignOfExpNode2(exp, info) implements sNode);
+            return new sAlignOfExpNode2(exp, info) implements sNode;
         }
     }
     else if(buf === "_Alignas") {
@@ -1810,27 +1810,23 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             var type, name, err = parse_type();
             if(!err) {
                 err_msg(info, "parse type");
-                return none(null);
+                exit(2);
             }
             
             expected_next_character(')');
             
-            return some(new sAlignAsNode(type, info) implements sNode);
+            return new sAlignAsNode(type, info) implements sNode;
         }
         else {
             var exp = expression();
             
             expected_next_character(')');
             
-            return some(new sAlignAsExpNode(exp, info) implements sNode);
+            return new sAlignAsExpNode(exp, info) implements sNode;
         }
     }
     
-    sNode*% result = inherit(buf, head, head_sline, info).catch {
-        return! none(null);
-    }
-    
-    return some(result);
+    return inherit(buf, head, head_sline, info);
 }
 
 sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 94
@@ -1874,7 +1870,7 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         }
         else {
             err_msg(info, "invalid using");
-            return none(null);
+            exit(2);
         }
         
         return new sNullNodeX(info) implements sNode;
