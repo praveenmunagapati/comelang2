@@ -251,7 +251,7 @@ void come_heap_final()
             n++;
             
             bool flag = false;
-            for(int i=0; i<COME_STACKFRAME_MAX_GLOBAL; i++) {
+            for(int i=0; i<COME_STACKFRAME_MAX; i++) {
                 if(it->sname[i]) {
                     printf("(%d) %s %d, ", n, it->sname[i], it->sline[i]);
                     flag = true;

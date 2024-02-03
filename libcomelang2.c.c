@@ -2861,7 +2861,7 @@ memset(&n_13, 0, sizeof(int));
             n_9++;
             flag_10=(_Bool)0;
             for(
-            i_11=0 ,            0;            _for_condtionalA3=            i_11<1024 ,            _for_condtionalA3;            i_11++ ,            0            ){
+            i_11=0 ,            0;            _for_condtionalA3=            i_11<16 ,            _for_condtionalA3;            i_11++ ,            0            ){
                 if(_if_conditional27=it_8->sname[i_11],                _if_conditional27) {
                     printf("(%d) %s %d, ",n_9,it_8->sname[i_11],it_8->sline[i_11]);
                     flag_10=(_Bool)1;
