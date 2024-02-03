@@ -8,15 +8,17 @@ using C
 /// exception
 //////////////////////////////
 
-char* gComeStackFrameSName[1024];
-int gComeStackFrameSLine[1024];
+#define COME_STACKFRAME_MAX_GLOBAL 1024
+
+char* gComeStackFrameSName[COME_STACKFRAME_MAX_GLOBAL];
+int gComeStackFrameSLine[COME_STACKFRAME_MAX_GLOBAL];
 int gNumComeStackFrame = 0;
 
 char* gComeStackFrameBuffer = NULL;
 
 void come_push_stackframe(char* sname, int sline)
 {
-    if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1] && gNumComeStackFrame < 1024) {
+    if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1] && gNumComeStackFrame < COME_STACKFRAME_MAX_GLOBAL) {
         gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
         gComeStackFrameSLine[gNumComeStackFrame] = sline;
     
@@ -224,8 +226,8 @@ void come_heap_init(int come_malloc, int come_debug, int come_gc)
     gComeGCLib = come_gc;
     
     gComeStackFrameBuffer = NULL;
-    memset(gComeStackFrameSName, 0, sizeof(char*)*1024);
-    memset(gComeStackFrameSLine, 0, sizeof(int)*1024);
+    memset(gComeStackFrameSName, 0, sizeof(char*)*COME_STACKFRAME_MAX_GLOBAL);
+    memset(gComeStackFrameSLine, 0, sizeof(int)*COME_STACKFRAME_MAX_GLOBAL);
     
     gAllocMem = NULL;
 }
@@ -243,14 +245,15 @@ void come_heap_final()
             n++;
             
             bool flag = false;
-            for(int i=0; i<COME_STACKFRAME_MAX; i++) {
+            for(int i=0; i<COME_STACKFRAME_MAX_GLOBAL; i++) {
                 if(it->sname[i]) {
-                    printf("%s %d, ", it->sname[i], it->sline[i]);
+                    printf("(%d) %s %d, ", n, it->sname[i], it->sline[i]);
                     flag = true;
                 }
             }
             if(flag) {
                 puts("");
+                n++;
             }
             it = it->next;
         }
@@ -275,8 +278,8 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
     
     sMemHeader* it = result;
     
-    memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
-    memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
+    memcpy(it.sname, gComeStackFrameSName - COME_STACKFRAME_MAX, sizeof(char*)*COME_STACKFRAME_MAX);
+    memcpy(it.sline, gComeStackFrameSLine - COME_STACKFRAME_MAX, sizeof(int)*COME_STACKFRAME_MAX);
     
     it->next = gAllocMem;
     it->prev = null;

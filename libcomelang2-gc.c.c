@@ -958,8 +958,8 @@ extern void (*GC_same_obj_print_proc)(void*,void*);
 extern void (*GC_is_valid_displacement_print_proc)(void*);
 extern void (*GC_is_visible_print_proc)(void*);
 typedef int (*GC_has_static_roots_func)(const char*,void*,long int);
-char* gComeStackFrameSName[10];
-int gComeStackFrameSLine[10];
+char* gComeStackFrameSName[16];
+int gComeStackFrameSLine[16];
 int gNumComeStackFrame=0;
 char* gComeStackFrameBuffer=((void*)0);
 static _Bool gComeMallocLib=(_Bool)0;
@@ -2742,9 +2742,9 @@ _Bool _for_condtionalA1;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&i_5, 0, sizeof(int));
-    if(_if_conditional1=gNumComeStackFrame==10,    _if_conditional1) {
+    if(_if_conditional1=gNumComeStackFrame==16,    _if_conditional1) {
         for(
-        i_5=0 ,        0;        _for_condtionalA1=        i_5<10-1 ,        _for_condtionalA1;        i_5++ ,        0        ){
+        i_5=0 ,        0;        _for_condtionalA1=        i_5<16-1 ,        _for_condtionalA1;        i_5++ ,        0        ){
             gComeStackFrameSName[i_5]=gComeStackFrameSName[i_5+1];
             gComeStackFrameSLine[i_5]=gComeStackFrameSLine[i_5+1];
         }

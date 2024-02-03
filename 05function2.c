@@ -1387,7 +1387,7 @@ sNode*% parse_function(sInfo* info)
         expected_next_character(':');
         
         base_fun_name = clone parse_word();
-        fun_name = clone create_method_name(obj_type, false@no_pointer_name, string(base_fun_name), info)
+        fun_name = clone create_method_name(obj_type, false@no_pointer_name, string(base_fun_name), info);
     }
     else if(info->impl_type) {
         base_fun_name = clone parse_word();
