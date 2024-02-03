@@ -17,19 +17,23 @@ char* gComeStackFrameBuffer = NULL;
 void come_push_stackframe(char* sname, int sline)
 {
     if(gNumComeStackFrame == COME_STACKFRAME_MAX) {
-        int i;
-        for(i=0; i<COME_STACKFRAME_MAX-1; i++) {
-            gComeStackFrameSName[i] = gComeStackFrameSName[i+1];
-            gComeStackFrameSLine[i] = gComeStackFrameSLine[i+1];
+        if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1]) {
+            int i;
+            for(i=0; i<COME_STACKFRAME_MAX-1; i++) {
+                gComeStackFrameSName[i] = gComeStackFrameSName[i+1];
+                gComeStackFrameSLine[i] = gComeStackFrameSLine[i+1];
+            }
+            gComeStackFrameSName[i] = sname;
+            gComeStackFrameSLine[i] = sline;
         }
-        gComeStackFrameSName[i] = sname;
-        gComeStackFrameSLine[i] = sline;
     }
     else {
-        gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
-        gComeStackFrameSLine[gNumComeStackFrame] = sline;
-    
-        gNumComeStackFrame++;
+        if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1]) {
+            gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
+            gComeStackFrameSLine[gNumComeStackFrame] = sline;
+        
+            gNumComeStackFrame++;
+        }
     }
 }
 
