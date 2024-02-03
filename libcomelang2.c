@@ -18,7 +18,7 @@ char* gComeStackFrameBuffer = NULL;
 
 void come_push_stackframe(char* sname, int sline)
 {
-    if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1] && gNumComeStackFrame < COME_STACKFRAME_MAX_GLOBAL) {
+    if(gNumComeStackFrame < COME_STACKFRAME_MAX_GLOBAL) {
         gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
         gComeStackFrameSLine[gNumComeStackFrame] = sline;
     

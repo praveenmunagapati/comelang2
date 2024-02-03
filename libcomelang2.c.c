@@ -2483,7 +2483,7 @@ void* __right_value_freed_obj[1024];
 _Bool _if_conditional5;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    if(_if_conditional5=sname!=gComeStackFrameSName[gNumComeStackFrame-1]&&sline!=gComeStackFrameSLine[gNumComeStackFrame-1]&&gNumComeStackFrame<1024,    _if_conditional5) {
+    if(_if_conditional5=gNumComeStackFrame<1024,    _if_conditional5) {
         gComeStackFrameSName[gNumComeStackFrame]=sname;
         gComeStackFrameSLine[gNumComeStackFrame]=sline;
         gNumComeStackFrame++;
