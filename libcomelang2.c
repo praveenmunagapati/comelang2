@@ -8,32 +8,19 @@ using C
 /// exception
 //////////////////////////////
 
-char* gComeStackFrameSName[COME_STACKFRAME_MAX];
-int gComeStackFrameSLine[COME_STACKFRAME_MAX];
+char* gComeStackFrameSName[1024];
+int gComeStackFrameSLine[1024];
 int gNumComeStackFrame = 0;
 
 char* gComeStackFrameBuffer = NULL;
 
 void come_push_stackframe(char* sname, int sline)
 {
-    if(gNumComeStackFrame == COME_STACKFRAME_MAX) {
-        if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1]) {
-            int i;
-            for(i=0; i<COME_STACKFRAME_MAX-1; i++) {
-                gComeStackFrameSName[i] = gComeStackFrameSName[i+1];
-                gComeStackFrameSLine[i] = gComeStackFrameSLine[i+1];
-            }
-            gComeStackFrameSName[i] = sname;
-            gComeStackFrameSLine[i] = sline;
-        }
-    }
-    else {
-        if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1]) {
-            gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
-            gComeStackFrameSLine[gNumComeStackFrame] = sline;
-        
-            gNumComeStackFrame++;
-        }
+    if(sname != gComeStackFrameSName[gNumComeStackFrame-1] && sline != gComeStackFrameSLine[gNumComeStackFrame-1] && gNumComeStackFrame < 1024) {
+        gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
+        gComeStackFrameSLine[gNumComeStackFrame] = sline;
+    
+        gNumComeStackFrame++;
     }
 }
 
@@ -237,6 +224,8 @@ void come_heap_init(int come_malloc, int come_debug, int come_gc)
     gComeGCLib = come_gc;
     
     gComeStackFrameBuffer = NULL;
+    memset(gComeStackFrameSName, 0, sizeof(char*)*1024);
+    memset(gComeStackFrameSLine, 0, sizeof(int)*1024);
     
     gAllocMem = NULL;
 }
