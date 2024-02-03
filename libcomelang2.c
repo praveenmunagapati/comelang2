@@ -253,14 +253,12 @@ void come_heap_final()
             
             bool flag = false;
             printf("#%d ", n);
+            if(it->class_name) {
+                printf("(%s): ", it->class_name);
+            }
             for(int i=0; i<COME_STACKFRAME_MAX; i++) {
                 if(it->sname[i]) {
-                    if(it->class_name) {
-                        printf("%s %d(%s), ", it->sname[i], it->sline[i], it->class_name);
-                    }
-                    else {
-                        printf("%s %d, ", it->sname[i], it->sline[i]);
-                    }
+                    printf("%s %d, ", it->sname[i], it->sline[i]);
                     flag = true;
                 }
             }
