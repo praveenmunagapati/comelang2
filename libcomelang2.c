@@ -208,6 +208,12 @@ bool gComeGCLib = false;
 static int gNumAlloc = 0;
 static int gNumFree = 0;
 
+struct sMemHeaderTiny
+{
+    struct sMemHeaderTiny* next;
+    struct sMemHeaderTiny* prev;
+};
+
 struct sMemHeader
 {
     struct sMemHeader* next;
@@ -260,7 +266,7 @@ void come_heap_final()
         printf("%d memory leaks. %d alloc, %d free.\n", n, gNumAlloc, gNumFree);
     }
     else {
-        sMemHeader* it = gAllocMem;
+        sMemHeaderTiny* it = (sMemHeaderTiny*)gAllocMem;
         int n = 0;
         while(it) {
             n++;
@@ -274,33 +280,51 @@ void come_heap_final()
 
 static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0)
 {
-    void* result = calloc(1, size + sizeof(sMemHeader));
-    
-    sMemHeader* it = result;
-    
-    //if(gNumComeStackFrame < COME_STACKFRAME_MAX) {
-        memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
-        memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
-/*
+    if(gComeDebugLib) {
+        void* result = calloc(1, size + sizeof(sMemHeader));
+        
+        sMemHeader* it = result;
+        
+        if(gNumComeStackFrame < COME_STACKFRAME_MAX) {
+            memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
+            memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
+        }
+        else {
+            memcpy(it.sname, gComeStackFrameSName + gNumComeStackFrame - COME_STACKFRAME_MAX, sizeof(char*)*COME_STACKFRAME_MAX);
+            memcpy(it.sline, gComeStackFrameSLine + gNumComeStackFrame - COME_STACKFRAME_MAX, sizeof(int)*COME_STACKFRAME_MAX);
+        }
+        
+        it->next = gAllocMem;
+        it->prev = null;
+        
+        if(gAllocMem) {
+            gAllocMem->prev = it;
+        }
+        
+        gAllocMem = it;
+        
+        gNumAlloc++;
+        
+        return (char*)result + sizeof(sMemHeader);
     }
     else {
-        memcpy(it.sname, gComeStackFrameSName + gNumComeStackFrame - COME_STACKFRAME_MAX, sizeof(char*)*COME_STACKFRAME_MAX);
-        memcpy(it.sline, gComeStackFrameSLine + gNumComeStackFrame - COME_STACKFRAME_MAX, sizeof(int)*COME_STACKFRAME_MAX);
+        void* result = calloc(1, size + sizeof(sMemHeaderTiny));
+        
+        sMemHeaderTiny* it = result;
+        
+        it->next = (sMemHeaderTiny*)gAllocMem;
+        it->prev = null;
+        
+        if(gAllocMem) {
+            ((sMemHeaderTiny*)gAllocMem)->prev = it;
+        }
+        
+        gAllocMem = (sMemHeader*)it;
+        
+        gNumAlloc++;
+        
+        return (char*)result + sizeof(sMemHeaderTiny);
     }
-*/
-    
-    it->next = gAllocMem;
-    it->prev = null;
-    
-    if(gAllocMem) {
-        gAllocMem->prev = it;
-    }
-    
-    gAllocMem = it;
-    
-    gNumAlloc++;
-    
-    return (char*)result + sizeof(sMemHeader);
 }
 
 static void come_free_mem_of_heap_pool(void* mem)
@@ -308,7 +332,7 @@ static void come_free_mem_of_heap_pool(void* mem)
     if(mem) {
         if(gComeGCLib) {
         }
-        else {
+        else if(gComeDebugLib) {
             sMemHeader* it = (sMemHeader*)((char*)mem - sizeof(sMemHeader));
             
             sMemHeader* prev_it = it->prev;
@@ -331,6 +355,32 @@ static void come_free_mem_of_heap_pool(void* mem)
             }
             
             free((char*)mem - sizeof(sMemHeader));
+            
+            gNumFree++;
+        }
+        else {
+            sMemHeaderTiny* it = (sMemHeaderTiny*)((char*)mem - sizeof(sMemHeaderTiny));
+            
+            sMemHeaderTiny* prev_it = it->prev;
+            sMemHeaderTiny* next_it = it->next;
+            
+            if(gAllocMem == it) {
+                gAllocMem = (sMemHeader*)next_it;
+                
+                if(gAllocMem) {
+                    gAllocMem->prev = null;
+                }
+            }
+            else {
+                if(prev_it) {
+                    prev_it->next = next_it;
+                }
+                if(next_it) {
+                    next_it->prev = prev_it;
+                }
+            }
+            
+            free((char*)mem - sizeof(sMemHeaderTiny));
             
             gNumFree++;
         }
