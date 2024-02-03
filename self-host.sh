@@ -10,7 +10,7 @@ then
         #./configure --prefix=$HOME --with-debug --with-optimize
         #./configure --prefix=$HOME --with-debug --with-optimize --with-original-position --with-gc
         #./configure --prefix=$HOME --with-debug --with-original-postion --with-leak
-        ./configure --prefix=$HOME --with-original-position
+        ./configure --prefix=$HOME --with-original-position --with-debug
     else
         #./configure --with-optimize
         #./configure --with-debug --with-come-debug

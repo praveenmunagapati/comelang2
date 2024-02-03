@@ -2859,7 +2859,7 @@ memset(&n_14, 0, sizeof(int));
     if(_if_conditional25=gComeStackFrameBuffer,    _if_conditional25) {
         free(gComeStackFrameBuffer);
     }
-    if(_if_conditional26=gComeMallocLib,    _if_conditional26) {
+    if(_if_conditional26=gComeDebugLib,    _if_conditional26) {
         it_9=gAllocMem;
         n_10=0;
         while(_while_condtional1=it_9,        _while_condtional1) {

@@ -243,7 +243,7 @@ void come_heap_final()
         free(gComeStackFrameBuffer);
     }
     
-    if(gComeMallocLib) {
+    if(gComeDebugLib) {
         sMemHeader* it = gAllocMem;
         int n = 0;
         while(it) {
