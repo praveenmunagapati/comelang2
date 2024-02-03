@@ -92,7 +92,7 @@ sType*%, string parse_interface_function(sInfo* info)
     return new tuple2<sType*%,string>(type, fun_name);
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 92
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 92
 {
     if(buf === "interface" || buf === "protocol") {
         var type_name = parse_word();
@@ -150,5 +150,5 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         return new sInterfaceNode(string(type_name), klass, info) implements sNode;
     }
     
-    return inherit(string(buf), head, head_sline, info);
+    return inherit(buf, head, head_sline, info);
 }

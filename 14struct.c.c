@@ -4667,9 +4667,9 @@ memset(&default_value_80, 0, sizeof(struct sClass*));
                             }
                         }
                     }
-                    come_free_object((char*)self->items);
+                    come_free((char*)self->items);
                     if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                    come_free_object((char*)self->keys);
+                    come_free((char*)self->keys);
                     self->keys=keys_65;
                     self->items=items_66;
                     self->item_existance=item_existance_67;
@@ -6002,9 +6002,9 @@ memset(&default_value_154, 0, sizeof(struct sType*));
                         }
                     }
                 }
-                come_free_object((char*)self->items);
+                come_free((char*)self->items);
                 if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                come_free_object((char*)self->keys);
+                come_free((char*)self->keys);
                 self->keys=keys_139;
                 self->items=items_140;
                 self->item_existance=item_existance_141;
@@ -6897,7 +6897,6 @@ struct sStructNode* _inf_obj_value4;
 void* right_value220;
 struct sNode* __result141__;
 void* right_value221;
-void* right_value222;
 struct sNode* __result142__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -6992,8 +6991,7 @@ memset(&right_value214, 0, sizeof(void*));
 memset(&right_value215, 0, sizeof(void*));
 memset(&right_value220, 0, sizeof(void*));
 memset(&right_value221, 0, sizeof(void*));
-memset(&right_value222, 0, sizeof(void*));
-    if(_if_conditional251=string_operator_equals(buf,"struct"),    _if_conditional251) {
+    if(_if_conditional251=charp_operator_equals(buf,"struct"),    _if_conditional251) {
         header_head_184=head;
         type_name_185=(char*)come_increment_ref_count(((char*)(right_value164=parse_word(info))));
         __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value164);
@@ -7037,7 +7035,6 @@ memset(&right_value222, 0, sizeof(void*));
             __result133__ = __result_obj__ = ((struct sNode*)(right_value175=_inf_value2));
             if(struct_class_186 && !__freed_obj__) { come_call_finalizer(sClass_finalize,struct_class_186, (void*)0, (void*)0, 0, 0, 0, 0); }
             if(type_name_185 && !__freed_obj__) { type_name_185 = come_decrement_ref_count(type_name_185, (void*)0, (void*)0, 0, 0, 0); }
-            if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
             __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value168);
             if(right_value168 && right_value168 != __result_obj__ && !__freed_obj__) { come_call_finalizer(sStructNobodyNode_finalize,right_value168, (void*)0, (void*)0, 0, 1, 0, 0); }
             __right_value_freed_obj[0] = right_value168;
@@ -7209,7 +7206,6 @@ memset(&right_value222, 0, sizeof(void*));
                 __result138__ = __result_obj__ = ((struct sNode*)(right_value197=_inf_value3));
                 if(generics_class_194 && !__freed_obj__) { come_call_finalizer(sClass_finalize,generics_class_194, (void*)0, (void*)0, 0, 0, 0, 0); }
                 if(type_name_185 && !__freed_obj__) { type_name_185 = come_decrement_ref_count(type_name_185, (void*)0, (void*)0, 0, 0, 0); }
-                if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
                 __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value193);
                 if(right_value193 && right_value193 != __result_obj__ && !__freed_obj__) { come_call_finalizer(sGenericsStructNode_finalize,right_value193, (void*)0, (void*)0, 0, 1, 0, 0); }
                 __right_value_freed_obj[0] = right_value193;
@@ -7368,7 +7364,6 @@ memset(&right_value222, 0, sizeof(void*));
                 __result141__ = __result_obj__ = ((struct sNode*)(right_value220=_inf_value4));
                 if(struct_class_203 && !__freed_obj__) { come_call_finalizer(sClass_finalize,struct_class_203, (void*)0, (void*)0, 0, 0, 0, 0); }
                 if(type_name_185 && !__freed_obj__) { type_name_185 = come_decrement_ref_count(type_name_185, (void*)0, (void*)0, 0, 0, 0); }
-                if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
                 __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value212);
                 if(right_value212 && right_value212 != __result_obj__ && !__freed_obj__) { come_call_finalizer(sStructNode_finalize,right_value212, (void*)0, (void*)0, 0, 1, 0, 0); }
                 __right_value_freed_obj[0] = right_value212;
@@ -7391,17 +7386,12 @@ memset(&right_value222, 0, sizeof(void*));
         }
         if(type_name_185 && !__freed_obj__) { type_name_185 = come_decrement_ref_count(type_name_185, (void*)0, (void*)0, 0, 0, 0); }
     }
-    __result142__ = __result_obj__ = ((struct sNode*)(right_value222=top_level_v97((char*)come_increment_ref_count(((char*)(right_value221=__builtin_string(buf)))),head,head_sline,info)));
-    if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
+    __result142__ = __result_obj__ = ((struct sNode*)(right_value221=top_level_v97(buf,head,head_sline,info)));
     __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value221);
-    if(right_value221 && right_value221 != __result_obj__ && !__freed_obj__) { right_value221 = come_decrement_ref_count(right_value221, (void*)0, (void*)0, 1, 0, 0); }
+    if(right_value221 && right_value221 != __result_obj__ && !__freed_obj__) { right_value221 = come_decrement_ref_count(right_value221, ((struct sNode*)right_value221)->finalize, ((struct sNode*)right_value221)->_protocol_obj, 1, 0, 0); } 
     __right_value_freed_obj[0] = right_value221;
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value222);
-    if(right_value222 && right_value222 != __result_obj__ && !__freed_obj__) { right_value222 = come_decrement_ref_count(right_value222, ((struct sNode*)right_value222)->finalize, ((struct sNode*)right_value222)->_protocol_obj, 1, 0, 0); } 
-    __right_value_freed_obj[1] = right_value222;
     __freed_obj__ = 0;
     return __result142__;
-    if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
 }
 
 static void sStructNobodyNode_finalize(struct sStructNobodyNode* self){
@@ -7755,45 +7745,45 @@ _Bool define_struct_222;
 char* p_223;
 int sline_224;
 _Bool _if_conditional291;
-void* right_value223;
+void* right_value222;
 char* type_name_225;
 _Bool _if_conditional292;
-void* right_value224;
+void* right_value223;
 _Bool _if_conditional293;
 _Bool _if_conditional294;
-void* right_value225;
+void* right_value224;
 char* type_name_226;
-void* right_value226;
+void* right_value225;
 struct sNode* __result143__;
-void* right_value227;
+void* right_value226;
 struct sNode* __result144__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&define_struct_222, 0, sizeof(_Bool));
 memset(&p_223, 0, sizeof(char*));
 memset(&sline_224, 0, sizeof(int));
-memset(&right_value223, 0, sizeof(void*));
+memset(&right_value222, 0, sizeof(void*));
 memset(&type_name_225, 0, sizeof(char*));
+memset(&right_value223, 0, sizeof(void*));
 memset(&right_value224, 0, sizeof(void*));
-memset(&right_value225, 0, sizeof(void*));
 memset(&type_name_226, 0, sizeof(char*));
+memset(&right_value225, 0, sizeof(void*));
 memset(&right_value226, 0, sizeof(void*));
-memset(&right_value227, 0, sizeof(void*));
     define_struct_222=(_Bool)0;
     {
         p_223=info->p;
         sline_224=info->sline;
         if(_if_conditional291=charp_operator_equals(buf,"struct"),        _if_conditional291) {
-            type_name_225=(char*)come_increment_ref_count(((char*)(right_value223=parse_word(info))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value223);
-            if(right_value223 && right_value223 != __result_obj__ && !__freed_obj__) { right_value223 = come_decrement_ref_count(right_value223, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[0] = right_value223;
+            type_name_225=(char*)come_increment_ref_count(((char*)(right_value222=parse_word(info))));
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value222);
+            if(right_value222 && right_value222 != __result_obj__ && !__freed_obj__) { right_value222 = come_decrement_ref_count(right_value222, (void*)0, (void*)0, 1, 0, 0); }
+            __right_value_freed_obj[0] = right_value222;
             __freed_obj__ = 0;
             if(_if_conditional292=*info->p==123,            _if_conditional292) {
-                ((char*)(right_value224=skip_block(info)));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value224);
-                if(right_value224 && right_value224 != __result_obj__ && !__freed_obj__) { right_value224 = come_decrement_ref_count(right_value224, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[0] = right_value224;
+                ((char*)(right_value223=skip_block(info)));
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value223);
+                if(right_value223 && right_value223 != __result_obj__ && !__freed_obj__) { right_value223 = come_decrement_ref_count(right_value223, (void*)0, (void*)0, 1, 0, 0); }
+                __right_value_freed_obj[0] = right_value223;
                 __freed_obj__ = 0;
                 if(_if_conditional293=*info->p==59,                _if_conditional293) {
                     define_struct_222=(_Bool)1;
@@ -7805,24 +7795,24 @@ memset(&right_value227, 0, sizeof(void*));
         info->sline=sline_224;
     }
     if(_if_conditional294=define_struct_222,    _if_conditional294) {
-        type_name_226=(char*)come_increment_ref_count(((char*)(right_value225=parse_word(info))));
-        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value225);
-        if(right_value225 && right_value225 != __result_obj__ && !__freed_obj__) { right_value225 = come_decrement_ref_count(right_value225, (void*)0, (void*)0, 1, 0, 0); }
-        __right_value_freed_obj[0] = right_value225;
+        type_name_226=(char*)come_increment_ref_count(((char*)(right_value224=parse_word(info))));
+        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value224);
+        if(right_value224 && right_value224 != __result_obj__ && !__freed_obj__) { right_value224 = come_decrement_ref_count(right_value224, (void*)0, (void*)0, 1, 0, 0); }
+        __right_value_freed_obj[0] = right_value224;
         __freed_obj__ = 0;
-        __result143__ = __result_obj__ = ((struct sNode*)(right_value226=parse_struct((char*)come_increment_ref_count(type_name_226),info)));
+        __result143__ = __result_obj__ = ((struct sNode*)(right_value225=parse_struct((char*)come_increment_ref_count(type_name_226),info)));
         if(type_name_226 && !__freed_obj__) { type_name_226 = come_decrement_ref_count(type_name_226, (void*)0, (void*)0, 0, 0, 0); }
-        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value226);
-        if(right_value226 && right_value226 != __result_obj__ && !__freed_obj__) { right_value226 = come_decrement_ref_count(right_value226, ((struct sNode*)right_value226)->finalize, ((struct sNode*)right_value226)->_protocol_obj, 1, 0, 0); } 
-        __right_value_freed_obj[1] = right_value226;
+        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value225);
+        if(right_value225 && right_value225 != __result_obj__ && !__freed_obj__) { right_value225 = come_decrement_ref_count(right_value225, ((struct sNode*)right_value225)->finalize, ((struct sNode*)right_value225)->_protocol_obj, 1, 0, 0); } 
+        __right_value_freed_obj[1] = right_value225;
         __freed_obj__ = 0;
         return __result143__;
         if(type_name_226 && !__freed_obj__) { type_name_226 = come_decrement_ref_count(type_name_226, (void*)0, (void*)0, 0, 0, 0); }
     }
-    __result144__ = __result_obj__ = ((struct sNode*)(right_value227=string_node_v13(buf,head,head_sline,info)));
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value227);
-    if(right_value227 && right_value227 != __result_obj__ && !__freed_obj__) { right_value227 = come_decrement_ref_count(right_value227, ((struct sNode*)right_value227)->finalize, ((struct sNode*)right_value227)->_protocol_obj, 1, 0, 0); } 
-    __right_value_freed_obj[0] = right_value227;
+    __result144__ = __result_obj__ = ((struct sNode*)(right_value226=string_node_v13(buf,head,head_sline,info)));
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value226);
+    if(right_value226 && right_value226 != __result_obj__ && !__freed_obj__) { right_value226 = come_decrement_ref_count(right_value226, ((struct sNode*)right_value226)->finalize, ((struct sNode*)right_value226)->_protocol_obj, 1, 0, 0); } 
+    __right_value_freed_obj[0] = right_value226;
     __freed_obj__ = 0;
     return __result144__;
 }

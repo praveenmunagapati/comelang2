@@ -430,8 +430,8 @@ sNode*% parse_function(sInfo* info);
 
 sNode*% expression(sInfo* info=info) version 5;
 sNode*% statment(sInfo* info=info);
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 1;
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 99;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 1;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99;
 sNode*% expression_node(sInfo* info=info) version 1;
 sNode*% expression_node(sInfo* info=info) version 99;
 
@@ -503,7 +503,7 @@ sNode*% create_null_object(sInfo* info);
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 14;
 sNode*% parse_struct(string type_name, sInfo* info);
 string get_none_generics_name(char* class_name);
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 98;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98;
 bool output_generics_struct(sType* type, sType* generics_type, sInfo* info);
 void output_struct(sClass* klass, sInfo* info);
 
@@ -512,18 +512,18 @@ void output_struct(sClass* klass, sInfo* info);
 /////////////////////////////////////////////////////////////////////
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 15;
 sNode*% parse_union(string type_name, sInfo* info);
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 97;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 97;
 
 /////////////////////////////////////////////////////////////////////
 /// 16enum.c
 /////////////////////////////////////////////////////////////////////
 sNode*% parse_enum(string type_name, sInfo* info);
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 96;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 96;
 
 /////////////////////////////////////////////////////////////////////
 /// 17typedef.c
 /////////////////////////////////////////////////////////////////////
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 95;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 95;
 
 /////////////////////////////////////////////////////////////////////
 /// 18field.c
@@ -557,17 +557,17 @@ sNode*% create_true_object(sInfo* info);
 sNode*% create_false_object(sInfo* info);
 
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 21;
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 94;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 94;
 sNode*% post_position_operator3(sNode*% node, sInfo* info) version 21;
 
 /////////////////////////////////////////////////////////////////////
 /// 22impl.c
 /////////////////////////////////////////////////////////////////////
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 93;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 93;
 
 /////////////////////////////////////////////////////////////////////
 /// 23interface.c
 /////////////////////////////////////////////////////////////////////
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 92;
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 92;
 
 #endif

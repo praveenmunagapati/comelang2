@@ -6055,9 +6055,9 @@ memset(&default_value_171, 0, sizeof(struct sFun*));
                         }
                     }
                 }
-                come_free_object((char*)self->items);
+                come_free((char*)self->items);
                 if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                come_free_object((char*)self->keys);
+                come_free((char*)self->keys);
                 self->keys=keys_155;
                 self->items=items_156;
                 self->item_existance=item_existance_157;
@@ -6892,7 +6892,7 @@ memset(&i_209, 0, sizeof(int));
                 }
             }
         }
-        come_free_object((char*)self->items);
+        come_free((char*)self->items);
         for(
         i_209=0 ,        0;        _for_condtionalA22=        i_209<self->size ,        _for_condtionalA22;        i_209++ ,        0        ){
             if(_if_conditional260=self->item_existance[i_209],            _if_conditional260) {
@@ -6901,7 +6901,7 @@ memset(&i_209, 0, sizeof(int));
                 }
             }
         }
-        come_free_object((char*)self->keys);
+        come_free((char*)self->keys);
         if(self->key_list && !__freed_obj__) { come_call_finalizer(list$1charpp_finalize,self->key_list, (void*)0, (void*)0, 0, 0, 0, 0); }
         if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
 }

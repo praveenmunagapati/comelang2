@@ -103,7 +103,7 @@ string sTypedefNode*::sname(sTypedefNode* self, sInfo* info)
     return string(self.sname);
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 95
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 95
 {
     if(buf === "typedef") {
         bool in_typedef = info.in_typedef;
@@ -146,5 +146,5 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         }
     }
     
-    return inherit(string(buf), head, head_sline, info);
+    return inherit(buf, head, head_sline, info);
 }

@@ -122,7 +122,7 @@ sNode*% parse_union(string type_name, sInfo* info)
     return new sUnionNode(type, output, info) implements sNode;
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 97
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 97
 {
     if(buf === "union") {
         string type_name = parse_word();
@@ -155,7 +155,7 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         return new sUnionNode(type, true@output, info) implements sNode;
     }
     
-    return inherit(string(buf), head, head_sline, info);
+    return inherit(buf, head, head_sline, info);
 }
 
 

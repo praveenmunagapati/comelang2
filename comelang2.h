@@ -1179,7 +1179,7 @@ impl map <T, T2>
                 }
             }
         }
-        come_free_object((char*)self.items);
+        come_free((char*)self.items);
 
         for(int i=0; i<self.size; i++) {
             if(self.item_existance[i]) {
@@ -1188,7 +1188,7 @@ impl map <T, T2>
                 }
             }
         }
-        come_free_object((char*)self.keys);
+        come_free((char*)self.keys);
         
         delete borrow self.key_list;
 
@@ -1202,7 +1202,7 @@ impl map <T, T2>
                 }
             }
         }
-        come_free_object((char*)self.items);
+        come_free((char*)self.items);
 
         for(int i=0; i<self.size; i++) {
             if(self.item_existance[i]) {
@@ -1211,7 +1211,7 @@ impl map <T, T2>
                 }
             }
         }
-        come_free_object((char*)self.keys);
+        come_free((char*)self.keys);
         
         force_delete borrow self.key_list;
 
@@ -1416,9 +1416,9 @@ impl map <T, T2>
             }
         }
 
-        come_free_object((char*)self.items);
+        come_free((char*)self.items);
         delete borrow self.item_existance;
-        come_free_object((char*)self.keys);
+        come_free((char*)self.keys);
 
         self.keys = keys;
         self.items = items;

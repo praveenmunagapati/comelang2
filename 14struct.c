@@ -431,7 +431,7 @@ sNode*% parse_struct(string type_name, sInfo* info)
     return new sStructNode(string(type_name), klass, output, info) implements sNode;
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 98
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
 {
     if(buf === "struct") {
         char* header_head = head;
@@ -626,7 +626,7 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         }
     }
     
-    return inherit(string(buf), head, head_sline, info) ;
+    return inherit(buf, head, head_sline, info) ;
 }
 
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 14

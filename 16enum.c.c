@@ -3941,9 +3941,9 @@ memset(&default_value_56, 0, sizeof(struct sClass*));
                             }
                         }
                     }
-                    come_free_object((char*)self->items);
+                    come_free((char*)self->items);
                     if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                    come_free_object((char*)self->keys);
+                    come_free((char*)self->keys);
                     self->keys=keys_43;
                     self->items=items_44;
                     self->item_existance=item_existance_45;
@@ -5678,7 +5678,6 @@ struct sEnumNode* _inf_obj_value2;
 void* right_value142;
 struct sNode* __result97__;
 void* right_value143;
-void* right_value144;
 struct sNode* __result98__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -5703,8 +5702,7 @@ memset(&right_value135, 0, sizeof(void*));
 memset(&right_value136, 0, sizeof(void*));
 memset(&right_value142, 0, sizeof(void*));
 memset(&right_value143, 0, sizeof(void*));
-memset(&right_value144, 0, sizeof(void*));
-    if(_if_conditional219=string_operator_equals(buf,"enum"),    _if_conditional219) {
+    if(_if_conditional219=charp_operator_equals(buf,"enum"),    _if_conditional219) {
         type_name_118=((void*)0);
         if(_if_conditional220=*info->p==123,        _if_conditional220) {
             __dec_obj58=type_name_118;
@@ -5807,7 +5805,6 @@ memset(&right_value144, 0, sizeof(void*));
         __result97__ = __result_obj__ = ((struct sNode*)(right_value142=_inf_value2));
         if(type_name_118 && !__freed_obj__) { type_name_118 = come_decrement_ref_count(type_name_118, (void*)0, (void*)0, 0, 0, 0); }
         if(elements_119 && !__freed_obj__) { come_call_finalizer(list$1tuple2$2charphsNodephphp_finalize,elements_119, (void*)0, (void*)0, 0, 0, 0, 0); }
-        if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
         __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value135);
         if(right_value135 && right_value135 != __result_obj__ && !__freed_obj__) { come_call_finalizer(sEnumNode_finalize,right_value135, (void*)0, (void*)0, 0, 1, 0, 0); }
         __right_value_freed_obj[2] = right_value135;
@@ -5822,17 +5819,12 @@ memset(&right_value144, 0, sizeof(void*));
         if(type_name_118 && !__freed_obj__) { type_name_118 = come_decrement_ref_count(type_name_118, (void*)0, (void*)0, 0, 0, 0); }
         if(elements_119 && !__freed_obj__) { come_call_finalizer(list$1tuple2$2charphsNodephphp_finalize,elements_119, (void*)0, (void*)0, 0, 0, 0, 0); }
     }
-    __result98__ = __result_obj__ = ((struct sNode*)(right_value144=top_level_v95((char*)come_increment_ref_count(((char*)(right_value143=__builtin_string(buf)))),head,head_sline,info)));
-    if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
+    __result98__ = __result_obj__ = ((struct sNode*)(right_value143=top_level_v95(buf,head,head_sline,info)));
     __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value143);
-    if(right_value143 && right_value143 != __result_obj__ && !__freed_obj__) { right_value143 = come_decrement_ref_count(right_value143, (void*)0, (void*)0, 1, 0, 0); }
+    if(right_value143 && right_value143 != __result_obj__ && !__freed_obj__) { right_value143 = come_decrement_ref_count(right_value143, ((struct sNode*)right_value143)->finalize, ((struct sNode*)right_value143)->_protocol_obj, 1, 0, 0); } 
     __right_value_freed_obj[0] = right_value143;
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value144);
-    if(right_value144 && right_value144 != __result_obj__ && !__freed_obj__) { right_value144 = come_decrement_ref_count(right_value144, ((struct sNode*)right_value144)->finalize, ((struct sNode*)right_value144)->_protocol_obj, 1, 0, 0); } 
-    __right_value_freed_obj[1] = right_value144;
     __freed_obj__ = 0;
     return __result98__;
-    if(buf && !__freed_obj__) { buf = come_decrement_ref_count(buf, (void*)0, (void*)0, 0, 1, 0); }
 }
 
 static void sEnumNode_finalize(struct sEnumNode* self){

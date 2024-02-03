@@ -1,6 +1,6 @@
 #include "common.h"
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 93
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 93
 {
     if(buf === "impl") {
         var word = parse_word(info);
@@ -78,5 +78,5 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         return (sNode*%)null;
     }
     
-    return inherit(string(buf), head, head_sline, info);
+    return inherit(buf, head, head_sline, info);
 }

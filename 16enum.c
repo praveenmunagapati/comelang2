@@ -180,7 +180,7 @@ sNode*% parse_enum(string type_name, sInfo* info)
     return new sEnumNode(type_name, elements, output, info) implements sNode;
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 96
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 96
 {
     if(buf === "enum") {
         string type_name = null;
@@ -235,5 +235,5 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         return new sEnumNode(type_name, elements, true@output, info) implements sNode;
     }
     
-    return inherit(string(buf), head, head_sline, info);
+    return inherit(buf, head, head_sline, info);
 }

@@ -3307,7 +3307,7 @@ memset(&i_23, 0, sizeof(int));
                                         }
                                     }
                                 }
-                                come_free_object((char*)self->items);
+                                come_free((char*)self->items);
                                 for(
                                 i_23=0 ,                                0;                                _for_condtionalA3=                                i_23<self->size ,                                _for_condtionalA3;                                i_23++ ,                                0                                ){
                                     if(_if_conditional47=self->item_existance[i_23],                                    _if_conditional47) {
@@ -3316,7 +3316,7 @@ memset(&i_23, 0, sizeof(int));
                                         }
                                     }
                                 }
-                                come_free_object((char*)self->keys);
+                                come_free((char*)self->keys);
                                 if(self->key_list && !__freed_obj__) { come_call_finalizer(list$1charpp_finalize,self->key_list, (void*)0, (void*)0, 0, 0, 0, 0); }
                                 if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
 }
@@ -3674,9 +3674,9 @@ memset(&default_value_45, 0, sizeof(struct sVar*));
                                                 }
                                             }
                                         }
-                                        come_free_object((char*)self->items);
+                                        come_free((char*)self->items);
                                         if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                                        come_free_object((char*)self->keys);
+                                        come_free((char*)self->keys);
                                         self->keys=keys_36;
                                         self->items=items_37;
                                         self->item_existance=item_existance_38;

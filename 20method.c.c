@@ -4623,7 +4623,7 @@ memset(&i_61, 0, sizeof(int));
                     }
                 }
             }
-            come_free_object((char*)self->items);
+            come_free((char*)self->items);
             for(
             i_61=0 ,            0;            _for_condtionalA3=            i_61<self->size ,            _for_condtionalA3;            i_61++ ,            0            ){
                 if(_if_conditional130=self->item_existance[i_61],                _if_conditional130) {
@@ -4632,7 +4632,7 @@ memset(&i_61, 0, sizeof(int));
                     }
                 }
             }
-            come_free_object((char*)self->keys);
+            come_free((char*)self->keys);
             if(self->key_list && !__freed_obj__) { come_call_finalizer(list$1charpp_finalize,self->key_list, (void*)0, (void*)0, 0, 0, 0, 0); }
             if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
 }
@@ -4887,9 +4887,9 @@ memset(&default_value_80, 0, sizeof(struct sClass*));
                         }
                     }
                 }
-                come_free_object((char*)self->items);
+                come_free((char*)self->items);
                 if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                come_free_object((char*)self->keys);
+                come_free((char*)self->keys);
                 self->keys=keys_65;
                 self->items=items_66;
                 self->item_existance=item_existance_67;
@@ -8210,7 +8210,7 @@ memset(&i_203, 0, sizeof(int));
                         }
                     }
                 }
-                come_free_object((char*)self->items);
+                come_free((char*)self->items);
                 for(
                 i_203=0 ,                0;                _for_condtionalA14=                i_203<self->size ,                _for_condtionalA14;                i_203++ ,                0                ){
                     if(_if_conditional257=self->item_existance[i_203],                    _if_conditional257) {
@@ -8219,7 +8219,7 @@ memset(&i_203, 0, sizeof(int));
                         }
                     }
                 }
-                come_free_object((char*)self->keys);
+                come_free((char*)self->keys);
                 if(self->key_list && !__freed_obj__) { come_call_finalizer(list$1charpp_finalize,self->key_list, (void*)0, (void*)0, 0, 0, 0, 0); }
                 if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
 }
@@ -8531,9 +8531,9 @@ memset(&default_value_237, 0, sizeof(struct CVALUE*));
                                         }
                                     }
                                 }
-                                come_free_object((char*)self->items);
+                                come_free((char*)self->items);
                                 if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                                come_free_object((char*)self->keys);
+                                come_free((char*)self->keys);
                                 self->keys=keys_222;
                                 self->items=items_223;
                                 self->item_existance=item_existance_224;

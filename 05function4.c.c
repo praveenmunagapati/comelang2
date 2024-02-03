@@ -9059,9 +9059,9 @@ memset(&default_value_236, 0, sizeof(struct sClass*));
                                                             }
                                                         }
                                                     }
-                                                    come_free_object((char*)self->items);
+                                                    come_free((char*)self->items);
                                                     if(self->item_existance && !__freed_obj__) { self->item_existance = come_decrement_ref_count(self->item_existance, (void*)0, (void*)0, 0, 0, 0); }
-                                                    come_free_object((char*)self->keys);
+                                                    come_free((char*)self->keys);
                                                     self->keys=keys_219;
                                                     self->items=items_220;
                                                     self->item_existance=item_existance_223;

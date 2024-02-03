@@ -858,7 +858,7 @@ int transpile(sInfo* info) version 5
     return 0;
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 99
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
 {
     bool is_type_name_flag = is_type_name(buf);
     int sline = info.sline;

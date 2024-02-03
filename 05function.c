@@ -3022,7 +3022,7 @@ sNode*% parse_global_variable(sInfo* info)
     return (sNode*%)null;
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 1
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 1
 {
     err_msg(info, "unexpected word(%s)(2)\n", buf);
     exit(2);

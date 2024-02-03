@@ -1829,7 +1829,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
     return inherit(buf, head, head_sline, info);
 }
 
-sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 94
+sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 94
 {
    if(buf === "using") {
         if(strmemcmp(info->p, "comelang")) {
@@ -1876,7 +1876,7 @@ sNode*% top_level(string buf, char* head, int head_sline, sInfo* info) version 9
         return new sNullNodeX(info) implements sNode;
     }
     
-    return inherit(string(buf), head, head_sline, info);
+    return inherit(buf, head, head_sline, info);
 }
 
 sNode*% post_position_operator3(sNode*% node, sInfo* info) version 21
