@@ -119,7 +119,8 @@ void xassert(char* msg, bool test);
 //////////////////////////////
 extern bool gComeGCLib;
 
-void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0);
+//void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0);
+void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0, char* class_name=null);
 void* come_increment_ref_count(void* mem);
 void* come_print_ref_count(void* mem);
 //void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protocol_obj, int call_finalizer_only, int no_decrement, int no_free);
@@ -127,7 +128,8 @@ void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protoco
 //void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj, bool no_decrement, bool no_free);
 void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj, bool no_decrement, bool no_free, bool force_delete_);
 void come_free_object(void* mem);
-void* come_memdup(void* block, char* sname=null, int sline=0);
+//void* come_memdup(void* block, char* sname=null, int sline=0);
+void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=null);
 string __builtin_string(char* str);
 
 bool come_is_contained_element(void** array, int len, void* element);

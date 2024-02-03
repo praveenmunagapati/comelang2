@@ -258,7 +258,7 @@ static void come_free_mem_of_heap_pool(char* mem)
     }
 }
 
-void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
+void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0, char* class_name=null)
 {
     char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline);
     
@@ -284,7 +284,7 @@ void come_free_object(void* mem)
     come_free_mem_of_heap_pool((char*)ref_count);
 }
 
-void* come_memdup(void* block, char* sname=null, int sline=0)
+void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=null)
 {
     if(!block) {
         return null;

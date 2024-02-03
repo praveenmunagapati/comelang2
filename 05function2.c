@@ -691,17 +691,18 @@ int transpile(sInfo* info) version 5
     {
         var name = string("come_calloc");
         var result_type = new sType("void*");
-        var param_types = [new sType("int"), new sType("int"), new sType("char*"), new sType("int")];
-        var param_names = [string("count"), string("size"), string("sname"), string("sline")];
+        var param_types = [new sType("int"), new sType("int"), new sType("char*"), new sType("int"), new sType("char*")];
+        var param_names = [string("count"), string("size"), string("sname"), string("sline"), string("class_name")];
         var param_default_parametors = new list<string>();
         param_default_parametors.push_back(null);
         param_default_parametors.push_back(null);
         param_default_parametors.push_back(string("null"));
         param_default_parametors.push_back(string("0"));
+        param_default_parametors.push_back(string("null"));
         var main_fun = new sFun(name, result_type, param_types, param_names
             , param_default_parametors, true@external, false@var_args
             , null@block, false@static_
-            , string("void* come_calloc(int count, int size, char* sname, int sline)")
+            , string("void* come_calloc(int count, int size, char* sname, int sline, char* class_name)")
             , string("")
             , info);
         
@@ -770,16 +771,17 @@ int transpile(sInfo* info) version 5
     {
         var name = string("come_memdup");
         var result_type = new sType("void*");
-        var param_types = [new sType("void*"), new sType("char*"), new sType("int")];
-        var param_names = [string("block"), string("sname"), string("sline")];
+        var param_types = [new sType("void*"), new sType("char*"), new sType("int"), new sType("char*")];
+        var param_names = [string("block"), string("sname"), string("sline"), string("char*"), string("class_name")];
         var param_default_parametors = new list<string>();
         param_default_parametors.push_back(null);
         param_default_parametors.push_back(string("null"));
         param_default_parametors.push_back(string("0"));
+        param_default_parametors.push_back(string("null"));
         var main_fun = new sFun(name, result_type, param_types, param_names
             , param_default_parametors, true@external, false@var_args
             , null@block, false@static_
-            , string("void* come_memdup(void* block, char* sname, int sline)")
+            , string("void* come_memdup(void* block, char* sname, int sline, char* class_name)")
             , string("")
             , info);
         
@@ -1374,7 +1376,7 @@ sNode*% parse_function(sInfo* info)
     }
     
     string fun_name;
-    string base_fun_name;
+    char* base_fun_name = null;
     if(method_definition) {
         var obj_type, name, err = parse_type();
         
@@ -1386,17 +1388,17 @@ sNode*% parse_function(sInfo* info)
         expected_next_character(':');
         expected_next_character(':');
         
-        base_fun_name = clone parse_word();
-        fun_name = clone create_method_name(obj_type, false@no_pointer_name, string(base_fun_name), info);
+        base_fun_name = borrow gc_inc(parse_word());
+        fun_name = create_method_name(obj_type, false@no_pointer_name, base_fun_name, info);
     }
     else if(info->impl_type) {
-        base_fun_name = clone parse_word();
+        base_fun_name = borrow gc_inc(parse_word());
     
-        fun_name = clone create_method_name(info->impl_type, false@no_pointer_name, string(base_fun_name), info);
+        fun_name = create_method_name(info->impl_type, false@no_pointer_name, base_fun_name, info);
     }
     else {
-        fun_name = clone parse_word();
-        base_fun_name = clone string(fun_name);
+        fun_name = parse_word();
+        base_fun_name = borrow gc_inc(string(fun_name));
     }
     
     var param_types, param_names, param_default_parametors, var_args = parse_params(info);
@@ -1428,7 +1430,7 @@ sNode*% parse_function(sInfo* info)
         static int lambda_num = 0;
         lambda_num++;
         
-        fun_name = xsprintf("lambda%d", lambda_num);
+        string fun_name = xsprintf("lambda%d", lambda_num);
         
         result_type->mStatic = false;
         
@@ -1443,6 +1445,7 @@ sNode*% parse_function(sInfo* info)
             info.funcs.insert(clone fun_name, fun);
         }
         
+        delete base_fun_name;
         return new sLambdaNode(fun, info) implements sNode;
     }
     else if(info.impl_type && info.generics_type_names.length() > 0) {
@@ -1459,6 +1462,7 @@ sNode*% parse_function(sInfo* info)
         
         info.generics_funcs.insert(string(fun_name3), fun);
         
+        delete base_fun_name;
         return (sNode*%)null;
     }
     else if(*info->p == '{') {
@@ -1492,6 +1496,7 @@ sNode*% parse_function(sInfo* info)
         }
     
         
+        delete base_fun_name;
         return new sFunNode(fun, info) implements sNode;
     }
     else if(xisalpha(*info->p) || *info->p == '_' || *info->p == ';') {
@@ -1518,6 +1523,7 @@ sNode*% parse_function(sInfo* info)
                 info.funcs.insert(clone fun_name, fun);
             }
             
+            delete base_fun_name;
             return new sFunNode(fun, info) implements sNode;
         }
         else {
@@ -1543,6 +1549,7 @@ sNode*% parse_function(sInfo* info)
                 info.funcs.insert(clone fun_name, fun);
             }
             
+            delete base_fun_name;
             return new sFunNode(fun, info) implements sNode;
         }
     }
@@ -1551,6 +1558,7 @@ sNode*% parse_function(sInfo* info)
         exit(2);
     }
     
+    delete base_fun_name;
     return (sNode*%)null;
 }
 

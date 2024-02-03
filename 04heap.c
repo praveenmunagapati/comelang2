@@ -783,7 +783,7 @@ sType*%, string clone_object(sType* type, char* obj, sInfo* info)
     else {
         type2->mHeap = true;
         string type_name = make_type_name_string(type2);
-        result = xsprintf("(%s)come_memdup(%s, \"%s\", %d)", type_name, c_value, info.sname, info.sline);
+        result = xsprintf("(%s)come_memdup(%s, \"%s\", %d, \"%s\")", type_name, c_value, info.sname, info.sline, type_name);
         result_type = clone type;
     }
     

@@ -219,6 +219,7 @@ struct sMemHeader
     struct sMemHeader* next;
     struct sMemHeader* prev;
     
+    char* class_name;
     char* sname[COME_STACKFRAME_MAX];
     int sline[COME_STACKFRAME_MAX];
 };
@@ -254,7 +255,12 @@ void come_heap_final()
             printf("#%d ", n);
             for(int i=0; i<COME_STACKFRAME_MAX; i++) {
                 if(it->sname[i]) {
-                    printf("%s %d, ", it->sname[i], it->sline[i]);
+                    if(it->class_name) {
+                        printf("%s %d(%s), ", it->sname[i], it->sline[i], it->class_name);
+                    }
+                    else {
+                        printf("%s %d, ", it->sname[i], it->sline[i]);
+                    }
                     flag = true;
                 }
             }
@@ -278,7 +284,7 @@ void come_heap_final()
     }
 }
 
-static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0)
+static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0, char* class_name=null)
 {
     if(gComeDebugLib) {
         void* result = calloc(1, size + sizeof(sMemHeader));
@@ -296,6 +302,13 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         it->next = gAllocMem;
         it->prev = null;
+        
+        if(class_name) { 
+            it->class_name = strdup(class_name); 
+        }
+        else {
+            it->class_name = null;
+        }
         
         if(gAllocMem) {
             gAllocMem->prev = it;
@@ -337,6 +350,10 @@ static void come_free_mem_of_heap_pool(void* mem)
             
             sMemHeader* prev_it = it->prev;
             sMemHeader* next_it = it->next;
+            
+            if(it->class_name) {
+                free(it->class_name);
+            }
             
             if(gAllocMem == it) {
                 gAllocMem = next_it;
@@ -427,9 +444,11 @@ static bool is_valid_object(char* mem)
 }
 */
 
-void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
+//void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
+void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0, char* class_name=null)
 {
-    char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline);
+    //char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline, null);
+    char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline, class_name);
     
     size_t* ref_count = (size_t*)mem;
 
@@ -460,7 +479,8 @@ void come_free_object(void* mem)
     come_free_mem_of_heap_pool((char*)ref_count);
 }
 
-void* come_memdup(void* block, char* sname=null, int sline=0)
+//void* come_memdup(void* block, char* sname=null, int sline=0)
+void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=null)
 {
     if(!block) {
         return null;
@@ -479,7 +499,8 @@ void* come_memdup(void* block, char* sname=null, int sline=0)
 
     size_t size = *size_p - sizeof(size_t) - sizeof(size_t);
 
-    void* result = come_calloc(1, size, sname, sline);
+    //void* result = come_calloc(1, size, sname, sline);
+    void* result = come_calloc(1, size, sname, sline, class_name);
 
     memcpy(result, block, size);
     

@@ -376,7 +376,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
         
         if(self.multiple_assign) {
             static int num_multiple_var = 0;
-            string multiple_var_name = xsprintf("multiple_assgin_var%d", ++num_multiple_var);
+            string multiple_var_name = xsprintf("multiple_assign_var%d", ++num_multiple_var);
             add_come_code_at_function_head(info, "%s;\n", make_define_var(right_value.type, multiple_var_name));
             
             add_come_code(info, "%s=%s;\n", multiple_var_name, right_value.c_value);
@@ -454,6 +454,8 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                 
                 i++;
             }
+            
+            //free_object(right_value.type, multiple_var_name, false@no_decrement, false@no_free, info);
         }
         else {
             sVar* var_ = get_variable_from_table(info.lv_table, self.name);
