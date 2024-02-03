@@ -811,6 +811,7 @@ struct sInfo
     _Bool no_output_err;
     _Bool no_output_come_code;
     struct sFun* come_fun;
+    char* come_fun_name;
     struct sFun* caller_fun;
     int caller_line;
     char* caller_sname;
@@ -1595,6 +1596,8 @@ char* strfry(char* __string);
 void* memfrob(void* __s, long int __n);
 
 char* basename(const char* __filename);
+
+void come_free(void* mem);
 
 int come_main_v1(int argc, char** argv);
 
@@ -2637,9 +2640,9 @@ void* __right_value_freed_obj[1024];
 _Bool __result7__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    (come_push_stackframe("./comelang2.h", 108),perror(msg),come_pop_stackframe());
-    (come_push_stackframe("./comelang2.h", 109),stackframe(),come_pop_stackframe());
-    (come_push_stackframe("./comelang2.h", 110),exit(4),come_pop_stackframe());
+    perror(msg);
+    stackframe();
+    exit(4);
     __result7__ = (_Bool)0;
     return __result7__;
 }
@@ -2652,9 +2655,9 @@ struct smart_pointer$1char* __result8__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
-    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1999, "struct smart_pointer$1char");
-    ((struct smart_pointer$1char*)come_null_check(result_0, "./comelang2.h", 2001))->memory=buffer_clone(self);
-    ((struct smart_pointer$1char*)come_null_check(result_0, "./comelang2.h", 2002))->p=((struct buffer*)come_null_check(((struct smart_pointer$1char*)come_null_check(result_0, "./comelang2.h", 2002))->memory, "./comelang2.h", 2002))->buf;
+    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 2000, "struct smart_pointer$1char");
+    result_0->memory=buffer_clone(self);
+    result_0->p=result_0->memory->buf;
     __result8__ = __result_obj__ = result_0;
     return __result8__;
 }
@@ -2667,9 +2670,9 @@ struct smart_pointer$1char* __result9__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
-    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 2009, "struct smart_pointer$1char");
-    ((struct smart_pointer$1char*)come_null_check(result_1, "./comelang2.h", 2011))->memory=buffer_clone(self);
-    ((struct smart_pointer$1char*)come_null_check(result_1, "./comelang2.h", 2012))->p=(char*)((struct buffer*)come_null_check(((struct smart_pointer$1char*)come_null_check(result_1, "./comelang2.h", 2012))->memory, "./comelang2.h", 2012))->buf;
+    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 2010, "struct smart_pointer$1char");
+    result_1->memory=buffer_clone(self);
+    result_1->p=(char*)result_1->memory->buf;
     __result9__ = __result_obj__ = result_1;
     return __result9__;
 }
@@ -2682,9 +2685,9 @@ struct smart_pointer$1short* __result10__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
-    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 2019, "struct smart_pointer$1short");
-    ((struct smart_pointer$1short*)come_null_check(result_2, "./comelang2.h", 2021))->memory=buffer_clone(self);
-    ((struct smart_pointer$1short*)come_null_check(result_2, "./comelang2.h", 2022))->p=(short short*)((struct buffer*)come_null_check(((struct smart_pointer$1short*)come_null_check(result_2, "./comelang2.h", 2022))->memory, "./comelang2.h", 2022))->buf;
+    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 2020, "struct smart_pointer$1short");
+    result_2->memory=buffer_clone(self);
+    result_2->p=(short short*)result_2->memory->buf;
     __result10__ = __result_obj__ = result_2;
     return __result10__;
 }
@@ -2697,9 +2700,9 @@ struct smart_pointer$1int* __result11__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
-    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 2029, "struct smart_pointer$1int");
-    ((struct smart_pointer$1int*)come_null_check(result_3, "./comelang2.h", 2031))->memory=buffer_clone(self);
-    ((struct smart_pointer$1int*)come_null_check(result_3, "./comelang2.h", 2032))->p=(int*)((struct buffer*)come_null_check(((struct smart_pointer$1int*)come_null_check(result_3, "./comelang2.h", 2032))->memory, "./comelang2.h", 2032))->buf;
+    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 2030, "struct smart_pointer$1int");
+    result_3->memory=buffer_clone(self);
+    result_3->p=(int*)result_3->memory->buf;
     __result11__ = __result_obj__ = result_3;
     return __result11__;
 }
@@ -2712,9 +2715,9 @@ struct smart_pointer$1long* __result12__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
-    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 2039, "struct smart_pointer$1long");
-    ((struct smart_pointer$1long*)come_null_check(result_4, "./comelang2.h", 2041))->memory=buffer_clone(self);
-    ((struct smart_pointer$1long*)come_null_check(result_4, "./comelang2.h", 2042))->p=(long*)((struct buffer*)come_null_check(((struct smart_pointer$1long*)come_null_check(result_4, "./comelang2.h", 2042))->memory, "./comelang2.h", 2042))->buf;
+    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 2040, "struct smart_pointer$1long");
+    result_4->memory=buffer_clone(self);
+    result_4->p=(long*)result_4->memory->buf;
     __result12__ = __result_obj__ = result_4;
     return __result12__;
 }
@@ -2774,41 +2777,33 @@ void come_save_stackframe(char* sname, int sline){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-struct buffer* __exception_result_var_b1;
 struct buffer* buf_6;
-char* __exception_result_var_b2;
-struct buffer* __exception_result_var_b3;
 int i_7;
 _Bool _for_condtionalA2;
-char* __exception_result_var_b4;
-struct buffer* __exception_result_var_b5;
 _Bool _if_conditional3;
-char* __exception_result_var_b6;
-char* __exception_result_var_b7;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&buf_6, 0, sizeof(struct buffer*));
 memset(&i_7, 0, sizeof(int));
-    buf_6=(come_push_stackframe("libcomelang2-gc.c", 46),__exception_result_var_b1=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 46, "struct buffer")), come_pop_stackframe(), __exception_result_var_b1);
-    (come_push_stackframe("libcomelang2-gc.c", 47),__exception_result_var_b3=buffer_append_str(((struct buffer*)come_null_check(buf_6, "libcomelang2-gc.c", 47)),(come_push_stackframe("libcomelang2-gc.c", 47),__exception_result_var_b2=xsprintf("%s %d\n",sname,sline), come_pop_stackframe(), __exception_result_var_b2)), come_pop_stackframe(), __exception_result_var_b3);
+    buf_6=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 46, "struct buffer"));
+    buffer_append_str(buf_6,xsprintf("%s %d\n",sname,sline));
     for(
     i_7=gNumComeStackFrame-2 ,    0;    _for_condtionalA2=    i_7>=0 ,    _for_condtionalA2;    i_7-- ,    0    ){
-        (come_push_stackframe("libcomelang2-gc.c", 49),__exception_result_var_b5=buffer_append_str(((struct buffer*)come_null_check(buf_6, "libcomelang2-gc.c", 49)),(come_push_stackframe("libcomelang2-gc.c", 49),__exception_result_var_b4=xsprintf("%s %d\n",gComeStackFrameSName[i_7],gComeStackFrameSLine[i_7]), come_pop_stackframe(), __exception_result_var_b4)), come_pop_stackframe(), __exception_result_var_b5);
+        buffer_append_str(buf_6,xsprintf("%s %d\n",gComeStackFrameSName[i_7],gComeStackFrameSLine[i_7]));
     }
     if(_if_conditional3=gComeStackFrameBuffer,    _if_conditional3) {
-        (come_push_stackframe("libcomelang2-gc.c", 53),free(gComeStackFrameBuffer),come_pop_stackframe());
+        free(gComeStackFrameBuffer);
     }
-    gComeStackFrameBuffer=(come_push_stackframe("libcomelang2-gc.c", 55),__exception_result_var_b7=strdup((come_push_stackframe("libcomelang2-gc.c", 55),__exception_result_var_b6=buffer_to_string(((struct buffer*)come_null_check(buf_6, "libcomelang2-gc.c", 55))), come_pop_stackframe(), __exception_result_var_b6)), come_pop_stackframe(), __exception_result_var_b7);
+    gComeStackFrameBuffer=strdup(buffer_to_string(buf_6));
 }
 
 void exception_stackframe(){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-int __exception_result_var_b8;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    (come_push_stackframe("libcomelang2-gc.c", 60),__exception_result_var_b8=printf("%s",gComeStackFrameBuffer), come_pop_stackframe(), __exception_result_var_b8);
+    printf("%s",gComeStackFrameBuffer);
 }
 
 void stackframe(){
@@ -2817,13 +2812,12 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 int i_8;
 _Bool _for_condtionalA3;
-int __exception_result_var_b9;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&i_8, 0, sizeof(int));
     for(
     i_8=gNumComeStackFrame-1 ,    0;    _for_condtionalA3=    i_8>=0 ,    _for_condtionalA3;    i_8-- ,    0    ){
-        (come_push_stackframe("libcomelang2-gc.c", 66),__exception_result_var_b9=printf("%s %d\n",gComeStackFrameSName[i_8],gComeStackFrameSLine[i_8]), come_pop_stackframe(), __exception_result_var_b9);
+        printf("%s %d\n",gComeStackFrameSName[i_8],gComeStackFrameSLine[i_8]);
     }
 }
 
@@ -2831,11 +2825,10 @@ char* come_get_stackframe(){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b10;
 char* __result13__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result13__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 72),__exception_result_var_b10=__builtin_string(gComeStackFrameBuffer), come_pop_stackframe(), __exception_result_var_b10);
+    __result13__ = __result_obj__ = __builtin_string(gComeStackFrameBuffer);
     return __result13__;
 }
 
@@ -2844,14 +2837,13 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional4;
-int __exception_result_var_b11;
 void* __result14__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional4=mem==((void*)0),    _if_conditional4) {
-        (come_push_stackframe("libcomelang2-gc.c", 78),__exception_result_var_b11=printf("%s %d: null check error\n",sname,sline), come_pop_stackframe(), __exception_result_var_b11);
-        (come_push_stackframe("libcomelang2-gc.c", 79),stackframe(),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 80),exit(2),come_pop_stackframe());
+        printf("%s %d: null check error\n",sname,sline);
+        stackframe();
+        exit(2);
     }
     __result14__ = __result_obj__ = mem;
     return __result14__;
@@ -2862,28 +2854,25 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional5;
-int __exception_result_var_b12;
 _Bool _if_conditional6;
-int __exception_result_var_b13;
 _Bool _if_conditional7;
-int __exception_result_var_b14;
 void* __result15__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional5=mem==((void*)0),    _if_conditional5) {
-        (come_push_stackframe("libcomelang2-gc.c", 89),__exception_result_var_b12=printf("%s %d: null check error\n",sname,sline), come_pop_stackframe(), __exception_result_var_b12);
-        (come_push_stackframe("libcomelang2-gc.c", 90),stackframe(),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 91),exit(2),come_pop_stackframe());
+        printf("%s %d: null check error\n",sname,sline);
+        stackframe();
+        exit(2);
     }
     if(_if_conditional6=mem<begin,    _if_conditional6) {
-        (come_push_stackframe("libcomelang2-gc.c", 95),__exception_result_var_b13=printf("%s %d: range check error\n",sname,sline), come_pop_stackframe(), __exception_result_var_b13);
-        (come_push_stackframe("libcomelang2-gc.c", 96),stackframe(),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 97),exit(2),come_pop_stackframe());
+        printf("%s %d: range check error\n",sname,sline);
+        stackframe();
+        exit(2);
     }
     if(_if_conditional7=mem>=end,    _if_conditional7) {
-        (come_push_stackframe("libcomelang2-gc.c", 101),__exception_result_var_b14=printf("%s %d: range check error\n",sname,sline), come_pop_stackframe(), __exception_result_var_b14);
-        (come_push_stackframe("libcomelang2-gc.c", 102),stackframe(),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 103),exit(2),come_pop_stackframe());
+        printf("%s %d: range check error\n",sname,sline);
+        stackframe();
+        exit(2);
     }
     __result15__ = __result_obj__ = mem;
     return __result15__;
@@ -2901,12 +2890,12 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional8=!self,    _if_conditional8) {
         block(parent);
-        if(_if_conditional9=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 113))->__method_block_result_kind__!=0,        _if_conditional9) {
+        if(_if_conditional9=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional9) {
             __result16__ = self;
             return __result16__;
         }
-        (come_push_stackframe("libcomelang2-gc.c", 116),stackframe(),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 117),exit(1),come_pop_stackframe());
+        stackframe();
+        exit(1);
     }
     __result17__ = self;
     return __result17__;
@@ -2935,7 +2924,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional10=self<0,    _if_conditional10) {
         block(parent);
-        if(_if_conditional11=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 133))->__method_block_result_kind__!=0,        _if_conditional11) {
+        if(_if_conditional11=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional11) {
             __result19__ = self;
             return __result19__;
         }
@@ -2956,12 +2945,12 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional12=self<0,    _if_conditional12) {
         block(parent);
-        if(_if_conditional13=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 145))->__method_block_result_kind__!=0,        _if_conditional13) {
+        if(_if_conditional13=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional13) {
             __result21__ = self;
             return __result21__;
         }
-        (come_push_stackframe("libcomelang2-gc.c", 148),stackframe(),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 149),exit(1),come_pop_stackframe());
+        stackframe();
+        exit(1);
     }
     __result22__ = self;
     return __result22__;
@@ -2990,7 +2979,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional14=self<0,    _if_conditional14) {
         block(parent);
-        if(_if_conditional15=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 164))->__method_block_result_kind__!=0,        _if_conditional15) {
+        if(_if_conditional15=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional15) {
             __result24__ = self;
             return __result24__;
         }
@@ -3011,7 +3000,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional16=!self,    _if_conditional16) {
         block(parent);
-        if(_if_conditional17=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 176))->__method_block_result_kind__!=0,        _if_conditional17) {
+        if(_if_conditional17=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional17) {
             __result26__ = self;
             return __result26__;
         }
@@ -3032,7 +3021,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional18=!self,    _if_conditional18) {
         block(parent);
-        if(_if_conditional19=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 189))->__method_block_result_kind__!=0,        _if_conditional19) {
+        if(_if_conditional19=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional19) {
             __result28__ = self;
             return __result28__;
         }
@@ -3045,18 +3034,15 @@ void xassert(char* msg, _Bool test){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-int __exception_result_var_b15;
 _Bool _if_conditional20;
-int __exception_result_var_b16;
-int __exception_result_var_b17;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    (come_push_stackframe("libcomelang2-gc.c", 199),__exception_result_var_b15=printf("%s...",msg), come_pop_stackframe(), __exception_result_var_b15);
+    printf("%s...",msg);
     if(_if_conditional20=!test,    _if_conditional20) {
-        (come_push_stackframe("libcomelang2-gc.c", 201),__exception_result_var_b16=puts("false"), come_pop_stackframe(), __exception_result_var_b16);
-        (come_push_stackframe("libcomelang2-gc.c", 202),exit(2),come_pop_stackframe());
+        puts("false");
+        exit(2);
     }
-    (come_push_stackframe("libcomelang2-gc.c", 204),__exception_result_var_b17=puts("ok"), come_pop_stackframe(), __exception_result_var_b17);
+    puts("ok");
 }
 
 void come_heap_init(int come_malloc, int come_debug, int come_gc){
@@ -3070,9 +3056,9 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
     gComeDebugLib=come_debug;
     gComeGCLib=come_gc;
     if(_if_conditional21=gComeGCLib,    _if_conditional21) {
-        (come_push_stackframe("libcomelang2-gc.c", 223),GC_init(),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 224),GC_set_warn_proc(GC_ignore_warn_proc),come_pop_stackframe());
-        (come_push_stackframe("libcomelang2-gc.c", 225),GC_enable_incremental(),come_pop_stackframe());
+        GC_init();
+        GC_set_warn_proc(GC_ignore_warn_proc);
+        GC_enable_incremental();
     }
     gComeStackFrameBuffer=((void*)0);
 }
@@ -3085,7 +3071,7 @@ _Bool _if_conditional22;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional22=gComeStackFrameBuffer,    _if_conditional22) {
-        (come_push_stackframe("libcomelang2-gc.c", 234),free(gComeStackFrameBuffer),come_pop_stackframe());
+        free(gComeStackFrameBuffer);
     }
 }
 
@@ -3094,23 +3080,20 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional23;
-void* __exception_result_var_b18;
 void* result_9;
-void* __exception_result_var_b19;
 void* __result30__;
-void* __exception_result_var_b20;
 void* __result31__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_9, 0, sizeof(void*));
     if(_if_conditional23=gComeGCLib,    _if_conditional23) {
-        result_9=(come_push_stackframe("libcomelang2-gc.c", 241),__exception_result_var_b18=GC_malloc(size), come_pop_stackframe(), __exception_result_var_b18);
-        (come_push_stackframe("libcomelang2-gc.c", 242),__exception_result_var_b19=memset(result_9,0,size), come_pop_stackframe(), __exception_result_var_b19);
+        result_9=GC_malloc(size);
+        memset(result_9,0,size);
         __result30__ = __result_obj__ = result_9;
         return __result30__;
     }
     else {
-        __result31__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 246),__exception_result_var_b20=calloc(1,size), come_pop_stackframe(), __exception_result_var_b20);
+        __result31__ = __result_obj__ = calloc(1,size);
         return __result31__;
     }
 }
@@ -3127,7 +3110,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional25=gComeGCLib,        _if_conditional25) {
         }
         else {
-            (come_push_stackframe("libcomelang2-gc.c", 256),free(mem),come_pop_stackframe());
+            free(mem);
         }
     }
 }
@@ -3167,7 +3150,7 @@ memset(&ref_count_13, 0, sizeof(long int*));
         return;
     }
     ref_count_13=(long int*)((char*)mem-sizeof(long int)-sizeof(long int));
-    (come_push_stackframe("libcomelang2-gc.c", 284),come_free_mem_of_heap_pool((char*)ref_count_13),come_pop_stackframe());
+    come_free_mem_of_heap_pool((char*)ref_count_13);
 }
 
 void* come_memdup(void* block, char* sname, int sline, char* class_name){
@@ -3179,9 +3162,7 @@ void* __result33__;
 char* mem_14;
 long int* size_p_15;
 long int size_16;
-void* __exception_result_var_b21;
 void* result_17;
-void* __exception_result_var_b22;
 void* __result34__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3196,8 +3177,8 @@ memset(&result_17, 0, sizeof(void*));
     mem_14=(char*)block-sizeof(long int)-sizeof(long int);
     size_p_15=(long int*)(mem_14+sizeof(long int));
     size_16=*size_p_15-sizeof(long int)-sizeof(long int);
-    result_17=(come_push_stackframe("libcomelang2-gc.c", 299),__exception_result_var_b21=come_calloc(1,size_16,sname,sline,((void*)0)), come_pop_stackframe(), __exception_result_var_b21);
-    (come_push_stackframe("libcomelang2-gc.c", 301),__exception_result_var_b22=memcpy(result_17,block,size_16), come_pop_stackframe(), __exception_result_var_b22);
+    result_17=come_calloc(1,size_16,sname,sline,((void*)0));
+    memcpy(result_17,block,size_16);
     __result34__ = __result_obj__ = result_17;
     return __result34__;
 }
@@ -3230,7 +3211,6 @@ void* __right_value_freed_obj[1024];
 _Bool _if_conditional29;
 void* __result37__;
 long int* ref_count_19;
-int __exception_result_var_b23;
 void* __result38__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3240,7 +3220,7 @@ memset(&ref_count_19, 0, sizeof(long int*));
         return __result37__;
     }
     ref_count_19=(long int*)((char*)mem-sizeof(long int)-sizeof(long int));
-    (come_push_stackframe("libcomelang2-gc.c", 327),__exception_result_var_b23=printf("ref_count %ld\n",*ref_count_19), come_pop_stackframe(), __exception_result_var_b23);
+    printf("ref_count %ld\n",*ref_count_19);
     __result38__ = __result_obj__ = mem;
     return __result38__;
 }
@@ -3277,9 +3257,9 @@ memset(&finalizer_22, 0, sizeof(void (*)(void*)));
         if(_if_conditional33=protocol_obj&&protocol_fun,        _if_conditional33) {
             finalizer_22=protocol_fun;
             finalizer_22(protocol_obj);
-            (come_push_stackframe("libcomelang2-gc.c", 350),come_free_object(protocol_obj),come_pop_stackframe());
+            come_free_object(protocol_obj);
         }
-        (come_push_stackframe("libcomelang2-gc.c", 352),come_free_object(mem),come_pop_stackframe());
+        come_free_object(mem);
         __result40__ = __result_obj__ = ((void*)0);
         return __result40__;
     }
@@ -3338,13 +3318,13 @@ memset(&finalizer_28, 0, sizeof(void (*)(void*)));
                 if(_if_conditional41=protocol_obj&&protocol_fun,                _if_conditional41) {
                     finalizer_27=protocol_fun;
                     finalizer_27(protocol_obj);
-                    (come_push_stackframe("libcomelang2-gc.c", 388),come_free_object(protocol_obj),come_pop_stackframe());
+                    come_free_object(protocol_obj);
                 }
                 if(_if_conditional42=fun,                _if_conditional42) {
                     finalizer_28=fun;
                     finalizer_28(mem);
                 }
-                (come_push_stackframe("libcomelang2-gc.c", 394),come_free_object(mem),come_pop_stackframe());
+                come_free_object(mem);
             }
         }
     }
@@ -3356,10 +3336,8 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional43;
 char* __result42__;
-long int __exception_result_var_b24;
 int len_29;
 char* result_30;
-char* __exception_result_var_b25;
 char* __result43__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3369,9 +3347,9 @@ memset(&result_30, 0, sizeof(char*));
         __result42__ = __result_obj__ = ((void*)0);
         return __result42__;
     }
-    len_29=(come_push_stackframe("libcomelang2-gc.c", 405),__exception_result_var_b24=strlen(str), come_pop_stackframe(), __exception_result_var_b24)+1;
+    len_29=strlen(str)+1;
     result_30=(char*)come_calloc(1, sizeof(char)*(1*(len_29)), "libcomelang2-gc.c", 407, "char");
-    (come_push_stackframe("libcomelang2-gc.c", 409),__exception_result_var_b25=strncpy(result_30,str,len_29), come_pop_stackframe(), __exception_result_var_b25);
+    strncpy(result_30,str,len_29);
     __result43__ = __result_obj__ = result_30;
     return __result43__;
 }
@@ -3408,10 +3386,10 @@ void* __right_value_freed_obj[1024];
 struct buffer* __result45__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 431))->size=128;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 432))->buf=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 432))->size)), "libcomelang2-gc.c", 432, "char");
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 433))->buf[0]=0;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 434))->len=0;
+    self->size=128;
+    self->buf=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 432, "char");
+    self->buf[0]=0;
+    self->len=0;
     __result45__ = __result_obj__ = self;
     return __result45__;
 }
@@ -3423,7 +3401,7 @@ void* __right_value_freed_obj[1024];
 _Bool _if_conditional45;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    if(_if_conditional45=self&&((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 441))->buf,    _if_conditional45) {
+    if(_if_conditional45=self&&self->buf,    _if_conditional45) {
     }
 }
 
@@ -3434,7 +3412,7 @@ void* __right_value_freed_obj[1024];
 _Bool _if_conditional46;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    if(_if_conditional46=self&&((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 445))->buf,    _if_conditional46) {
+    if(_if_conditional46=self&&self->buf,    _if_conditional46) {
     }
 }
 
@@ -3445,7 +3423,6 @@ void* __right_value_freed_obj[1024];
 _Bool _if_conditional47;
 struct buffer* __result46__;
 struct buffer* result_33;
-void* __exception_result_var_b26;
 struct buffer* __result47__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3455,10 +3432,10 @@ memset(&result_33, 0, sizeof(struct buffer*));
         return __result46__;
     }
     result_33=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 454, "struct buffer");
-    ((struct buffer*)come_null_check(result_33, "libcomelang2-gc.c", 456))->size=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 456))->size;
-    ((struct buffer*)come_null_check(result_33, "libcomelang2-gc.c", 457))->buf=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 457))->size)), "libcomelang2-gc.c", 457, "char");
-    ((struct buffer*)come_null_check(result_33, "libcomelang2-gc.c", 458))->len=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 458))->len;
-    (come_push_stackframe("libcomelang2-gc.c", 459),__exception_result_var_b26=memcpy(((struct buffer*)come_null_check(result_33, "libcomelang2-gc.c", 459))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 459))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 459))->len), come_pop_stackframe(), __exception_result_var_b26);
+    result_33->size=self->size;
+    result_33->buf=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 457, "char");
+    result_33->len=self->len;
+    memcpy(result_33->buf,self->buf,self->len);
     __result47__ = __result_obj__ = result_33;
     return __result47__;
 }
@@ -3476,7 +3453,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
         __result48__ = 0;
         return __result48__;
     }
-    __result49__ = ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 469))->len;
+    __result49__ = self->len;
     return __result49__;
 }
 
@@ -3490,8 +3467,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional49=self==((void*)0),    _if_conditional49) {
         return;
     }
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 477))->buf[0]=0;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 478))->len=0;
+    self->buf[0]=0;
+    self->len=0;
 }
 
 void buffer_trim(struct buffer* self, int len){
@@ -3504,8 +3481,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional50=self==((void*)0),    _if_conditional50) {
         return;
     }
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 486))->len-=len;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 487))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 487))->len]=0;
+    self->len-=len;
+    self->buf[self->len]=0;
 }
 
 struct buffer* buffer_append(struct buffer* self, char* mem, long int size){
@@ -3516,11 +3493,8 @@ _Bool _if_conditional51;
 struct buffer* __result50__;
 _Bool _if_conditional52;
 char* old_buf_34;
-void* __exception_result_var_b27;
 int old_len_35;
 int new_size_36;
-void* __exception_result_var_b28;
-void* __exception_result_var_b29;
 struct buffer* __result51__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3531,19 +3505,19 @@ memset(&new_size_36, 0, sizeof(int));
         __result50__ = __result_obj__ = self;
         return __result50__;
     }
-    if(_if_conditional52=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 495))->len+size+1+1>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 495))->size,    _if_conditional52) {
-        old_buf_34=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 496))->size)), "libcomelang2-gc.c", 496, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 497),__exception_result_var_b27=memcpy(old_buf_34,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 497))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 497))->size), come_pop_stackframe(), __exception_result_var_b27);
-        old_len_35=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 498))->len;
-        new_size_36=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 499))->size+size+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 500))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_36)), "libcomelang2-gc.c", 500, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 501),__exception_result_var_b28=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 501))->buf,old_buf_34,old_len_35), come_pop_stackframe(), __exception_result_var_b28);
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 502))->buf[old_len_35]=0;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 503))->size=new_size_36;
+    if(_if_conditional52=self->len+size+1+1>=self->size,    _if_conditional52) {
+        old_buf_34=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 496, "char");
+        memcpy(old_buf_34,self->buf,self->size);
+        old_len_35=self->len;
+        new_size_36=(self->size+size+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_36)), "libcomelang2-gc.c", 500, "char");
+        memcpy(self->buf,old_buf_34,old_len_35);
+        self->buf[old_len_35]=0;
+        self->size=new_size_36;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 506),__exception_result_var_b29=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 506))->buf+((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 506))->len,mem,size), come_pop_stackframe(), __exception_result_var_b29);
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 507))->len+=size;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 508))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 508))->len]=0;
+    memcpy(self->buf+self->len,mem,size);
+    self->len+=size;
+    self->buf[self->len]=0;
     __result51__ = __result_obj__ = self;
     return __result51__;
 }
@@ -3558,7 +3532,6 @@ _Bool _if_conditional54;
 char* old_buf_37;
 int old_len_38;
 int new_size_39;
-void* __exception_result_var_b30;
 struct buffer* __result53__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3569,18 +3542,18 @@ memset(&new_size_39, 0, sizeof(int));
         __result52__ = __result_obj__ = ((void*)0);
         return __result52__;
     }
-    if(_if_conditional54=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 518))->len+1+1+1>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 518))->size,    _if_conditional54) {
-        old_buf_37=charp_clone(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 519))->buf);
-        old_len_38=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 520))->len;
-        new_size_39=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 522))->size+10+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 523))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_39)), "libcomelang2-gc.c", 523, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 524),__exception_result_var_b30=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 524))->buf,old_buf_37,old_len_38), come_pop_stackframe(), __exception_result_var_b30);
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 525))->buf[old_len_38]=0;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 526))->size=new_size_39;
+    if(_if_conditional54=self->len+1+1+1>=self->size,    _if_conditional54) {
+        old_buf_37=charp_clone(self->buf);
+        old_len_38=self->len;
+        new_size_39=(self->size+10+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_39)), "libcomelang2-gc.c", 523, "char");
+        memcpy(self->buf,old_buf_37,old_len_38);
+        self->buf[old_len_38]=0;
+        self->size=new_size_39;
     }
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 529))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 529))->len]=c;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 530))->len++;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 532))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 532))->len]=0;
+    self->buf[self->len]=c;
+    self->len++;
+    self->buf[self->len]=0;
     __result53__ = __result_obj__ = self;
     return __result53__;
 }
@@ -3591,15 +3564,11 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional55;
 struct buffer* __result54__;
-long int __exception_result_var_b31;
 int size_40;
 _Bool _if_conditional56;
 char* old_buf_41;
-void* __exception_result_var_b32;
 int old_len_42;
 int new_size_43;
-void* __exception_result_var_b33;
-void* __exception_result_var_b34;
 struct buffer* __result55__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3611,20 +3580,20 @@ memset(&new_size_43, 0, sizeof(int));
         __result54__ = __result_obj__ = self;
         return __result54__;
     }
-    size_40=(come_push_stackframe("libcomelang2-gc.c", 543),__exception_result_var_b31=strlen(mem), come_pop_stackframe(), __exception_result_var_b31);
-    if(_if_conditional56=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 544))->len+size_40+1+1>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 544))->size,    _if_conditional56) {
-        old_buf_41=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 545))->size)), "libcomelang2-gc.c", 545, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 546),__exception_result_var_b32=memcpy(old_buf_41,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 546))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 546))->size), come_pop_stackframe(), __exception_result_var_b32);
-        old_len_42=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 547))->len;
-        new_size_43=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 548))->size+size_40+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 549))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_43)), "libcomelang2-gc.c", 549, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 550),__exception_result_var_b33=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 550))->buf,old_buf_41,old_len_42), come_pop_stackframe(), __exception_result_var_b33);
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 551))->buf[old_len_42]=0;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 552))->size=new_size_43;
+    size_40=strlen(mem);
+    if(_if_conditional56=self->len+size_40+1+1>=self->size,    _if_conditional56) {
+        old_buf_41=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 545, "char");
+        memcpy(old_buf_41,self->buf,self->size);
+        old_len_42=self->len;
+        new_size_43=(self->size+size_40+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_43)), "libcomelang2-gc.c", 549, "char");
+        memcpy(self->buf,old_buf_41,old_len_42);
+        self->buf[old_len_42]=0;
+        self->size=new_size_43;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 555),__exception_result_var_b34=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 555))->buf+((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 555))->len,mem,size_40), come_pop_stackframe(), __exception_result_var_b34);
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 556))->len+=size_40;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 557))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 557))->len]=0;
+    memcpy(self->buf+self->len,mem,size_40);
+    self->len+=size_40;
+    self->buf[self->len]=0;
     __result55__ = __result_obj__ = self;
     return __result55__;
 }
@@ -3635,15 +3604,11 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional57;
 struct buffer* __result56__;
-long int __exception_result_var_b35;
 int size_44;
 _Bool _if_conditional58;
 char* old_buf_45;
-void* __exception_result_var_b36;
 int old_len_46;
 int new_size_47;
-void* __exception_result_var_b37;
-void* __exception_result_var_b38;
 struct buffer* __result57__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3655,21 +3620,21 @@ memset(&new_size_47, 0, sizeof(int));
         __result56__ = __result_obj__ = self;
         return __result56__;
     }
-    size_44=(come_push_stackframe("libcomelang2-gc.c", 567),__exception_result_var_b35=strlen(mem), come_pop_stackframe(), __exception_result_var_b35)+1;
-    if(_if_conditional58=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 568))->len+size_44+1+1+1>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 568))->size,    _if_conditional58) {
-        old_buf_45=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 569))->size)), "libcomelang2-gc.c", 569, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 570),__exception_result_var_b36=memcpy(old_buf_45,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 570))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 570))->size), come_pop_stackframe(), __exception_result_var_b36);
-        old_len_46=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 571))->len;
-        new_size_47=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 572))->size+size_44+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 573))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_47)), "libcomelang2-gc.c", 573, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 574),__exception_result_var_b37=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 574))->buf,old_buf_45,old_len_46), come_pop_stackframe(), __exception_result_var_b37);
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 575))->buf[old_len_46]=0;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 576))->size=new_size_47;
+    size_44=strlen(mem)+1;
+    if(_if_conditional58=self->len+size_44+1+1+1>=self->size,    _if_conditional58) {
+        old_buf_45=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 569, "char");
+        memcpy(old_buf_45,self->buf,self->size);
+        old_len_46=self->len;
+        new_size_47=(self->size+size_44+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_47)), "libcomelang2-gc.c", 573, "char");
+        memcpy(self->buf,old_buf_45,old_len_46);
+        self->buf[old_len_46]=0;
+        self->size=new_size_47;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 579),__exception_result_var_b38=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 579))->buf+((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 579))->len,mem,size_44), come_pop_stackframe(), __exception_result_var_b38);
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 580))->len+=size_44;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 581))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 581))->len]=0;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 582))->len++;
+    memcpy(self->buf+self->len,mem,size_44);
+    self->len+=size_44;
+    self->buf[self->len]=0;
+    self->len++;
     __result57__ = __result_obj__ = self;
     return __result57__;
 }
@@ -3684,11 +3649,8 @@ int* mem_48;
 int size_49;
 _Bool _if_conditional60;
 char* old_buf_50;
-void* __exception_result_var_b39;
 int old_len_51;
 int new_size_52;
-void* __exception_result_var_b40;
-void* __exception_result_var_b41;
 struct buffer* __result59__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3703,19 +3665,19 @@ memset(&new_size_52, 0, sizeof(int));
     }
     mem_48=&value;
     size_49=sizeof(int);
-    if(_if_conditional60=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 595))->len+size_49+1+1>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 595))->size,    _if_conditional60) {
-        old_buf_50=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 596))->size)), "libcomelang2-gc.c", 596, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 597),__exception_result_var_b39=memcpy(old_buf_50,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 597))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 597))->size), come_pop_stackframe(), __exception_result_var_b39);
-        old_len_51=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 598))->len;
-        new_size_52=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 599))->size+size_49+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 600))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_52)), "libcomelang2-gc.c", 600, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 601),__exception_result_var_b40=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 601))->buf,old_buf_50,old_len_51), come_pop_stackframe(), __exception_result_var_b40);
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 602))->buf[old_len_51]=0;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 603))->size=new_size_52;
+    if(_if_conditional60=self->len+size_49+1+1>=self->size,    _if_conditional60) {
+        old_buf_50=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 596, "char");
+        memcpy(old_buf_50,self->buf,self->size);
+        old_len_51=self->len;
+        new_size_52=(self->size+size_49+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_52)), "libcomelang2-gc.c", 600, "char");
+        memcpy(self->buf,old_buf_50,old_len_51);
+        self->buf[old_len_51]=0;
+        self->size=new_size_52;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 606),__exception_result_var_b41=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 606))->buf+((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 606))->len,mem_48,size_49), come_pop_stackframe(), __exception_result_var_b41);
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 607))->len+=size_49;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 608))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 608))->len]=0;
+    memcpy(self->buf+self->len,mem_48,size_49);
+    self->len+=size_49;
+    self->buf[self->len]=0;
     __result59__ = __result_obj__ = self;
     return __result59__;
 }
@@ -3728,11 +3690,8 @@ long* mem_53;
 int size_54;
 _Bool _if_conditional61;
 char* old_buf_55;
-void* __exception_result_var_b42;
 int old_len_56;
 int new_size_57;
-void* __exception_result_var_b43;
-void* __exception_result_var_b44;
 struct buffer* __result60__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3743,19 +3702,19 @@ memset(&old_len_56, 0, sizeof(int));
 memset(&new_size_57, 0, sizeof(int));
     mem_53=&value;
     size_54=sizeof(long);
-    if(_if_conditional61=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 618))->len+size_54+1+1>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 618))->size,    _if_conditional61) {
-        old_buf_55=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 619))->size)), "libcomelang2-gc.c", 619, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 620),__exception_result_var_b42=memcpy(old_buf_55,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 620))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 620))->size), come_pop_stackframe(), __exception_result_var_b42);
-        old_len_56=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 621))->len;
-        new_size_57=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 622))->size+size_54+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 623))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_57)), "libcomelang2-gc.c", 623, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 624),__exception_result_var_b43=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 624))->buf,old_buf_55,old_len_56), come_pop_stackframe(), __exception_result_var_b43);
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 625))->buf[old_len_56]=0;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 626))->size=new_size_57;
+    if(_if_conditional61=self->len+size_54+1+1>=self->size,    _if_conditional61) {
+        old_buf_55=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 619, "char");
+        memcpy(old_buf_55,self->buf,self->size);
+        old_len_56=self->len;
+        new_size_57=(self->size+size_54+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_57)), "libcomelang2-gc.c", 623, "char");
+        memcpy(self->buf,old_buf_55,old_len_56);
+        self->buf[old_len_56]=0;
+        self->size=new_size_57;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 629),__exception_result_var_b44=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 629))->buf+((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 629))->len,mem_53,size_54), come_pop_stackframe(), __exception_result_var_b44);
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 630))->len+=size_54;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 631))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 631))->len]=0;
+    memcpy(self->buf+self->len,mem_53,size_54);
+    self->len+=size_54;
+    self->buf[self->len]=0;
     __result60__ = __result_obj__ = self;
     return __result60__;
 }
@@ -3770,11 +3729,8 @@ short short* mem_58;
 int size_59;
 _Bool _if_conditional63;
 char* old_buf_60;
-void* __exception_result_var_b45;
 int old_len_61;
 int new_size_62;
-void* __exception_result_var_b46;
-void* __exception_result_var_b47;
 struct buffer* __result62__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -3789,19 +3745,19 @@ memset(&new_size_62, 0, sizeof(int));
     }
     mem_58=&value;
     size_59=sizeof(short short);
-    if(_if_conditional63=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 645))->len+size_59+1+1>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 645))->size,    _if_conditional63) {
-        old_buf_60=(char*)come_calloc(1, sizeof(char)*(1*(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 646))->size)), "libcomelang2-gc.c", 646, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 647),__exception_result_var_b45=memcpy(old_buf_60,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 647))->buf,((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 647))->size), come_pop_stackframe(), __exception_result_var_b45);
-        old_len_61=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 648))->len;
-        new_size_62=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 649))->size+size_59+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 650))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_62)), "libcomelang2-gc.c", 650, "char");
-        (come_push_stackframe("libcomelang2-gc.c", 651),__exception_result_var_b46=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 651))->buf,old_buf_60,old_len_61), come_pop_stackframe(), __exception_result_var_b46);
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 652))->buf[old_len_61]=0;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 653))->size=new_size_62;
+    if(_if_conditional63=self->len+size_59+1+1>=self->size,    _if_conditional63) {
+        old_buf_60=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 646, "char");
+        memcpy(old_buf_60,self->buf,self->size);
+        old_len_61=self->len;
+        new_size_62=(self->size+size_59+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_62)), "libcomelang2-gc.c", 650, "char");
+        memcpy(self->buf,old_buf_60,old_len_61);
+        self->buf[old_len_61]=0;
+        self->size=new_size_62;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 656),__exception_result_var_b47=memcpy(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 656))->buf+((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 656))->len,mem_58,size_59), come_pop_stackframe(), __exception_result_var_b47);
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 657))->len+=size_59;
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 658))->buf[((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 658))->len]=0;
+    memcpy(self->buf+self->len,mem_58,size_59);
+    self->len+=size_59;
+    self->buf[self->len]=0;
     __result62__ = __result_obj__ = self;
     return __result62__;
 }
@@ -3827,18 +3783,18 @@ memset(&i_65, 0, sizeof(int));
         __result63__ = __result_obj__ = ((void*)0);
         return __result63__;
     }
-    len_63=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 669))->len;
+    len_63=self->len;
     len_63=(len_63+3)&~3;
-    if(_if_conditional65=len_63>=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 672))->size,    _if_conditional65) {
-        new_size_64=(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 673))->size+1+1)*2;
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 674))->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_64)), "libcomelang2-gc.c", 674, "char");
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 675))->size=new_size_64;
+    if(_if_conditional65=len_63>=self->size,    _if_conditional65) {
+        new_size_64=(self->size+1+1)*2;
+        self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_64)), "libcomelang2-gc.c", 674, "char");
+        self->size=new_size_64;
     }
     for(
-    i_65=((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 678))->len ,    0;    _for_condtionalA5=    i_65<len_63 ,    _for_condtionalA5;    i_65++ ,    0    ){
-        ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 679))->buf[i_65]=0;
+    i_65=self->len ,    0;    _for_condtionalA5=    i_65<len_63 ,    _for_condtionalA5;    i_65++ ,    0    ){
+        self->buf[i_65]=0;
     }
-    ((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 682))->len=len_63;
+    self->len=len_63;
     __result64__ = __result_obj__ = self;
     return __result64__;
 }
@@ -3853,27 +3809,26 @@ _Bool _if_conditional67;
 struct optional$2intbool* __result67__;
 _Bool _if_conditional68;
 struct optional$2intbool* __result68__;
-int __exception_result_var_b48;
 struct optional$2intbool* __result69__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional66=left==((void*)0)&&right==((void*)0),    _if_conditional66) {
-        __result66__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 690), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 690, "struct optional$2intbool"),0,(_Bool)0));
+        __result66__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 690, "struct optional$2intbool"),0,(_Bool)0);
         return __result66__;
     }
     else {
         if(_if_conditional67=left==((void*)0),        _if_conditional67) {
-            __result67__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 693), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 693, "struct optional$2intbool"),-1,(_Bool)0));
+            __result67__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 693, "struct optional$2intbool"),-1,(_Bool)0);
             return __result67__;
         }
         else {
             if(_if_conditional68=right==((void*)0),            _if_conditional68) {
-                __result68__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 696), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 696, "struct optional$2intbool"),1,(_Bool)0));
+                __result68__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 696, "struct optional$2intbool"),1,(_Bool)0);
                 return __result68__;
             }
         }
     }
-    __result69__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 699, "struct optional$2intbool"),(come_push_stackframe("libcomelang2-gc.c", 699),__exception_result_var_b48=strcmp(((struct buffer*)come_null_check(left, "libcomelang2-gc.c", 699))->buf,((struct buffer*)come_null_check(right, "libcomelang2-gc.c", 699))->buf), come_pop_stackframe(), __exception_result_var_b48),(_Bool)1);
+    __result69__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 699, "struct optional$2intbool"),strcmp(left->buf,right->buf),(_Bool)1);
     return __result69__;
 }
 
@@ -3884,8 +3839,8 @@ void* __right_value_freed_obj[1024];
 struct optional$2intbool* __result65__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-            ((struct optional$2intbool*)come_null_check(self, "./comelang2.h", 40))->v1=v1;
-            ((struct optional$2intbool*)come_null_check(self, "./comelang2.h", 41))->v2=v2;
+            self->v1=v1;
+            self->v2=v2;
             __result65__ = __result_obj__ = self;
             return __result65__;
 }
@@ -3894,21 +3849,19 @@ struct buffer* string_to_buffer(char* self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-struct buffer* __exception_result_var_b49;
 struct buffer* result_66;
 _Bool _if_conditional69;
 struct buffer* __result70__;
-struct buffer* __exception_result_var_b50;
 struct buffer* __result71__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_66, 0, sizeof(struct buffer*));
-    result_66=(come_push_stackframe("libcomelang2-gc.c", 704),__exception_result_var_b49=buffer_initialize(((struct buffer*)come_null_check((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 704, "struct buffer"), "libcomelang2-gc.c", 704))), come_pop_stackframe(), __exception_result_var_b49);
+    result_66=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 704, "struct buffer"));
     if(_if_conditional69=self==((void*)0),    _if_conditional69) {
         __result70__ = __result_obj__ = result_66;
         return __result70__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 710),__exception_result_var_b50=buffer_append_str(((struct buffer*)come_null_check(result_66, "libcomelang2-gc.c", 710)),self), come_pop_stackframe(), __exception_result_var_b50);
+    buffer_append_str(result_66,self);
     __result71__ = __result_obj__ = result_66;
     return __result71__;
 }
@@ -3917,21 +3870,19 @@ struct buffer* charp_to_buffer(char* self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-struct buffer* __exception_result_var_b51;
 struct buffer* result_67;
 _Bool _if_conditional70;
 struct buffer* __result72__;
-struct buffer* __exception_result_var_b52;
 struct buffer* __result73__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_67, 0, sizeof(struct buffer*));
-    result_67=(come_push_stackframe("libcomelang2-gc.c", 717),__exception_result_var_b51=buffer_initialize(((struct buffer*)come_null_check((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 717, "struct buffer"), "libcomelang2-gc.c", 717))), come_pop_stackframe(), __exception_result_var_b51);
+    result_67=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 717, "struct buffer"));
     if(_if_conditional70=self==((void*)0),    _if_conditional70) {
         __result72__ = __result_obj__ = result_67;
         return __result72__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 723),__exception_result_var_b52=buffer_append_str(((struct buffer*)come_null_check(result_67, "libcomelang2-gc.c", 723)),self), come_pop_stackframe(), __exception_result_var_b52);
+    buffer_append_str(result_67,self);
     __result73__ = __result_obj__ = result_67;
     return __result73__;
 }
@@ -3941,17 +3892,15 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional71;
-char* __exception_result_var_b53;
 char* __result74__;
-char* __exception_result_var_b54;
 char* __result75__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional71=self==((void*)0),    _if_conditional71) {
-        __result74__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 731),__exception_result_var_b53=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b53);
+        __result74__ = __result_obj__ = __builtin_string("");
         return __result74__;
     }
-    __result75__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 734),__exception_result_var_b54=__builtin_string(((struct buffer*)come_null_check(self, "libcomelang2-gc.c", 734))->buf), come_pop_stackframe(), __exception_result_var_b54);
+    __result75__ = __result_obj__ = __builtin_string(self->buf);
     return __result75__;
 }
 
@@ -4053,27 +4002,26 @@ _Bool _if_conditional73;
 struct optional$2boolbool* __result86__;
 _Bool _if_conditional74;
 struct optional$2boolbool* __result87__;
-int __exception_result_var_b55;
 struct optional$2boolbool* __result88__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional72=self==((void*)0)&&right==((void*)0),    _if_conditional72) {
-        __result85__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 783), optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 783, "struct optional$2boolbool"),(_Bool)1,(_Bool)0));
+        __result85__ = __result_obj__ = optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 783, "struct optional$2boolbool"),(_Bool)1,(_Bool)0);
         return __result85__;
     }
     else {
         if(_if_conditional73=self==((void*)0),        _if_conditional73) {
-            __result86__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 786), optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 786, "struct optional$2boolbool"),(_Bool)0,(_Bool)0));
+            __result86__ = __result_obj__ = optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 786, "struct optional$2boolbool"),(_Bool)0,(_Bool)0);
             return __result86__;
         }
         else {
             if(_if_conditional74=right==((void*)0),            _if_conditional74) {
-                __result87__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 789), optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 789, "struct optional$2boolbool"),(_Bool)0,(_Bool)0));
+                __result87__ = __result_obj__ = optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 789, "struct optional$2boolbool"),(_Bool)0,(_Bool)0);
                 return __result87__;
             }
         }
     }
-    __result88__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 792, "struct optional$2intbool"),(come_push_stackframe("libcomelang2-gc.c", 792),__exception_result_var_b55=strcmp(self,right), come_pop_stackframe(), __exception_result_var_b55)==0,(_Bool)1);
+    __result88__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 792, "struct optional$2intbool"),strcmp(self,right)==0,(_Bool)1);
     return __result88__;
 }
 
@@ -4084,8 +4032,8 @@ void* __right_value_freed_obj[1024];
 struct optional$2boolbool* __result84__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-            ((struct optional$2boolbool*)come_null_check(self, "./comelang2.h", 40))->v1=v1;
-            ((struct optional$2boolbool*)come_null_check(self, "./comelang2.h", 41))->v2=v2;
+            self->v1=v1;
+            self->v2=v2;
             __result84__ = __result_obj__ = self;
             return __result84__;
 }
@@ -4100,27 +4048,26 @@ _Bool _if_conditional76;
 struct optional$2boolbool* __result90__;
 _Bool _if_conditional77;
 struct optional$2boolbool* __result91__;
-int __exception_result_var_b56;
 struct optional$2boolbool* __result92__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional75=self==((void*)0)&&right==((void*)0),    _if_conditional75) {
-        __result89__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 798), optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 798, "struct optional$2boolbool"),(_Bool)1,(_Bool)0));
+        __result89__ = __result_obj__ = optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 798, "struct optional$2boolbool"),(_Bool)1,(_Bool)0);
         return __result89__;
     }
     else {
         if(_if_conditional76=self==((void*)0),        _if_conditional76) {
-            __result90__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 801), optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 801, "struct optional$2boolbool"),(_Bool)0,(_Bool)0));
+            __result90__ = __result_obj__ = optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 801, "struct optional$2boolbool"),(_Bool)0,(_Bool)0);
             return __result90__;
         }
         else {
             if(_if_conditional77=right==((void*)0),            _if_conditional77) {
-                __result91__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 804), optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 804, "struct optional$2boolbool"),(_Bool)0,(_Bool)0));
+                __result91__ = __result_obj__ = optional$2boolbool_initialize((struct optional$2boolbool*)come_calloc(1, sizeof(struct optional$2boolbool)*(1), "libcomelang2-gc.c", 804, "struct optional$2boolbool"),(_Bool)0,(_Bool)0);
                 return __result91__;
             }
         }
     }
-    __result92__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 807, "struct optional$2intbool"),(come_push_stackframe("libcomelang2-gc.c", 807),__exception_result_var_b56=strcmp(self,right), come_pop_stackframe(), __exception_result_var_b56)==0,(_Bool)1);
+    __result92__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 807, "struct optional$2intbool"),strcmp(self,right)==0,(_Bool)1);
     return __result92__;
 }
 
@@ -4134,7 +4081,6 @@ _Bool _if_conditional79;
 _Bool __result94__;
 _Bool _if_conditional80;
 _Bool __result95__;
-int __exception_result_var_b57;
 _Bool __result96__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4154,7 +4100,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
             }
         }
     }
-    __result96__ = (come_push_stackframe("libcomelang2-gc.c", 822),__exception_result_var_b57=strcmp(self,right), come_pop_stackframe(), __exception_result_var_b57)==0;
+    __result96__ = strcmp(self,right)==0;
     return __result96__;
 }
 
@@ -4168,7 +4114,6 @@ _Bool _if_conditional82;
 _Bool __result98__;
 _Bool _if_conditional83;
 _Bool __result99__;
-int __exception_result_var_b58;
 _Bool __result100__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4188,7 +4133,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
             }
         }
     }
-    __result100__ = (come_push_stackframe("libcomelang2-gc.c", 837),__exception_result_var_b58=strcmp(self,right), come_pop_stackframe(), __exception_result_var_b58)==0;
+    __result100__ = strcmp(self,right)==0;
     return __result100__;
 }
 
@@ -4202,7 +4147,6 @@ _Bool _if_conditional85;
 _Bool __result102__;
 _Bool _if_conditional86;
 _Bool __result103__;
-int __exception_result_var_b59;
 _Bool __result104__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4222,7 +4166,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
             }
         }
     }
-    __result104__ = (come_push_stackframe("libcomelang2-gc.c", 852),__exception_result_var_b59=strcmp(self,right), come_pop_stackframe(), __exception_result_var_b59)!=0;
+    __result104__ = strcmp(self,right)!=0;
     return __result104__;
 }
 
@@ -4236,7 +4180,6 @@ _Bool _if_conditional88;
 _Bool __result106__;
 _Bool _if_conditional89;
 _Bool __result107__;
-int __exception_result_var_b60;
 _Bool __result108__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4256,7 +4199,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
             }
         }
     }
-    __result108__ = (come_push_stackframe("libcomelang2-gc.c", 867),__exception_result_var_b60=strcmp(self,right), come_pop_stackframe(), __exception_result_var_b60)!=0;
+    __result108__ = strcmp(self,right)!=0;
     return __result108__;
 }
 
@@ -4265,27 +4208,22 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional90;
-char* __exception_result_var_b61;
 char* __result109__;
-long int __exception_result_var_b62;
-long int __exception_result_var_b63;
 int len_68;
 char* result_69;
-char* __exception_result_var_b64;
-char* __exception_result_var_b65;
 char* __result110__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_68, 0, sizeof(int));
 memset(&result_69, 0, sizeof(char*));
     if(_if_conditional90=self==((void*)0)||right==((void*)0),    _if_conditional90) {
-        __result109__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 874),__exception_result_var_b61=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b61);
+        __result109__ = __result_obj__ = __builtin_string("");
         return __result109__;
     }
-    len_68=(come_push_stackframe("libcomelang2-gc.c", 876),__exception_result_var_b62=strlen(self), come_pop_stackframe(), __exception_result_var_b62)+(come_push_stackframe("libcomelang2-gc.c", 876),__exception_result_var_b63=strlen(right), come_pop_stackframe(), __exception_result_var_b63);
+    len_68=strlen(self)+strlen(right);
     result_69=(char*)come_calloc(1, sizeof(char)*(1*(len_68+1)), "libcomelang2-gc.c", 878, "char");
-    (come_push_stackframe("libcomelang2-gc.c", 880),__exception_result_var_b64=strncpy(result_69,self,len_68+1), come_pop_stackframe(), __exception_result_var_b64);
-    (come_push_stackframe("libcomelang2-gc.c", 881),__exception_result_var_b65=strncat(result_69,right,len_68+1), come_pop_stackframe(), __exception_result_var_b65);
+    strncpy(result_69,self,len_68+1);
+    strncat(result_69,right,len_68+1);
     __result110__ = __result_obj__ = result_69;
     return __result110__;
 }
@@ -4295,27 +4233,22 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional91;
-char* __exception_result_var_b66;
 char* __result111__;
-long int __exception_result_var_b67;
-long int __exception_result_var_b68;
 int len_70;
 char* result_71;
-char* __exception_result_var_b69;
-char* __exception_result_var_b70;
 char* __result112__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_70, 0, sizeof(int));
 memset(&result_71, 0, sizeof(char*));
     if(_if_conditional91=self==((void*)0)||right==((void*)0),    _if_conditional91) {
-        __result111__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 889),__exception_result_var_b66=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b66);
+        __result111__ = __result_obj__ = __builtin_string("");
         return __result111__;
     }
-    len_70=(come_push_stackframe("libcomelang2-gc.c", 891),__exception_result_var_b67=strlen(self), come_pop_stackframe(), __exception_result_var_b67)+(come_push_stackframe("libcomelang2-gc.c", 891),__exception_result_var_b68=strlen(right), come_pop_stackframe(), __exception_result_var_b68);
+    len_70=strlen(self)+strlen(right);
     result_71=(char*)come_calloc(1, sizeof(char)*(1*(len_70+1)), "libcomelang2-gc.c", 893, "char");
-    (come_push_stackframe("libcomelang2-gc.c", 895),__exception_result_var_b69=strncpy(result_71,self,len_70+1), come_pop_stackframe(), __exception_result_var_b69);
-    (come_push_stackframe("libcomelang2-gc.c", 896),__exception_result_var_b70=strncat(result_71,right,len_70+1), come_pop_stackframe(), __exception_result_var_b70);
+    strncpy(result_71,self,len_70+1);
+    strncat(result_71,right,len_70+1);
     __result112__ = __result_obj__ = result_71;
     return __result112__;
 }
@@ -4325,29 +4258,25 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional92;
-char* __exception_result_var_b71;
 char* __result113__;
-struct buffer* __exception_result_var_b72;
 struct buffer* buf_72;
 int i_73;
 _Bool _for_condtionalA6;
-struct buffer* __exception_result_var_b73;
-char* __exception_result_var_b74;
 char* __result114__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&buf_72, 0, sizeof(struct buffer*));
 memset(&i_73, 0, sizeof(int));
     if(_if_conditional92=self==((void*)0),    _if_conditional92) {
-        __result113__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 904),__exception_result_var_b71=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b71);
+        __result113__ = __result_obj__ = __builtin_string("");
         return __result113__;
     }
-    buf_72=(come_push_stackframe("libcomelang2-gc.c", 906),__exception_result_var_b72=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 906, "struct buffer")), come_pop_stackframe(), __exception_result_var_b72);
+    buf_72=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 906, "struct buffer"));
     for(
     i_73=0 ,    0;    _for_condtionalA6=    i_73<right ,    _for_condtionalA6;    i_73++ ,    0    ){
-        (come_push_stackframe("libcomelang2-gc.c", 909),__exception_result_var_b73=buffer_append_str(((struct buffer*)come_null_check(buf_72, "libcomelang2-gc.c", 909)),self), come_pop_stackframe(), __exception_result_var_b73);
+        buffer_append_str(buf_72,self);
     }
-    __result114__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 912),__exception_result_var_b74=buffer_to_string(((struct buffer*)come_null_check(buf_72, "libcomelang2-gc.c", 912))), come_pop_stackframe(), __exception_result_var_b74);
+    __result114__ = __result_obj__ = buffer_to_string(buf_72);
     return __result114__;
 }
 
@@ -4356,29 +4285,25 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional93;
-char* __exception_result_var_b75;
 char* __result115__;
-struct buffer* __exception_result_var_b76;
 struct buffer* buf_74;
 int i_75;
 _Bool _for_condtionalA7;
-struct buffer* __exception_result_var_b77;
-char* __exception_result_var_b78;
 char* __result116__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&buf_74, 0, sizeof(struct buffer*));
 memset(&i_75, 0, sizeof(int));
     if(_if_conditional93=self==((void*)0),    _if_conditional93) {
-        __result115__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 918),__exception_result_var_b75=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b75);
+        __result115__ = __result_obj__ = __builtin_string("");
         return __result115__;
     }
-    buf_74=(come_push_stackframe("libcomelang2-gc.c", 920),__exception_result_var_b76=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 920, "struct buffer")), come_pop_stackframe(), __exception_result_var_b76);
+    buf_74=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 920, "struct buffer"));
     for(
     i_75=0 ,    0;    _for_condtionalA7=    i_75<right ,    _for_condtionalA7;    i_75++ ,    0    ){
-        (come_push_stackframe("libcomelang2-gc.c", 923),__exception_result_var_b77=buffer_append_str(((struct buffer*)come_null_check(buf_74, "libcomelang2-gc.c", 923)),self), come_pop_stackframe(), __exception_result_var_b77);
+        buffer_append_str(buf_74,self);
     }
-    __result116__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 926),__exception_result_var_b78=buffer_to_string(((struct buffer*)come_null_check(buf_74, "libcomelang2-gc.c", 926))), come_pop_stackframe(), __exception_result_var_b78);
+    __result116__ = __result_obj__ = buffer_to_string(buf_74);
     return __result116__;
 }
 
@@ -4386,11 +4311,10 @@ unsigned int bool_get_hash_key(_Bool value){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-unsigned int __exception_result_var_b79;
 unsigned int __result117__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result117__ = ((come_push_stackframe("libcomelang2-gc.c", 934),__exception_result_var_b79=int_get_hash_key(((int)value)), come_pop_stackframe(), __exception_result_var_b79));
+    __result117__ = (int_get_hash_key(((int)value)));
     return __result117__;
 }
 
@@ -4621,7 +4545,6 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional96;
 char* __result137__;
-char* __exception_result_var_b80;
 char* __result138__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4629,7 +4552,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
         __result137__ = __result_obj__ = ((void*)0);
         return __result137__;
     }
-    __result138__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1046),__exception_result_var_b80=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b80);
+    __result138__ = __result_obj__ = __builtin_string(self);
     return __result138__;
 }
 
@@ -4639,7 +4562,6 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional97;
 char* __result139__;
-char* __exception_result_var_b81;
 char* __result140__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4647,7 +4569,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
         __result139__ = __result_obj__ = ((void*)0);
         return __result139__;
     }
-    __result140__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1053),__exception_result_var_b81=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b81);
+    __result140__ = __result_obj__ = __builtin_string(self);
     return __result140__;
 }
 
@@ -4691,12 +4613,10 @@ _Bool xiswalnum(int c){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-_Bool __exception_result_var_b82;
-_Bool __exception_result_var_b83;
 _Bool __result144__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result144__ = (come_push_stackframe("libcomelang2-gc.c", 1077),__exception_result_var_b82=xiswalpha(c), come_pop_stackframe(), __exception_result_var_b82)||(come_push_stackframe("libcomelang2-gc.c", 1077),__exception_result_var_b83=xiswdigit(c), come_pop_stackframe(), __exception_result_var_b83);
+    __result144__ = xiswalpha(c)||xiswdigit(c);
     return __result144__;
 }
 
@@ -4740,12 +4660,10 @@ _Bool xisalnum(char c){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-_Bool __exception_result_var_b84;
-_Bool __exception_result_var_b85;
 _Bool __result148__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result148__ = (come_push_stackframe("libcomelang2-gc.c", 1098),__exception_result_var_b84=xisalpha(c), come_pop_stackframe(), __exception_result_var_b84)||(come_push_stackframe("libcomelang2-gc.c", 1098),__exception_result_var_b85=xisdigit(c), come_pop_stackframe(), __exception_result_var_b85);
+    __result148__ = xisalpha(c)||xisdigit(c);
     return __result148__;
 }
 
@@ -4783,7 +4701,6 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional98;
 int __result151__;
-long int __exception_result_var_b86;
 int __result152__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4791,7 +4708,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
         __result151__ = 0;
         return __result151__;
     }
-    __result152__ = (come_push_stackframe("libcomelang2-gc.c", 1121),__exception_result_var_b86=strlen(str), come_pop_stackframe(), __exception_result_var_b86);
+    __result152__ = strlen(str);
     return __result152__;
 }
 
@@ -4801,7 +4718,6 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional99;
 int __result153__;
-long int __exception_result_var_b87;
 int __result154__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -4809,7 +4725,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
         __result153__ = 0;
         return __result153__;
     }
-    __result154__ = (come_push_stackframe("libcomelang2-gc.c", 1128),__exception_result_var_b87=strlen(str), come_pop_stackframe(), __exception_result_var_b87);
+    __result154__ = strlen(str);
     return __result154__;
 }
 
@@ -4818,9 +4734,7 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional100;
-char* __exception_result_var_b88;
 char* __result155__;
-long int __exception_result_var_b89;
 int len_84;
 char* result_85;
 int i_86;
@@ -4832,10 +4746,10 @@ memset(&len_84, 0, sizeof(int));
 memset(&result_85, 0, sizeof(char*));
 memset(&i_86, 0, sizeof(int));
     if(_if_conditional100=str==((void*)0),    _if_conditional100) {
-        __result155__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1134),__exception_result_var_b88=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b88);
+        __result155__ = __result_obj__ = __builtin_string("");
         return __result155__;
     }
-    len_84=(come_push_stackframe("libcomelang2-gc.c", 1136),__exception_result_var_b89=strlen(str), come_pop_stackframe(), __exception_result_var_b89);
+    len_84=strlen(str);
     result_85=(char*)come_calloc(1, sizeof(char)*(1*(len_84+1)), "libcomelang2-gc.c", 1137, "char");
     for(
     i_86=0 ,    0;    _for_condtionalA8=    i_86<len_84 ,    _for_condtionalA8;    i_86++ ,    0    ){
@@ -4851,9 +4765,7 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional101;
-char* __exception_result_var_b90;
 char* __result157__;
-long int __exception_result_var_b91;
 int len_87;
 char* result_88;
 int i_89;
@@ -4865,10 +4777,10 @@ memset(&len_87, 0, sizeof(int));
 memset(&result_88, 0, sizeof(char*));
 memset(&i_89, 0, sizeof(int));
     if(_if_conditional101=str==((void*)0),    _if_conditional101) {
-        __result157__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1151),__exception_result_var_b90=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b90);
+        __result157__ = __result_obj__ = __builtin_string("");
         return __result157__;
     }
-    len_87=(come_push_stackframe("libcomelang2-gc.c", 1153),__exception_result_var_b91=strlen(str), come_pop_stackframe(), __exception_result_var_b91);
+    len_87=strlen(str);
     result_88=(char*)come_calloc(1, sizeof(char)*(1*(len_87+1)), "libcomelang2-gc.c", 1154, "char");
     for(
     i_89=0 ,    0;    _for_condtionalA9=    i_89<len_87 ,    _for_condtionalA9;    i_89++ ,    0    ){
@@ -4884,36 +4796,29 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional102;
-char* __exception_result_var_b92;
 char* __result159__;
-long int __exception_result_var_b93;
 int len_90;
 _Bool _if_conditional103;
 _Bool _if_conditional104;
 _Bool _if_conditional105;
-char* __exception_result_var_b94;
-char* __exception_result_var_b95;
 char* __result160__;
 _Bool _if_conditional106;
 _Bool _if_conditional107;
 _Bool _if_conditional108;
-char* __exception_result_var_b96;
 char* __result161__;
 _Bool _if_conditional109;
-char* __exception_result_var_b97;
 char* __result162__;
 char* result_91;
-void* __exception_result_var_b98;
 char* __result163__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_90, 0, sizeof(int));
 memset(&result_91, 0, sizeof(char*));
     if(_if_conditional102=str==((void*)0),    _if_conditional102) {
-        __result159__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1167),__exception_result_var_b92=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b92);
+        __result159__ = __result_obj__ = __builtin_string("");
         return __result159__;
     }
-    len_90=(come_push_stackframe("libcomelang2-gc.c", 1170),__exception_result_var_b93=strlen(str), come_pop_stackframe(), __exception_result_var_b93);
+    len_90=strlen(str);
     if(_if_conditional103=head<0,    _if_conditional103) {
         head+=len_90;
     }
@@ -4921,7 +4826,7 @@ memset(&result_91, 0, sizeof(char*));
         tail+=len_90+1;
     }
     if(_if_conditional105=head>tail,    _if_conditional105) {
-        __result160__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1180),__exception_result_var_b95=string_reverse(((char*)come_null_check((come_push_stackframe("libcomelang2-gc.c", 1180),__exception_result_var_b94=charp_substring(((char*)come_null_check(str, "libcomelang2-gc.c", 1180)),tail,head), come_pop_stackframe(), __exception_result_var_b94), "libcomelang2-gc.c", 1180))), come_pop_stackframe(), __exception_result_var_b95);
+        __result160__ = __result_obj__ = string_reverse(charp_substring(str,tail,head));
         return __result160__;
     }
     if(_if_conditional106=head<0,    _if_conditional106) {
@@ -4931,15 +4836,15 @@ memset(&result_91, 0, sizeof(char*));
         tail=len_90;
     }
     if(_if_conditional108=head==tail,    _if_conditional108) {
-        __result161__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1192),__exception_result_var_b96=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b96);
+        __result161__ = __result_obj__ = __builtin_string("");
         return __result161__;
     }
     if(_if_conditional109=tail-head+1<1,    _if_conditional109) {
-        __result162__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1196),__exception_result_var_b97=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b97);
+        __result162__ = __result_obj__ = __builtin_string("");
         return __result162__;
     }
     result_91=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2-gc.c", 1199, "char");
-    (come_push_stackframe("libcomelang2-gc.c", 1201),__exception_result_var_b98=memcpy(result_91,str+head,tail-head), come_pop_stackframe(), __exception_result_var_b98);
+    memcpy(result_91,str+head,tail-head);
     result_91[tail-head]=0;
     __result163__ = __result_obj__ = result_91;
     return __result163__;
@@ -4950,36 +4855,29 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional110;
-char* __exception_result_var_b99;
 char* __result164__;
-long int __exception_result_var_b100;
 int len_92;
 _Bool _if_conditional111;
 _Bool _if_conditional112;
 _Bool _if_conditional113;
-char* __exception_result_var_b101;
-char* __exception_result_var_b102;
 char* __result165__;
 _Bool _if_conditional114;
 _Bool _if_conditional115;
 _Bool _if_conditional116;
-char* __exception_result_var_b103;
 char* __result166__;
 _Bool _if_conditional117;
-char* __exception_result_var_b104;
 char* __result167__;
 char* result_93;
-void* __exception_result_var_b105;
 char* __result168__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_92, 0, sizeof(int));
 memset(&result_93, 0, sizeof(char*));
     if(_if_conditional110=str==((void*)0),    _if_conditional110) {
-        __result164__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1210),__exception_result_var_b99=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b99);
+        __result164__ = __result_obj__ = __builtin_string("");
         return __result164__;
     }
-    len_92=(come_push_stackframe("libcomelang2-gc.c", 1213),__exception_result_var_b100=strlen(str), come_pop_stackframe(), __exception_result_var_b100);
+    len_92=strlen(str);
     if(_if_conditional111=head<0,    _if_conditional111) {
         head+=len_92;
     }
@@ -4987,7 +4885,7 @@ memset(&result_93, 0, sizeof(char*));
         tail+=len_92+1;
     }
     if(_if_conditional113=head>tail,    _if_conditional113) {
-        __result165__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1223),__exception_result_var_b102=string_reverse(((char*)come_null_check((come_push_stackframe("libcomelang2-gc.c", 1223),__exception_result_var_b101=charp_substring(((char*)come_null_check(str, "libcomelang2-gc.c", 1223)),tail,head), come_pop_stackframe(), __exception_result_var_b101), "libcomelang2-gc.c", 1223))), come_pop_stackframe(), __exception_result_var_b102);
+        __result165__ = __result_obj__ = string_reverse(charp_substring(str,tail,head));
         return __result165__;
     }
     if(_if_conditional114=head<0,    _if_conditional114) {
@@ -4997,15 +4895,15 @@ memset(&result_93, 0, sizeof(char*));
         tail=len_92;
     }
     if(_if_conditional116=head==tail,    _if_conditional116) {
-        __result166__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1235),__exception_result_var_b103=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b103);
+        __result166__ = __result_obj__ = __builtin_string("");
         return __result166__;
     }
     if(_if_conditional117=tail-head+1<1,    _if_conditional117) {
-        __result167__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1239),__exception_result_var_b104=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b104);
+        __result167__ = __result_obj__ = __builtin_string("");
         return __result167__;
     }
     result_93=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2-gc.c", 1242, "char");
-    (come_push_stackframe("libcomelang2-gc.c", 1244),__exception_result_var_b105=memcpy(result_93,str+head,tail-head), come_pop_stackframe(), __exception_result_var_b105);
+    memcpy(result_93,str+head,tail-head);
     result_93[tail-head]=0;
     __result168__ = __result_obj__ = result_93;
     return __result168__;
@@ -5016,36 +4914,29 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional118;
-char* __exception_result_var_b106;
 char* __result169__;
-long int __exception_result_var_b107;
 int len_94;
 _Bool _if_conditional119;
 _Bool _if_conditional120;
 _Bool _if_conditional121;
-char* __exception_result_var_b108;
-char* __exception_result_var_b109;
 char* __result170__;
 _Bool _if_conditional122;
 _Bool _if_conditional123;
 _Bool _if_conditional124;
-char* __exception_result_var_b110;
 char* __result171__;
 _Bool _if_conditional125;
-char* __exception_result_var_b111;
 char* __result172__;
 char* result_95;
-void* __exception_result_var_b112;
 char* __result173__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_94, 0, sizeof(int));
 memset(&result_95, 0, sizeof(char*));
     if(_if_conditional118=str==((void*)0),    _if_conditional118) {
-        __result169__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1253),__exception_result_var_b106=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b106);
+        __result169__ = __result_obj__ = __builtin_string("");
         return __result169__;
     }
-    len_94=(come_push_stackframe("libcomelang2-gc.c", 1256),__exception_result_var_b107=strlen(str), come_pop_stackframe(), __exception_result_var_b107);
+    len_94=strlen(str);
     if(_if_conditional119=head<0,    _if_conditional119) {
         head+=len_94;
     }
@@ -5053,7 +4944,7 @@ memset(&result_95, 0, sizeof(char*));
         tail+=len_94+1;
     }
     if(_if_conditional121=head>tail,    _if_conditional121) {
-        __result170__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1266),__exception_result_var_b109=string_reverse(((char*)come_null_check((come_push_stackframe("libcomelang2-gc.c", 1266),__exception_result_var_b108=charp_substring(((char*)come_null_check(str, "libcomelang2-gc.c", 1266)),tail,head), come_pop_stackframe(), __exception_result_var_b108), "libcomelang2-gc.c", 1266))), come_pop_stackframe(), __exception_result_var_b109);
+        __result170__ = __result_obj__ = string_reverse(charp_substring(str,tail,head));
         return __result170__;
     }
     if(_if_conditional122=head<0,    _if_conditional122) {
@@ -5063,15 +4954,15 @@ memset(&result_95, 0, sizeof(char*));
         tail=len_94;
     }
     if(_if_conditional124=head==tail,    _if_conditional124) {
-        __result171__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1278),__exception_result_var_b110=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b110);
+        __result171__ = __result_obj__ = __builtin_string("");
         return __result171__;
     }
     if(_if_conditional125=tail-head+1<1,    _if_conditional125) {
-        __result172__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1282),__exception_result_var_b111=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b111);
+        __result172__ = __result_obj__ = __builtin_string("");
         return __result172__;
     }
     result_95=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2-gc.c", 1285, "char");
-    (come_push_stackframe("libcomelang2-gc.c", 1287),__exception_result_var_b112=memcpy(result_95,str+head,tail-head), come_pop_stackframe(), __exception_result_var_b112);
+    memcpy(result_95,str+head,tail-head);
     result_95[tail-head]=0;
     __result173__ = __result_obj__ = result_95;
     return __result173__;
@@ -5082,36 +4973,29 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional126;
-char* __exception_result_var_b113;
 char* __result174__;
-long int __exception_result_var_b114;
 int len_96;
 _Bool _if_conditional127;
 _Bool _if_conditional128;
 _Bool _if_conditional129;
-char* __exception_result_var_b115;
-char* __exception_result_var_b116;
 char* __result175__;
 _Bool _if_conditional130;
 _Bool _if_conditional131;
 _Bool _if_conditional132;
-char* __exception_result_var_b117;
 char* __result176__;
 _Bool _if_conditional133;
-char* __exception_result_var_b118;
 char* __result177__;
 char* result_97;
-void* __exception_result_var_b119;
 char* __result178__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_96, 0, sizeof(int));
 memset(&result_97, 0, sizeof(char*));
     if(_if_conditional126=str==((void*)0),    _if_conditional126) {
-        __result174__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1296),__exception_result_var_b113=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b113);
+        __result174__ = __result_obj__ = __builtin_string("");
         return __result174__;
     }
-    len_96=(come_push_stackframe("libcomelang2-gc.c", 1299),__exception_result_var_b114=strlen(str), come_pop_stackframe(), __exception_result_var_b114);
+    len_96=strlen(str);
     if(_if_conditional127=head<0,    _if_conditional127) {
         head+=len_96;
     }
@@ -5119,7 +5003,7 @@ memset(&result_97, 0, sizeof(char*));
         tail+=len_96+1;
     }
     if(_if_conditional129=head>tail,    _if_conditional129) {
-        __result175__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1309),__exception_result_var_b116=string_reverse(((char*)come_null_check((come_push_stackframe("libcomelang2-gc.c", 1309),__exception_result_var_b115=charp_substring(((char*)come_null_check(str, "libcomelang2-gc.c", 1309)),tail,head), come_pop_stackframe(), __exception_result_var_b115), "libcomelang2-gc.c", 1309))), come_pop_stackframe(), __exception_result_var_b116);
+        __result175__ = __result_obj__ = string_reverse(charp_substring(str,tail,head));
         return __result175__;
     }
     if(_if_conditional130=head<0,    _if_conditional130) {
@@ -5129,15 +5013,15 @@ memset(&result_97, 0, sizeof(char*));
         tail=len_96;
     }
     if(_if_conditional132=head==tail,    _if_conditional132) {
-        __result176__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1321),__exception_result_var_b117=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b117);
+        __result176__ = __result_obj__ = __builtin_string("");
         return __result176__;
     }
     if(_if_conditional133=tail-head+1<1,    _if_conditional133) {
-        __result177__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1325),__exception_result_var_b118=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b118);
+        __result177__ = __result_obj__ = __builtin_string("");
         return __result177__;
     }
     result_97=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2-gc.c", 1328, "char");
-    (come_push_stackframe("libcomelang2-gc.c", 1330),__exception_result_var_b119=memcpy(result_97,str+head,tail-head), come_pop_stackframe(), __exception_result_var_b119);
+    memcpy(result_97,str+head,tail-head);
     result_97[tail-head]=0;
     __result178__ = __result_obj__ = result_97;
     return __result178__;
@@ -5148,16 +5032,12 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional134;
-char* __exception_result_var_b120;
 char* __result179__;
 va_list args_98;
 char* result_99;
-int __exception_result_var_b121;
 int len_100;
 _Bool _if_conditional135;
-char* __exception_result_var_b122;
 char* __result180__;
-char* __exception_result_var_b123;
 char* result2_101;
 char* __result181__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -5167,18 +5047,18 @@ memset(&result_99, 0, sizeof(char*));
 memset(&len_100, 0, sizeof(int));
 memset(&result2_101, 0, sizeof(char*));
     if(_if_conditional134=msg==((void*)0),    _if_conditional134) {
-        __result179__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1339),__exception_result_var_b120=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b120);
+        __result179__ = __result_obj__ = __builtin_string("");
         return __result179__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 1342),__builtin_va_start(args_98,msg),come_pop_stackframe());
-    len_100=(come_push_stackframe("libcomelang2-gc.c", 1344),__exception_result_var_b121=vasprintf(&result_99,msg,args_98), come_pop_stackframe(), __exception_result_var_b121);
-    (come_push_stackframe("libcomelang2-gc.c", 1345),__builtin_va_end(args_98),come_pop_stackframe());
+    __builtin_va_start(args_98,msg);
+    len_100=vasprintf(&result_99,msg,args_98);
+    __builtin_va_end(args_98);
     if(_if_conditional135=len_100<0,    _if_conditional135) {
-        __result180__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1348),__exception_result_var_b122=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b122);
+        __result180__ = __result_obj__ = __builtin_string("");
         return __result180__;
     }
-    result2_101=(come_push_stackframe("libcomelang2-gc.c", 1351),__exception_result_var_b123=__builtin_string(result_99), come_pop_stackframe(), __exception_result_var_b123);
-    (come_push_stackframe("libcomelang2-gc.c", 1353),free(result_99),come_pop_stackframe());
+    result2_101=__builtin_string(result_99);
+    free(result_99);
     __result181__ = __result_obj__ = result2_101;
     return __result181__;
 }
@@ -5188,38 +5068,29 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional136;
-char* __exception_result_var_b124;
 char* __result182__;
-long int __exception_result_var_b125;
 int len_102;
-int __exception_result_var_b126;
 _Bool _if_conditional137;
-char* __exception_result_var_b127;
 char* __result183__;
 _Bool _if_conditional138;
 _Bool _if_conditional139;
 _Bool _if_conditional140;
 _Bool _if_conditional141;
-char* __exception_result_var_b128;
 char* __result184__;
 _Bool _if_conditional142;
-char* __exception_result_var_b129;
 char* sub_str_103;
-int __exception_result_var_b130;
-void* __exception_result_var_b131;
-char* __exception_result_var_b132;
 char* __result185__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_102, 0, sizeof(int));
 memset(&sub_str_103, 0, sizeof(char*));
     if(_if_conditional136=str==((void*)0),    _if_conditional136) {
-        __result182__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1361),__exception_result_var_b124=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b124);
+        __result182__ = __result_obj__ = __builtin_string("");
         return __result182__;
     }
-    len_102=(come_push_stackframe("libcomelang2-gc.c", 1364),__exception_result_var_b125=strlen(str), come_pop_stackframe(), __exception_result_var_b125);
-    if(_if_conditional137=(come_push_stackframe("libcomelang2-gc.c", 1366),__exception_result_var_b126=strcmp(str,""), come_pop_stackframe(), __exception_result_var_b126)==0,    _if_conditional137) {
-        __result183__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1367),__exception_result_var_b127=__builtin_string(str), come_pop_stackframe(), __exception_result_var_b127);
+    len_102=strlen(str);
+    if(_if_conditional137=strcmp(str,"")==0,    _if_conditional137) {
+        __result183__ = __result_obj__ = __builtin_string(str);
         return __result183__;
     }
     if(_if_conditional138=head<0,    _if_conditional138) {
@@ -5232,15 +5103,15 @@ memset(&sub_str_103, 0, sizeof(char*));
         head=0;
     }
     if(_if_conditional141=tail<0,    _if_conditional141) {
-        __result184__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1383),__exception_result_var_b128=__builtin_string(str), come_pop_stackframe(), __exception_result_var_b128);
+        __result184__ = __result_obj__ = __builtin_string(str);
         return __result184__;
     }
     if(_if_conditional142=tail>=len_102,    _if_conditional142) {
         tail=len_102;
     }
-    sub_str_103=(come_push_stackframe("libcomelang2-gc.c", 1390),__exception_result_var_b129=charp_substring(((char*)come_null_check(str, "libcomelang2-gc.c", 1390)),tail,-1), come_pop_stackframe(), __exception_result_var_b129);
-    (come_push_stackframe("libcomelang2-gc.c", 1392),__exception_result_var_b131=memcpy(str+head,sub_str_103,(come_push_stackframe("libcomelang2-gc.c", 1392),__exception_result_var_b130=string_length(((char*)come_null_check(sub_str_103, "libcomelang2-gc.c", 1392))), come_pop_stackframe(), __exception_result_var_b130)+1), come_pop_stackframe(), __exception_result_var_b131);
-    __result185__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1394),__exception_result_var_b132=__builtin_string(str), come_pop_stackframe(), __exception_result_var_b132);
+    sub_str_103=charp_substring(str,tail,-1);
+    memcpy(str+head,sub_str_103,string_length(sub_str_103)+1);
+    __result185__ = __result_obj__ = __builtin_string(str);
     return __result185__;
 }
 
@@ -5249,38 +5120,29 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional143;
-char* __exception_result_var_b133;
 char* __result186__;
-long int __exception_result_var_b134;
 int len_104;
-int __exception_result_var_b135;
 _Bool _if_conditional144;
-char* __exception_result_var_b136;
 char* __result187__;
 _Bool _if_conditional145;
 _Bool _if_conditional146;
 _Bool _if_conditional147;
 _Bool _if_conditional148;
-char* __exception_result_var_b137;
 char* __result188__;
 _Bool _if_conditional149;
-char* __exception_result_var_b138;
 char* sub_str_105;
-int __exception_result_var_b139;
-void* __exception_result_var_b140;
-char* __exception_result_var_b141;
 char* __result189__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_104, 0, sizeof(int));
 memset(&sub_str_105, 0, sizeof(char*));
     if(_if_conditional143=str==((void*)0),    _if_conditional143) {
-        __result186__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1400),__exception_result_var_b133=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b133);
+        __result186__ = __result_obj__ = __builtin_string("");
         return __result186__;
     }
-    len_104=(come_push_stackframe("libcomelang2-gc.c", 1403),__exception_result_var_b134=strlen(str), come_pop_stackframe(), __exception_result_var_b134);
-    if(_if_conditional144=(come_push_stackframe("libcomelang2-gc.c", 1405),__exception_result_var_b135=strcmp(str,""), come_pop_stackframe(), __exception_result_var_b135)==0,    _if_conditional144) {
-        __result187__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1406),__exception_result_var_b136=__builtin_string(str), come_pop_stackframe(), __exception_result_var_b136);
+    len_104=strlen(str);
+    if(_if_conditional144=strcmp(str,"")==0,    _if_conditional144) {
+        __result187__ = __result_obj__ = __builtin_string(str);
         return __result187__;
     }
     if(_if_conditional145=head<0,    _if_conditional145) {
@@ -5293,15 +5155,15 @@ memset(&sub_str_105, 0, sizeof(char*));
         head=0;
     }
     if(_if_conditional148=tail<0,    _if_conditional148) {
-        __result188__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1422),__exception_result_var_b137=__builtin_string(str), come_pop_stackframe(), __exception_result_var_b137);
+        __result188__ = __result_obj__ = __builtin_string(str);
         return __result188__;
     }
     if(_if_conditional149=tail>=len_104,    _if_conditional149) {
         tail=len_104;
     }
-    sub_str_105=(come_push_stackframe("libcomelang2-gc.c", 1429),__exception_result_var_b138=charp_substring(((char*)come_null_check(str, "libcomelang2-gc.c", 1429)),tail,-1), come_pop_stackframe(), __exception_result_var_b138);
-    (come_push_stackframe("libcomelang2-gc.c", 1431),__exception_result_var_b140=memcpy(str+head,sub_str_105,(come_push_stackframe("libcomelang2-gc.c", 1431),__exception_result_var_b139=string_length(((char*)come_null_check(sub_str_105, "libcomelang2-gc.c", 1431))), come_pop_stackframe(), __exception_result_var_b139)+1), come_pop_stackframe(), __exception_result_var_b140);
-    __result189__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1433),__exception_result_var_b141=__builtin_string(str), come_pop_stackframe(), __exception_result_var_b141);
+    sub_str_105=charp_substring(str,tail,-1);
+    memcpy(str+head,sub_str_105,string_length(sub_str_105)+1);
+    __result189__ = __result_obj__ = __builtin_string(str);
     return __result189__;
 }
 
@@ -5310,23 +5172,13 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional150;
-struct list$1charph* __exception_result_var_b142;
 struct list$1charph* __result191__;
-struct list$1charph* __exception_result_var_b143;
 struct list$1charph* result_106;
-struct buffer* __exception_result_var_b144;
 struct buffer* str_107;
 int i_108;
-int __exception_result_var_b145;
 _Bool _for_condtionalA10;
 _Bool _if_conditional151;
-char* __exception_result_var_b146;
-struct list$1charph* __exception_result_var_b147;
-struct buffer* __exception_result_var_b148;
-int __exception_result_var_b149;
 _Bool _if_conditional154;
-char* __exception_result_var_b150;
-struct list$1charph* __exception_result_var_b151;
 struct list$1charph* __result193__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -5334,23 +5186,23 @@ memset(&result_106, 0, sizeof(struct list$1charph*));
 memset(&str_107, 0, sizeof(struct buffer*));
 memset(&i_108, 0, sizeof(int));
     if(_if_conditional150=self==((void*)0),    _if_conditional150) {
-        __result191__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1439),__exception_result_var_b142=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1439, "struct list$1charph")), come_pop_stackframe(), __exception_result_var_b142);
+        __result191__ = __result_obj__ = list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1439, "struct list$1charph"));
         return __result191__;
     }
-    result_106=(come_push_stackframe("libcomelang2-gc.c", 1442),__exception_result_var_b143=list$1charph_initialize(((struct list$1charph*)come_null_check((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1442, "struct list$1charph"), "libcomelang2-gc.c", 1442))), come_pop_stackframe(), __exception_result_var_b143);
-    str_107=(come_push_stackframe("libcomelang2-gc.c", 1444),__exception_result_var_b144=buffer_initialize(((struct buffer*)come_null_check((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1444, "struct buffer"), "libcomelang2-gc.c", 1444))), come_pop_stackframe(), __exception_result_var_b144);
+    result_106=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1442, "struct list$1charph"));
+    str_107=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1444, "struct buffer"));
     for(
-    i_108=0 ,    0;    _for_condtionalA10=    i_108<(come_push_stackframe("libcomelang2-gc.c", 1446),__exception_result_var_b145=charp_length(((char*)come_null_check(self, "libcomelang2-gc.c", 1446))), come_pop_stackframe(), __exception_result_var_b145) ,    _for_condtionalA10;    i_108++ ,    0    ){
+    i_108=0 ,    0;    _for_condtionalA10=    i_108<charp_length(self) ,    _for_condtionalA10;    i_108++ ,    0    ){
         if(_if_conditional151=self[i_108]==c,        _if_conditional151) {
-            (come_push_stackframe("libcomelang2-gc.c", 1448),__exception_result_var_b147=list$1charph_push_back(((struct list$1charph*)come_null_check(result_106, "libcomelang2-gc.c", 1448)),(come_push_stackframe("libcomelang2-gc.c", 1448),__exception_result_var_b146=__builtin_string(((struct buffer*)come_null_check(str_107, "libcomelang2-gc.c", 1448))->buf), come_pop_stackframe(), __exception_result_var_b146)), come_pop_stackframe(), __exception_result_var_b147);
-            (come_push_stackframe("libcomelang2-gc.c", 1449),buffer_reset(((struct buffer*)come_null_check(str_107, "libcomelang2-gc.c", 1449))),come_pop_stackframe());
+            list$1charph_push_back(result_106,__builtin_string(str_107->buf));
+            buffer_reset(str_107);
         }
         else {
-            (come_push_stackframe("libcomelang2-gc.c", 1452),__exception_result_var_b148=buffer_append_char(((struct buffer*)come_null_check(str_107, "libcomelang2-gc.c", 1452)),self[i_108]), come_pop_stackframe(), __exception_result_var_b148);
+            buffer_append_char(str_107,self[i_108]);
         }
     }
-    if(_if_conditional154=(come_push_stackframe("libcomelang2-gc.c", 1455),__exception_result_var_b149=buffer_length(((struct buffer*)come_null_check(str_107, "libcomelang2-gc.c", 1455))), come_pop_stackframe(), __exception_result_var_b149)!=0,    _if_conditional154) {
-        (come_push_stackframe("libcomelang2-gc.c", 1456),__exception_result_var_b151=list$1charph_push_back(((struct list$1charph*)come_null_check(result_106, "libcomelang2-gc.c", 1456)),(come_push_stackframe("libcomelang2-gc.c", 1456),__exception_result_var_b150=__builtin_string(((struct buffer*)come_null_check(str_107, "libcomelang2-gc.c", 1456))->buf), come_pop_stackframe(), __exception_result_var_b150)), come_pop_stackframe(), __exception_result_var_b151);
+    if(_if_conditional154=buffer_length(str_107)!=0,    _if_conditional154) {
+        list$1charph_push_back(result_106,__builtin_string(str_107->buf));
     }
     __result193__ = __result_obj__ = result_106;
     return __result193__;
@@ -5363,9 +5215,9 @@ void* __right_value_freed_obj[1024];
 struct list$1charph* __result190__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-            ((struct list$1charph*)come_null_check(self, "./comelang2.h", 159))->head=((void*)0);
-            ((struct list$1charph*)come_null_check(self, "./comelang2.h", 160))->tail=((void*)0);
-            ((struct list$1charph*)come_null_check(self, "./comelang2.h", 161))->len=0;
+            self->head=((void*)0);
+            self->tail=((void*)0);
+            self->len=0;
             __result190__ = __result_obj__ = self;
             return __result190__;
 }
@@ -5385,33 +5237,33 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&litem_109, 0, sizeof(struct list_item$1charph*));
 memset(&litem_110, 0, sizeof(struct list_item$1charph*));
 memset(&litem_111, 0, sizeof(struct list_item$1charph*));
-                if(_if_conditional152=((struct list$1charph*)come_null_check(self, "./comelang2.h", 280))->len==0,                _if_conditional152) {
-                    litem_109=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 281, "struct list_item$1charph");
-                    ((struct list_item$1charph*)come_null_check(litem_109, "./comelang2.h", 283))->prev=((void*)0);
-                    ((struct list_item$1charph*)come_null_check(litem_109, "./comelang2.h", 284))->next=((void*)0);
-                    ((struct list_item$1charph*)come_null_check(litem_109, "./comelang2.h", 285))->item=item;
-                    ((struct list$1charph*)come_null_check(self, "./comelang2.h", 287))->tail=litem_109;
-                    ((struct list$1charph*)come_null_check(self, "./comelang2.h", 288))->head=litem_109;
+                if(_if_conditional152=self->len==0,                _if_conditional152) {
+                    litem_109=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 282, "struct list_item$1charph");
+                    litem_109->prev=((void*)0);
+                    litem_109->next=((void*)0);
+                    litem_109->item=item;
+                    self->tail=litem_109;
+                    self->head=litem_109;
                 }
                 else {
-                    if(_if_conditional153=((struct list$1charph*)come_null_check(self, "./comelang2.h", 290))->len==1,                    _if_conditional153) {
-                        litem_110=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 291, "struct list_item$1charph");
-                        ((struct list_item$1charph*)come_null_check(litem_110, "./comelang2.h", 293))->prev=((struct list$1charph*)come_null_check(self, "./comelang2.h", 293))->head;
-                        ((struct list_item$1charph*)come_null_check(litem_110, "./comelang2.h", 294))->next=((void*)0);
-                        ((struct list_item$1charph*)come_null_check(litem_110, "./comelang2.h", 295))->item=item;
-                        ((struct list$1charph*)come_null_check(self, "./comelang2.h", 297))->tail=litem_110;
-                        ((struct list_item$1charph*)come_null_check(((struct list$1charph*)come_null_check(self, "./comelang2.h", 298))->head, "./comelang2.h", 298))->next=litem_110;
+                    if(_if_conditional153=self->len==1,                    _if_conditional153) {
+                        litem_110=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 292, "struct list_item$1charph");
+                        litem_110->prev=self->head;
+                        litem_110->next=((void*)0);
+                        litem_110->item=item;
+                        self->tail=litem_110;
+                        self->head->next=litem_110;
                     }
                     else {
-                        litem_111=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 301, "struct list_item$1charph");
-                        ((struct list_item$1charph*)come_null_check(litem_111, "./comelang2.h", 303))->prev=((struct list$1charph*)come_null_check(self, "./comelang2.h", 303))->tail;
-                        ((struct list_item$1charph*)come_null_check(litem_111, "./comelang2.h", 304))->next=((void*)0);
-                        ((struct list_item$1charph*)come_null_check(litem_111, "./comelang2.h", 305))->item=item;
-                        ((struct list_item$1charph*)come_null_check(((struct list$1charph*)come_null_check(self, "./comelang2.h", 307))->tail, "./comelang2.h", 307))->next=litem_111;
-                        ((struct list$1charph*)come_null_check(self, "./comelang2.h", 308))->tail=litem_111;
+                        litem_111=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 302, "struct list_item$1charph");
+                        litem_111->prev=self->tail;
+                        litem_111->next=((void*)0);
+                        litem_111->item=item;
+                        self->tail->next=litem_111;
+                        self->tail=litem_111;
                     }
                 }
-                ((struct list$1charph*)come_null_check(self, "./comelang2.h", 311))->len++;
+                self->len++;
                 __result192__ = __result_obj__ = self;
                 return __result192__;
 }
@@ -5421,23 +5273,13 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional155;
-struct list$1charph* __exception_result_var_b152;
 struct list$1charph* __result194__;
-struct list$1charph* __exception_result_var_b153;
 struct list$1charph* result_112;
-struct buffer* __exception_result_var_b154;
 struct buffer* str_113;
 int i_114;
-int __exception_result_var_b155;
 _Bool _for_condtionalA11;
 _Bool _if_conditional156;
-char* __exception_result_var_b156;
-struct list$1charph* __exception_result_var_b157;
-struct buffer* __exception_result_var_b158;
-int __exception_result_var_b159;
 _Bool _if_conditional157;
-char* __exception_result_var_b160;
-struct list$1charph* __exception_result_var_b161;
 struct list$1charph* __result195__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -5445,23 +5287,23 @@ memset(&result_112, 0, sizeof(struct list$1charph*));
 memset(&str_113, 0, sizeof(struct buffer*));
 memset(&i_114, 0, sizeof(int));
     if(_if_conditional155=self==((void*)0),    _if_conditional155) {
-        __result194__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1465),__exception_result_var_b152=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1465, "struct list$1charph")), come_pop_stackframe(), __exception_result_var_b152);
+        __result194__ = __result_obj__ = list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1465, "struct list$1charph"));
         return __result194__;
     }
-    result_112=(come_push_stackframe("libcomelang2-gc.c", 1468),__exception_result_var_b153=list$1charph_initialize(((struct list$1charph*)come_null_check((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1468, "struct list$1charph"), "libcomelang2-gc.c", 1468))), come_pop_stackframe(), __exception_result_var_b153);
-    str_113=(come_push_stackframe("libcomelang2-gc.c", 1470),__exception_result_var_b154=buffer_initialize(((struct buffer*)come_null_check((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1470, "struct buffer"), "libcomelang2-gc.c", 1470))), come_pop_stackframe(), __exception_result_var_b154);
+    result_112=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1468, "struct list$1charph"));
+    str_113=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1470, "struct buffer"));
     for(
-    i_114=0 ,    0;    _for_condtionalA11=    i_114<(come_push_stackframe("libcomelang2-gc.c", 1472),__exception_result_var_b155=charp_length(((char*)come_null_check(self, "libcomelang2-gc.c", 1472))), come_pop_stackframe(), __exception_result_var_b155) ,    _for_condtionalA11;    i_114++ ,    0    ){
+    i_114=0 ,    0;    _for_condtionalA11=    i_114<charp_length(self) ,    _for_condtionalA11;    i_114++ ,    0    ){
         if(_if_conditional156=self[i_114]==c,        _if_conditional156) {
-            (come_push_stackframe("libcomelang2-gc.c", 1474),__exception_result_var_b157=list$1charph_push_back(((struct list$1charph*)come_null_check(result_112, "libcomelang2-gc.c", 1474)),(come_push_stackframe("libcomelang2-gc.c", 1474),__exception_result_var_b156=__builtin_string(((struct buffer*)come_null_check(str_113, "libcomelang2-gc.c", 1474))->buf), come_pop_stackframe(), __exception_result_var_b156)), come_pop_stackframe(), __exception_result_var_b157);
-            (come_push_stackframe("libcomelang2-gc.c", 1475),buffer_reset(((struct buffer*)come_null_check(str_113, "libcomelang2-gc.c", 1475))),come_pop_stackframe());
+            list$1charph_push_back(result_112,__builtin_string(str_113->buf));
+            buffer_reset(str_113);
         }
         else {
-            (come_push_stackframe("libcomelang2-gc.c", 1478),__exception_result_var_b158=buffer_append_char(((struct buffer*)come_null_check(str_113, "libcomelang2-gc.c", 1478)),self[i_114]), come_pop_stackframe(), __exception_result_var_b158);
+            buffer_append_char(str_113,self[i_114]);
         }
     }
-    if(_if_conditional157=(come_push_stackframe("libcomelang2-gc.c", 1481),__exception_result_var_b159=buffer_length(((struct buffer*)come_null_check(str_113, "libcomelang2-gc.c", 1481))), come_pop_stackframe(), __exception_result_var_b159)!=0,    _if_conditional157) {
-        (come_push_stackframe("libcomelang2-gc.c", 1482),__exception_result_var_b161=list$1charph_push_back(((struct list$1charph*)come_null_check(result_112, "libcomelang2-gc.c", 1482)),(come_push_stackframe("libcomelang2-gc.c", 1482),__exception_result_var_b160=__builtin_string(((struct buffer*)come_null_check(str_113, "libcomelang2-gc.c", 1482))->buf), come_pop_stackframe(), __exception_result_var_b160)), come_pop_stackframe(), __exception_result_var_b161);
+    if(_if_conditional157=buffer_length(str_113)!=0,    _if_conditional157) {
+        list$1charph_push_back(result_112,__builtin_string(str_113->buf));
     }
     __result195__ = __result_obj__ = result_112;
     return __result195__;
@@ -5472,27 +5314,22 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional158;
-char* __exception_result_var_b162;
 char* __result196__;
-long int __exception_result_var_b163;
 char* p_115;
 _Bool _while_condtional3;
 _Bool _if_conditional159;
 _Bool _if_conditional160;
-char* __exception_result_var_b164;
 char* __result197__;
-char* __exception_result_var_b165;
 char* __result198__;
-char* __exception_result_var_b166;
 char* __result199__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&p_115, 0, sizeof(char*));
     if(_if_conditional158=path==((void*)0),    _if_conditional158) {
-        __result196__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1494),__exception_result_var_b162=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b162);
+        __result196__ = __result_obj__ = __builtin_string("");
         return __result196__;
     }
-    p_115=path+(come_push_stackframe("libcomelang2-gc.c", 1496),__exception_result_var_b163=strlen(path), come_pop_stackframe(), __exception_result_var_b163);
+    p_115=path+strlen(path);
     while(_while_condtional3=p_115>=path,    _while_condtional3) {
         if(_if_conditional159=*p_115==47,        _if_conditional159) {
             break;
@@ -5502,14 +5339,14 @@ memset(&p_115, 0, sizeof(char*));
         }
     }
     if(_if_conditional160=p_115<path,    _if_conditional160) {
-        __result197__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1508),__exception_result_var_b164=__builtin_string(path), come_pop_stackframe(), __exception_result_var_b164);
+        __result197__ = __result_obj__ = __builtin_string(path);
         return __result197__;
     }
     else {
-        __result198__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1511),__exception_result_var_b165=__builtin_string(p_115+1), come_pop_stackframe(), __exception_result_var_b165);
+        __result198__ = __result_obj__ = __builtin_string(p_115+1);
         return __result198__;
     }
-    __result199__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1514),__exception_result_var_b166=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b166);
+    __result199__ = __result_obj__ = __builtin_string("");
     return __result199__;
 }
 
@@ -5518,19 +5355,15 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional161;
-char* __exception_result_var_b167;
 char* __result200__;
-char* __exception_result_var_b168;
-char* __exception_result_var_b169;
-char* __exception_result_var_b170;
 char* __result201__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional161=path==((void*)0),    _if_conditional161) {
-        __result200__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1520),__exception_result_var_b167=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b167);
+        __result200__ = __result_obj__ = __builtin_string("");
         return __result200__;
     }
-    __result201__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1522),__exception_result_var_b170=__builtin_string((come_push_stackframe("libcomelang2-gc.c", 1522),__exception_result_var_b169=dirname((come_push_stackframe("libcomelang2-gc.c", 1522),__exception_result_var_b168=__builtin_string(path), come_pop_stackframe(), __exception_result_var_b168)), come_pop_stackframe(), __exception_result_var_b169)), come_pop_stackframe(), __exception_result_var_b170);
+    __result201__ = __result_obj__ = __builtin_string(dirname(__builtin_string(path)));
     return __result201__;
 }
 
@@ -5539,31 +5372,25 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional162;
-char* __exception_result_var_b171;
 char* __result202__;
-char* __exception_result_var_b172;
 char* path2_116;
-long int __exception_result_var_b173;
 char* p_117;
 _Bool _while_condtional4;
 _Bool _if_conditional163;
 _Bool _if_conditional164;
-char* __exception_result_var_b174;
 char* __result203__;
-char* __exception_result_var_b175;
 char* __result204__;
-char* __exception_result_var_b176;
 char* __result205__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&path2_116, 0, sizeof(char*));
 memset(&p_117, 0, sizeof(char*));
     if(_if_conditional162=path==((void*)0),    _if_conditional162) {
-        __result202__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1528),__exception_result_var_b171=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b171);
+        __result202__ = __result_obj__ = __builtin_string("");
         return __result202__;
     }
-    path2_116=(come_push_stackframe("libcomelang2-gc.c", 1530),__exception_result_var_b172=xbasename(path), come_pop_stackframe(), __exception_result_var_b172);
-    p_117=path2_116+(come_push_stackframe("libcomelang2-gc.c", 1532),__exception_result_var_b173=strlen(path2_116), come_pop_stackframe(), __exception_result_var_b173);
+    path2_116=xbasename(path);
+    p_117=path2_116+strlen(path2_116);
     while(_while_condtional4=p_117>=path2_116,    _while_condtional4) {
         if(_if_conditional163=*p_117==46,        _if_conditional163) {
             break;
@@ -5573,14 +5400,14 @@ memset(&p_117, 0, sizeof(char*));
         }
     }
     if(_if_conditional164=p_117<path2_116,    _if_conditional164) {
-        __result203__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1544),__exception_result_var_b174=__builtin_string(path2_116), come_pop_stackframe(), __exception_result_var_b174);
+        __result203__ = __result_obj__ = __builtin_string(path2_116);
         return __result203__;
     }
     else {
-        __result204__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1547),__exception_result_var_b175=string_substring(((char*)come_null_check(path2_116, "libcomelang2-gc.c", 1547)),0,p_117-path2_116), come_pop_stackframe(), __exception_result_var_b175);
+        __result204__ = __result_obj__ = string_substring(path2_116,0,p_117-path2_116);
         return __result204__;
     }
-    __result205__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1550),__exception_result_var_b176=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b176);
+    __result205__ = __result_obj__ = __builtin_string("");
     return __result205__;
 }
 
@@ -5589,27 +5416,22 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional165;
-char* __exception_result_var_b177;
 char* __result206__;
-long int __exception_result_var_b178;
 char* p_118;
 _Bool _while_condtional5;
 _Bool _if_conditional166;
 _Bool _if_conditional167;
-char* __exception_result_var_b179;
 char* __result207__;
-char* __exception_result_var_b180;
 char* __result208__;
-char* __exception_result_var_b181;
 char* __result209__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&p_118, 0, sizeof(char*));
     if(_if_conditional165=path==((void*)0),    _if_conditional165) {
-        __result206__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1556),__exception_result_var_b177=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b177);
+        __result206__ = __result_obj__ = __builtin_string("");
         return __result206__;
     }
-    p_118=path+(come_push_stackframe("libcomelang2-gc.c", 1558),__exception_result_var_b178=strlen(path), come_pop_stackframe(), __exception_result_var_b178);
+    p_118=path+strlen(path);
     while(_while_condtional5=p_118>=path,    _while_condtional5) {
         if(_if_conditional166=*p_118==46,        _if_conditional166) {
             break;
@@ -5619,14 +5441,14 @@ memset(&p_118, 0, sizeof(char*));
         }
     }
     if(_if_conditional167=p_118<path,    _if_conditional167) {
-        __result207__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1570),__exception_result_var_b179=__builtin_string(path), come_pop_stackframe(), __exception_result_var_b179);
+        __result207__ = __result_obj__ = __builtin_string(path);
         return __result207__;
     }
     else {
-        __result208__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1573),__exception_result_var_b180=__builtin_string(p_118+1), come_pop_stackframe(), __exception_result_var_b180);
+        __result208__ = __result_obj__ = __builtin_string(p_118+1);
         return __result208__;
     }
-    __result209__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1576),__exception_result_var_b181=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b181);
+    __result209__ = __result_obj__ = __builtin_string("");
     return __result209__;
 }
 
@@ -5635,11 +5457,8 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional168;
-char* __exception_result_var_b182;
 char* __result210__;
-char* __exception_result_var_b183;
 char* result_119;
-char* __exception_result_var_b184;
 char* result2_120;
 char* __result211__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -5647,12 +5466,12 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_119, 0, sizeof(char*));
 memset(&result2_120, 0, sizeof(char*));
     if(_if_conditional168=path==((void*)0),    _if_conditional168) {
-        __result210__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1582),__exception_result_var_b182=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b182);
+        __result210__ = __result_obj__ = __builtin_string("");
         return __result210__;
     }
-    result_119=(come_push_stackframe("libcomelang2-gc.c", 1584),__exception_result_var_b183=realpath(path,((void*)0)), come_pop_stackframe(), __exception_result_var_b183);
-    result2_120=(come_push_stackframe("libcomelang2-gc.c", 1586),__exception_result_var_b184=__builtin_string(result_119), come_pop_stackframe(), __exception_result_var_b184);
-    (come_push_stackframe("libcomelang2-gc.c", 1588),free(result_119),come_pop_stackframe());
+    result_119=realpath(path,((void*)0));
+    result2_120=__builtin_string(result_119);
+    free(result_119);
     __result211__ = __result_obj__ = result2_120;
     return __result211__;
 }
@@ -5662,18 +5481,16 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional169;
-char* __exception_result_var_b185;
 char* __result212__;
-char* __exception_result_var_b186;
 char* __result213__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional169=self,    _if_conditional169) {
-        __result212__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1599),__exception_result_var_b185=__builtin_string("true"), come_pop_stackframe(), __exception_result_var_b185);
+        __result212__ = __result_obj__ = __builtin_string("true");
         return __result212__;
     }
     else {
-        __result213__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1602),__exception_result_var_b186=__builtin_string("false"), come_pop_stackframe(), __exception_result_var_b186);
+        __result213__ = __result_obj__ = __builtin_string("false");
         return __result213__;
     }
 }
@@ -5682,11 +5499,10 @@ char* char_to_string(char self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b187;
 char* __result214__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result214__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1608),__exception_result_var_b187=xsprintf("%c",self), come_pop_stackframe(), __exception_result_var_b187);
+    __result214__ = __result_obj__ = xsprintf("%c",self);
     return __result214__;
 }
 
@@ -5694,11 +5510,10 @@ char* short_to_string(short short self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b188;
 char* __result215__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result215__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1613),__exception_result_var_b188=xsprintf("%d",self), come_pop_stackframe(), __exception_result_var_b188);
+    __result215__ = __result_obj__ = xsprintf("%d",self);
     return __result215__;
 }
 
@@ -5706,11 +5521,10 @@ char* int_to_string(int self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b189;
 char* __result216__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result216__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1618),__exception_result_var_b189=xsprintf("%d",self), come_pop_stackframe(), __exception_result_var_b189);
+    __result216__ = __result_obj__ = xsprintf("%d",self);
     return __result216__;
 }
 
@@ -5718,11 +5532,10 @@ char* long_to_string(long self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b190;
 char* __result217__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result217__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1623),__exception_result_var_b190=xsprintf("%ld",self), come_pop_stackframe(), __exception_result_var_b190);
+    __result217__ = __result_obj__ = xsprintf("%ld",self);
     return __result217__;
 }
 
@@ -5730,11 +5543,10 @@ char* size_t_to_string(long int self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b191;
 char* __result218__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result218__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1628),__exception_result_var_b191=xsprintf("%ld",self), come_pop_stackframe(), __exception_result_var_b191);
+    __result218__ = __result_obj__ = xsprintf("%ld",self);
     return __result218__;
 }
 
@@ -5742,11 +5554,10 @@ char* float_to_string(float self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b192;
 char* __result219__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result219__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1633),__exception_result_var_b192=xsprintf("%f",self), come_pop_stackframe(), __exception_result_var_b192);
+    __result219__ = __result_obj__ = xsprintf("%f",self);
     return __result219__;
 }
 
@@ -5754,11 +5565,10 @@ char* double_to_string(double self){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-char* __exception_result_var_b193;
 char* __result220__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    __result220__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1638),__exception_result_var_b193=xsprintf("%lf",self), come_pop_stackframe(), __exception_result_var_b193);
+    __result220__ = __result_obj__ = xsprintf("%lf",self);
     return __result220__;
 }
 
@@ -5767,17 +5577,15 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional170;
-char* __exception_result_var_b194;
 char* __result221__;
-char* __exception_result_var_b195;
 char* __result222__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional170=self==((void*)0),    _if_conditional170) {
-        __result221__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1644),__exception_result_var_b194=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b194);
+        __result221__ = __result_obj__ = __builtin_string("");
         return __result221__;
     }
-    __result222__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1646),__exception_result_var_b195=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b195);
+    __result222__ = __result_obj__ = __builtin_string(self);
     return __result222__;
 }
 
@@ -5786,17 +5594,15 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional171;
-char* __exception_result_var_b196;
 char* __result223__;
-char* __exception_result_var_b197;
 char* __result224__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional171=self==((void*)0),    _if_conditional171) {
-        __result223__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1652),__exception_result_var_b196=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b196);
+        __result223__ = __result_obj__ = __builtin_string("");
         return __result223__;
     }
-    __result224__ = __result_obj__ = (come_push_stackframe("libcomelang2-gc.c", 1654),__exception_result_var_b197=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b197);
+    __result224__ = __result_obj__ = __builtin_string(self);
     return __result224__;
 }
 
@@ -6058,7 +5864,6 @@ _Bool _if_conditional190;
 int __result259__;
 _Bool _if_conditional191;
 int __result260__;
-int __exception_result_var_b198;
 int __result261__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -6078,7 +5883,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
             }
         }
     }
-    __result261__ = (come_push_stackframe("libcomelang2-gc.c", 1795),__exception_result_var_b198=strcmp(left,right), come_pop_stackframe(), __exception_result_var_b198);
+    __result261__ = strcmp(left,right);
     return __result261__;
 }
 
@@ -6092,7 +5897,6 @@ _Bool _if_conditional193;
 int __result263__;
 _Bool _if_conditional194;
 int __result264__;
-int __exception_result_var_b199;
 int __result265__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
@@ -6112,7 +5916,7 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
             }
         }
     }
-    __result265__ = (come_push_stackframe("libcomelang2-gc.c", 1810),__exception_result_var_b199=strcmp(left,right), come_pop_stackframe(), __exception_result_var_b199);
+    __result265__ = strcmp(left,right);
     return __result265__;
 }
 
@@ -6121,36 +5925,31 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional195;
-char* __exception_result_var_b200;
 struct optional$2charphbool* __result267__;
-struct buffer* __exception_result_var_b201;
 struct buffer* buf_121;
 _Bool _while_condtional6;
-long int __exception_result_var_b202;
 int size_123;
-struct buffer* __exception_result_var_b203;
 _Bool _if_conditional196;
-char* __exception_result_var_b204;
 struct optional$2charphbool* __result268__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&buf_121, 0, sizeof(struct buffer*));
 memset(&size_123, 0, sizeof(int));
     if(_if_conditional195=f==((void*)0),    _if_conditional195) {
-        __result267__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1819), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1819, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 1819),__exception_result_var_b200=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b200),(_Bool)0));
+        __result267__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1819, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result267__;
     }
-    buf_121=(come_push_stackframe("libcomelang2-gc.c", 1821),__exception_result_var_b201=buffer_initialize(((struct buffer*)come_null_check((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1821, "struct buffer"), "libcomelang2-gc.c", 1821))), come_pop_stackframe(), __exception_result_var_b201);
+    buf_121=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1821, "struct buffer"));
     while(_while_condtional6=1,    _while_condtional6) {
         char buf2_122[8192];
         memset(&buf2_122, 0, sizeof(char)        *(8192)        );
-        size_123=(come_push_stackframe("libcomelang2-gc.c", 1826),__exception_result_var_b202=fread(buf2_122,1,8192,f), come_pop_stackframe(), __exception_result_var_b202);
-        (come_push_stackframe("libcomelang2-gc.c", 1828),__exception_result_var_b203=buffer_append(((struct buffer*)come_null_check(buf_121, "libcomelang2-gc.c", 1828)),buf2_122,size_123), come_pop_stackframe(), __exception_result_var_b203);
+        size_123=fread(buf2_122,1,8192,f);
+        buffer_append(buf_121,buf2_122,size_123);
         if(_if_conditional196=size_123<8192,        _if_conditional196) {
             break;
         }
     }
-    __result268__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1835, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 1835),__exception_result_var_b204=buffer_to_string(((struct buffer*)come_null_check(buf_121, "libcomelang2-gc.c", 1835))), come_pop_stackframe(), __exception_result_var_b204),(_Bool)1);
+    __result268__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1835, "struct optional$2charphbool"),buffer_to_string(buf_121),(_Bool)1);
     return __result268__;
 }
 
@@ -6161,8 +5960,8 @@ void* __right_value_freed_obj[1024];
 struct optional$2charphbool* __result266__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-            ((struct optional$2charphbool*)come_null_check(self, "./comelang2.h", 40))->v1=v1;
-            ((struct optional$2charphbool*)come_null_check(self, "./comelang2.h", 41))->v2=v2;
+            self->v1=v1;
+            self->v2=v2;
             __result266__ = __result_obj__ = self;
             return __result266__;
 }
@@ -6173,16 +5972,14 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional197;
 struct optional$2intbool* __result269__;
-long int __exception_result_var_b205;
-long int __exception_result_var_b206;
 struct optional$2intbool* __result270__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional197=f==((void*)0)||str==((void*)0),    _if_conditional197) {
-        __result269__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1841), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1841, "struct optional$2intbool"),-1,(_Bool)0));
+        __result269__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1841, "struct optional$2intbool"),-1,(_Bool)0);
         return __result269__;
     }
-    __result270__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1844, "struct optional$2intbool"),(come_push_stackframe("libcomelang2-gc.c", 1844),__exception_result_var_b206=fwrite(str,(come_push_stackframe("libcomelang2-gc.c", 1844),__exception_result_var_b205=strlen(str), come_pop_stackframe(), __exception_result_var_b205),1,f), come_pop_stackframe(), __exception_result_var_b206),(_Bool)1);
+    __result270__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1844, "struct optional$2intbool"),fwrite(str,strlen(str),1,f),(_Bool)1);
     return __result270__;
 }
 
@@ -6192,7 +5989,6 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional198;
 struct optional$2intbool* __result271__;
-int __exception_result_var_b207;
 int result_124;
 _Bool _if_conditional199;
 struct optional$2intbool* __result272__;
@@ -6201,12 +5997,12 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_124, 0, sizeof(int));
     if(_if_conditional198=f==((void*)0),    _if_conditional198) {
-        __result271__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1850), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1850, "struct optional$2intbool"),-1,(_Bool)0));
+        __result271__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1850, "struct optional$2intbool"),-1,(_Bool)0);
         return __result271__;
     }
-    result_124=(come_push_stackframe("libcomelang2-gc.c", 1853),__exception_result_var_b207=fclose(f), come_pop_stackframe(), __exception_result_var_b207);
+    result_124=fclose(f);
     if(_if_conditional199=result_124<0,    _if_conditional199) {
-        __result272__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1856), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1856, "struct optional$2intbool"),result_124,(_Bool)0));
+        __result272__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1856, "struct optional$2intbool"),result_124,(_Bool)0);
         return __result272__;
     }
     __result273__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1859, "struct optional$2intbool"),result_124,(_Bool)1);
@@ -6220,8 +6016,6 @@ void* __right_value_freed_obj[1024];
 _Bool _if_conditional200;
 struct optional$2_IO_FILEpbool* __result275__;
 va_list args_126;
-int __exception_result_var_b208;
-int __exception_result_var_b209;
 int result_127;
 _Bool _if_conditional201;
 struct optional$2_IO_FILEpbool* __result276__;
@@ -6231,17 +6025,17 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&args_126, 0, sizeof(va_list));
 memset(&result_127, 0, sizeof(int));
     if(_if_conditional200=f==((void*)0)||msg==((void*)0),    _if_conditional200) {
-        __result275__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1865), optional$2_IO_FILEpbool_initialize((struct optional$2_IO_FILEpbool*)come_calloc(1, sizeof(struct optional$2_IO_FILEpbool)*(1), "libcomelang2-gc.c", 1865, "struct optional$2_IO_FILEpbool"),f,(_Bool)0));
+        __result275__ = __result_obj__ = optional$2_IO_FILEpbool_initialize((struct optional$2_IO_FILEpbool*)come_calloc(1, sizeof(struct optional$2_IO_FILEpbool)*(1), "libcomelang2-gc.c", 1865, "struct optional$2_IO_FILEpbool"),f,(_Bool)0);
         return __result275__;
     }
     char msg2_125[1024*2*2*2];
     memset(&msg2_125, 0, sizeof(char)    *(1024*2*2*2)    );
-    (come_push_stackframe("libcomelang2-gc.c", 1870),__builtin_va_start(args_126,msg),come_pop_stackframe());
-    (come_push_stackframe("libcomelang2-gc.c", 1871),__exception_result_var_b208=vsnprintf(msg2_125,1024*2*2*2,msg,args_126), come_pop_stackframe(), __exception_result_var_b208);
-    (come_push_stackframe("libcomelang2-gc.c", 1872),__builtin_va_end(args_126),come_pop_stackframe());
-    result_127=(come_push_stackframe("libcomelang2-gc.c", 1874),__exception_result_var_b209=fprintf(f,"%s",msg2_125), come_pop_stackframe(), __exception_result_var_b209);
+    __builtin_va_start(args_126,msg);
+    vsnprintf(msg2_125,1024*2*2*2,msg,args_126);
+    __builtin_va_end(args_126);
+    result_127=fprintf(f,"%s",msg2_125);
     if(_if_conditional201=result_127<0,    _if_conditional201) {
-        __result276__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1877), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1877, "struct optional$2intbool"),result_127,(_Bool)0));
+        __result276__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1877, "struct optional$2intbool"),result_127,(_Bool)0);
         return __result276__;
     }
     __result277__ = __result_obj__ = optional$2_IO_FILEpbool_initialize((struct optional$2_IO_FILEpbool*)come_calloc(1, sizeof(struct optional$2_IO_FILEpbool)*(1), "libcomelang2-gc.c", 1880, "struct optional$2_IO_FILEpbool"),f,(_Bool)1);
@@ -6255,8 +6049,8 @@ void* __right_value_freed_obj[1024];
 struct optional$2_IO_FILEpbool* __result274__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-            ((struct optional$2_IO_FILEpbool*)come_null_check(self, "./comelang2.h", 40))->v1=v1;
-            ((struct optional$2_IO_FILEpbool*)come_null_check(self, "./comelang2.h", 41))->v2=v2;
+            self->v1=v1;
+            self->v2=v2;
             __result274__ = __result_obj__ = self;
             return __result274__;
 }
@@ -6269,16 +6063,11 @@ _Bool _if_conditional202;
 struct optional$2intbool* __result278__;
 struct _IO_FILE* f_128;
 _Bool _if_conditional203;
-struct _IO_FILE* __exception_result_var_b210;
-struct _IO_FILE* __exception_result_var_b211;
 _Bool _if_conditional204;
 struct optional$2intbool* __result279__;
-long int __exception_result_var_b212;
-long int __exception_result_var_b213;
 int result_129;
 _Bool _if_conditional205;
 struct optional$2intbool* __result280__;
-int __exception_result_var_b214;
 int result2_130;
 _Bool _if_conditional206;
 struct optional$2intbool* __result281__;
@@ -6289,27 +6078,27 @@ memset(&f_128, 0, sizeof(struct _IO_FILE*));
 memset(&result_129, 0, sizeof(int));
 memset(&result2_130, 0, sizeof(int));
     if(_if_conditional202=self==((void*)0)||file_name==((void*)0),    _if_conditional202) {
-        __result278__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1886), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1886, "struct optional$2intbool"),-1,(_Bool)0));
+        __result278__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1886, "struct optional$2intbool"),-1,(_Bool)0);
         return __result278__;
     }
     if(_if_conditional203=append,    _if_conditional203) {
-        f_128=(come_push_stackframe("libcomelang2-gc.c", 1891),__exception_result_var_b210=fopen(file_name,"a"), come_pop_stackframe(), __exception_result_var_b210);
+        f_128=fopen(file_name,"a");
     }
     else {
-        f_128=(come_push_stackframe("libcomelang2-gc.c", 1894),__exception_result_var_b211=fopen(file_name,"w"), come_pop_stackframe(), __exception_result_var_b211);
+        f_128=fopen(file_name,"w");
     }
     if(_if_conditional204=f_128==((void*)0),    _if_conditional204) {
-        __result279__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1898), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1898, "struct optional$2intbool"),-1,(_Bool)0));
+        __result279__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1898, "struct optional$2intbool"),-1,(_Bool)0);
         return __result279__;
     }
-    result_129=(come_push_stackframe("libcomelang2-gc.c", 1901),__exception_result_var_b213=fwrite(self,(come_push_stackframe("libcomelang2-gc.c", 1901),__exception_result_var_b212=strlen(self), come_pop_stackframe(), __exception_result_var_b212),1,f_128), come_pop_stackframe(), __exception_result_var_b213);
+    result_129=fwrite(self,strlen(self),1,f_128);
     if(_if_conditional205=result_129<0,    _if_conditional205) {
-        __result280__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1904), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1904, "struct optional$2intbool"),result_129,(_Bool)0));
+        __result280__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1904, "struct optional$2intbool"),result_129,(_Bool)0);
         return __result280__;
     }
-    result2_130=(come_push_stackframe("libcomelang2-gc.c", 1909),__exception_result_var_b214=fclose(f_128), come_pop_stackframe(), __exception_result_var_b214);
+    result2_130=fclose(f_128);
     if(_if_conditional206=result2_130<0,    _if_conditional206) {
-        __result281__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1910), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1910, "struct optional$2intbool"),result2_130,(_Bool)0));
+        __result281__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1910, "struct optional$2intbool"),result2_130,(_Bool)0);
         return __result281__;
     }
     __result282__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1913, "struct optional$2intbool"),result_129,(_Bool)1);
@@ -6324,16 +6113,11 @@ _Bool _if_conditional207;
 struct optional$2intbool* __result283__;
 struct _IO_FILE* f_131;
 _Bool _if_conditional208;
-struct _IO_FILE* __exception_result_var_b215;
-struct _IO_FILE* __exception_result_var_b216;
 _Bool _if_conditional209;
 struct optional$2intbool* __result284__;
-long int __exception_result_var_b217;
-long int __exception_result_var_b218;
 int result_132;
 _Bool _if_conditional210;
 struct optional$2intbool* __result285__;
-int __exception_result_var_b219;
 int result2_133;
 _Bool _if_conditional211;
 struct optional$2intbool* __result286__;
@@ -6344,27 +6128,27 @@ memset(&f_131, 0, sizeof(struct _IO_FILE*));
 memset(&result_132, 0, sizeof(int));
 memset(&result2_133, 0, sizeof(int));
     if(_if_conditional207=self==((void*)0)||file_name==((void*)0),    _if_conditional207) {
-        __result283__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1919), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1919, "struct optional$2intbool"),-1,(_Bool)0));
+        __result283__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1919, "struct optional$2intbool"),-1,(_Bool)0);
         return __result283__;
     }
     if(_if_conditional208=append,    _if_conditional208) {
-        f_131=(come_push_stackframe("libcomelang2-gc.c", 1924),__exception_result_var_b215=fopen(file_name,"a"), come_pop_stackframe(), __exception_result_var_b215);
+        f_131=fopen(file_name,"a");
     }
     else {
-        f_131=(come_push_stackframe("libcomelang2-gc.c", 1927),__exception_result_var_b216=fopen(file_name,"w"), come_pop_stackframe(), __exception_result_var_b216);
+        f_131=fopen(file_name,"w");
     }
     if(_if_conditional209=f_131==((void*)0),    _if_conditional209) {
-        __result284__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1931), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1931, "struct optional$2intbool"),-1,(_Bool)0));
+        __result284__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1931, "struct optional$2intbool"),-1,(_Bool)0);
         return __result284__;
     }
-    result_132=(come_push_stackframe("libcomelang2-gc.c", 1934),__exception_result_var_b218=fwrite(self,(come_push_stackframe("libcomelang2-gc.c", 1934),__exception_result_var_b217=strlen(self), come_pop_stackframe(), __exception_result_var_b217),1,f_131), come_pop_stackframe(), __exception_result_var_b218);
+    result_132=fwrite(self,strlen(self),1,f_131);
     if(_if_conditional210=result_132<0,    _if_conditional210) {
-        __result285__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1937), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1937, "struct optional$2intbool"),result_132,(_Bool)0));
+        __result285__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1937, "struct optional$2intbool"),result_132,(_Bool)0);
         return __result285__;
     }
-    result2_133=(come_push_stackframe("libcomelang2-gc.c", 1942),__exception_result_var_b219=fclose(f_131), come_pop_stackframe(), __exception_result_var_b219);
+    result2_133=fclose(f_131);
     if(_if_conditional211=result2_133<0,    _if_conditional211) {
-        __result286__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1943), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1943, "struct optional$2intbool"),result2_133,(_Bool)0));
+        __result286__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1943, "struct optional$2intbool"),result2_133,(_Bool)0);
         return __result286__;
     }
     __result287__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 1946, "struct optional$2intbool"),result_132,(_Bool)1);
@@ -6376,26 +6160,17 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional212;
-char* __exception_result_var_b220;
 struct optional$2charphbool* __result288__;
-struct _IO_FILE* __exception_result_var_b221;
 struct _IO_FILE* f_134;
 _Bool _if_conditional213;
-char* __exception_result_var_b222;
 struct optional$2charphbool* __result289__;
-struct buffer* __exception_result_var_b223;
 struct buffer* buf_135;
 _Bool _while_condtional7;
-long int __exception_result_var_b224;
 int size_137;
-struct buffer* __exception_result_var_b225;
 _Bool _if_conditional214;
-char* __exception_result_var_b226;
 char* result_138;
-int __exception_result_var_b227;
 int result2_139;
 _Bool _if_conditional215;
-char* __exception_result_var_b228;
 struct optional$2charphbool* __result290__;
 struct optional$2charphbool* __result291__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -6406,28 +6181,28 @@ memset(&size_137, 0, sizeof(int));
 memset(&result_138, 0, sizeof(char*));
 memset(&result2_139, 0, sizeof(int));
     if(_if_conditional212=file_name==((void*)0),    _if_conditional212) {
-        __result288__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1952), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1952, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 1952),__exception_result_var_b220=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b220),(_Bool)0));
+        __result288__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1952, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result288__;
     }
-    f_134=(come_push_stackframe("libcomelang2-gc.c", 1955),__exception_result_var_b221=fopen(file_name,"r"), come_pop_stackframe(), __exception_result_var_b221);
+    f_134=fopen(file_name,"r");
     if(_if_conditional213=f_134==((void*)0),    _if_conditional213) {
-        __result289__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1958), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1958, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 1958),__exception_result_var_b222=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b222),(_Bool)0));
+        __result289__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1958, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result289__;
     }
-    buf_135=(come_push_stackframe("libcomelang2-gc.c", 1961),__exception_result_var_b223=buffer_initialize(((struct buffer*)come_null_check((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1961, "struct buffer"), "libcomelang2-gc.c", 1961))), come_pop_stackframe(), __exception_result_var_b223);
+    buf_135=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1961, "struct buffer"));
     while(_while_condtional7=1,    _while_condtional7) {
         char buf2_136[8192];
         memset(&buf2_136, 0, sizeof(char)        *(8192)        );
-        size_137=(come_push_stackframe("libcomelang2-gc.c", 1966),__exception_result_var_b224=fread(buf2_136,1,8192,f_134), come_pop_stackframe(), __exception_result_var_b224);
-        (come_push_stackframe("libcomelang2-gc.c", 1968),__exception_result_var_b225=buffer_append(((struct buffer*)come_null_check(buf_135, "libcomelang2-gc.c", 1968)),buf2_136,size_137), come_pop_stackframe(), __exception_result_var_b225);
+        size_137=fread(buf2_136,1,8192,f_134);
+        buffer_append(buf_135,buf2_136,size_137);
         if(_if_conditional214=size_137<8192,        _if_conditional214) {
             break;
         }
     }
-    result_138=(come_push_stackframe("libcomelang2-gc.c", 1975),__exception_result_var_b226=buffer_to_string(((struct buffer*)come_null_check(buf_135, "libcomelang2-gc.c", 1975))), come_pop_stackframe(), __exception_result_var_b226);
-    result2_139=(come_push_stackframe("libcomelang2-gc.c", 1979),__exception_result_var_b227=fclose(f_134), come_pop_stackframe(), __exception_result_var_b227);
+    result_138=buffer_to_string(buf_135);
+    result2_139=fclose(f_134);
     if(_if_conditional215=result2_139<0,    _if_conditional215) {
-        __result290__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1980), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1980, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 1980),__exception_result_var_b228=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b228),(_Bool)0));
+        __result290__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1980, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result290__;
     }
     __result291__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1983, "struct optional$2charphbool"),result_138,(_Bool)1);
@@ -6439,26 +6214,17 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional216;
-char* __exception_result_var_b229;
 struct optional$2charphbool* __result292__;
-struct _IO_FILE* __exception_result_var_b230;
 struct _IO_FILE* f_140;
 _Bool _if_conditional217;
-char* __exception_result_var_b231;
 struct optional$2charphbool* __result293__;
-struct buffer* __exception_result_var_b232;
 struct buffer* buf_141;
 _Bool _while_condtional8;
-long int __exception_result_var_b233;
 int size_143;
-struct buffer* __exception_result_var_b234;
 _Bool _if_conditional218;
-char* __exception_result_var_b235;
 char* result_144;
-int __exception_result_var_b236;
 int result2_145;
 _Bool _if_conditional219;
-char* __exception_result_var_b237;
 struct optional$2charphbool* __result294__;
 struct optional$2charphbool* __result295__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -6469,28 +6235,28 @@ memset(&size_143, 0, sizeof(int));
 memset(&result_144, 0, sizeof(char*));
 memset(&result2_145, 0, sizeof(int));
     if(_if_conditional216=file_name==((void*)0),    _if_conditional216) {
-        __result292__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1989), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1989, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 1989),__exception_result_var_b229=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b229),(_Bool)0));
+        __result292__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1989, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result292__;
     }
-    f_140=(come_push_stackframe("libcomelang2-gc.c", 1992),__exception_result_var_b230=fopen(file_name,"r"), come_pop_stackframe(), __exception_result_var_b230);
+    f_140=fopen(file_name,"r");
     if(_if_conditional217=f_140==((void*)0),    _if_conditional217) {
-        __result293__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 1995), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1995, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 1995),__exception_result_var_b231=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b231),(_Bool)0));
+        __result293__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 1995, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result293__;
     }
-    buf_141=(come_push_stackframe("libcomelang2-gc.c", 1998),__exception_result_var_b232=buffer_initialize(((struct buffer*)come_null_check((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1998, "struct buffer"), "libcomelang2-gc.c", 1998))), come_pop_stackframe(), __exception_result_var_b232);
+    buf_141=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1998, "struct buffer"));
     while(_while_condtional8=1,    _while_condtional8) {
         char buf2_142[8192];
         memset(&buf2_142, 0, sizeof(char)        *(8192)        );
-        size_143=(come_push_stackframe("libcomelang2-gc.c", 2003),__exception_result_var_b233=fread(buf2_142,1,8192,f_140), come_pop_stackframe(), __exception_result_var_b233);
-        (come_push_stackframe("libcomelang2-gc.c", 2005),__exception_result_var_b234=buffer_append(((struct buffer*)come_null_check(buf_141, "libcomelang2-gc.c", 2005)),buf2_142,size_143), come_pop_stackframe(), __exception_result_var_b234);
+        size_143=fread(buf2_142,1,8192,f_140);
+        buffer_append(buf_141,buf2_142,size_143);
         if(_if_conditional218=size_143<8192,        _if_conditional218) {
             break;
         }
     }
-    result_144=(come_push_stackframe("libcomelang2-gc.c", 2012),__exception_result_var_b235=buffer_to_string(((struct buffer*)come_null_check(buf_141, "libcomelang2-gc.c", 2012))), come_pop_stackframe(), __exception_result_var_b235);
-    result2_145=(come_push_stackframe("libcomelang2-gc.c", 2016),__exception_result_var_b236=fclose(f_140), come_pop_stackframe(), __exception_result_var_b236);
+    result_144=buffer_to_string(buf_141);
+    result2_145=fclose(f_140);
     if(_if_conditional219=result2_145<0,    _if_conditional219) {
-        __result294__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2017), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2017, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2017),__exception_result_var_b237=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b237),(_Bool)0));
+        __result294__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2017, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result294__;
     }
     __result295__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2020, "struct optional$2charphbool"),result_144,(_Bool)1);
@@ -6501,31 +6267,27 @@ struct optional$2list$1charphphbool* FILE_readlines(struct _IO_FILE* f){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-struct list$1charph* __exception_result_var_b238;
 struct list$1charph* result_146;
 _Bool _if_conditional220;
 struct optional$2list$1charphphbool* __result297__;
 _Bool _while_condtional9;
-char* __exception_result_var_b239;
 _Bool _if_conditional221;
-char* __exception_result_var_b240;
-struct list$1charph* __exception_result_var_b241;
 struct optional$2list$1charphphbool* __result298__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_146, 0, sizeof(struct list$1charph*));
-    result_146=(come_push_stackframe("libcomelang2-gc.c", 2025),__exception_result_var_b238=list$1charph_initialize(((struct list$1charph*)come_null_check((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 2025, "struct list$1charph"), "libcomelang2-gc.c", 2025))), come_pop_stackframe(), __exception_result_var_b238);
+    result_146=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 2025, "struct list$1charph"));
     if(_if_conditional220=f==((void*)0),    _if_conditional220) {
-        __result297__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2028), optional$2list$1charphphbool_initialize((struct optional$2list$1charphphbool*)come_calloc(1, sizeof(struct optional$2list$1charphphbool)*(1), "libcomelang2-gc.c", 2028, "struct optional$2list$1charphphbool"),result_146,(_Bool)0));
+        __result297__ = __result_obj__ = optional$2list$1charphphbool_initialize((struct optional$2list$1charphphbool*)come_calloc(1, sizeof(struct optional$2list$1charphphbool)*(1), "libcomelang2-gc.c", 2028, "struct optional$2list$1charphphbool"),result_146,(_Bool)0);
         return __result297__;
     }
     while(_while_condtional9=1,    _while_condtional9) {
         char buf_147[8192];
         memset(&buf_147, 0, sizeof(char)        *(8192)        );
-        if(_if_conditional221=(come_push_stackframe("libcomelang2-gc.c", 2034),__exception_result_var_b239=fgets(buf_147,8192,f), come_pop_stackframe(), __exception_result_var_b239)==((void*)0),        _if_conditional221) {
+        if(_if_conditional221=fgets(buf_147,8192,f)==((void*)0),        _if_conditional221) {
             break;
         }
-        (come_push_stackframe("libcomelang2-gc.c", 2038),__exception_result_var_b241=list$1charph_push_back(((struct list$1charph*)come_null_check(result_146, "libcomelang2-gc.c", 2038)),(come_push_stackframe("libcomelang2-gc.c", 2038),__exception_result_var_b240=__builtin_string(buf_147), come_pop_stackframe(), __exception_result_var_b240)), come_pop_stackframe(), __exception_result_var_b241);
+        list$1charph_push_back(result_146,__builtin_string(buf_147));
     }
     __result298__ = __result_obj__ = optional$2list$1charphphbool_initialize((struct optional$2list$1charphphbool*)come_calloc(1, sizeof(struct optional$2list$1charphphbool)*(1), "libcomelang2-gc.c", 2041, "struct optional$2list$1charphphbool"),result_146,(_Bool)1);
     return __result298__;
@@ -6538,8 +6300,8 @@ void* __right_value_freed_obj[1024];
 struct optional$2list$1charphphbool* __result296__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-            ((struct optional$2list$1charphphbool*)come_null_check(self, "./comelang2.h", 40))->v1=v1;
-            ((struct optional$2list$1charphphbool*)come_null_check(self, "./comelang2.h", 41))->v2=v2;
+            self->v1=v1;
+            self->v2=v2;
             __result296__ = __result_obj__ = self;
             return __result296__;
 }
@@ -6550,35 +6312,32 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional222;
 struct optional$2intbool* __result299__;
-struct _IO_FILE* __exception_result_var_b242;
 struct _IO_FILE* f_148;
 _Bool _if_conditional223;
 _Bool _if_conditional224;
-int __exception_result_var_b243;
 struct optional$2intbool* __result300__;
-int __exception_result_var_b244;
 struct optional$2intbool* __result301__;
 struct optional$2intbool* __result302__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&f_148, 0, sizeof(struct _IO_FILE*));
     if(_if_conditional222=path==((void*)0)||mode==((void*)0),    _if_conditional222) {
-        __result299__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2047), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2047, "struct optional$2intbool"),-1,(_Bool)0));
+        __result299__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2047, "struct optional$2intbool"),-1,(_Bool)0);
         return __result299__;
     }
-    f_148=(come_push_stackframe("libcomelang2-gc.c", 2049),__exception_result_var_b242=fopen(path,mode), come_pop_stackframe(), __exception_result_var_b242);
+    f_148=fopen(path,mode);
     if(_if_conditional223=f_148,    _if_conditional223) {
         block(parent,f_148);
-        if(_if_conditional224=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 2053))->__method_block_result_kind__!=0,        _if_conditional224) {
-            (come_push_stackframe("libcomelang2-gc.c", 2054),__exception_result_var_b243=fclose(f_148), come_pop_stackframe(), __exception_result_var_b243);
+        if(_if_conditional224=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional224) {
+            fclose(f_148);
             __result300__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2055, "struct optional$2intbool"),0,(_Bool)1);
             return __result300__;
         }
-        (come_push_stackframe("libcomelang2-gc.c", 2058),__exception_result_var_b244=fclose(f_148), come_pop_stackframe(), __exception_result_var_b244);
+        fclose(f_148);
         __result301__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2060, "struct optional$2intbool"),0,(_Bool)1);
         return __result301__;
     }
-    __result302__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2063), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2063, "struct optional$2intbool"),-1,(_Bool)0));
+    __result302__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2063, "struct optional$2intbool"),-1,(_Bool)0);
     return __result302__;
 }
 
@@ -6588,17 +6347,15 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional225;
 struct optional$2charphbool* __result303__;
-int __exception_result_var_b245;
-char* __exception_result_var_b246;
 struct optional$2charphbool* __result304__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional225=self==((void*)0),    _if_conditional225) {
-        __result303__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2072), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2072, "struct optional$2intbool"),-1,(_Bool)0));
+        __result303__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2072, "struct optional$2intbool"),-1,(_Bool)0);
         return __result303__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 2074),__exception_result_var_b245=puts(self), come_pop_stackframe(), __exception_result_var_b245);
-    __result304__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2076, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2076),__exception_result_var_b246=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b246),(_Bool)1);
+    puts(self);
+    __result304__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2076, "struct optional$2charphbool"),__builtin_string(self),(_Bool)1);
     return __result304__;
 }
 
@@ -6608,17 +6365,15 @@ _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional226;
 struct optional$2charphbool* __result305__;
-int __exception_result_var_b247;
-char* __exception_result_var_b248;
 struct optional$2charphbool* __result306__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional226=self==((void*)0),    _if_conditional226) {
-        __result305__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2082), optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2082, "struct optional$2intbool"),-1,(_Bool)0));
+        __result305__ = __result_obj__ = optional$2intbool_initialize((struct optional$2intbool*)come_calloc(1, sizeof(struct optional$2intbool)*(1), "libcomelang2-gc.c", 2082, "struct optional$2intbool"),-1,(_Bool)0);
         return __result305__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 2084),__exception_result_var_b247=printf("%s",self), come_pop_stackframe(), __exception_result_var_b247);
-    __result306__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2086, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2086),__exception_result_var_b248=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b248),(_Bool)1);
+    printf("%s",self);
+    __result306__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2086, "struct optional$2charphbool"),__builtin_string(self),(_Bool)1);
     return __result306__;
 }
 
@@ -6627,28 +6382,24 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional227;
-char* __exception_result_var_b249;
 struct optional$2charphbool* __result307__;
 char* msg2_149;
 va_list args_150;
-int __exception_result_var_b250;
-int __exception_result_var_b251;
-char* __exception_result_var_b252;
 struct optional$2charphbool* __result308__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&msg2_149, 0, sizeof(char*));
 memset(&args_150, 0, sizeof(va_list));
     if(_if_conditional227=self==((void*)0),    _if_conditional227) {
-        __result307__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2093), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2093, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2093),__exception_result_var_b249=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b249),(_Bool)0));
+        __result307__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2093, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result307__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 2098),__builtin_va_start(args_150,self),come_pop_stackframe());
-    (come_push_stackframe("libcomelang2-gc.c", 2099),__exception_result_var_b250=vasprintf(&msg2_149,self,args_150), come_pop_stackframe(), __exception_result_var_b250);
-    (come_push_stackframe("libcomelang2-gc.c", 2100),__builtin_va_end(args_150),come_pop_stackframe());
-    (come_push_stackframe("libcomelang2-gc.c", 2102),__exception_result_var_b251=printf("%s",msg2_149), come_pop_stackframe(), __exception_result_var_b251);
-    (come_push_stackframe("libcomelang2-gc.c", 2104),free(msg2_149),come_pop_stackframe());
-    __result308__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2106, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2106),__exception_result_var_b252=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b252),(_Bool)1);
+    __builtin_va_start(args_150,self);
+    vasprintf(&msg2_149,self,args_150);
+    __builtin_va_end(args_150);
+    printf("%s",msg2_149);
+    free(msg2_149);
+    __result308__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2106, "struct optional$2charphbool"),__builtin_string(self),(_Bool)1);
     return __result308__;
 }
 
@@ -6657,28 +6408,24 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional228;
-char* __exception_result_var_b253;
 struct optional$2charphbool* __result309__;
 char* msg2_151;
 va_list args_152;
-int __exception_result_var_b254;
-int __exception_result_var_b255;
-char* __exception_result_var_b256;
 struct optional$2charphbool* __result310__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&msg2_151, 0, sizeof(char*));
 memset(&args_152, 0, sizeof(va_list));
     if(_if_conditional228=self==((void*)0),    _if_conditional228) {
-        __result309__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2112), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2112, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2112),__exception_result_var_b253=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b253),(_Bool)0));
+        __result309__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2112, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result309__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 2117),__builtin_va_start(args_152,self),come_pop_stackframe());
-    (come_push_stackframe("libcomelang2-gc.c", 2118),__exception_result_var_b254=vasprintf(&msg2_151,self,args_152), come_pop_stackframe(), __exception_result_var_b254);
-    (come_push_stackframe("libcomelang2-gc.c", 2119),__builtin_va_end(args_152),come_pop_stackframe());
-    (come_push_stackframe("libcomelang2-gc.c", 2121),__exception_result_var_b255=printf("%s",msg2_151), come_pop_stackframe(), __exception_result_var_b255);
-    (come_push_stackframe("libcomelang2-gc.c", 2123),free(msg2_151),come_pop_stackframe());
-    __result310__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2125, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2125),__exception_result_var_b256=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b256),(_Bool)1);
+    __builtin_va_start(args_152,self);
+    vasprintf(&msg2_151,self,args_152);
+    __builtin_va_end(args_152);
+    printf("%s",msg2_151);
+    free(msg2_151);
+    __result310__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2125, "struct optional$2charphbool"),__builtin_string(self),(_Bool)1);
     return __result310__;
 }
 
@@ -6686,11 +6433,10 @@ int int_printf(int self, char* msg){
 void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
-int __exception_result_var_b257;
 int __result311__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
-    (come_push_stackframe("libcomelang2-gc.c", 2130),__exception_result_var_b257=printf(msg,self), come_pop_stackframe(), __exception_result_var_b257);
+    printf(msg,self);
     __result311__ = self;
     return __result311__;
 }
@@ -6700,19 +6446,16 @@ void* __result_obj__;
 _Bool __freed_obj__;
 void* __right_value_freed_obj[1024];
 _Bool _if_conditional229;
-char* __exception_result_var_b258;
 struct optional$2charphbool* __result312__;
-int __exception_result_var_b259;
-char* __exception_result_var_b260;
 struct optional$2charphbool* __result313__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional229=self==((void*)0),    _if_conditional229) {
-        __result312__ = __result_obj__ = (come_save_stackframe("libcomelang2-gc.c", 2138), optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2138, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2138),__exception_result_var_b258=__builtin_string(""), come_pop_stackframe(), __exception_result_var_b258),(_Bool)0));
+        __result312__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2138, "struct optional$2charphbool"),__builtin_string(""),(_Bool)0);
         return __result312__;
     }
-    (come_push_stackframe("libcomelang2-gc.c", 2140),__exception_result_var_b259=puts(self), come_pop_stackframe(), __exception_result_var_b259);
-    __result313__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2142, "struct optional$2charphbool"),(come_push_stackframe("libcomelang2-gc.c", 2142),__exception_result_var_b260=__builtin_string(self), come_pop_stackframe(), __exception_result_var_b260),(_Bool)1);
+    puts(self);
+    __result313__ = __result_obj__ = optional$2charphbool_initialize((struct optional$2charphbool*)come_calloc(1, sizeof(struct optional$2charphbool)*(1), "libcomelang2-gc.c", 2142, "struct optional$2charphbool"),__builtin_string(self),(_Bool)1);
     return __result313__;
 }
 
@@ -6729,7 +6472,7 @@ memset(&i_153, 0, sizeof(int));
     for(
     i_153=0 ,    0;    _for_condtionalA12=    i_153<self ,    _for_condtionalA12;    i_153++ ,    0    ){
         block(parent,i_153);
-        if(_if_conditional230=((struct sDummyCurrentStack*)come_null_check(((struct sDummyCurrentStack*)parent), "libcomelang2-gc.c", 2153))->__method_block_result_kind__!=0,        _if_conditional230) {
+        if(_if_conditional230=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional230) {
             return;
         }
     }

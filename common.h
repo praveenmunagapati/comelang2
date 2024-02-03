@@ -247,6 +247,8 @@ struct sInfo
     
     sFun* come_fun;
     
+    string come_fun_name;
+    
     sFun* caller_fun;
     int caller_line;
     char* caller_sname;

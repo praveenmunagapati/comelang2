@@ -477,6 +477,24 @@ void come_free_object(void* mem)
     come_free_mem_of_heap_pool((char*)ref_count);
 }
 
+void come_free(void* mem)
+{
+    if(mem == NULL) {
+        return;
+    }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem)) {
+            return ;
+        }
+    }
+*/
+    
+    size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
+    
+    come_free_mem_of_heap_pool((char*)ref_count);
+}
+
 //void* come_memdup(void* block, char* sname=null, int sline=0)
 void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=null)
 {

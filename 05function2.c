@@ -131,6 +131,8 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
     string var_name2 = s"__caller_sline_stack__";
     add_come_code_at_function_head(info, "%s;\n", make_define_var(new sType("int"), var_name2));
 */
+    string come_fun_name = info.come_fun_name;
+    info.come_fun_name = string(info.come_fun.mName);
     
     if(self.mFun.mBlock) {
         if(info.come_fun.mName === "main") {
@@ -158,7 +160,9 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
     }
     
     caller_end();
+    
     info.come_fun = come_fun;
+    info.come_fun_name = come_fun_name;
     
     return true;
 }
