@@ -278,8 +278,14 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
     
     sMemHeader* it = result;
     
-    memcpy(it.sname, gComeStackFrameSName - COME_STACKFRAME_MAX, sizeof(char*)*COME_STACKFRAME_MAX);
-    memcpy(it.sline, gComeStackFrameSLine - COME_STACKFRAME_MAX, sizeof(int)*COME_STACKFRAME_MAX);
+    if(gNumComeStackFrame < COME_STACKFRAME_MAX) {
+        memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
+        memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
+    }
+    else {
+        memcpy(it.sname, gComeStackFrameSName + gNumComeStackFrame - COME_STACKFRAME_MAX, sizeof(char*)*COME_STACKFRAME_MAX);
+        memcpy(it.sline, gComeStackFrameSLine + gNumComeStackFrame - COME_STACKFRAME_MAX, sizeof(int)*COME_STACKFRAME_MAX);
+    }
     
     it->next = gAllocMem;
     it->prev = null;
