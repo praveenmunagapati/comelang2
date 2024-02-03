@@ -260,7 +260,6 @@ void come_heap_final()
             }
             if(flag) {
                 puts("");
-                n++;
             }
             it = it->next;
         }
