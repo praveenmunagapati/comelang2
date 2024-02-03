@@ -263,47 +263,50 @@ void come_heap_final()
         }
         printf("%d memory leaks. %d alloc, %d free.\n", n, gNumAlloc, gNumFree);
     }
+    else {
+        sMemHeader* it = gAllocMem;
+        int n = 0;
+        while(it) {
+            n++;
+            it = it->next;
+        }
+        if(n > 0) {
+            printf("%d memory leaks. %d alloc, %d free.\n", n, gNumAlloc, gNumFree);
+        }
+    }
 }
 
 static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0)
 {
-    if(!gComeMallocLib) {
-        return calloc(1, size);
+    void* result = calloc(1, size + sizeof(sMemHeader));
+    
+    sMemHeader* it = result;
+    
+    come_push_stackframe(sname, sline);
+    
+    memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
+    memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
+    
+    come_pop_stackframe();
+    
+    it->next = gAllocMem;
+    it->prev = null;
+    
+    if(gAllocMem) {
+        gAllocMem->prev = it;
     }
-    else {
-        void* result = calloc(1, size + sizeof(sMemHeader));
-        
-        sMemHeader* it = result;
-        
-        come_push_stackframe(sname, sline);
-        
-        memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
-        memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
-        
-        come_pop_stackframe();
-        
-        it->next = gAllocMem;
-        it->prev = null;
-        
-        if(gAllocMem) {
-            gAllocMem->prev = it;
-        }
-        
-        gAllocMem = it;
-        
-        gNumAlloc++;
-        
-        return (char*)result + sizeof(sMemHeader);
-    }
+    
+    gAllocMem = it;
+    
+    gNumAlloc++;
+    
+    return (char*)result + sizeof(sMemHeader);
 }
 
 static void come_free_mem_of_heap_pool(void* mem)
 {
     if(mem) {
         if(gComeGCLib) {
-        }
-        else if(!gComeMallocLib) {
-            free(mem);
         }
         else {
             sMemHeader* it = (sMemHeader*)((char*)mem - sizeof(sMemHeader));

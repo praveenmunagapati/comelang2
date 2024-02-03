@@ -8,10 +8,9 @@ then
         #./configure --with-optimize --prefix=$HOME
         #./configure --prefix=$HOME --with-debug --with-come-debug
         #./configure --prefix=$HOME --with-debug --with-optimize
-        #./configure --prefix=$HOME --with-debug --with-optimize --with-original-postion --with-gc
+        #./configure --prefix=$HOME --with-debug --with-optimize --with-original-position --with-gc
         #./configure --prefix=$HOME --with-debug --with-original-postion --with-leak
-        #./configure --prefix=$HOME --with-debug --with-leak --with-come-debug
-        ./configure --prefix=$HOME --with-optimize --with-debug
+        ./configure --prefix=$HOME --with-original-position
     else
         #./configure --with-optimize
         #./configure --with-debug --with-come-debug
@@ -19,8 +18,7 @@ then
         #./configure --with-debug --with-optimize --with-original-position --with-gc
         #./configure --with-debug --with-original-position
         #./configure --with-debug --with-original-position --with-optimize --with-leak
-        #./configure --with-debug --with-leak --with-come-debug
-        ./configure --with-debug --with-optimize
+        ./configure --with-debug --with-original-position
     fi
 fi
 
