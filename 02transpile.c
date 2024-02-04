@@ -129,6 +129,7 @@ static bool cpp(sInfo* info)
         exist_common_h = false;
     }
 
+/*
     /// Mac ///
     int rc = system(cmd);
     if(rc == 0) {
@@ -149,10 +150,11 @@ static bool cpp(sInfo* info)
     }
     /// Other ///
     else {
+*/
         string cmd3 = xsprintf("cpp -lang-c %s -I. -I%s/include -DPREFIX=\"\\\"%s\\\"\" -I%s/include -DCOMELANG2 -U__GNUC__ %s %s > %s 2> %s.cpp.out", info.cpp_option, getenv("HOME"), PREFIX, PREFIX, exist_common_h ? string(" -include common.h "):"", input_file_name, output_file_name, output_file_name);
         
         if(info.verbose) puts(cmd3);
-        rc = system(cmd3);
+        int rc = system(cmd3);
         
         var command2 = xsprintf("grep error\\: %s.cpp.out", output_file_name);
         
@@ -176,7 +178,7 @@ static bool cpp(sInfo* info)
                 exit(5);
             }
         }
-    }
+//    }
     
     return true;
 }
