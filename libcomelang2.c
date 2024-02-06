@@ -212,6 +212,8 @@ struct sMemHeaderTiny
 {
     struct sMemHeaderTiny* next;
     struct sMemHeaderTiny* prev;
+    char* sname;
+    int sline;
 };
 
 struct sMemHeader
@@ -245,7 +247,9 @@ void come_heap_final()
         free(gComeStackFrameBuffer);
     }
     
-    if(gComeDebugLib) {
+    if(gComeGCLib) {
+    }
+    else if(gComeDebugLib) {
         sMemHeader* it = gAllocMem;
         int n = 0;
         while(it) {
@@ -274,6 +278,7 @@ void come_heap_final()
         int n = 0;
         while(it) {
             n++;
+            printf("%s %d\n", it->sname, it->sline);
             it = it->next;
         }
         if(n > 0) {
@@ -290,8 +295,8 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         sMemHeader* it = result;
         
         if(gNumComeStackFrame < COME_STACKFRAME_MAX) {
-            memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*COME_STACKFRAME_MAX);
-            memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*COME_STACKFRAME_MAX);
+            memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*gNumComeStackFrame);
+            memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*gNumComeStackFrame);
         }
         else {
             memcpy(it.sname, gComeStackFrameSName + gNumComeStackFrame - COME_STACKFRAME_MAX, sizeof(char*)*COME_STACKFRAME_MAX);
@@ -325,6 +330,9 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         it->next = (sMemHeaderTiny*)gAllocMem;
         it->prev = null;
+        
+        it->sname = sname;
+        it->sline = sline;
         
         if(gAllocMem) {
             ((sMemHeaderTiny*)gAllocMem)->prev = it;

@@ -470,7 +470,7 @@ void init_classes(sInfo* info)
         klass.mFields.push_back(new tuple2<string, sType*%>(string("v4"), new sType("int")));
         klass.mFields.push_back(new tuple2<string, sType*%>(string("v5"), new sType("int")));
         
-        info.classes.insert(string("__builtin_va_list"), klass);
+        info.classes.insert(string("__builtin_va_list"), clone klass);
     }
 }
 
