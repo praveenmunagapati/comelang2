@@ -268,6 +268,10 @@ With using nil, you can prevent from null segmentation fault.
 
 Memory safe pointer
 
+13. memory leak detector
+
+Memory leak detector
+
 # INSTALL
 
 Required libraries are clang, make, autoconf, valgrind, gdb, lldb, musl-dev(alpine linux), pcre-dev
@@ -301,7 +305,7 @@ git clone https://github.com/ab25cq/comelang2
 cd comelang2
 bash fast_build.sh
 bash self-host.sh
-bash fast_build.sh
+bash fast_build.sh (For getting optimized comelang2)
 ```
 
 # Histories
@@ -1608,6 +1612,10 @@ a.c 7
 ```
 
 require -cg option for show stackframe()
+
+# Memory leak detector
+
+Default checked memory leaks. With -cg option, show stackframe at memory leak point.
 
 # afterword
 
