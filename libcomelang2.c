@@ -212,8 +212,10 @@ struct sMemHeaderTiny
 {
     struct sMemHeaderTiny* next;
     struct sMemHeaderTiny* prev;
+/*
     char* sname;
     int sline;
+*/
 };
 
 struct sMemHeader
@@ -278,11 +280,11 @@ void come_heap_final()
         int n = 0;
         while(it) {
             n++;
-            printf("%s %d\n", it->sname, it->sline);
+//            printf("%s %d\n", it->sname, it->sline);
             it = it->next;
         }
         if(n > 0) {
-            printf("%d memory leaks. %d alloc, %d free.\n", n, gNumAlloc, gNumFree);
+            printf("%d memory leaks. %d alloc, %d free.If you require debugging, copmpile with -cg option\n", n, gNumAlloc, gNumFree);
         }
     }
 }
@@ -331,8 +333,10 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         it->next = (sMemHeaderTiny*)gAllocMem;
         it->prev = null;
         
+/*
         it->sname = sname;
         it->sline = sline;
+*/
         
         if(gAllocMem) {
             ((sMemHeaderTiny*)gAllocMem)->prev = it;
