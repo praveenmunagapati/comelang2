@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system.
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 10.0.0
+version 11.0.0
 
 ``` C
 #include <comelang2.h>
@@ -380,6 +380,7 @@ bash fast_build.sh
 7.0.5 boehm GC supported.
 8.0.0 comelang2 memory leak is 0
 10.0.0 comelang2 is complete
+11.0.0 comelang2 is complete. memory leak detector. memory leaks of comelang2 is perfectory 0.
 
 # Language specifications
 

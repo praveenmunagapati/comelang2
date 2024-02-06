@@ -29,1178 +29,282 @@ checking for math.h... yes
 checking for main in -lm... yes
 checking for main in -lrt... yes
 clang
-checking for lchmod... yes
+checking for lchmod... no
 configure: creating ./config.status
 config.status: creating Makefile
 config.status: creating config.h
-comelang2 -o 01main.c.o -c 01main.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 634681 alloc, 634654 free.
-comelang2 -o 02transpile.c.o -c 02transpile.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 232
-libcomelang2.c 663
-libcomelang2.c 663
-sIntNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sAddNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 222
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 222
-libcomelang2.c 663
-sCharNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sMethodCallNode_clone 3
-sNode_clone 3
-sExceptionGetValueNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sMethodCallNode_clone 3
-sNode_clone 3
-sExceptionGetValueNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sMethodCallNode_clone 3
-sNode_clone 3
-sExceptionGetValueNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 222
-libcomelang2.c 663
-sCharNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sMethodCallNode_clone 3
-sNode_clone 3
-sExceptionGetValueNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 212
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sLoadFieldNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sMethodCallNode_clone 3
-sNode_clone 3
-sExceptionGetValueNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sMethodCallNode_clone 3
-sNode_clone 3
-sExceptionGetValueNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-sMethodCallNode_clone 3
-sNode_clone 3
-sExceptionGetValueNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-tuple2$2charphsNodephp_clone 3
-./comelang2.h 198
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-262 memory leaks. 3115919 alloc, 3115657 free.
-comelang2 -o 03transpile2.c.o -c 03transpile2.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1844654 alloc, 1844627 free.
-comelang2 -o 04heap.c.o -c 04heap.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-28 memory leaks. 1810144 alloc, 1810116 free.
-comelang2 -o 05function.c.o -c 05function.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-sNewNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-40 memory leaks. 4226489 alloc, 4226449 free.
-comelang2 -o 05function2.c.o -c 05function2.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-sNewNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-61 memory leaks. 3429037 alloc, 3428976 free.
-comelang2 -o 05function3.c.o -c 05function3.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-sNewNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-41 memory leaks. 1485484 alloc, 1485443 free.
-comelang2 -o 05function4.c.o -c 05function4.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 2305394 alloc, 2305367 free.
-comelang2 -o 06str.c.o -c 06str.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-41 memory leaks. 2618880 alloc, 2618839 free.
-comelang2 -o 07var.c.o -c 07var.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 2526665 alloc, 2526638 free.
-comelang2 -o 08if.c.o -c 08if.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1489656 alloc, 1489629 free.
-comelang2 -o 09while.c.o -c 09while.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1047743 alloc, 1047716 free.
-comelang2 -o 10do_while.c.o -c 10do_while.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1053491 alloc, 1053464 free.
-comelang2 -o 11for.c.o -c 11for.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1102005 alloc, 1101978 free.
-comelang2 -o 12switch.c.o -c 12switch.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-16 memory leaks. 1168989 alloc, 1168973 free.
-comelang2 -o 13op.c.o -c 13op.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-28 memory leaks. 3503478 alloc, 3503450 free.
-comelang2 -o 14struct.c.o -c 14struct.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-17 memory leaks. 1872401 alloc, 1872384 free.
-comelang2 -o 15union.c.o -c 15union.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1465390 alloc, 1465363 free.
-comelang2 -o 16enum.c.o -c 16enum.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1536606 alloc, 1536579 free.
+comelang2 -o 01main.c.o -c 01main.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 538424 alloc, 538424 free.
+comelang2 -o 02transpile.c.o -c 02transpile.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 2923920 alloc, 2923920 free.
+comelang2 -o 03transpile2.c.o -c 03transpile2.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1735091 alloc, 1735091 free.
+comelang2 -o 04heap.c.o -c 04heap.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1692989 alloc, 1692989 free.
+comelang2 -o 05function.c.o -c 05function.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+#1 (struct tuple4$4list$1sTypephphlist$1charphphlist$1charphphbool): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 
+#2 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#3 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#4 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#5 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#6 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#7 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#8 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#9 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#10 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#11 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#12 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#13 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#14 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#15 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#16 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#17 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#18 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#19 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#20 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#21 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#22 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#23 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#24 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#25 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#26 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#27 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#28 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#29 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#30 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#31 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#32 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#33 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#34 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#35 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#36 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#37 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#38 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#39 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#40 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#41 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#42 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#43 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#44 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#45 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#46 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#47 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#48 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#49 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#50 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#51 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#52 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#53 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#54 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#55 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#56 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#57 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#58 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#59 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#60 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#61 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#62 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#63 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#64 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#65 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#66 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#67 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#68 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#69 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#70 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#71 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#72 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#73 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#74 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#75 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#76 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#77 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#78 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#79 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#80 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#81 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#82 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, 
+#83 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, libcomelang2.c 1309, 
+#84 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, libcomelang2.c 1309, 
+#85 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#86 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#87 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#88 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#89 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, 
+#90 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, libcomelang2.c 1309, 
+#91 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#92 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#93 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#94 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#95 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, libcomelang2.c 1309, 
+#96 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, libcomelang2.c 1309, 
+#97 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#98 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#99 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#100 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#101 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#102 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#103 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#104 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#105 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, libcomelang2.c 1309, 
+#106 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, libcomelang2.c 1309, 
+#107 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#108 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#109 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#110 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, ./comelang2.h 198, 
+#111 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#112 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#113 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 202, 
+#114 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, ./comelang2.h 198, 
+#115 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, 
+#116 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, 
+#117 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, 
+#118 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, 
+#119 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 202, 
+#120 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#121 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#122 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#123 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#124 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#125 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#126 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#127 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#128 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#129 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#130 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#131 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#132 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#133 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#134 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#135 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#136 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#137 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#138 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#139 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 198, 
+#140 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 197, 
+#141 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 196, 
+141 memory leaks. 4052109 alloc, 4051968 free.
+comelang2 -o 05function2.c.o -c 05function2.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+#1 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 673, 05function2.c 155, 05function2.c 340, 08if.c 81, 05function2.c 340, 11for.c 141, 05function2.c 340, 18field.c 655, 20method.c 398, 18field.c 655, 05function.c 1390, libcomelang2.c 1607, 
+#2 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 673, 05function2.c 155, 05function2.c 340, 08if.c 81, 05function2.c 340, 18field.c 655, 20method.c 398, 18field.c 655, 05function.c 1390, libcomelang2.c 1607, 
+2 memory leaks. 3295916 alloc, 3295914 free.
+comelang2 -o 05function3.c.o -c 05function3.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1356231 alloc, 1356231 free.
+comelang2 -o 05function4.c.o -c 05function4.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 2178827 alloc, 2178827 free.
+comelang2 -o 06str.c.o -c 06str.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 2479419 alloc, 2479419 free.
+comelang2 -o 07var.c.o -c 07var.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 2386505 alloc, 2386505 free.
+comelang2 -o 08if.c.o -c 08if.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1370574 alloc, 1370574 free.
+comelang2 -o 09while.c.o -c 09while.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 944296 alloc, 944296 free.
+comelang2 -o 10do_while.c.o -c 10do_while.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 950039 alloc, 950039 free.
+comelang2 -o 11for.c.o -c 11for.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 997325 alloc, 997325 free.
+comelang2 -o 12switch.c.o -c 12switch.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1060154 alloc, 1060154 free.
+comelang2 -o 13op.c.o -c 13op.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 3310784 alloc, 3310784 free.
+comelang2 -o 14struct.c.o -c 14struct.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1755826 alloc, 1755826 free.
+comelang2 -o 15union.c.o -c 15union.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1356062 alloc, 1356062 free.
+comelang2 -o 16enum.c.o -c 16enum.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1419226 alloc, 1419226 free.
 comelang2 -o 17typedef.c.o -c 17typedef.c  -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-23 memory leaks. 1473591 alloc, 1473568 free.
-comelang2 -o 18field.c.o -c 18field.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 2258671 alloc, 2258644 free.
-comelang2 -o 19eq.c.o -c 19eq.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 1855046 alloc, 1855019 free.
-comelang2 -o 20method.c.o -c 20method.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-16 memory leaks. 2289925 alloc, 2289909 free.
-comelang2 -o 21obj.c.o -c 21obj.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-sNewNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-sNewNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-53 memory leaks. 2489490 alloc, 2489437 free.
-comelang2 -o 22impl.c.o -c 22impl.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-27 memory leaks. 745142 alloc, 745115 free.
-comelang2 -o 23interface.c.o -c 23interface.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-28 memory leaks. 1540442 alloc, 1540414 free.
-comelang2 -c libcomelang2.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-17 memory leaks. 1625719 alloc, 1625702 free.
+0 memory leaks. 1336028 alloc, 1336028 free.
+comelang2 -o 18field.c.o -c 18field.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 2127786 alloc, 2127786 free.
+comelang2 -o 19eq.c.o -c 19eq.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+#1 (struct tuple4$4list$1sTypephphlist$1charphphlist$1charphphbool): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 
+#2 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#3 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#4 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#5 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#6 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#7 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#8 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#9 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#10 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#11 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#12 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#13 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#14 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#15 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#16 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#17 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#18 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#19 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#20 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#21 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#22 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#23 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#24 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#25 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#26 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#27 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#28 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 198, 
+#29 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 197, 
+#30 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 196, 
+30 memory leaks. 1717904 alloc, 1717874 free.
+comelang2 -o 20method.c.o -c 20method.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 2136122 alloc, 2136122 free.
+comelang2 -o 21obj.c.o -c 21obj.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+#1 (struct tuple4$4list$1sTypephphlist$1charphphlist$1charphphbool): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 
+#2 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#3 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#4 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#5 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#6 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#7 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#8 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#9 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#10 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#11 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#12 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#13 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#14 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#15 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 281, 
+#16 (struct list_item$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, 
+#17 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 255, libcomelang2.c 1309, 
+#18 (struct list_item$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#19 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#20 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, libcomelang2.c 1309, 
+#21 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#22 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#23 (struct list$1sNodeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#24 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, ./comelang2.h 198, 
+#25 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#26 (struct tuple1$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#27 (struct sType): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 254, 
+#28 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 198, 
+#29 (struct list$1charph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 197, 
+#30 (struct list$1sTypeph): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 663, 05function2.c 1212, 05function2.c 1408, 05function4.c 196, 
+#31 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 673, 05function2.c 155, 05function2.c 340, 07var.c 230, 18field.c 655, 05function.c 1390, libcomelang2.c 1607, 
+31 memory leaks. 2334535 alloc, 2334504 free.
+comelang2 -o 22impl.c.o -c 22impl.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 646359 alloc, 646359 free.
+comelang2 -o 23interface.c.o -c 23interface.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1427893 alloc, 1427893 free.
+comelang2 -c libcomelang2.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+#1 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 673, 05function2.c 155, 05function2.c 340, 05function.c 180, 06str.c 1097, 06str.c 1097, libcomelang2.c 990, 
+#2 (char): 01main.c 12, 02transpile.c 951, 05function2.c 856, 05function2.c 673, 05function2.c 155, 05function2.c 340, 05function.c 180, 06str.c 1097, 06str.c 1097, libcomelang2.c 990, 
+2 memory leaks. 1497130 alloc, 1497128 free.
 ar r libcomelang2.a libcomelang2.c.o
-comelang2 -gc -c libcomelang2-gc.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-17 memory leaks. 1702449 alloc, 1702432 free.
+comelang2 -gc -c libcomelang2-gc.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1557179 alloc, 1557179 free.
 ar r libcomelang2-gc.a libcomelang2-gc.c.o
-comelang2 -c libcomelang2-str.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-30 memory leaks. 2238605 alloc, 2238575 free.
+comelang2 -c libcomelang2-str.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 2063530 alloc, 2063530 free.
 ar r libcomelang2-str.a libcomelang2-str.c.o
-comelang2 -o libcomelang2-str-gc.c.o -gc -c libcomelang2-str-gc.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-sLoadNode_clone 3
-sNode_clone 3
-sNullCheckNode_clone 3
-sNode_clone 3
-libcomelang2.c 663
-libcomelang2.c 663
-libcomelang2.c 663
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-./comelang2.h 198
-tuple1$1sTypephp_clone 3
-tuple1$1sTypephp_clone 3
-sType_clone 3
-05function4.c 647
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 471
-libcomelang2.c 663
-02transpile.c 337
-02transpile.c 336
-02transpile.c 334
-02transpile.c 333
-02transpile.c 332
-02transpile.c 331
-02transpile.c 468
-34 memory leaks. 2137004 alloc, 2136970 free.
+comelang2 -o libcomelang2-str-gc.c.o -gc -c libcomelang2-str-gc.c -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 1962659 alloc, 1962659 free.
 ar r libcomelang2-str-gc.a libcomelang2-str-gc.c.o
-comelang2 -o comelang2  01main.c.o 02transpile.c.o 03transpile2.c.o 04heap.c.o 05function.c.o 05function2.c.o 05function3.c.o 05function4.c.o 06str.c.o 07var.c.o 08if.c.o 09while.c.o 10do_while.c.o 11for.c.o 12switch.c.o 13op.c.o 14struct.c.o 15union.c.o 16enum.c.o 17typedef.c.o 18field.c.o 19eq.c.o 20method.c.o 21obj.c.o 22impl.c.o 23interface.c.o -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -original-position
+comelang2 -o comelang2  01main.c.o 02transpile.c.o 03transpile2.c.o 04heap.c.o 05function.c.o 05function2.c.o 05function3.c.o 05function4.c.o 06str.c.o 07var.c.o 08if.c.o 09while.c.o 10do_while.c.o 11for.c.o 12switch.c.o 13op.c.o 14struct.c.o 15union.c.o 16enum.c.o 17typedef.c.o 18field.c.o 19eq.c.o 20method.c.o 21obj.c.o 22impl.c.o 23interface.c.o -DPREFIX="\"/usr/local/\""  -I/usr/local/include -gdwarf-4 -cg -original-position
+0 memory leaks. 162 alloc, 162 free.
 mkdir -p "/usr/local/bin"
 /usr/bin/install -c -m 755 ./comelang2 "/usr/local/bin"
 mkdir -p "/usr/local/include"

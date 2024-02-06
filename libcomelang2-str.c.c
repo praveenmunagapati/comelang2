@@ -2035,9 +2035,9 @@ memset(&right_value1, 0, sizeof(void*));
     __dec_obj1=result_0->memory;
     result_0->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value1=buffer_clone(self))));
     if(__dec_obj1) { come_call_finalizer(buffer_finalize,__dec_obj1, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value1);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value1);
     if(right_value1 && right_value1 != __result_obj__ && !__freed_obj__) { come_call_finalizer(buffer_finalize,right_value1, (void*)0, (void*)0, 0, 1, 0, 0); }
-    __right_value_freed_obj[1] = right_value1;
+    __right_value_freed_obj[0] = right_value1;
     __freed_obj__ = 0;
     result_0->p=result_0->memory->buf;
     __result2__ = __result_obj__ = result_0;
@@ -2067,9 +2067,9 @@ memset(&right_value3, 0, sizeof(void*));
     __dec_obj2=result_1->memory;
     result_1->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value3=buffer_clone(self))));
     if(__dec_obj2) { come_call_finalizer(buffer_finalize,__dec_obj2, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value3);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value3);
     if(right_value3 && right_value3 != __result_obj__ && !__freed_obj__) { come_call_finalizer(buffer_finalize,right_value3, (void*)0, (void*)0, 0, 1, 0, 0); }
-    __right_value_freed_obj[1] = right_value3;
+    __right_value_freed_obj[0] = right_value3;
     __freed_obj__ = 0;
     result_1->p=(char*)result_1->memory->buf;
     __result3__ = __result_obj__ = result_1;
@@ -2099,9 +2099,9 @@ memset(&right_value5, 0, sizeof(void*));
     __dec_obj3=result_2->memory;
     result_2->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value5=buffer_clone(self))));
     if(__dec_obj3) { come_call_finalizer(buffer_finalize,__dec_obj3, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value5);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value5);
     if(right_value5 && right_value5 != __result_obj__ && !__freed_obj__) { come_call_finalizer(buffer_finalize,right_value5, (void*)0, (void*)0, 0, 1, 0, 0); }
-    __right_value_freed_obj[1] = right_value5;
+    __right_value_freed_obj[0] = right_value5;
     __freed_obj__ = 0;
     result_2->p=(short short*)result_2->memory->buf;
     __result4__ = __result_obj__ = result_2;
@@ -2131,9 +2131,9 @@ memset(&right_value7, 0, sizeof(void*));
     __dec_obj4=result_3->memory;
     result_3->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value7=buffer_clone(self))));
     if(__dec_obj4) { come_call_finalizer(buffer_finalize,__dec_obj4, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value7);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value7);
     if(right_value7 && right_value7 != __result_obj__ && !__freed_obj__) { come_call_finalizer(buffer_finalize,right_value7, (void*)0, (void*)0, 0, 1, 0, 0); }
-    __right_value_freed_obj[1] = right_value7;
+    __right_value_freed_obj[0] = right_value7;
     __freed_obj__ = 0;
     result_3->p=(int*)result_3->memory->buf;
     __result5__ = __result_obj__ = result_3;
@@ -2163,9 +2163,9 @@ memset(&right_value9, 0, sizeof(void*));
     __dec_obj5=result_4->memory;
     result_4->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value9=buffer_clone(self))));
     if(__dec_obj5) { come_call_finalizer(buffer_finalize,__dec_obj5, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value9);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value9);
     if(right_value9 && right_value9 != __result_obj__ && !__freed_obj__) { come_call_finalizer(buffer_finalize,right_value9, (void*)0, (void*)0, 0, 1, 0, 0); }
-    __right_value_freed_obj[1] = right_value9;
+    __right_value_freed_obj[0] = right_value9;
     __freed_obj__ = 0;
     result_4->p=(long*)result_4->memory->buf;
     __result6__ = __result_obj__ = result_4;
@@ -2986,9 +2986,9 @@ memset(&erro_ofs_12, 0, sizeof(int));
     __dec_obj7=result_10->str;
     result_10->str=(char*)come_increment_ref_count(((char*)(right_value42=string_clone(reg->str))));
     if(__dec_obj7) { __dec_obj7 = come_decrement_ref_count(__dec_obj7, (void*)0, (void*)0, 0,0,0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value42);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value42);
     if(right_value42 && right_value42 != __result_obj__ && !__freed_obj__) { right_value42 = come_decrement_ref_count(right_value42, (void*)0, (void*)0, 1, 0, 0); }
-    __right_value_freed_obj[1] = right_value42;
+    __right_value_freed_obj[0] = right_value42;
     __freed_obj__ = 0;
     result_10->ignore_case=reg->ignore_case;
     result_10->multiline=reg->multiline;
@@ -3618,17 +3618,17 @@ memset(&str2_92, 0, sizeof(char*));
             __right_value_freed_obj[0] = right_value55;
             __freed_obj__ = 0;
             group_strings_83=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value57=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value56=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 410, "struct list$1charph"))))))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value56);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value56);
             if(right_value56 && right_value56 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value56, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[1] = right_value56;
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value57);
+            __right_value_freed_obj[0] = right_value56;
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value57);
             if(right_value57 && right_value57 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value57, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[2] = right_value57;
+            __right_value_freed_obj[1] = right_value57;
             __freed_obj__ = 0;
             str2_84=(char*)come_increment_ref_count(((char*)(right_value58=block(parent,str_82,group_strings_83))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value58);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value58);
             if(right_value58 && right_value58 != __result_obj__ && !__freed_obj__) { right_value58 = come_decrement_ref_count(right_value58, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[3] = right_value58;
+            __right_value_freed_obj[0] = right_value58;
             __freed_obj__ = 0;
             if(_if_conditional34=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional34) {
                 __result72__ = __result_obj__ = result_66;
@@ -3657,12 +3657,12 @@ memset(&str2_92, 0, sizeof(char*));
                 __right_value_freed_obj[0] = right_value62;
                 __freed_obj__ = 0;
                 group_strings_89=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value64=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value63=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 431, "struct list$1charph"))))))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value63);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value63);
                 if(right_value63 && right_value63 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value63, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[1] = right_value63;
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value64);
+                __right_value_freed_obj[0] = right_value63;
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value64);
                 if(right_value64 && right_value64 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value64, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[2] = right_value64;
+                __right_value_freed_obj[1] = right_value64;
                 __freed_obj__ = 0;
                 for(
                 i_90=1 ,                0;                _for_condtionalA11=                i_90<regex_result_79 ,                _for_condtionalA11;                i_90++ ,                0                ){
@@ -3675,9 +3675,9 @@ memset(&str2_92, 0, sizeof(char*));
                     if(match_string_91 && !__freed_obj__) { match_string_91 = come_decrement_ref_count(match_string_91, (void*)0, (void*)0, 0, 0, 0); }
                 }
                 str2_92=(char*)come_increment_ref_count(((char*)(right_value66=block(parent,str_88,group_strings_89))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value66);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value66);
                 if(right_value66 && right_value66 != __result_obj__ && !__freed_obj__) { right_value66 = come_decrement_ref_count(right_value66, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[3] = right_value66;
+                __right_value_freed_obj[0] = right_value66;
                 __freed_obj__ = 0;
                 if(_if_conditional39=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional39) {
                     __result74__ = __result_obj__ = result_66;
@@ -3925,17 +3925,17 @@ memset(&str2_117, 0, sizeof(char*));
             __right_value_freed_obj[0] = right_value69;
             __freed_obj__ = 0;
             group_strings_111=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value71=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value70=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 501, "struct list$1charph"))))))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value70);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value70);
             if(right_value70 && right_value70 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value70, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[1] = right_value70;
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value71);
+            __right_value_freed_obj[0] = right_value70;
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value71);
             if(right_value71 && right_value71 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value71, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[2] = right_value71;
+            __right_value_freed_obj[1] = right_value71;
             __freed_obj__ = 0;
             str2_112=(char*)come_increment_ref_count(((char*)(right_value72=block(parent,str_110,group_strings_111))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value72);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value72);
             if(right_value72 && right_value72 != __result_obj__ && !__freed_obj__) { right_value72 = come_decrement_ref_count(right_value72, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[3] = right_value72;
+            __right_value_freed_obj[0] = right_value72;
             __freed_obj__ = 0;
             if(_if_conditional42=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional42) {
                 __result76__ = __result_obj__ = result_93;
@@ -3971,12 +3971,12 @@ memset(&str2_117, 0, sizeof(char*));
                 __right_value_freed_obj[0] = right_value73;
                 __freed_obj__ = 0;
                 group_strings_114=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value75=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value74=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 527, "struct list$1charph"))))))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value74);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value74);
                 if(right_value74 && right_value74 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value74, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[1] = right_value74;
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value75);
+                __right_value_freed_obj[0] = right_value74;
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value75);
                 if(right_value75 && right_value75 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value75, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[2] = right_value75;
+                __right_value_freed_obj[1] = right_value75;
                 __freed_obj__ = 0;
                 for(
                 i_115=1 ,                0;                _for_condtionalA14=                i_115<regex_result_107 ,                _for_condtionalA14;                i_115++ ,                0                ){
@@ -3989,9 +3989,9 @@ memset(&str2_117, 0, sizeof(char*));
                     if(match_string_116 && !__freed_obj__) { match_string_116 = come_decrement_ref_count(match_string_116, (void*)0, (void*)0, 0, 0, 0); }
                 }
                 str2_117=(char*)come_increment_ref_count(((char*)(right_value77=block(parent,str_113,group_strings_114))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value77);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value77);
                 if(right_value77 && right_value77 != __result_obj__ && !__freed_obj__) { right_value77 = come_decrement_ref_count(right_value77, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[3] = right_value77;
+                __right_value_freed_obj[0] = right_value77;
                 __freed_obj__ = 0;
                 if(_if_conditional46=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional46) {
                     __result77__ = __result_obj__ = result_93;
@@ -4167,17 +4167,17 @@ memset(&str2_144, 0, sizeof(char*));
             __right_value_freed_obj[0] = right_value80;
             __freed_obj__ = 0;
             match_strings_135=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value82=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value81=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 600, "struct list$1charph"))))))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value81);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value81);
             if(right_value81 && right_value81 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value81, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[1] = right_value81;
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value82);
+            __right_value_freed_obj[0] = right_value81;
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value82);
             if(right_value82 && right_value82 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value82, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[2] = right_value82;
+            __right_value_freed_obj[1] = right_value82;
             __freed_obj__ = 0;
             str2_136=(char*)come_increment_ref_count(((char*)(right_value83=block(parent,str_134,match_strings_135))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value83);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value83);
             if(right_value83 && right_value83 != __result_obj__ && !__freed_obj__) { right_value83 = come_decrement_ref_count(right_value83, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[3] = right_value83;
+            __right_value_freed_obj[0] = right_value83;
             __freed_obj__ = 0;
             if(_if_conditional50=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional50) {
                 __result79__ = __result_obj__ = result_123;
@@ -4212,12 +4212,12 @@ memset(&str2_144, 0, sizeof(char*));
                     offset_124=end_127[0];
                 }
                 match_strings_138=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value86=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value85=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 627, "struct list$1charph"))))))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value85);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value85);
                 if(right_value85 && right_value85 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value85, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[1] = right_value85;
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value86);
+                __right_value_freed_obj[0] = right_value85;
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value86);
                 if(right_value86 && right_value86 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value86, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[2] = right_value86;
+                __right_value_freed_obj[1] = right_value86;
                 __freed_obj__ = 0;
                 for(
                 i_139=1 ,                0;                _for_condtionalA17=                i_139<regex_result_131 ,                _for_condtionalA17;                i_139++ ,                0                ){
@@ -4230,9 +4230,9 @@ memset(&str2_144, 0, sizeof(char*));
                     if(match_str_140 && !__freed_obj__) { match_str_140 = come_decrement_ref_count(match_str_140, (void*)0, (void*)0, 0, 0, 0); }
                 }
                 str2_141=(char*)come_increment_ref_count(((char*)(right_value88=block(parent,str_137,match_strings_138))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value88);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value88);
                 if(right_value88 && right_value88 != __result_obj__ && !__freed_obj__) { right_value88 = come_decrement_ref_count(right_value88, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[3] = right_value88;
+                __right_value_freed_obj[0] = right_value88;
                 __freed_obj__ = 0;
                 if(_if_conditional54=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional54) {
                     __result80__ = __result_obj__ = result_123;
@@ -4259,17 +4259,17 @@ memset(&str2_144, 0, sizeof(char*));
         __right_value_freed_obj[0] = right_value89;
         __freed_obj__ = 0;
         match_strings_143=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value91=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value90=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 649, "struct list$1charph"))))))));
-        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value90);
+        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value90);
         if(right_value90 && right_value90 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value90, (void*)0, (void*)0, 0, 1, 0, 0); }
-        __right_value_freed_obj[1] = right_value90;
-        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value91);
+        __right_value_freed_obj[0] = right_value90;
+        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value91);
         if(right_value91 && right_value91 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value91, (void*)0, (void*)0, 0, 1, 0, 0); }
-        __right_value_freed_obj[2] = right_value91;
+        __right_value_freed_obj[1] = right_value91;
         __freed_obj__ = 0;
         str2_144=(char*)come_increment_ref_count(((char*)(right_value92=block(parent,str_142,match_strings_143))));
-        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value92);
+        __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value92);
         if(right_value92 && right_value92 != __result_obj__ && !__freed_obj__) { right_value92 = come_decrement_ref_count(right_value92, (void*)0, (void*)0, 1, 0, 0); }
-        __right_value_freed_obj[3] = right_value92;
+        __right_value_freed_obj[0] = right_value92;
         __freed_obj__ = 0;
         if(_if_conditional56=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional56) {
             __result81__ = __result_obj__ = result_123;
@@ -4414,17 +4414,17 @@ memset(&str2_169, 0, sizeof(char*));
             __right_value_freed_obj[0] = right_value95;
             __freed_obj__ = 0;
             match_strings_163=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value97=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value96=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 700, "struct list$1charph"))))))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value96);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value96);
             if(right_value96 && right_value96 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value96, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[1] = right_value96;
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value97);
+            __right_value_freed_obj[0] = right_value96;
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value97);
             if(right_value97 && right_value97 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value97, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[2] = right_value97;
+            __right_value_freed_obj[1] = right_value97;
             __freed_obj__ = 0;
             str2_164=(char*)come_increment_ref_count(((char*)(right_value98=block(parent,str_162,match_strings_163))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value98);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value98);
             if(right_value98 && right_value98 != __result_obj__ && !__freed_obj__) { right_value98 = come_decrement_ref_count(right_value98, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[3] = right_value98;
+            __right_value_freed_obj[0] = right_value98;
             __freed_obj__ = 0;
             if(_if_conditional58=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional58) {
                 __result83__ = __result_obj__ = result_150;
@@ -4459,12 +4459,12 @@ memset(&str2_169, 0, sizeof(char*));
                     offset_151=end_154[0];
                 }
                 match_strings_166=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value101=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value100=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 726, "struct list$1charph"))))))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value100);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value100);
                 if(right_value100 && right_value100 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value100, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[1] = right_value100;
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value101);
+                __right_value_freed_obj[0] = right_value100;
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value101);
                 if(right_value101 && right_value101 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value101, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[2] = right_value101;
+                __right_value_freed_obj[1] = right_value101;
                 __freed_obj__ = 0;
                 for(
                 i_167=1 ,                0;                _for_condtionalA20=                i_167<regex_result_159 ,                _for_condtionalA20;                i_167++ ,                0                ){
@@ -4477,9 +4477,9 @@ memset(&str2_169, 0, sizeof(char*));
                     if(match_str_168 && !__freed_obj__) { match_str_168 = come_decrement_ref_count(match_str_168, (void*)0, (void*)0, 0, 0, 0); }
                 }
                 str2_169=(char*)come_increment_ref_count(((char*)(right_value103=block(parent,str_165,match_strings_166))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value103);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value103);
                 if(right_value103 && right_value103 != __result_obj__ && !__freed_obj__) { right_value103 = come_decrement_ref_count(right_value103, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[3] = right_value103;
+                __right_value_freed_obj[0] = right_value103;
                 __freed_obj__ = 0;
                 if(_if_conditional62=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional62) {
                     __result84__ = __result_obj__ = result_150;
@@ -4942,12 +4942,12 @@ memset(&right_value119, 0, sizeof(void*));
     memcpy(str+head,sub_str_200,sizeof(unsigned int)*(wstring_length(sub_str_200)+1));
     __result105__ = __result_obj__ = ((unsigned int*)(right_value119=string_to_wstring(((char*)(right_value118=wchar_tp_to_string(str))))));
     if(sub_str_200 && !__freed_obj__) { sub_str_200 = come_decrement_ref_count(sub_str_200, (void*)0, (void*)0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value118);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value118);
     if(right_value118 && right_value118 != __result_obj__ && !__freed_obj__) { right_value118 = come_decrement_ref_count(right_value118, (void*)0, (void*)0, 1, 0, 0); }
-    __right_value_freed_obj[1] = right_value118;
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value119);
+    __right_value_freed_obj[0] = right_value118;
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value119);
     if(right_value119 && right_value119 != __result_obj__ && !__freed_obj__) { right_value119 = come_decrement_ref_count(right_value119, (void*)0, (void*)0, 1, 0, 0); }
-    __right_value_freed_obj[2] = right_value119;
+    __right_value_freed_obj[1] = right_value119;
     __freed_obj__ = 0;
     return __result105__;
     if(sub_str_200 && !__freed_obj__) { sub_str_200 = come_decrement_ref_count(sub_str_200, (void*)0, (void*)0, 0, 0, 0); }
@@ -5767,9 +5767,9 @@ memset(&right_value136, 0, sizeof(void*));
     }
     __result138__ = __result_obj__ = ((char*)(right_value136=buffer_to_string(result_271)));
     if(result_271 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_271, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value136);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value136);
     if(right_value136 && right_value136 != __result_obj__ && !__freed_obj__) { right_value136 = come_decrement_ref_count(right_value136, (void*)0, (void*)0, 1, 0, 0); }
-    __right_value_freed_obj[2] = right_value136;
+    __right_value_freed_obj[0] = right_value136;
     __freed_obj__ = 0;
     return __result138__;
     if(result_271 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_271, (void*)0, (void*)0, 0, 0, 0, 0); }
@@ -5925,9 +5925,9 @@ memset(&right_value143, 0, sizeof(void*));
     }
     __result139__ = __result_obj__ = ((char*)(right_value143=buffer_to_string(result_290)));
     if(result_290 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_290, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value143);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value143);
     if(right_value143 && right_value143 != __result_obj__ && !__freed_obj__) { right_value143 = come_decrement_ref_count(right_value143, (void*)0, (void*)0, 1, 0, 0); }
-    __right_value_freed_obj[2] = right_value143;
+    __right_value_freed_obj[0] = right_value143;
     __freed_obj__ = 0;
     return __result139__;
     if(result_290 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_290, (void*)0, (void*)0, 0, 0, 0, 0); }
@@ -5970,12 +5970,12 @@ memset(&right_value149, 0, sizeof(void*));
     __right_value_freed_obj[1] = right_value145;
     __freed_obj__ = 0;
     buf_302=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value147=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value146=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1467, "struct buffer"))))))));
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value146);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value146);
     if(right_value146 && right_value146 != __result_obj__ && !__freed_obj__) { come_call_finalizer(buffer_finalize,right_value146, (void*)0, (void*)0, 0, 1, 0, 0); }
-    __right_value_freed_obj[2] = right_value146;
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value147);
+    __right_value_freed_obj[0] = right_value146;
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value147);
     if(right_value147 && right_value147 != __result_obj__ && !__freed_obj__) { come_call_finalizer(buffer_finalize,right_value147, (void*)0, (void*)0, 0, 1, 0, 0); }
-    __right_value_freed_obj[3] = right_value147;
+    __right_value_freed_obj[1] = right_value147;
     __freed_obj__ = 0;
     for(
     i_303=0 ,    0;    _for_condtionalA39=    i_303<charp_length(self) ,    _for_condtionalA39;    i_303++ ,    0    ){
@@ -6872,27 +6872,27 @@ memset(&right_value187, 0, sizeof(void*));
             __freed_obj__ = 0;
             buffer_append_str(result_426,str_432);
             group_strings_433=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value172=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value171=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1923, "struct list$1charph"))))))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value171);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value171);
             if(right_value171 && right_value171 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value171, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[1] = right_value171;
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value172);
+            __right_value_freed_obj[0] = right_value171;
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value172);
             if(right_value172 && right_value172 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value172, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[2] = right_value172;
+            __right_value_freed_obj[1] = right_value172;
             __freed_obj__ = 0;
             match_string_434=(char*)come_increment_ref_count(((char*)(right_value173=charp_substring(self,start_418[0],end_419[0]))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value173);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value173);
             if(right_value173 && right_value173 != __result_obj__ && !__freed_obj__) { right_value173 = come_decrement_ref_count(right_value173, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[3] = right_value173;
+            __right_value_freed_obj[0] = right_value173;
             __freed_obj__ = 0;
             list$1charph_push_back(group_strings_433,(char*)come_increment_ref_count(((char*)(right_value174=charp_substring(self,start_418[0],end_419[0])))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 4, right_value174);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value174);
             if(right_value174 && right_value174 != __result_obj__ && !__freed_obj__) { right_value174 = come_decrement_ref_count(right_value174, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[4] = right_value174;
+            __right_value_freed_obj[0] = right_value174;
             __freed_obj__ = 0;
             block_result_435=(char*)come_increment_ref_count(((char*)(right_value175=block(parent,match_string_434,group_strings_433))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 5, right_value175);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value175);
             if(right_value175 && right_value175 != __result_obj__ && !__freed_obj__) { right_value175 = come_decrement_ref_count(right_value175, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[5] = right_value175;
+            __right_value_freed_obj[0] = right_value175;
             __freed_obj__ = 0;
             if(_if_conditional137=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional137) {
                 __result151__ = __result_obj__ = ((char*)(right_value176=buffer_to_string(result_426)));
@@ -6949,12 +6949,12 @@ memset(&right_value187, 0, sizeof(void*));
                     offset_416=end_419[0];
                 }
                 group_strings_438=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value180=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value179=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1962, "struct list$1charph"))))))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value179);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value179);
                 if(right_value179 && right_value179 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value179, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[1] = right_value179;
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value180);
+                __right_value_freed_obj[0] = right_value179;
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value180);
                 if(right_value180 && right_value180 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value180, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[2] = right_value180;
+                __right_value_freed_obj[1] = right_value180;
                 __freed_obj__ = 0;
                 for(
                 i_439=1 ,                0;                _for_condtionalA57=                i_439<regex_result_429 ,                _for_condtionalA57;                i_439++ ,                0                ){
@@ -6967,14 +6967,14 @@ memset(&right_value187, 0, sizeof(void*));
                     if(match_string_440 && !__freed_obj__) { match_string_440 = come_decrement_ref_count(match_string_440, (void*)0, (void*)0, 0, 0, 0); }
                 }
                 match_string_441=(char*)come_increment_ref_count(((char*)(right_value182=charp_substring(self,start_418[0],end_419[0]))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value182);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value182);
                 if(right_value182 && right_value182 != __result_obj__ && !__freed_obj__) { right_value182 = come_decrement_ref_count(right_value182, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[3] = right_value182;
+                __right_value_freed_obj[0] = right_value182;
                 __freed_obj__ = 0;
                 block_result_442=(char*)come_increment_ref_count(((char*)(right_value183=block(parent,match_string_441,group_strings_438))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 4, right_value183);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value183);
                 if(right_value183 && right_value183 != __result_obj__ && !__freed_obj__) { right_value183 = come_decrement_ref_count(right_value183, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[4] = right_value183;
+                __right_value_freed_obj[0] = right_value183;
                 __freed_obj__ = 0;
                 if(_if_conditional142=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional142) {
                     __result152__ = __result_obj__ = ((char*)(right_value184=buffer_to_string(result_426)));
@@ -7025,9 +7025,9 @@ memset(&right_value187, 0, sizeof(void*));
     }
     __result153__ = __result_obj__ = ((char*)(right_value187=buffer_to_string(result_426)));
     if(result_426 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_426, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value187);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value187);
     if(right_value187 && right_value187 != __result_obj__ && !__freed_obj__) { right_value187 = come_decrement_ref_count(right_value187, (void*)0, (void*)0, 1, 0, 0); }
-    __right_value_freed_obj[2] = right_value187;
+    __right_value_freed_obj[0] = right_value187;
     __freed_obj__ = 0;
     return __result153__;
     if(result_426 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_426, (void*)0, (void*)0, 0, 0, 0, 0); }
@@ -7198,27 +7198,27 @@ memset(&right_value209, 0, sizeof(void*));
             __freed_obj__ = 0;
             buffer_append_str(result_455,str_462);
             group_strings_463=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value192=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value191=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2034, "struct list$1charph"))))))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value191);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value191);
             if(right_value191 && right_value191 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value191, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[1] = right_value191;
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value192);
+            __right_value_freed_obj[0] = right_value191;
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value192);
             if(right_value192 && right_value192 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value192, (void*)0, (void*)0, 0, 1, 0, 0); }
-            __right_value_freed_obj[2] = right_value192;
+            __right_value_freed_obj[1] = right_value192;
             __freed_obj__ = 0;
             list$1charph_push_back(group_strings_463,(char*)come_increment_ref_count(((char*)(right_value193=charp_substring(self,start_447[0],end_448[0])))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value193);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value193);
             if(right_value193 && right_value193 != __result_obj__ && !__freed_obj__) { right_value193 = come_decrement_ref_count(right_value193, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[3] = right_value193;
+            __right_value_freed_obj[0] = right_value193;
             __freed_obj__ = 0;
             match_string_464=(char*)come_increment_ref_count(((char*)(right_value194=charp_substring(self,start_447[0],end_448[0]))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 4, right_value194);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value194);
             if(right_value194 && right_value194 != __result_obj__ && !__freed_obj__) { right_value194 = come_decrement_ref_count(right_value194, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[4] = right_value194;
+            __right_value_freed_obj[0] = right_value194;
             __freed_obj__ = 0;
             block_result_465=(char*)come_increment_ref_count(((char*)(right_value195=block(parent,match_string_464,group_strings_463))));
-            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 5, right_value195);
+            __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value195);
             if(right_value195 && right_value195 != __result_obj__ && !__freed_obj__) { right_value195 = come_decrement_ref_count(right_value195, (void*)0, (void*)0, 1, 0, 0); }
-            __right_value_freed_obj[5] = right_value195;
+            __right_value_freed_obj[0] = right_value195;
             __freed_obj__ = 0;
             if(_if_conditional145=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional145) {
                 __result154__ = __result_obj__ = ((char*)(right_value196=buffer_to_string(result_455)));
@@ -7291,12 +7291,12 @@ memset(&right_value209, 0, sizeof(void*));
                     offset_445=end_448[0];
                 }
                 group_strings_469=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value201=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value200=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2081, "struct list$1charph"))))))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value200);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value200);
                 if(right_value200 && right_value200 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value200, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[1] = right_value200;
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value201);
+                __right_value_freed_obj[0] = right_value200;
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 1, right_value201);
                 if(right_value201 && right_value201 != __result_obj__ && !__freed_obj__) { come_call_finalizer(list$1charphp_finalize,right_value201, (void*)0, (void*)0, 0, 1, 0, 0); }
-                __right_value_freed_obj[2] = right_value201;
+                __right_value_freed_obj[1] = right_value201;
                 __freed_obj__ = 0;
                 for(
                 i_470=1 ,                0;                _for_condtionalA60=                i_470<regex_result_459 ,                _for_condtionalA60;                i_470++ ,                0                ){
@@ -7309,14 +7309,14 @@ memset(&right_value209, 0, sizeof(void*));
                     if(match_string_471 && !__freed_obj__) { match_string_471 = come_decrement_ref_count(match_string_471, (void*)0, (void*)0, 0, 0, 0); }
                 }
                 match_string_472=(char*)come_increment_ref_count(((char*)(right_value203=charp_substring(self,start_447[0],end_448[0]))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 3, right_value203);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value203);
                 if(right_value203 && right_value203 != __result_obj__ && !__freed_obj__) { right_value203 = come_decrement_ref_count(right_value203, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[3] = right_value203;
+                __right_value_freed_obj[0] = right_value203;
                 __freed_obj__ = 0;
                 block_result_473=(char*)come_increment_ref_count(((char*)(right_value204=block(parent,match_string_472,group_strings_469))));
-                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 4, right_value204);
+                __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value204);
                 if(right_value204 && right_value204 != __result_obj__ && !__freed_obj__) { right_value204 = come_decrement_ref_count(right_value204, (void*)0, (void*)0, 1, 0, 0); }
-                __right_value_freed_obj[4] = right_value204;
+                __right_value_freed_obj[0] = right_value204;
                 __freed_obj__ = 0;
                 if(_if_conditional151=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional151) {
                     __result155__ = __result_obj__ = ((char*)(right_value205=buffer_to_string(result_455)));
@@ -7382,9 +7382,9 @@ memset(&right_value209, 0, sizeof(void*));
     }
     __result156__ = __result_obj__ = ((char*)(right_value209=buffer_to_string(result_455)));
     if(result_455 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_455, (void*)0, (void*)0, 0, 0, 0, 0); }
-    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 2, right_value209);
+    __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value209);
     if(right_value209 && right_value209 != __result_obj__ && !__freed_obj__) { right_value209 = come_decrement_ref_count(right_value209, (void*)0, (void*)0, 1, 0, 0); }
-    __right_value_freed_obj[2] = right_value209;
+    __right_value_freed_obj[0] = right_value209;
     __freed_obj__ = 0;
     return __result156__;
     if(result_455 && !__freed_obj__) { come_call_finalizer(buffer_finalize,result_455, (void*)0, (void*)0, 0, 0, 0, 0); }

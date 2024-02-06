@@ -821,7 +821,7 @@ sNode*% parse_method_call(sNode*% obj, string fun_name, sInfo* info) version 20
     
     parse_sharp();
     
-    sNode*% node = new sMethodCallNode(fun_name, clone obj, clone params, method_block, method_block_sline, info) implements sNode;
+    sNode*% node = new sMethodCallNode(fun_name, clone obj, params, method_block, method_block_sline, info) implements sNode;
     node = exception_get_value(node, info)
     
     return node;

@@ -308,9 +308,6 @@ int transpile_block(sBlock* block, list<sType*%>* param_types, list<string>* par
         }
     }
     
-    var right_value_objects = info.right_value_objects;
-    info.right_value_objects = new list<sRightValueObject*%>();
-    
     int block_level = info->block_level;
     if(!no_var_table) {
         info->block_level++;
@@ -321,6 +318,9 @@ int transpile_block(sBlock* block, list<sType*%>* param_types, list<string>* par
     else {
         int i;
         foreach(node, block->mNodes) {
+            var right_value_objects = info.right_value_objects;
+            info.right_value_objects = new list<sRightValueObject*%>();
+            
             info.module.mLastCode = null;
             info.module.mLastCode2 = null;
             info.module.mLastCode3 = null;
@@ -350,6 +350,9 @@ int transpile_block(sBlock* block, list<sType*%>* param_types, list<string>* par
             arrange_stack(info, stack_num_before);
 
             free_right_value_objects(info);
+            
+            info.right_value_objects.reset();
+            info.right_value_objects = right_value_objects;
         }
     }
 
@@ -363,9 +366,6 @@ int transpile_block(sBlock* block, list<sType*%>* param_types, list<string>* par
     
     info.param_types = param_types_;
     info.param_names = param_names_;
-    
-    info.right_value_objects.reset();
-    info.right_value_objects = right_value_objects;
 
     info->current_loop_vtable = current_loop_vtable;
     

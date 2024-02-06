@@ -1782,7 +1782,7 @@ impl tuple1 <T>
 {
     tuple1<T>*% initialize(tuple1<T>*% self, T v1)
     {
-        self.v1 = dupe v1;
+        self.v1 = v1;
         
         return self;
     }
@@ -1814,8 +1814,8 @@ impl tuple2 <T, T2>
 {
     tuple2<T, T2>*% initialize(tuple2<T, T2>*% self, T v1, T2 v2)
     {
-        self.v1 = dupe v1;
-        self.v2 = dupe v2;
+        self.v1 = v1;
+        self.v2 = v2;
         
         return self;
     }
@@ -1851,9 +1851,9 @@ impl tuple3 <T, T2, T3>
 {
     tuple3<T, T2, T3>*% initialize(tuple3<T, T2, T3>*% self, T v1, T2 v2, T3 v3)
     {
-        self.v1 = dupe v1;
-        self.v2 = dupe v2;
-        self.v3 = dupe v3;
+        self.v1 = v1;
+        self.v2 = v2;
+        self.v3 = v3;
         
         return self;
     }
@@ -1889,10 +1889,10 @@ impl tuple4 <T, T2, T3, T4>
 {
     tuple4<T, T2, T3, T4>*% initialize(tuple4<T, T2, T3, T4>*% self, T v1, T2 v2, T3 v3, T4 v4)
     {
-        self.v1 = dupe v1;
-        self.v2 = dupe v2;
-        self.v3 = dupe v3;
-        self.v4 = dupe v4;
+        self.v1 = v1;
+        self.v2 = v2;
+        self.v3 = v3;
+        self.v4 = v4;
         
         return self;
     }
@@ -1930,11 +1930,11 @@ impl tuple5 <T, T2, T3, T4, T5>
 {
     tuple5<T, T2, T3, T4, T5>*% initialize(tuple5<T, T2, T3, T4, T5>*% self, T v1, T2 v2, T3 v3, T4 v4, T5 v5)
     {
-        self.v1 = dupe v1;
-        self.v2 = dupe v2;
-        self.v3 = dupe v3;
-        self.v4 = dupe v4;
-        self.v5 = dupe v5;
+        self.v1 = v1;
+        self.v2 = v2;
+        self.v3 = v3;
+        self.v4 = v4;
+        self.v5 = v5;
         
         return self;
     }
