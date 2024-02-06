@@ -2351,8 +2351,8 @@ memset(&it_17, 0, sizeof(struct sMemHeaderTiny*));
             memcpy(it_15->sline,gComeStackFrameSLine,sizeof(int)*gNumComeStackFrame);
         }
         else {
-            memcpy(it_15->sname,gComeStackFrameSName+gNumComeStackFrame-16,sizeof(char*)*16);
-            memcpy(it_15->sline,gComeStackFrameSLine+gNumComeStackFrame-16,sizeof(int)*16);
+            memcpy(it_15->sname,gComeStackFrameSName+gNumComeStackFrame-16-1,sizeof(char*)*16);
+            memcpy(it_15->sline,gComeStackFrameSLine+gNumComeStackFrame-16-1,sizeof(int)*16);
         }
         it_15->next=gAllocMem;
         it_15->prev=((void*)0);
