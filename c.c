@@ -15,7 +15,6 @@
         #define __MAC_OS_X_VERSION_MAX_ALLOWED __MAC_14_2
     #endif
 #endif
-*/
 
 int main(int argc, char** argv)
 {

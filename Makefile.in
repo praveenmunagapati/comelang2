@@ -118,15 +118,15 @@ libcomelang2.a: libcomelang2.c
 	ar r libcomelang2.a libcomelang2.c.o
 
 libcomelang2-gc.a: libcomelang2-gc.c
-	comelang2 -gc -c libcomelang2-gc.c $(CFLAGS) $(COME_CFLAGS)
-	ar r libcomelang2-gc.a libcomelang2-gc.c.o
+	comelang2 -gc -c libcomelang2-gc.c $(CFLAGS) $(COME_CFLAGS) -I/opt/homebrew/opt/boehmgc/include/
+	ar r libcomelang2-gc.a libcomelang2-gc.c.o 
 
 libcomelang2-str.a: libcomelang2-str.c
 	comelang2 -c libcomelang2-str.c $(CFLAGS) $(COME_CFLAGS)
 	ar r libcomelang2-str.a libcomelang2-str.c.o
 
 libcomelang2-str-gc.a: libcomelang2-str-gc.c
-	comelang2 -o libcomelang2-str-gc.c.o -gc -c libcomelang2-str-gc.c $(CFLAGS) $(COME_CFLAGS)
+	comelang2 -o libcomelang2-str-gc.c.o -gc -c libcomelang2-str-gc.c $(CFLAGS) $(COME_CFLAGS) -I/opt/homebrew/opt/boehmgc/include/
 	ar r libcomelang2-str-gc.a libcomelang2-str-gc.c.o
 
 comelang2-sh: 01main.c.o.tmp 02transpile.c.o.tmp 03transpile2.c.o.tmp 04heap.c.o.tmp 05function.c.o.tmp 05function2.c.o.tmp 05function3.c.o.tmp 05function4.c.o.tmp 06str.c.o.tmp 07var.c.o.tmp 08if.c.o.tmp 09while.c.o.tmp 10do_while.c.o.tmp 11for.c.o.tmp 12switch.c.o.tmp 13op.c.o.tmp 14struct.c.o.tmp 15union.c.o.tmp 16enum.c.o.tmp 17typedef.c.o.tmp 18field.c.o.tmp 19eq.c.o.tmp 20method.c.o.tmp 21obj.c.o.tmp 22impl.c.o.tmp 23interface.c.o.tmp libcomelang2.c.o.tmp libcomelang2-str.c.o.tmp

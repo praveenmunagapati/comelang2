@@ -2,7 +2,11 @@
 using C
 {
 #include <libgen.h>
+#ifdef __DARWIN_ARM__
+#include <gc/gc.h>
+#else
 #include <gc.h>
+#endif
 }
 
 //////////////////////////////
