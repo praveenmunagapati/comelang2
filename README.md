@@ -1266,7 +1266,7 @@ int main(int argc, char** argv)
 }
 ```
 
-require -cg option
+require -cg option to see stackframe
 
 # System call errro handling like perl
 
@@ -1567,7 +1567,7 @@ int main(int argc, char** argv)
     
     return 0;
 }
-> comelang2 a.c
+> comelang2 -cg a.c
 > ./a
 a.c 5
 a.c 11
