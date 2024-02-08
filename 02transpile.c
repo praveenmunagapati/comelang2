@@ -109,7 +109,7 @@ static bool cpp(sInfo* info)
         output_file_name = info.sname + ".i";
     }
     
-    string cmd = xsprintf("which /opt/homebrew/opt/llvm/bin/clang-cpp 1> /dev/null 2>/dev/null"); // Mac?
+    string cmd = xsprintf("uname -a | grep Darwin 1> /dev/null 2>/dev/null"); // Mac?
     
     bool exist_common_h = false;
     {

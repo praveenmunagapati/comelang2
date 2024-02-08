@@ -3417,7 +3417,7 @@ memset(&command2_51, 0, sizeof(char*));
         __right_value_freed_obj[0] = right_value43;
         __freed_obj__ = 0;
     }
-    cmd_39=(char*)come_increment_ref_count(((char*)(right_value44=xsprintf("which /opt/homebrew/opt/llvm/bin/clang-cpp 1> /dev/null 2>/dev/null"))));
+    cmd_39=(char*)come_increment_ref_count(((char*)(right_value44=xsprintf("uname -a | grep Darwin 1> /dev/null 2>/dev/null"))));
     __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value44);
     if(right_value44 && right_value44 != __result_obj__ && !__freed_obj__) { right_value44 = come_decrement_ref_count(right_value44, (void*)0, (void*)0, 1, 0, 0); }
     __right_value_freed_obj[0] = right_value44;
