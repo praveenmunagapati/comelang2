@@ -14,6 +14,8 @@
 #include <unistd.h>
 #include <limits.h>
 
+bool gSigInt = false;
+
 struct sCommand
 {
     list<string>*% args;
@@ -497,6 +499,89 @@ bool parse_statment(sInfo* info)
                 }
             }
         }
+        else if(line.match(/^while /)) {
+            info->p = p;
+            
+            info->p += strlen("while");
+            skip_spaces(info);
+            
+            char* head = info->p;
+            char* tail = null;
+            
+            while(*info->p) {
+                if(parse_cmp(info->p, "do") == 0) {
+                    tail = info->p -1;
+                    break;
+                }
+                else {
+                    info->p++;
+                }
+            }
+            
+            info->p += strlen("do");
+            
+            if(tail == null) {
+                puts("while statment error");
+                return false;
+            }
+            
+            buffer*% source = new buffer();
+            
+            source.append(head, tail - head);
+            
+            buffer*% source2 = new buffer();
+            
+            {
+                char* head = info->p;
+                char* tail = null;
+                
+                while(*info->p) {
+                    if(parse_cmp(info->p, "done") == 0) {
+                        tail = info->p -1;
+                        break;
+                    }
+                    else {
+                        info->p++;
+                    }
+                }
+                
+                info->p += strlen("done");
+                
+                if(tail == null) {
+                    puts("while statment error");
+                    return false;
+                }
+                
+                source2.append(head, tail - head);
+            }
+            
+            while(1) {
+                var rcode, err = run(source.to_string());
+                
+                if(err) {
+                    puts("while statment error");
+                    return false;
+                }
+                
+                if(gSigInt) {
+                    gSigInt = false;
+                    break;
+                }
+                
+            
+                if(rcode == 0) {
+                    var rcode, err = run(source2.to_string());
+                    
+                    if(err) {
+                        puts("while statment error");
+                        return false;
+                    }
+                }
+                else {
+                    break;
+                }
+            }
+        }
         else if(line.match(/^cd /)) {
             var str = line.scan(/^cd +(.+)/).item(1, null);
             
@@ -710,8 +795,12 @@ int, bool run(char* source)
             int options = WUNTRACED;
             pid_t pid2 = waitpid(pid, &status, options);
             if(pid2 < 0) {
-                perror("waitpid");
-                exit(1);
+                if(gSigInt) {
+                }
+                else {
+                    perror("waitpid");
+                    exit(1);
+                }
             }
             
             tcsetpgrp(0, getpgrp()).except {
@@ -758,6 +847,7 @@ void sig_tstp(int signum)
 
 void sig_int(int signal)
 {
+    gSigInt = true;
     rl_reset_line_state();
     rl_replace_line("", 0);
     rl_point = 0;
@@ -856,6 +946,7 @@ void sigchld_block(int block)
 
 void sig_int_optc(int signum)
 {
+    gSigInt = true;
     sigchld_block(1);
     sigchld_block(0);
 }
@@ -1195,6 +1286,8 @@ int main(int argc, char** argv)
         rl_startup_hook = readline_init_text;
         
         while(true) {
+            gSigInt = false;
+            
             char* line;
             if(getenv("?")) {
                 line = readline(getenv("PWD") + " " + getenv("?") + " > ");
