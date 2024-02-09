@@ -70,6 +70,11 @@ void parse_redirect(sInfo* info)
             
             info.commands[-1].redirect_stdout = (file_name, false);
         }
+        else if(memcmp(info->p, "2>&1", 4) == 0) {
+            info->p += 4;
+            skip_spaces(info);
+            info.commands[-1].mix_stdout = true;
+        }
         else if(*info->p == '2' && *(info->p+1) == '>' && *(info->p+2) == '>') {
             info->p += 3;
             skip_spaces(info);
@@ -78,11 +83,6 @@ void parse_redirect(sInfo* info)
             
             info.commands[-1].redirect_stderr = (file_name, true);
         }
-        else if(memcmp(info->p, "2>&1", 4) == 0) {
-            info->p += 4;
-            skip_spaces(info);
-            info.commands[-1].mix_stdout = true;
-        }
         else if(*info->p == '2' && *(info->p+1) == '>') {
             info->p += 2;
             skip_spaces(info);
@@ -90,6 +90,22 @@ void parse_redirect(sInfo* info)
             string file_name = parse_word(info);
             
             info.commands[-1].redirect_stderr = (file_name, false);
+        }
+        else if(*info->p == '1' && *(info->p+1) == '>' && *(info->p+2) == '>') {
+            info->p += 3;
+            skip_spaces(info);
+            
+            string file_name = parse_word(info);
+            
+            info.commands[-1].redirect_stdout = (file_name, true);
+        }
+        else if(*info->p == '1' && *(info->p+1) == '>') {
+            info->p += 2;
+            skip_spaces(info);
+            
+            string file_name = parse_word(info);
+            
+            info.commands[-1].redirect_stdout = (file_name, false);
         }
         else {
             break;
@@ -245,6 +261,17 @@ bool parse_statment(sInfo* info)
             chdir(path);
             
             setenv("PWD", path, 1);
+        }
+        else if(line.match(/^cd /)) {
+            var str = clone line.scan(/^cd +(.+)/)[1];
+            
+            if(str) {
+                char path[PATH_MAX];
+                realpath(str, path);
+                chdir(path);
+                
+                setenv("PWD", path, 1);
+            }
         }
         else if(line.match(/^if /)) {
             info->p = p;
@@ -583,17 +610,6 @@ bool parse_statment(sInfo* info)
             }
         }
         else if(line.match(/^cd /)) {
-            var str = clone line.scan(/^cd +(.+)/).item(1, null);
-            
-            if(str) {
-                char path[PATH_MAX];
-                realpath(str, path);
-                chdir(path);
-                
-                setenv("PWD", path, 1);
-            }
-        }
-        else if(line.match(/^cd /)) {
             var str = line.scan(/^cd +(.+)/).item(1, null);
             
             if(str) {
@@ -649,7 +665,7 @@ bool redirect(int n, sInfo* info)
             fd = open(file_name, O_APPEND|O_WRONLY|O_CREAT, 0644);
         }
         else {
-            fd = open(file_name, O_WRONLY|O_CREAT, 0644);
+            fd = open(file_name, O_WRONLY|O_CREAT|O_TRUNC, 0644);
         }
         
         if(fd < 0) {
@@ -669,7 +685,7 @@ bool redirect(int n, sInfo* info)
             fd = open(file_name, O_APPEND|O_WRONLY|O_CREAT, 0644);
         }
         else {
-            fd = open(file_name, O_WRONLY|O_CREAT, 0644);
+            fd = open(file_name, O_WRONLY|O_CREAT|O_TRUNC, 0644);
         }
         
         if(fd < 0) {

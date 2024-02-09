@@ -3,7 +3,8 @@
 
 int main(int argc, char** argv) 
 {
-    var str = "cd aaa".scan(/^cd +(.+)/).item(1, null).to_string().puts();
+    fprintf(stdout, "AAA\n");
+    fprintf(stderr, "BBB\n");
     
     return 0;
 }
