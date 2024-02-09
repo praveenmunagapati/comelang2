@@ -3,7 +3,7 @@
 
 come together!
 
-Yet another modern C compiler. It has librares with automatically-free-system.
+Yet another modern C compiler. It has librares with automatically-free-system with detecting memory leaks.
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 

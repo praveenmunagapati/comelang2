@@ -240,7 +240,7 @@ bool parse_statment(sInfo* info)
         }
         string line = buf.to_string();
         
-        if(line === "cd") {
+        if(line.match(/^cd\s*$/)) {
             char* path = getenv("HOME");
             chdir(path);
             
@@ -583,7 +583,7 @@ bool parse_statment(sInfo* info)
             }
         }
         else if(line.match(/^cd /)) {
-            var str = line.scan(/^cd +(.+)/).item(1, null);
+            var str = clone line.scan(/^cd +(.+)/).item(1, null);
             
             if(str) {
                 char path[PATH_MAX];
