@@ -3,8 +3,11 @@
 
 int main(int argc, char** argv) 
 {
-    fprintf(stdout, "AAA\n");
-    fprintf(stderr, "BBB\n");
+    var a = new int;
+    
+    *a = 123;
+    
+    printf("%d\n", *a);
     
     return 0;
 }

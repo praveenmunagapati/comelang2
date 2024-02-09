@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 12.0.0
+version 12.0.1
 
 ``` C
 #include <comelang2.h>
@@ -386,6 +386,7 @@ bash fast_build.sh (For getting optimized comelang2)
 10.0.0 comelang2 is complete
 11.0.0 comelang2 is complete. memory leak detector. memory leaks of comelang2 is perfectory 0.
 12.0.0 Resupported MacOS.
+12.0.1 README.md for -gc option
 
 # Language specifications
 
@@ -1231,7 +1232,7 @@ int main(int argc, char* argv)
 
 # BoehmGC
 
-If you use -gc option, you can use memory management of boehm GC.
+If you use -gc option, you can use memory management of boehm GC. This require to build with bash clean_self_host.sh
 
 # Exception
 
