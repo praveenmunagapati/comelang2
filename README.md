@@ -272,6 +272,40 @@ Memory safe pointer
 
 Memory leak detector
 
+```C
+#include <comelang2.h>
+
+void fun()
+{
+    var a = gc_inc(new int);
+    *a = 123;
+
+    stackframe();
+                        
+    printf("%d\n", *a);
+}
+                            
+int main(int argc, char** argv) 
+{
+    fun();
+                                    
+    return 0;
+}
+~/comelang2 # comelang2 a.c
+~/comelang2 # ./a
+123
+1 memory leaks. 1 alloc, 0 free.If you require debugging, copmpile with -cg option
+~/comelang2 # comelang2 -cg a.c
+~/comelang2 # ./a
+a.c 9
+a.c 16
+123
+#1 (int): a.c 16, a.c 5, 
+1 memory leaks. 1 alloc, 0 free.
+~/comelang2 # 
+```
+                                        
+
 # INSTALL
 
 Required libraries are clang, make, autoconf, valgrind, gdb, lldb, musl-dev(alpine linux), pcre-dev
