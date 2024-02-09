@@ -304,8 +304,7 @@ With self-host
 git clone https://github.com/ab25cq/comelang2
 cd comelang2
 bash fast_build.sh
-bash self-host.sh
-bash fast_build.sh (For getting optimized comelang2)
+bash clean-self-host.sh
 ```
 
 # Histories
@@ -1232,7 +1231,7 @@ int main(int argc, char* argv)
 
 # BoehmGC
 
-If you use -gc option, you can use memory management of boehm GC. This require to build with bash clean_self_host.sh
+If you use -gc option, you can use memory management of boehm GC. This require to build with bash clean-self-host.sh
 
 # Exception
 
