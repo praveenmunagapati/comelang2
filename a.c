@@ -1,19 +1,11 @@
 #include <comelang2.h>
-
-void fun()
-{
-    var a = gc_inc(new int);
-    
-    *a = 123;
-    
-    stackframe();
-    
-    printf("%d\n", *a);
-}
+#include <comelang2-str.h>
 
 int main(int argc, char** argv) 
 {
-    fun();
+    var str = "AAA,BBB,CCC".scan(/[a-zA-Z]+/).item(0, null);
+    
+    puts(str);
     
     return 0;
 }
