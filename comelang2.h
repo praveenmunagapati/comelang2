@@ -1001,6 +1001,23 @@ impl list <T>
 
         return result;
     }
+    list<any%>*% map_heap(list<T>* self, void* parent, any% (*block)(void*, T&))
+    {
+        auto result = new list<any%>.initialize();
+
+        list_item<T>* it = self.head;
+        while(it != null) {
+            result.push_back(block(parent, it.item));
+            
+            if(((sDummyCurrentStack*)parent)->__method_block_result_kind__ != 0) {
+                return result;
+            }
+
+            it = it.next;
+        }
+
+        return result;
+    }
     list<T>*% reverse(list<T>* self) {
         list<T>%* result = new list<T>();
 

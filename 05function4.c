@@ -1148,6 +1148,14 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         pointer_num++;
     }
     
+    bool heap = false;
+    if(*info->p == '%') {
+        info->p++;
+        skip_spaces_and_lf();
+        
+        heap = true;
+    }
+    
     bool lambda_flag = false;
     {
         char* pX = info.p;
@@ -1374,6 +1382,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         result_type->mLong = result_type->mLong || long_;
         result_type->mShort = result_type->mShort || short_;
         result_type->mPointerNum = pointer_num;
+        result_type->mHeap = result_type->mHeap || heap;
         
         var_name = parse_word();
         
@@ -1430,6 +1439,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         result_type->mLong = result_type->mLong || long_;
         result_type->mShort = result_type->mShort || short_;
         result_type->mPointerNum += pointer_num;
+        result_type->mHeap = result_type->mHeap || heap;
         
         if(xisalnum(*info.p) || *info->p == '_') {
             var_name = parse_word();
@@ -1536,6 +1546,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             type->mLong = type->mLong || long_;
             type->mShort = type->mShort || short_;
             type->mPointerNum += pointer_num;
+            type->mHeap = type->mHeap || heap;
         }
         else if(info.generics_type_names.contained(type_name)) {
             for(int i=0; i<info.generics_type_names.length(); i++) {
@@ -1558,6 +1569,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             type->mLong = type->mLong || long_;
             type->mShort = type->mShort || short_;
             type->mPointerNum += pointer_num;
+            type->mHeap = type->mHeap || heap;
         }
         else if(*info->p == '<') {
             info->p++;
@@ -1621,6 +1633,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             type->mLong = type->mLong || long_;
             type->mShort = type->mShort || short_;
             type->mPointerNum += pointer_num;
+            type->mHeap = type->mHeap || heap;
         }
         else {
             if(struct_) {
@@ -1647,6 +1660,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             type->mLong = type->mLong || long_;
             type->mShort = type->mShort || short_;
             type->mPointerNum += pointer_num;
+            type->mHeap = type->mHeap || heap;
         }
         
         skip_pointer_attribute();

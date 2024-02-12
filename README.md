@@ -339,6 +339,7 @@ git clone https://github.com/ab25cq/comelang2
 cd comelang2
 bash fast_build.sh
 bash clean-self-host.sh
+bash fast_build.sh
 ```
 
 # Histories
