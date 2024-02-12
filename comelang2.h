@@ -731,15 +731,6 @@ impl list <T>
         
         return item;
     }
-
-/*
-    T& operator_load_element(list<T>* self, int index) {
-        T&| default_value;
-        memset(&default_value, 0, sizeof(T));
-        
-        return self.item(index, default_value);
-    }
-*/
     T operator_load_element(list<T>* self, int position) {
         if(position < 0) {
             position += self.len;

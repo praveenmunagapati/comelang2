@@ -197,7 +197,7 @@ string append_object_to_right_values(char* obj, sType*% type, sInfo* info)
     
     string buf = xsprintf("void* right_value%d;\n", gRightValueNum-1);
     add_come_code_at_function_head(info, buf);
-    add_come_code_at_function_head2(info, "memset(&right_value%d, 0, sizeof(void*));\n", gRightValueNum-1);
+    add_come_code_at_function_head2(info, "right_value%d = (void*)0;\n", gRightValueNum-1);
     
     return xsprintf("((%s)(%s=%s))", make_type_name_string(type, false@in_header, true@array_cast_pointer), new_value->mVarName, obj)!;
 }
@@ -1037,10 +1037,10 @@ void free_right_value_objects(sInfo* info, bool comma=false)
                 
                 //if(!gComeMalloc) {
                     if(comma) {
-                        add_come_code(info, "__right_value_freed_obj[%d] = %s, \n", n, it->mVarName);
+                        add_come_code(info, "__right_value_freed_obj[%d] = %s, %s = (void*)0, \n", n, it->mVarName, it->mVarName);
                     }
                     else {
-                        add_come_code(info, "__right_value_freed_obj[%d] = %s;\n", n, it->mVarName);
+                        add_come_code(info, "__right_value_freed_obj[%d] = %s, %s = (void*)0;\n", n, it->mVarName, it->mVarName);
                     }
                 //}
                 
