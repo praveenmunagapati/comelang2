@@ -5832,7 +5832,7 @@ memset(&right_value187, 0, sizeof(void*));
     }
     else {
         if(_if_conditional215=left_value_122->type->mNoSolvedGenericsType&&left_value_122->type->mNoSolvedGenericsType->v1&&left_value_122->type->mNoSolvedGenericsType->v1->mClass&&string_operator_equals(left_value_122->type->mNoSolvedGenericsType->v1->mClass->mName,"optional"),        _if_conditional215) {
-            method_name_123=(char*)come_increment_ref_count(((char*)(right_value179=create_method_name(left_value_122->type,(_Bool)0,"expect",info))));
+            method_name_123=(char*)come_increment_ref_count(((char*)(right_value179=create_method_name(left_value_122->type,(_Bool)0,"value",info))));
             __freed_obj__ = come_is_contained_element(__right_value_freed_obj, 0, right_value179);
             if(right_value179 && right_value179 != __result_obj__ && !__freed_obj__) { right_value179 = come_decrement_ref_count(right_value179, (void*)0, (void*)0, 1, 0, 0); }
             __right_value_freed_obj[0] = right_value179;

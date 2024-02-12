@@ -601,7 +601,7 @@ bool compiletime_get_exception_value(sInfo* info)
     if(left_value == null) {
     }
     else if(left_value.type.mNoSolvedGenericsType && left_value.type.mNoSolvedGenericsType.v1 && left_value.type.mNoSolvedGenericsType.v1.mClass && left_value.type.mNoSolvedGenericsType.v1.mClass.mName === "optional") {
-        string method_name = create_method_name(left_value.type, false@no_pointer_name, "expect", info);
+        string method_name = create_method_name(left_value.type, false@no_pointer_name, "value", info);
         
         if(info.funcs.at(method_name, null) == null) {
             sType* obj_type = left_value.type.mNoSolvedGenericsType.v1;
