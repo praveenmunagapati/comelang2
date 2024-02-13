@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 12.0.2
+version 13.0.0
 
 ``` C
 #include <comelang2.h>
@@ -20,15 +20,6 @@ int fun(int x=123, int y = 234, int z = 345)
 int, string fun2() 
 {
     return (1, string("ABC"))
-}
-
-exception int div(int left, int right)
-{
-    if(right == 0) {
-        return none(0);
-    }
-    
-    return left/right;
 }
 
 struct sData
@@ -201,15 +192,6 @@ int main()
     
     puts(1);             // 1
     
-    int value = div(left:9, right:0)!;    // print out stackframe. and abort
-    
-    int value2 = div(left:1, right:0).catch { // puts("ZERO DIVISION"); exit(1);
-        puts("ZERO DIVISION");
-        exit(1);
-    }
-    
-    int value3 = div(left:9, right:3);    // value3 == 3
-    
     int fd2 = open("SEX", 0) or die("NO SEX"); // system call error handling
     
     FILE* f2 = fopen("SEX", 0) and die("NO SEX"); // returned null function errror handling
@@ -253,10 +235,6 @@ Rubyのようなメソッドブロックがあります。
 10. Embeded expression in string
 
 式埋め込み文字列があります。
-
-11. Exception
-
-例外があります。
 
 11. null(nil) checking for occuring segmentation fault.
 
@@ -421,7 +399,8 @@ bash fast_build.sh
 11.0.0 comelang2 is complete. memory leak detector. memory leaks of comelang2 is perfectory 0.
 12.0.0 Resupported MacOS.
 12.0.1 README.md for -gc option
-13.0.2 stackframe() bug was fiexed. comelang2 is complete.
+12.0.3 stackframe() bug was fiexed. comelang2 is complete.
+13.0.0 prohibits exception
 
 # Language specifications
 
@@ -1268,41 +1247,6 @@ int main(int argc, char* argv)
 # BoehmGC
 
 If you use -gc option, you can use memory management of boehm GC. This require to build with bash clean-self-host.sh
-
-# Exception
-
-```C
-#include <comelang2.h>
-
-exception int div(int left, int right)
-{
-    if(right == 0) {
-        return none(0);
-    }
-    
-    return left/right;    /// instead of this, you can write that "return some(left/right);"
-}
-
-int main(int argc, char** argv)
-{
-    int value = div(9, 3);              // value == 3
-    int value2 = div(9, 0);             // value2 == 0
-    int value3 = div(9, 0).catch {      // value3 == 0
-        puts("ZERO DIVISION");          // print out ZERO DIVISION
-    }
-    int value3 = div(9, 0).catch {      // value3 == 0
-        puts("ZERO DIVISION");          // print out ZERO DIVISION
-    }
-    int value3 = div(9, 0).expect {      // value3 == 0
-        puts("ZERO DIVISION");           // print out ZERO DIVISION print caller stackfarame and abort
-    }
-    int value5 = div(9, 0)!;           // print caller stackfarame and abort
-    
-    return 0;
-}
-```
-
-require -cg option to see stackframe
 
 # System call errro handling like perl
 
