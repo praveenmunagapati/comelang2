@@ -3,12 +3,9 @@
 
 int main(int argc, char** argv) 
 {
-    int a;
-    int b;
+    var str = s"AAA,BBB,CCC".scan(/[a-zA-Z]+/).item(0,null);
     
-    a = 1, b = 2;
-    
-    printf("%d %d\n", a, b);
+    puts(str);
     
     return 0;
 }
