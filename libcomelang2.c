@@ -1042,31 +1042,31 @@ bool double::equals(double self, double right)
     return self == right;
 }
 
-exception bool string::equals(char* self, char* right) 
+bool string::equals(char* self, char* right) 
 {
     if(self == null && right == null) {
-        return none(true);
+        return true;
     }
     else if(self == null) {
-        return none(false);
+        return false;
     }
     else if(right == null) {
-        return none(false);
+        return false;
     }
     
     return strcmp(self, right) == 0;
 }
 
-exception bool char*::equals(char* self, char* right) 
+bool char*::equals(char* self, char* right) 
 {
     if(self == null && right == null) {
-        return none(true);
+        return true;
     }
     else if(self == null) {
-        return none(false);
+        return false;
     }
     else if(right == null) {
-        return none(false);
+        return false;
     }
     
     return strcmp(self, right) == 0;

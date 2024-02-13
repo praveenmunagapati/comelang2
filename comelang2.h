@@ -2222,8 +2222,8 @@ bool long::equals(long self, long right);
 bool size_t::equals(long self, long right);
 bool float::equals(float self, float right);
 bool double::equals(double self, double right);
-exception bool char*::equals(char* self, char* right);
-exception bool string::equals(char* self, char* right);
+bool char*::equals(char* self, char* right);
+bool string::equals(char* self, char* right);
 
 bool string::operator_equals(char* self, char* right);
 bool char*::operator_equals(char* self, char* right);
