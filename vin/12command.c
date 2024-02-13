@@ -380,7 +380,7 @@ void Vi*::exitFromComandMode(Vi* self)
     if(string(self.commandString).index("sp", -1) == 0) {
         come_regex*% reg = new come_regex("sp \(.+\)");
 
-        auto file_name = clone string(self.commandString).scan(reg).item(1, null);
+        auto file_name = string(self.commandString).scan(reg).item(1, null);
 
         if(file_name != null) {
             self.openNewFile(file_name);
