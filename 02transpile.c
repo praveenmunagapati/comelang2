@@ -67,7 +67,7 @@ void err_msg(sInfo* info, char* msg, ...)
         
         if(info.come_fun) {
             int n = info->sline-5;
-            puts(info.original_source.to_string().split_char('\n').sublist(n, n+10).map { return xsprintf("%d %s", ++n, it); }.join("\n"));
+            info.original_source.to_string().split_char('\n').sublist(n, n+10).map { return xsprintf("%d %s", ++n, it); }.join("\n").puts();
         }
 
         free(msg2);

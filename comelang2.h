@@ -2343,8 +2343,8 @@ list<string>*% FILE*::readlines(FILE* f);
 int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f));
 int string::write(char* self, char* file_name, bool append=false);
 int char*::write(char* self, char* file_name, bool append=false) ;
-exception string char*::read(char* file_name) ;
-exception string string::read(char* file_name) ;
+string char*::read(char* file_name) ;
+string string::read(char* file_name) ;
 
 //////////////////////////////
 /// base library(STDOUT, STDIN)

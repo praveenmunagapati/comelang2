@@ -120,11 +120,6 @@ struct list$1charph
     int len;
     struct list_item$1charph* it;
 };
-struct optional$2charphbool
-{
-    char* v1;
-    _Bool v2;
-};
 extern _Bool gComeDebug;
 extern _Bool gComeGC;
 extern _Bool gComeC;
@@ -1272,9 +1267,9 @@ int string_write(char* self, char* file_name, _Bool append);
 
 int charp_write(char* self, char* file_name, _Bool append);
 
-struct optional$2charphbool* charp_read(char* file_name);
+char* charp_read(char* file_name);
 
-struct optional$2charphbool* string_read(char* file_name);
+char* string_read(char* file_name);
 
 char* charp_puts(char* self);
 

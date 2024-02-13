@@ -120,11 +120,6 @@ struct list$1charph
     int len;
     struct list_item$1charph* it;
 };
-struct optional$2charphbool
-{
-    char* v1;
-    _Bool v2;
-};
 extern _Bool gComeDebug;
 extern _Bool gComeGC;
 extern _Bool gComeC;
@@ -619,6 +614,11 @@ struct optional$2intbool
 struct optional$2boolbool
 {
     _Bool v1;
+    _Bool v2;
+};
+struct optional$2charphbool
+{
+    char* v1;
     _Bool v2;
 };
 struct optional$2_IO_FILEpbool

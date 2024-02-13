@@ -2211,16 +2211,16 @@ int char*::write(char* self, char* file_name, bool append=false)
     return result;
 }
 
-exception string string::read(char* file_name) 
+string string::read(char* file_name) 
 {
     if(file_name == null) {
-        return none(string(""));
+        return string("");
     }
     
     FILE* f = fopen(file_name, "r");
     
     if(f == NULL) {
-        return none(string(""));
+        return string("");
     }
     
     buffer*% buf = new buffer.initialize();
@@ -2242,22 +2242,22 @@ exception string string::read(char* file_name)
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(string(""));
+        return string("");
     }
     
     return result;
 }
 
-exception string char*::read(char* file_name) 
+string char*::read(char* file_name) 
 {
     if(file_name == null) {
-        return none(string(""));
+        return string("");
     }
     
     FILE* f = fopen(file_name, "r");
     
     if(f == NULL) {
-        return none(string(""));
+        return string("");
     }
     
     buffer*% buf = new buffer.initialize();
@@ -2279,7 +2279,7 @@ exception string char*::read(char* file_name)
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(string(""));
+        return string("");
     }
     
     return result;
