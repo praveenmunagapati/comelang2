@@ -2335,14 +2335,14 @@ int char*::compare(char* left, char* right);
 //////////////////////////////
 /// base library(IO-FILE)
 //////////////////////////////
-exception int FILE*::write(FILE* f, char* str);
-exception string FILE*::read(FILE* f);
-exception int FILE*::fclose(FILE* f) ;
-exception int* FILE*::fprintf(FILE* f, const char* msg, ...);
-exception list<string>*% FILE*::readlines(FILE* f);
-exception int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f));
-exception int string::write(char* self, char* file_name, bool append=false);
-exception int char*::write(char* self, char* file_name, bool append=false) ;
+int FILE*::write(FILE* f, char* str);
+string FILE*::read(FILE* f);
+int FILE*::fclose(FILE* f) ;
+int* FILE*::fprintf(FILE* f, const char* msg, ...);
+list<string>*% FILE*::readlines(FILE* f);
+int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f));
+int string::write(char* self, char* file_name, bool append=false);
+int char*::write(char* self, char* file_name, bool append=false) ;
 exception string char*::read(char* file_name) ;
 exception string string::read(char* file_name) ;
 

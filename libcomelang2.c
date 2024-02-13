@@ -2078,10 +2078,10 @@ int char*::compare(char* left, char* right)
 //////////////////////////////
 // base library(IO-FILE)
 //////////////////////////////
-exception string FILE*::read(FILE* f)
+string FILE*::read(FILE* f)
 {
     if(f == null) {
-        return none(string(""));
+        return string("");
     }
     buffer*% buf = new buffer.initialize();
     
@@ -2100,34 +2100,34 @@ exception string FILE*::read(FILE* f)
     return buf.to_string();
 }
 
-exception int FILE*::write(FILE* f, char* str)
+int FILE*::write(FILE* f, char* str)
 {
     if(f == null || str == null) {
-        return none(-1);
+        return -1;
     }
     
     return fwrite(str, strlen(str), 1, f);
 }
 
-exception int FILE*::fclose(FILE* f) 
+int FILE*::fclose(FILE* f) 
 {
     if(f == null) {
-        return none(-1); 
+        return -1;
     }
     
     int result = fclose(f);
     
     if(result < 0) {
-        return none(result);
+        return result;
     }
     
     return result;
 }
 
-exception FILE* FILE*::fprintf(FILE* f, const char* msg, ...)
+FILE* FILE*::fprintf(FILE* f, const char* msg, ...)
 {
     if(f == null || msg == null) {
-        return none(f);
+        return f;
     }
     char msg2[1024*2*2*2];
 
@@ -2139,16 +2139,16 @@ exception FILE* FILE*::fprintf(FILE* f, const char* msg, ...)
     int result = fprintf(f, "%s", msg2);
     
     if(result < 0) {
-        return none(result);
+        return f;
     }
     
     return f;
 }
 
-exception int string::write(char* self, char* file_name, bool append=false) 
+int string::write(char* self, char* file_name, bool append=false) 
 {
     if(self == null || file_name == null) {
-        return none(-1);
+        return -1;
     }
     
     FILE* f;
@@ -2160,28 +2160,28 @@ exception int string::write(char* self, char* file_name, bool append=false)
     }
     
     if(f == NULL) {
-        return none(-1);
+        return -1;
     }
     
     int result = fwrite(self, strlen(self), 1, f);
     
     if(result < 0) {
-        return none(result);
+        return result;
     }
     
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(result2);
+        return result2;
     }
     
     return result;
 }
 
-exception int char*::write(char* self, char* file_name, bool append=false) 
+int char*::write(char* self, char* file_name, bool append=false) 
 {
     if(self == null || file_name == null) {
-        return none(-1);
+        return -1;
     }
     
     FILE* f;
@@ -2193,19 +2193,19 @@ exception int char*::write(char* self, char* file_name, bool append=false)
     }
     
     if(f == NULL) {
-        return none(-1);
+        return -1;
     }
     
     int result = fwrite(self, strlen(self), 1, f);
     
     if(result < 0) {
-        return none(result);
+        return result;
     }
     
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(result2);
+        return result2;
     }
     
     return result;
@@ -2285,12 +2285,12 @@ exception string char*::read(char* file_name)
     return result;
 }
 
-exception list<string>*% FILE*::readlines(FILE* f)
+list<string>*% FILE*::readlines(FILE* f)
 {
     list<string>*% result = new list<string>.initialize();
     
     if(f == null) {
-        return none(result);
+        return result;
     }
     
     while(1) {
@@ -2306,10 +2306,10 @@ exception list<string>*% FILE*::readlines(FILE* f)
     return result;
 }
 
-exception int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f))
+int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f))
 {
     if(path == null || mode == null) {
-        return none(-1);
+        return -1;
     }
     FILE* f = fopen(path, mode);
     
@@ -2325,7 +2325,7 @@ exception int fopen_block(const char* path, const char* mode, void* parent, void
         return 0;
     }
     
-    return none(-1);
+    return -1;
 }
 
 //////////////////////////////

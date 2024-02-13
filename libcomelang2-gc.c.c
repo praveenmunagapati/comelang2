@@ -120,24 +120,9 @@ struct list$1charph
     int len;
     struct list_item$1charph* it;
 };
-struct optional$2intbool
-{
-    int v1;
-    _Bool v2;
-};
 struct optional$2charphbool
 {
     char* v1;
-    _Bool v2;
-};
-struct optional$2intpbool
-{
-    int* v1;
-    _Bool v2;
-};
-struct optional$2list$1charphphbool
-{
-    struct list$1charph* v1;
     _Bool v2;
 };
 extern _Bool gComeDebug;
@@ -626,6 +611,11 @@ char* gComeStackFrameBuffer=((void*)0);
 static _Bool gComeMallocLib=(_Bool)0;
 static _Bool gComeDebugLib=(_Bool)0;
 _Bool gComeGCLib=(_Bool)0;
+struct optional$2intbool
+{
+    int v1;
+    _Bool v2;
+};
 struct optional$2boolbool
 {
     _Bool v1;
@@ -634,6 +624,11 @@ struct optional$2boolbool
 struct optional$2_IO_FILEpbool
 {
     struct _IO_FILE* v1;
+    _Bool v2;
+};
+struct optional$2list$1charphphbool
+{
+    struct list$1charph* v1;
     _Bool v2;
 };
 

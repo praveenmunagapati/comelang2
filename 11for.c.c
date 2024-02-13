@@ -120,24 +120,9 @@ struct list$1charph
     int len;
     struct list_item$1charph* it;
 };
-struct optional$2intbool
-{
-    int v1;
-    _Bool v2;
-};
 struct optional$2charphbool
 {
     char* v1;
-    _Bool v2;
-};
-struct optional$2intpbool
-{
-    int* v1;
-    _Bool v2;
-};
-struct optional$2list$1charphphbool
-{
-    struct list$1charph* v1;
     _Bool v2;
 };
 extern _Bool gComeDebug;
@@ -1275,21 +1260,21 @@ int string_compare(char* left, char* right);
 
 int charp_compare(char* left, char* right);
 
-struct optional$2intbool* FILE_write(struct _IO_FILE* f, char* str);
+int FILE_write(struct _IO_FILE* f, char* str);
 
-struct optional$2charphbool* FILE_read(struct _IO_FILE* f);
+char* FILE_read(struct _IO_FILE* f);
 
-struct optional$2intbool* FILE_fclose(struct _IO_FILE* f);
+int FILE_fclose(struct _IO_FILE* f);
 
-struct optional$2intpbool* FILE_fprintf(struct _IO_FILE* f, const char* msg, ...);
+int* FILE_fprintf(struct _IO_FILE* f, const char* msg, ...);
 
-struct optional$2list$1charphphbool* FILE_readlines(struct _IO_FILE* f);
+struct list$1charph* FILE_readlines(struct _IO_FILE* f);
 
-struct optional$2intbool* fopen_block(const char* path, const char* mode, void* parent, void (*block)(void*,struct _IO_FILE*));
+int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void*,struct _IO_FILE*));
 
-struct optional$2intbool* string_write(char* self, char* file_name, _Bool append);
+int string_write(char* self, char* file_name, _Bool append);
 
-struct optional$2intbool* charp_write(char* self, char* file_name, _Bool append);
+int charp_write(char* self, char* file_name, _Bool append);
 
 struct optional$2charphbool* charp_read(char* file_name);
 
