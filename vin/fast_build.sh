@@ -2,9 +2,9 @@ if ! test -e Makefile
 then
     if uname -a | grep Android
     then
-        ./configure --prefix=$HOME
+        ./configure --prefix=$HOME --with-debug
     else
-        ./configure
+        ./configure --with-debug
     fi
 fi
 
