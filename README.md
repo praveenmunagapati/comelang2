@@ -400,7 +400,7 @@ bash fast_build.sh
 12.0.0 Resupported MacOS.
 12.0.1 README.md for -gc option
 12.0.3 stackframe() bug was fiexed. comelang2 is complete.
-13.0.0 prohibits exception
+13.0.0 removed exception system
 
 # Language specifications
 
