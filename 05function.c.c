@@ -1508,17 +1508,17 @@ struct optional$2charphbool* charp_read(char* file_name);
 
 struct optional$2charphbool* string_read(char* file_name);
 
-struct optional$2charphbool* charp_puts(char* self);
+char* charp_puts(char* self);
 
-struct optional$2charphbool* string_puts(char* self);
+char* string_puts(char* self);
 
 int int_printf(int self, char* msg);
 
-struct optional$2charphbool* string_printf(char* self, ...);
+char* string_printf(char* self, ...);
 
-struct optional$2charphbool* charp_printf(char* self, ...);
+char* charp_printf(char* self, ...);
 
-struct optional$2charphbool* charp_print(char* self);
+char* charp_print(char* self);
 
 void int_times(int self, void* parent, void (*block)(void*,int));
 

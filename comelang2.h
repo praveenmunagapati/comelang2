@@ -2349,13 +2349,13 @@ exception string string::read(char* file_name) ;
 //////////////////////////////
 /// base library(STDOUT, STDIN)
 //////////////////////////////
-exception string char*::puts(char* self);
-exception string string::puts(char* self);
+string char*::puts(char* self);
+string string::puts(char* self);
 int int::printf(int self, char* msg);
-exception string string::printf(char* self, ...);
-exception string char*::printf(char* self, ...);
+string string::printf(char* self, ...);
+string char*::printf(char* self, ...);
 
-exception string char*::print(char* self);
+string char*::print(char* self);
 
 //////////////////////////////
 /// loop

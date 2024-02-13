@@ -2331,20 +2331,20 @@ exception int fopen_block(const char* path, const char* mode, void* parent, void
 //////////////////////////////
 // base library(STDOUT, STDIN)
 //////////////////////////////
-exception string char*::puts(char* self)
+string char*::puts(char* self)
 {
     if(self == null) {
-        return none(-1);
+        return string("");
     }
     puts(self);
     
     return string(self);
 }
 
-exception string char*::print(char* self)
+string char*::print(char* self)
 {
     if(self == null) {
-        return none(-1);
+        return string("");
     }
     printf("%s", self);
     
@@ -2352,10 +2352,10 @@ exception string char*::print(char* self)
 }
 
 
-exception string string::printf(char* self, ...)
+string string::printf(char* self, ...)
 {
     if(self == null) {
-        return none(string(""));
+        return string("");
     }
     char* msg2;
 
@@ -2371,10 +2371,10 @@ exception string string::printf(char* self, ...)
     return string(self);
 }
 
-exception string char*::printf(char* self, ...)
+string char*::printf(char* self, ...)
 {
     if(self == null) {
-        return none(string(""));
+        return string("");
     }
     char* msg2;
 
@@ -2397,10 +2397,10 @@ int int::printf(int self, char* msg)
     return self;
 }
 
-exception string string::puts(char* self) 
+string string::puts(char* self) 
 {
     if(self == null) {
-        return none(string(""));
+        return string("");
     }
     puts(self);
     
