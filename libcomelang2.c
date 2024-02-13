@@ -47,11 +47,6 @@ void come_save_stackframe(char* sname, int sline)
     gComeStackFrameBuffer = strdup(buf.to_string());
 }
 
-void exception_stackframe()
-{
-    printf("%s", gComeStackFrameBuffer);
-}
-
 void stackframe()
 {
     for(int i=gNumComeStackFrame-1; i>=0; i--) {

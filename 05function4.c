@@ -681,7 +681,6 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
     
     bool constant = false;
     bool static_ = false;
-    bool exception_ = false;
     bool volatile_ = false;
     bool register_ = false;
     bool unsigned_ = false;
@@ -905,11 +904,6 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         }
         else if(type_name === "const") {
             constant = true;
-            
-            type_name = parse_word();
-        }
-        else if(type_name === "exception") {
-            exception_ = true;
             
             type_name = parse_word();
         }
@@ -1839,26 +1833,6 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
     type->mAsmName = asm_name;
     
     parse_sharp();
-    
-    if(exception_) {
-        sType*% type2 = new sType("optional");
-        type2->mGenericsTypes.add(type);
-        type2->mGenericsTypes.add(new sType("bool"));
-        
-        type2->mPointerNum++;
-        type2->mHeap = true;
-        
-        type2->mException = true;
-        
-        if(!is_contained_generics_class(type2, info)) {
-            if(!output_generics_struct(type2, type2, info)) {
-                err_msg(info, "invalid exception definition");
-                return new tuple3<sType*%,string,bool>((sType*%)null, (string)null, false);
-            }
-        }
-        
-        return new tuple3<sType*%, string, bool>(type2, var_name, true);
-    }
     
     return new tuple3<sType*%, string, bool>(type, var_name, true);
 }

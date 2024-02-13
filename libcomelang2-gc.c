@@ -239,7 +239,7 @@ void come_heap_final()
     }
 }
 
-static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0)
+static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0, char* class_name=null)
 {
     if(gComeGCLib) {
         void* result = GC_malloc(size);
@@ -262,9 +262,51 @@ static void come_free_mem_of_heap_pool(char* mem)
     }
 }
 
+/*
+static bool is_valid_object(char* mem) 
+{
+    if(mem) {
+        if(!gComeMallocLib) {
+            return true;
+        }
+        else {
+            char* mem2 = mem - sizeof(size_t) - sizeof(size_t);
+            
+            unsigned int key = (size_t)mem2 % gSizeMemHeaders;
+            
+            sMemHeader* it = gMemHeaderTable + key;
+            
+            while(true) {
+                if(it->mem == null) {
+                    return false;
+                }
+                else if(it->mem == mem) {
+                    return true;
+                }
+                else {
+                    it++;
+                    
+                    if(it == gMemHeaderTable + gSizeMemHeaders) {
+                        it = gMemHeaderTable;
+                    }
+                    else if(it == gMemHeaderTable + key) {
+                        puts("mem header unexpected error");
+                        exit(2);
+                    }
+                }
+            }
+        }
+    }
+    
+    return false;
+}
+*/
+
+//void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
 void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0, char* class_name=null)
 {
-    char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline);
+    //char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline, null);
+    char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline, class_name);
     
     size_t* ref_count = (size_t*)mem;
 
@@ -282,17 +324,50 @@ void come_free_object(void* mem)
     if(mem == NULL) {
         return;
     }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem)) {
+            return ;
+        }
+    }
+*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
     come_free_mem_of_heap_pool((char*)ref_count);
 }
 
+void come_free(void* mem)
+{
+    if(mem == NULL) {
+        return;
+    }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem)) {
+            return ;
+        }
+    }
+*/
+    
+    size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
+    
+    come_free_mem_of_heap_pool((char*)ref_count);
+}
+
+//void* come_memdup(void* block, char* sname=null, int sline=0)
 void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=null)
 {
     if(!block) {
         return null;
     }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(block)) {
+            return null;
+        }
+    }
+*/
 
     char* mem = (char*)block - sizeof(size_t) - sizeof(size_t);
     
@@ -300,7 +375,8 @@ void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=n
 
     size_t size = *size_p - sizeof(size_t) - sizeof(size_t);
 
-    void* result = come_calloc(1, size, sname, sline);
+    //void* result = come_calloc(1, size, sname, sline);
+    void* result = come_calloc(1, size, sname, sline, class_name);
 
     memcpy(result, block, size);
     
@@ -312,6 +388,13 @@ void* come_increment_ref_count(void* mem)
     if(mem == NULL) {
         return mem;
     }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem)) {
+            return mem;
+        }
+    }
+*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -325,6 +408,13 @@ void* come_print_ref_count(void* mem)
     if(mem == NULL) {
         return mem;
     }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem)) {
+            return mem;
+        }
+    }
+*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -338,6 +428,13 @@ void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj
     if(mem == NULL) {
         return NULL;
     }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem)) {
+            return mem;
+        }
+    }
+*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -365,6 +462,13 @@ void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protoco
     if(mem == NULL) {
         return;
     }
+/*
+    if(gComeMallocLib) {
+        if(!is_valid_object(mem) && !call_finalizer_only) {
+            return;
+        }
+    }
+*/
     
     if(call_finalizer_only) {
         if(fun) {
@@ -688,16 +792,16 @@ buffer* buffer*::alignment(buffer* self)
     return self;
 }
 
-exception int buffer*::compare(buffer* left, buffer* right) 
+int buffer*::compare(buffer* left, buffer* right) 
 {
     if(left == null && right == null) {
-        return none(0);
+        return 0;
     }
     else if(left == null) {
-        return none(-1);
+        return -1;
     }
     else if(right == null) {
-        return none(1);
+        return 1;
     }
     
     return strcmp(left.buf, right.buf);
@@ -781,31 +885,31 @@ bool double::equals(double self, double right)
     return self == right;
 }
 
-exception bool string::equals(char* self, char* right) 
+bool string::equals(char* self, char* right) 
 {
     if(self == null && right == null) {
-        return none(true);
+        return true;
     }
     else if(self == null) {
-        return none(false);
+        return false;
     }
     else if(right == null) {
-        return none(false);
+        return false;
     }
     
     return strcmp(self, right) == 0;
 }
 
-exception bool char*::equals(char* self, char* right) 
+bool char*::equals(char* self, char* right) 
 {
     if(self == null && right == null) {
-        return none(true);
+        return true;
     }
     else if(self == null) {
-        return none(false);
+        return false;
     }
     else if(right == null) {
-        return none(false);
+        return false;
     }
     
     return strcmp(self, right) == 0;
@@ -1817,10 +1921,10 @@ int char*::compare(char* left, char* right)
 //////////////////////////////
 // base library(IO-FILE)
 //////////////////////////////
-exception string FILE*::read(FILE* f)
+string FILE*::read(FILE* f)
 {
     if(f == null) {
-        return none(string(""));
+        return string("");
     }
     buffer*% buf = new buffer.initialize();
     
@@ -1839,34 +1943,34 @@ exception string FILE*::read(FILE* f)
     return buf.to_string();
 }
 
-exception int FILE*::write(FILE* f, char* str)
+int FILE*::write(FILE* f, char* str)
 {
     if(f == null || str == null) {
-        return none(-1);
+        return -1;
     }
     
     return fwrite(str, strlen(str), 1, f);
 }
 
-exception int FILE*::fclose(FILE* f) 
+int FILE*::fclose(FILE* f) 
 {
     if(f == null) {
-        return none(-1); 
+        return -1;
     }
     
     int result = fclose(f);
     
     if(result < 0) {
-        return none(result);
+        return result;
     }
     
     return result;
 }
 
-exception FILE* FILE*::fprintf(FILE* f, const char* msg, ...)
+FILE* FILE*::fprintf(FILE* f, const char* msg, ...)
 {
     if(f == null || msg == null) {
-        return none(f);
+        return f;
     }
     char msg2[1024*2*2*2];
 
@@ -1878,16 +1982,16 @@ exception FILE* FILE*::fprintf(FILE* f, const char* msg, ...)
     int result = fprintf(f, "%s", msg2);
     
     if(result < 0) {
-        return none(result);
+        return f;
     }
     
     return f;
 }
 
-exception int string::write(char* self, char* file_name, bool append=false) 
+int string::write(char* self, char* file_name, bool append=false) 
 {
     if(self == null || file_name == null) {
-        return none(-1);
+        return -1;
     }
     
     FILE* f;
@@ -1899,28 +2003,28 @@ exception int string::write(char* self, char* file_name, bool append=false)
     }
     
     if(f == NULL) {
-        return none(-1);
+        return -1;
     }
     
     int result = fwrite(self, strlen(self), 1, f);
     
     if(result < 0) {
-        return none(result);
+        return result;
     }
     
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(result2);
+        return result2;
     }
     
     return result;
 }
 
-exception int char*::write(char* self, char* file_name, bool append=false) 
+int char*::write(char* self, char* file_name, bool append=false) 
 {
     if(self == null || file_name == null) {
-        return none(-1);
+        return -1;
     }
     
     FILE* f;
@@ -1932,34 +2036,34 @@ exception int char*::write(char* self, char* file_name, bool append=false)
     }
     
     if(f == NULL) {
-        return none(-1);
+        return -1;
     }
     
     int result = fwrite(self, strlen(self), 1, f);
     
     if(result < 0) {
-        return none(result);
+        return result;
     }
     
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(result2);
+        return result2;
     }
     
     return result;
 }
 
-exception string string::read(char* file_name) 
+string string::read(char* file_name) 
 {
     if(file_name == null) {
-        return none(string(""));
+        return string("");
     }
     
     FILE* f = fopen(file_name, "r");
     
     if(f == NULL) {
-        return none(string(""));
+        return string("");
     }
     
     buffer*% buf = new buffer.initialize();
@@ -1981,22 +2085,22 @@ exception string string::read(char* file_name)
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(string(""));
+        return string("");
     }
     
     return result;
 }
 
-exception string char*::read(char* file_name) 
+string char*::read(char* file_name) 
 {
     if(file_name == null) {
-        return none(string(""));
+        return string("");
     }
     
     FILE* f = fopen(file_name, "r");
     
     if(f == NULL) {
-        return none(string(""));
+        return string("");
     }
     
     buffer*% buf = new buffer.initialize();
@@ -2018,18 +2122,18 @@ exception string char*::read(char* file_name)
     int result2 = fclose(f)
     
     if(result2 < 0) {
-        return none(string(""));
+        return string("");
     }
     
     return result;
 }
 
-exception list<string>*% FILE*::readlines(FILE* f)
+list<string>*% FILE*::readlines(FILE* f)
 {
     list<string>*% result = new list<string>.initialize();
     
     if(f == null) {
-        return none(result);
+        return result;
     }
     
     while(1) {
@@ -2045,10 +2149,10 @@ exception list<string>*% FILE*::readlines(FILE* f)
     return result;
 }
 
-exception int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f))
+int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f))
 {
     if(path == null || mode == null) {
-        return none(-1);
+        return -1;
     }
     FILE* f = fopen(path, mode);
     
@@ -2064,26 +2168,26 @@ exception int fopen_block(const char* path, const char* mode, void* parent, void
         return 0;
     }
     
-    return none(-1);
+    return -1;
 }
 
 //////////////////////////////
 // base library(STDOUT, STDIN)
 //////////////////////////////
-exception string char*::puts(char* self)
+string char*::puts(char* self)
 {
     if(self == null) {
-        return none(-1);
+        return string("");
     }
     puts(self);
     
     return string(self);
 }
 
-exception string char*::print(char* self)
+string char*::print(char* self)
 {
     if(self == null) {
-        return none(-1);
+        return string("");
     }
     printf("%s", self);
     
@@ -2091,10 +2195,10 @@ exception string char*::print(char* self)
 }
 
 
-exception string string::printf(char* self, ...)
+string string::printf(char* self, ...)
 {
     if(self == null) {
-        return none(string(""));
+        return string("");
     }
     char* msg2;
 
@@ -2110,10 +2214,10 @@ exception string string::printf(char* self, ...)
     return string(self);
 }
 
-exception string char*::printf(char* self, ...)
+string char*::printf(char* self, ...)
 {
     if(self == null) {
-        return none(string(""));
+        return string("");
     }
     char* msg2;
 
@@ -2136,10 +2240,10 @@ int int::printf(int self, char* msg)
     return self;
 }
 
-exception string string::puts(char* self) 
+string string::puts(char* self) 
 {
     if(self == null) {
-        return none(string(""));
+        return string("");
     }
     puts(self);
     

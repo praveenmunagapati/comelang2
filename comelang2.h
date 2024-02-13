@@ -22,72 +22,14 @@ void __builtin_va_end(char*);
 //////////////////////////////
 #define COME_STACKFRAME_MAX 16
 
-struct optional<T, T2>
-{
-    T v1;
-    T2 v2;
-};
-
 struct sDummyCurrentStack
 {
     int __method_block_result_kind__;
 };
 
-impl optional<T, T2>
-{
-    optional<T, T2>*% initialize(optional<T, T2>*% self, T v1, T2 v2)
-    {
-        self.v1 = v1;
-        self.v2 = v2;
-        
-        return self;
-    }
-    
-    T catch(optional<T, T2>* self, void* parent, void (*block)(void* parent))
-    {
-        if(!self.v2) {
-            block(parent);
-            
-            if(((sDummyCurrentStack*)parent)->__method_block_result_kind__ != 0) {
-                return self.v1;
-            }
-        }
-        
-        return self.v1;
-    }
-    
-    T value(optional<T, T2>* self) 
-    {
-        if(self == null) {
-            T&| default_value;
-            memset(&default_value, 0, sizeof(T));
-            return default_value;
-        }
-        else {
-            return self.v1;
-        }
-    }
-    T expect(optional<T, T2>* self) 
-    {
-        if(!self.v2) {
-            puts("Exception: at");
-            exception_stackframe();
-            puts("abort.");
-            exit(2);
-        }
-        return self.v1;
-    }
-    
-    string to_string(optional<T, T2>* self)
-    {
-        return "(" + self.v1.to_string() + "," + self.v2.to_string() + ")";
-    }
-}
-
 void come_push_stackframe(char* sname, int sline);
 void come_pop_stackframe();
 void stackframe();
-void exception_stackframe();
 void come_save_stackframe(char* sname, int sline);
 
 void* come_null_check(void* mem, char* sname, int sline);
@@ -1627,7 +1569,7 @@ impl map <T, T2>
             }
         }
 
-        return none(default_value);
+        return default_value;
     }
     
     T2 operator_store_element(map<T, T2>* self, T key, T2 item) {

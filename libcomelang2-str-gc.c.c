@@ -830,8 +830,6 @@ void come_pop_stackframe();
 
 void stackframe();
 
-void exception_stackframe();
-
 void come_save_stackframe(char* sname, int sline);
 
 void* come_null_check(void* mem, char* sname, int sline);
@@ -2006,7 +2004,7 @@ struct smart_pointer$1char* __result2__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
-    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 2008, "struct smart_pointer$1char");
+    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1950, "struct smart_pointer$1char");
     result_0->memory=buffer_clone(self);
     result_0->p=result_0->memory->buf;
     __result2__ = __result_obj__ = result_0;
@@ -2021,7 +2019,7 @@ struct smart_pointer$1char* __result3__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
-    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 2018, "struct smart_pointer$1char");
+    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1960, "struct smart_pointer$1char");
     result_1->memory=buffer_clone(self);
     result_1->p=(char*)result_1->memory->buf;
     __result3__ = __result_obj__ = result_1;
@@ -2036,7 +2034,7 @@ struct smart_pointer$1short* __result4__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
-    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 2028, "struct smart_pointer$1short");
+    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1970, "struct smart_pointer$1short");
     result_2->memory=buffer_clone(self);
     result_2->p=(short short*)result_2->memory->buf;
     __result4__ = __result_obj__ = result_2;
@@ -2051,7 +2049,7 @@ struct smart_pointer$1int* __result5__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
-    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 2038, "struct smart_pointer$1int");
+    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1980, "struct smart_pointer$1int");
     result_3->memory=buffer_clone(self);
     result_3->p=(int*)result_3->memory->buf;
     __result5__ = __result_obj__ = result_3;
@@ -2066,7 +2064,7 @@ struct smart_pointer$1long* __result6__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
-    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 2048, "struct smart_pointer$1long");
+    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1990, "struct smart_pointer$1long");
     result_4->memory=buffer_clone(self);
     result_4->p=(long*)result_4->memory->buf;
     __result6__ = __result_obj__ = result_4;
@@ -3227,7 +3225,7 @@ memset(&litem_84, 0, sizeof(struct list_item$1charph*));
 memset(&litem_85, 0, sizeof(struct list_item$1charph*));
 memset(&litem_86, 0, sizeof(struct list_item$1charph*));
                 if(_if_conditional32=self->len==0,                _if_conditional32) {
-                    litem_84=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 282, "struct list_item$1charph");
+                    litem_84=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 224, "struct list_item$1charph");
                     litem_84->prev=((void*)0);
                     litem_84->next=((void*)0);
                     litem_84->item=item;
@@ -3236,7 +3234,7 @@ memset(&litem_86, 0, sizeof(struct list_item$1charph*));
                 }
                 else {
                     if(_if_conditional33=self->len==1,                    _if_conditional33) {
-                        litem_85=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 292, "struct list_item$1charph");
+                        litem_85=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 234, "struct list_item$1charph");
                         litem_85->prev=self->head;
                         litem_85->next=((void*)0);
                         litem_85->item=item;
@@ -3244,7 +3242,7 @@ memset(&litem_86, 0, sizeof(struct list_item$1charph*));
                         self->head->next=litem_85;
                     }
                     else {
-                        litem_86=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 302, "struct list_item$1charph");
+                        litem_86=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 244, "struct list_item$1charph");
                         litem_86->prev=self->tail;
                         litem_86->next=((void*)0);
                         litem_86->item=item;

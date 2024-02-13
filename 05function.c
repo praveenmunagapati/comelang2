@@ -106,7 +106,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
             come_value.c_value = append_object_to_right_values(come_value.c_value, type3, info);
         }
         
-        come_value.c_value = append_exception_value(come_value.c_value, come_value.type, info);
+        come_value.c_value = append_stackframe(come_value.c_value, come_value.type, info);
         
         add_come_last_code(info, "%s;\n", come_value.c_value);
         
@@ -174,17 +174,8 @@ bool sReturnNode*::compile(sReturnNode* self, sInfo* info)
             result_type3 = result_type2;
         }
         
-        if(result_type3->mException) {
-            sNode*% node = create_some_object(self.value, info);
-            
-            if(!node_compile(node)) {
-                return false;
-            }
-        }
-        else {
-            if(!node_compile(self.value)) {
-                return false;
-            }
+        if(!node_compile(self.value)) {
+            return false;
         }
         
         CVALUE*% come_value = get_value_from_stack(-1, info);
@@ -1455,7 +1446,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
         if(info.come_fun_name !== "come_alloc_mem_from_heap_pool" && info.come_fun_name !== "come_calloc" && info.come_fun_name !== "come_free_mem_of_heap_pool" && info.come_fun_name !== "come_free") 
         {
             if(fun_name !== "come_alloc_mem_from_heap_pool" && fun_name !== "null_check" && fun_name !== "come_push_stackframe" && fun_name !== "come_pop_stackframe") {
-                come_value.c_value = append_exception_value(come_value.c_value, come_value.type, info);
+                come_value.c_value = append_stackframe(come_value.c_value, come_value.type, info);
             }
         }
         
@@ -1654,8 +1645,6 @@ sNode*% parse_function_call(char* fun_name, sInfo* info)
     parse_sharp();
     
     sNode*% node = new sNode(new sFunCallNode(fun_name, params, info));
-    
-    node = exception_get_value(node, info)
     
     return node;
 }
@@ -2348,42 +2337,6 @@ sNode*% expression_node(sInfo* info=info) version 99
             info.sline = head_sline;
             
             return parse_function(info);
-        }
-        else if(buf === "some" && *info->p == '(') {
-            info->p++;
-            skip_spaces_and_lf(info);
-            
-            sNode*% exp = expression();
-            
-            exp = post_position_operator(exp, info);
-            exp = post_position_operator3(exp, info);
-            
-            sNode*% node = create_some_object(exp, info);
-            
-            node = post_position_operator(node, info);
-            node = post_position_operator3(node, info);
-            
-            expected_next_character(')');
-            
-            return node;
-        }
-        else if(buf === "none" && *info->p == '(') {
-            info->p++;
-            skip_spaces_and_lf(info);
-            
-            sNode*% exp = expression();
-            
-            exp = post_position_operator(exp, info);
-            exp = post_position_operator3(exp, info);
-            
-            sNode*% node = create_none_object(exp, info);
-            
-            node = post_position_operator(node, info);
-            node = post_position_operator3(node, info);
-            
-            expected_next_character(')');
-            
-            return node;
         }
         else if((buf === "string" || buf === "wstring") && *info->p == '(') {
             sNode*% node = parse_function_call(buf, info);

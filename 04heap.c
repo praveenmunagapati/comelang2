@@ -84,16 +84,12 @@ sType*% solve_generics(sType* type, sType* generics_type, sInfo* info)
             
             bool no_heap = type->mNoHeap;
             bool no_calling_destructor = type->mNoCallingDestructor;
-            bool exception_ = type->mException;
             bool null_value = type->mNullValue;
             
             result = clone generics_type->mGenericsTypes[generics_number];
 
             if(heap) {
                 result->mHeap = heap;
-            }
-            if(exception_) {
-                result->mException = exception_;
             }
             if(no_heap) {
                 result->mNoHeap = true;
@@ -1167,7 +1163,7 @@ void free_objects_on_break(sInfo* info)
     }
 }
 
-string append_exception_value(char* c_value, sType* type, sInfo* info)
+string append_stackframe(char* c_value, sType* type, sInfo* info)
 {
     if(type->mClass->mName === "void" && type->mPointerNum == 0) {
         if(gComeDebug) {

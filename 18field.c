@@ -100,7 +100,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
             come_value.c_value = append_object_to_right_values(come_value.c_value, result_type2, info);
         }
         
-        come_value.c_value = append_exception_value(come_value.c_value, come_value.type, info);
+        come_value.c_value = append_stackframe(come_value.c_value, come_value.type, info);
         
         add_come_last_code(info, "%s;\n", come_value.c_value);
         
@@ -566,105 +566,6 @@ int sRangeCheckNode*::sline(sRangeCheckNode* self, sInfo* info)
 }
 
 string sRangeCheckNode*::sname(sRangeCheckNode* self, sInfo* info)
-{
-    return string(self.sname);
-}
-
-struct sExceptionGetValueNode
-{
-    sNode*% mLeft;
-  
-    int sline;
-    string sname;
-};
-
-sExceptionGetValueNode*% sExceptionGetValueNode*::initialize(sExceptionGetValueNode*% self, sNode* left, sInfo* info)
-{
-    self.sline = info.sline;
-    self.sname = string(info.sname);
-
-    self.mLeft = clone left;
-
-    return self;
-}
-
-bool sExceptionGetValueNode*::terminated()
-{
-    return false;
-}
-
-bool compiletime_get_exception_value(sInfo* info)
-{
-    CVALUE*% left_value = get_value_from_stack(-1, info);
-    dec_stack_ptr(1, info);
-    
-    if(left_value == null) {
-    }
-    else if(left_value.type.mNoSolvedGenericsType && left_value.type.mNoSolvedGenericsType.v1 && left_value.type.mNoSolvedGenericsType.v1.mClass && left_value.type.mNoSolvedGenericsType.v1.mClass.mName === "optional") {
-        string method_name = create_method_name(left_value.type, false@no_pointer_name, "value", info);
-        
-        if(info.funcs.at(method_name, null) == null) {
-            sType* obj_type = left_value.type.mNoSolvedGenericsType.v1;
-            if(obj_type.mGenericsTypes.length() > 0) {
-                sType* obj_type2 = left_value.type;
-                method_name = make_generics_function(obj_type2, string("value"), info);
-            }
-            else {
-                err_msg(info, "require expect implementation(%s)", left_value.type.mClass.mName);
-                exit(1);
-            }
-        }
-        
-        sFun* fun = info.funcs[method_name];
-        
-        if(fun == null) {
-            err_msg(info, "function not found(%s)", method_name);
-            return true;
-        }
-        
-        sType*% type = solve_generics(fun.mResultType, left_value.type, info);
-        
-        CVALUE*% come_value = new CVALUE;
-        
-        come_value.c_value = xsprintf("%s(%s)", method_name, left_value.c_value);
-        come_value.type = clone type;
-        come_value.var = null;
-        
-        info.stack.push_back(come_value);
-        
-        add_come_last_code(info, "%s;\n", come_value.c_value);
-    }
-    else {
-        info.stack.push_back(left_value);
-        
-        add_come_last_code(info, "%s;\n", left_value.c_value);
-    }
-    
-    return true;
-}
-
-string sExceptionGetValueNode*::kind()
-{
-    return string("sExceptionGetValueNode");
-}
-
-bool sExceptionGetValueNode*::compile(sExceptionGetValueNode* self, sInfo* info)
-{
-    sNode* left = self.mLeft;
-    
-    if(!node_compile(left)) {
-        return false;
-    }
-    
-    return compiletime_get_exception_value(info);
-}
-
-int sExceptionGetValueNode*::sline(sExceptionGetValueNode* self, sInfo* info)
-{
-    return self.sline;
-}
-
-string sExceptionGetValueNode*::sname(sExceptionGetValueNode* self, sInfo* info)
 {
     return string(self.sname);
 }
@@ -1303,47 +1204,6 @@ sNode*% parse_method_call(sNode*% obj, string fun_name, sInfo* info) version 18
     return (sNode*%)null;
 }
 
-sNode*% exception_get_value(sNode*% node, sInfo* info)
-{
-    if((*info->p == '.' && *(info->p+1) != '.') || (*info->p == '-' && *(info->p+1) == '>')) {
-        char* p = info.p;
-        int sline = info.sline;
-        
-        info->p++;
-        skip_spaces_and_lf();
-        
-        if(xisalpha(*info->p) || *info->p == '_') {
-            string word = parse_word(info);
-            
-            if((word === "expect" || word === "value" || word === "catch") && (*info->p == '(' || *info->p == '{')) {
-                info.p = p;
-                info.sline = sline;
-            }
-            else {
-                info.p = p;
-                info.sline = sline;
-                
-                node = new sExceptionGetValueNode(node, info) implements sNode;
-            }
-        }
-        else {
-            info.p = p;
-            info.sline = sline;
-                
-            node = new sExceptionGetValueNode(node, info) implements sNode;
-        }
-    }
-    else if(*info->p == '!' && *(info->p+1) != '=' && *(info->p+1) != '{') {
-    }
-    else if(node == null) {
-    }
-    else {
-        node = new sExceptionGetValueNode(node, info) implements sNode;
-    }
-    
-    return node;
-}
-
 sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
 {
     while(true){
@@ -1406,8 +1266,6 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
             }
             
             node = new sLoadRangeArrayNode(node, array_num, quote, info) implements sNode;
-            
-//            node = exception_get_value(node, info)
         }
         else if(!range_array && (*info->p == '\\' && *(info->p+1) == '[' || *info->p == '[')) {
             bool quote = *info->p == '\\';
@@ -1488,8 +1346,6 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
             }
             else {
                 node = new sLoadArrayNode(node, array_num, quote, info) implements sNode;
-                
-                node = exception_get_value(node, info)
             }
         }
         else if(*info->p == '!' && *(info->p+1) == '{') {

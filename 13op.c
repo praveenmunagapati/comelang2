@@ -107,14 +107,13 @@ bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVAL
             come_value.c_value = append_object_to_right_values(come_value.c_value, type3, info);
         }
         
-        come_value.c_value = append_exception_value(come_value.c_value, come_value.type, info);
+        come_value.c_value = append_stackframe(come_value.c_value, come_value.type, info);
         
         add_come_last_code(info, "%s;\n", come_value.c_value);
         
         info.stack.push_back(come_value);
     
         result = true;
-//        result = compiletime_get_exception_value(info);
     }
     
     return result;

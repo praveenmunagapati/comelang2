@@ -363,7 +363,7 @@ bool output_header_file(sInfo* info);
 /// 04heap.c ///
 /////////////////////////////////////////////////////////////////////
 void std_move(sType* left_type, sType* right_type, CVALUE* right_value, sInfo* info=info);;
-string append_exception_value(char* c_value, sType* type, sInfo* info);
+string append_stackframe(char* c_value, sType* type, sInfo* info);
 bool create_equals_method(sType* type, sInfo* info);
 bool create_operator_equals_method(sType* type, sInfo* info);
 bool create_operator_not_equals_method(sType* type, sInfo* info);
@@ -446,8 +446,6 @@ string create_method_name(sType* obj_type, bool no_pointer_name, char* fun_name,
 /////////////////////////////////////////////////////////////////////
 sNode*% expression_node(sInfo* info=info) version 98;
 sNode*% parse_tuple(sInfo* info);
-sNode*% create_none_object(sNode*% exp, sInfo* info);
-sNode*% create_some_object(sNode*% exp, sInfo* info);
 
 /////////////////////////////////////////////////////////////////////
 /// 07var.c

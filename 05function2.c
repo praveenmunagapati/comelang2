@@ -1233,7 +1233,7 @@ bool is_type_name(char* buf, sInfo* info=info)
     sClass* generics_class = info.generics_classes[buf];
     bool generics_type_name = info.generics_type_names.contained(string(buf));
     
-    return generics_class || generics_type_name || klass || type || buf === "const" || buf === "register" || buf === "static" || buf === "volatile" || buf === "unsigned" || buf === "immutable" || buf === "mutable" || buf === "struct" || buf === "enum" || buf === "union" || buf === "extern" || buf === "inline" || buf === "__inline" || buf === "__always_inline" || buf === "__inline__" || buf === "__extension__" || buf === "_Noreturn" || buf === "__typeof__" || buf === "exception";
+    return generics_class || generics_type_name || klass || type || buf === "const" || buf === "register" || buf === "static" || buf === "volatile" || buf === "unsigned" || buf === "immutable" || buf === "mutable" || buf === "struct" || buf === "enum" || buf === "union" || buf === "extern" || buf === "inline" || buf === "__inline" || buf === "__always_inline" || buf === "__inline__" || buf === "__extension__" || buf === "_Noreturn" || buf === "__typeof__";
 
 }
 
