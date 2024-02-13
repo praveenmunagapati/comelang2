@@ -1990,7 +1990,7 @@ buffer* buffer*::append_int(buffer* self, int value);
 buffer* buffer*::append_long(buffer* self, long value);
 buffer* buffer*::append_short(buffer* self, short value);
 buffer* buffer*::alignment(buffer* self);
-exception int buffer*::compare(buffer* left, buffer* right);
+int buffer*::compare(buffer* left, buffer* right);
 buffer*% string::to_buffer(char* self);
 buffer*% char*::to_buffer(char* self);
 string buffer*::to_string(buffer* self);

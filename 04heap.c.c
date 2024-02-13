@@ -87,11 +87,6 @@ struct buffer
     int len;
     int size;
 };
-struct optional$2intbool
-{
-    int v1;
-    _Bool v2;
-};
 struct smart_pointer$1char
 {
     struct buffer* memory;
@@ -129,6 +124,11 @@ struct list$1charph
     struct list_item$1charph* tail;
     int len;
     struct list_item$1charph* it;
+};
+struct optional$2intbool
+{
+    int v1;
+    _Bool v2;
 };
 struct optional$2charphbool
 {
@@ -1103,7 +1103,7 @@ struct buffer* buffer_append_short(struct buffer* self, short short value);
 
 struct buffer* buffer_alignment(struct buffer* self);
 
-struct optional$2intbool* buffer_compare(struct buffer* left, struct buffer* right);
+int buffer_compare(struct buffer* left, struct buffer* right);
 
 struct buffer* string_to_buffer(char* self);
 

@@ -949,16 +949,16 @@ buffer* buffer*::alignment(buffer* self)
     return self;
 }
 
-exception int buffer*::compare(buffer* left, buffer* right) 
+int buffer*::compare(buffer* left, buffer* right) 
 {
     if(left == null && right == null) {
-        return none(0);
+        return 0;
     }
     else if(left == null) {
-        return none(-1);
+        return -1;
     }
     else if(right == null) {
-        return none(1);
+        return 1;
     }
     
     return strcmp(left.buf, right.buf);
