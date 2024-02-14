@@ -3,9 +3,11 @@
 
 int main(int argc, char** argv) 
 {
-    var str = s"AAA,BBB,CCC".scan(/[a-zA-Z]+/).item(0,null);
+    var li = s"AAA,BBB,CCC".split(/,/);
     
-    puts(str);
+    li.each {
+        puts(it);
+    }
     
     return 0;
 }

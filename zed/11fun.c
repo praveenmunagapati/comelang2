@@ -66,7 +66,7 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
             return false;
         }
 
-        codes = borrow clone info2.codes;
+        codes = borrow gc_inc(clone info2.codes);
     }
     
     info.codes.append_int(OP_FUN);
