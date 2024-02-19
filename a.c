@@ -3,11 +3,14 @@
 
 int main(int argc, char** argv) 
 {
-    var li = s"AAA,BBB,CCC".split(/,/);
+    int* a = gc_inc(new int);
     
-    li.each {
-        puts(it);
-    }
+    delete a;
+    
+    int* b = gc_inc(new int);
+    delete b;
+    
+    int* c = gc_inc(new int);
     
     return 0;
 }
