@@ -201,9 +201,12 @@ bool gComeGCLib = false;
 static int gNumAlloc = 0;
 static int gNumFree = 0;
 
+#define ALLOCATED_MAGIC_NUM 177783
+
 struct sMemHeaderTiny
 {
     size_t size;
+    int allocated;   //AALLOCATED_MAGIC_NUM
     struct sMemHeaderTiny* next;
     struct sMemHeaderTiny* prev;
     struct sMemHeaderTiny* free_next;
@@ -212,6 +215,7 @@ struct sMemHeaderTiny
 struct sMemHeader
 {
     size_t size;
+    int allocated;            /// ALLOCATED_MAGIC_NUM 
     struct sMemHeader* next;
     struct sMemHeader* prev;
     struct sMemHeader* free_next;
@@ -377,6 +381,8 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         sMemHeader* it = result;
         
+        it->allocated = ALLOCATED_MAGIC_NUM;
+        
         it->size = size + sizeof(sMemHeader);
         //it->free_next = NULL;
         
@@ -419,6 +425,8 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         sMemHeaderTiny* it = result;
         
+        it->allocated = ALLOCATED_MAGIC_NUM;
+        
         it->size = size + sizeof(sMemHeaderTiny);
         //it->free_next = NULL;
         
@@ -444,6 +452,12 @@ static void come_free_mem_of_heap_pool(void* mem)
         }
         else if(gComeDebugLib) {
             sMemHeader* it = (sMemHeader*)((char*)mem - sizeof(sMemHeader));
+            
+            if(it->allocated != ALLOCATED_MAGIC_NUM) {
+                return;
+            }
+            
+            it->allocated = 0;
             
             sMemHeader* prev_it = it->prev;
             sMemHeader* next_it = it->next;
@@ -504,6 +518,12 @@ static void come_free_mem_of_heap_pool(void* mem)
         }
         else {
             sMemHeaderTiny* it = (sMemHeaderTiny*)((char*)mem - sizeof(sMemHeaderTiny));
+            
+            if(it->allocated != ALLOCATED_MAGIC_NUM) {
+                return;
+            }
+            
+            it->allocated = 0;
             
             sMemHeaderTiny* prev_it = it->prev;
             sMemHeaderTiny* next_it = it->next;
