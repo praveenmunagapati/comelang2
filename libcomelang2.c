@@ -750,13 +750,40 @@ void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj
     if(mem == NULL) {
         return NULL;
     }
+    
+    size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
+    
+    if(!no_decrement) {
+        (*ref_count)--;
+    }
+    
+    size_t count = *ref_count;
+    if(!no_free && (count <= 0 || force_delete_)) {
+        if(protocol_obj && protocol_fun) {
+            void (*finalizer)(void*) = protocol_fun;
+            finalizer(protocol_obj);
+            
+            come_free_object(protocol_obj);
+        }
+        come_free_object(mem);
+        return NULL;
+    }
+    
+    return mem;
+}
+
+void* come_decrement_ref_count2(void* mem, void* protocol_fun, void* protocol_obj, bool no_decrement, bool no_free, bool force_delete_, void* result_obj)
+{
 /*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
+    if(result_obj) {
+        if(mem == result_obj) {
             return mem;
         }
     }
 */
+    if(mem == NULL) {
+        return NULL;
+    }
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -784,13 +811,54 @@ void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protoco
     if(mem == NULL) {
         return;
     }
+    
+    if(call_finalizer_only) {
+        if(fun) {
+            if(protocol_obj && protocol_fun) {
+                void (*finalizer)(void*) = protocol_fun;
+                finalizer(protocol_obj);
+            }
+            void (*finalizer)(void*) = fun;
+            finalizer(mem);
+        }
+    }
+    else {
+        size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
+        
+        if(!no_decrement) {
+            (*ref_count)--;
+        }
+        
+        size_t count = *ref_count;
+        if(!no_free && (count <= 0 || force_delete_)) {
+            if(mem) {
+                if(protocol_obj && protocol_fun) {
+                    void (*finalizer)(void*) = protocol_fun;
+                    finalizer(protocol_obj);
+                    come_free_object(protocol_obj);
+                }
+                if(fun) {
+                    void (*finalizer)(void*) = fun;
+                    finalizer(mem);
+                }
+                come_free_object(mem);
+            }
+        }
+    }
+}
+
+void come_call_finalizer2(void* fun, void* mem, void* protocol_fun, void* protocol_obj, int call_finalizer_only, int no_decrement, int no_free, int force_delete_, void* result_obj)
+{
 /*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem) && !call_finalizer_only) {
+    if(result_obj) {
+        if(mem == result_obj) {
             return;
         }
     }
 */
+    if(mem == NULL) {
+        return;
+    }
     
     if(call_finalizer_only) {
         if(fun) {
