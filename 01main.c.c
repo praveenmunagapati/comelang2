@@ -1606,11 +1606,8 @@ int main(int argc, char** argv);
 // inline function
 static inline _Bool die(char* msg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result1__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     perror(msg);
     stackframe();
     exit(4);
@@ -1619,15 +1616,12 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 }
 static inline struct smart_pointer$1char* buffer_to_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value0;
 struct smart_pointer$1char* result_0;
 void* right_value1;
 struct buffer* __dec_obj1;
 struct smart_pointer$1char* __result2__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value0 = (void*)0;
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
 right_value1 = (void*)0;
@@ -1645,15 +1639,12 @@ right_value1 = (void*)0;
 }
 static inline struct smart_pointer$1char* buffer_to_char_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value2;
 struct smart_pointer$1char* result_1;
 void* right_value3;
 struct buffer* __dec_obj2;
 struct smart_pointer$1char* __result3__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value2 = (void*)0;
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
 right_value3 = (void*)0;
@@ -1671,15 +1662,12 @@ right_value3 = (void*)0;
 }
 static inline struct smart_pointer$1short* buffer_to_short_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value4;
 struct smart_pointer$1short* result_2;
 void* right_value5;
 struct buffer* __dec_obj3;
 struct smart_pointer$1short* __result4__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value4 = (void*)0;
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
 right_value5 = (void*)0;
@@ -1697,15 +1685,12 @@ right_value5 = (void*)0;
 }
 static inline struct smart_pointer$1int* buffer_to_int_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value6;
 struct smart_pointer$1int* result_3;
 void* right_value7;
 struct buffer* __dec_obj4;
 struct smart_pointer$1int* __result5__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value6 = (void*)0;
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
 right_value7 = (void*)0;
@@ -1723,15 +1708,12 @@ right_value7 = (void*)0;
 }
 static inline struct smart_pointer$1long* buffer_to_long_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value8;
 struct smart_pointer$1long* result_4;
 void* right_value9;
 struct buffer* __dec_obj5;
 struct smart_pointer$1long* __result6__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value8 = (void*)0;
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
 right_value9 = (void*)0;
@@ -1753,11 +1735,8 @@ right_value9 = (void*)0;
 
 static void smart_pointer$1charp_finalize(struct smart_pointer$1char* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional1;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional1=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional1) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1767,11 +1746,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void smart_pointer$1shortp_finalize(struct smart_pointer$1short* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional2;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional2=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional2) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1780,11 +1756,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void smart_pointer$1intp_finalize(struct smart_pointer$1int* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional3;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional3=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional3) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1793,11 +1766,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void smart_pointer$1longp_finalize(struct smart_pointer$1long* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional4;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional4=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional4) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1805,11 +1775,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 int come_main_v1(int argc, char** argv){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result7__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     puts("HELLO COMELANG");
     __result7__ = 0;
     return __result7__;
@@ -1817,11 +1784,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 int main(int argc, char** argv){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result8__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 come_heap_init(0, 0, 0);
     __result8__ = come_main_v2(argc,argv);
     come_heap_final();

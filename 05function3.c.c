@@ -1735,11 +1735,8 @@ static struct sIntNode* sIntNode_clone(struct sIntNode* self);
 // inline function
 static inline _Bool die(char* msg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result1__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     perror(msg);
     stackframe();
     exit(4);
@@ -1748,15 +1745,12 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 }
 static inline struct smart_pointer$1char* buffer_to_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value0;
 struct smart_pointer$1char* result_0;
 void* right_value1;
 struct buffer* __dec_obj1;
 struct smart_pointer$1char* __result2__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value0 = (void*)0;
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
 right_value1 = (void*)0;
@@ -1774,15 +1768,12 @@ right_value1 = (void*)0;
 }
 static inline struct smart_pointer$1char* buffer_to_char_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value2;
 struct smart_pointer$1char* result_1;
 void* right_value3;
 struct buffer* __dec_obj2;
 struct smart_pointer$1char* __result3__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value2 = (void*)0;
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
 right_value3 = (void*)0;
@@ -1800,15 +1791,12 @@ right_value3 = (void*)0;
 }
 static inline struct smart_pointer$1short* buffer_to_short_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value4;
 struct smart_pointer$1short* result_2;
 void* right_value5;
 struct buffer* __dec_obj3;
 struct smart_pointer$1short* __result4__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value4 = (void*)0;
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
 right_value5 = (void*)0;
@@ -1826,15 +1814,12 @@ right_value5 = (void*)0;
 }
 static inline struct smart_pointer$1int* buffer_to_int_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value6;
 struct smart_pointer$1int* result_3;
 void* right_value7;
 struct buffer* __dec_obj4;
 struct smart_pointer$1int* __result5__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value6 = (void*)0;
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
 right_value7 = (void*)0;
@@ -1852,15 +1837,12 @@ right_value7 = (void*)0;
 }
 static inline struct smart_pointer$1long* buffer_to_long_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value8;
 struct smart_pointer$1long* result_4;
 void* right_value9;
 struct buffer* __dec_obj5;
 struct smart_pointer$1long* __result6__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value8 = (void*)0;
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
 right_value9 = (void*)0;
@@ -1882,11 +1864,8 @@ right_value9 = (void*)0;
 
 static void smart_pointer$1charp_finalize(struct smart_pointer$1char* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional1;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional1=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional1) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1896,11 +1875,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void smart_pointer$1shortp_finalize(struct smart_pointer$1short* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional2;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional2=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional2) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1909,11 +1885,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void smart_pointer$1intp_finalize(struct smart_pointer$1int* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional3;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional3=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional3) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1922,11 +1895,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void smart_pointer$1longp_finalize(struct smart_pointer$1long* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional4;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional4=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional4) {
             if(self->memory) { come_call_finalizer(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0); }
         }
@@ -1934,13 +1904,10 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 struct sIntNode* sIntNode_initialize(struct sIntNode* self, int value, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value10;
 char* __dec_obj6;
 struct sIntNode* __result7__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value10 = (void*)0;
     self->value=value;
     self->sline=info->sline;
@@ -1956,12 +1923,9 @@ right_value10 = (void*)0;
 
 char* sIntNode_kind(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value11;
 char* __result8__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value11 = (void*)0;
     __result8__ = __result_obj__ = ((char*)(right_value11=__builtin_string("sIntNode")));
     if(right_value11 && right_value11 != __result_obj__) { right_value11 = come_decrement_ref_count(right_value11, (void*)0, (void*)0, 1, 0, 0); }
@@ -1970,8 +1934,6 @@ right_value11 = (void*)0;
 
 _Bool sIntNode_compile(struct sIntNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value12;
 struct CVALUE* come_value_5;
 void* right_value13;
@@ -1981,7 +1943,6 @@ void* right_value15;
 struct sType* __dec_obj8;
 _Bool __result10__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value12 = (void*)0;
 memset(&come_value_5, 0, sizeof(struct CVALUE*));
 right_value13 = (void*)0;
@@ -2009,12 +1970,9 @@ right_value15 = (void*)0;
 
 static void CVALUE_finalize(struct CVALUE* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional6;
 _Bool _if_conditional7;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         if(_if_conditional6=self!=((void*)0)&&self->c_value!=((void*)0),        _if_conditional6) {
             if(self->c_value) { self->c_value = come_decrement_ref_count(self->c_value, (void*)0, (void*)0, 0, 0, 0); }
         }
@@ -2025,8 +1983,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void sType_finalize(struct sType* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional8;
 _Bool _if_conditional10;
 _Bool _if_conditional11;
@@ -2040,7 +1996,6 @@ _Bool _if_conditional21;
 _Bool _if_conditional22;
 _Bool _if_conditional23;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                 if(_if_conditional8=self!=((void*)0)&&self->mNoSolvedGenericsType!=((void*)0),                _if_conditional8) {
                     if(self->mNoSolvedGenericsType) { come_call_finalizer(tuple1$1sTypephp_finalize,self->mNoSolvedGenericsType, (void*)0, (void*)0, 0, 0, 0, 0); }
                 }
@@ -2081,11 +2036,8 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void tuple1$1sTypephp_finalize(struct tuple1$1sTypeph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional9;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                         if(_if_conditional9=self!=((void*)0)&&self->v1!=((void*)0),                        _if_conditional9) {
                             if(self->v1) { come_call_finalizer(sType_finalize,self->v1, (void*)0, (void*)0, 0, 0, 0, 0); }
                         }
@@ -2093,13 +2045,10 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void list$1sTypephp_finalize(struct list$1sTypeph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list_item$1sTypeph* it_6;
 _Bool _while_condtional1;
 struct list_item$1sTypeph* prev_it_7;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&it_6, 0, sizeof(struct list_item$1sTypeph*));
 memset(&prev_it_7, 0, sizeof(struct list_item$1sTypeph*));
                         it_6=self->head;
@@ -2112,11 +2061,8 @@ memset(&prev_it_7, 0, sizeof(struct list_item$1sTypeph*));
 
 static void list_item$1sTypephp_finalize(struct list_item$1sTypeph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional13;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                                 if(_if_conditional13=self!=((void*)0)&&self->item!=((void*)0),                                _if_conditional13) {
                                     if(self->item) { come_call_finalizer(sType_finalize,self->item, (void*)0, (void*)0, 0, 0, 0, 0); }
                                 }
@@ -2124,13 +2070,10 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void list$1sNodephp_finalize(struct list$1sNodeph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list_item$1sNodeph* it_8;
 _Bool _while_condtional2;
 struct list_item$1sNodeph* prev_it_9;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&it_8, 0, sizeof(struct list_item$1sNodeph*));
 memset(&prev_it_9, 0, sizeof(struct list_item$1sNodeph*));
                         it_8=self->head;
@@ -2143,11 +2086,8 @@ memset(&prev_it_9, 0, sizeof(struct list_item$1sNodeph*));
 
 static void list_item$1sNodephp_finalize(struct list_item$1sNodeph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional15;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                                 if(_if_conditional15=self!=((void*)0)&&self->item!=((void*)0),                                _if_conditional15) {
                                     if(self->item) { self->item = come_decrement_ref_count(self->item, ((struct sNode*)self->item)->finalize, ((struct sNode*)self->item)->_protocol_obj, 0, 0, 0); } 
                                 }
@@ -2155,13 +2095,10 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static void list$1charphp_finalize(struct list$1charph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list_item$1charph* it_10;
 _Bool _while_condtional3;
 struct list_item$1charph* prev_it_11;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&it_10, 0, sizeof(struct list_item$1charph*));
 memset(&prev_it_11, 0, sizeof(struct list_item$1charph*));
                         it_10=self->head;
@@ -2174,11 +2111,8 @@ memset(&prev_it_11, 0, sizeof(struct list_item$1charph*));
 
 static void list_item$1charphp_finalize(struct list_item$1charph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional18;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                                 if(_if_conditional18=self!=((void*)0)&&self->item!=((void*)0),                                _if_conditional18) {
                                     if(self->item) { self->item = come_decrement_ref_count(self->item, (void*)0, (void*)0, 0, 0, 0); }
                                 }
@@ -2186,8 +2120,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct list$1CVALUEph* list$1CVALUEph_push_back(struct list$1CVALUEph* self, struct CVALUE* item){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional24;
 void* right_value16;
 struct list_item$1CVALUEph* litem_12;
@@ -2201,7 +2133,6 @@ struct list_item$1CVALUEph* litem_14;
 struct CVALUE* __dec_obj11;
 struct list$1CVALUEph* __result9__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value16 = (void*)0;
 memset(&litem_12, 0, sizeof(struct list_item$1CVALUEph*));
 right_value17 = (void*)0;
@@ -2252,11 +2183,8 @@ memset(&litem_14, 0, sizeof(struct list_item$1CVALUEph*));
 
 static void list_item$1CVALUEphp_finalize(struct list_item$1CVALUEph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional25;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                 if(_if_conditional25=self!=((void*)0)&&self->item!=((void*)0),                _if_conditional25) {
                     if(self->item) { come_call_finalizer(CVALUE_finalize,self->item, (void*)0, (void*)0, 0, 0, 0, 0); }
                 }
@@ -2264,34 +2192,25 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 _Bool sIntNode_terminated(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result11__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result11__ = (_Bool)0;
     return __result11__;
 }
 
 int sIntNode_sline(struct sIntNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result12__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result12__ = self->sline;
     return __result12__;
 }
 
 char* sIntNode_sname(struct sIntNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value19;
 char* __result13__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value19 = (void*)0;
     __result13__ = __result_obj__ = ((char*)(right_value19=__builtin_string(self->sname)));
     if(right_value19 && right_value19 != __result_obj__) { right_value19 = come_decrement_ref_count(right_value19, (void*)0, (void*)0, 1, 0, 0); }
@@ -2300,13 +2219,10 @@ right_value19 = (void*)0;
 
 struct sUIntNode* sUIntNode_initialize(struct sUIntNode* self, unsigned int value, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value20;
 char* __dec_obj12;
 struct sUIntNode* __result14__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value20 = (void*)0;
     self->value=value;
     self->sline=info->sline;
@@ -2322,23 +2238,17 @@ right_value20 = (void*)0;
 
 _Bool sUIntNode_terminated(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result15__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result15__ = (_Bool)0;
     return __result15__;
 }
 
 char* sUIntNode_kind(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value21;
 char* __result16__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value21 = (void*)0;
     __result16__ = __result_obj__ = ((char*)(right_value21=__builtin_string("sUIntNode")));
     if(right_value21 && right_value21 != __result_obj__) { right_value21 = come_decrement_ref_count(right_value21, (void*)0, (void*)0, 1, 0, 0); }
@@ -2347,8 +2257,6 @@ right_value21 = (void*)0;
 
 _Bool sUIntNode_compile(struct sUIntNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value22;
 struct CVALUE* come_value_15;
 void* right_value23;
@@ -2358,7 +2266,6 @@ void* right_value25;
 struct sType* __dec_obj14;
 _Bool __result17__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value22 = (void*)0;
 memset(&come_value_15, 0, sizeof(struct CVALUE*));
 right_value23 = (void*)0;
@@ -2386,23 +2293,17 @@ right_value25 = (void*)0;
 
 int sUIntNode_sline(struct sUIntNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result18__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result18__ = self->sline;
     return __result18__;
 }
 
 char* sUIntNode_sname(struct sUIntNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value26;
 char* __result19__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value26 = (void*)0;
     __result19__ = __result_obj__ = ((char*)(right_value26=__builtin_string(self->sname)));
     if(right_value26 && right_value26 != __result_obj__) { right_value26 = come_decrement_ref_count(right_value26, (void*)0, (void*)0, 1, 0, 0); }
@@ -2411,13 +2312,10 @@ right_value26 = (void*)0;
 
 struct sLongNode* sLongNode_initialize(struct sLongNode* self, unsigned long int value, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value27;
 char* __dec_obj15;
 struct sLongNode* __result20__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value27 = (void*)0;
     self->value=value;
     self->sline=info->sline;
@@ -2433,12 +2331,9 @@ right_value27 = (void*)0;
 
 char* sLongNode_kind(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value28;
 char* __result21__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value28 = (void*)0;
     __result21__ = __result_obj__ = ((char*)(right_value28=__builtin_string("sLongNode")));
     if(right_value28 && right_value28 != __result_obj__) { right_value28 = come_decrement_ref_count(right_value28, (void*)0, (void*)0, 1, 0, 0); }
@@ -2447,8 +2342,6 @@ right_value28 = (void*)0;
 
 _Bool sLongNode_compile(struct sLongNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value29;
 struct CVALUE* come_value_16;
 void* right_value30;
@@ -2458,7 +2351,6 @@ void* right_value32;
 struct sType* __dec_obj17;
 _Bool __result22__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value29 = (void*)0;
 memset(&come_value_16, 0, sizeof(struct CVALUE*));
 right_value30 = (void*)0;
@@ -2486,34 +2378,25 @@ right_value32 = (void*)0;
 
 _Bool sLongNode_terminated(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result23__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result23__ = (_Bool)0;
     return __result23__;
 }
 
 int sLongNode_sline(struct sLongNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result24__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result24__ = self->sline;
     return __result24__;
 }
 
 char* sLongNode_sname(struct sLongNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value33;
 char* __result25__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value33 = (void*)0;
     __result25__ = __result_obj__ = ((char*)(right_value33=__builtin_string(self->sname)));
     if(right_value33 && right_value33 != __result_obj__) { right_value33 = come_decrement_ref_count(right_value33, (void*)0, (void*)0, 1, 0, 0); }
@@ -2522,13 +2405,10 @@ right_value33 = (void*)0;
 
 struct sULongNode* sULongNode_initialize(struct sULongNode* self, unsigned long int value, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value34;
 char* __dec_obj18;
 struct sULongNode* __result26__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value34 = (void*)0;
     self->value=value;
     self->sline=info->sline;
@@ -2544,12 +2424,9 @@ right_value34 = (void*)0;
 
 char* sULongNode_kind(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value35;
 char* __result27__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value35 = (void*)0;
     __result27__ = __result_obj__ = ((char*)(right_value35=__builtin_string("sULongNode")));
     if(right_value35 && right_value35 != __result_obj__) { right_value35 = come_decrement_ref_count(right_value35, (void*)0, (void*)0, 1, 0, 0); }
@@ -2558,8 +2435,6 @@ right_value35 = (void*)0;
 
 _Bool sULongNode_compile(struct sULongNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value36;
 struct CVALUE* come_value_17;
 void* right_value37;
@@ -2569,7 +2444,6 @@ void* right_value39;
 struct sType* __dec_obj20;
 _Bool __result28__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value36 = (void*)0;
 memset(&come_value_17, 0, sizeof(struct CVALUE*));
 right_value37 = (void*)0;
@@ -2597,34 +2471,25 @@ right_value39 = (void*)0;
 
 _Bool sULongNode_terminated(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result29__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result29__ = (_Bool)0;
     return __result29__;
 }
 
 int sULongNode_sline(struct sULongNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result30__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result30__ = self->sline;
     return __result30__;
 }
 
 char* sULongNode_sname(struct sULongNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value40;
 char* __result31__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value40 = (void*)0;
     __result31__ = __result_obj__ = ((char*)(right_value40=__builtin_string(self->sname)));
     if(right_value40 && right_value40 != __result_obj__) { right_value40 = come_decrement_ref_count(right_value40, (void*)0, (void*)0, 1, 0, 0); }
@@ -2633,13 +2498,10 @@ right_value40 = (void*)0;
 
 struct sFloatNode* sFloatNode_initialize(struct sFloatNode* self, float value, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value41;
 char* __dec_obj21;
 struct sFloatNode* __result32__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value41 = (void*)0;
     self->value=value;
     self->sline=info->sline;
@@ -2655,12 +2517,9 @@ right_value41 = (void*)0;
 
 char* sFloatNode_kind(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value42;
 char* __result33__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value42 = (void*)0;
     __result33__ = __result_obj__ = ((char*)(right_value42=__builtin_string("sFloatNode")));
     if(right_value42 && right_value42 != __result_obj__) { right_value42 = come_decrement_ref_count(right_value42, (void*)0, (void*)0, 1, 0, 0); }
@@ -2669,8 +2528,6 @@ right_value42 = (void*)0;
 
 _Bool sFloatNode_compile(struct sFloatNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value43;
 struct CVALUE* come_value_18;
 void* right_value44;
@@ -2680,7 +2537,6 @@ void* right_value46;
 struct sType* __dec_obj23;
 _Bool __result34__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value43 = (void*)0;
 memset(&come_value_18, 0, sizeof(struct CVALUE*));
 right_value44 = (void*)0;
@@ -2708,34 +2564,25 @@ right_value46 = (void*)0;
 
 _Bool sFloatNode_terminated(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result35__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result35__ = (_Bool)0;
     return __result35__;
 }
 
 int sFloatNode_sline(struct sFloatNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result36__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result36__ = self->sline;
     return __result36__;
 }
 
 char* sFloatNode_sname(struct sFloatNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value47;
 char* __result37__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value47 = (void*)0;
     __result37__ = __result_obj__ = ((char*)(right_value47=__builtin_string(self->sname)));
     if(right_value47 && right_value47 != __result_obj__) { right_value47 = come_decrement_ref_count(right_value47, (void*)0, (void*)0, 1, 0, 0); }
@@ -2744,13 +2591,10 @@ right_value47 = (void*)0;
 
 struct sDoubleNode* sDoubleNode_initialize(struct sDoubleNode* self, double value, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value48;
 char* __dec_obj24;
 struct sDoubleNode* __result38__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value48 = (void*)0;
     self->value=value;
     self->sline=info->sline;
@@ -2766,12 +2610,9 @@ right_value48 = (void*)0;
 
 char* sDoubleNode_kind(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value49;
 char* __result39__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value49 = (void*)0;
     __result39__ = __result_obj__ = ((char*)(right_value49=__builtin_string("sDoubleNode")));
     if(right_value49 && right_value49 != __result_obj__) { right_value49 = come_decrement_ref_count(right_value49, (void*)0, (void*)0, 1, 0, 0); }
@@ -2780,8 +2621,6 @@ right_value49 = (void*)0;
 
 _Bool sDoubleNode_compile(struct sDoubleNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value50;
 struct CVALUE* come_value_19;
 void* right_value51;
@@ -2791,7 +2630,6 @@ void* right_value53;
 struct sType* __dec_obj26;
 _Bool __result40__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value50 = (void*)0;
 memset(&come_value_19, 0, sizeof(struct CVALUE*));
 right_value51 = (void*)0;
@@ -2819,34 +2657,25 @@ right_value53 = (void*)0;
 
 _Bool sDoubleNode_terminated(){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result41__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result41__ = (_Bool)0;
     return __result41__;
 }
 
 int sDoubleNode_sline(struct sDoubleNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result42__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result42__ = self->sline;
     return __result42__;
 }
 
 char* sDoubleNode_sname(struct sDoubleNode* self, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value54;
 char* __result43__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value54 = (void*)0;
     __result43__ = __result_obj__ = ((char*)(right_value54=__builtin_string(self->sname)));
     if(right_value54 && right_value54 != __result_obj__) { right_value54 = come_decrement_ref_count(right_value54, (void*)0, (void*)0, 1, 0, 0); }
@@ -2855,8 +2684,6 @@ right_value54 = (void*)0;
 
 struct sNode* get_number(_Bool minus, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const int buf_size_20=128;
 char* p2_22;
 _Bool _if_conditional32;
@@ -2959,7 +2786,6 @@ void* right_value104;
 struct sNode* __result73__;
 struct sNode* __result74__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&p2_22, 0, sizeof(char*));
 memset(&c_23, 0, sizeof(char));
 right_value55 = (void*)0;
@@ -3311,11 +3137,8 @@ right_value104 = (void*)0;
 
 static void sFloatNode_finalize(struct sFloatNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional49;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                     if(_if_conditional49=self!=((void*)0)&&self->sname!=((void*)0),                    _if_conditional49) {
                         if(self->sname) { self->sname = come_decrement_ref_count(self->sname, (void*)0, (void*)0, 0, 0, 0); }
                     }
@@ -3323,8 +3146,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct sFloatNode* sFloatNode_clone(struct sFloatNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional50;
 struct sFloatNode* __result44__;
 void* right_value57;
@@ -3336,7 +3157,6 @@ void* right_value58;
 char* __dec_obj27;
 struct sFloatNode* __result45__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value57 = (void*)0;
 memset(&result_24, 0, sizeof(struct sFloatNode*));
 right_value58 = (void*)0;
@@ -3366,11 +3186,8 @@ right_value58 = (void*)0;
 
 static void sDoubleNode_finalize(struct sDoubleNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional60;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                         if(_if_conditional60=self!=((void*)0)&&self->sname!=((void*)0),                        _if_conditional60) {
                             if(self->sname) { self->sname = come_decrement_ref_count(self->sname, (void*)0, (void*)0, 0, 0, 0); }
                         }
@@ -3378,8 +3195,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct sDoubleNode* sDoubleNode_clone(struct sDoubleNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional61;
 struct sDoubleNode* __result50__;
 void* right_value67;
@@ -3391,7 +3206,6 @@ void* right_value68;
 char* __dec_obj29;
 struct sDoubleNode* __result51__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value67 = (void*)0;
 memset(&result_26, 0, sizeof(struct sDoubleNode*));
 right_value68 = (void*)0;
@@ -3421,8 +3235,6 @@ right_value68 = (void*)0;
 
 struct sNode* create_int_node(int value, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 void* right_value105;
 void* right_value106;
 struct sNode* _inf_value11;
@@ -3430,7 +3242,6 @@ struct sIntNode* _inf_obj_value11;
 void* right_value109;
 struct sNode* __result77__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value105 = (void*)0;
 right_value106 = (void*)0;
 right_value109 = (void*)0;
@@ -3453,8 +3264,6 @@ right_value109 = (void*)0;
 
 struct sNode* get_hex_number(_Bool minus, struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int buf_size_45;
 char* p_47;
 _Bool _while_condtional7;
@@ -3566,7 +3375,6 @@ void* right_value179;
 struct sNode* __result119__;
 struct sNode* __result120__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&buf_size_45, 0, sizeof(int));
 memset(&p_47, 0, sizeof(char*));
 memset(&value_48, 0, sizeof(unsigned long long int));
@@ -3926,8 +3734,6 @@ right_value179 = (void*)0;
 
 struct sNode* get_oct_number(struct sInfo* info){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int buf_size_69;
 char* p_71;
 _Bool _while_condtional8;
@@ -3990,7 +3796,6 @@ void* right_value214;
 struct sNode* __result141__;
 struct sNode* __result142__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&buf_size_69, 0, sizeof(int));
 memset(&p_71, 0, sizeof(char*));
 memset(&value_72, 0, sizeof(unsigned long long int));
@@ -4196,11 +4001,8 @@ right_value214 = (void*)0;
 
 static void sUIntNode_finalize(struct sUIntNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional211;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                 if(_if_conditional211=self!=((void*)0)&&self->sname!=((void*)0),                _if_conditional211) {
                     if(self->sname) { self->sname = come_decrement_ref_count(self->sname, (void*)0, (void*)0, 0, 0, 0); }
                 }
@@ -4208,8 +4010,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct sUIntNode* sUIntNode_clone(struct sUIntNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional212;
 struct sUIntNode* __result127__;
 void* right_value192;
@@ -4221,7 +4021,6 @@ void* right_value193;
 char* __dec_obj54;
 struct sUIntNode* __result128__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value192 = (void*)0;
 memset(&result_77, 0, sizeof(struct sUIntNode*));
 right_value193 = (void*)0;
@@ -4251,11 +4050,8 @@ right_value193 = (void*)0;
 
 static void sULongNode_finalize(struct sULongNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional224;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                         if(_if_conditional224=self!=((void*)0)&&self->sname!=((void*)0),                        _if_conditional224) {
                             if(self->sname) { self->sname = come_decrement_ref_count(self->sname, (void*)0, (void*)0, 0, 0, 0); }
                         }
@@ -4263,8 +4059,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct sULongNode* sULongNode_clone(struct sULongNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional225;
 struct sULongNode* __result133__;
 void* right_value202;
@@ -4276,7 +4070,6 @@ void* right_value203;
 char* __dec_obj56;
 struct sULongNode* __result134__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value202 = (void*)0;
 memset(&result_81, 0, sizeof(struct sULongNode*));
 right_value203 = (void*)0;
@@ -4306,11 +4099,8 @@ right_value203 = (void*)0;
 
 static void sLongNode_finalize(struct sLongNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional229;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                         if(_if_conditional229=self!=((void*)0)&&self->sname!=((void*)0),                        _if_conditional229) {
                             if(self->sname) { self->sname = come_decrement_ref_count(self->sname, (void*)0, (void*)0, 0, 0, 0); }
                         }
@@ -4318,8 +4108,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct sLongNode* sLongNode_clone(struct sLongNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional230;
 struct sLongNode* __result136__;
 void* right_value207;
@@ -4331,7 +4119,6 @@ void* right_value208;
 char* __dec_obj57;
 struct sLongNode* __result137__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value207 = (void*)0;
 memset(&result_83, 0, sizeof(struct sLongNode*));
 right_value208 = (void*)0;
@@ -4361,11 +4148,8 @@ right_value208 = (void*)0;
 
 static void sIntNode_finalize(struct sIntNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional234;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
                 if(_if_conditional234=self!=((void*)0)&&self->sname!=((void*)0),                _if_conditional234) {
                     if(self->sname) { self->sname = come_decrement_ref_count(self->sname, (void*)0, (void*)0, 0, 0, 0); }
                 }
@@ -4373,8 +4157,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct sIntNode* sIntNode_clone(struct sIntNode* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional235;
 struct sIntNode* __result139__;
 void* right_value212;
@@ -4386,7 +4168,6 @@ void* right_value213;
 char* __dec_obj58;
 struct sIntNode* __result140__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 right_value212 = (void*)0;
 memset(&result_85, 0, sizeof(struct sIntNode*));
 right_value213 = (void*)0;

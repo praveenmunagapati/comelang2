@@ -1985,11 +1985,8 @@ char* string_chomp(char* str);
 // inline function
 static inline _Bool die(char* msg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result1__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     perror(msg);
     stackframe();
     exit(4);
@@ -1998,12 +1995,9 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 }
 static inline struct smart_pointer$1char* buffer_to_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct smart_pointer$1char* result_0;
 struct smart_pointer$1char* __result2__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
     result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1951, "struct smart_pointer$1char");
     result_0->memory=buffer_clone(self);
@@ -2013,12 +2007,9 @@ memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
 }
 static inline struct smart_pointer$1char* buffer_to_char_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct smart_pointer$1char* result_1;
 struct smart_pointer$1char* __result3__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
     result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1961, "struct smart_pointer$1char");
     result_1->memory=buffer_clone(self);
@@ -2028,12 +2019,9 @@ memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
 }
 static inline struct smart_pointer$1short* buffer_to_short_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct smart_pointer$1short* result_2;
 struct smart_pointer$1short* __result4__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
     result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1971, "struct smart_pointer$1short");
     result_2->memory=buffer_clone(self);
@@ -2043,12 +2031,9 @@ memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
 }
 static inline struct smart_pointer$1int* buffer_to_int_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct smart_pointer$1int* result_3;
 struct smart_pointer$1int* __result5__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
     result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1981, "struct smart_pointer$1int");
     result_3->memory=buffer_clone(self);
@@ -2058,12 +2043,9 @@ memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
 }
 static inline struct smart_pointer$1long* buffer_to_long_pointer(struct buffer* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct smart_pointer$1long* result_4;
 struct smart_pointer$1long* __result6__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
     result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1991, "struct smart_pointer$1long");
     result_4->memory=buffer_clone(self);
@@ -2073,401 +2055,281 @@ memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
 }
 static inline unsigned int* wstring_substring(unsigned int* str, int head, int tail){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result7__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result7__ = __result_obj__ = wchar_tp_substring(str,head,tail);
     return __result7__;
 }
 static inline int string_index_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result8__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result8__ = charp_index_count(str,search_str,count,default_value);
     return __result8__;
 }
 static inline int string_index_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result9__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result9__ = charp_index_regex_count(self,reg,count,default_value);
     return __result9__;
 }
 static inline int string_rindex(char* str, char* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result10__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result10__ = charp_rindex(str,search_str,default_value);
     return __result10__;
 }
 static inline int string_rindex_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result11__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result11__ = charp_rindex_regex(self,reg,default_value);
     return __result11__;
 }
 static inline int string_rindex_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result12__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result12__ = charp_rindex_count(str,search_str,default_value,-1);
     return __result12__;
 }
 static inline struct list$1charph* string_scan_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result13__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result13__ = __result_obj__ = charp_scan_block(self,reg,parent,block);
     return __result13__;
 }
 static inline struct list$1charph* string_scan_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result14__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result14__ = __result_obj__ = charp_scan_block_count(self,reg,count,parent,block);
     return __result14__;
 }
 static inline struct list$1charph* string_split_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result15__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result15__ = __result_obj__ = charp_split_block(self,reg,parent,block);
     return __result15__;
 }
 static inline struct list$1charph* string_split_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result16__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result16__ = __result_obj__ = charp_split_block_count(self,reg,count,parent,block);
     return __result16__;
 }
 static inline struct list$1charph* string_scan_group_strings(char* self, struct come_regex* reg, struct list$1charph* group_strings, int* num_group_string_in_regex){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result17__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result17__ = __result_obj__ = charp_scan_group_strings(self,reg,group_strings,num_group_string_in_regex);
     return __result17__;
 }
 static inline char* string_strip(char* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result18__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result18__ = __result_obj__ = charp_strip(self);
     return __result18__;
 }
 static inline char* string_printable(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result19__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result19__ = __result_obj__ = string_printable(str);
     return __result19__;
 }
 static inline unsigned int* string_to_wstring(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result20__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result20__ = __result_obj__ = charp_to_wstring(str);
     return __result20__;
 }
 static inline char* wstring_to_string(unsigned int* wstr){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result21__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result21__ = __result_obj__ = wchar_tp_to_string(wstr);
     return __result21__;
 }
 static inline int wstring_length(unsigned int* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result22__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result22__ = wchar_tp_length(str);
     return __result22__;
 }
 static inline unsigned int* wstring_delete(unsigned int* str, int head, int tail){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result23__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result23__ = __result_obj__ = wchar_tp_delete(str,head,tail);
     return __result23__;
 }
 static inline int wstring_index(unsigned int* str, unsigned int* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result24__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result24__ = wchar_tp_index(str,search_str,default_value);
     return __result24__;
 }
 static inline int wstring_rindex(unsigned int* str, unsigned int* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result25__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result25__ = wchar_tp_rindex(str,search_str,default_value);
     return __result25__;
 }
 static inline unsigned int* wstring_reverse(unsigned int* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result26__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result26__ = __result_obj__ = wchar_tp_reverse(str);
     return __result26__;
 }
 static inline unsigned int* wstring_multiply(unsigned int* str, int n){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result27__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result27__ = __result_obj__ = wchar_tp_multiply(str,n);
     return __result27__;
 }
 static inline unsigned int* wstring_printable(unsigned int* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result28__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result28__ = __result_obj__ = wchar_tp_printable(str);
     return __result28__;
 }
 static inline unsigned int wstring_get_hash_key(unsigned int* value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int __result29__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result29__ = wchar_tp_get_hash_key(value);
     return __result29__;
 }
 static inline _Bool string_match_group_strings(char* self, struct come_regex* reg, int count, struct list$1charph* group_strings){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result30__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result30__ = charp_match_group_strings(self,reg,count,group_strings);
     return __result30__;
 }
 static inline int string_index(char* str, char* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result31__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result31__ = charp_index(str,search_str,default_value);
     return __result31__;
 }
 static inline int string_index_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result32__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result32__ = charp_index_regex(self,reg,default_value);
     return __result32__;
 }
 static inline char* string_replace(char* self, int index, char c){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result33__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result33__ = __result_obj__ = charp_replace(self,index,c);
     return __result33__;
 }
 static inline char* string_multiply(char* str, int n){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result34__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result34__ = __result_obj__ = charp_multiply(str,n);
     return __result34__;
 }
 static inline char* string_sub(char* self, struct come_regex* reg, char* replace){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result35__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result35__ = __result_obj__ = charp_sub(self,reg,replace);
     return __result35__;
 }
 static inline char* string_sub_count(char* self, struct come_regex* reg, char* replace, int count){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result36__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result36__ = __result_obj__ = charp_sub_count(self,reg,replace,count);
     return __result36__;
 }
 static inline struct list$1charph* string_split_str(char* self, char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result37__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result37__ = __result_obj__ = charp_split_str(self,str);
     return __result37__;
 }
 static inline struct list$1charph* string_scan(char* self, struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result38__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result38__ = __result_obj__ = charp_scan(self,reg);
     return __result38__;
 }
 static inline struct list$1charph* string_split(char* self, struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result39__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result39__ = __result_obj__ = charp_split(self,reg);
     return __result39__;
 }
 static inline _Bool string_match(char* self, struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result40__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result40__ = charp_match(self,reg);
     return __result40__;
 }
 static inline struct list$1charph* string_split_maxsplit(char* self, struct come_regex* reg, int maxsplit){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result41__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result41__ = __result_obj__ = charp_split_maxsplit(self,reg,maxsplit);
     return __result41__;
 }
 static inline int string_rindex_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result42__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result42__ = charp_rindex_regex_count(self,reg,count,default_value);
     return __result42__;
 }
 static inline _Bool string_match_count(char* self, struct come_regex* reg, int count){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result43__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result43__ = charp_match_count(self,reg,count);
     return __result43__;
 }
 static inline char* string_sub_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result44__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result44__ = __result_obj__ = charp_sub_block(self,reg,parent,block);
     return __result44__;
 }
 static inline char* string_sub_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result45__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result45__ = __result_obj__ = charp_sub_block_count(self,reg,count,parent,block);
     return __result45__;
 }
 static inline char* charp_chomp(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result47__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result47__ = __result_obj__ = string_chomp(str);
     return __result47__;
 }
@@ -2521,12 +2383,9 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 void regex_finalizer(void* obj, void* client_data){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct come_regex* self_5;
 _Bool _if_conditional1;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&self_5, 0, sizeof(struct come_regex*));
     self_5=obj;
     if(_if_conditional1=self_5&&self_5->re,    _if_conditional1) {
@@ -2536,8 +2395,6 @@ memset(&self_5, 0, sizeof(struct come_regex*));
 
 struct come_regex* come_regex_initialize(struct come_regex* self, char* str, _Bool ignore_case, _Bool multiline, _Bool global, _Bool extended, _Bool dotall, _Bool anchored, _Bool dollar_endonly, _Bool ungreedy){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const char* err_6;
 int erro_ofs_7;
 int options_8;
@@ -2545,7 +2402,6 @@ _Bool _if_conditional2;
 _Bool _if_conditional3;
 struct come_regex* __result48__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&erro_ofs_7, 0, sizeof(int));
 memset(&options_8, 0, sizeof(int));
     options_8=2048|(ignore_case?1:0)|(multiline?2:0)|(extended?8:0)|(dotall?4:0)|(dollar_endonly?32:0)|(ungreedy?512:0);
@@ -2573,12 +2429,9 @@ memset(&options_8, 0, sizeof(int));
 
 void come_regex_finalize(struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional4;
 _Bool _if_conditional5;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional4=reg&&reg->str,    _if_conditional4) {
     }
     if(_if_conditional5=reg&&reg->re,    _if_conditional5) {
@@ -2588,30 +2441,22 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 struct come_regex* charp_to_regex(char* self, _Bool ignore_case, _Bool multiline, _Bool global, _Bool extended, _Bool dotall, _Bool anchored, _Bool dollar_endonly, _Bool ungreedy){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct come_regex* __result49__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result49__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 61, "struct come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
     return __result49__;
 }
 
 struct come_regex* string_to_regex(char* self, _Bool ignore_case, _Bool multiline, _Bool global, _Bool extended, _Bool dotall, _Bool anchored, _Bool dollar_endonly, _Bool ungreedy){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct come_regex* __result50__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result50__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 66, "struct come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
     return __result50__;
 }
 
 struct come_regex* come_regex_clone(struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional6;
 struct come_regex* __result51__;
 struct come_regex* result_9;
@@ -2620,7 +2465,6 @@ int erro_ofs_11;
 _Bool _if_conditional7;
 struct come_regex* __result52__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_9, 0, sizeof(struct come_regex*));
 memset(&erro_ofs_11, 0, sizeof(int));
     if(_if_conditional6=reg==((void*)0),    _if_conditional6) {
@@ -2650,26 +2494,20 @@ memset(&erro_ofs_11, 0, sizeof(int));
 
 char* come_regex_to_string(struct come_regex* regex){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result53__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result53__ = __result_obj__ = __builtin_string(regex->str);
     return __result53__;
 }
 
 char* string_lower_case(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* result_12;
 int i_13;
 _Bool _for_condtionalA1;
 _Bool _if_conditional8;
 char* __result54__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_12, 0, sizeof(char*));
 memset(&i_13, 0, sizeof(int));
     result_12=__builtin_string(str);
@@ -2685,15 +2523,12 @@ memset(&i_13, 0, sizeof(int));
 
 char* string_upper_case(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* result_14;
 int i_15;
 _Bool _for_condtionalA2;
 _Bool _if_conditional9;
 char* __result55__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_14, 0, sizeof(char*));
 memset(&i_15, 0, sizeof(int));
     result_14=__builtin_string(str);
@@ -2709,8 +2544,6 @@ memset(&i_15, 0, sizeof(int));
 
 unsigned int* wchar_tp_substring(unsigned int* str, int head, int tail){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional10;
 unsigned int* __result56__;
 int len_16;
@@ -2727,7 +2560,6 @@ unsigned int* __result59__;
 unsigned int* result_17;
 unsigned int* __result60__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_16, 0, sizeof(int));
 memset(&result_17, 0, sizeof(unsigned int*));
     if(_if_conditional10=str==((void*)0),    _if_conditional10) {
@@ -2768,8 +2600,6 @@ memset(&result_17, 0, sizeof(unsigned int*));
 
 unsigned int* __builtin_wstring(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional18;
 unsigned int* __result61__;
 int len_18;
@@ -2778,7 +2608,6 @@ int ret_20;
 _Bool _if_conditional19;
 unsigned int* __result62__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_18, 0, sizeof(int));
 memset(&wstr_19, 0, sizeof(unsigned int*));
 memset(&ret_20, 0, sizeof(int));
@@ -2799,8 +2628,6 @@ memset(&ret_20, 0, sizeof(int));
 
 int charp_index_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int n_21;
 int len_22;
 int i_23;
@@ -2814,7 +2641,6 @@ _Bool _if_conditional22;
 int __result63__;
 int __result64__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&n_21, 0, sizeof(int));
 memset(&len_22, 0, sizeof(int));
 memset(&i_23, 0, sizeof(int));
@@ -2845,8 +2671,6 @@ memset(&j_25, 0, sizeof(int));
 
 int charp_index_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int ovec_max_26;
 int result_30;
 int offset_31;
@@ -2869,7 +2693,6 @@ _Bool _if_conditional24;
 _Bool _if_conditional25;
 int __result65__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&ovec_max_26, 0, sizeof(int));
 memset(&result_30, 0, sizeof(int));
 memset(&offset_31, 0, sizeof(int));
@@ -2931,8 +2754,6 @@ memset(&i_42, 0, sizeof(int));
 
 int charp_rindex(char* str, char* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_43;
 char* p_44;
 _Bool _while_condtional2;
@@ -2940,7 +2761,6 @@ _Bool _if_conditional26;
 int __result66__;
 int __result67__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_43, 0, sizeof(int));
 memset(&p_44, 0, sizeof(char*));
     len_43=strlen(search_str);
@@ -2958,8 +2778,6 @@ memset(&p_44, 0, sizeof(char*));
 
 int charp_rindex_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const char* err_45;
 int erro_ofs_46;
 int options_47;
@@ -2980,7 +2798,6 @@ _Bool _for_condtionalA8;
 _Bool _if_conditional27;
 int __result68__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&erro_ofs_46, 0, sizeof(int));
 memset(&options_47, 0, sizeof(int));
 memset(&str_48, 0, sizeof(char*));
@@ -3033,8 +2850,6 @@ memset(&i_61, 0, sizeof(int));
 
 int charp_rindex_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_62;
 char* p_63;
 int n_64;
@@ -3044,7 +2859,6 @@ _Bool _if_conditional29;
 int __result69__;
 int __result70__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_62, 0, sizeof(int));
 memset(&p_63, 0, sizeof(char*));
 memset(&n_64, 0, sizeof(int));
@@ -3067,8 +2881,6 @@ memset(&n_64, 0, sizeof(int));
 
 struct list$1charph* charp_scan_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* result_65;
 int offset_66;
 int ovec_max_67;
@@ -3104,7 +2916,6 @@ struct list$1charph* __result74__;
 _Bool _if_conditional37;
 struct list$1charph* __result75__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_65, 0, sizeof(struct list$1charph*));
 memset(&offset_66, 0, sizeof(int));
 memset(&ovec_max_67, 0, sizeof(int));
@@ -3198,11 +3009,8 @@ memset(&str2_91, 0, sizeof(char*));
 
 static struct list$1charph* list$1charph_initialize(struct list$1charph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* __result71__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
         self->head=((void*)0);
         self->tail=((void*)0);
         self->len=0;
@@ -3212,8 +3020,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 static struct list$1charph* list$1charph_push_back(struct list$1charph* self, char* item){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional32;
 struct list_item$1charph* litem_84;
 _Bool _if_conditional33;
@@ -3221,7 +3027,6 @@ struct list_item$1charph* litem_85;
 struct list_item$1charph* litem_86;
 struct list$1charph* __result73__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&litem_84, 0, sizeof(struct list_item$1charph*));
 memset(&litem_85, 0, sizeof(struct list_item$1charph*));
 memset(&litem_86, 0, sizeof(struct list_item$1charph*));
@@ -3258,8 +3063,6 @@ memset(&litem_86, 0, sizeof(struct list_item$1charph*));
 
 struct list$1charph* charp_scan_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* result_92;
 int offset_93;
 int ovec_max_94;
@@ -3298,7 +3101,6 @@ _Bool _if_conditional44;
 _Bool _if_conditional45;
 struct list$1charph* __result78__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_92, 0, sizeof(struct list$1charph*));
 memset(&offset_93, 0, sizeof(int));
 memset(&ovec_max_94, 0, sizeof(int));
@@ -3402,8 +3204,6 @@ memset(&str2_116, 0, sizeof(char*));
 
 struct list$1charph* charp_split_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const char* err_117;
 int erro_ofs_118;
 int options_119;
@@ -3445,7 +3245,6 @@ _Bool _if_conditional53;
 struct list$1charph* __result81__;
 struct list$1charph* __result82__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&erro_ofs_118, 0, sizeof(int));
 memset(&options_119, 0, sizeof(int));
 memset(&str_120, 0, sizeof(char*));
@@ -3552,8 +3351,6 @@ memset(&str2_143, 0, sizeof(char*));
 
 struct list$1charph* charp_split_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const char* err_144;
 int erro_ofs_145;
 int options_146;
@@ -3591,7 +3388,6 @@ struct list$1charph* __result84__;
 _Bool _if_conditional60;
 struct list$1charph* __result85__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&erro_ofs_145, 0, sizeof(int));
 memset(&options_146, 0, sizeof(int));
 memset(&str_147, 0, sizeof(char*));
@@ -3691,8 +3487,6 @@ memset(&str2_168, 0, sizeof(char*));
 
 _Bool come_regex_equals(struct come_regex* left, struct come_regex* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool _if_conditional61;
 _Bool __result86__;
 _Bool _if_conditional62;
@@ -3715,7 +3509,6 @@ _Bool _if_conditional70;
 _Bool __result95__;
 _Bool __result96__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     if(_if_conditional61=strcmp(left->str,right->str)!=0,    _if_conditional61) {
         __result86__ = (_Bool)0;
         return __result86__;
@@ -3762,8 +3555,6 @@ memset(&__freed_obj__, 0, sizeof(_Bool));
 
 struct list$1charph* charp_scan_group_strings(char* self, struct come_regex* reg, struct list$1charph* group_strings, int* num_group_string_in_regex){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* result_169;
 int offset_170;
 int ovec_max_171;
@@ -3791,7 +3582,6 @@ _Bool _for_condtionalA23;
 char* match_string_188;
 struct list$1charph* __result97__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_169, 0, sizeof(struct list$1charph*));
 memset(&offset_170, 0, sizeof(int));
 memset(&ovec_max_171, 0, sizeof(int));
@@ -3870,8 +3660,6 @@ memset(&match_string_188, 0, sizeof(char*));
 
 char* charp_strip(char* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* result_189;
 int len_190;
 _Bool _if_conditional75;
@@ -3879,7 +3667,6 @@ _Bool _if_conditional76;
 _Bool _if_conditional77;
 char* __result98__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_189, 0, sizeof(char*));
 memset(&len_190, 0, sizeof(int));
     result_189=__builtin_string(self);
@@ -3903,8 +3690,6 @@ memset(&len_190, 0, sizeof(int));
 
 char* charp_printable(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_191;
 char* result_192;
 int n_193;
@@ -3914,7 +3699,6 @@ char c_195;
 _Bool _if_conditional78;
 char* __result99__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_191, 0, sizeof(int));
 memset(&result_192, 0, sizeof(char*));
 memset(&n_193, 0, sizeof(int));
@@ -3941,14 +3725,11 @@ memset(&c_195, 0, sizeof(char));
 
 char* wchar_tp_to_string(unsigned int* wstr){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_196;
 char* result_197;
 _Bool _if_conditional79;
 char* __result100__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_196, 0, sizeof(int));
 memset(&result_197, 0, sizeof(char*));
     len_196=4*(wcslen(wstr)+1);
@@ -3962,30 +3743,22 @@ memset(&result_197, 0, sizeof(char*));
 
 unsigned int* charp_to_wstring(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result101__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result101__ = __result_obj__ = __builtin_wstring(str);
     return __result101__;
 }
 
 int wchar_tp_length(unsigned int* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result102__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result102__ = wcslen(str);
     return __result102__;
 }
 
 unsigned int* wchar_tp_delete(unsigned int* str, int head, int tail){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_198;
 _Bool _if_conditional80;
 unsigned int* __result103__;
@@ -3998,7 +3771,6 @@ _Bool _if_conditional85;
 unsigned int* sub_str_199;
 unsigned int* __result105__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_198, 0, sizeof(int));
 memset(&sub_str_199, 0, sizeof(unsigned int*));
     len_198=wcslen(str);
@@ -4030,14 +3802,11 @@ memset(&sub_str_199, 0, sizeof(unsigned int*));
 
 int wchar_tp_index(unsigned int* str, unsigned int* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* head_200;
 _Bool _if_conditional86;
 int __result106__;
 int __result107__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&head_200, 0, sizeof(unsigned int*));
     head_200=wcsstr(str,search_str);
     if(_if_conditional86=head_200==((void*)0),    _if_conditional86) {
@@ -4050,8 +3819,6 @@ memset(&head_200, 0, sizeof(unsigned int*));
 
 int wchar_tp_rindex(unsigned int* str, unsigned int* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_201;
 unsigned int* p_202;
 _Bool _while_condtional10;
@@ -4064,7 +3831,6 @@ _Bool _if_conditional88;
 int __result108__;
 int __result109__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_201, 0, sizeof(int));
 memset(&p_202, 0, sizeof(unsigned int*));
 memset(&len2_203, 0, sizeof(int));
@@ -4093,15 +3859,12 @@ memset(&i_205, 0, sizeof(int));
 
 unsigned int* wchar_tp_reverse(unsigned int* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_206;
 unsigned int* result_207;
 int i_208;
 _Bool _for_condtionalA26;
 unsigned int* __result110__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_206, 0, sizeof(int));
 memset(&result_207, 0, sizeof(unsigned int*));
 memset(&i_208, 0, sizeof(int));
@@ -4118,15 +3881,12 @@ memset(&i_208, 0, sizeof(int));
 
 unsigned int* wchar_tp_multiply(unsigned int* str, int n){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_209;
 unsigned int* result_210;
 int i_211;
 _Bool _for_condtionalA27;
 unsigned int* __result111__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_209, 0, sizeof(int));
 memset(&result_210, 0, sizeof(unsigned int*));
 memset(&i_211, 0, sizeof(int));
@@ -4143,8 +3903,6 @@ memset(&i_211, 0, sizeof(int));
 
 unsigned int* wchar_tp_printable(unsigned int* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_212;
 unsigned int* result_213;
 int n_214;
@@ -4154,7 +3912,6 @@ unsigned int c_216;
 _Bool _if_conditional89;
 unsigned int* __result112__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_212, 0, sizeof(int));
 memset(&result_213, 0, sizeof(unsigned int*));
 memset(&n_214, 0, sizeof(int));
@@ -4181,8 +3938,6 @@ memset(&c_216, 0, sizeof(unsigned int));
 
 _Bool charp_match_group_strings(char* self, struct come_regex* reg, int count, struct list$1charph* group_strings){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int offset_217;
 int ovec_max_218;
 const char* err_222;
@@ -4213,7 +3968,6 @@ _Bool _if_conditional95;
 _Bool __result116__;
 _Bool __result117__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&offset_217, 0, sizeof(int));
 memset(&ovec_max_218, 0, sizeof(int));
 memset(&erro_ofs_223, 0, sizeof(int));
@@ -4297,14 +4051,11 @@ memset(&match_string_236, 0, sizeof(char*));
 
 static struct list$1charph* list$1charph_reset(struct list$1charph* self){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list_item$1charph* it_233;
 _Bool _while_condtional12;
 struct list_item$1charph* prev_it_234;
 struct list$1charph* __result114__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&it_233, 0, sizeof(struct list_item$1charph*));
 memset(&prev_it_234, 0, sizeof(struct list_item$1charph*));
                     it_233=self->head;
@@ -4321,144 +4072,105 @@ memset(&prev_it_234, 0, sizeof(struct list_item$1charph*));
 
 int wchar_tp_compare(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result118__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result118__ = wcscmp(left,right);
     return __result118__;
 }
 
 int wstring_compare(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int __result119__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result119__ = wcscmp(left,right);
     return __result119__;
 }
 
 unsigned int come_regex_get_hash_key(struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int __result120__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result120__ = string_get_hash_key(reg->str);
     return __result120__;
 }
 
 _Bool wchar_tp_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result121__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result121__ = left==right;
     return __result121__;
 }
 
 unsigned int* wchar_tp_operator_mult(unsigned int* str, int n){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result122__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result122__ = __result_obj__ = wchar_tp_multiply(str,n);
     return __result122__;
 }
 
 unsigned int* wstring_operator_mult(unsigned int* str, int n){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* __result123__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result123__ = __result_obj__ = wchar_tp_multiply(str,n);
     return __result123__;
 }
 
 _Bool wchar_tp_operator_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result124__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result124__ = wcscmp(left,right)==0;
     return __result124__;
 }
 
 _Bool wstring_operator_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result125__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result125__ = wcscmp(left,right)==0;
     return __result125__;
 }
 
 _Bool wchar_tp_operator_not_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result126__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result126__ = wcscmp(left,right)!=0;
     return __result126__;
 }
 
 _Bool wstring_operator_not_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result127__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result127__ = wcscmp(left,right)!=0;
     return __result127__;
 }
 
 _Bool come_regex_operator_equals(struct come_regex* left, struct come_regex* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result128__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result128__ = come_regex_equals(left,right);
     return __result128__;
 }
 
 _Bool come_regex_operator_not_equals(struct come_regex* left, struct come_regex* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result129__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result129__ = !come_regex_equals(left,right);
     return __result129__;
 }
 
 unsigned int* wchar_tp_operator_add(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* result_237;
 unsigned int* __result130__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_237, 0, sizeof(unsigned int*));
     result_237=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1203, "unsigned int");
     wcscpy(result_237,left);
@@ -4469,12 +4181,9 @@ memset(&result_237, 0, sizeof(unsigned int*));
 
 unsigned int* wstring_operator_add(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int* result_238;
 unsigned int* __result131__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_238, 0, sizeof(unsigned int*));
     result_238=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1213, "unsigned int");
     wcscpy(result_238,left);
@@ -4485,14 +4194,11 @@ memset(&result_238, 0, sizeof(unsigned int*));
 
 int charp_index(char* str, char* search_str, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* head_239;
 _Bool _if_conditional96;
 int __result132__;
 int __result133__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&head_239, 0, sizeof(char*));
     head_239=strstr(str,search_str);
     if(_if_conditional96=head_239==((void*)0),    _if_conditional96) {
@@ -4505,8 +4211,6 @@ memset(&head_239, 0, sizeof(char*));
 
 int charp_index_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int ovec_max_240;
 int result_244;
 int offset_245;
@@ -4526,7 +4230,6 @@ _Bool _for_condtionalA33;
 _Bool _if_conditional97;
 int __result134__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&ovec_max_240, 0, sizeof(int));
 memset(&result_244, 0, sizeof(int));
 memset(&offset_245, 0, sizeof(int));
@@ -4577,8 +4280,6 @@ memset(&i_255, 0, sizeof(int));
 
 char* charp_replace(char* self, int index, char c){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_256;
 _Bool _if_conditional98;
 char* __result135__;
@@ -4587,7 +4288,6 @@ _Bool _if_conditional100;
 _Bool _if_conditional101;
 char* __result136__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_256, 0, sizeof(int));
     len_256=strlen(self);
     if(_if_conditional98=strcmp(self,"")==0,    _if_conditional98) {
@@ -4610,15 +4310,12 @@ memset(&len_256, 0, sizeof(int));
 
 char* charp_multiply(char* str, int n){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int len_257;
 char* result_258;
 int i_259;
 _Bool _for_condtionalA34;
 char* __result137__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&len_257, 0, sizeof(int));
 memset(&result_258, 0, sizeof(char*));
 memset(&i_259, 0, sizeof(int));
@@ -4635,8 +4332,6 @@ memset(&i_259, 0, sizeof(int));
 
 char* charp_sub(char* self, struct come_regex* reg, char* replace){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int offset_260;
 int ovec_max_261;
 const char* err_265;
@@ -4661,7 +4356,6 @@ char* str_277;
 char* str_278;
 char* __result138__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&offset_260, 0, sizeof(int));
 memset(&ovec_max_261, 0, sizeof(int));
 memset(&erro_ofs_266, 0, sizeof(int));
@@ -4729,8 +4423,6 @@ memset(&str_278, 0, sizeof(char*));
 
 char* charp_sub_count(char* self, struct come_regex* reg, char* replace, int count){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int offset_279;
 int ovec_max_280;
 const char* err_284;
@@ -4758,7 +4450,6 @@ char* str_298;
 char* str_299;
 char* __result139__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&offset_279, 0, sizeof(int));
 memset(&ovec_max_280, 0, sizeof(int));
 memset(&erro_ofs_285, 0, sizeof(int));
@@ -4835,8 +4526,6 @@ memset(&str_299, 0, sizeof(char*));
 
 struct list$1charph* charp_split_str(char* self, char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* result_300;
 struct buffer* buf_301;
 int i_302;
@@ -4845,7 +4534,6 @@ _Bool _if_conditional109;
 _Bool _if_conditional110;
 struct list$1charph* __result140__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_300, 0, sizeof(struct list$1charph*));
 memset(&buf_301, 0, sizeof(struct buffer*));
 memset(&i_302, 0, sizeof(int));
@@ -4871,8 +4559,6 @@ memset(&i_302, 0, sizeof(int));
 
 struct list$1charph* charp_scan(char* self, struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 struct list$1charph* result_303;
 int offset_304;
 int ovec_max_305;
@@ -4900,7 +4586,6 @@ _Bool _for_condtionalA42;
 char* match_string_322;
 struct list$1charph* __result141__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_303, 0, sizeof(struct list$1charph*));
 memset(&offset_304, 0, sizeof(int));
 memset(&ovec_max_305, 0, sizeof(int));
@@ -4978,8 +4663,6 @@ memset(&match_string_322, 0, sizeof(char*));
 
 struct list$1charph* charp_split(char* self, struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const char* err_323;
 int erro_ofs_324;
 int options_325;
@@ -5009,7 +4692,6 @@ _Bool _if_conditional119;
 char* str_343;
 struct list$1charph* __result142__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&erro_ofs_324, 0, sizeof(int));
 memset(&options_325, 0, sizeof(int));
 memset(&str_326, 0, sizeof(char*));
@@ -5092,8 +4774,6 @@ memset(&str_343, 0, sizeof(char*));
 
 _Bool charp_match(char* self, struct come_regex* reg){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int offset_344;
 int ovec_max_345;
 const char* err_349;
@@ -5114,7 +4794,6 @@ _Bool __result143__;
 _Bool __result144__;
 _Bool __result145__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&offset_344, 0, sizeof(int));
 memset(&ovec_max_345, 0, sizeof(int));
 memset(&erro_ofs_350, 0, sizeof(int));
@@ -5164,8 +4843,6 @@ memset(&i_358, 0, sizeof(int));
 
 struct list$1charph* charp_split_maxsplit(char* self, struct come_regex* reg, int maxsplit){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const char* err_359;
 int erro_ofs_360;
 int options_361;
@@ -5197,7 +4874,6 @@ _Bool _if_conditional126;
 char* str_380;
 struct list$1charph* __result146__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&erro_ofs_360, 0, sizeof(int));
 memset(&options_361, 0, sizeof(int));
 memset(&str_362, 0, sizeof(char*));
@@ -5286,8 +4962,6 @@ memset(&str_380, 0, sizeof(char*));
 
 int charp_rindex_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 const char* err_381;
 int erro_ofs_382;
 int options_383;
@@ -5311,7 +4985,6 @@ _Bool _if_conditional128;
 _Bool _if_conditional129;
 int __result147__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&erro_ofs_382, 0, sizeof(int));
 memset(&options_383, 0, sizeof(int));
 memset(&str_384, 0, sizeof(char*));
@@ -5375,8 +5048,6 @@ memset(&i_398, 0, sizeof(int));
 
 _Bool charp_match_count(char* self, struct come_regex* reg, int count){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int offset_399;
 int ovec_max_400;
 const char* err_404;
@@ -5400,7 +5071,6 @@ _Bool _if_conditional132;
 _Bool __result149__;
 _Bool __result150__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&offset_399, 0, sizeof(int));
 memset(&ovec_max_400, 0, sizeof(int));
 memset(&erro_ofs_405, 0, sizeof(int));
@@ -5461,8 +5131,6 @@ memset(&i_414, 0, sizeof(int));
 
 char* charp_sub_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int offset_415;
 int ovec_max_416;
 const char* err_420;
@@ -5505,7 +5173,6 @@ char* str_442;
 char* str_443;
 char* __result153__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&offset_415, 0, sizeof(int));
 memset(&ovec_max_416, 0, sizeof(int));
 memset(&erro_ofs_421, 0, sizeof(int));
@@ -5621,8 +5288,6 @@ memset(&str_443, 0, sizeof(char*));
 
 char* charp_sub_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int offset_444;
 int ovec_max_445;
 const char* err_449;
@@ -5670,7 +5335,6 @@ char* str_474;
 char* str_475;
 char* __result156__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&offset_444, 0, sizeof(int));
 memset(&ovec_max_445, 0, sizeof(int));
 memset(&erro_ofs_450, 0, sizeof(int));
@@ -5802,14 +5466,11 @@ memset(&str_475, 0, sizeof(char*));
 
 unsigned int wchar_tp_get_hash_key(unsigned int* value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 int result_476;
 unsigned int* p_477;
 _Bool _while_condtional24;
 unsigned int __result157__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_476, 0, sizeof(int));
 memset(&p_477, 0, sizeof(unsigned int*));
     result_476=0;
@@ -5824,80 +5485,59 @@ memset(&p_477, 0, sizeof(unsigned int*));
 
 _Bool wstring_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result159__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result159__ = wcscmp(left,right)==0;
     return __result159__;
 }
 
 _Bool wchar_t_operator_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result161__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result161__ = left==right;
     return __result161__;
 }
 
 _Bool wchar_t_operator_not_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result162__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result162__ = left!=right;
     return __result162__;
 }
 
 unsigned int wchar_t_get_hash_key(unsigned int value){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 unsigned int __result163__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result163__ = value;
     return __result163__;
 }
 
 _Bool wchar_t_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 _Bool __result164__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result164__ = left==right;
     return __result164__;
 }
 
 char* wchar_t_to_string(unsigned int wc){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* __result165__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
     __result165__ = __result_obj__ = xsprintf("%ls",wc);
     return __result165__;
 }
 
 char* string_chomp(char* str){
 void* __result_obj__;
-_Bool __freed_obj__;
-void* __right_value_freed_obj[1024];
 char* result_478;
 _Bool _if_conditional151;
 char* __result166__;
 char* __result167__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&__freed_obj__, 0, sizeof(_Bool));
 memset(&result_478, 0, sizeof(char*));
     result_478=__builtin_string(str);
     if(_if_conditional151=result_478[string_length(result_478)-1]==10,    _if_conditional151) {
