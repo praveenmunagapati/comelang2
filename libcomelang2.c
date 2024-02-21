@@ -774,13 +774,11 @@ void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj
 
 void* come_decrement_ref_count2(void* mem, void* protocol_fun, void* protocol_obj, bool no_decrement, bool no_free, bool force_delete_, void* result_obj)
 {
-/*
     if(result_obj) {
         if(mem == result_obj) {
             return mem;
         }
     }
-*/
     if(mem == NULL) {
         return NULL;
     }
@@ -849,13 +847,11 @@ void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protoco
 
 void come_call_finalizer2(void* fun, void* mem, void* protocol_fun, void* protocol_obj, int call_finalizer_only, int no_decrement, int no_free, int force_delete_, void* result_obj)
 {
-/*
     if(result_obj) {
         if(mem == result_obj) {
             return;
         }
     }
-*/
     if(mem == NULL) {
         return;
     }
