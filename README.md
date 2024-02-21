@@ -402,6 +402,7 @@ bash fast_build.sh
 12.0.3 stackframe() bug was fiexed. comelang2 is complete.
 13.0.0 removed exception system
 13.1.0 faster code.
+13.2.0 faster code.
 
 # Language specifications
 
