@@ -194,6 +194,9 @@ void xassert(char* msg, bool test)
 //////////////////////////////
 /// heap
 //////////////////////////////
+any gComeResultObject = NULL;
+
+
 static bool gComeMallocLib = false;
 static bool gComeDebugLib = false;
 bool gComeGCLib = false;

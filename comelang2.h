@@ -59,6 +59,7 @@ void xassert(char* msg, bool test);
 //////////////////////////////
 /// heap
 //////////////////////////////
+extern any gComeResultObject;
 extern bool gComeGCLib;
 
 //void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0);
