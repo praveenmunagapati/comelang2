@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 13.0.0
+version 13.1.0
 
 ``` C
 #include <comelang2.h>
@@ -401,6 +401,7 @@ bash fast_build.sh
 12.0.1 README.md for -gc option
 12.0.3 stackframe() bug was fiexed. comelang2 is complete.
 13.0.0 removed exception system
+13.1.0 faster code.
 
 # Language specifications
 
