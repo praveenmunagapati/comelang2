@@ -1900,12 +1900,12 @@ right_value23 = (void*)0;
     self->sline=info->sline;
     __dec_obj6=self->sname;
     self->sname=(char*)come_increment_ref_count(((char*)(right_value10=__builtin_string(info->sname))));
-    if(__dec_obj6) { __dec_obj6 = come_decrement_ref_count2(__dec_obj6, (void*)0, (void*)0, 0,0,0, (void*)0); }
-    if(right_value10) { right_value10 = come_decrement_ref_count2(right_value10, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+    __dec_obj6 = come_decrement_ref_count2(__dec_obj6, (void*)0, (void*)0, 0,0,0, (void*)0);
+    right_value10 = come_decrement_ref_count2(right_value10, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     __dec_obj7=self->mTypeName;
     self->mTypeName=(char*)come_increment_ref_count(((char*)(right_value11=__builtin_string(type_name))));
-    if(__dec_obj7) { __dec_obj7 = come_decrement_ref_count2(__dec_obj7, (void*)0, (void*)0, 0,0,0, (void*)0); }
-    if(right_value11) { right_value11 = come_decrement_ref_count2(right_value11, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+    __dec_obj7 = come_decrement_ref_count2(__dec_obj7, (void*)0, (void*)0, 0,0,0, (void*)0);
+    right_value11 = come_decrement_ref_count2(right_value11, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     __dec_obj13=self->mElements;
     self->mElements=(struct list$1tuple2$2charphsNodephph*)come_increment_ref_count(((struct list$1tuple2$2charphsNodephph*)(right_value22=list$1tuple2$2charphsNodephphp_clone(elements))));
     come_call_finalizer2(list$1tuple2$2charphsNodephph_finalize,__dec_obj13, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -1913,14 +1913,14 @@ right_value23 = (void*)0;
     self->mOutput=output;
     __dec_obj14=self->mDeclareSName;
     self->mDeclareSName=(char*)come_increment_ref_count(((char*)(right_value23=__builtin_string(info->sname))));
-    if(__dec_obj14) { __dec_obj14 = come_decrement_ref_count2(__dec_obj14, (void*)0, (void*)0, 0,0,0, (void*)0); }
-    if(right_value23) { right_value23 = come_decrement_ref_count2(right_value23, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+    __dec_obj14 = come_decrement_ref_count2(__dec_obj14, (void*)0, (void*)0, 0,0,0, (void*)0);
+    right_value23 = come_decrement_ref_count2(right_value23, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     __result15__ = __result_obj__ = self;
     come_call_finalizer2(sEnumNode_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    if(type_name) { type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+    type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result15__;
     come_call_finalizer2(sEnumNode_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    if(type_name) { type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+    type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0);
 }
 
 static struct list$1tuple2$2charphsNodephph* list$1tuple2$2charphsNodephphp_clone(struct list$1tuple2$2charphsNodephph* self){
@@ -2003,7 +2003,7 @@ _Bool _if_conditional7;
 _Bool _if_conditional8;
 memset(&__result_obj__, 0, sizeof(void*));
                                 if(_if_conditional7=self!=((void*)0)&&self->v1!=((void*)0),                                _if_conditional7) {
-                                    if(self->v1) { self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                                    self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                                 }
                                 if(_if_conditional8=self!=((void*)0)&&self->v2!=((void*)0),                                _if_conditional8) {
                                     if(self->v2) { self->v2 = come_decrement_ref_count2(self->v2, ((struct sNode*)self->v2)->finalize, ((struct sNode*)self->v2)->_protocol_obj, 0, 0, 0, (void*)0); } 
@@ -2079,7 +2079,7 @@ _Bool _if_conditional10;
 _Bool _if_conditional11;
 memset(&__result_obj__, 0, sizeof(void*));
                         if(_if_conditional10=self!=((void*)0)&&self->v1!=((void*)0),                        _if_conditional10) {
-                            if(self->v1) { self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                            self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                         }
                         if(_if_conditional11=self!=((void*)0)&&self->v2!=((void*)0),                        _if_conditional11) {
                             if(self->v2) { self->v2 = come_decrement_ref_count2(self->v2, ((struct sNode*)self->v2)->finalize, ((struct sNode*)self->v2)->_protocol_obj, 0, 0, 0, (void*)0); } 
@@ -2113,8 +2113,8 @@ right_value20 = (void*)0;
                 if(_if_conditional14=self!=((void*)0)&&self->v1!=((void*)0),                _if_conditional14) {
                     __dec_obj11=result_12->v1;
                     result_12->v1=(char*)come_increment_ref_count(((char*)(right_value18=string_clone(self->v1))));
-                    if(__dec_obj11) { __dec_obj11 = come_decrement_ref_count2(__dec_obj11, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                    if(right_value18) { right_value18 = come_decrement_ref_count2(right_value18, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                    __dec_obj11 = come_decrement_ref_count2(__dec_obj11, (void*)0, (void*)0, 0,0,0, (void*)0);
+                    right_value18 = come_decrement_ref_count2(right_value18, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 }
                 if(_if_conditional15=self!=((void*)0)&&self->v2!=((void*)0),                _if_conditional15) {
                     __dec_obj12=result_12->v2;
@@ -2202,7 +2202,7 @@ char* __result17__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value24 = (void*)0;
     __result17__ = __result_obj__ = ((char*)(right_value24=__builtin_string("sEnumNode")));
-    if(right_value24) { right_value24 = come_decrement_ref_count2(right_value24, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+    right_value24 = come_decrement_ref_count2(right_value24, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result17__;
 }
 
@@ -2277,11 +2277,11 @@ right_value37 = (void*)0;
     come_call_finalizer2(buffer_finalize,right_value26, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     if(_if_conditional29=string_operator_equals(type_name_14,""),    _if_conditional29) {
         buffer_append_str(buf_16,((char*)(right_value27=xsprintf("enum { ",type_name_14))));
-        if(right_value27) { right_value27 = come_decrement_ref_count2(right_value27, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+        right_value27 = come_decrement_ref_count2(right_value27, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
     else {
         buffer_append_str(buf_16,((char*)(right_value28=xsprintf("enum %s { ",type_name_14))));
-        if(right_value28) { right_value28 = come_decrement_ref_count2(right_value28, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+        right_value28 = come_decrement_ref_count2(right_value28, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
     i_17=0;
     n_18=0;
@@ -2297,18 +2297,18 @@ right_value37 = (void*)0;
                 buffer_append_str(buf_16,",");
             }
             c_value_27=(char*)come_increment_ref_count(((char*)(right_value29=xsprintf("%d",n_18))));
-            if(right_value29) { right_value29 = come_decrement_ref_count2(right_value29, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+            right_value29 = come_decrement_ref_count2(right_value29, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             add_variable_to_global_table_with_int_value(name_25,(struct sType*)come_increment_ref_count(((struct sType*)(right_value31=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value30=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "16enum.c", 70, "struct sType")))),"int",(_Bool)0,info)))),c_value_27,info);
             come_call_finalizer2(sType_finalize,right_value30, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(sType_finalize,right_value31, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            if(c_value_27) { c_value_27 = come_decrement_ref_count2(c_value_27, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+            c_value_27 = come_decrement_ref_count2(c_value_27, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
             if(_if_conditional52=!node_compile(value_26,info),            _if_conditional52) {
                 __result26__ = (_Bool)0;
-                if(name_25) { name_25 = come_decrement_ref_count2(name_25, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                name_25 = come_decrement_ref_count2(name_25, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 if(value_26) { value_26 = come_decrement_ref_count2(value_26, ((struct sNode*)value_26)->finalize, ((struct sNode*)value_26)->_protocol_obj, 0, 0, 0, (void*)0); } 
-                if(type_name_14) { type_name_14 = come_decrement_ref_count2(type_name_14, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                type_name_14 = come_decrement_ref_count2(type_name_14, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 come_call_finalizer2(buffer_finalize,buf_16, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                 return __result26__;
             }
@@ -2319,7 +2319,7 @@ right_value37 = (void*)0;
             come_call_finalizer2(sType_finalize,right_value33, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(sType_finalize,right_value34, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             buffer_append_str(buf_16,((char*)(right_value35=xsprintf("%s=%s",name_25,right_value_34->c_value))));
-            if(right_value35) { right_value35 = come_decrement_ref_count2(right_value35, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+            right_value35 = come_decrement_ref_count2(right_value35, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional55=i_17!=list$1tuple2$2charphsNodephph_length(elements_15)-1,            _if_conditional55) {
                 buffer_append_str(buf_16,",");
             }
@@ -2329,24 +2329,24 @@ right_value37 = (void*)0;
         }
         i_17++;
         n_18++;
-        if(name_25) { name_25 = come_decrement_ref_count2(name_25, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+        name_25 = come_decrement_ref_count2(name_25, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         if(value_26) { value_26 = come_decrement_ref_count2(value_26, ((struct sNode*)value_26)->finalize, ((struct sNode*)value_26)->_protocol_obj, 0, 0, 0, (void*)0); } 
     }
     buffer_append_str(buf_16,((char*)(right_value36=xsprintf("};\n",type_name_14))));
-    if(right_value36) { right_value36 = come_decrement_ref_count2(right_value36, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+    right_value36 = come_decrement_ref_count2(right_value36, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     if(_if_conditional56=info->output_header_file&&string_operator_not_equals(self->mDeclareSName,info->base_sname),    _if_conditional56) {
     }
     else {
         if(_if_conditional57=self->mOutput,        _if_conditional57) {
             add_come_code_at_source_head(info,"%s",((char*)(right_value37=buffer_to_string(buf_16))));
-            if(right_value37) { right_value37 = come_decrement_ref_count2(right_value37, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+            right_value37 = come_decrement_ref_count2(right_value37, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
     }
     __result27__ = (_Bool)1;
-    if(type_name_14) { type_name_14 = come_decrement_ref_count2(type_name_14, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+    type_name_14 = come_decrement_ref_count2(type_name_14, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,buf_16, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     return __result27__;
-    if(type_name_14) { type_name_14 = come_decrement_ref_count2(type_name_14, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+    type_name_14 = come_decrement_ref_count2(type_name_14, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,buf_16, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
@@ -2442,7 +2442,7 @@ memset(&__result_obj__, 0, sizeof(void*));
                     come_call_finalizer2(tuple1$1sTypephp_finalize,self->mOriginalLoadVarType, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                 }
                 if(_if_conditional39=self!=((void*)0)&&self->mGenericsName!=((void*)0),                _if_conditional39) {
-                    if(self->mGenericsName) { self->mGenericsName = come_decrement_ref_count2(self->mGenericsName, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                    self->mGenericsName = come_decrement_ref_count2(self->mGenericsName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
                 if(_if_conditional40=self!=((void*)0)&&self->mGenericsTypes!=((void*)0),                _if_conditional40) {
                     come_call_finalizer2(list$1sTypephp_finalize,self->mGenericsTypes, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -2466,10 +2466,10 @@ memset(&__result_obj__, 0, sizeof(void*));
                     if(self->mSizeNum) { self->mSizeNum = come_decrement_ref_count2(self->mSizeNum, ((struct sNode*)self->mSizeNum)->finalize, ((struct sNode*)self->mSizeNum)->_protocol_obj, 0, 0, 0, (void*)0); } 
                 }
                 if(_if_conditional50=self!=((void*)0)&&self->mOriginalTypeName!=((void*)0),                _if_conditional50) {
-                    if(self->mOriginalTypeName) { self->mOriginalTypeName = come_decrement_ref_count2(self->mOriginalTypeName, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                    self->mOriginalTypeName = come_decrement_ref_count2(self->mOriginalTypeName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
                 if(_if_conditional51=self!=((void*)0)&&self->mAsmName!=((void*)0),                _if_conditional51) {
-                    if(self->mAsmName) { self->mAsmName = come_decrement_ref_count2(self->mAsmName, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                    self->mAsmName = come_decrement_ref_count2(self->mAsmName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
 }
 
@@ -2553,7 +2553,7 @@ void* __result_obj__;
 _Bool _if_conditional46;
 memset(&__result_obj__, 0, sizeof(void*));
                                 if(_if_conditional46=self!=((void*)0)&&self->item!=((void*)0),                                _if_conditional46) {
-                                    if(self->item) { self->item = come_decrement_ref_count2(self->item, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                                    self->item = come_decrement_ref_count2(self->item, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                                 }
 }
 
@@ -2563,7 +2563,7 @@ _Bool _if_conditional53;
 _Bool _if_conditional54;
 memset(&__result_obj__, 0, sizeof(void*));
                 if(_if_conditional53=self!=((void*)0)&&self->c_value!=((void*)0),                _if_conditional53) {
-                    if(self->c_value) { self->c_value = come_decrement_ref_count2(self->c_value, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                    self->c_value = come_decrement_ref_count2(self->c_value, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
                 if(_if_conditional54=self!=((void*)0)&&self->type!=((void*)0),                _if_conditional54) {
                     come_call_finalizer2(sType_finalize,self->type, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -2585,7 +2585,7 @@ char* __result29__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value38 = (void*)0;
     __result29__ = __result_obj__ = ((char*)(right_value38=__builtin_string(self->sname)));
-    if(right_value38) { right_value38 = come_decrement_ref_count2(right_value38, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+    right_value38 = come_decrement_ref_count2(right_value38, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result29__;
 }
 
@@ -2673,7 +2673,7 @@ right_value120 = (void*)0;
     while(_while_condtional19=(_Bool)1,    _while_condtional19) {
         parse_sharp_v5(info);
         element_name_110=(char*)come_increment_ref_count(((char*)(right_value104=parse_word(info))));
-        if(right_value104) { right_value104 = come_decrement_ref_count2(right_value104, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+        right_value104 = come_decrement_ref_count2(right_value104, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         parse_sharp_v5(info);
         if(_if_conditional200=*info->p==61,        _if_conditional200) {
             info->p++;
@@ -2706,10 +2706,10 @@ right_value120 = (void*)0;
         if(_if_conditional206=*info->p==125,        _if_conditional206) {
             info->p++;
             skip_spaces_and_lf(info);
-            if(element_name_110) { element_name_110 = come_decrement_ref_count2(element_name_110, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+            element_name_110 = come_decrement_ref_count2(element_name_110, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             break;
         }
-        if(element_name_110) { element_name_110 = come_decrement_ref_count2(element_name_110, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+        element_name_110 = come_decrement_ref_count2(element_name_110, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     }
     _inf_value1=(struct sNode*)come_calloc(1, sizeof(struct sNode), "16enum.c", 180, "struct sNode");
     _inf_obj_value1=come_increment_ref_count(((struct sEnumNode*)(right_value114=sEnumNode_initialize((struct sEnumNode*)come_increment_ref_count(((struct sEnumNode*)(right_value113=(struct sEnumNode*)come_calloc(1, sizeof(struct sEnumNode)*(1), "16enum.c", 180, "struct sEnumNode")))),(char*)come_increment_ref_count(type_name),elements_109,output_36,info))));
@@ -2722,14 +2722,14 @@ right_value120 = (void*)0;
     _inf_value1->terminated=(void*)sEnumNode_terminated;
     _inf_value1->kind=(void*)sEnumNode_kind;
     __result86__ = __result_obj__ = ((struct sNode*)(right_value120=_inf_value1));
-    if(type_name) { type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+    type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     come_call_finalizer2(sClass_finalize,klass_35, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(list$1tuple2$2charphsNodephphp_finalize,elements_109, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(sEnumNode_finalize,right_value113, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(sEnumNode_finalize,right_value114, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     if(right_value120) { right_value120 = come_decrement_ref_count2(right_value120, ((struct sNode*)right_value120)->finalize, ((struct sNode*)right_value120)->_protocol_obj, 1, 0, 0, __result_obj__); } 
     return __result86__;
-    if(type_name) { type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+    type_name = come_decrement_ref_count2(type_name, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     come_call_finalizer2(sClass_finalize,klass_35, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(list$1tuple2$2charphsNodephphp_finalize,elements_109, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
@@ -2790,13 +2790,13 @@ _Bool _if_conditional61;
 _Bool _if_conditional65;
 memset(&__result_obj__, 0, sizeof(void*));
                         if(_if_conditional60=self!=((void*)0)&&self->mName!=((void*)0),                        _if_conditional60) {
-                            if(self->mName) { self->mName = come_decrement_ref_count2(self->mName, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                            self->mName = come_decrement_ref_count2(self->mName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                         }
                         if(_if_conditional61=self!=((void*)0)&&self->mFields!=((void*)0),                        _if_conditional61) {
                             come_call_finalizer2(list$1tuple2$2charphsTypephphp_finalize,self->mFields, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                         }
                         if(_if_conditional65=self!=((void*)0)&&self->mDeclareSName!=((void*)0),                        _if_conditional65) {
-                            if(self->mDeclareSName) { self->mDeclareSName = come_decrement_ref_count2(self->mDeclareSName, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                            self->mDeclareSName = come_decrement_ref_count2(self->mDeclareSName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                         }
 }
 
@@ -2831,7 +2831,7 @@ _Bool _if_conditional63;
 _Bool _if_conditional64;
 memset(&__result_obj__, 0, sizeof(void*));
                                                 if(_if_conditional63=self!=((void*)0)&&self->v1!=((void*)0),                                                _if_conditional63) {
-                                                    if(self->v1) { self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                                                    self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                                                 }
                                                 if(_if_conditional64=self!=((void*)0)&&self->v2!=((void*)0),                                                _if_conditional64) {
                                                     come_call_finalizer2(sType_finalize,self->v2, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -2873,7 +2873,7 @@ memset(&it2_77, 0, sizeof(char*));
                     if(_if_conditional78=string_equals(self->keys[it_57],key),                    _if_conditional78) {
                         if(_if_conditional79=1,                        _if_conditional79) {
                             list$1charp_remove(self->key_list,self->keys[it_57]);
-                            if(self->keys[it_57]) { self->keys[it_57] = come_decrement_ref_count2(self->keys[it_57], (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                            self->keys[it_57] = come_decrement_ref_count2(self->keys[it_57], (void*)0, (void*)0, 0, 0, 0, (void*)0);
                             self->keys[it_57]=(char*)come_increment_ref_count(key);
                         }
                         else {
@@ -2930,10 +2930,10 @@ memset(&it2_77, 0, sizeof(char*));
                 list$1charp_push_back(self->key_list,key);
             }
             __result53__ = __result_obj__ = self;
-            if(key) { key = come_decrement_ref_count2(key, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+            key = come_decrement_ref_count2(key, (void*)0, (void*)0, 0, 1, 0, (void*)0);
             come_call_finalizer2(sClass_finalize,item, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
             return __result53__;
-            if(key) { key = come_decrement_ref_count2(key, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+            key = come_decrement_ref_count2(key, (void*)0, (void*)0, 0, 1, 0, (void*)0);
             come_call_finalizer2(sClass_finalize,item, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
 }
 
@@ -2979,11 +2979,11 @@ memset(&default_value_55, 0, sizeof(struct sClass*));
 right_value46 = (void*)0;
                     size_41=self->size*10;
                     keys_42=(char**)come_increment_ref_count(((char**)(right_value42=(char**)come_calloc(1, sizeof(char*)*(1*(size_41)), "./comelang2.h", 1331, "char*"))));
-                    if(right_value42) { right_value42 = come_decrement_ref_count2(right_value42, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                    right_value42 = come_decrement_ref_count2(right_value42, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     items_43=(struct sClass**)come_increment_ref_count(((struct sClass**)(right_value43=(struct sClass**)come_calloc(1, sizeof(struct sClass*)*(1*(size_41)), "./comelang2.h", 1332, "struct sClass*"))));
                     come_call_finalizer2(sClass_finalize,right_value43, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                     item_existance_44=(_Bool*)come_increment_ref_count(((_Bool*)(right_value44=(_Bool*)come_calloc(1, sizeof(_Bool)*(1*(size_41)), "./comelang2.h", 1333, "_Bool"))));
-                    if(right_value44) { right_value44 = come_decrement_ref_count2(right_value44, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                    right_value44 = come_decrement_ref_count2(right_value44, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     len_45=0;
                     for(
                     it_48=map$2charphsClassph_begin(self) ,                    0;                    _for_condtionalA2=                    !map$2charphsClassph_end(self) ,                    _for_condtionalA2;                    it_48=map$2charphsClassph_next(self) ,                    0                    ){
@@ -3017,7 +3017,7 @@ right_value46 = (void*)0;
                         }
                     }
                     come_free((char*)self->items);
-                    if(self->item_existance) { self->item_existance = come_decrement_ref_count2(self->item_existance, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                    self->item_existance = come_decrement_ref_count2(self->item_existance, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                     come_free((char*)self->keys);
                     self->keys=keys_42;
                     self->items=items_43;
@@ -3477,8 +3477,8 @@ right_value100 = (void*)0;
             if(_if_conditional121=self!=((void*)0)&&self->mName!=((void*)0),            _if_conditional121) {
                 __dec_obj16=result_83->mName;
                 result_83->mName=(char*)come_increment_ref_count(((char*)(right_value52=string_clone(self->mName))));
-                if(__dec_obj16) { __dec_obj16 = come_decrement_ref_count2(__dec_obj16, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                if(right_value52) { right_value52 = come_decrement_ref_count2(right_value52, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                __dec_obj16 = come_decrement_ref_count2(__dec_obj16, (void*)0, (void*)0, 0,0,0, (void*)0);
+                right_value52 = come_decrement_ref_count2(right_value52, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             }
             if(_if_conditional122=self!=((void*)0),            _if_conditional122) {
                 result_83->mGenericsNum=self->mGenericsNum;
@@ -3498,8 +3498,8 @@ right_value100 = (void*)0;
             if(_if_conditional199=self!=((void*)0)&&self->mDeclareSName!=((void*)0),            _if_conditional199) {
                 __dec_obj47=result_83->mDeclareSName;
                 result_83->mDeclareSName=(char*)come_increment_ref_count(((char*)(right_value100=string_clone(self->mDeclareSName))));
-                if(__dec_obj47) { __dec_obj47 = come_decrement_ref_count2(__dec_obj47, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                if(right_value100) { right_value100 = come_decrement_ref_count2(right_value100, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                __dec_obj47 = come_decrement_ref_count2(__dec_obj47, (void*)0, (void*)0, 0,0,0, (void*)0);
+                right_value100 = come_decrement_ref_count2(right_value100, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             }
             __result81__ = __result_obj__ = result_83;
             come_call_finalizer2(sClass_finalize,result_83, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
@@ -3625,7 +3625,7 @@ _Bool _if_conditional127;
 _Bool _if_conditional128;
 memset(&__result_obj__, 0, sizeof(void*));
                                     if(_if_conditional127=self!=((void*)0)&&self->v1!=((void*)0),                                    _if_conditional127) {
-                                        if(self->v1) { self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                                        self->v1 = come_decrement_ref_count2(self->v1, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                                     }
                                     if(_if_conditional128=self!=((void*)0)&&self->v2!=((void*)0),                                    _if_conditional128) {
                                         come_call_finalizer2(sType_finalize,self->v2, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -3659,8 +3659,8 @@ right_value97 = (void*)0;
                             if(_if_conditional131=self!=((void*)0)&&self->v1!=((void*)0),                            _if_conditional131) {
                                 __dec_obj20=result_89->v1;
                                 result_89->v1=(char*)come_increment_ref_count(((char*)(right_value59=string_clone(self->v1))));
-                                if(__dec_obj20) { __dec_obj20 = come_decrement_ref_count2(__dec_obj20, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                                if(right_value59) { right_value59 = come_decrement_ref_count2(right_value59, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                                __dec_obj20 = come_decrement_ref_count2(__dec_obj20, (void*)0, (void*)0, 0,0,0, (void*)0);
+                                right_value59 = come_decrement_ref_count2(right_value59, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                             }
                             if(_if_conditional132=self!=((void*)0)&&self->v2!=((void*)0),                            _if_conditional132) {
                                 __dec_obj45=result_89->v2;
@@ -3792,8 +3792,8 @@ right_value96 = (void*)0;
                                     if(_if_conditional142=self!=((void*)0)&&self->mGenericsName!=((void*)0),                                    _if_conditional142) {
                                         __dec_obj25=result_90->mGenericsName;
                                         result_90->mGenericsName=(char*)come_increment_ref_count(((char*)(right_value67=string_clone(self->mGenericsName))));
-                                        if(__dec_obj25) { __dec_obj25 = come_decrement_ref_count2(__dec_obj25, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                                        if(right_value67) { right_value67 = come_decrement_ref_count2(right_value67, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                                        __dec_obj25 = come_decrement_ref_count2(__dec_obj25, (void*)0, (void*)0, 0,0,0, (void*)0);
+                                        right_value67 = come_decrement_ref_count2(right_value67, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                                     }
                                     if(_if_conditional143=self!=((void*)0)&&self->mGenericsTypes!=((void*)0),                                    _if_conditional143) {
                                         __dec_obj29=result_90->mGenericsTypes;
@@ -3921,8 +3921,8 @@ right_value96 = (void*)0;
                                     if(_if_conditional188=self!=((void*)0)&&self->mOriginalTypeName!=((void*)0),                                    _if_conditional188) {
                                         __dec_obj43=result_90->mOriginalTypeName;
                                         result_90->mOriginalTypeName=(char*)come_increment_ref_count(((char*)(right_value95=string_clone(self->mOriginalTypeName))));
-                                        if(__dec_obj43) { __dec_obj43 = come_decrement_ref_count2(__dec_obj43, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                                        if(right_value95) { right_value95 = come_decrement_ref_count2(right_value95, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                                        __dec_obj43 = come_decrement_ref_count2(__dec_obj43, (void*)0, (void*)0, 0,0,0, (void*)0);
+                                        right_value95 = come_decrement_ref_count2(right_value95, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                                     }
                                     if(_if_conditional189=self!=((void*)0),                                    _if_conditional189) {
                                         result_90->mOriginalPointerNum=self->mOriginalPointerNum;
@@ -3951,8 +3951,8 @@ right_value96 = (void*)0;
                                     if(_if_conditional197=self!=((void*)0)&&self->mAsmName!=((void*)0),                                    _if_conditional197) {
                                         __dec_obj44=result_90->mAsmName;
                                         result_90->mAsmName=(char*)come_increment_ref_count(((char*)(right_value96=string_clone(self->mAsmName))));
-                                        if(__dec_obj44) { __dec_obj44 = come_decrement_ref_count2(__dec_obj44, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                                        if(right_value96) { right_value96 = come_decrement_ref_count2(right_value96, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                                        __dec_obj44 = come_decrement_ref_count2(__dec_obj44, (void*)0, (void*)0, 0,0,0, (void*)0);
+                                        right_value96 = come_decrement_ref_count2(right_value96, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                                     }
                                     __result78__ = __result_obj__ = result_90;
                                     come_call_finalizer2(sType_finalize,result_90, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
@@ -4230,7 +4230,7 @@ right_value88 = (void*)0;
                                             it_104=self->head;
                                             while(_while_condtional18=it_104!=((void*)0),                                            _while_condtional18) {
                                                 list$1charph_add(result_103,(char*)come_increment_ref_count(((char*)(right_value88=string_clone(it_104->item)))));
-                                                if(right_value88) { right_value88 = come_decrement_ref_count2(right_value88, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                                                right_value88 = come_decrement_ref_count2(right_value88, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                                                 it_104=it_104->next;
                                             }
                                             __result75__ = __result_obj__ = result_103;
@@ -4280,7 +4280,7 @@ memset(&litem_107, 0, sizeof(struct list_item$1charph*));
                                                         litem_105->next=((void*)0);
                                                         __dec_obj35=litem_105->item;
                                                         litem_105->item=(char*)come_increment_ref_count(item);
-                                                        if(__dec_obj35) { __dec_obj35 = come_decrement_ref_count2(__dec_obj35, (void*)0, (void*)0, 0,0,0, (void*)0); }
+                                                        __dec_obj35 = come_decrement_ref_count2(__dec_obj35, (void*)0, (void*)0, 0,0,0, (void*)0);
                                                         self->tail=litem_105;
                                                         self->head=litem_105;
                                                     }
@@ -4292,7 +4292,7 @@ memset(&litem_107, 0, sizeof(struct list_item$1charph*));
                                                             litem_106->next=((void*)0);
                                                             __dec_obj36=litem_106->item;
                                                             litem_106->item=(char*)come_increment_ref_count(item);
-                                                            if(__dec_obj36) { __dec_obj36 = come_decrement_ref_count2(__dec_obj36, (void*)0, (void*)0, 0,0,0, (void*)0); }
+                                                            __dec_obj36 = come_decrement_ref_count2(__dec_obj36, (void*)0, (void*)0, 0,0,0, (void*)0);
                                                             self->tail=litem_106;
                                                             self->head->next=litem_106;
                                                         }
@@ -4303,16 +4303,16 @@ memset(&litem_107, 0, sizeof(struct list_item$1charph*));
                                                             litem_107->next=((void*)0);
                                                             __dec_obj37=litem_107->item;
                                                             litem_107->item=(char*)come_increment_ref_count(item);
-                                                            if(__dec_obj37) { __dec_obj37 = come_decrement_ref_count2(__dec_obj37, (void*)0, (void*)0, 0,0,0, (void*)0); }
+                                                            __dec_obj37 = come_decrement_ref_count2(__dec_obj37, (void*)0, (void*)0, 0,0,0, (void*)0);
                                                             self->tail->next=litem_107;
                                                             self->tail=litem_107;
                                                         }
                                                     }
                                                     self->len++;
                                                     __result74__ = __result_obj__ = self;
-                                                    if(item) { item = come_decrement_ref_count2(item, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+                                                    item = come_decrement_ref_count2(item, (void*)0, (void*)0, 0, 1, 0, (void*)0);
                                                     return __result74__;
-                                                    if(item) { item = come_decrement_ref_count2(item, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+                                                    item = come_decrement_ref_count2(item, (void*)0, (void*)0, 0, 1, 0, (void*)0);
 }
 
 static void list$1charph_finalize(struct list$1charph* self){
@@ -4428,17 +4428,17 @@ struct tuple2$2charphsNodeph* __result83__;
 memset(&__result_obj__, 0, sizeof(void*));
                     __dec_obj52=self->v1;
                     self->v1=(char*)come_increment_ref_count(v1);
-                    if(__dec_obj52) { __dec_obj52 = come_decrement_ref_count2(__dec_obj52, (void*)0, (void*)0, 0,0,0, (void*)0); }
+                    __dec_obj52 = come_decrement_ref_count2(__dec_obj52, (void*)0, (void*)0, 0,0,0, (void*)0);
                     __dec_obj53=self->v2;
                     self->v2=(struct sNode*)come_increment_ref_count(v2);
                     if(__dec_obj53) { __dec_obj53 = come_decrement_ref_count2(__dec_obj53, ((struct sNode*)__dec_obj53)->finalize, ((struct sNode*)__dec_obj53)->_protocol_obj, 0,0,0, (void*)0); }
                     __result83__ = __result_obj__ = self;
                     come_call_finalizer2(tuple2$2charphsNodephp_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-                    if(v1) { v1 = come_decrement_ref_count2(v1, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+                    v1 = come_decrement_ref_count2(v1, (void*)0, (void*)0, 0, 1, 0, (void*)0);
                     if(v2) { v2 = come_decrement_ref_count2(v2, ((struct sNode*)v2)->finalize, ((struct sNode*)v2)->_protocol_obj, 0, 1, 0, (void*)0); } 
                     return __result83__;
                     come_call_finalizer2(tuple2$2charphsNodephp_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-                    if(v1) { v1 = come_decrement_ref_count2(v1, (void*)0, (void*)0, 0, 1, 0, (void*)0); }
+                    v1 = come_decrement_ref_count2(v1, (void*)0, (void*)0, 0, 1, 0, (void*)0);
                     if(v2) { v2 = come_decrement_ref_count2(v2, ((struct sNode*)v2)->finalize, ((struct sNode*)v2)->_protocol_obj, 0, 1, 0, (void*)0); } 
 }
 
@@ -4504,14 +4504,14 @@ right_value141 = (void*)0;
         if(_if_conditional219=*info->p==123,        _if_conditional219) {
             __dec_obj58=type_name_117;
             type_name_117=(char*)come_increment_ref_count(((char*)(right_value121=__builtin_string(""))));
-            if(__dec_obj58) { __dec_obj58 = come_decrement_ref_count2(__dec_obj58, (void*)0, (void*)0, 0,0,0, (void*)0); }
-            if(right_value121) { right_value121 = come_decrement_ref_count2(right_value121, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+            __dec_obj58 = come_decrement_ref_count2(__dec_obj58, (void*)0, (void*)0, 0,0,0, (void*)0);
+            right_value121 = come_decrement_ref_count2(right_value121, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
         else {
             __dec_obj59=type_name_117;
             type_name_117=(char*)come_increment_ref_count(((char*)(right_value122=parse_word(info))));
-            if(__dec_obj59) { __dec_obj59 = come_decrement_ref_count2(__dec_obj59, (void*)0, (void*)0, 0,0,0, (void*)0); }
-            if(right_value122) { right_value122 = come_decrement_ref_count2(right_value122, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+            __dec_obj59 = come_decrement_ref_count2(__dec_obj59, (void*)0, (void*)0, 0,0,0, (void*)0);
+            right_value122 = come_decrement_ref_count2(right_value122, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             map$2charphsClassph_insert(info->classes,(char*)come_increment_ref_count(type_name_117),(struct sClass*)come_increment_ref_count(((struct sClass*)(right_value124=sClass_initialize((struct sClass*)come_increment_ref_count(((struct sClass*)(right_value123=(struct sClass*)come_calloc(1, sizeof(struct sClass)*(1), "16enum.c", 193, "struct sClass")))),type_name_117,(_Bool)0,(_Bool)0,(_Bool)0,(_Bool)0,(_Bool)0,(_Bool)0,(_Bool)0,-1,-1,(_Bool)1,info)))));
             come_call_finalizer2(sClass_finalize,right_value123, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(sClass_finalize,right_value124, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -4523,7 +4523,7 @@ right_value141 = (void*)0;
         while(_while_condtional20=(_Bool)1,        _while_condtional20) {
             parse_sharp_v5(info);
             element_name_119=(char*)come_increment_ref_count(((char*)(right_value127=parse_word(info))));
-            if(right_value127) { right_value127 = come_decrement_ref_count2(right_value127, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+            right_value127 = come_decrement_ref_count2(right_value127, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             parse_sharp_v5(info);
             if(_if_conditional220=*info->p==61,            _if_conditional220) {
                 info->p++;
@@ -4552,10 +4552,10 @@ right_value141 = (void*)0;
             if(_if_conditional222=*info->p==125,            _if_conditional222) {
                 info->p++;
                 skip_spaces_and_lf(info);
-                if(element_name_119) { element_name_119 = come_decrement_ref_count2(element_name_119, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                element_name_119 = come_decrement_ref_count2(element_name_119, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
             }
-            if(element_name_119) { element_name_119 = come_decrement_ref_count2(element_name_119, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+            element_name_119 = come_decrement_ref_count2(element_name_119, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         _inf_value2=(struct sNode*)come_calloc(1, sizeof(struct sNode), "16enum.c", 235, "struct sNode");
         _inf_obj_value2=come_increment_ref_count(((struct sEnumNode*)(right_value134=sEnumNode_initialize((struct sEnumNode*)come_increment_ref_count(((struct sEnumNode*)(right_value133=(struct sEnumNode*)come_calloc(1, sizeof(struct sEnumNode)*(1), "16enum.c", 235, "struct sEnumNode")))),(char*)come_increment_ref_count(type_name_117),elements_118,(_Bool)1,info))));
@@ -4568,13 +4568,13 @@ right_value141 = (void*)0;
         _inf_value2->terminated=(void*)sEnumNode_terminated;
         _inf_value2->kind=(void*)sEnumNode_kind;
         __result89__ = __result_obj__ = ((struct sNode*)(right_value140=_inf_value2));
-        if(type_name_117) { type_name_117 = come_decrement_ref_count2(type_name_117, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+        type_name_117 = come_decrement_ref_count2(type_name_117, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         come_call_finalizer2(list$1tuple2$2charphsNodephphp_finalize,elements_118, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         come_call_finalizer2(sEnumNode_finalize,right_value133, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         come_call_finalizer2(sEnumNode_finalize,right_value134, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         if(right_value140) { right_value140 = come_decrement_ref_count2(right_value140, ((struct sNode*)right_value140)->finalize, ((struct sNode*)right_value140)->_protocol_obj, 1, 0, 0, __result_obj__); } 
         return __result89__;
-        if(type_name_117) { type_name_117 = come_decrement_ref_count2(type_name_117, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+        type_name_117 = come_decrement_ref_count2(type_name_117, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         come_call_finalizer2(list$1tuple2$2charphsNodephphp_finalize,elements_118, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     }
     __result90__ = __result_obj__ = ((struct sNode*)(right_value141=top_level_v95(buf,head,head_sline,info)));
@@ -4590,16 +4590,16 @@ _Bool _if_conditional225;
 _Bool _if_conditional226;
 memset(&__result_obj__, 0, sizeof(void*));
             if(_if_conditional223=self!=((void*)0)&&self->mTypeName!=((void*)0),            _if_conditional223) {
-                if(self->mTypeName) { self->mTypeName = come_decrement_ref_count2(self->mTypeName, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                self->mTypeName = come_decrement_ref_count2(self->mTypeName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             if(_if_conditional224=self!=((void*)0)&&self->mElements!=((void*)0),            _if_conditional224) {
                 come_call_finalizer2(list$1tuple2$2charphsNodephphp_finalize,self->mElements, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
             if(_if_conditional225=self!=((void*)0)&&self->sname!=((void*)0),            _if_conditional225) {
-                if(self->sname) { self->sname = come_decrement_ref_count2(self->sname, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                self->sname = come_decrement_ref_count2(self->sname, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             if(_if_conditional226=self!=((void*)0)&&self->mDeclareSName!=((void*)0),            _if_conditional226) {
-                if(self->mDeclareSName) { self->mDeclareSName = come_decrement_ref_count2(self->mDeclareSName, (void*)0, (void*)0, 0, 0, 0, (void*)0); }
+                self->mDeclareSName = come_decrement_ref_count2(self->mDeclareSName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
 }
 
@@ -4640,8 +4640,8 @@ right_value139 = (void*)0;
             if(_if_conditional228=self!=((void*)0)&&self->mTypeName!=((void*)0),            _if_conditional228) {
                 __dec_obj60=result_122->mTypeName;
                 result_122->mTypeName=(char*)come_increment_ref_count(((char*)(right_value136=string_clone(self->mTypeName))));
-                if(__dec_obj60) { __dec_obj60 = come_decrement_ref_count2(__dec_obj60, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                if(right_value136) { right_value136 = come_decrement_ref_count2(right_value136, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                __dec_obj60 = come_decrement_ref_count2(__dec_obj60, (void*)0, (void*)0, 0,0,0, (void*)0);
+                right_value136 = come_decrement_ref_count2(right_value136, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             }
             if(_if_conditional229=self!=((void*)0)&&self->mElements!=((void*)0),            _if_conditional229) {
                 __dec_obj61=result_122->mElements;
@@ -4655,8 +4655,8 @@ right_value139 = (void*)0;
             if(_if_conditional231=self!=((void*)0)&&self->sname!=((void*)0),            _if_conditional231) {
                 __dec_obj62=result_122->sname;
                 result_122->sname=(char*)come_increment_ref_count(((char*)(right_value138=string_clone(self->sname))));
-                if(__dec_obj62) { __dec_obj62 = come_decrement_ref_count2(__dec_obj62, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                if(right_value138) { right_value138 = come_decrement_ref_count2(right_value138, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                __dec_obj62 = come_decrement_ref_count2(__dec_obj62, (void*)0, (void*)0, 0,0,0, (void*)0);
+                right_value138 = come_decrement_ref_count2(right_value138, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             }
             if(_if_conditional232=self!=((void*)0),            _if_conditional232) {
                 result_122->mOutput=self->mOutput;
@@ -4664,8 +4664,8 @@ right_value139 = (void*)0;
             if(_if_conditional233=self!=((void*)0)&&self->mDeclareSName!=((void*)0),            _if_conditional233) {
                 __dec_obj63=result_122->mDeclareSName;
                 result_122->mDeclareSName=(char*)come_increment_ref_count(((char*)(right_value139=string_clone(self->mDeclareSName))));
-                if(__dec_obj63) { __dec_obj63 = come_decrement_ref_count2(__dec_obj63, (void*)0, (void*)0, 0,0,0, (void*)0); }
-                if(right_value139) { right_value139 = come_decrement_ref_count2(right_value139, (void*)0, (void*)0, 1, 0, 0, __result_obj__); }
+                __dec_obj63 = come_decrement_ref_count2(__dec_obj63, (void*)0, (void*)0, 0,0,0, (void*)0);
+                right_value139 = come_decrement_ref_count2(right_value139, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             }
             __result88__ = __result_obj__ = result_122;
             come_call_finalizer2(sEnumNode_finalize,result_122, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
