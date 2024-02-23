@@ -362,6 +362,7 @@ bool output_header_file(sInfo* info);
 /////////////////////////////////////////////////////////////////////
 /// 04heap.c ///
 /////////////////////////////////////////////////////////////////////
+bool existance_free_right_value_objects(sInfo* info);
 void std_move(sType* left_type, sType* right_type, CVALUE* right_value, sInfo* info=info);;
 string append_stackframe(char* c_value, sType* type, sInfo* info);
 bool create_equals_method(sType* type, sInfo* info);

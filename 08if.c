@@ -73,10 +73,23 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
     add_come_code_at_function_head(info, "_Bool _if_conditional%d;\n", ++num_if_conditional);
     int num_if_conditional_stack = num_if_conditional;
     
-    add_come_code(info, "if(_if_conditional%d=%s,", num_if_conditional, conditional_value.c_value);
-    add_last_code_to_source_with_comma(info);
-    free_right_value_objects(info, comma:true);
-    add_come_code(info, "_if_conditional%d) {\n", num_if_conditional_stack);
+    bool normal_if = true;
+    if(info.module.mLastCode || info.module.mLastCode2 || info.module.mLastCode3) {
+        normal_if = false;
+    }
+    if(existance_free_right_value_objects(info)) {
+        normal_if = false;
+    }
+    
+    if(normal_if) {
+        add_come_code(info, "if(%s) {\n", conditional_value.c_value);
+    }
+    else {
+        add_come_code(info, "if(_if_conditional%d=%s,", num_if_conditional, conditional_value.c_value);
+        add_last_code_to_source_with_comma(info);
+        free_right_value_objects(info, comma:true);
+        add_come_code(info, "_if_conditional%d) {\n", num_if_conditional_stack);
+    }
 
     transpile_block(if_block, null, null, info);
     
@@ -99,14 +112,28 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
 
             sBlock* elif_node_block = self.mElifBlocks[i];
             
-            static int num_elif_conditional = 0;
-            add_come_code_at_function_head(info, "_Bool _elif_conditional%d;\n", ++num_elif_conditional);
-            int num_elif_conditional_stack = num_elif_conditional;
-
-            add_come_code(info, "else if(_elif_conditional%d=%s,", num_elif_conditional, conditional_value.c_value);
-            add_last_code_to_source_with_comma(info);
-            free_right_value_objects(info, comma:true);
-            add_come_code(info, "_elif_conditional%d) {\n", num_elif_conditional_stack);
+    
+            bool normal_if = true;
+            if(info.module.mLastCode || info.module.mLastCode2 || info.module.mLastCode3) {
+                normal_if = false;
+            }
+            if(existance_free_right_value_objects(info)) {
+                normal_if = false;
+            }
+            
+            if(normal_if) {
+                add_come_code(info, "else if(%s) {\n", conditional_value.c_value);
+            }
+            else {
+                static int num_elif_conditional = 0;
+                add_come_code_at_function_head(info, "_Bool _elif_conditional%d;\n", ++num_elif_conditional);
+                int num_elif_conditional_stack = num_elif_conditional;
+    
+                add_come_code(info, "else if(_elif_conditional%d=%s,", num_elif_conditional, conditional_value.c_value);
+                add_last_code_to_source_with_comma(info);
+                free_right_value_objects(info, comma:true);
+                add_come_code(info, "_elif_conditional%d) {\n", num_elif_conditional_stack);
+            }
             
             transpile_block(elif_node_block, null, null, info);
 

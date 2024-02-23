@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 13.1.0
+version 14.0.0
 
 ``` C
 #include <comelang2.h>
@@ -250,7 +250,7 @@ Memory safe pointer
 
 Memory leak detector
 
-```C
+```c 
 #include <comelang2.h>
 
 void fun()
@@ -317,7 +317,7 @@ git clone https://github.com/ab25cq/comelang2
 cd comelang2
 bash fast_build.sh
 bash clean-self-host.sh
-bash fast_build.sh
+bash fast_build.sh (getting with -O2 comelang2)
 ```
 
 # Histories
@@ -403,6 +403,7 @@ bash fast_build.sh
 13.0.0 removed exception system
 13.1.0 faster code.
 13.2.0 faster code.
+14.0.0 real complete.
 
 # Language specifications
 

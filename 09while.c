@@ -49,15 +49,28 @@ bool sWhileNode*::compile(sWhileNode* self, sInfo* info)
     dec_stack_ptr(1, info);
 
     sBlock* block = self.mBlock;
-
-    static int num_while_condtional = 0;
-    add_come_code_at_function_head(info, "_Bool _while_condtional%d;\n", ++num_while_condtional);
-    int num_while_conditional_stack = num_while_condtional;
     
-    add_come_code(info, "while(_while_condtional%d=%s,", num_while_condtional, conditional_value.c_value);
-    add_last_code_to_source_with_comma(info);
-    free_right_value_objects(info, comma:true);
-    add_come_code(info, "_while_condtional%d) {\n", num_while_conditional_stack);
+    bool normal_if = true;
+    if(info.module.mLastCode || info.module.mLastCode2 || info.module.mLastCode3) {
+        normal_if = false;
+    }
+    if(existance_free_right_value_objects(info)) {
+        normal_if = false;
+    }
+    
+    if(normal_if) {
+        add_come_code(info, "while(%s) {\n", conditional_value.c_value);
+    }
+    else {
+        static int num_while_condtional = 0;
+        add_come_code_at_function_head(info, "_Bool _while_condtional%d;\n", ++num_while_condtional);
+        int num_while_conditional_stack = num_while_condtional;
+        
+        add_come_code(info, "while(_while_condtional%d=%s,", num_while_condtional, conditional_value.c_value);
+        add_last_code_to_source_with_comma(info);
+        free_right_value_objects(info, comma:true);
+        add_come_code(info, "_while_condtional%d) {\n", num_while_conditional_stack);
+    }
 
     transpile_block(block, null, null, info, false, true);
     

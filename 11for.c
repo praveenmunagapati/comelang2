@@ -61,7 +61,7 @@ bool sForNode*::compile(sForNode* self, sInfo* info)
     sVarTable*% for_var_table = new sVarTable(global:false, parent:lv_table);
     info->lv_table = for_var_table;
     
-    add_come_code(info, "for(\n");
+    add_come_code(info, "for(");
     
     /// compile expression ///
     sNode* expression_node = self.mExpressionNode;
@@ -72,15 +72,25 @@ bool sForNode*::compile(sForNode* self, sInfo* info)
         if(!node_compile(expression_node)) {
             return false;
         }
-        info.without_semicolon = false;
-        add_last_code_to_source_with_comma(info);
-        
         conditional_value = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
-    
-        free_right_value_objects(info, comma:true);
         
-        add_come_code(info, "0;");
+        bool normal_if = true;
+        if(existance_free_right_value_objects(info)) {
+            normal_if = false;
+        }
+        
+        if(normal_if) {
+            add_come_code(info, "%s;", conditional_value.c_value);
+        }
+        else {
+            info.without_semicolon = false;
+            add_last_code_to_source_with_comma(info);
+        
+            free_right_value_objects(info, comma:true);
+            
+            add_come_code(info, "0;");
+        }
     }
     else {
         add_come_code(info, ";");
@@ -97,20 +107,31 @@ bool sForNode*::compile(sForNode* self, sInfo* info)
         }
         info.without_semicolon = false;
         
-        static int num_for_condtionalA = 0;
-        add_come_code_at_function_head(info, "_Bool _for_condtionalA%d;\n", ++num_for_condtionalA);
-        int num_for_conditionalA_stack = num_for_condtionalA;
-        
-        add_come_code(info, "_for_condtionalA%d=", num_for_condtionalA);
-        
-        add_last_code_to_source_with_comma(info);
-        
         conditional_value2 = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
-    
-        free_right_value_objects(info, comma:true);
         
-        add_come_code(info, "_for_condtionalA%d;", num_for_conditionalA_stack);
+        bool normal_if = true;
+        if(existance_free_right_value_objects(info)) {
+            normal_if = false;
+        }
+        
+        if(normal_if) {
+            add_come_code(info, "%s;", conditional_value2.c_value);
+        }
+        else {
+            static int num_for_condtionalA = 0;
+            add_come_code_at_function_head(info, "_Bool _for_condtionalA%d;\n", ++num_for_condtionalA);
+            int num_for_conditionalA_stack = num_for_condtionalA;
+            
+            add_come_code(info, "_for_condtionalA%d=", num_for_condtionalA);
+            
+            add_last_code_to_source_with_comma(info);
+            
+        
+            free_right_value_objects(info, comma:true);
+            
+            add_come_code(info, "_for_condtionalA%d;", num_for_conditionalA_stack);
+        }
     }
     else {
         add_come_code(info, ";");
@@ -126,14 +147,24 @@ bool sForNode*::compile(sForNode* self, sInfo* info)
         }
         info.without_semicolon = false;
         
-        add_last_code_to_source_with_comma(info);
-        
         CVALUE*% conditional_value3 = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
-    
-        free_right_value_objects(info, comma:true);
         
-        add_come_code(info, "0");
+        bool normal_if = true;
+        if(existance_free_right_value_objects(info)) {
+            normal_if = false;
+        }
+        
+        if(normal_if) {
+            add_come_code(info, "%s", conditional_value3.c_value);
+        }
+        else {
+            add_last_code_to_source_with_comma(info);
+        
+            free_right_value_objects(info, comma:true);
+            
+            add_come_code(info, "0");
+        }
     }
     
     add_come_code(info, "){\n");

@@ -1002,6 +1002,24 @@ bool create_operator_not_equals_method(sType* type, sInfo* info)
     return true;
 }
 
+bool existance_free_right_value_objects(sInfo* info)
+{
+    if(gComeGC) {
+        return false;
+    }
+    list<sRightValueObject*%>* right_value_objects = info.right_value_objects;
+    
+    foreach(it, right_value_objects) {
+        if(it && !it->mFreed) {
+            if(it->mFunName === info->come_fun->mName && it->mBlockLevel == info->block_level) {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
+
 void free_right_value_objects(sInfo* info, bool comma=false)
 {
     if(gComeGC) {
@@ -1011,11 +1029,9 @@ void free_right_value_objects(sInfo* info, bool comma=false)
     list<sRightValueObject*%>* right_value_objects = info.right_value_objects;
     
     int n = 0;
-    bool change_freed_object = false;
     foreach(it, right_value_objects) {
         if(it && !it->mFreed) {
             if(it->mFunName === info->come_fun->mName && it->mBlockLevel == info->block_level) {
-                change_freed_object = true;
                 sType*% type = clone it->mType;
                 
                 type = solve_type(type, info->generics_type, info->method_generics_types, info);
