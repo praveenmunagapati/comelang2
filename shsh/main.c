@@ -248,6 +248,15 @@ bool parse_statment(sInfo* info)
     info->commands.add(new sCommand());
     
     while(true) {
+        bool zed_command = false;
+        if(*info->p == '!') {
+            info->p++;
+            zed_command = true;
+        }
+        else if(*info->p == '.' && xisalpha(*(info->p+1))) {
+            zed_command = true;
+        }
+        
         buffer*% buf = new buffer();
         char* p = info->p;
         while(*info->p != '\n' && *info->p != '\0' && *info->p != ';') {
@@ -629,6 +638,27 @@ bool parse_statment(sInfo* info)
             if(name && value) {
                 setenv(name, value, 1);
             }
+        }
+        else if(zed_command) {
+            info->p = p;
+            
+            buffer*% arg = new buffer();
+            while(*info->p) {
+                if(*info->p == '|' && *(info->p+1) != '|') {
+                    break;
+                }
+                else {
+                    arg.append_char(*info->p);
+                    info->p++;
+                }
+            }
+            
+            if(arg.to_string() === "") {
+                break;
+            }
+            
+            info->commands[-1].args.push_back(string("zed"));
+            info->commands[-1].args.push_back(arg.to_string());
         }
         else {
             info->p = p;
