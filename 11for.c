@@ -49,7 +49,109 @@ string sForNode*::kind()
 {
     return string("sForNode");
 }
+bool sForNode*::compile(sForNode* self, sInfo* info)
+{
+    bool in_loop = info.in_loop;
+    info.in_loop = true;
+    
+    sBlock* block = self.mBlock;
+    
+    sVarTable* lv_table = info->lv_table;
+    sVarTable*% for_var_table = new sVarTable(global:false, parent:lv_table);
+    info->lv_table = for_var_table;
+    
+    add_come_code(info, "for(\n");
+    
+    /// compile expression ///
+    sNode* expression_node = self.mExpressionNode;
+    
+    CVALUE*% conditional_value = null;
+    if(expression_node) {
+        info.without_semicolon = true;
+        if(!node_compile(expression_node)) {
+            return false;
+        }
+        info.without_semicolon = false;
+        add_last_code_to_source_with_comma(info);
+        
+        conditional_value = get_value_from_stack(-1, info);
+        dec_stack_ptr(1, info);
+    
+        free_right_value_objects(info, comma:true);
+        
+        add_come_code(info, "0;");
+    }
+    else {
+        add_come_code(info, ";");
+    }
+    
+    /// compile expression ///
+    sNode* expression_node2 = self.mExpressionNode2;
 
+    CVALUE*% conditional_value2 = null;
+    if(expression_node2) {
+        info.without_semicolon = true;
+        if(!node_compile(expression_node2)) {
+            return false;
+        }
+        info.without_semicolon = false;
+        
+        static int num_for_condtionalA = 0;
+        add_come_code_at_function_head(info, "_Bool _for_condtionalA%d;\n", ++num_for_condtionalA);
+        int num_for_conditionalA_stack = num_for_condtionalA;
+        
+        add_come_code(info, "_for_condtionalA%d=", num_for_condtionalA);
+        
+        add_last_code_to_source_with_comma(info);
+        
+        conditional_value2 = get_value_from_stack(-1, info);
+        dec_stack_ptr(1, info);
+    
+        free_right_value_objects(info, comma:true);
+        
+        add_come_code(info, "_for_condtionalA%d;", num_for_conditionalA_stack);
+    }
+    else {
+        add_come_code(info, ";");
+    }
+    
+    sNode* expression_node3 = self.mExpressionNode3;
+    
+    CVALUE*% conditional_value3;
+    if(expression_node3) {
+        info.without_semicolon = true;
+        if(!node_compile(expression_node3)) {
+            return false;
+        }
+        info.without_semicolon = false;
+        
+        add_last_code_to_source_with_comma(info);
+        
+        CVALUE*% conditional_value3 = get_value_from_stack(-1, info);
+        dec_stack_ptr(1, info);
+    
+        free_right_value_objects(info, comma:true);
+        
+        add_come_code(info, "0");
+    }
+    
+    add_come_code(info, "){\n");
+
+    transpile_block(block, null, null, info, false, true);
+
+    add_come_code(info, "}\n");
+    
+    free_objects(for_var_table, null, info);
+    
+    transpiler_clear_last_code(info);
+    info->lv_table = lv_table;
+    
+    info.in_loop = in_loop;
+
+    return true;
+}
+
+/*
 bool sForNode*::compile(sForNode* self, sInfo* info)
 {
     bool in_loop = info.in_loop;
@@ -182,6 +284,7 @@ bool sForNode*::compile(sForNode* self, sInfo* info)
 
     return true;
 }
+*/
 
 int sForNode*::sline(sForNode* self, sInfo* info)
 {
