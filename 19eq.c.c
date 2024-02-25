@@ -2229,7 +2229,7 @@ right_value50 = (void*)0;
     dec_stack_ptr(1,info);
     type_14=(struct sType*)come_increment_ref_count(left_value_7->type);
     fun_name_15="operator_plus_plus";
-    if(_if_conditional35=self->mQuote,    _if_conditional35) {
+    if(self->mQuote) {
         calling_fun_16=(_Bool)0;
     }
     else {
@@ -3265,7 +3265,7 @@ right_value61 = (void*)0;
     dec_stack_ptr(1,info);
     type_40=(struct sType*)come_increment_ref_count(left_value_39->type);
     fun_name_41="operator_minus_minus";
-    if(_if_conditional104=self->mQuote,    _if_conditional104) {
+    if(self->mQuote) {
         calling_fun_42=(_Bool)0;
     }
     else {
@@ -3427,7 +3427,7 @@ right_value71 = (void*)0;
     dec_stack_ptr(1,info);
     type_48=(struct sType*)come_increment_ref_count(left_value_45->type);
     fun_name_49="operator_plus_equal";
-    if(_if_conditional111=self->mQuote,    _if_conditional111) {
+    if(self->mQuote) {
         calling_fun_50=(_Bool)0;
     }
     else {
@@ -3591,7 +3591,7 @@ right_value81 = (void*)0;
     dec_stack_ptr(1,info);
     type_56=(struct sType*)come_increment_ref_count(left_value_53->type);
     fun_name_57="operator_minus_equal";
-    if(_if_conditional118=self->mQuote,    _if_conditional118) {
+    if(self->mQuote) {
         calling_fun_58=(_Bool)0;
     }
     else {
@@ -3755,7 +3755,7 @@ right_value91 = (void*)0;
     dec_stack_ptr(1,info);
     type_64=(struct sType*)come_increment_ref_count(left_value_61->type);
     fun_name_65="operator_mult_equal";
-    if(_if_conditional125=self->mQuote,    _if_conditional125) {
+    if(self->mQuote) {
         calling_fun_66=(_Bool)0;
     }
     else {
@@ -3919,7 +3919,7 @@ right_value101 = (void*)0;
     dec_stack_ptr(1,info);
     type_72=(struct sType*)come_increment_ref_count(left_value_69->type);
     fun_name_73="operator_div_equal";
-    if(_if_conditional132=self->mQuote,    _if_conditional132) {
+    if(self->mQuote) {
         calling_fun_74=(_Bool)0;
     }
     else {
@@ -4083,7 +4083,7 @@ right_value111 = (void*)0;
     dec_stack_ptr(1,info);
     type_80=(struct sType*)come_increment_ref_count(left_value_77->type);
     fun_name_81="operator_mod_equal";
-    if(_if_conditional139=self->mQuote,    _if_conditional139) {
+    if(self->mQuote) {
         calling_fun_82=(_Bool)0;
     }
     else {
@@ -4247,7 +4247,7 @@ right_value121 = (void*)0;
     dec_stack_ptr(1,info);
     type_88=(struct sType*)come_increment_ref_count(left_value_85->type);
     fun_name_89="operator_lshift_equal";
-    if(_if_conditional146=self->mQuote,    _if_conditional146) {
+    if(self->mQuote) {
         calling_fun_90=(_Bool)0;
     }
     else {
@@ -4411,7 +4411,7 @@ right_value131 = (void*)0;
     dec_stack_ptr(1,info);
     type_96=(struct sType*)come_increment_ref_count(left_value_93->type);
     fun_name_97="operator_rshift_equal";
-    if(_if_conditional153=self->mQuote,    _if_conditional153) {
+    if(self->mQuote) {
         calling_fun_98=(_Bool)0;
     }
     else {
@@ -4575,7 +4575,7 @@ right_value141 = (void*)0;
     dec_stack_ptr(1,info);
     type_104=(struct sType*)come_increment_ref_count(left_value_101->type);
     fun_name_105="operator_xor_equal";
-    if(_if_conditional160=self->mQuote,    _if_conditional160) {
+    if(self->mQuote) {
         calling_fun_106=(_Bool)0;
     }
     else {
@@ -4739,7 +4739,7 @@ right_value151 = (void*)0;
     dec_stack_ptr(1,info);
     type_112=(struct sType*)come_increment_ref_count(left_value_109->type);
     fun_name_113="operator_or_equal";
-    if(_if_conditional167=self->mQuote,    _if_conditional167) {
+    if(self->mQuote) {
         calling_fun_114=(_Bool)0;
     }
     else {
@@ -4903,7 +4903,7 @@ right_value161 = (void*)0;
     dec_stack_ptr(1,info);
     type_120=(struct sType*)come_increment_ref_count(left_value_117->type);
     fun_name_121="operator_and_equal";
-    if(_if_conditional174=self->mQuote,    _if_conditional174) {
+    if(self->mQuote) {
         calling_fun_122=(_Bool)0;
     }
     else {
@@ -5067,7 +5067,7 @@ right_value171 = (void*)0;
     dec_stack_ptr(1,info);
     type_128=(struct sType*)come_increment_ref_count(left_value_125->type);
     fun_name_129="operator_exp_equal";
-    if(_if_conditional181=self->mQuote,    _if_conditional181) {
+    if(self->mQuote) {
         calling_fun_130=(_Bool)0;
     }
     else {

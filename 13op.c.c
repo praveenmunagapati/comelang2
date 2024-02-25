@@ -2406,7 +2406,6 @@ void* right_value56;
 void* right_value57;
 char* __dec_obj30;
 int i_51;
-_Bool _for_condtionalA1;
 void* right_value58;
 char* new_fun_name_52;
 void* right_value59;
@@ -2536,12 +2535,12 @@ right_value84 = (void*)0;
 right_value85 = (void*)0;
     generics_type_29=(struct sType*)come_increment_ref_count(((struct sType*)(right_value44=sType_clone(type))));
     come_call_finalizer2(sType_finalize,right_value44, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    if(_if_conditional91=generics_type_29->mNoSolvedGenericsType->v1,    _if_conditional91) {
+    if(generics_type_29->mNoSolvedGenericsType->v1) {
         __dec_obj28=generics_type_29;
         generics_type_29=(struct sType*)come_increment_ref_count(generics_type_29->mNoSolvedGenericsType->v1);
         come_call_finalizer2(sType_finalize,__dec_obj28, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     }
-    if(_if_conditional92=type->mNoSolvedGenericsType->v1,    _if_conditional92) {
+    if(type->mNoSolvedGenericsType->v1) {
         type=type->mNoSolvedGenericsType->v1;
     }
     klass_30=type->mClass;
@@ -2560,7 +2559,7 @@ right_value85 = (void*)0;
         right_value48 = come_decrement_ref_count2(right_value48, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         generics_fun_39=((struct sGenericsFun*)(right_value49=map$2charphsGenericsFunph_at(info->generics_funcs,fun_name3_36,((void*)0))));
         come_call_finalizer2(sGenericsFun_finalize,right_value49, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        if(_if_conditional107=generics_fun_39,        _if_conditional107) {
+        if(generics_fun_39) {
             if(_if_conditional108=!create_generics_fun((char*)come_increment_ref_count(((char*)(right_value50=__builtin_string(fun_name2_33)))),generics_fun_39,obj_type_35,info),            right_value50 = come_decrement_ref_count2(right_value50, (void*)0, (void*)0, 1, 0, 0, __result_obj__),
             _if_conditional108) {
                 __result30__ = (_Bool)0;
@@ -2617,13 +2616,12 @@ right_value85 = (void*)0;
         fun_name2_33=(char*)come_increment_ref_count(((char*)(right_value57=create_method_name(type,(_Bool)0,fun_name,info))));
         __dec_obj30 = come_decrement_ref_count2(__dec_obj30, (void*)0, (void*)0, 0,0,0, (void*)0);
         right_value57 = come_decrement_ref_count2(right_value57, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        for(
-        i_51=128-1 ,        0;        _for_condtionalA1=        i_51>=1 ,        _for_condtionalA1;        i_51-- ,        0        ){
+        for(        i_51=128-1;        i_51>=1;        i_51--        ){
             new_fun_name_52=(char*)come_increment_ref_count(((char*)(right_value58=xsprintf("%s_v%d",fun_name2_33,i_51))));
             right_value58 = come_decrement_ref_count2(right_value58, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             operator_fun_32=((struct sFun*)(right_value59=map$2charphsFunphp_operator_load_element(info->funcs,new_fun_name_52)));
             come_call_finalizer2(sFun_finalize,right_value59, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            if(_if_conditional131=operator_fun_32,            _if_conditional131) {
+            if(operator_fun_32) {
                 __dec_obj31=fun_name2_33;
                 fun_name2_33=(char*)come_increment_ref_count(((char*)(right_value60=__builtin_string(new_fun_name_52))));
                 __dec_obj31 = come_decrement_ref_count2(__dec_obj31, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -2696,7 +2694,7 @@ right_value85 = (void*)0;
         come_call_finalizer2(sType_finalize,__dec_obj37, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         come_call_finalizer2(sType_finalize,right_value83, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         come_value_54->var=((void*)0);
-        if(_if_conditional140=type3_61->mHeap,        _if_conditional140) {
+        if(type3_61->mHeap) {
             __dec_obj38=come_value_54->c_value;
             come_value_54->c_value=(char*)come_increment_ref_count(((char*)(right_value84=append_object_to_right_values(come_value_54->c_value,(struct sType*)come_increment_ref_count(type3_61),info))));
             __dec_obj38 = come_decrement_ref_count2(__dec_obj38, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -4267,7 +4265,7 @@ right_value121 = (void*)0;
     dec_stack_ptr(1,info);
     type_73=(struct sType*)come_increment_ref_count(left_value_70->type);
     fun_name_74="operator_add";
-    if(_if_conditional159=self->mQuote,    _if_conditional159) {
+    if(self->mQuote) {
         calling_fun_75=(_Bool)0;
     }
     else {
@@ -4432,7 +4430,7 @@ right_value131 = (void*)0;
     dec_stack_ptr(1,info);
     type_81=(struct sType*)come_increment_ref_count(left_value_78->type);
     fun_name_82="operator_sub";
-    if(_if_conditional166=self->mQuote,    _if_conditional166) {
+    if(self->mQuote) {
         calling_fun_83=(_Bool)0;
     }
     else {
@@ -4597,7 +4595,7 @@ right_value141 = (void*)0;
     dec_stack_ptr(1,info);
     type_89=(struct sType*)come_increment_ref_count(left_value_86->type);
     fun_name_90="operator_mult";
-    if(_if_conditional173=self->mQuote,    _if_conditional173) {
+    if(self->mQuote) {
         calling_fun_91=(_Bool)0;
     }
     else {
@@ -4762,7 +4760,7 @@ right_value151 = (void*)0;
     dec_stack_ptr(1,info);
     type_97=(struct sType*)come_increment_ref_count(left_value_94->type);
     fun_name_98="operator_div";
-    if(_if_conditional180=self->mQuote,    _if_conditional180) {
+    if(self->mQuote) {
         calling_fun_99=(_Bool)0;
     }
     else {
@@ -4927,7 +4925,7 @@ right_value161 = (void*)0;
     dec_stack_ptr(1,info);
     type_105=(struct sType*)come_increment_ref_count(left_value_102->type);
     fun_name_106="operator_mod";
-    if(_if_conditional187=self->mQuote,    _if_conditional187) {
+    if(self->mQuote) {
         calling_fun_107=(_Bool)0;
     }
     else {
@@ -5092,7 +5090,7 @@ right_value171 = (void*)0;
     dec_stack_ptr(1,info);
     type_113=(struct sType*)come_increment_ref_count(left_value_110->type);
     fun_name_114="operator_lshift";
-    if(_if_conditional194=self->mQuote,    _if_conditional194) {
+    if(self->mQuote) {
         calling_fun_115=(_Bool)0;
     }
     else {
@@ -5257,7 +5255,7 @@ right_value181 = (void*)0;
     dec_stack_ptr(1,info);
     type_121=(struct sType*)come_increment_ref_count(left_value_118->type);
     fun_name_122="operator_rshift";
-    if(_if_conditional201=self->mQuote,    _if_conditional201) {
+    if(self->mQuote) {
         calling_fun_123=(_Bool)0;
     }
     else {
@@ -5422,7 +5420,7 @@ right_value191 = (void*)0;
     dec_stack_ptr(1,info);
     type_129=(struct sType*)come_increment_ref_count(left_value_126->type);
     fun_name_130="operator_gteq";
-    if(_if_conditional208=self->mQuote,    _if_conditional208) {
+    if(self->mQuote) {
         calling_fun_131=(_Bool)0;
     }
     else {
@@ -5587,7 +5585,7 @@ right_value201 = (void*)0;
     dec_stack_ptr(1,info);
     type_137=(struct sType*)come_increment_ref_count(left_value_134->type);
     fun_name_138="operator_lteq";
-    if(_if_conditional215=self->mQuote,    _if_conditional215) {
+    if(self->mQuote) {
         calling_fun_139=(_Bool)0;
     }
     else {
@@ -5752,7 +5750,7 @@ right_value211 = (void*)0;
     dec_stack_ptr(1,info);
     type_145=(struct sType*)come_increment_ref_count(left_value_142->type);
     fun_name_146="operator_lt";
-    if(_if_conditional222=self->mQuote,    _if_conditional222) {
+    if(self->mQuote) {
         calling_fun_147=(_Bool)0;
     }
     else {
@@ -5917,7 +5915,7 @@ right_value221 = (void*)0;
     dec_stack_ptr(1,info);
     type_153=(struct sType*)come_increment_ref_count(left_value_150->type);
     fun_name_154="operator_gt";
-    if(_if_conditional229=self->mQuote,    _if_conditional229) {
+    if(self->mQuote) {
         calling_fun_155=(_Bool)0;
     }
     else {
@@ -6374,7 +6372,7 @@ right_value251 = (void*)0;
     dec_stack_ptr(1,info);
     type_171=(struct sType*)come_increment_ref_count(left_value_168->type);
     fun_name_172="operator_equals";
-    if(_if_conditional246=self->mQuote,    _if_conditional246) {
+    if(self->mQuote) {
         calling_fun_173=(_Bool)0;
     }
     else {
@@ -6539,7 +6537,7 @@ right_value261 = (void*)0;
     dec_stack_ptr(1,info);
     type_179=(struct sType*)come_increment_ref_count(left_value_176->type);
     fun_name_180="operator_not_equals";
-    if(_if_conditional253=self->mQuote,    _if_conditional253) {
+    if(self->mQuote) {
         calling_fun_181=(_Bool)0;
     }
     else {
@@ -6704,7 +6702,7 @@ right_value271 = (void*)0;
     dec_stack_ptr(1,info);
     type_187=(struct sType*)come_increment_ref_count(left_value_184->type);
     fun_name_188="operator_and";
-    if(_if_conditional260=self->mQuote,    _if_conditional260) {
+    if(self->mQuote) {
         calling_fun_189=(_Bool)0;
     }
     else {
@@ -6869,7 +6867,7 @@ right_value281 = (void*)0;
     dec_stack_ptr(1,info);
     type_195=(struct sType*)come_increment_ref_count(left_value_192->type);
     fun_name_196="operator_xor";
-    if(_if_conditional267=self->mQuote,    _if_conditional267) {
+    if(self->mQuote) {
         calling_fun_197=(_Bool)0;
     }
     else {
@@ -7034,7 +7032,7 @@ right_value291 = (void*)0;
     dec_stack_ptr(1,info);
     type_203=(struct sType*)come_increment_ref_count(left_value_200->type);
     fun_name_204="operator_or";
-    if(_if_conditional274=self->mQuote,    _if_conditional274) {
+    if(self->mQuote) {
         calling_fun_205=(_Bool)0;
     }
     else {
@@ -7199,7 +7197,7 @@ right_value301 = (void*)0;
     dec_stack_ptr(1,info);
     type_211=(struct sType*)come_increment_ref_count(left_value_208->type);
     fun_name_212="operator_andand";
-    if(_if_conditional281=self->mQuote,    _if_conditional281) {
+    if(self->mQuote) {
         calling_fun_213=(_Bool)0;
     }
     else {
@@ -7364,7 +7362,7 @@ right_value311 = (void*)0;
     dec_stack_ptr(1,info);
     type_219=(struct sType*)come_increment_ref_count(left_value_216->type);
     fun_name_220="operator_oror";
-    if(_if_conditional288=self->mQuote,    _if_conditional288) {
+    if(self->mQuote) {
         calling_fun_221=(_Bool)0;
     }
     else {

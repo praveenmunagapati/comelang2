@@ -64,9 +64,6 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
     }
     info.without_semicolon = false;
 
-    CVALUE*% conditional_value = get_value_from_stack(-1, info);
-    dec_stack_ptr(1, info);
-
     sBlock* if_block = self.mIfBlock;
     
     static int num_if_conditional = 0;
@@ -82,11 +79,18 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
     }
     
     if(normal_if) {
+        CVALUE*% conditional_value = get_value_from_stack(-1, info);
+        dec_stack_ptr(1, info);
+        
         add_come_code(info, "if(%s) {\n", conditional_value.c_value);
     }
     else {
+        CVALUE*% conditional_value = get_value_from_stack(-1, info);
+        dec_stack_ptr(1, info);
+        
         add_come_code(info, "if(_if_conditional%d=%s,", num_if_conditional, conditional_value.c_value);
         add_last_code_to_source_with_comma(info);
+        
         free_right_value_objects(info, comma:true);
         add_come_code(info, "_if_conditional%d) {\n", num_if_conditional_stack);
     }
@@ -106,10 +110,6 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
                 return false;
             }
             info.without_semicolon = false;
-
-            CVALUE*% conditional_value = get_value_from_stack(-1, info);
-            dec_stack_ptr(1, info);
-
             sBlock* elif_node_block = self.mElifBlocks[i];
             
     
@@ -122,9 +122,15 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
             }
             
             if(normal_if) {
+                CVALUE*% conditional_value = get_value_from_stack(-1, info);
+                dec_stack_ptr(1, info);
+
                 add_come_code(info, "else if(%s) {\n", conditional_value.c_value);
             }
             else {
+                CVALUE*% conditional_value = get_value_from_stack(-1, info);
+                dec_stack_ptr(1, info);
+                
                 static int num_elif_conditional = 0;
                 add_come_code_at_function_head(info, "_Bool _elif_conditional%d;\n", ++num_elif_conditional);
                 int num_elif_conditional_stack = num_elif_conditional;

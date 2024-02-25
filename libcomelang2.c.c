@@ -1857,7 +1857,6 @@ void* right_value11;
 struct buffer* buf_5;
 void* right_value12;
 int i_6;
-_Bool _for_condtionalA1;
 void* right_value13;
 _Bool _if_conditional7;
 void* right_value14;
@@ -1874,12 +1873,11 @@ right_value14 = (void*)0;
     come_call_finalizer2(buffer_finalize,right_value11, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     buffer_append_str(buf_5,((char*)(right_value12=xsprintf("%s %d\n",sname,sline))));
     right_value12 = come_decrement_ref_count2(right_value12, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    for(
-    i_6=gNumComeStackFrame-2 ,    0;    _for_condtionalA1=    i_6>=0 ,    _for_condtionalA1;    i_6-- ,    0    ){
+    for(    i_6=gNumComeStackFrame-2;    i_6>=0;    i_6--    ){
         buffer_append_str(buf_5,((char*)(right_value13=xsprintf("%s %d\n",gComeStackFrameSName[i_6],gComeStackFrameSLine[i_6]))));
         right_value13 = come_decrement_ref_count2(right_value13, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
-    if(_if_conditional7=gComeStackFrameBuffer,    _if_conditional7) {
+    if(gComeStackFrameBuffer) {
         free(gComeStackFrameBuffer);
     }
     gComeStackFrameBuffer=strdup(((char*)(right_value14=buffer_to_string(buf_5))));
@@ -1890,11 +1888,9 @@ right_value14 = (void*)0;
 void stackframe(){
 void* __result_obj__;
 int i_7;
-_Bool _for_condtionalA2;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_7, 0, sizeof(int));
-    for(
-    i_7=gNumComeStackFrame-1 ,    0;    _for_condtionalA2=    i_7>=0 ,    _for_condtionalA2;    i_7-- ,    0    ){
+    for(    i_7=gNumComeStackFrame-1;    i_7>=0;    i_7--    ){
         printf("%s %d\n",gComeStackFrameSName[i_7],gComeStackFrameSLine[i_7]);
     }
 }
@@ -2093,7 +2089,6 @@ memset(&__result_obj__, 0, sizeof(void*));
 void come_heap_init(int come_malloc, int come_debug, int come_gc){
 void* __result_obj__;
 int i_8;
-_Bool _for_condtionalA3;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_8, 0, sizeof(int));
     gComeMallocLib=come_malloc;
@@ -2104,8 +2099,7 @@ memset(&i_8, 0, sizeof(int));
     memset(gComeStackFrameSLine,0,sizeof(int)*1024);
     gHeapPages.mSizePages=4;
     gHeapPages.mPages=calloc(1,sizeof(char**)*gHeapPages.mSizePages);
-    for(
-    i_8=0 ,    0;    _for_condtionalA3=    i_8<gHeapPages.mSizePages ,    _for_condtionalA3;    i_8++ ,    0    ){
+    for(    i_8=0;    i_8<gHeapPages.mSizePages;    i_8++    ){
         gHeapPages.mPages[i_8]=calloc(1,sizeof(char)*4048);
     }
     gHeapPages.mTop=gHeapPages.mPages[0];
@@ -2123,21 +2117,16 @@ _Bool _if_conditional26;
 _Bool _if_conditional27;
 struct sMemHeader* it_9;
 int n_10;
-_Bool _while_condtional1;
 _Bool flag_11;
 _Bool _if_conditional28;
 int i_12;
-_Bool _for_condtionalA4;
 _Bool _if_conditional29;
 _Bool _if_conditional30;
 struct sMemHeaderTiny* it_13;
 int n_14;
-_Bool _while_condtional2;
 _Bool _if_conditional31;
 int i_15;
-_Bool _for_condtionalA5;
 int i_16;
-_Bool _for_condtionalA6;
 _Bool _if_conditional32;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&it_9, 0, sizeof(struct sMemHeader*));
@@ -2148,30 +2137,29 @@ memset(&it_13, 0, sizeof(struct sMemHeaderTiny*));
 memset(&n_14, 0, sizeof(int));
 memset(&i_15, 0, sizeof(int));
 memset(&i_16, 0, sizeof(int));
-    if(_if_conditional25=gComeStackFrameBuffer,    _if_conditional25) {
+    if(gComeStackFrameBuffer) {
         free(gComeStackFrameBuffer);
     }
-    if(_if_conditional26=gComeGCLib,    _if_conditional26) {
+    if(gComeGCLib) {
     }
     else {
-        if(_if_conditional27=gComeDebugLib,        _if_conditional27) {
+        if(gComeDebugLib) {
             it_9=gAllocMem;
             n_10=0;
-            while(_while_condtional1=it_9,            _while_condtional1) {
+            while(it_9) {
                 n_10++;
                 flag_11=(_Bool)0;
                 printf("#%d ",n_10);
-                if(_if_conditional28=it_9->class_name,                _if_conditional28) {
+                if(it_9->class_name) {
                     printf("(%s): ",it_9->class_name);
                 }
-                for(
-                i_12=0 ,                0;                _for_condtionalA4=                i_12<16 ,                _for_condtionalA4;                i_12++ ,                0                ){
+                for(                i_12=0;                i_12<16;                i_12++                ){
                     if(_if_conditional29=it_9->sname[i_12],                    _if_conditional29) {
                         printf("%s %d, ",it_9->sname[i_12],it_9->sline[i_12]);
                         flag_11=(_Bool)1;
                     }
                 }
-                if(_if_conditional30=flag_11,                _if_conditional30) {
+                if(flag_11) {
                     puts("");
                 }
                 it_9=it_9->next;
@@ -2181,7 +2169,7 @@ memset(&i_16, 0, sizeof(int));
         else {
             it_13=(struct sMemHeaderTiny*)gAllocMem;
             n_14=0;
-            while(_while_condtional2=it_13,            _while_condtional2) {
+            while(it_13) {
                 n_14++;
                 it_13=it_13->next;
             }
@@ -2190,13 +2178,11 @@ memset(&i_16, 0, sizeof(int));
             }
         }
     }
-    for(
-    i_15=0 ,    0;    _for_condtionalA5=    i_15<gHeapPages.mSizePages ,    _for_condtionalA5;    i_15++ ,    0    ){
+    for(    i_15=0;    i_15<gHeapPages.mSizePages;    i_15++    ){
         free(gHeapPages.mPages[i_15]);
     }
     free(gHeapPages.mPages);
-    for(
-    i_16=0 ,    0;    _for_condtionalA6=    i_16<4048 ,    _for_condtionalA6;    i_16++ ,    0    ){
+    for(    i_16=0;    i_16<4048;    i_16++    ){
         if(_if_conditional32=gHeapPages.mFreeMem[i_16],        _if_conditional32) {
             free(gHeapPages.mFreeMem[i_16]);
         }
@@ -2216,8 +2202,6 @@ _Bool _if_conditional37;
 int new_size_pages_20;
 void** new_pages_21;
 int i_22;
-_Bool _for_condtionalA7;
-_Bool _for_condtionalA8;
 void* __result24__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_17, 0, sizeof(void*));
@@ -2240,12 +2224,10 @@ memset(&i_22, 0, sizeof(int));
                     new_size_pages_20=gHeapPages.mSizePages*2;
                     new_pages_21=calloc(1,sizeof(char*)*new_size_pages_20);
                     i_22=0;
-                    for(
-                    ;                    _for_condtionalA7=                    i_22<gHeapPages.mSizePages ,                    _for_condtionalA7;                    i_22++ ,                    0                    ){
+                    for(                    ;                    i_22<gHeapPages.mSizePages;                    i_22++                    ){
                         new_pages_21[i_22]=gHeapPages.mPages[i_22];
                     }
-                    for(
-                    ;                    _for_condtionalA8=                    i_22<new_size_pages_20 ,                    _for_condtionalA8;                    i_22++ ,                    0                    ){
+                    for(                    ;                    i_22<new_size_pages_20;                    i_22++                    ){
                         new_pages_21[i_22]=calloc(1,sizeof(char)*4048);
                     }
                     free(gHeapPages.mPages);
@@ -2283,7 +2265,7 @@ memset(&result_23, 0, sizeof(void*));
 memset(&it_24, 0, sizeof(struct sMemHeader*));
 memset(&result_25, 0, sizeof(void*));
 memset(&it_26, 0, sizeof(struct sMemHeaderTiny*));
-    if(_if_conditional38=gComeDebugLib,    _if_conditional38) {
+    if(gComeDebugLib) {
         result_23=alloc_from_pages(size+sizeof(struct sMemHeader));
         it_24=result_23;
         it_24->allocated=177783;
@@ -2300,13 +2282,13 @@ memset(&it_26, 0, sizeof(struct sMemHeaderTiny*));
         come_pop_stackframe();
         it_24->next=gAllocMem;
         it_24->prev=((void*)0);
-        if(_if_conditional40=class_name,        _if_conditional40) {
+        if(class_name) {
             it_24->class_name=strdup(class_name);
         }
         else {
             it_24->class_name=((void*)0);
         }
-        if(_if_conditional41=gAllocMem,        _if_conditional41) {
+        if(gAllocMem) {
             gAllocMem->prev=it_24;
         }
         gAllocMem=it_24;
@@ -2321,7 +2303,7 @@ memset(&it_26, 0, sizeof(struct sMemHeaderTiny*));
         it_26->size=size+sizeof(struct sMemHeaderTiny);
         it_26->next=(struct sMemHeaderTiny*)gAllocMem;
         it_26->prev=((void*)0);
-        if(_if_conditional42=gAllocMem,        _if_conditional42) {
+        if(gAllocMem) {
             ((struct sMemHeaderTiny*)gAllocMem)->prev=it_26;
         }
         gAllocMem=(struct sMemHeader*)it_26;
@@ -2394,11 +2376,11 @@ memset(&new_size_free_mem_43, 0, sizeof(int));
 memset(&new_free_mem_44, 0, sizeof(void**));
 memset(&new_size_free_mem_45, 0, sizeof(int));
 memset(&new_free_mem_46, 0, sizeof(void**));
-    if(_if_conditional43=mem,    _if_conditional43) {
-        if(_if_conditional44=gComeGCLib,        _if_conditional44) {
+    if(mem) {
+        if(gComeGCLib) {
         }
         else {
-            if(_if_conditional45=gComeDebugLib,            _if_conditional45) {
+            if(gComeDebugLib) {
                 it_27=(struct sMemHeader*)((char*)mem-sizeof(struct sMemHeader));
                 if(_if_conditional46=it_27->allocated!=177783,                _if_conditional46) {
                     return;
@@ -2406,20 +2388,20 @@ memset(&new_free_mem_46, 0, sizeof(void**));
                 it_27->allocated=0;
                 prev_it_28=it_27->prev;
                 next_it_29=it_27->next;
-                if(_if_conditional47=it_27->class_name,                _if_conditional47) {
+                if(it_27->class_name) {
                     free(it_27->class_name);
                 }
                 if(_if_conditional48=gAllocMem==it_27,                _if_conditional48) {
                     gAllocMem=next_it_29;
-                    if(_if_conditional49=gAllocMem,                    _if_conditional49) {
+                    if(gAllocMem) {
                         gAllocMem->prev=((void*)0);
                     }
                 }
                 else {
-                    if(_if_conditional50=prev_it_28,                    _if_conditional50) {
+                    if(prev_it_28) {
                         prev_it_28->next=next_it_29;
                     }
-                    if(_if_conditional51=next_it_29,                    _if_conditional51) {
+                    if(next_it_29) {
                         next_it_29->prev=prev_it_28;
                     }
                 }
@@ -2461,15 +2443,15 @@ memset(&new_free_mem_46, 0, sizeof(void**));
                 next_it_39=it_37->next;
                 if(_if_conditional56=gAllocMem==it_37,                _if_conditional56) {
                     gAllocMem=(struct sMemHeader*)next_it_39;
-                    if(_if_conditional57=gAllocMem,                    _if_conditional57) {
+                    if(gAllocMem) {
                         gAllocMem->prev=((void*)0);
                     }
                 }
                 else {
-                    if(_if_conditional58=prev_it_38,                    _if_conditional58) {
+                    if(prev_it_38) {
                         prev_it_38->next=next_it_39;
                     }
-                    if(_if_conditional59=next_it_39,                    _if_conditional59) {
+                    if(next_it_39) {
                         next_it_39->prev=prev_it_38;
                     }
                 }
@@ -2671,7 +2653,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&ref_count_61, 0, sizeof(unsigned long int*));
 memset(&count_62, 0, sizeof(unsigned long int));
 memset(&finalizer_63, 0, sizeof(void (*)(void*)));
-    if(_if_conditional72=result_obj,    _if_conditional72) {
+    if(result_obj) {
         if(_if_conditional73=mem==result_obj,        _if_conditional73) {
             __result37__ = __result_obj__ = mem;
             return __result37__;
@@ -2727,8 +2709,8 @@ memset(&finalizer_69, 0, sizeof(void (*)(void*)));
     if(_if_conditional78=mem==((void*)0),    _if_conditional78) {
         return;
     }
-    if(_if_conditional79=call_finalizer_only,    _if_conditional79) {
-        if(_if_conditional80=fun,        _if_conditional80) {
+    if(call_finalizer_only) {
+        if(fun) {
             if(_if_conditional81=protocol_obj&&protocol_fun,            _if_conditional81) {
                 finalizer_64=protocol_fun;
                 finalizer_64(protocol_obj);
@@ -2744,13 +2726,13 @@ memset(&finalizer_69, 0, sizeof(void (*)(void*)));
         }
         count_67=*ref_count_66;
         if(_if_conditional83=!no_free&&(count_67<=0||force_delete_),        _if_conditional83) {
-            if(_if_conditional84=mem,            _if_conditional84) {
+            if(mem) {
                 if(_if_conditional85=protocol_obj&&protocol_fun,                _if_conditional85) {
                     finalizer_68=protocol_fun;
                     finalizer_68(protocol_obj);
                     come_free_object(protocol_obj);
                 }
-                if(_if_conditional86=fun,                _if_conditional86) {
+                if(fun) {
                     finalizer_69=fun;
                     finalizer_69(mem);
                 }
@@ -2786,7 +2768,7 @@ memset(&ref_count_72, 0, sizeof(unsigned long int*));
 memset(&count_73, 0, sizeof(unsigned long int));
 memset(&finalizer_74, 0, sizeof(void (*)(void*)));
 memset(&finalizer_75, 0, sizeof(void (*)(void*)));
-    if(_if_conditional87=result_obj,    _if_conditional87) {
+    if(result_obj) {
         if(_if_conditional88=mem==result_obj,        _if_conditional88) {
             return;
         }
@@ -2794,8 +2776,8 @@ memset(&finalizer_75, 0, sizeof(void (*)(void*)));
     if(_if_conditional89=mem==((void*)0),    _if_conditional89) {
         return;
     }
-    if(_if_conditional90=call_finalizer_only,    _if_conditional90) {
-        if(_if_conditional91=fun,        _if_conditional91) {
+    if(call_finalizer_only) {
+        if(fun) {
             if(_if_conditional92=protocol_obj&&protocol_fun,            _if_conditional92) {
                 finalizer_70=protocol_fun;
                 finalizer_70(protocol_obj);
@@ -2811,13 +2793,13 @@ memset(&finalizer_75, 0, sizeof(void (*)(void*)));
         }
         count_73=*ref_count_72;
         if(_if_conditional94=!no_free&&(count_73<=0||force_delete_),        _if_conditional94) {
-            if(_if_conditional95=mem,            _if_conditional95) {
+            if(mem) {
                 if(_if_conditional96=protocol_obj&&protocol_fun,                _if_conditional96) {
                     finalizer_74=protocol_fun;
                     finalizer_74(protocol_obj);
                     come_free_object(protocol_obj);
                 }
-                if(_if_conditional97=fun,                _if_conditional97) {
+                if(fun) {
                     finalizer_75=fun;
                     finalizer_75(mem);
                 }
@@ -2857,15 +2839,13 @@ _Bool come_is_contained_element(void** array, int len, void* element){
 void* __result_obj__;
 _Bool found_78;
 int i_79;
-_Bool _for_condtionalA9;
 _Bool _if_conditional99;
 _Bool __result43__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&found_78, 0, sizeof(_Bool));
 memset(&i_79, 0, sizeof(int));
     found_78=(_Bool)0;
-    for(
-    i_79=0 ,    0;    _for_condtionalA9=    i_79<len ,    _for_condtionalA9;    i_79++ ,    0    ){
+    for(    i_79=0;    i_79<len;    i_79++    ){
         if(_if_conditional99=array[i_79]==element,        _if_conditional99) {
             found_78=(_Bool)1;
             break;
@@ -3317,7 +3297,6 @@ int new_size_111;
 void* right_value34;
 char* __dec_obj15;
 int i_112;
-_Bool _for_condtionalA10;
 struct buffer* __result63__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_110, 0, sizeof(int));
@@ -3338,8 +3317,7 @@ memset(&i_112, 0, sizeof(int));
         right_value34 = come_decrement_ref_count2(right_value34, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         self->size=new_size_111;
     }
-    for(
-    i_112=self->len ,    0;    _for_condtionalA10=    i_112<len_110 ,    _for_condtionalA10;    i_112++ ,    0    ){
+    for(    i_112=self->len;    i_112<len_110;    i_112++    ){
         self->buf[i_112]=0;
     }
     self->len=len_110;
@@ -3764,7 +3742,6 @@ void* right_value46;
 void* right_value47;
 struct buffer* buf_119;
 int i_120;
-_Bool _for_condtionalA11;
 void* right_value48;
 char* __result111__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -3782,8 +3759,7 @@ right_value48 = (void*)0;
     buf_119=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value47=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value46=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 1400, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value46, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value47, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    for(
-    i_120=0 ,    0;    _for_condtionalA11=    i_120<right ,    _for_condtionalA11;    i_120++ ,    0    ){
+    for(    i_120=0;    i_120<right;    i_120++    ){
         buffer_append_str(buf_119,self);
     }
     __result111__ = __result_obj__ = ((char*)(right_value48=buffer_to_string(buf_119)));
@@ -3802,7 +3778,6 @@ void* right_value50;
 void* right_value51;
 struct buffer* buf_121;
 int i_122;
-_Bool _for_condtionalA12;
 void* right_value52;
 char* __result113__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -3820,8 +3795,7 @@ right_value52 = (void*)0;
     buf_121=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value51=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value50=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 1414, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value50, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value51, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    for(
-    i_122=0 ,    0;    _for_condtionalA12=    i_122<right ,    _for_condtionalA12;    i_122++ ,    0    ){
+    for(    i_122=0;    i_122<right;    i_122++    ){
         buffer_append_str(buf_121,self);
     }
     __result113__ = __result_obj__ = ((char*)(right_value52=buffer_to_string(buf_121)));
@@ -3901,7 +3875,7 @@ _Bool _if_conditional149;
 unsigned int __result122__;
 int result_123;
 char* p_124;
-_Bool _while_condtional3;
+_Bool _while_condtional1;
 unsigned int __result123__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_123, 0, sizeof(int));
@@ -3912,7 +3886,7 @@ memset(&p_124, 0, sizeof(char*));
     }
     result_123=0;
     p_124=value;
-    while(_while_condtional3=*p_124,    _while_condtional3) {
+    while(_while_condtional1=*p_124,    _while_condtional1) {
         result_123+=(*p_124);
         p_124++;
     }
@@ -3926,7 +3900,7 @@ _Bool _if_conditional150;
 unsigned int __result124__;
 int result_125;
 char* p_126;
-_Bool _while_condtional4;
+_Bool _while_condtional2;
 unsigned int __result125__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_125, 0, sizeof(int));
@@ -3937,7 +3911,7 @@ memset(&p_126, 0, sizeof(char*));
     }
     result_125=0;
     p_126=value;
-    while(_while_condtional4=*p_126,    _while_condtional4) {
+    while(_while_condtional2=*p_126,    _while_condtional2) {
         result_125+=(*p_126);
         p_126++;
     }
@@ -4172,7 +4146,6 @@ int len_131;
 void* right_value56;
 char* result_132;
 int i_133;
-_Bool _for_condtionalA13;
 char* __result153__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value55 = (void*)0;
@@ -4188,8 +4161,7 @@ memset(&i_133, 0, sizeof(int));
     len_131=strlen(str);
     result_132=(char*)come_increment_ref_count(((char*)(right_value56=(char*)come_calloc(1, sizeof(char)*(1*(len_131+1)), "libcomelang2.c", 1631, "char"))));
     right_value56 = come_decrement_ref_count2(right_value56, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    for(
-    i_133=0 ,    0;    _for_condtionalA13=    i_133<len_131 ,    _for_condtionalA13;    i_133++ ,    0    ){
+    for(    i_133=0;    i_133<len_131;    i_133++    ){
         result_132[i_133]=str[len_131-i_133-1];
     }
     result_132[len_131]=0;
@@ -4208,7 +4180,6 @@ int len_134;
 void* right_value58;
 char* result_135;
 int i_136;
-_Bool _for_condtionalA14;
 char* __result155__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value57 = (void*)0;
@@ -4224,8 +4195,7 @@ memset(&i_136, 0, sizeof(int));
     len_134=strlen(str);
     result_135=(char*)come_increment_ref_count(((char*)(right_value58=(char*)come_calloc(1, sizeof(char)*(1*(len_134+1)), "libcomelang2.c", 1648, "char"))));
     right_value58 = come_decrement_ref_count2(right_value58, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    for(
-    i_136=0 ,    0;    _for_condtionalA14=    i_136<len_134 ,    _for_condtionalA14;    i_136++ ,    0    ){
+    for(    i_136=0;    i_136<len_134;    i_136++    ){
         result_135[i_136]=str[len_134-i_136-1];
     }
     result_135[len_134]=0;
@@ -4736,7 +4706,6 @@ void* right_value100;
 void* right_value101;
 struct buffer* str_156;
 int i_157;
-_Bool _for_condtionalA15;
 _Bool _if_conditional207;
 void* right_value105;
 _Bool _if_conditional210;
@@ -4766,8 +4735,7 @@ right_value106 = (void*)0;
     str_156=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value101=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value100=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 1938, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value100, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value101, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    for(
-    i_157=0 ,    0;    _for_condtionalA15=    i_157<charp_length(self) ,    _for_condtionalA15;    i_157++ ,    0    ){
+    for(    i_157=0;    i_157<charp_length(self);    i_157++    ){
         if(_if_conditional207=self[i_157]==c,        _if_conditional207) {
             list$1charph_push_back(result_155,(char*)come_increment_ref_count(((char*)(right_value105=__builtin_string(str_156->buf)))));
             right_value105 = come_decrement_ref_count2(right_value105, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
@@ -4805,13 +4773,13 @@ memset(&__result_obj__, 0, sizeof(void*));
 static void list$1charphp_finalize(struct list$1charph* self){
 void* __result_obj__;
 struct list_item$1charph* it_153;
-_Bool _while_condtional5;
+_Bool _while_condtional3;
 struct list_item$1charph* prev_it_154;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&it_153, 0, sizeof(struct list_item$1charph*));
 memset(&prev_it_154, 0, sizeof(struct list_item$1charph*));
                 it_153=self->head;
-                while(_while_condtional5=it_153!=((void*)0),                _while_condtional5) {
+                while(_while_condtional3=it_153!=((void*)0),                _while_condtional3) {
                     prev_it_154=it_153;
                     it_153=it_153->next;
                     come_call_finalizer2(list_item$1charphp_finalize,prev_it_154, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -4903,7 +4871,6 @@ void* right_value111;
 void* right_value112;
 struct buffer* str_162;
 int i_163;
-_Bool _for_condtionalA16;
 _Bool _if_conditional212;
 void* right_value113;
 _Bool _if_conditional213;
@@ -4933,8 +4900,7 @@ right_value114 = (void*)0;
     str_162=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value112=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value111=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 1964, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value111, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value112, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    for(
-    i_163=0 ,    0;    _for_condtionalA16=    i_163<charp_length(self) ,    _for_condtionalA16;    i_163++ ,    0    ){
+    for(    i_163=0;    i_163<charp_length(self);    i_163++    ){
         if(_if_conditional212=self[i_163]==c,        _if_conditional212) {
             list$1charph_push_back(result_161,(char*)come_increment_ref_count(((char*)(right_value113=__builtin_string(str_162->buf)))));
             right_value113 = come_decrement_ref_count2(right_value113, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
@@ -4962,7 +4928,7 @@ _Bool _if_conditional214;
 void* right_value115;
 char* __result193__;
 char* p_164;
-_Bool _while_condtional6;
+_Bool _while_condtional4;
 _Bool _if_conditional215;
 _Bool _if_conditional216;
 void* right_value116;
@@ -4983,7 +4949,7 @@ right_value118 = (void*)0;
         return __result193__;
     }
     p_164=path+strlen(path);
-    while(_while_condtional6=p_164>=path,    _while_condtional6) {
+    while(_while_condtional4=p_164>=path,    _while_condtional4) {
         if(_if_conditional215=*p_164==47,        _if_conditional215) {
             break;
         }
@@ -5037,7 +5003,7 @@ char* __result199__;
 void* right_value123;
 char* path2_165;
 char* p_166;
-_Bool _while_condtional7;
+_Bool _while_condtional5;
 _Bool _if_conditional219;
 _Bool _if_conditional220;
 void* right_value124;
@@ -5062,7 +5028,7 @@ right_value126 = (void*)0;
     path2_165=(char*)come_increment_ref_count(((char*)(right_value123=xbasename(path))));
     right_value123 = come_decrement_ref_count2(right_value123, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     p_166=path2_165+strlen(path2_165);
-    while(_while_condtional7=p_166>=path2_165,    _while_condtional7) {
+    while(_while_condtional5=p_166>=path2_165,    _while_condtional5) {
         if(_if_conditional219=*p_166==46,        _if_conditional219) {
             break;
         }
@@ -5095,7 +5061,7 @@ _Bool _if_conditional221;
 void* right_value127;
 char* __result203__;
 char* p_167;
-_Bool _while_condtional8;
+_Bool _while_condtional6;
 _Bool _if_conditional222;
 _Bool _if_conditional223;
 void* right_value128;
@@ -5116,7 +5082,7 @@ right_value130 = (void*)0;
         return __result203__;
     }
     p_167=path+strlen(path);
-    while(_while_condtional8=p_167>=path,    _while_condtional8) {
+    while(_while_condtional6=p_167>=path,    _while_condtional6) {
         if(_if_conditional222=*p_167==46,        _if_conditional222) {
             break;
         }
@@ -5178,7 +5144,7 @@ char* __result210__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value133 = (void*)0;
 right_value134 = (void*)0;
-    if(_if_conditional225=self,    _if_conditional225) {
+    if(self) {
         __result209__ = __result_obj__ = ((char*)(right_value133=__builtin_string("true")));
         right_value133 = come_decrement_ref_count2(right_value133, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         return __result209__;
@@ -5599,7 +5565,7 @@ char* __result263__;
 void* right_value147;
 void* right_value148;
 struct buffer* buf_170;
-_Bool _while_condtional9;
+_Bool _while_condtional7;
 int size_172;
 _Bool _if_conditional252;
 void* right_value149;
@@ -5619,7 +5585,7 @@ right_value149 = (void*)0;
     buf_170=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value148=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value147=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 2315, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value147, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value148, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    while(_while_condtional9=1,    _while_condtional9) {
+    while(_while_condtional7=1,    _while_condtional7) {
         char buf2_171[1024];
         memset(&buf2_171, 0, sizeof(char)        *(1024)        );
         size_172=fread(buf2_171,1,1024,f);
@@ -5728,7 +5694,7 @@ memset(&result2_179, 0, sizeof(int));
         __result273__ = -1;
         return __result273__;
     }
-    if(_if_conditional259=append,    _if_conditional259) {
+    if(append) {
         f_177=fopen(file_name,"a");
     }
     else {
@@ -5775,7 +5741,7 @@ memset(&result2_182, 0, sizeof(int));
         __result278__ = -1;
         return __result278__;
     }
-    if(_if_conditional264=append,    _if_conditional264) {
+    if(append) {
         f_180=fopen(file_name,"a");
     }
     else {
@@ -5811,7 +5777,7 @@ char* __result284__;
 void* right_value152;
 void* right_value153;
 struct buffer* buf_184;
-_Bool _while_condtional10;
+_Bool _while_condtional8;
 int size_186;
 _Bool _if_conditional270;
 void* right_value154;
@@ -5847,7 +5813,7 @@ right_value155 = (void*)0;
     buf_184=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value153=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value152=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 2455, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value152, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value153, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    while(_while_condtional10=1,    _while_condtional10) {
+    while(_while_condtional8=1,    _while_condtional8) {
         char buf2_185[1024];
         memset(&buf2_185, 0, sizeof(char)        *(1024)        );
         size_186=fread(buf2_185,1,1024,f_183);
@@ -5886,7 +5852,7 @@ char* __result288__;
 void* right_value158;
 void* right_value159;
 struct buffer* buf_190;
-_Bool _while_condtional11;
+_Bool _while_condtional9;
 int size_192;
 _Bool _if_conditional274;
 void* right_value160;
@@ -5922,7 +5888,7 @@ right_value161 = (void*)0;
     buf_190=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value159=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value158=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 2492, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value158, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value159, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    while(_while_condtional11=1,    _while_condtional11) {
+    while(_while_condtional9=1,    _while_condtional9) {
         char buf2_191[1024];
         memset(&buf2_191, 0, sizeof(char)        *(1024)        );
         size_192=fread(buf2_191,1,1024,f_189);
@@ -5956,7 +5922,7 @@ void* right_value163;
 struct list$1charph* result_195;
 _Bool _if_conditional276;
 struct list$1charph* __result291__;
-_Bool _while_condtional12;
+_Bool _while_condtional10;
 _Bool _if_conditional277;
 void* right_value164;
 struct list$1charph* __result292__;
@@ -5973,7 +5939,7 @@ right_value164 = (void*)0;
         come_call_finalizer2(list$1charphp_finalize,result_195, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
         return __result291__;
     }
-    while(_while_condtional12=1,    _while_condtional12) {
+    while(_while_condtional10=1,    _while_condtional10) {
         char buf_196[1024];
         memset(&buf_196, 0, sizeof(char)        *(1024)        );
         if(_if_conditional277=fgets(buf_196,1024,f)==((void*)0),        _if_conditional277) {
@@ -6005,7 +5971,7 @@ memset(&f_197, 0, sizeof(struct _IO_FILE*));
         return __result293__;
     }
     f_197=fopen(path,mode);
-    if(_if_conditional279=f_197,    _if_conditional279) {
+    if(f_197) {
         block(parent,f_197);
         if(_if_conditional280=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional280) {
             fclose(f_197);
@@ -6157,12 +6123,10 @@ right_value174 = (void*)0;
 void int_times(int self, void* parent, void (*block)(void*,int)){
 void* __result_obj__;
 int i_202;
-_Bool _for_condtionalA17;
 _Bool _if_conditional286;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_202, 0, sizeof(int));
-    for(
-    i_202=0 ,    0;    _for_condtionalA17=    i_202<self ,    _for_condtionalA17;    i_202++ ,    0    ){
+    for(    i_202=0;    i_202<self;    i_202++    ){
         block(parent,i_202);
         if(_if_conditional286=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional286) {
             return;

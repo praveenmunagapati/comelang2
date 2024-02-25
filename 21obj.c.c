@@ -3300,7 +3300,6 @@ void* right_value53;
 struct buffer* num_string_31;
 struct list$1sNodeph* o2_saved_32;
 struct sNode* it_35;
-_Bool _for_condtionalA1;
 _Bool _if_conditional100;
 _Bool __result43__;
 void* right_value54;
@@ -3346,8 +3345,7 @@ right_value61 = (void*)0;
     come_call_finalizer2(buffer_finalize,right_value52, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value53, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     buffer_append_str(num_string_31,"1");
-    for(
-    o2_saved_32=(struct list$1sNodeph*)come_increment_ref_count((type_29->mArrayNum)),it_35=list$1sNodeph_begin((o2_saved_32)) ,    0;    _for_condtionalA1=    !list$1sNodeph_end((o2_saved_32)) ,    _for_condtionalA1;    it_35=list$1sNodeph_next((o2_saved_32)) ,    0    ){
+    for(    o2_saved_32=(struct list$1sNodeph*)come_increment_ref_count((type_29->mArrayNum)),it_35=list$1sNodeph_begin((o2_saved_32));    !list$1sNodeph_end((o2_saved_32));    it_35=list$1sNodeph_next((o2_saved_32))    ){
         if(_if_conditional100=!node_compile(it_35,info),        _if_conditional100) {
             __result43__ = (_Bool)0;
             come_call_finalizer2(list$1sNodephp_finalize,o2_saved_32, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -3375,7 +3373,7 @@ right_value61 = (void*)0;
     right_value59 = come_decrement_ref_count2(right_value59, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     type2_39->mHeap=(_Bool)1;
     type2_39->mPointerNum++;
-    if(_if_conditional101=type2_39->mNoSolvedGenericsType->v1,    _if_conditional101) {
+    if(type2_39->mNoSolvedGenericsType->v1) {
         type2_39->mNoSolvedGenericsType->v1->mPointerNum++;
         type2_39->mNoSolvedGenericsType->v1->mHeap=(_Bool)1;
     }
@@ -3433,7 +3431,7 @@ memset(&result_34, 0, sizeof(struct sNode*));
             return __result36__;
         }
         self->it=self->head;
-        if(_if_conditional97=self->it,        _if_conditional97) {
+        if(self->it) {
             __result37__ = __result_obj__ = self->it->item;
             return __result37__;
         }
@@ -3468,7 +3466,7 @@ memset(&result_37, 0, sizeof(struct sNode*));
             return __result40__;
         }
         self->it=self->it->next;
-        if(_if_conditional99=self->it,        _if_conditional99) {
+        if(self->it) {
             __result41__ = __result_obj__ = self->it->item;
             return __result41__;
         }
@@ -3707,7 +3705,6 @@ struct sType* typeX_59;
 void* right_value87;
 void* right_value88;
 int i_60;
-_Bool _for_condtionalA2;
 void* right_value89;
 struct tuple2$2charphsTypeph* multiple_assign_var1;
 char* name_64;
@@ -3804,8 +3801,7 @@ right_value94 = (void*)0;
     come_call_finalizer2(tuple2$2sFunpcharphp_finalize,right_value87, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     ((struct tuple2$2sFunpcharph*)(right_value88=create_cloner_automatically(typeX_59,"clone",info)));
     come_call_finalizer2(tuple2$2sFunpcharphp_finalize,right_value88, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    for(
-    i_60=1 ,    0;    _for_condtionalA2=    i_60<list$1tuple2$2charphsTypephph_length(klass_51->mFields) ,    _for_condtionalA2;    i_60++ ,    0    ){
+    for(    i_60=1;    i_60<list$1tuple2$2charphsTypephph_length(klass_51->mFields);    i_60++    ){
         multiple_assign_var1=((struct tuple2$2charphsTypeph*)(right_value89=list$1tuple2$2charphsTypephphp_operator_load_element(klass_51->mFields,i_60)));
         name_64=(char*)come_increment_ref_count(multiple_assign_var1->v1);
         field_type_65=(struct sType*)come_increment_ref_count(multiple_assign_var1->v2);
@@ -5419,7 +5415,7 @@ memset(&come_value_105, 0, sizeof(struct CVALUE*));
     come_call_finalizer2(CVALUE_finalize,right_value209, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     dec_stack_ptr(1,info);
     come_value_105->type->mDelegate=(_Bool)1;
-    if(_if_conditional159=come_value_105->var,    _if_conditional159) {
+    if(come_value_105->var) {
         come_value_105->var->mType->mDelegate=(_Bool)1;
     }
     list$1CVALUEph_push_back(info->stack,(struct CVALUE*)come_increment_ref_count(come_value_105));
@@ -5516,7 +5512,7 @@ memset(&come_value_107, 0, sizeof(struct CVALUE*));
     come_call_finalizer2(CVALUE_finalize,right_value214, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     dec_stack_ptr(1,info);
     come_value_107->type->mShare=(_Bool)1;
-    if(_if_conditional163=come_value_107->var,    _if_conditional163) {
+    if(come_value_107->var) {
         come_value_107->var->mType->mShare=(_Bool)1;
     }
     list$1CVALUEph_push_back(info->stack,(struct CVALUE*)come_increment_ref_count(come_value_107));
@@ -6144,7 +6140,7 @@ right_value251 = (void*)0;
     come_call_finalizer2(CVALUE_finalize,right_value249, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     dec_stack_ptr(1,info);
     type_127=come_value_126->type;
-    if(_if_conditional188=come_value_126->type->mHeap,    _if_conditional188) {
+    if(come_value_126->type->mHeap) {
         type_name_128=(char*)come_increment_ref_count(((char*)(right_value250=make_type_name_string(type_127,(_Bool)0,(_Bool)0,(_Bool)0,info))));
         right_value250 = come_decrement_ref_count2(right_value250, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         __dec_obj109=come_value_126->c_value;
@@ -6353,7 +6349,7 @@ right_value266 = (void*)0;
 right_value267 = (void*)0;
 right_value268 = (void*)0;
     node_132=self->type;
-    if(_if_conditional194=self->type->mHeap,    _if_conditional194) {
+    if(self->type->mHeap) {
         come_value_133=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value261=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "21obj.c", 1471, "struct CVALUE"))));
         come_call_finalizer2(CVALUE_finalize,right_value261, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         __dec_obj114=come_value_133->c_value;
@@ -6919,7 +6915,7 @@ right_value473 = (void*)0;
             exit(2);
         }
         if(_if_conditional199=*info->p==40,        _if_conditional199) {
-            if(_if_conditional200=type_135->mClass->mProtocol,            _if_conditional200) {
+            if(type_135->mClass->mProtocol) {
                 info->p++;
                 skip_spaces_and_lf(info);
                 inf_type_138=(struct sType*)come_increment_ref_count(((struct sType*)(right_value270=sType_clone(type_135))));
@@ -7462,7 +7458,7 @@ right_value473 = (void*)0;
                                                                         info->p=p_180;
                                                                         info->sline=sline_181;
                                                                     }
-                                                                    if(_if_conditional344=is_type_name_flag_179,                                                                    _if_conditional344) {
+                                                                    if(is_type_name_flag_179) {
                                                                         multiple_assign_var6=((struct tuple3$3sTypephcharphbool*)(right_value414=parse_type(info,(_Bool)0,(_Bool)1)));
                                                                         type_183=(struct sType*)come_increment_ref_count(multiple_assign_var6->v1);
                                                                         name_184=(char*)come_increment_ref_count(multiple_assign_var6->v2);
@@ -7534,7 +7530,7 @@ right_value473 = (void*)0;
                                                                             info->p=p_190;
                                                                             info->sline=sline_191;
                                                                         }
-                                                                        if(_if_conditional361=is_type_name_flag_189,                                                                        _if_conditional361) {
+                                                                        if(is_type_name_flag_189) {
                                                                             multiple_assign_var7=((struct tuple3$3sTypephcharphbool*)(right_value429=parse_type(info,(_Bool)0,(_Bool)1)));
                                                                             type_193=(struct sType*)come_increment_ref_count(multiple_assign_var7->v1);
                                                                             name_194=(char*)come_increment_ref_count(multiple_assign_var7->v2);
@@ -7606,7 +7602,7 @@ right_value473 = (void*)0;
                                                                                 info->p=p_200;
                                                                                 info->sline=sline_201;
                                                                             }
-                                                                            if(_if_conditional378=is_type_name_flag_199,                                                                            _if_conditional378) {
+                                                                            if(is_type_name_flag_199) {
                                                                                 multiple_assign_var8=((struct tuple3$3sTypephcharphbool*)(right_value444=parse_type(info,(_Bool)0,(_Bool)1)));
                                                                                 type_203=(struct sType*)come_increment_ref_count(multiple_assign_var8->v1);
                                                                                 name_204=(char*)come_increment_ref_count(multiple_assign_var8->v2);
@@ -7678,7 +7674,7 @@ right_value473 = (void*)0;
                                                                                     info->p=p_210;
                                                                                     info->sline=sline_211;
                                                                                 }
-                                                                                if(_if_conditional395=is_type_name_flag_209,                                                                                _if_conditional395) {
+                                                                                if(is_type_name_flag_209) {
                                                                                     multiple_assign_var9=((struct tuple3$3sTypephcharphbool*)(right_value459=parse_type(info,(_Bool)0,(_Bool)1)));
                                                                                     type_213=(struct sType*)come_increment_ref_count(multiple_assign_var9->v1);
                                                                                     name_214=(char*)come_increment_ref_count(multiple_assign_var9->v2);

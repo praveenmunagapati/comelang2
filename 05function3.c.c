@@ -2837,7 +2837,7 @@ right_value104 = (void*)0;
     char buf_21[128+1];
     memset(&buf_21, 0, sizeof(char)    *(128+1)    );
     p2_22=buf_21;
-    if(_if_conditional32=minus,    _if_conditional32) {
+    if(minus) {
         *p2_22=45;
         p2_22++;
     }
@@ -3463,7 +3463,7 @@ right_value179 = (void*)0;
                 info->p++;
                 skip_spaces_and_lf(info);
                 value_48=strtoull(buf_46,((void*)0),0);
-                if(_if_conditional116=minus,                _if_conditional116) {
+                if(minus) {
                     _inf_value12=(struct sNode*)come_calloc(1, sizeof(struct sNode), "05function3.c", 557, "struct sNode");
                     _inf_obj_value12=come_increment_ref_count(((struct sULongNode*)(right_value111=sULongNode_initialize((struct sULongNode*)come_increment_ref_count(((struct sULongNode*)(right_value110=(struct sULongNode*)come_calloc(1, sizeof(struct sULongNode)*(1), "05function3.c", 557, "struct sULongNode")))),-value_48,info))));
                     _inf_value12->_protocol_obj=_inf_obj_value12;
@@ -3500,7 +3500,7 @@ right_value179 = (void*)0;
             }
             else {
                 value_51=strtoull(buf_46,((void*)0),0);
-                if(_if_conditional127=minus,                _if_conditional127) {
+                if(minus) {
                     _inf_value14=(struct sNode*)come_calloc(1, sizeof(struct sNode), "05function3.c", 567, "struct sNode");
                     _inf_obj_value14=come_increment_ref_count(((struct sULongNode*)(right_value121=sULongNode_initialize((struct sULongNode*)come_increment_ref_count(((struct sULongNode*)(right_value120=(struct sULongNode*)come_calloc(1, sizeof(struct sULongNode)*(1), "05function3.c", 567, "struct sULongNode")))),-value_51,info))));
                     _inf_value14->_protocol_obj=_inf_obj_value14;
@@ -3538,7 +3538,7 @@ right_value179 = (void*)0;
         }
         else {
             value_54=strtoull(buf_46,((void*)0),0);
-            if(_if_conditional138=minus,            _if_conditional138) {
+            if(minus) {
                 _inf_value16=(struct sNode*)come_calloc(1, sizeof(struct sNode), "05function3.c", 578, "struct sNode");
                 _inf_obj_value16=come_increment_ref_count(((struct sUIntNode*)(right_value131=sUIntNode_initialize((struct sUIntNode*)come_increment_ref_count(((struct sUIntNode*)(right_value130=(struct sUIntNode*)come_calloc(1, sizeof(struct sUIntNode)*(1), "05function3.c", 578, "struct sUIntNode")))),-value_54,info))));
                 _inf_value16->_protocol_obj=_inf_obj_value16;
@@ -3582,7 +3582,7 @@ right_value179 = (void*)0;
                 info->p++;
                 skip_spaces_and_lf(info);
                 value_57=strtoull(buf_46,((void*)0),0);
-                if(_if_conditional151=minus,                _if_conditional151) {
+                if(minus) {
                     _inf_value18=(struct sNode*)come_calloc(1, sizeof(struct sNode), "05function3.c", 596, "struct sNode");
                     _inf_obj_value18=come_increment_ref_count(((struct sLongNode*)(right_value141=sLongNode_initialize((struct sLongNode*)come_increment_ref_count(((struct sLongNode*)(right_value140=(struct sLongNode*)come_calloc(1, sizeof(struct sLongNode)*(1), "05function3.c", 596, "struct sLongNode")))),-value_57,info))));
                     _inf_value18->_protocol_obj=_inf_obj_value18;
@@ -3622,7 +3622,7 @@ right_value179 = (void*)0;
                     info->p++;
                     skip_spaces_and_lf(info);
                     value_60=strtoull(buf_46,((void*)0),0);
-                    if(_if_conditional163=minus,                    _if_conditional163) {
+                    if(minus) {
                         _inf_value20=(struct sNode*)come_calloc(1, sizeof(struct sNode), "05function3.c", 609, "struct sNode");
                         _inf_obj_value20=come_increment_ref_count(((struct sULongNode*)(right_value151=sULongNode_initialize((struct sULongNode*)come_increment_ref_count(((struct sULongNode*)(right_value150=(struct sULongNode*)come_calloc(1, sizeof(struct sULongNode)*(1), "05function3.c", 609, "struct sULongNode")))),-value_60,info))));
                         _inf_value20->_protocol_obj=_inf_obj_value20;
@@ -3659,7 +3659,7 @@ right_value179 = (void*)0;
                 }
                 else {
                     value_63=strtoull(buf_46,((void*)0),0);
-                    if(_if_conditional174=minus,                    _if_conditional174) {
+                    if(minus) {
                         _inf_value22=(struct sNode*)come_calloc(1, sizeof(struct sNode), "05function3.c", 618, "struct sNode");
                         _inf_obj_value22=come_increment_ref_count(((struct sLongNode*)(right_value161=sLongNode_initialize((struct sLongNode*)come_increment_ref_count(((struct sLongNode*)(right_value160=(struct sLongNode*)come_calloc(1, sizeof(struct sLongNode)*(1), "05function3.c", 618, "struct sLongNode")))),-value_63,info))));
                         _inf_value22->_protocol_obj=_inf_obj_value22;
@@ -3698,7 +3698,7 @@ right_value179 = (void*)0;
         }
         else {
             value_66=strtoll(buf_46,((void*)0),0);
-            if(_if_conditional185=minus,            _if_conditional185) {
+            if(minus) {
                 _inf_value24=(struct sNode*)come_calloc(1, sizeof(struct sNode), "05function3.c", 628, "struct sNode");
                 _inf_obj_value24=come_increment_ref_count(((struct sIntNode*)(right_value171=sIntNode_initialize((struct sIntNode*)come_increment_ref_count(((struct sIntNode*)(right_value170=(struct sIntNode*)come_calloc(1, sizeof(struct sIntNode)*(1), "05function3.c", 628, "struct sIntNode")))),-value_66,info))));
                 _inf_value24->_protocol_obj=_inf_obj_value24;

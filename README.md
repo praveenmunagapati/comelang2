@@ -404,6 +404,7 @@ bash fast_build.sh (getting with -O2 comelang2)
 13.1.0 faster code.
 13.2.0 faster code.
 14.0.0 real complete.
+15.0.0 real complete....may be. I will improve shsh, zed, vin and remove memory leaks from this software.
 
 # Language specifications
 

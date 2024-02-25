@@ -2264,7 +2264,6 @@ void* right_value22;
 void* right_value28;
 struct map$2charphsVarph* result_24;
 char* it_27;
-_Bool _for_condtionalA4;
 struct sVar* default_value_30;
 void* right_value29;
 struct sVar* it2_33;
@@ -2286,8 +2285,7 @@ right_value77 = (void*)0;
                         result_24=(struct map$2charphsVarph*)come_increment_ref_count(((struct map$2charphsVarph*)(right_value28=map$2charphsVarph_initialize((struct map$2charphsVarph*)come_increment_ref_count(((struct map$2charphsVarph*)(right_value22=(struct map$2charphsVarph*)come_calloc(1, sizeof(struct map$2charphsVarph)*(1), "./comelang2.h", 1176, "struct map$2charphsVarph"))))))));
                         come_call_finalizer2(map$2charphsVarphp_finalize,right_value22, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                         come_call_finalizer2(map$2charphsVarphp_finalize,right_value28, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                        for(
-                        it_27=map$2charphsVarph_begin(self) ,                        0;                        _for_condtionalA4=                        !map$2charphsVarph_end(self) ,                        _for_condtionalA4;                        it_27=map$2charphsVarph_next(self) ,                        0                        ){
+                        for(                        it_27=map$2charphsVarph_begin(self);                        !map$2charphsVarph_end(self);                        it_27=map$2charphsVarph_next(self)                        ){
                             memset(&default_value_30,0,sizeof(struct sVar*));
                             it2_33=(struct sVar*)come_increment_ref_count(((struct sVar*)(right_value29=map$2charphsVarph_at(self,it_27,default_value_30))));
                             come_call_finalizer2(sVar_finalize,right_value29, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -2307,7 +2305,6 @@ void* right_value23;
 void* right_value24;
 void* right_value25;
 int i_19;
-_Bool _for_condtionalA1;
 void* right_value26;
 void* right_value27;
 struct list$1charp* __dec_obj12;
@@ -2325,8 +2322,7 @@ right_value27 = (void*)0;
                             come_call_finalizer2(sVar_finalize,right_value24, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                             self->item_existance=(_Bool*)come_increment_ref_count(((_Bool*)(right_value25=(_Bool*)come_calloc(1, sizeof(_Bool)*(1*(1024)), "./comelang2.h", 1085, "_Bool"))));
                             right_value25 = come_decrement_ref_count2(right_value25, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                            for(
-                            i_19=0 ,                            0;                            _for_condtionalA1=                            i_19<1024 ,                            _for_condtionalA1;                            i_19++ ,                            0                            ){
+                            for(                            i_19=0;                            i_19<1024;                            i_19++                            ){
                                 self->item_existance[i_19]=(_Bool)0;
                             }
                             self->size=1024;
@@ -2518,18 +2514,15 @@ memset(&__result_obj__, 0, sizeof(void*));
 static void map$2charphsVarphp_finalize(struct map$2charphsVarph* self){
 void* __result_obj__;
 int i_22;
-_Bool _for_condtionalA2;
 _Bool _if_conditional45;
 _Bool _if_conditional46;
 int i_23;
-_Bool _for_condtionalA3;
 _Bool _if_conditional47;
 _Bool _if_conditional48;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_22, 0, sizeof(int));
 memset(&i_23, 0, sizeof(int));
-                                for(
-                                i_22=0 ,                                0;                                _for_condtionalA2=                                i_22<self->size ,                                _for_condtionalA2;                                i_22++ ,                                0                                ){
+                                for(                                i_22=0;                                i_22<self->size;                                i_22++                                ){
                                     if(_if_conditional45=self->item_existance[i_22],                                    _if_conditional45) {
                                         if(_if_conditional46=1,                                        _if_conditional46) {
                                             come_call_finalizer2(sVar_finalize,self->items[i_22], (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -2537,8 +2530,7 @@ memset(&i_23, 0, sizeof(int));
                                     }
                                 }
                                 come_free((char*)self->items);
-                                for(
-                                i_23=0 ,                                0;                                _for_condtionalA3=                                i_23<self->size ,                                _for_condtionalA3;                                i_23++ ,                                0                                ){
+                                for(                                i_23=0;                                i_23<self->size;                                i_23++                                ){
                                     if(_if_conditional47=self->item_existance[i_23],                                    _if_conditional47) {
                                         if(_if_conditional48=1,                                        _if_conditional48) {
                                             self->keys[i_23] = come_decrement_ref_count2(self->keys[i_23], (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -2568,7 +2560,7 @@ memset(&result_26, 0, sizeof(char*));
                                 return __result18__;
                             }
                             self->key_list->it=self->key_list->head;
-                            if(_if_conditional50=self->key_list->it,                            _if_conditional50) {
+                            if(self->key_list->it) {
                                 __result19__ = __result_obj__ = self->key_list->it->item;
                                 return __result19__;
                             }
@@ -2603,7 +2595,7 @@ memset(&result_29, 0, sizeof(char*));
                                 return __result22__;
                             }
                             self->key_list->it=self->key_list->it->next;
-                            if(_if_conditional52=self->key_list->it,                            _if_conditional52) {
+                            if(self->key_list->it) {
                                 __result23__ = __result_obj__ = self->key_list->it->item;
                                 return __result23__;
                             }
@@ -2677,7 +2669,6 @@ _Bool _if_conditional86;
 _Bool _if_conditional87;
 _Bool same_key_exist_63;
 char* it2_66;
-_Bool _for_condtionalA6;
 _Bool _if_conditional92;
 _Bool _if_conditional93;
 struct map$2charphsVarph* __result41__;
@@ -2743,8 +2734,7 @@ memset(&it2_66, 0, sizeof(char*));
                                     }
                                 }
                                 same_key_exist_63=(_Bool)0;
-                                for(
-                                it2_66=list$1charp_begin(self->key_list) ,                                0;                                _for_condtionalA6=                                !list$1charp_end(self->key_list) ,                                _for_condtionalA6;                                it2_66=list$1charp_next(self->key_list) ,                                0                                ){
+                                for(                                it2_66=list$1charp_begin(self->key_list);                                !list$1charp_end(self->key_list);                                it2_66=list$1charp_next(self->key_list)                                ){
                                     if(_if_conditional92=string_equals(it2_66,key),                                    _if_conditional92) {
                                         same_key_exist_63=(_Bool)1;
                                     }
@@ -2771,7 +2761,6 @@ void* right_value32;
 _Bool* item_existance_37;
 int len_38;
 char* it_39;
-_Bool _for_condtionalA5;
 struct sVar* default_value_40;
 void* right_value33;
 struct sVar* it2_41;
@@ -2808,8 +2797,7 @@ right_value34 = (void*)0;
                                         item_existance_37=(_Bool*)come_increment_ref_count(((_Bool*)(right_value32=(_Bool*)come_calloc(1, sizeof(_Bool)*(1*(size_34)), "./comelang2.h", 1333, "_Bool"))));
                                         right_value32 = come_decrement_ref_count2(right_value32, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                                         len_38=0;
-                                        for(
-                                        it_39=map$2charphsVarph_begin(self) ,                                        0;                                        _for_condtionalA5=                                        !map$2charphsVarph_end(self) ,                                        _for_condtionalA5;                                        it_39=map$2charphsVarph_next(self) ,                                        0                                        ){
+                                        for(                                        it_39=map$2charphsVarph_begin(self);                                        !map$2charphsVarph_end(self);                                        it_39=map$2charphsVarph_next(self)                                        ){
                                             memset(&default_value_40,0,sizeof(struct sVar*));
                                             it2_41=((struct sVar*)(right_value33=map$2charphsVarph_at(self,it_39,default_value_40)));
                                             come_call_finalizer2(sVar_finalize,right_value33, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -3071,7 +3059,7 @@ memset(&result_65, 0, sizeof(char*));
                                         return __result33__;
                                     }
                                     self->it=self->head;
-                                    if(_if_conditional89=self->it,                                    _if_conditional89) {
+                                    if(self->it) {
                                         __result34__ = __result_obj__ = self->it->item;
                                         return __result34__;
                                     }
@@ -3106,7 +3094,7 @@ memset(&result_68, 0, sizeof(char*));
                                         return __result37__;
                                     }
                                     self->it=self->it->next;
-                                    if(_if_conditional91=self->it,                                    _if_conditional91) {
+                                    if(self->it) {
                                         __result38__ = __result_obj__ = self->it->item;
                                         return __result38__;
                                     }

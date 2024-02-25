@@ -2150,12 +2150,10 @@ void come_push_stackframe(char* sname, int sline){
 void* __result_obj__;
 _Bool _if_conditional1;
 int i_5;
-_Bool _for_condtionalA1;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_5, 0, sizeof(int));
     if(_if_conditional1=gNumComeStackFrame==16,    _if_conditional1) {
-        for(
-        i_5=0 ,        0;        _for_condtionalA1=        i_5<16-1 ,        _for_condtionalA1;        i_5++ ,        0        ){
+        for(        i_5=0;        i_5<16-1;        i_5++        ){
             gComeStackFrameSName[i_5]=gComeStackFrameSName[i_5+1];
             gComeStackFrameSLine[i_5]=gComeStackFrameSLine[i_5+1];
         }
@@ -2182,18 +2180,16 @@ void come_save_stackframe(char* sname, int sline){
 void* __result_obj__;
 struct buffer* buf_6;
 int i_7;
-_Bool _for_condtionalA2;
 _Bool _if_conditional3;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&buf_6, 0, sizeof(struct buffer*));
 memset(&i_7, 0, sizeof(int));
     buf_6=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 50, "struct buffer"));
     buffer_append_str(buf_6,xsprintf("%s %d\n",sname,sline));
-    for(
-    i_7=gNumComeStackFrame-2 ,    0;    _for_condtionalA2=    i_7>=0 ,    _for_condtionalA2;    i_7-- ,    0    ){
+    for(    i_7=gNumComeStackFrame-2;    i_7>=0;    i_7--    ){
         buffer_append_str(buf_6,xsprintf("%s %d\n",gComeStackFrameSName[i_7],gComeStackFrameSLine[i_7]));
     }
-    if(_if_conditional3=gComeStackFrameBuffer,    _if_conditional3) {
+    if(gComeStackFrameBuffer) {
         free(gComeStackFrameBuffer);
     }
     gComeStackFrameBuffer=strdup(buffer_to_string(buf_6));
@@ -2208,11 +2204,9 @@ memset(&__result_obj__, 0, sizeof(void*));
 void stackframe(){
 void* __result_obj__;
 int i_8;
-_Bool _for_condtionalA3;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_8, 0, sizeof(int));
-    for(
-    i_8=gNumComeStackFrame-1 ,    0;    _for_condtionalA3=    i_8>=0 ,    _for_condtionalA3;    i_8-- ,    0    ){
+    for(    i_8=gNumComeStackFrame-1;    i_8>=0;    i_8--    ){
         printf("%s %d\n",gComeStackFrameSName[i_8],gComeStackFrameSLine[i_8]);
     }
 }
@@ -2412,7 +2406,7 @@ memset(&__result_obj__, 0, sizeof(void*));
     gComeMallocLib=(_Bool)0;
     gComeDebugLib=come_debug;
     gComeGCLib=come_gc;
-    if(_if_conditional21=gComeGCLib,    _if_conditional21) {
+    if(gComeGCLib) {
         GC_init();
         GC_set_warn_proc(GC_ignore_warn_proc);
         GC_enable_incremental();
@@ -2424,7 +2418,7 @@ void come_heap_final(){
 void* __result_obj__;
 _Bool _if_conditional22;
 memset(&__result_obj__, 0, sizeof(void*));
-    if(_if_conditional22=gComeStackFrameBuffer,    _if_conditional22) {
+    if(gComeStackFrameBuffer) {
         free(gComeStackFrameBuffer);
     }
 }
@@ -2437,7 +2431,7 @@ void* __result24__;
 void* __result25__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_9, 0, sizeof(void*));
-    if(_if_conditional23=gComeGCLib,    _if_conditional23) {
+    if(gComeGCLib) {
         result_9=GC_malloc(size);
         memset(result_9,0,size);
         __result24__ = __result_obj__ = result_9;
@@ -2454,8 +2448,8 @@ void* __result_obj__;
 _Bool _if_conditional24;
 _Bool _if_conditional25;
 memset(&__result_obj__, 0, sizeof(void*));
-    if(_if_conditional24=mem,    _if_conditional24) {
-        if(_if_conditional25=gComeGCLib,        _if_conditional25) {
+    if(mem) {
+        if(gComeGCLib) {
         }
         else {
             free(mem);
@@ -2637,8 +2631,8 @@ memset(&finalizer_29, 0, sizeof(void (*)(void*)));
     if(_if_conditional35=mem==((void*)0),    _if_conditional35) {
         return;
     }
-    if(_if_conditional36=call_finalizer_only,    _if_conditional36) {
-        if(_if_conditional37=fun,        _if_conditional37) {
+    if(call_finalizer_only) {
+        if(fun) {
             if(_if_conditional38=protocol_obj&&protocol_fun,            _if_conditional38) {
                 finalizer_24=protocol_fun;
                 finalizer_24(protocol_obj);
@@ -2654,13 +2648,13 @@ memset(&finalizer_29, 0, sizeof(void (*)(void*)));
         }
         count_27=*ref_count_26;
         if(_if_conditional40=!no_free&&(count_27<=0||force_delete_),        _if_conditional40) {
-            if(_if_conditional41=mem,            _if_conditional41) {
+            if(mem) {
                 if(_if_conditional42=protocol_obj&&protocol_fun,                _if_conditional42) {
                     finalizer_28=protocol_fun;
                     finalizer_28(protocol_obj);
                     come_free_object(protocol_obj);
                 }
-                if(_if_conditional43=fun,                _if_conditional43) {
+                if(fun) {
                     finalizer_29=fun;
                     finalizer_29(mem);
                 }
@@ -2695,15 +2689,13 @@ _Bool come_is_contained_element(void** array, int len, void* element){
 void* __result_obj__;
 _Bool found_32;
 int i_33;
-_Bool _for_condtionalA4;
 _Bool _if_conditional45;
 _Bool __result38__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&found_32, 0, sizeof(_Bool));
 memset(&i_33, 0, sizeof(int));
     found_32=(_Bool)0;
-    for(
-    i_33=0 ,    0;    _for_condtionalA4=    i_33<len ,    _for_condtionalA4;    i_33++ ,    0    ){
+    for(    i_33=0;    i_33<len;    i_33++    ){
         if(_if_conditional45=array[i_33]==element,        _if_conditional45) {
             found_32=(_Bool)1;
             break;
@@ -3062,7 +3054,6 @@ int len_64;
 _Bool _if_conditional66;
 int new_size_65;
 int i_66;
-_Bool _for_condtionalA5;
 struct buffer* __result58__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_64, 0, sizeof(int));
@@ -3079,8 +3070,7 @@ memset(&i_66, 0, sizeof(int));
         self->buf=(char*)come_calloc(1, sizeof(char)*(1*(new_size_65)), "libcomelang2-gc.c", 782, "char");
         self->size=new_size_65;
     }
-    for(
-    i_66=self->len ,    0;    _for_condtionalA5=    i_66<len_64 ,    _for_condtionalA5;    i_66++ ,    0    ){
+    for(    i_66=self->len;    i_66<len_64;    i_66++    ){
         self->buf[i_66]=0;
     }
     self->len=len_64;
@@ -3462,7 +3452,6 @@ _Bool _if_conditional93;
 char* __result105__;
 struct buffer* buf_73;
 int i_74;
-_Bool _for_condtionalA6;
 char* __result106__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&buf_73, 0, sizeof(struct buffer*));
@@ -3472,8 +3461,7 @@ memset(&i_74, 0, sizeof(int));
         return __result105__;
     }
     buf_73=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1014, "struct buffer"));
-    for(
-    i_74=0 ,    0;    _for_condtionalA6=    i_74<right ,    _for_condtionalA6;    i_74++ ,    0    ){
+    for(    i_74=0;    i_74<right;    i_74++    ){
         buffer_append_str(buf_73,self);
     }
     __result106__ = __result_obj__ = buffer_to_string(buf_73);
@@ -3486,7 +3474,6 @@ _Bool _if_conditional94;
 char* __result107__;
 struct buffer* buf_75;
 int i_76;
-_Bool _for_condtionalA7;
 char* __result108__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&buf_75, 0, sizeof(struct buffer*));
@@ -3496,8 +3483,7 @@ memset(&i_76, 0, sizeof(int));
         return __result107__;
     }
     buf_75=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1028, "struct buffer"));
-    for(
-    i_76=0 ,    0;    _for_condtionalA7=    i_76<right ,    _for_condtionalA7;    i_76++ ,    0    ){
+    for(    i_76=0;    i_76<right;    i_76++    ){
         buffer_append_str(buf_75,self);
     }
     __result108__ = __result_obj__ = buffer_to_string(buf_75);
@@ -3837,7 +3823,6 @@ char* __result147__;
 int len_85;
 char* result_86;
 int i_87;
-_Bool _for_condtionalA8;
 char* __result148__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_85, 0, sizeof(int));
@@ -3849,8 +3834,7 @@ memset(&i_87, 0, sizeof(int));
     }
     len_85=strlen(str);
     result_86=(char*)come_calloc(1, sizeof(char)*(1*(len_85+1)), "libcomelang2-gc.c", 1245, "char");
-    for(
-    i_87=0 ,    0;    _for_condtionalA8=    i_87<len_85 ,    _for_condtionalA8;    i_87++ ,    0    ){
+    for(    i_87=0;    i_87<len_85;    i_87++    ){
         result_86[i_87]=str[len_85-i_87-1];
     }
     result_86[len_85]=0;
@@ -3865,7 +3849,6 @@ char* __result149__;
 int len_88;
 char* result_89;
 int i_90;
-_Bool _for_condtionalA9;
 char* __result150__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_88, 0, sizeof(int));
@@ -3877,8 +3860,7 @@ memset(&i_90, 0, sizeof(int));
     }
     len_88=strlen(str);
     result_89=(char*)come_calloc(1, sizeof(char)*(1*(len_88+1)), "libcomelang2-gc.c", 1262, "char");
-    for(
-    i_90=0 ,    0;    _for_condtionalA9=    i_90<len_88 ,    _for_condtionalA9;    i_90++ ,    0    ){
+    for(    i_90=0;    i_90<len_88;    i_90++    ){
         result_89[i_90]=str[len_88-i_90-1];
     }
     result_89[len_88]=0;
@@ -4248,7 +4230,6 @@ struct list$1charph* __result183__;
 struct list$1charph* result_107;
 struct buffer* str_108;
 int i_109;
-_Bool _for_condtionalA10;
 _Bool _if_conditional152;
 _Bool _if_conditional155;
 struct list$1charph* __result185__;
@@ -4262,8 +4243,7 @@ memset(&i_109, 0, sizeof(int));
     }
     result_107=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1550, "struct list$1charph"));
     str_108=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1552, "struct buffer"));
-    for(
-    i_109=0 ,    0;    _for_condtionalA10=    i_109<charp_length(self) ,    _for_condtionalA10;    i_109++ ,    0    ){
+    for(    i_109=0;    i_109<charp_length(self);    i_109++    ){
         if(_if_conditional152=self[i_109]==c,        _if_conditional152) {
             list$1charph_push_back(result_107,__builtin_string(str_108->buf));
             buffer_reset(str_108);
@@ -4340,7 +4320,6 @@ struct list$1charph* __result186__;
 struct list$1charph* result_113;
 struct buffer* str_114;
 int i_115;
-_Bool _for_condtionalA11;
 _Bool _if_conditional157;
 _Bool _if_conditional158;
 struct list$1charph* __result187__;
@@ -4354,8 +4333,7 @@ memset(&i_115, 0, sizeof(int));
     }
     result_113=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1576, "struct list$1charph"));
     str_114=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1578, "struct buffer"));
-    for(
-    i_115=0 ,    0;    _for_condtionalA11=    i_115<charp_length(self) ,    _for_condtionalA11;    i_115++ ,    0    ){
+    for(    i_115=0;    i_115<charp_length(self);    i_115++    ){
         if(_if_conditional157=self[i_115]==c,        _if_conditional157) {
             list$1charph_push_back(result_113,__builtin_string(str_114->buf));
             buffer_reset(str_114);
@@ -4529,7 +4507,7 @@ _Bool _if_conditional170;
 char* __result204__;
 char* __result205__;
 memset(&__result_obj__, 0, sizeof(void*));
-    if(_if_conditional170=self,    _if_conditional170) {
+    if(self) {
         __result204__ = __result_obj__ = __builtin_string("true");
         return __result204__;
     }
@@ -5027,7 +5005,7 @@ memset(&result2_131, 0, sizeof(int));
         __result268__ = -1;
         return __result268__;
     }
-    if(_if_conditional204=append,    _if_conditional204) {
+    if(append) {
         f_129=fopen(file_name,"a");
     }
     else {
@@ -5074,7 +5052,7 @@ memset(&result2_134, 0, sizeof(int));
         __result273__ = -1;
         return __result273__;
     }
-    if(_if_conditional209=append,    _if_conditional209) {
+    if(append) {
         f_132=fopen(file_name,"a");
     }
     else {
@@ -5244,7 +5222,7 @@ memset(&f_149, 0, sizeof(struct _IO_FILE*));
         return __result288__;
     }
     f_149=fopen(path,mode);
-    if(_if_conditional224=f_149,    _if_conditional224) {
+    if(f_149) {
         block(parent,f_149);
         if(_if_conditional225=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional225) {
             fclose(f_149);
@@ -5362,12 +5340,10 @@ memset(&__result_obj__, 0, sizeof(void*));
 void int_times(int self, void* parent, void (*block)(void*,int)){
 void* __result_obj__;
 int i_154;
-_Bool _for_condtionalA12;
 _Bool _if_conditional231;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_154, 0, sizeof(int));
-    for(
-    i_154=0 ,    0;    _for_condtionalA12=    i_154<self ,    _for_condtionalA12;    i_154++ ,    0    ){
+    for(    i_154=0;    i_154<self;    i_154++    ){
         block(parent,i_154);
         if(_if_conditional231=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional231) {
             return;
