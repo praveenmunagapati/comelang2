@@ -198,7 +198,7 @@ string parse_word(sInfo* info)
         }
         else if(*info->p == ' ' ||  *info->p == '\t' || *info->p == '\n' 
                 || *info->p == '\0' || *info->p == ';' || *info->p == '&' 
-                || *info->p == '|') 
+                || *info->p == '|' || *info->p == '>' || (strlen(info->p) >= strlen("2>&1") && memcmp(info->p, "2>&1", strlen("2>&1")) == 0)) 
         {
             break;
         }
@@ -207,6 +207,8 @@ string parse_word(sInfo* info)
             info->p++;
         }
     }
+    
+    skip_spaces(info);
     
     parse_redirect(info);
     
@@ -784,6 +786,10 @@ bool run_command(int n, sInfo* info)
             close(pipes[1]);
             dup2(pipes[0], 0);
             close(pipes[0]);
+            
+            if(!redirect(info->commands.length()-n-1, info)) {
+                return false;
+            }
             
             list<string>* args = info->commands[info->commands.length()-n-1].args;
             char* argv[1024];
