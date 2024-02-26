@@ -1053,7 +1053,43 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
         define_variable = false;
     }
     
-    if(define_struct_nobody) {
+    if(buf === "template") {
+        string word = parse_word();
+        
+        if(*info->p == '<') {
+            info->p++;
+            skip_spaces_and_lf();
+            
+            info->method_generics_type_names = new list<string>();
+            
+            while(true) {
+                if(*info->p == '>') {
+                    info->p++;
+                    skip_spaces_and_lf();
+                    break;
+                }
+                else if(*info->p == ',') {
+                    info->p++;
+                    skip_spaces_and_lf(info);
+                }
+                else if(*info->p == '\0') {
+                    err_msg(info, "unexpected source end");
+                    exit(2);
+                }
+                else {
+                    string word = parse_word();
+                    info->method_generics_type_names.push_back(word);
+                }
+            }
+            
+            sNode*% node = parse_function(info);
+            
+            info->method_generics_type_names = null;
+            
+            return node;
+        }
+    }
+    else if(define_struct_nobody) {
     }
     else if(define_variable_between_brace) {
         info.p = head;

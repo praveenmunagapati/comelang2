@@ -7,6 +7,7 @@
 
 #define FUN_VERSION_MAX 128
 #define GENERICS_TYPE_MAX 12
+#define METHOD_GENERICS_TYPE_MAX 7
 #define RIGHT_VALUE_OBJECT_NUM_MAX 1024
 
 #define METHOD_BLOCK_RESULT_KIND_BREAK 1
@@ -282,6 +283,7 @@ struct sInfo
     bool last_statment_is_return;
     
     list<string>*% generics_type_names;
+    list<string>*% method_generics_type_names;
     sType*% impl_type;
     
     int current_stack_num;

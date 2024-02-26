@@ -443,6 +443,10 @@ void init_classes(sInfo* info)
         string generics_type = xsprintf("generics_type%d", i);
         info.classes.insert(generics_type, new sClass(generics_type, generics:true, generics_num:i));
     }
+    for(int i=0; i<METHOD_GENERICS_TYPE_MAX; i++) {
+        string generics_type = xsprintf("mgenerics_type%d", i);
+        info.classes.insert(generics_type, new sClass(generics_type, method_generics:true, method_generics_num:i));
+    }
     
     char cmd[1024];
     snprintf(cmd, 1024, "which /opt/homebrew/opt/llvm/bin/clang-cpp 1> /dev/null 2>/dev/null");

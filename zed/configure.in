@@ -21,6 +21,7 @@ LOGGING=0
 ENABLE_NO_GC=0
 
 AC_ARG_WITH(debug,              [  --with-debug              include debug info ], [ DEBUGGING=1; ], [])
+AC_ARG_WITH(come-debug,         [  --with-come-debug         include come debug info ], [ DEBUGGING=2; ], [])
 AC_ARG_WITH(optimize,           [  --with-optimize           with optimize(-O in CFLAGS) ], [ ENABLE_OPTIMIZE=1 ], [ ENABLE_OPTIMIZE=0 ])
 
 ##############################################################
@@ -205,6 +206,11 @@ fi
 if test $DEBUGGING = 1
 then
     CFLAGS="$CFLAGS -gdwarf-4 -str"
+fi
+
+if test $DEBUGGING = 2
+then
+    CFLAGS="$CFLAGS -gdwarf-4 -str -cg"
 fi
 
 export CFLAGS

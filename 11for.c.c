@@ -469,6 +469,7 @@ struct sInfo
     _Bool no_assign;
     _Bool last_statment_is_return;
     struct list$1charph* generics_type_names;
+    struct list$1charph* method_generics_type_names;
     struct sType* impl_type;
     int current_stack_num;
     int num_method_block;

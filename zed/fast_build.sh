@@ -2,11 +2,11 @@ if ! test -e Makefile
 then
     if uname -a | grep Android
     then
-        ./configure --prefix=$HOME
+        ./configure --prefix=$HOME --with-come-debug
 
         make && make install
     else
-        ./configure
+        ./configure --with-come-debug
 
         make && sudo make install
     fi
