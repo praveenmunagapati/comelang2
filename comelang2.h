@@ -935,7 +935,6 @@ impl list <T>
 
         return result;
     }
-/*
     template<R> list<R>*% map2(list<T>* self, void* parent, R (*block)(void*, T&))
     {
         auto result = new list<R>.initialize();
@@ -953,7 +952,6 @@ impl list <T>
 
         return result;
     }
-*/
     list<T>*% reverse(list<T>* self) {
         list<T>%* result = new list<T>();
 
