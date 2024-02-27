@@ -114,6 +114,51 @@ sType*% solve_generics(sType* type, sType* generics_type, sInfo* info)
             }
         }
     }
+    else if(klass->mMethodGenerics && info->method_generics_types) {
+        int generics_number = klass->mMethodGenericsNum;
+
+        if(generics_number >= info->method_generics_types.length())
+        {
+            err_msg(info, "invalid method generics parametor number");
+            exit(2);
+        }
+        
+        var array_num = clone type->mArrayNum;
+        bool immutable_ = type->mImmutable;
+        int pointer_num = type->mPointerNum;
+        bool heap = type->mHeap;
+        
+        bool no_heap = type->mNoHeap;
+        bool no_calling_destructor = type->mNoCallingDestructor;
+        bool null_value = type->mNullValue;
+        
+        result = clone info->method_generics_types[generics_number];
+
+        if(heap) {
+            result->mHeap = heap;
+        }
+        if(no_heap) {
+            result->mNoHeap = true;
+            result->mHeap = false;
+        }
+        if(no_calling_destructor) {
+            result->mNoCallingDestructor = true;
+        }
+        if(immutable_) {
+            result->mImmutable = immutable_;
+        }
+        if(array_num.length() > 0) {
+            result->mArrayNum = array_num;
+        }
+        
+        if(null_value) {
+            result->mNullValue = null_value;
+        }
+        
+        if(pointer_num > 0) {
+            result->mPointerNum += pointer_num;
+        }
+    }
     else {
         result.mGenericsTypes.reset();
         foreach(it, type->mGenericsTypes) {

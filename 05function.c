@@ -191,6 +191,8 @@ bool sReturnNode*::compile(sReturnNode* self, sInfo* info)
         
         sType*% come_value_type = solve_generics(come_value.type, info.generics_type, info);
         
+        info->function_result_type = clone come_value.type;
+        
         static int num_result = 0;
         string var_name = xsprintf("__result%d__", ++num_result);
         int num_result_stack = num_result;

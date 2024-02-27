@@ -92,6 +92,9 @@ bool is_no_contained_generics_types(sType* type, sInfo* info)
     if(klass->mGenerics) {
         return false;
     }
+    if(klass->mMethodGenerics) {
+        return false;
+    }
     for(int i=0; i<type->mGenericsTypes.length(); i++) {
         bool result = is_no_contained_generics_types(type->mGenericsTypes[i], info);
         

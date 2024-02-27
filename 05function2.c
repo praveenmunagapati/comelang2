@@ -156,10 +156,11 @@ sBlock*% sBlock*::initialize(sBlock*% self, sInfo* info)
     return self;
 }
 
-sGenericsFun*% sGenericsFun*::initialize(sGenericsFun*% self, sType*% impl_type, list<string>* generics_type_names, string name, sType*% result_type, list<sType*%>*% param_types, list<string>*% param_names, list<string>*% param_default_parametors, bool var_args, string block, sInfo* info, string generics_sname, int generics_sline)
+sGenericsFun*% sGenericsFun*::initialize(sGenericsFun*% self, sType*% impl_type, list<string>* generics_type_names, list<string>* method_generics_type_names, string name, sType*% result_type, list<sType*%>*% param_types, list<string>*% param_names, list<string>*% param_default_parametors, bool var_args, string block, sInfo* info, string generics_sname, int generics_sline)
 {
     self.mImplType = clone impl_type;
     self.mGenericsTypeNames = clone generics_type_names;
+    self.mMethodGenericsTypeNames = clone method_generics_type_names;
     
     self.mName = name;
     self.mResultType = result_type;
@@ -758,7 +759,7 @@ int transpile(sInfo* info) version 5
         var name = string("come_memdup");
         var result_type = new sType("void*");
         var param_types = [new sType("void*"), new sType("char*"), new sType("int"), new sType("char*")];
-        var param_names = [string("block"), string("sname"), string("sline"), string("char*"), string("class_name")];
+        var param_names = [string("block"), string("sname"), string("sline"), string("class_name")];
         var param_default_parametors = new list<string>();
         param_default_parametors.push_back(null);
         param_default_parametors.push_back(string("null"));
@@ -768,6 +769,21 @@ int transpile(sInfo* info) version 5
             , param_default_parametors, true@external, false@var_args
             , null@block, false@static_
             , string("void* come_memdup(void* block, char* sname, int sline, char* class_name)")
+            , string("")
+            , info);
+        
+        info.funcs.insert(string(name), main_fun);
+    }
+    {
+        var name = string("memset");
+        var result_type = new sType("void*");
+        var param_types = [new sType("void*"), new sType("int"), new sType("long")];
+        var param_names = [string("b"), string("c"), string("len")];
+        var param_default_parametors = new list<string>();
+        var main_fun = new sFun(name, result_type, param_types, param_names
+            , param_default_parametors, true@external, false@var_args
+            , null@block, false@static_
+            , string("void* memset(void* b, int c, size_t len)")
             , string("")
             , info);
         
@@ -1062,29 +1078,15 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
             
             info->method_generics_type_names = new list<string>();
             
-            while(true) {
-                if(*info->p == '>') {
-                    info->p++;
-                    skip_spaces_and_lf();
-                    break;
-                }
-                else if(*info->p == ',') {
-                    info->p++;
-                    skip_spaces_and_lf(info);
-                }
-                else if(*info->p == '\0') {
-                    err_msg(info, "unexpected source end");
-                    exit(2);
-                }
-                else {
-                    string word = parse_word();
-                    info->method_generics_type_names.push_back(word);
-                }
-            }
+            string word = parse_word();
+            info->method_generics_type_names.push_back(clone word);
+            
+            expected_next_character('>');
+            
+            char* p = info->p;
+            int sline = info->sline;
             
             sNode*% node = parse_function(info);
-            
-            info->method_generics_type_names = null;
             
             return node;
         }
@@ -1250,10 +1252,256 @@ bool is_type_name(char* buf, sInfo* info=info)
     sType* type = info.types[buf];
     sClass* generics_class = info.generics_classes[buf];
     bool generics_type_name = info.generics_type_names.contained(string(buf));
+    bool mgenerics_type_name = info.method_generics_type_names && info.method_generics_type_names.contained(string(buf));
     
-    return generics_class || generics_type_name || klass || type || buf === "const" || buf === "register" || buf === "static" || buf === "volatile" || buf === "unsigned" || buf === "immutable" || buf === "mutable" || buf === "struct" || buf === "enum" || buf === "union" || buf === "extern" || buf === "inline" || buf === "__inline" || buf === "__always_inline" || buf === "__inline__" || buf === "__extension__" || buf === "_Noreturn" || buf === "__typeof__";
-
+    return generics_class || generics_type_name || mgenerics_type_name || klass || type || buf === "const" || buf === "register" || buf === "static" || buf === "volatile" || buf === "unsigned" || buf === "immutable" || buf === "mutable" || buf === "struct" || buf === "enum" || buf === "union" || buf === "extern" || buf === "inline" || buf === "__inline" || buf === "__always_inline" || buf === "__inline__" || buf === "__extension__" || buf === "_Noreturn" || buf === "__typeof__";
 }
+
+/*
+bool create_generics_fun(string fun_name, sGenericsFun* generics_fun, sType* generics_type, sInfo* info)
+{
+    sFun* caller_fun = info->caller_fun;
+    info->caller_fun = info->come_fun;
+    int caller_line = info->caller_line;
+    info->caller_line = info->sline;
+    char* caller_sname = info->caller_sname;
+    info->caller_sname = info->sname;
+    
+    string last_code = info.module.mLastCode;
+    info.module.mLastCode = null;
+    string last_code2 = info.module.mLastCode2;
+    info.module.mLastCode2 = null;
+    string last_code3 = info.module.mLastCode3;
+    info.module.mLastCode3 = null;
+    
+    string sname_top = string(info->sname);
+    int sline_top = info->sline;
+    
+    
+    if(info.method_generics_type_names && info.method_generics_type_names.length() > 0) {
+        if(generics_type->mNoSolvedGenericsType.v1) {
+            generics_type = generics_type->mNoSolvedGenericsType.v1;
+        }
+        sFun* funX = info.funcs[fun_name];
+        if(funX) {
+            return true;
+        }
+    
+        sType*% result_type = solve_generics(generics_fun->mResultType, generics_type, info);
+        
+        list<sType*%>*% param_types = new list<sType*%>();
+        foreach(it, generics_fun->mParamTypes) {
+            sType*% param_type = solve_generics(clone it, generics_type, info);
+            
+            param_type->mFunctionParam = true;
+    
+            param_types.add(clone param_type);
+        }
+        list<string>*% param_names = clone generics_fun->mParamNames;
+        
+        var param_default_parametors = clone generics_fun->mParamDefaultParametors;
+        
+        char* p = info.p;
+        int sline = info.sline;
+        string sname = info.sname;
+        char* head = info.head;
+        buffer*% source = info.source;
+        
+        info.source = generics_fun->mBlock.to_buffer();
+        info.p = info.source.buf;
+        info.head = info.source.buf;
+        
+        sType*% generics_type_saved = info->generics_type;
+        info->generics_type = clone generics_type;
+        
+        info.generics_type_names.reset();
+        info.generics_type_names = clone generics_fun.mGenericsTypeNames;
+        
+        info.method_generics_type_names = clone generics_fun.mMethodGenericsTypeNames;
+        
+        info.sline = generics_fun->mGenericsSLine;
+        info.sname = generics_fun->mGenericsSName;
+        
+        sBlock*% block = parse_block();
+        
+        info.head = head;
+        info.source = source;
+        info.p = p;
+        info.sline = sline;
+        info.sname = sname;
+        
+        result_type->mInline = false;
+        
+        bool var_args = generics_fun.mVarArgs;
+        var fun = new sFun(fun_name, result_type
+                        , clone param_types
+                        , param_names, param_default_parametors, false@external
+                        , var_args, block, true@static_, string(""), string(""), info);
+        
+        info.funcs.insert(clone fun_name, fun);
+        
+        sNode*% node = new sFunNode(fun, info) implements sNode;
+        
+        if(!node_compile(node)) {
+            return false
+        }
+        
+        info->generics_type = generics_type_saved;
+        info.generics_type_names.reset();
+        
+        info->method_generics_types = new list<sType*>();
+        info->method_generics_types.push_back(clone info->function_result_type);
+        
+        //info.funcs[fun_name] = null;
+    
+        sType*% result_type2 = solve_generics(generics_fun->mResultType, generics_type, info);
+        
+        param_types.reset();
+        foreach(it, generics_fun->mParamTypes) {
+            sType*% param_type = solve_generics(clone it, generics_type, info);
+            
+            param_type->mFunctionParam = true;
+    
+            param_types.add(clone param_type);
+        }
+        
+        p = info.p;
+        sline = info.sline;
+        sname = info.sname;
+        head = info.head;
+        source = info.source;
+        
+        info.source = generics_fun->mBlock.to_buffer();
+        info.p = info.source.buf;
+        info.head = info.source.buf;
+        
+        info.generics_type_names.reset();
+        info.generics_type_names = clone generics_fun.mGenericsTypeNames;
+        
+        info.method_generics_type_names = clone generics_fun.mMethodGenericsTypeNames;
+        
+        info.sline = generics_fun->mGenericsSLine;
+        info.sname = generics_fun->mGenericsSName;
+        
+        block = parse_block();
+        
+        info.head = head;
+        info.source = source;
+        info.p = p;
+        info.sline = sline;
+        info.sname = sname;
+        
+        result_type2->mInline = false;
+        
+        var_args = generics_fun.mVarArgs;
+        sFun*% fun2 = new sFun(clone fun_name, result_type2
+                        , clone param_types
+                        , param_names, param_default_parametors, false@external
+                        , var_args, block, true@static_, string(""), string(""), info);
+        
+        info.funcs.insert(clone fun_name, fun2);
+        
+        sNode*% node2 = new sFunNode(fun2, info) implements sNode;
+        
+        if(!node_compile(node2)) {
+            return false
+        }
+        
+        info->generics_type = generics_type_saved;
+        info.generics_type_names.reset();
+        
+        info->method_generics_type_names = null;
+        info->method_generics_types = null;
+        
+        info->generics_type = generics_type_saved;
+        info.generics_type_names.reset();
+    }
+    else {
+        if(generics_type->mNoSolvedGenericsType.v1) {
+            generics_type = generics_type->mNoSolvedGenericsType.v1;
+        }
+        sFun* funX = info.funcs[fun_name];
+        if(funX) {
+            return true;
+        }
+    
+        sType*% result_type = solve_generics(generics_fun->mResultType, generics_type, info);
+        
+        list<sType*%>*% param_types = new list<sType*%>();
+        foreach(it, generics_fun->mParamTypes) {
+            sType*% param_type = solve_generics(clone it, generics_type, info);
+            
+            param_type->mFunctionParam = true;
+    
+            param_types.add(clone param_type);
+        }
+        list<string>*% param_names = clone generics_fun->mParamNames;
+        
+        var param_default_parametors = clone generics_fun->mParamDefaultParametors;
+        
+        char* p = info.p;
+        int sline = info.sline;
+        string sname = info.sname;
+        char* head = info.head;
+        buffer*% source = info.source;
+        
+        info.source = generics_fun->mBlock.to_buffer();
+        info.p = info.source.buf;
+        info.head = info.source.buf;
+        
+        sType*% generics_type_saved = info->generics_type;
+        info->generics_type = clone generics_type;
+        
+        info.generics_type_names.reset();
+        info.generics_type_names = clone generics_fun.mGenericsTypeNames;
+        
+        info.method_generics_type_names = clone generics_fun.mMethodGenericsTypeNames;
+        
+        info.sline = generics_fun->mGenericsSLine;
+        info.sname = generics_fun->mGenericsSName;
+        
+        sBlock*% block = parse_block();
+        
+        info.head = head;
+        info.source = source;
+        info.p = p;
+        info.sline = sline;
+        info.sname = sname;
+        
+        result_type->mInline = false;
+        
+        bool var_args = generics_fun.mVarArgs;
+        var fun = new sFun(fun_name, result_type
+                        , clone param_types
+                        , param_names, param_default_parametors, false@external
+                        , var_args, block, true@static_, string(""), string(""), info);
+        
+        info.funcs.insert(clone fun_name, fun);
+        
+        sNode*% node = new sFunNode(fun, info) implements sNode;
+        
+        if(!node_compile(node)) {
+            return false
+        }
+        
+        info->generics_type = generics_type_saved;
+        info.generics_type_names.reset();
+    }
+    
+    info->sname = string(sname_top);
+    info->sline = sline_top;
+    
+    info.module.mLastCode = last_code;
+    info.module.mLastCode2 = last_code2;
+    info.module.mLastCode3 = last_code3;
+    
+    info->caller_fun = caller_fun;
+    info->caller_line = caller_line;
+    info->caller_sname = caller_sname;
+    
+    return true;
+}
+*/
 
 bool create_generics_fun(string fun_name, sGenericsFun* generics_fun, sType* generics_type, sInfo* info)
 {
@@ -1337,6 +1585,73 @@ bool create_generics_fun(string fun_name, sGenericsFun* generics_fun, sType* gen
     
     if(!node_compile(node)) {
         return false
+    }
+    
+    if(info.method_generics_type_names && info.method_generics_type_names.length() > 0) {
+        info->method_generics_types = new list<sType*>();
+        info->method_generics_types.push_back(clone info->function_result_type);
+        
+        info.funcs.remove(string(fun_name));
+
+        sType*% result_type = solve_generics(generics_fun->mResultType, generics_type, info);
+        
+        list<sType*%>*% param_types = new list<sType*%>();
+        foreach(it, generics_fun->mParamTypes) {
+            sType*% param_type = solve_generics(clone it, generics_type, info);
+            
+            param_type->mFunctionParam = true;
+    
+            param_types.add(clone param_type);
+        }
+        list<string>*% param_names = clone generics_fun->mParamNames;
+        
+        var param_default_parametors = clone generics_fun->mParamDefaultParametors;
+        
+        char* p = info.p;
+        int sline = info.sline;
+        string sname = info.sname;
+        char* head = info.head;
+        buffer*% source = info.source;
+        
+        info.source = generics_fun->mBlock.to_buffer();
+        info.p = info.source.buf;
+        info.head = info.source.buf;
+        
+        sType*% generics_type_saved = info->generics_type;
+        info->generics_type = clone generics_type;
+        
+        info.generics_type_names.reset();
+        info.generics_type_names = clone generics_fun.mGenericsTypeNames;
+        
+        info.sline = generics_fun->mGenericsSLine;
+        info.sname = generics_fun->mGenericsSName;
+        
+        sBlock*% block = parse_block();
+        
+        info.head = head;
+        info.source = source;
+        info.p = p;
+        info.sline = sline;
+        info.sname = sname;
+        
+        result_type->mInline = false;
+        
+        bool var_args = generics_fun.mVarArgs;
+        var fun = new sFun(fun_name, result_type
+                        , clone param_types
+                        , param_names, param_default_parametors, false@external
+                        , var_args, block, true@static_, string(""), string(""), info);
+        
+        info.funcs.insert(clone fun_name, fun);
+        
+        sNode*% node = new sFunNode(fun, info) implements sNode;
+        
+        if(!node_compile(node)) {
+            return false
+        }
+        
+        info.method_generics_type_names.reset();
+        info->method_generics_types.reset();
     }
     
     info->generics_type = generics_type_saved;
@@ -1478,7 +1793,7 @@ sNode*% parse_function(sInfo* info)
         
         string block = skip_block(info);
         
-        var fun = new sGenericsFun(info.impl_type, clone info.generics_type_names, string(fun_name), result_type, param_types, param_names, param_default_parametors, var_args, block, info, string(generics_sname), generics_sline);
+        var fun = new sGenericsFun(info.impl_type, clone info.generics_type_names, clone info.method_generics_type_names, string(fun_name), result_type, param_types, param_names, param_default_parametors, var_args, block, info, string(generics_sname), generics_sline);
         
         string fun_name3 = xsprintf("%s_%s", none_generics_name, base_fun_name);
         

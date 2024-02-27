@@ -179,6 +179,7 @@ struct sGenericsFun
 {
     sType*% mImplType;
     list<string>*% mGenericsTypeNames;
+    list<string>*% mMethodGenericsTypeNames;
     
     string mName;
     
@@ -309,6 +310,8 @@ struct sInfo
     
     bool without_semicolon;
     bool writing_source_file_position;
+    
+    sType*% function_result_type;
 };
 
 /////////////////////////////////////////////////////////////////////

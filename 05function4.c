@@ -1358,7 +1358,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
                 }
             }
         }
-        else if(info.method_generics_type_names.contained(type_name)) {
+        else if(info.method_generics_type_names && info.method_generics_type_names.contained(type_name)) {
             for(int i=0; i<info.method_generics_type_names.length(); i++) {
                 if(info.method_generics_type_names[i] === type_name) {
                     result_type = new sType(xsprintf("mgenerics_type%d", i));
@@ -1422,7 +1422,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
                 }
             }
         }
-        else if(info.method_generics_type_names.contained(type_name)) {
+        else if(info.method_generics_type_names && info.method_generics_type_names.contained(type_name)) {
             for(int i=0; i<info.method_generics_type_names.length(); i++) {
                 if(info.method_generics_type_names[i] === type_name) {
                     result_type = new sType(xsprintf("mgenerics_type%d", i));
@@ -1579,7 +1579,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             type->mPointerNum += pointer_num;
             type->mHeap = type->mHeap || heap;
         }
-        else if(info.method_generics_type_names.contained(type_name)) {
+        else if(info.method_generics_type_names && info.method_generics_type_names.contained(type_name)) {
             for(int i=0; i<info.method_generics_type_names.length(); i++) {
                 if(info.method_generics_type_names[i] === type_name) {
                     type = new sType(xsprintf("mgenerics_type%d", i));

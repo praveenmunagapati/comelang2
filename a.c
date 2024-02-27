@@ -10,7 +10,7 @@ struct sData<T>
 impl sData<T>
 {
     template<R> R map(sData<T>* self, R str) {
-        return self.a.to_string() + str;
+        return self.a.to_string();
     }
 }
 
@@ -22,7 +22,7 @@ int main(int argc, char** argv)
     data.a = 111;
     data.b = 222;
     
-    string xxx = data.map(s"ABC");
+    var xxx = data.map(s"ABC").scan(/./).join("+");
     
     puts(xxx);
     
