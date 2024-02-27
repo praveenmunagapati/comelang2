@@ -2340,8 +2340,8 @@ long int wcslcat(int* anonymous_var_nameX1068, const int* anonymous_var_nameX106
 
 long int wcslcpy(int* anonymous_var_nameX1071, const int* anonymous_var_nameX1072, long int anonymous_var_nameX1073);
 
-static void list_item$1charphp_finalize(struct list_item$1charph* self);
 static void list$1charphp_finalize(struct list$1charph* self);
+static void list_item$1charphp_finalize(struct list_item$1charph* self);
 unsigned int GC_get_version();
 
 unsigned long int GC_get_gc_no();
@@ -2865,7 +2865,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value0 = (void*)0;
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
 right_value1 = (void*)0;
-    result_0=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "/usr/local/include/comelang2.h", 1934, "struct smart_pointer$1char"))));
+    result_0=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "/usr/local/include/comelang2.h", 1953, "struct smart_pointer$1char"))));
     come_call_finalizer2(smart_pointer$1charp_finalize,right_value0, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj1=result_0->memory;
     result_0->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value1=buffer_clone(self))));
@@ -2888,7 +2888,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value2 = (void*)0;
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
 right_value3 = (void*)0;
-    result_1=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value2=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "/usr/local/include/comelang2.h", 1944, "struct smart_pointer$1char"))));
+    result_1=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value2=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "/usr/local/include/comelang2.h", 1963, "struct smart_pointer$1char"))));
     come_call_finalizer2(smart_pointer$1charp_finalize,right_value2, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj2=result_1->memory;
     result_1->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value3=buffer_clone(self))));
@@ -2911,7 +2911,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value4 = (void*)0;
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
 right_value5 = (void*)0;
-    result_2=(struct smart_pointer$1short*)come_increment_ref_count(((struct smart_pointer$1short*)(right_value4=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "/usr/local/include/comelang2.h", 1954, "struct smart_pointer$1short"))));
+    result_2=(struct smart_pointer$1short*)come_increment_ref_count(((struct smart_pointer$1short*)(right_value4=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "/usr/local/include/comelang2.h", 1973, "struct smart_pointer$1short"))));
     come_call_finalizer2(smart_pointer$1shortp_finalize,right_value4, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj3=result_2->memory;
     result_2->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value5=buffer_clone(self))));
@@ -2934,7 +2934,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value6 = (void*)0;
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
 right_value7 = (void*)0;
-    result_3=(struct smart_pointer$1int*)come_increment_ref_count(((struct smart_pointer$1int*)(right_value6=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "/usr/local/include/comelang2.h", 1964, "struct smart_pointer$1int"))));
+    result_3=(struct smart_pointer$1int*)come_increment_ref_count(((struct smart_pointer$1int*)(right_value6=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "/usr/local/include/comelang2.h", 1983, "struct smart_pointer$1int"))));
     come_call_finalizer2(smart_pointer$1intp_finalize,right_value6, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj4=result_3->memory;
     result_3->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value7=buffer_clone(self))));
@@ -2957,7 +2957,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value8 = (void*)0;
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
 right_value9 = (void*)0;
-    result_4=(struct smart_pointer$1long*)come_increment_ref_count(((struct smart_pointer$1long*)(right_value8=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "/usr/local/include/comelang2.h", 1974, "struct smart_pointer$1long"))));
+    result_4=(struct smart_pointer$1long*)come_increment_ref_count(((struct smart_pointer$1long*)(right_value8=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "/usr/local/include/comelang2.h", 1993, "struct smart_pointer$1long"))));
     come_call_finalizer2(smart_pointer$1longp_finalize,right_value8, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj5=result_4->memory;
     result_4->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value9=buffer_clone(self))));
@@ -3375,6 +3375,22 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 
 
+static void list$1charphp_finalize(struct list$1charph* self){
+void* __result_obj__;
+struct list_item$1charph* it_5;
+_Bool _while_condtional1;
+struct list_item$1charph* prev_it_6;
+memset(&__result_obj__, 0, sizeof(void*));
+memset(&it_5, 0, sizeof(struct list_item$1charph*));
+memset(&prev_it_6, 0, sizeof(struct list_item$1charph*));
+        it_5=self->head;
+        while(_while_condtional1=it_5!=((void*)0),        _while_condtional1) {
+            prev_it_6=it_5;
+            it_5=it_5->next;
+            come_call_finalizer2(list_item$1charphp_finalize,prev_it_6, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+        }
+}
+
 static void list_item$1charphp_finalize(struct list_item$1charph* self){
 void* __result_obj__;
 _Bool _if_conditional5;
@@ -3382,22 +3398,6 @@ memset(&__result_obj__, 0, sizeof(void*));
                 if(_if_conditional5=self!=((void*)0)&&self->item!=((void*)0),                _if_conditional5) {
                     self->item = come_decrement_ref_count2(self->item, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-}
-
-static void list$1charphp_finalize(struct list$1charph* self){
-void* __result_obj__;
-struct list_item$1charph* it_7;
-_Bool _while_condtional2;
-struct list_item$1charph* prev_it_8;
-memset(&__result_obj__, 0, sizeof(void*));
-memset(&it_7, 0, sizeof(struct list_item$1charph*));
-memset(&prev_it_8, 0, sizeof(struct list_item$1charph*));
-        it_7=self->head;
-        while(_while_condtional2=it_7!=((void*)0),        _while_condtional2) {
-            prev_it_8=it_7;
-            it_7=it_7->next;
-            come_call_finalizer2(list_item$1charphp_finalize,prev_it_8, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-        }
 }
 
 
@@ -3435,18 +3435,18 @@ memset(&prev_it_8, 0, sizeof(struct list_item$1charph*));
 
 struct come_regex* come_regex_initialize(struct come_regex* self, char* str, _Bool ignore_case, _Bool multiline, _Bool global, _Bool extended, _Bool dotall, _Bool anchored, _Bool dollar_endonly, _Bool ungreedy){
 void* __result_obj__;
-const char* err_9;
-int erro_ofs_10;
-int options_11;
+const char* err_7;
+int erro_ofs_8;
+int options_9;
 void* right_value36;
 char* __dec_obj6;
 _Bool _if_conditional6;
 struct come_regex* __result48__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&erro_ofs_10, 0, sizeof(int));
-memset(&options_11, 0, sizeof(int));
+memset(&erro_ofs_8, 0, sizeof(int));
+memset(&options_9, 0, sizeof(int));
 right_value36 = (void*)0;
-    options_11=2048|(ignore_case?1:0)|(multiline?2:0)|(extended?8:0)|(dotall?4:0)|(dollar_endonly?32:0)|(ungreedy?512:0);
+    options_9=2048|(ignore_case?1:0)|(multiline?2:0)|(extended?8:0)|(dotall?4:0)|(dollar_endonly?32:0)|(ungreedy?512:0);
     __dec_obj6=self->str;
     self->str=(char*)come_increment_ref_count(((char*)(right_value36=__builtin_string(str))));
     __dec_obj6 = come_decrement_ref_count2(__dec_obj6, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -3458,8 +3458,8 @@ right_value36 = (void*)0;
     self->dotall=dotall;
     self->anchored=anchored;
     self->dollar_endonly=dollar_endonly;
-    self->options=options_11;
-    self->re=pcre_compile(str,options_11,&err_9,&erro_ofs_10,((void*)0));
+    self->options=options_9;
+    self->re=pcre_compile(str,options_9,&err_7,&erro_ofs_8,((void*)0));
     if(_if_conditional6=self->re==((void*)0),    _if_conditional6) {
         printf("regex error (%s)\n",str);
         stackframe();
@@ -3517,47 +3517,47 @@ void* __result_obj__;
 _Bool _if_conditional9;
 struct come_regex* __result51__;
 void* right_value41;
-struct come_regex* result_12;
+struct come_regex* result_10;
 void* right_value42;
 char* __dec_obj7;
-const char* err_13;
-int erro_ofs_14;
+const char* err_11;
+int erro_ofs_12;
 _Bool _if_conditional10;
 struct come_regex* __result52__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value41 = (void*)0;
-memset(&result_12, 0, sizeof(struct come_regex*));
+memset(&result_10, 0, sizeof(struct come_regex*));
 right_value42 = (void*)0;
-memset(&erro_ofs_14, 0, sizeof(int));
+memset(&erro_ofs_12, 0, sizeof(int));
     if(_if_conditional9=reg==((void*)0),    _if_conditional9) {
         __result51__ = __result_obj__ = ((void*)0);
         return __result51__;
     }
-    result_12=(struct come_regex*)come_increment_ref_count(((struct come_regex*)(right_value41=(struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str.c", 80, "struct come_regex"))));
+    result_10=(struct come_regex*)come_increment_ref_count(((struct come_regex*)(right_value41=(struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str.c", 80, "struct come_regex"))));
     come_call_finalizer2(come_regex_finalize,right_value41, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    __dec_obj7=result_12->str;
-    result_12->str=(char*)come_increment_ref_count(((char*)(right_value42=string_clone(reg->str))));
+    __dec_obj7=result_10->str;
+    result_10->str=(char*)come_increment_ref_count(((char*)(right_value42=string_clone(reg->str))));
     __dec_obj7 = come_decrement_ref_count2(__dec_obj7, (void*)0, (void*)0, 0,0,0, (void*)0);
     right_value42 = come_decrement_ref_count2(right_value42, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    result_12->ignore_case=reg->ignore_case;
-    result_12->multiline=reg->multiline;
-    result_12->global=reg->global;
-    result_12->extended=reg->extended;
-    result_12->dotall=reg->dotall;
-    result_12->anchored=reg->anchored;
-    result_12->dollar_endonly=reg->dollar_endonly;
-    result_12->ungreedy=reg->ungreedy;
-    result_12->options=reg->options;
-    result_12->re=pcre_compile(result_12->str,result_12->options,&err_13,&erro_ofs_14,((void*)0));
-    if(_if_conditional10=result_12->re==((void*)0),    _if_conditional10) {
-        printf("regex compile error(%s)\n",result_12->str);
+    result_10->ignore_case=reg->ignore_case;
+    result_10->multiline=reg->multiline;
+    result_10->global=reg->global;
+    result_10->extended=reg->extended;
+    result_10->dotall=reg->dotall;
+    result_10->anchored=reg->anchored;
+    result_10->dollar_endonly=reg->dollar_endonly;
+    result_10->ungreedy=reg->ungreedy;
+    result_10->options=reg->options;
+    result_10->re=pcre_compile(result_10->str,result_10->options,&err_11,&erro_ofs_12,((void*)0));
+    if(_if_conditional10=result_10->re==((void*)0),    _if_conditional10) {
+        printf("regex compile error(%s)\n",result_10->str);
         stackframe();
         exit(1);
     }
-    __result52__ = __result_obj__ = result_12;
-    come_call_finalizer2(come_regex_finalize,result_12, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result52__ = __result_obj__ = result_10;
+    come_call_finalizer2(come_regex_finalize,result_10, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result52__;
-    come_call_finalizer2(come_regex_finalize,result_12, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(come_regex_finalize,result_10, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 char* come_regex_to_string(struct come_regex* regex){
@@ -3574,49 +3574,49 @@ right_value43 = (void*)0;
 char* string_lower_case(char* str){
 void* __result_obj__;
 void* right_value44;
-char* result_15;
-int i_16;
+char* result_13;
+int i_14;
 _Bool _if_conditional11;
 char* __result54__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value44 = (void*)0;
-memset(&result_15, 0, sizeof(char*));
-memset(&i_16, 0, sizeof(int));
-    result_15=(char*)come_increment_ref_count(((char*)(right_value44=__builtin_string(str))));
+memset(&result_13, 0, sizeof(char*));
+memset(&i_14, 0, sizeof(int));
+    result_13=(char*)come_increment_ref_count(((char*)(right_value44=__builtin_string(str))));
     right_value44 = come_decrement_ref_count2(right_value44, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    for(    i_16=0;    i_16<strlen(str);    i_16++    ){
-        if(_if_conditional11=str[i_16]>=65&&str[i_16]<=90,        _if_conditional11) {
-            result_15[i_16]=str[i_16]-65+97;
+    for(    i_14=0;    i_14<strlen(str);    i_14++    ){
+        if(_if_conditional11=str[i_14]>=65&&str[i_14]<=90,        _if_conditional11) {
+            result_13[i_14]=str[i_14]-65+97;
         }
     }
-    __result54__ = __result_obj__ = result_15;
-    result_15 = come_decrement_ref_count2(result_15, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result54__ = __result_obj__ = result_13;
+    result_13 = come_decrement_ref_count2(result_13, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result54__;
-    result_15 = come_decrement_ref_count2(result_15, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_13 = come_decrement_ref_count2(result_13, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 char* string_upper_case(char* str){
 void* __result_obj__;
 void* right_value45;
-char* result_17;
-int i_18;
+char* result_15;
+int i_16;
 _Bool _if_conditional12;
 char* __result55__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value45 = (void*)0;
-memset(&result_17, 0, sizeof(char*));
-memset(&i_18, 0, sizeof(int));
-    result_17=(char*)come_increment_ref_count(((char*)(right_value45=__builtin_string(str))));
+memset(&result_15, 0, sizeof(char*));
+memset(&i_16, 0, sizeof(int));
+    result_15=(char*)come_increment_ref_count(((char*)(right_value45=__builtin_string(str))));
     right_value45 = come_decrement_ref_count2(right_value45, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    for(    i_18=0;    i_18<strlen(str);    i_18++    ){
-        if(_if_conditional12=str[i_18]>=97&&str[i_18]<=122,        _if_conditional12) {
-            result_17[i_18]=str[i_18]-97+65;
+    for(    i_16=0;    i_16<strlen(str);    i_16++    ){
+        if(_if_conditional12=str[i_16]>=97&&str[i_16]<=122,        _if_conditional12) {
+            result_15[i_16]=str[i_16]-97+65;
         }
     }
-    __result55__ = __result_obj__ = result_17;
-    result_17 = come_decrement_ref_count2(result_17, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result55__ = __result_obj__ = result_15;
+    result_15 = come_decrement_ref_count2(result_15, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result55__;
-    result_17 = come_decrement_ref_count2(result_17, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_15 = come_decrement_ref_count2(result_15, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int* wchar_tp_substring(int* str, int head, int tail){
@@ -3624,7 +3624,7 @@ void* __result_obj__;
 _Bool _if_conditional13;
 void* right_value46;
 int* __result56__;
-int len_19;
+int len_17;
 _Bool _if_conditional14;
 _Bool _if_conditional15;
 _Bool _if_conditional16;
@@ -3639,27 +3639,27 @@ _Bool _if_conditional20;
 void* right_value49;
 int* __result59__;
 void* right_value50;
-int* result_20;
+int* result_18;
 int* __result60__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value46 = (void*)0;
-memset(&len_19, 0, sizeof(int));
+memset(&len_17, 0, sizeof(int));
 right_value47 = (void*)0;
 right_value48 = (void*)0;
 right_value49 = (void*)0;
 right_value50 = (void*)0;
-memset(&result_20, 0, sizeof(int*));
+memset(&result_18, 0, sizeof(int*));
     if(_if_conditional13=str==((void*)0),    _if_conditional13) {
         __result56__ = __result_obj__ = ((int*)(right_value46=__builtin_wstring("")));
         right_value46 = come_decrement_ref_count2(right_value46, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         return __result56__;
     }
-    len_19=wcslen(str);
+    len_17=wcslen(str);
     if(_if_conditional14=head<0,    _if_conditional14) {
-        head+=len_19;
+        head+=len_17;
     }
     if(_if_conditional15=tail<0,    _if_conditional15) {
-        tail+=len_19+1;
+        tail+=len_17+1;
     }
     if(_if_conditional16=head>tail,    _if_conditional16) {
         __result57__ = __result_obj__ = ((int*)(right_value47=__builtin_wstring("")));
@@ -3669,8 +3669,8 @@ memset(&result_20, 0, sizeof(int*));
     if(_if_conditional17=head<0,    _if_conditional17) {
         head=0;
     }
-    if(_if_conditional18=tail>=len_19,    _if_conditional18) {
-        tail=len_19;
+    if(_if_conditional18=tail>=len_17,    _if_conditional18) {
+        tail=len_17;
     }
     if(_if_conditional19=head==tail,    _if_conditional19) {
         __result58__ = __result_obj__ = ((int*)(right_value48=__builtin_wstring("")));
@@ -3682,80 +3682,80 @@ memset(&result_20, 0, sizeof(int*));
         right_value49 = come_decrement_ref_count2(right_value49, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         return __result59__;
     }
-    result_20=(int*)come_increment_ref_count(((int*)(right_value50=(int*)come_calloc(1, sizeof(int)*(1*(tail-head+1)), "libcomelang2-str.c", 175, "int"))));
+    result_18=(int*)come_increment_ref_count(((int*)(right_value50=(int*)come_calloc(1, sizeof(int)*(1*(tail-head+1)), "libcomelang2-str.c", 175, "int"))));
     right_value50 = come_decrement_ref_count2(right_value50, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    memcpy(result_20,str+head,sizeof(int)*(tail-head));
-    result_20[tail-head]=0;
-    __result60__ = __result_obj__ = result_20;
-    result_20 = come_decrement_ref_count2(result_20, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    memcpy(result_18,str+head,sizeof(int)*(tail-head));
+    result_18[tail-head]=0;
+    __result60__ = __result_obj__ = result_18;
+    result_18 = come_decrement_ref_count2(result_18, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result60__;
-    result_20 = come_decrement_ref_count2(result_20, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_18 = come_decrement_ref_count2(result_18, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int* __builtin_wstring(char* str){
 void* __result_obj__;
 _Bool _if_conditional21;
 int* __result61__;
-int len_21;
+int len_19;
 void* right_value51;
-int* wstr_22;
-int ret_23;
+int* wstr_20;
+int ret_21;
 _Bool _if_conditional22;
 int* __result62__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_21, 0, sizeof(int));
+memset(&len_19, 0, sizeof(int));
 right_value51 = (void*)0;
-memset(&wstr_22, 0, sizeof(int*));
-memset(&ret_23, 0, sizeof(int));
+memset(&wstr_20, 0, sizeof(int*));
+memset(&ret_21, 0, sizeof(int));
     if(_if_conditional21=str==((void*)0),    _if_conditional21) {
         __result61__ = __result_obj__ = ((void*)0);
         return __result61__;
     }
-    len_21=strlen(str);
-    wstr_22=(int*)come_increment_ref_count(((int*)(right_value51=(int*)come_calloc(1, sizeof(int)*(1*(len_21+1)), "libcomelang2-str.c", 190, "int"))));
+    len_19=strlen(str);
+    wstr_20=(int*)come_increment_ref_count(((int*)(right_value51=(int*)come_calloc(1, sizeof(int)*(1*(len_19+1)), "libcomelang2-str.c", 190, "int"))));
     right_value51 = come_decrement_ref_count2(right_value51, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    ret_23=mbstowcs(wstr_22,str,len_21+1);
-    wstr_22[ret_23]=0;
-    if(_if_conditional22=ret_23<0,    _if_conditional22) {
-        wstr_22[0]=0;
+    ret_21=mbstowcs(wstr_20,str,len_19+1);
+    wstr_20[ret_21]=0;
+    if(_if_conditional22=ret_21<0,    _if_conditional22) {
+        wstr_20[0]=0;
     }
-    __result62__ = __result_obj__ = wstr_22;
-    wstr_22 = come_decrement_ref_count2(wstr_22, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result62__ = __result_obj__ = wstr_20;
+    wstr_20 = come_decrement_ref_count2(wstr_20, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result62__;
-    wstr_22 = come_decrement_ref_count2(wstr_22, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    wstr_20 = come_decrement_ref_count2(wstr_20, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int charp_index_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
-int n_24;
-int len_25;
-int i_26;
-int len2_27;
-int j_28;
+int n_22;
+int len_23;
+int i_24;
+int len2_25;
+int j_26;
 _Bool _if_conditional23;
 _Bool _if_conditional24;
 _Bool _if_conditional25;
 int __result63__;
 int __result64__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&n_24, 0, sizeof(int));
-memset(&len_25, 0, sizeof(int));
-memset(&i_26, 0, sizeof(int));
-memset(&len2_27, 0, sizeof(int));
-memset(&j_28, 0, sizeof(int));
-    n_24=0;
-    len_25=strlen(str);
-    for(    i_26=0;    i_26<len_25;    i_26++    ){
-        len2_27=strlen(search_str);
-        for(        j_28=0;        j_28<len2_27;        j_28++        ){
-            if(_if_conditional23=str[i_26+j_28]!=search_str[j_28],            _if_conditional23) {
+memset(&n_22, 0, sizeof(int));
+memset(&len_23, 0, sizeof(int));
+memset(&i_24, 0, sizeof(int));
+memset(&len2_25, 0, sizeof(int));
+memset(&j_26, 0, sizeof(int));
+    n_22=0;
+    len_23=strlen(str);
+    for(    i_24=0;    i_24<len_23;    i_24++    ){
+        len2_25=strlen(search_str);
+        for(        j_26=0;        j_26<len2_25;        j_26++        ){
+            if(_if_conditional23=str[i_24+j_26]!=search_str[j_26],            _if_conditional23) {
                 break;
             }
         }
-        if(_if_conditional24=j_28==len2_27,        _if_conditional24) {
-            n_24++;
-            if(_if_conditional25=n_24==count,            _if_conditional25) {
-                __result63__ = i_26;
+        if(_if_conditional24=j_26==len2_25,        _if_conditional24) {
+            n_22++;
+            if(_if_conditional25=n_22==count,            _if_conditional25) {
+                __result63__ = i_24;
                 return __result63__;
             }
         }
@@ -3766,72 +3766,72 @@ memset(&j_28, 0, sizeof(int));
 
 int charp_index_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
-int ovec_max_29;
-int result_33;
-int offset_34;
-const char* err_35;
-int erro_ofs_36;
-int options_37;
-char* str_38;
-struct real_pcre8_or_16* re_39;
-int n_40;
-_Bool _while_condtional3;
-int options_41;
-int len_42;
-int regex_result_43;
-int i_44;
-int i_45;
+int ovec_max_27;
+int result_31;
+int offset_32;
+const char* err_33;
+int erro_ofs_34;
+int options_35;
+char* str_36;
+struct real_pcre8_or_16* re_37;
+int n_38;
+_Bool _while_condtional2;
+int options_39;
+int len_40;
+int regex_result_41;
+int i_42;
+int i_43;
 _Bool _if_conditional26;
 _Bool _if_conditional27;
 _Bool _if_conditional28;
 int __result65__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&ovec_max_29, 0, sizeof(int));
-memset(&result_33, 0, sizeof(int));
-memset(&offset_34, 0, sizeof(int));
-memset(&erro_ofs_36, 0, sizeof(int));
-memset(&options_37, 0, sizeof(int));
-memset(&str_38, 0, sizeof(char*));
-memset(&re_39, 0, sizeof(struct real_pcre8_or_16*));
-memset(&n_40, 0, sizeof(int));
-memset(&options_41, 0, sizeof(int));
-memset(&len_42, 0, sizeof(int));
-memset(&regex_result_43, 0, sizeof(int));
-memset(&i_44, 0, sizeof(int));
-memset(&i_45, 0, sizeof(int));
-    ovec_max_29=16;
-    int start_30[ovec_max_29];
-    memset(&start_30, 0, sizeof(int)    *(ovec_max_29)    );
-    int end_31[ovec_max_29];
-    memset(&end_31, 0, sizeof(int)    *(ovec_max_29)    );
-    int ovec_value_32[ovec_max_29*3];
-    memset(&ovec_value_32, 0, sizeof(int)    *(ovec_max_29*3)    );
-    result_33=default_value;
-    offset_34=0;
-    options_37=reg->options;
-    str_38=reg->str;
-    re_39=reg->re;
-    n_40=0;
-    while(_while_condtional3=(_Bool)1,    _while_condtional3) {
-        options_41=2097152;
-        len_42=strlen(self);
-        regex_result_43=pcre_exec(re_39,(struct pcre_extra*)0,self,len_42,offset_34,options_41,ovec_value_32,ovec_max_29*3);
-        for(        i_44=0;        i_44<ovec_max_29;        i_44++        ){
-            start_30[i_44]=ovec_value_32[i_44*2];
+memset(&ovec_max_27, 0, sizeof(int));
+memset(&result_31, 0, sizeof(int));
+memset(&offset_32, 0, sizeof(int));
+memset(&erro_ofs_34, 0, sizeof(int));
+memset(&options_35, 0, sizeof(int));
+memset(&str_36, 0, sizeof(char*));
+memset(&re_37, 0, sizeof(struct real_pcre8_or_16*));
+memset(&n_38, 0, sizeof(int));
+memset(&options_39, 0, sizeof(int));
+memset(&len_40, 0, sizeof(int));
+memset(&regex_result_41, 0, sizeof(int));
+memset(&i_42, 0, sizeof(int));
+memset(&i_43, 0, sizeof(int));
+    ovec_max_27=16;
+    int start_28[ovec_max_27];
+    memset(&start_28, 0, sizeof(int)    *(ovec_max_27)    );
+    int end_29[ovec_max_27];
+    memset(&end_29, 0, sizeof(int)    *(ovec_max_27)    );
+    int ovec_value_30[ovec_max_27*3];
+    memset(&ovec_value_30, 0, sizeof(int)    *(ovec_max_27*3)    );
+    result_31=default_value;
+    offset_32=0;
+    options_35=reg->options;
+    str_36=reg->str;
+    re_37=reg->re;
+    n_38=0;
+    while(_while_condtional2=(_Bool)1,    _while_condtional2) {
+        options_39=2097152;
+        len_40=strlen(self);
+        regex_result_41=pcre_exec(re_37,(struct pcre_extra*)0,self,len_40,offset_32,options_39,ovec_value_30,ovec_max_27*3);
+        for(        i_42=0;        i_42<ovec_max_27;        i_42++        ){
+            start_28[i_42]=ovec_value_30[i_42*2];
         }
-        for(        i_45=0;        i_45<ovec_max_29;        i_45++        ){
-            end_31[i_45]=ovec_value_32[i_45*2+1];
+        for(        i_43=0;        i_43<ovec_max_27;        i_43++        ){
+            end_29[i_43]=ovec_value_30[i_43*2+1];
         }
-        if(_if_conditional26=regex_result_43>0,        _if_conditional26) {
-            n_40++;
-            if(_if_conditional27=offset_34==end_31[0],            _if_conditional27) {
-                offset_34++;
+        if(_if_conditional26=regex_result_41>0,        _if_conditional26) {
+            n_38++;
+            if(_if_conditional27=offset_32==end_29[0],            _if_conditional27) {
+                offset_32++;
             }
             else {
-                offset_34=end_31[0];
+                offset_32=end_29[0];
             }
-            if(_if_conditional28=n_40==count,            _if_conditional28) {
-                result_33=start_30[0];
+            if(_if_conditional28=n_38==count,            _if_conditional28) {
+                result_31=start_28[0];
                 break;
             }
         }
@@ -3839,29 +3839,29 @@ memset(&i_45, 0, sizeof(int));
             break;
         }
     }
-    __result65__ = result_33;
+    __result65__ = result_31;
     return __result65__;
 }
 
 int charp_rindex(char* str, char* search_str, int default_value){
 void* __result_obj__;
-int len_46;
-char* p_47;
-_Bool _while_condtional4;
+int len_44;
+char* p_45;
+_Bool _while_condtional3;
 _Bool _if_conditional29;
 int __result66__;
 int __result67__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_46, 0, sizeof(int));
-memset(&p_47, 0, sizeof(char*));
-    len_46=strlen(search_str);
-    p_47=str+strlen(str)-len_46;
-    while(_while_condtional4=p_47>=str,    _while_condtional4) {
-        if(_if_conditional29=strncmp(p_47,search_str,len_46)==0,        _if_conditional29) {
-            __result66__ = p_47-str;
+memset(&len_44, 0, sizeof(int));
+memset(&p_45, 0, sizeof(char*));
+    len_44=strlen(search_str);
+    p_45=str+strlen(str)-len_44;
+    while(_while_condtional3=p_45>=str,    _while_condtional3) {
+        if(_if_conditional29=strncmp(p_45,search_str,len_44)==0,        _if_conditional29) {
+            __result66__ = p_45-str;
             return __result66__;
         }
-        p_47--;
+        p_45--;
     }
     __result67__ = default_value;
     return __result67__;
@@ -3869,103 +3869,103 @@ memset(&p_47, 0, sizeof(char*));
 
 int charp_rindex_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
-const char* err_48;
-int erro_ofs_49;
-int options_50;
-char* str_51;
-struct real_pcre8_or_16* re_52;
+const char* err_46;
+int erro_ofs_47;
+int options_48;
+char* str_49;
+struct real_pcre8_or_16* re_50;
 void* right_value52;
-char* self2_53;
-int ovec_max_54;
-int result_58;
-int offset_59;
-_Bool _while_condtional5;
-int options_60;
-int len_61;
-int regex_result_62;
-int i_63;
-int i_64;
+char* self2_51;
+int ovec_max_52;
+int result_56;
+int offset_57;
+_Bool _while_condtional4;
+int options_58;
+int len_59;
+int regex_result_60;
+int i_61;
+int i_62;
 _Bool _if_conditional30;
 int __result68__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&erro_ofs_49, 0, sizeof(int));
-memset(&options_50, 0, sizeof(int));
-memset(&str_51, 0, sizeof(char*));
-memset(&re_52, 0, sizeof(struct real_pcre8_or_16*));
+memset(&erro_ofs_47, 0, sizeof(int));
+memset(&options_48, 0, sizeof(int));
+memset(&str_49, 0, sizeof(char*));
+memset(&re_50, 0, sizeof(struct real_pcre8_or_16*));
 right_value52 = (void*)0;
-memset(&self2_53, 0, sizeof(char*));
-memset(&ovec_max_54, 0, sizeof(int));
-memset(&result_58, 0, sizeof(int));
-memset(&offset_59, 0, sizeof(int));
-memset(&options_60, 0, sizeof(int));
-memset(&len_61, 0, sizeof(int));
-memset(&regex_result_62, 0, sizeof(int));
-memset(&i_63, 0, sizeof(int));
-memset(&i_64, 0, sizeof(int));
-    options_50=reg->options;
-    str_51=reg->str;
-    re_52=reg->re;
-    self2_53=(char*)come_increment_ref_count(((char*)(right_value52=charp_reverse(self))));
+memset(&self2_51, 0, sizeof(char*));
+memset(&ovec_max_52, 0, sizeof(int));
+memset(&result_56, 0, sizeof(int));
+memset(&offset_57, 0, sizeof(int));
+memset(&options_58, 0, sizeof(int));
+memset(&len_59, 0, sizeof(int));
+memset(&regex_result_60, 0, sizeof(int));
+memset(&i_61, 0, sizeof(int));
+memset(&i_62, 0, sizeof(int));
+    options_48=reg->options;
+    str_49=reg->str;
+    re_50=reg->re;
+    self2_51=(char*)come_increment_ref_count(((char*)(right_value52=charp_reverse(self))));
     right_value52 = come_decrement_ref_count2(right_value52, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    ovec_max_54=16;
-    int start_55[ovec_max_54];
-    memset(&start_55, 0, sizeof(int)    *(ovec_max_54)    );
-    int end_56[ovec_max_54];
-    memset(&end_56, 0, sizeof(int)    *(ovec_max_54)    );
-    int ovec_value_57[ovec_max_54*3];
-    memset(&ovec_value_57, 0, sizeof(int)    *(ovec_max_54*3)    );
-    result_58=default_value;
-    offset_59=0;
-    while(_while_condtional5=(_Bool)1,    _while_condtional5) {
-        options_60=2097152;
-        len_61=strlen(self2_53);
-        regex_result_62=pcre_exec(re_52,(struct pcre_extra*)0,self2_53,len_61,offset_59,options_60,ovec_value_57,ovec_max_54*3);
-        for(        i_63=0;        i_63<ovec_max_54;        i_63++        ){
-            start_55[i_63]=ovec_value_57[i_63*2];
+    ovec_max_52=16;
+    int start_53[ovec_max_52];
+    memset(&start_53, 0, sizeof(int)    *(ovec_max_52)    );
+    int end_54[ovec_max_52];
+    memset(&end_54, 0, sizeof(int)    *(ovec_max_52)    );
+    int ovec_value_55[ovec_max_52*3];
+    memset(&ovec_value_55, 0, sizeof(int)    *(ovec_max_52*3)    );
+    result_56=default_value;
+    offset_57=0;
+    while(_while_condtional4=(_Bool)1,    _while_condtional4) {
+        options_58=2097152;
+        len_59=strlen(self2_51);
+        regex_result_60=pcre_exec(re_50,(struct pcre_extra*)0,self2_51,len_59,offset_57,options_58,ovec_value_55,ovec_max_52*3);
+        for(        i_61=0;        i_61<ovec_max_52;        i_61++        ){
+            start_53[i_61]=ovec_value_55[i_61*2];
         }
-        for(        i_64=0;        i_64<ovec_max_54;        i_64++        ){
-            end_56[i_64]=ovec_value_57[i_64*2+1];
+        for(        i_62=0;        i_62<ovec_max_52;        i_62++        ){
+            end_54[i_62]=ovec_value_55[i_62*2+1];
         }
-        if(_if_conditional30=regex_result_62==1||regex_result_62>0,        _if_conditional30) {
-            result_58=strlen(self)-1-start_55[0];
+        if(_if_conditional30=regex_result_60==1||regex_result_60>0,        _if_conditional30) {
+            result_56=strlen(self)-1-start_53[0];
             break;
         }
         {
             break;
         }
     }
-    __result68__ = result_58;
-    self2_53 = come_decrement_ref_count2(self2_53, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    __result68__ = result_56;
+    self2_51 = come_decrement_ref_count2(self2_51, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     return __result68__;
-    self2_53 = come_decrement_ref_count2(self2_53, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    self2_51 = come_decrement_ref_count2(self2_51, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int charp_rindex_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
-int len_65;
-char* p_66;
-int n_67;
-_Bool _while_condtional6;
+int len_63;
+char* p_64;
+int n_65;
+_Bool _while_condtional5;
 _Bool _if_conditional31;
 _Bool _if_conditional32;
 int __result69__;
 int __result70__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_65, 0, sizeof(int));
-memset(&p_66, 0, sizeof(char*));
-memset(&n_67, 0, sizeof(int));
-    len_65=strlen(search_str);
-    p_66=str+strlen(str)-len_65;
-    n_67=0;
-    while(_while_condtional6=p_66>=str,    _while_condtional6) {
-        if(_if_conditional31=strncmp(p_66,search_str,len_65)==0,        _if_conditional31) {
-            n_67++;
-            if(_if_conditional32=n_67==count,            _if_conditional32) {
-                __result69__ = p_66-str;
+memset(&len_63, 0, sizeof(int));
+memset(&p_64, 0, sizeof(char*));
+memset(&n_65, 0, sizeof(int));
+    len_63=strlen(search_str);
+    p_64=str+strlen(str)-len_63;
+    n_65=0;
+    while(_while_condtional5=p_64>=str,    _while_condtional5) {
+        if(_if_conditional31=strncmp(p_64,search_str,len_63)==0,        _if_conditional31) {
+            n_65++;
+            if(_if_conditional32=n_65==count,            _if_conditional32) {
+                __result69__ = p_64-str;
                 return __result69__;
             }
         }
-        p_66--;
+        p_64--;
     }
     __result70__ = default_value;
     return __result70__;
@@ -3975,42 +3975,42 @@ struct list$1charph* charp_scan_block(char* self, struct come_regex* reg, void* 
 void* __result_obj__;
 void* right_value53;
 void* right_value54;
-struct list$1charph* result_68;
-int offset_69;
-int ovec_max_70;
-const char* err_74;
-int erro_ofs_75;
-int options_76;
-char* str_77;
-struct real_pcre8_or_16* re_78;
-_Bool _while_condtional7;
-int options_79;
-int len_80;
-int regex_result_81;
-int i_82;
-int i_83;
+struct list$1charph* result_66;
+int offset_67;
+int ovec_max_68;
+const char* err_72;
+int erro_ofs_73;
+int options_74;
+char* str_75;
+struct real_pcre8_or_16* re_76;
+_Bool _while_condtional6;
+int options_77;
+int len_78;
+int regex_result_79;
+int i_80;
+int i_81;
 _Bool _if_conditional33;
 void* right_value55;
-char* str_84;
+char* str_82;
 void* right_value56;
 void* right_value57;
-struct list$1charph* group_strings_85;
+struct list$1charph* group_strings_83;
 void* right_value58;
-char* str2_86;
+char* str2_84;
 _Bool _if_conditional34;
 struct list$1charph* __result72__;
 _Bool _if_conditional37;
 _Bool _if_conditional38;
 void* right_value62;
-char* str_90;
+char* str_88;
 void* right_value63;
 void* right_value64;
-struct list$1charph* group_strings_91;
-int i_92;
+struct list$1charph* group_strings_89;
+int i_90;
 void* right_value65;
-char* match_string_93;
+char* match_string_91;
 void* right_value66;
-char* str2_94;
+char* str2_92;
 _Bool _if_conditional39;
 struct list$1charph* __result74__;
 _Bool _if_conditional40;
@@ -4018,129 +4018,129 @@ struct list$1charph* __result75__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value53 = (void*)0;
 right_value54 = (void*)0;
-memset(&result_68, 0, sizeof(struct list$1charph*));
-memset(&offset_69, 0, sizeof(int));
-memset(&ovec_max_70, 0, sizeof(int));
-memset(&erro_ofs_75, 0, sizeof(int));
-memset(&options_76, 0, sizeof(int));
-memset(&str_77, 0, sizeof(char*));
-memset(&re_78, 0, sizeof(struct real_pcre8_or_16*));
-memset(&options_79, 0, sizeof(int));
-memset(&len_80, 0, sizeof(int));
-memset(&regex_result_81, 0, sizeof(int));
-memset(&i_82, 0, sizeof(int));
-memset(&i_83, 0, sizeof(int));
+memset(&result_66, 0, sizeof(struct list$1charph*));
+memset(&offset_67, 0, sizeof(int));
+memset(&ovec_max_68, 0, sizeof(int));
+memset(&erro_ofs_73, 0, sizeof(int));
+memset(&options_74, 0, sizeof(int));
+memset(&str_75, 0, sizeof(char*));
+memset(&re_76, 0, sizeof(struct real_pcre8_or_16*));
+memset(&options_77, 0, sizeof(int));
+memset(&len_78, 0, sizeof(int));
+memset(&regex_result_79, 0, sizeof(int));
+memset(&i_80, 0, sizeof(int));
+memset(&i_81, 0, sizeof(int));
 right_value55 = (void*)0;
-memset(&str_84, 0, sizeof(char*));
+memset(&str_82, 0, sizeof(char*));
 right_value56 = (void*)0;
 right_value57 = (void*)0;
-memset(&group_strings_85, 0, sizeof(struct list$1charph*));
+memset(&group_strings_83, 0, sizeof(struct list$1charph*));
 right_value58 = (void*)0;
-memset(&str2_86, 0, sizeof(char*));
+memset(&str2_84, 0, sizeof(char*));
 right_value62 = (void*)0;
-memset(&str_90, 0, sizeof(char*));
+memset(&str_88, 0, sizeof(char*));
 right_value63 = (void*)0;
 right_value64 = (void*)0;
-memset(&group_strings_91, 0, sizeof(struct list$1charph*));
-memset(&i_92, 0, sizeof(int));
+memset(&group_strings_89, 0, sizeof(struct list$1charph*));
+memset(&i_90, 0, sizeof(int));
 right_value65 = (void*)0;
-memset(&match_string_93, 0, sizeof(char*));
+memset(&match_string_91, 0, sizeof(char*));
 right_value66 = (void*)0;
-memset(&str2_94, 0, sizeof(char*));
-    result_68=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value54=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value53=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 376, "struct list$1charph"))))))));
+memset(&str2_92, 0, sizeof(char*));
+    result_66=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value54=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value53=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 376, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value53, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value54, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_69=0;
-    ovec_max_70=16;
-    int start_71[ovec_max_70];
-    memset(&start_71, 0, sizeof(int)    *(ovec_max_70)    );
-    int end_72[ovec_max_70];
-    memset(&end_72, 0, sizeof(int)    *(ovec_max_70)    );
-    int ovec_value_73[ovec_max_70*3];
-    memset(&ovec_value_73, 0, sizeof(int)    *(ovec_max_70*3)    );
-    options_76=reg->options;
-    str_77=reg->str;
-    re_78=reg->re;
-    while(_while_condtional7=(_Bool)1,    _while_condtional7) {
-        options_79=2097152;
-        len_80=strlen(self);
-        regex_result_81=pcre_exec(re_78,(struct pcre_extra*)0,self,len_80,offset_69,options_79,ovec_value_73,ovec_max_70*3);
-        for(        i_82=0;        i_82<ovec_max_70;        i_82++        ){
-            start_71[i_82]=ovec_value_73[i_82*2];
+    offset_67=0;
+    ovec_max_68=16;
+    int start_69[ovec_max_68];
+    memset(&start_69, 0, sizeof(int)    *(ovec_max_68)    );
+    int end_70[ovec_max_68];
+    memset(&end_70, 0, sizeof(int)    *(ovec_max_68)    );
+    int ovec_value_71[ovec_max_68*3];
+    memset(&ovec_value_71, 0, sizeof(int)    *(ovec_max_68*3)    );
+    options_74=reg->options;
+    str_75=reg->str;
+    re_76=reg->re;
+    while(_while_condtional6=(_Bool)1,    _while_condtional6) {
+        options_77=2097152;
+        len_78=strlen(self);
+        regex_result_79=pcre_exec(re_76,(struct pcre_extra*)0,self,len_78,offset_67,options_77,ovec_value_71,ovec_max_68*3);
+        for(        i_80=0;        i_80<ovec_max_68;        i_80++        ){
+            start_69[i_80]=ovec_value_71[i_80*2];
         }
-        for(        i_83=0;        i_83<ovec_max_70;        i_83++        ){
-            end_72[i_83]=ovec_value_73[i_83*2+1];
+        for(        i_81=0;        i_81<ovec_max_68;        i_81++        ){
+            end_70[i_81]=ovec_value_71[i_81*2+1];
         }
-        if(_if_conditional33=regex_result_81==1,        _if_conditional33) {
-            str_84=(char*)come_increment_ref_count(((char*)(right_value55=charp_substring(self,start_71[0],end_72[0]))));
+        if(_if_conditional33=regex_result_79==1,        _if_conditional33) {
+            str_82=(char*)come_increment_ref_count(((char*)(right_value55=charp_substring(self,start_69[0],end_70[0]))));
             right_value55 = come_decrement_ref_count2(right_value55, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            group_strings_85=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value57=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value56=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 410, "struct list$1charph"))))))));
+            group_strings_83=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value57=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value56=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 410, "struct list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value56, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value57, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            str2_86=(char*)come_increment_ref_count(((char*)(right_value58=block(parent,str_84,group_strings_85))));
+            str2_84=(char*)come_increment_ref_count(((char*)(right_value58=block(parent,str_82,group_strings_83))));
             right_value58 = come_decrement_ref_count2(right_value58, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional34=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional34) {
-                __result72__ = __result_obj__ = result_68;
-                str_84 = come_decrement_ref_count2(str_84, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_85, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_86 = come_decrement_ref_count2(str2_86, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,result_68, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                __result72__ = __result_obj__ = result_66;
+                str_82 = come_decrement_ref_count2(str_82, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_83, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_84 = come_decrement_ref_count2(str2_84, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,result_66, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                 return __result72__;
             }
-            list$1charph_push_back(result_68,(char*)come_increment_ref_count(str2_86));
-            if(_if_conditional37=offset_69==end_72[0],            _if_conditional37) {
-                offset_69++;
+            list$1charph_push_back(result_66,(char*)come_increment_ref_count(str2_84));
+            if(_if_conditional37=offset_67==end_70[0],            _if_conditional37) {
+                offset_67++;
             }
             else {
-                offset_69=end_72[0];
+                offset_67=end_70[0];
             }
-            str_84 = come_decrement_ref_count2(str_84, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,group_strings_85, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            str2_86 = come_decrement_ref_count2(str2_86, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_82 = come_decrement_ref_count2(str_82, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,group_strings_83, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            str2_84 = come_decrement_ref_count2(str2_84, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional38=regex_result_81>1,            _if_conditional38) {
-                str_90=(char*)come_increment_ref_count(((char*)(right_value62=charp_substring(self,start_71[0],end_72[0]))));
+            if(_if_conditional38=regex_result_79>1,            _if_conditional38) {
+                str_88=(char*)come_increment_ref_count(((char*)(right_value62=charp_substring(self,start_69[0],end_70[0]))));
                 right_value62 = come_decrement_ref_count2(right_value62, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                group_strings_91=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value64=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value63=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 431, "struct list$1charph"))))))));
+                group_strings_89=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value64=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value63=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 431, "struct list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value63, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value64, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                for(                i_92=1;                i_92<regex_result_81;                i_92++                ){
-                    match_string_93=(char*)come_increment_ref_count(((char*)(right_value65=charp_substring(self,start_71[i_92],end_72[i_92]))));
+                for(                i_90=1;                i_90<regex_result_79;                i_90++                ){
+                    match_string_91=(char*)come_increment_ref_count(((char*)(right_value65=charp_substring(self,start_69[i_90],end_70[i_90]))));
                     right_value65 = come_decrement_ref_count2(right_value65, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(group_strings_91,(char*)come_increment_ref_count(match_string_93));
-                    match_string_93 = come_decrement_ref_count2(match_string_93, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(group_strings_89,(char*)come_increment_ref_count(match_string_91));
+                    match_string_91 = come_decrement_ref_count2(match_string_91, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str2_94=(char*)come_increment_ref_count(((char*)(right_value66=block(parent,str_90,group_strings_91))));
+                str2_92=(char*)come_increment_ref_count(((char*)(right_value66=block(parent,str_88,group_strings_89))));
                 right_value66 = come_decrement_ref_count2(right_value66, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 if(_if_conditional39=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional39) {
-                    __result74__ = __result_obj__ = result_68;
-                    str_90 = come_decrement_ref_count2(str_90, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_91, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    str2_94 = come_decrement_ref_count2(str2_94, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,result_68, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                    __result74__ = __result_obj__ = result_66;
+                    str_88 = come_decrement_ref_count2(str_88, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_89, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    str2_92 = come_decrement_ref_count2(str2_92, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,result_66, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                     return __result74__;
                 }
-                list$1charph_push_back(result_68,(char*)come_increment_ref_count(str2_94));
-                if(_if_conditional40=offset_69==end_72[0],                _if_conditional40) {
-                    offset_69++;
+                list$1charph_push_back(result_66,(char*)come_increment_ref_count(str2_92));
+                if(_if_conditional40=offset_67==end_70[0],                _if_conditional40) {
+                    offset_67++;
                 }
                 else {
-                    offset_69=end_72[0];
+                    offset_67=end_70[0];
                 }
-                str_90 = come_decrement_ref_count2(str_90, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_91, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_94 = come_decrement_ref_count2(str2_94, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_88 = come_decrement_ref_count2(str_88, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_89, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_92 = come_decrement_ref_count2(str2_92, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
     }
-    __result75__ = __result_obj__ = result_68;
-    come_call_finalizer2(list$1charphp_finalize,result_68, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result75__ = __result_obj__ = result_66;
+    come_call_finalizer2(list$1charphp_finalize,result_66, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result75__;
-    come_call_finalizer2(list$1charphp_finalize,result_68, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_66, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 static struct list$1charph* list$1charph_initialize(struct list$1charph* self){
@@ -4160,56 +4160,56 @@ static struct list$1charph* list$1charph_push_back(struct list$1charph* self, ch
 void* __result_obj__;
 _Bool _if_conditional35;
 void* right_value59;
-struct list_item$1charph* litem_87;
+struct list_item$1charph* litem_85;
 char* __dec_obj8;
 _Bool _if_conditional36;
 void* right_value60;
-struct list_item$1charph* litem_88;
+struct list_item$1charph* litem_86;
 char* __dec_obj9;
 void* right_value61;
-struct list_item$1charph* litem_89;
+struct list_item$1charph* litem_87;
 char* __dec_obj10;
 struct list$1charph* __result73__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value59 = (void*)0;
-memset(&litem_87, 0, sizeof(struct list_item$1charph*));
+memset(&litem_85, 0, sizeof(struct list_item$1charph*));
 right_value60 = (void*)0;
-memset(&litem_88, 0, sizeof(struct list_item$1charph*));
+memset(&litem_86, 0, sizeof(struct list_item$1charph*));
 right_value61 = (void*)0;
-memset(&litem_89, 0, sizeof(struct list_item$1charph*));
+memset(&litem_87, 0, sizeof(struct list_item$1charph*));
                 if(_if_conditional35=self->len==0,                _if_conditional35) {
-                    litem_87=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value59=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "/usr/local/include/comelang2.h", 225, "struct list_item$1charph"))));
+                    litem_85=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value59=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "/usr/local/include/comelang2.h", 225, "struct list_item$1charph"))));
                     come_call_finalizer2(list_item$1charphp_finalize,right_value59, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                    litem_87->prev=((void*)0);
-                    litem_87->next=((void*)0);
-                    __dec_obj8=litem_87->item;
-                    litem_87->item=(char*)come_increment_ref_count(item);
+                    litem_85->prev=((void*)0);
+                    litem_85->next=((void*)0);
+                    __dec_obj8=litem_85->item;
+                    litem_85->item=(char*)come_increment_ref_count(item);
                     __dec_obj8 = come_decrement_ref_count2(__dec_obj8, (void*)0, (void*)0, 0,0,0, (void*)0);
-                    self->tail=litem_87;
-                    self->head=litem_87;
+                    self->tail=litem_85;
+                    self->head=litem_85;
                 }
                 else {
                     if(_if_conditional36=self->len==1,                    _if_conditional36) {
-                        litem_88=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value60=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "/usr/local/include/comelang2.h", 235, "struct list_item$1charph"))));
+                        litem_86=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value60=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "/usr/local/include/comelang2.h", 235, "struct list_item$1charph"))));
                         come_call_finalizer2(list_item$1charphp_finalize,right_value60, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                        litem_88->prev=self->head;
-                        litem_88->next=((void*)0);
-                        __dec_obj9=litem_88->item;
-                        litem_88->item=(char*)come_increment_ref_count(item);
+                        litem_86->prev=self->head;
+                        litem_86->next=((void*)0);
+                        __dec_obj9=litem_86->item;
+                        litem_86->item=(char*)come_increment_ref_count(item);
                         __dec_obj9 = come_decrement_ref_count2(__dec_obj9, (void*)0, (void*)0, 0,0,0, (void*)0);
-                        self->tail=litem_88;
-                        self->head->next=litem_88;
+                        self->tail=litem_86;
+                        self->head->next=litem_86;
                     }
                     else {
-                        litem_89=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value61=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "/usr/local/include/comelang2.h", 245, "struct list_item$1charph"))));
+                        litem_87=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value61=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "/usr/local/include/comelang2.h", 245, "struct list_item$1charph"))));
                         come_call_finalizer2(list_item$1charphp_finalize,right_value61, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                        litem_89->prev=self->tail;
-                        litem_89->next=((void*)0);
-                        __dec_obj10=litem_89->item;
-                        litem_89->item=(char*)come_increment_ref_count(item);
+                        litem_87->prev=self->tail;
+                        litem_87->next=((void*)0);
+                        __dec_obj10=litem_87->item;
+                        litem_87->item=(char*)come_increment_ref_count(item);
                         __dec_obj10 = come_decrement_ref_count2(__dec_obj10, (void*)0, (void*)0, 0,0,0, (void*)0);
-                        self->tail->next=litem_89;
-                        self->tail=litem_89;
+                        self->tail->next=litem_87;
+                        self->tail=litem_87;
                     }
                 }
                 self->len++;
@@ -4223,44 +4223,44 @@ struct list$1charph* charp_scan_block_count(char* self, struct come_regex* reg, 
 void* __result_obj__;
 void* right_value67;
 void* right_value68;
-struct list$1charph* result_95;
-int offset_96;
-int ovec_max_97;
-const char* err_101;
-int erro_ofs_102;
-int options_103;
-char* str_104;
-struct real_pcre8_or_16* re_105;
-int n_106;
-_Bool _while_condtional8;
-int options_107;
-int len_108;
-int regex_result_109;
-int i_110;
-int i_111;
+struct list$1charph* result_93;
+int offset_94;
+int ovec_max_95;
+const char* err_99;
+int erro_ofs_100;
+int options_101;
+char* str_102;
+struct real_pcre8_or_16* re_103;
+int n_104;
+_Bool _while_condtional7;
+int options_105;
+int len_106;
+int regex_result_107;
+int i_108;
+int i_109;
 _Bool _if_conditional41;
 void* right_value69;
-char* str_112;
+char* str_110;
 void* right_value70;
 void* right_value71;
-struct list$1charph* group_strings_113;
+struct list$1charph* group_strings_111;
 void* right_value72;
-char* str2_114;
+char* str2_112;
 _Bool _if_conditional42;
 struct list$1charph* __result76__;
 _Bool _if_conditional43;
 _Bool _if_conditional44;
 _Bool _if_conditional45;
 void* right_value73;
-char* str_115;
+char* str_113;
 void* right_value74;
 void* right_value75;
-struct list$1charph* group_strings_116;
-int i_117;
+struct list$1charph* group_strings_114;
+int i_115;
 void* right_value76;
-char* match_string_118;
+char* match_string_116;
 void* right_value77;
-char* str2_119;
+char* str2_117;
 _Bool _if_conditional46;
 struct list$1charph* __result77__;
 _Bool _if_conditional47;
@@ -4269,535 +4269,535 @@ struct list$1charph* __result78__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value67 = (void*)0;
 right_value68 = (void*)0;
-memset(&result_95, 0, sizeof(struct list$1charph*));
-memset(&offset_96, 0, sizeof(int));
-memset(&ovec_max_97, 0, sizeof(int));
-memset(&erro_ofs_102, 0, sizeof(int));
-memset(&options_103, 0, sizeof(int));
-memset(&str_104, 0, sizeof(char*));
-memset(&re_105, 0, sizeof(struct real_pcre8_or_16*));
-memset(&n_106, 0, sizeof(int));
-memset(&options_107, 0, sizeof(int));
-memset(&len_108, 0, sizeof(int));
-memset(&regex_result_109, 0, sizeof(int));
-memset(&i_110, 0, sizeof(int));
-memset(&i_111, 0, sizeof(int));
+memset(&result_93, 0, sizeof(struct list$1charph*));
+memset(&offset_94, 0, sizeof(int));
+memset(&ovec_max_95, 0, sizeof(int));
+memset(&erro_ofs_100, 0, sizeof(int));
+memset(&options_101, 0, sizeof(int));
+memset(&str_102, 0, sizeof(char*));
+memset(&re_103, 0, sizeof(struct real_pcre8_or_16*));
+memset(&n_104, 0, sizeof(int));
+memset(&options_105, 0, sizeof(int));
+memset(&len_106, 0, sizeof(int));
+memset(&regex_result_107, 0, sizeof(int));
+memset(&i_108, 0, sizeof(int));
+memset(&i_109, 0, sizeof(int));
 right_value69 = (void*)0;
-memset(&str_112, 0, sizeof(char*));
+memset(&str_110, 0, sizeof(char*));
 right_value70 = (void*)0;
 right_value71 = (void*)0;
-memset(&group_strings_113, 0, sizeof(struct list$1charph*));
+memset(&group_strings_111, 0, sizeof(struct list$1charph*));
 right_value72 = (void*)0;
-memset(&str2_114, 0, sizeof(char*));
+memset(&str2_112, 0, sizeof(char*));
 right_value73 = (void*)0;
-memset(&str_115, 0, sizeof(char*));
+memset(&str_113, 0, sizeof(char*));
 right_value74 = (void*)0;
 right_value75 = (void*)0;
-memset(&group_strings_116, 0, sizeof(struct list$1charph*));
-memset(&i_117, 0, sizeof(int));
+memset(&group_strings_114, 0, sizeof(struct list$1charph*));
+memset(&i_115, 0, sizeof(int));
 right_value76 = (void*)0;
-memset(&match_string_118, 0, sizeof(char*));
+memset(&match_string_116, 0, sizeof(char*));
 right_value77 = (void*)0;
-memset(&str2_119, 0, sizeof(char*));
-    result_95=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value68=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value67=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 465, "struct list$1charph"))))))));
+memset(&str2_117, 0, sizeof(char*));
+    result_93=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value68=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value67=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 465, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value67, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value68, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_96=0;
-    ovec_max_97=16;
-    int start_98[ovec_max_97];
-    memset(&start_98, 0, sizeof(int)    *(ovec_max_97)    );
-    int end_99[ovec_max_97];
-    memset(&end_99, 0, sizeof(int)    *(ovec_max_97)    );
-    int ovec_value_100[ovec_max_97*3];
-    memset(&ovec_value_100, 0, sizeof(int)    *(ovec_max_97*3)    );
-    options_103=reg->options;
-    str_104=reg->str;
-    re_105=reg->re;
-    n_106=0;
-    while(_while_condtional8=(_Bool)1,    _while_condtional8) {
-        options_107=2097152;
-        len_108=strlen(self);
-        regex_result_109=pcre_exec(re_105,(struct pcre_extra*)0,self,len_108,offset_96,options_107,ovec_value_100,ovec_max_97*3);
-        for(        i_110=0;        i_110<ovec_max_97;        i_110++        ){
-            start_98[i_110]=ovec_value_100[i_110*2];
+    offset_94=0;
+    ovec_max_95=16;
+    int start_96[ovec_max_95];
+    memset(&start_96, 0, sizeof(int)    *(ovec_max_95)    );
+    int end_97[ovec_max_95];
+    memset(&end_97, 0, sizeof(int)    *(ovec_max_95)    );
+    int ovec_value_98[ovec_max_95*3];
+    memset(&ovec_value_98, 0, sizeof(int)    *(ovec_max_95*3)    );
+    options_101=reg->options;
+    str_102=reg->str;
+    re_103=reg->re;
+    n_104=0;
+    while(_while_condtional7=(_Bool)1,    _while_condtional7) {
+        options_105=2097152;
+        len_106=strlen(self);
+        regex_result_107=pcre_exec(re_103,(struct pcre_extra*)0,self,len_106,offset_94,options_105,ovec_value_98,ovec_max_95*3);
+        for(        i_108=0;        i_108<ovec_max_95;        i_108++        ){
+            start_96[i_108]=ovec_value_98[i_108*2];
         }
-        for(        i_111=0;        i_111<ovec_max_97;        i_111++        ){
-            end_99[i_111]=ovec_value_100[i_111*2+1];
+        for(        i_109=0;        i_109<ovec_max_95;        i_109++        ){
+            end_97[i_109]=ovec_value_98[i_109*2+1];
         }
-        if(_if_conditional41=regex_result_109==1,        _if_conditional41) {
-            str_112=(char*)come_increment_ref_count(((char*)(right_value69=charp_substring(self,start_98[0],end_99[0]))));
+        if(_if_conditional41=regex_result_107==1,        _if_conditional41) {
+            str_110=(char*)come_increment_ref_count(((char*)(right_value69=charp_substring(self,start_96[0],end_97[0]))));
             right_value69 = come_decrement_ref_count2(right_value69, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            group_strings_113=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value71=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value70=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 501, "struct list$1charph"))))))));
+            group_strings_111=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value71=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value70=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 501, "struct list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value70, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value71, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            str2_114=(char*)come_increment_ref_count(((char*)(right_value72=block(parent,str_112,group_strings_113))));
+            str2_112=(char*)come_increment_ref_count(((char*)(right_value72=block(parent,str_110,group_strings_111))));
             right_value72 = come_decrement_ref_count2(right_value72, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional42=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional42) {
-                __result76__ = __result_obj__ = result_95;
-                str_112 = come_decrement_ref_count2(str_112, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_113, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_114 = come_decrement_ref_count2(str2_114, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,result_95, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                __result76__ = __result_obj__ = result_93;
+                str_110 = come_decrement_ref_count2(str_110, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_111, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_112 = come_decrement_ref_count2(str2_112, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,result_93, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                 return __result76__;
             }
-            list$1charph_push_back(result_95,(char*)come_increment_ref_count(str2_114));
-            if(_if_conditional43=offset_96==end_99[0],            _if_conditional43) {
-                offset_96++;
+            list$1charph_push_back(result_93,(char*)come_increment_ref_count(str2_112));
+            if(_if_conditional43=offset_94==end_97[0],            _if_conditional43) {
+                offset_94++;
             }
             else {
-                offset_96=end_99[0];
+                offset_94=end_97[0];
             }
-            n_106++;
-            if(_if_conditional44=n_106==count,            _if_conditional44) {
-                str_112 = come_decrement_ref_count2(str_112, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_113, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_114 = come_decrement_ref_count2(str2_114, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            n_104++;
+            if(_if_conditional44=n_104==count,            _if_conditional44) {
+                str_110 = come_decrement_ref_count2(str_110, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_111, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_112 = come_decrement_ref_count2(str2_112, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
             }
-            str_112 = come_decrement_ref_count2(str_112, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,group_strings_113, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            str2_114 = come_decrement_ref_count2(str2_114, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_110 = come_decrement_ref_count2(str_110, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,group_strings_111, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            str2_112 = come_decrement_ref_count2(str2_112, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional45=regex_result_109>1,            _if_conditional45) {
-                str_115=(char*)come_increment_ref_count(((char*)(right_value73=charp_substring(self,start_98[0],end_99[0]))));
+            if(_if_conditional45=regex_result_107>1,            _if_conditional45) {
+                str_113=(char*)come_increment_ref_count(((char*)(right_value73=charp_substring(self,start_96[0],end_97[0]))));
                 right_value73 = come_decrement_ref_count2(right_value73, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                group_strings_116=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value75=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value74=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 527, "struct list$1charph"))))))));
+                group_strings_114=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value75=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value74=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 527, "struct list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value74, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value75, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                for(                i_117=1;                i_117<regex_result_109;                i_117++                ){
-                    match_string_118=(char*)come_increment_ref_count(((char*)(right_value76=charp_substring(self,start_98[i_117],end_99[i_117]))));
+                for(                i_115=1;                i_115<regex_result_107;                i_115++                ){
+                    match_string_116=(char*)come_increment_ref_count(((char*)(right_value76=charp_substring(self,start_96[i_115],end_97[i_115]))));
                     right_value76 = come_decrement_ref_count2(right_value76, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(group_strings_116,(char*)come_increment_ref_count(match_string_118));
-                    match_string_118 = come_decrement_ref_count2(match_string_118, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(group_strings_114,(char*)come_increment_ref_count(match_string_116));
+                    match_string_116 = come_decrement_ref_count2(match_string_116, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str2_119=(char*)come_increment_ref_count(((char*)(right_value77=block(parent,str_115,group_strings_116))));
+                str2_117=(char*)come_increment_ref_count(((char*)(right_value77=block(parent,str_113,group_strings_114))));
                 right_value77 = come_decrement_ref_count2(right_value77, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 if(_if_conditional46=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional46) {
-                    __result77__ = __result_obj__ = result_95;
-                    str_115 = come_decrement_ref_count2(str_115, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_116, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    str2_119 = come_decrement_ref_count2(str2_119, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,result_95, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                    __result77__ = __result_obj__ = result_93;
+                    str_113 = come_decrement_ref_count2(str_113, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_114, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    str2_117 = come_decrement_ref_count2(str2_117, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,result_93, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                     return __result77__;
                 }
-                list$1charph_push_back(result_95,(char*)come_increment_ref_count(str2_119));
-                if(_if_conditional47=offset_96==end_99[0],                _if_conditional47) {
-                    offset_96++;
+                list$1charph_push_back(result_93,(char*)come_increment_ref_count(str2_117));
+                if(_if_conditional47=offset_94==end_97[0],                _if_conditional47) {
+                    offset_94++;
                 }
                 else {
-                    offset_96=end_99[0];
+                    offset_94=end_97[0];
                 }
-                n_106++;
-                if(_if_conditional48=n_106==count,                _if_conditional48) {
-                    str_115 = come_decrement_ref_count2(str_115, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_116, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    str2_119 = come_decrement_ref_count2(str2_119, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                n_104++;
+                if(_if_conditional48=n_104==count,                _if_conditional48) {
+                    str_113 = come_decrement_ref_count2(str_113, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_114, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    str2_117 = come_decrement_ref_count2(str2_117, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                     break;
                 }
-                str_115 = come_decrement_ref_count2(str_115, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_116, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_119 = come_decrement_ref_count2(str2_119, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_113 = come_decrement_ref_count2(str_113, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_114, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_117 = come_decrement_ref_count2(str2_117, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
     }
-    __result78__ = __result_obj__ = result_95;
-    come_call_finalizer2(list$1charphp_finalize,result_95, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result78__ = __result_obj__ = result_93;
+    come_call_finalizer2(list$1charphp_finalize,result_93, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result78__;
-    come_call_finalizer2(list$1charphp_finalize,result_95, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_93, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 struct list$1charph* charp_split_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-const char* err_120;
-int erro_ofs_121;
-int options_122;
-char* str_123;
-struct real_pcre8_or_16* re_124;
+const char* err_118;
+int erro_ofs_119;
+int options_120;
+char* str_121;
+struct real_pcre8_or_16* re_122;
 void* right_value78;
 void* right_value79;
-struct list$1charph* result_125;
-int offset_126;
-int ovec_max_127;
-_Bool _while_condtional9;
-int options_131;
-int len_132;
-int regex_result_133;
-int i_134;
-int i_135;
+struct list$1charph* result_123;
+int offset_124;
+int ovec_max_125;
+_Bool _while_condtional8;
+int options_129;
+int len_130;
+int regex_result_131;
+int i_132;
+int i_133;
 _Bool _if_conditional49;
 void* right_value80;
-char* str_136;
+char* str_134;
 void* right_value81;
 void* right_value82;
-struct list$1charph* match_strings_137;
+struct list$1charph* match_strings_135;
 void* right_value83;
-char* str2_138;
+char* str2_136;
 _Bool _if_conditional50;
 struct list$1charph* __result79__;
 _Bool _if_conditional51;
 _Bool _if_conditional52;
 void* right_value84;
-char* str_139;
+char* str_137;
 _Bool _if_conditional53;
 void* right_value85;
 void* right_value86;
-struct list$1charph* match_strings_140;
-int i_141;
+struct list$1charph* match_strings_138;
+int i_139;
 void* right_value87;
-char* match_str_142;
+char* match_str_140;
 void* right_value88;
-char* str2_143;
+char* str2_141;
 _Bool _if_conditional54;
 struct list$1charph* __result80__;
 _Bool _if_conditional55;
 void* right_value89;
-char* str_144;
+char* str_142;
 void* right_value90;
 void* right_value91;
-struct list$1charph* match_strings_145;
+struct list$1charph* match_strings_143;
 void* right_value92;
-char* str2_146;
+char* str2_144;
 _Bool _if_conditional56;
 struct list$1charph* __result81__;
 struct list$1charph* __result82__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&erro_ofs_121, 0, sizeof(int));
-memset(&options_122, 0, sizeof(int));
-memset(&str_123, 0, sizeof(char*));
-memset(&re_124, 0, sizeof(struct real_pcre8_or_16*));
+memset(&erro_ofs_119, 0, sizeof(int));
+memset(&options_120, 0, sizeof(int));
+memset(&str_121, 0, sizeof(char*));
+memset(&re_122, 0, sizeof(struct real_pcre8_or_16*));
 right_value78 = (void*)0;
 right_value79 = (void*)0;
-memset(&result_125, 0, sizeof(struct list$1charph*));
-memset(&offset_126, 0, sizeof(int));
-memset(&ovec_max_127, 0, sizeof(int));
-memset(&options_131, 0, sizeof(int));
-memset(&len_132, 0, sizeof(int));
-memset(&regex_result_133, 0, sizeof(int));
-memset(&i_134, 0, sizeof(int));
-memset(&i_135, 0, sizeof(int));
+memset(&result_123, 0, sizeof(struct list$1charph*));
+memset(&offset_124, 0, sizeof(int));
+memset(&ovec_max_125, 0, sizeof(int));
+memset(&options_129, 0, sizeof(int));
+memset(&len_130, 0, sizeof(int));
+memset(&regex_result_131, 0, sizeof(int));
+memset(&i_132, 0, sizeof(int));
+memset(&i_133, 0, sizeof(int));
 right_value80 = (void*)0;
-memset(&str_136, 0, sizeof(char*));
+memset(&str_134, 0, sizeof(char*));
 right_value81 = (void*)0;
 right_value82 = (void*)0;
-memset(&match_strings_137, 0, sizeof(struct list$1charph*));
+memset(&match_strings_135, 0, sizeof(struct list$1charph*));
 right_value83 = (void*)0;
-memset(&str2_138, 0, sizeof(char*));
+memset(&str2_136, 0, sizeof(char*));
 right_value84 = (void*)0;
-memset(&str_139, 0, sizeof(char*));
+memset(&str_137, 0, sizeof(char*));
 right_value85 = (void*)0;
 right_value86 = (void*)0;
-memset(&match_strings_140, 0, sizeof(struct list$1charph*));
-memset(&i_141, 0, sizeof(int));
+memset(&match_strings_138, 0, sizeof(struct list$1charph*));
+memset(&i_139, 0, sizeof(int));
 right_value87 = (void*)0;
-memset(&match_str_142, 0, sizeof(char*));
+memset(&match_str_140, 0, sizeof(char*));
 right_value88 = (void*)0;
-memset(&str2_143, 0, sizeof(char*));
+memset(&str2_141, 0, sizeof(char*));
 right_value89 = (void*)0;
-memset(&str_144, 0, sizeof(char*));
+memset(&str_142, 0, sizeof(char*));
 right_value90 = (void*)0;
 right_value91 = (void*)0;
-memset(&match_strings_145, 0, sizeof(struct list$1charph*));
+memset(&match_strings_143, 0, sizeof(struct list$1charph*));
 right_value92 = (void*)0;
-memset(&str2_146, 0, sizeof(char*));
-    options_122=reg->options;
-    str_123=reg->str;
-    re_124=reg->re;
-    result_125=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value79=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value78=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 573, "struct list$1charph"))))))));
+memset(&str2_144, 0, sizeof(char*));
+    options_120=reg->options;
+    str_121=reg->str;
+    re_122=reg->re;
+    result_123=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value79=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value78=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 573, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value78, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value79, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_126=0;
-    ovec_max_127=16;
-    int start_128[ovec_max_127];
-    memset(&start_128, 0, sizeof(int)    *(ovec_max_127)    );
-    int end_129[ovec_max_127];
-    memset(&end_129, 0, sizeof(int)    *(ovec_max_127)    );
-    int ovec_value_130[ovec_max_127*3];
-    memset(&ovec_value_130, 0, sizeof(int)    *(ovec_max_127*3)    );
-    while(_while_condtional9=(_Bool)1,    _while_condtional9) {
-        options_131=2097152;
-        len_132=strlen(self);
-        regex_result_133=pcre_exec(re_124,(struct pcre_extra*)0,self,len_132,offset_126,options_131,ovec_value_130,ovec_max_127*3);
-        for(        i_134=0;        i_134<ovec_max_127;        i_134++        ){
-            start_128[i_134]=ovec_value_130[i_134*2];
+    offset_124=0;
+    ovec_max_125=16;
+    int start_126[ovec_max_125];
+    memset(&start_126, 0, sizeof(int)    *(ovec_max_125)    );
+    int end_127[ovec_max_125];
+    memset(&end_127, 0, sizeof(int)    *(ovec_max_125)    );
+    int ovec_value_128[ovec_max_125*3];
+    memset(&ovec_value_128, 0, sizeof(int)    *(ovec_max_125*3)    );
+    while(_while_condtional8=(_Bool)1,    _while_condtional8) {
+        options_129=2097152;
+        len_130=strlen(self);
+        regex_result_131=pcre_exec(re_122,(struct pcre_extra*)0,self,len_130,offset_124,options_129,ovec_value_128,ovec_max_125*3);
+        for(        i_132=0;        i_132<ovec_max_125;        i_132++        ){
+            start_126[i_132]=ovec_value_128[i_132*2];
         }
-        for(        i_135=0;        i_135<ovec_max_127;        i_135++        ){
-            end_129[i_135]=ovec_value_130[i_135*2+1];
+        for(        i_133=0;        i_133<ovec_max_125;        i_133++        ){
+            end_127[i_133]=ovec_value_128[i_133*2+1];
         }
-        if(_if_conditional49=regex_result_133==1,        _if_conditional49) {
-            str_136=(char*)come_increment_ref_count(((char*)(right_value80=charp_substring(self,offset_126,start_128[0]))));
+        if(_if_conditional49=regex_result_131==1,        _if_conditional49) {
+            str_134=(char*)come_increment_ref_count(((char*)(right_value80=charp_substring(self,offset_124,start_126[0]))));
             right_value80 = come_decrement_ref_count2(right_value80, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            match_strings_137=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value82=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value81=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 600, "struct list$1charph"))))))));
+            match_strings_135=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value82=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value81=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 600, "struct list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value81, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value82, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            str2_138=(char*)come_increment_ref_count(((char*)(right_value83=block(parent,str_136,match_strings_137))));
+            str2_136=(char*)come_increment_ref_count(((char*)(right_value83=block(parent,str_134,match_strings_135))));
             right_value83 = come_decrement_ref_count2(right_value83, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional50=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional50) {
-                __result79__ = __result_obj__ = result_125;
-                str_136 = come_decrement_ref_count2(str_136, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,match_strings_137, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_138 = come_decrement_ref_count2(str2_138, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,result_125, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                __result79__ = __result_obj__ = result_123;
+                str_134 = come_decrement_ref_count2(str_134, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,match_strings_135, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_136 = come_decrement_ref_count2(str2_136, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,result_123, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                 return __result79__;
             }
-            list$1charph_push_back(result_125,(char*)come_increment_ref_count(str2_138));
-            if(_if_conditional51=offset_126==end_129[0],            _if_conditional51) {
-                offset_126++;
+            list$1charph_push_back(result_123,(char*)come_increment_ref_count(str2_136));
+            if(_if_conditional51=offset_124==end_127[0],            _if_conditional51) {
+                offset_124++;
             }
             else {
-                offset_126=end_129[0];
+                offset_124=end_127[0];
             }
-            str_136 = come_decrement_ref_count2(str_136, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,match_strings_137, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            str2_138 = come_decrement_ref_count2(str2_138, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_134 = come_decrement_ref_count2(str_134, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,match_strings_135, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            str2_136 = come_decrement_ref_count2(str2_136, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional52=regex_result_133>1,            _if_conditional52) {
-                str_139=(char*)come_increment_ref_count(((char*)(right_value84=charp_substring(self,offset_126,start_128[0]))));
+            if(_if_conditional52=regex_result_131>1,            _if_conditional52) {
+                str_137=(char*)come_increment_ref_count(((char*)(right_value84=charp_substring(self,offset_124,start_126[0]))));
                 right_value84 = come_decrement_ref_count2(right_value84, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                if(_if_conditional53=offset_126==end_129[0],                _if_conditional53) {
-                    offset_126++;
+                if(_if_conditional53=offset_124==end_127[0],                _if_conditional53) {
+                    offset_124++;
                 }
                 else {
-                    offset_126=end_129[0];
+                    offset_124=end_127[0];
                 }
-                match_strings_140=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value86=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value85=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 627, "struct list$1charph"))))))));
+                match_strings_138=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value86=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value85=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 627, "struct list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value85, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value86, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                for(                i_141=1;                i_141<regex_result_133;                i_141++                ){
-                    match_str_142=(char*)come_increment_ref_count(((char*)(right_value87=charp_substring(self,start_128[i_141],end_129[i_141]))));
+                for(                i_139=1;                i_139<regex_result_131;                i_139++                ){
+                    match_str_140=(char*)come_increment_ref_count(((char*)(right_value87=charp_substring(self,start_126[i_139],end_127[i_139]))));
                     right_value87 = come_decrement_ref_count2(right_value87, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(match_strings_140,(char*)come_increment_ref_count(match_str_142));
-                    match_str_142 = come_decrement_ref_count2(match_str_142, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(match_strings_138,(char*)come_increment_ref_count(match_str_140));
+                    match_str_140 = come_decrement_ref_count2(match_str_140, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str2_143=(char*)come_increment_ref_count(((char*)(right_value88=block(parent,str_139,match_strings_140))));
+                str2_141=(char*)come_increment_ref_count(((char*)(right_value88=block(parent,str_137,match_strings_138))));
                 right_value88 = come_decrement_ref_count2(right_value88, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 if(_if_conditional54=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional54) {
-                    __result80__ = __result_obj__ = result_125;
-                    str_139 = come_decrement_ref_count2(str_139, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,match_strings_140, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    str2_143 = come_decrement_ref_count2(str2_143, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,result_125, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                    __result80__ = __result_obj__ = result_123;
+                    str_137 = come_decrement_ref_count2(str_137, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,match_strings_138, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    str2_141 = come_decrement_ref_count2(str2_141, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,result_123, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                     return __result80__;
                 }
-                list$1charph_push_back(result_125,(char*)come_increment_ref_count(str2_143));
-                str_139 = come_decrement_ref_count2(str_139, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,match_strings_140, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_143 = come_decrement_ref_count2(str2_143, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                list$1charph_push_back(result_123,(char*)come_increment_ref_count(str2_141));
+                str_137 = come_decrement_ref_count2(str_137, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,match_strings_138, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_141 = come_decrement_ref_count2(str2_141, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
     }
-    if(_if_conditional55=offset_126<charp_length(self),    _if_conditional55) {
-        str_144=(char*)come_increment_ref_count(((char*)(right_value89=charp_substring(self,offset_126,-1))));
+    if(_if_conditional55=offset_124<charp_length(self),    _if_conditional55) {
+        str_142=(char*)come_increment_ref_count(((char*)(right_value89=charp_substring(self,offset_124,-1))));
         right_value89 = come_decrement_ref_count2(right_value89, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        match_strings_145=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value91=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value90=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 649, "struct list$1charph"))))))));
+        match_strings_143=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value91=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value90=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 649, "struct list$1charph"))))))));
         come_call_finalizer2(list$1charphp_finalize,right_value90, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         come_call_finalizer2(list$1charphp_finalize,right_value91, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        str2_146=(char*)come_increment_ref_count(((char*)(right_value92=block(parent,str_144,match_strings_145))));
+        str2_144=(char*)come_increment_ref_count(((char*)(right_value92=block(parent,str_142,match_strings_143))));
         right_value92 = come_decrement_ref_count2(right_value92, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         if(_if_conditional56=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional56) {
-            __result81__ = __result_obj__ = result_125;
-            str_144 = come_decrement_ref_count2(str_144, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,match_strings_145, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            str2_146 = come_decrement_ref_count2(str2_146, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,result_125, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+            __result81__ = __result_obj__ = result_123;
+            str_142 = come_decrement_ref_count2(str_142, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,match_strings_143, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            str2_144 = come_decrement_ref_count2(str2_144, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,result_123, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
             return __result81__;
         }
-        list$1charph_push_back(result_125,(char*)come_increment_ref_count(str2_146));
-        str_144 = come_decrement_ref_count2(str_144, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-        come_call_finalizer2(list$1charphp_finalize,match_strings_145, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-        str2_146 = come_decrement_ref_count2(str2_146, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+        list$1charph_push_back(result_123,(char*)come_increment_ref_count(str2_144));
+        str_142 = come_decrement_ref_count2(str_142, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+        come_call_finalizer2(list$1charphp_finalize,match_strings_143, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+        str2_144 = come_decrement_ref_count2(str2_144, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     }
-    __result82__ = __result_obj__ = result_125;
-    come_call_finalizer2(list$1charphp_finalize,result_125, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result82__ = __result_obj__ = result_123;
+    come_call_finalizer2(list$1charphp_finalize,result_123, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result82__;
-    come_call_finalizer2(list$1charphp_finalize,result_125, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_123, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 struct list$1charph* charp_split_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-const char* err_147;
-int erro_ofs_148;
-int options_149;
-char* str_150;
-struct real_pcre8_or_16* re_151;
+const char* err_145;
+int erro_ofs_146;
+int options_147;
+char* str_148;
+struct real_pcre8_or_16* re_149;
 void* right_value93;
 void* right_value94;
-struct list$1charph* result_152;
-int offset_153;
-int ovec_max_154;
-int n_158;
-_Bool _while_condtional10;
-int options_159;
-int len_160;
-int regex_result_161;
-int i_162;
-int i_163;
+struct list$1charph* result_150;
+int offset_151;
+int ovec_max_152;
+int n_156;
+_Bool _while_condtional9;
+int options_157;
+int len_158;
+int regex_result_159;
+int i_160;
+int i_161;
 _Bool _if_conditional57;
 void* right_value95;
-char* str_164;
+char* str_162;
 void* right_value96;
 void* right_value97;
-struct list$1charph* match_strings_165;
+struct list$1charph* match_strings_163;
 void* right_value98;
-char* str2_166;
+char* str2_164;
 _Bool _if_conditional58;
 struct list$1charph* __result83__;
 _Bool _if_conditional59;
 _Bool _if_conditional60;
 void* right_value99;
-char* str_167;
+char* str_165;
 _Bool _if_conditional61;
 void* right_value100;
 void* right_value101;
-struct list$1charph* match_strings_168;
-int i_169;
+struct list$1charph* match_strings_166;
+int i_167;
 void* right_value102;
-char* match_str_170;
+char* match_str_168;
 void* right_value103;
-char* str2_171;
+char* str2_169;
 _Bool _if_conditional62;
 struct list$1charph* __result84__;
 _Bool _if_conditional63;
 struct list$1charph* __result85__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&erro_ofs_148, 0, sizeof(int));
-memset(&options_149, 0, sizeof(int));
-memset(&str_150, 0, sizeof(char*));
-memset(&re_151, 0, sizeof(struct real_pcre8_or_16*));
+memset(&erro_ofs_146, 0, sizeof(int));
+memset(&options_147, 0, sizeof(int));
+memset(&str_148, 0, sizeof(char*));
+memset(&re_149, 0, sizeof(struct real_pcre8_or_16*));
 right_value93 = (void*)0;
 right_value94 = (void*)0;
-memset(&result_152, 0, sizeof(struct list$1charph*));
-memset(&offset_153, 0, sizeof(int));
-memset(&ovec_max_154, 0, sizeof(int));
-memset(&n_158, 0, sizeof(int));
-memset(&options_159, 0, sizeof(int));
-memset(&len_160, 0, sizeof(int));
-memset(&regex_result_161, 0, sizeof(int));
-memset(&i_162, 0, sizeof(int));
-memset(&i_163, 0, sizeof(int));
+memset(&result_150, 0, sizeof(struct list$1charph*));
+memset(&offset_151, 0, sizeof(int));
+memset(&ovec_max_152, 0, sizeof(int));
+memset(&n_156, 0, sizeof(int));
+memset(&options_157, 0, sizeof(int));
+memset(&len_158, 0, sizeof(int));
+memset(&regex_result_159, 0, sizeof(int));
+memset(&i_160, 0, sizeof(int));
+memset(&i_161, 0, sizeof(int));
 right_value95 = (void*)0;
-memset(&str_164, 0, sizeof(char*));
+memset(&str_162, 0, sizeof(char*));
 right_value96 = (void*)0;
 right_value97 = (void*)0;
-memset(&match_strings_165, 0, sizeof(struct list$1charph*));
+memset(&match_strings_163, 0, sizeof(struct list$1charph*));
 right_value98 = (void*)0;
-memset(&str2_166, 0, sizeof(char*));
+memset(&str2_164, 0, sizeof(char*));
 right_value99 = (void*)0;
-memset(&str_167, 0, sizeof(char*));
+memset(&str_165, 0, sizeof(char*));
 right_value100 = (void*)0;
 right_value101 = (void*)0;
-memset(&match_strings_168, 0, sizeof(struct list$1charph*));
-memset(&i_169, 0, sizeof(int));
+memset(&match_strings_166, 0, sizeof(struct list$1charph*));
+memset(&i_167, 0, sizeof(int));
 right_value102 = (void*)0;
-memset(&match_str_170, 0, sizeof(char*));
+memset(&match_str_168, 0, sizeof(char*));
 right_value103 = (void*)0;
-memset(&str2_171, 0, sizeof(char*));
-    options_149=reg->options;
-    str_150=reg->str;
-    re_151=reg->re;
-    result_152=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value94=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value93=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 671, "struct list$1charph"))))))));
+memset(&str2_169, 0, sizeof(char*));
+    options_147=reg->options;
+    str_148=reg->str;
+    re_149=reg->re;
+    result_150=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value94=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value93=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 671, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value93, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value94, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_153=0;
-    ovec_max_154=16;
-    int start_155[ovec_max_154];
-    memset(&start_155, 0, sizeof(int)    *(ovec_max_154)    );
-    int end_156[ovec_max_154];
-    memset(&end_156, 0, sizeof(int)    *(ovec_max_154)    );
-    int ovec_value_157[ovec_max_154*3];
-    memset(&ovec_value_157, 0, sizeof(int)    *(ovec_max_154*3)    );
-    n_158=0;
-    while(_while_condtional10=(_Bool)1,    _while_condtional10) {
-        options_159=2097152;
-        len_160=strlen(self);
-        regex_result_161=pcre_exec(re_151,(struct pcre_extra*)0,self,len_160,offset_153,options_159,ovec_value_157,ovec_max_154*3);
-        for(        i_162=0;        i_162<ovec_max_154;        i_162++        ){
-            start_155[i_162]=ovec_value_157[i_162*2];
+    offset_151=0;
+    ovec_max_152=16;
+    int start_153[ovec_max_152];
+    memset(&start_153, 0, sizeof(int)    *(ovec_max_152)    );
+    int end_154[ovec_max_152];
+    memset(&end_154, 0, sizeof(int)    *(ovec_max_152)    );
+    int ovec_value_155[ovec_max_152*3];
+    memset(&ovec_value_155, 0, sizeof(int)    *(ovec_max_152*3)    );
+    n_156=0;
+    while(_while_condtional9=(_Bool)1,    _while_condtional9) {
+        options_157=2097152;
+        len_158=strlen(self);
+        regex_result_159=pcre_exec(re_149,(struct pcre_extra*)0,self,len_158,offset_151,options_157,ovec_value_155,ovec_max_152*3);
+        for(        i_160=0;        i_160<ovec_max_152;        i_160++        ){
+            start_153[i_160]=ovec_value_155[i_160*2];
         }
-        for(        i_163=0;        i_163<ovec_max_154;        i_163++        ){
-            end_156[i_163]=ovec_value_157[i_163*2+1];
+        for(        i_161=0;        i_161<ovec_max_152;        i_161++        ){
+            end_154[i_161]=ovec_value_155[i_161*2+1];
         }
-        if(_if_conditional57=regex_result_161==1,        _if_conditional57) {
-            str_164=(char*)come_increment_ref_count(((char*)(right_value95=charp_substring(self,offset_153,start_155[0]))));
+        if(_if_conditional57=regex_result_159==1,        _if_conditional57) {
+            str_162=(char*)come_increment_ref_count(((char*)(right_value95=charp_substring(self,offset_151,start_153[0]))));
             right_value95 = come_decrement_ref_count2(right_value95, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            match_strings_165=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value97=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value96=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 700, "struct list$1charph"))))))));
+            match_strings_163=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value97=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value96=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 700, "struct list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value96, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value97, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            str2_166=(char*)come_increment_ref_count(((char*)(right_value98=block(parent,str_164,match_strings_165))));
+            str2_164=(char*)come_increment_ref_count(((char*)(right_value98=block(parent,str_162,match_strings_163))));
             right_value98 = come_decrement_ref_count2(right_value98, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional58=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional58) {
-                __result83__ = __result_obj__ = result_152;
-                str_164 = come_decrement_ref_count2(str_164, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,match_strings_165, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_166 = come_decrement_ref_count2(str2_166, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,result_152, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                __result83__ = __result_obj__ = result_150;
+                str_162 = come_decrement_ref_count2(str_162, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,match_strings_163, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_164 = come_decrement_ref_count2(str2_164, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,result_150, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                 return __result83__;
             }
-            list$1charph_push_back(result_152,(char*)come_increment_ref_count(str2_166));
-            if(_if_conditional59=offset_153==end_156[0],            _if_conditional59) {
-                offset_153++;
+            list$1charph_push_back(result_150,(char*)come_increment_ref_count(str2_164));
+            if(_if_conditional59=offset_151==end_154[0],            _if_conditional59) {
+                offset_151++;
             }
             else {
-                offset_153=end_156[0];
+                offset_151=end_154[0];
             }
-            str_164 = come_decrement_ref_count2(str_164, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,match_strings_165, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            str2_166 = come_decrement_ref_count2(str2_166, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_162 = come_decrement_ref_count2(str_162, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,match_strings_163, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            str2_164 = come_decrement_ref_count2(str2_164, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional60=regex_result_161>1,            _if_conditional60) {
-                str_167=(char*)come_increment_ref_count(((char*)(right_value99=charp_substring(self,offset_153,start_155[0]))));
+            if(_if_conditional60=regex_result_159>1,            _if_conditional60) {
+                str_165=(char*)come_increment_ref_count(((char*)(right_value99=charp_substring(self,offset_151,start_153[0]))));
                 right_value99 = come_decrement_ref_count2(right_value99, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                if(_if_conditional61=offset_153==end_156[0],                _if_conditional61) {
-                    offset_153++;
+                if(_if_conditional61=offset_151==end_154[0],                _if_conditional61) {
+                    offset_151++;
                 }
                 else {
-                    offset_153=end_156[0];
+                    offset_151=end_154[0];
                 }
-                match_strings_168=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value101=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value100=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 726, "struct list$1charph"))))))));
+                match_strings_166=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value101=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value100=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 726, "struct list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value100, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value101, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                for(                i_169=1;                i_169<regex_result_161;                i_169++                ){
-                    match_str_170=(char*)come_increment_ref_count(((char*)(right_value102=charp_substring(self,start_155[i_169],end_156[i_169]))));
+                for(                i_167=1;                i_167<regex_result_159;                i_167++                ){
+                    match_str_168=(char*)come_increment_ref_count(((char*)(right_value102=charp_substring(self,start_153[i_167],end_154[i_167]))));
                     right_value102 = come_decrement_ref_count2(right_value102, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(match_strings_168,(char*)come_increment_ref_count(match_str_170));
-                    match_str_170 = come_decrement_ref_count2(match_str_170, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(match_strings_166,(char*)come_increment_ref_count(match_str_168));
+                    match_str_168 = come_decrement_ref_count2(match_str_168, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str2_171=(char*)come_increment_ref_count(((char*)(right_value103=block(parent,str_167,match_strings_168))));
+                str2_169=(char*)come_increment_ref_count(((char*)(right_value103=block(parent,str_165,match_strings_166))));
                 right_value103 = come_decrement_ref_count2(right_value103, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 if(_if_conditional62=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional62) {
-                    __result84__ = __result_obj__ = result_152;
-                    str_167 = come_decrement_ref_count2(str_167, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,match_strings_168, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    str2_171 = come_decrement_ref_count2(str2_171, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,result_152, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                    __result84__ = __result_obj__ = result_150;
+                    str_165 = come_decrement_ref_count2(str_165, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,match_strings_166, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    str2_169 = come_decrement_ref_count2(str2_169, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,result_150, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                     return __result84__;
                 }
-                list$1charph_push_back(result_152,(char*)come_increment_ref_count(str2_171));
-                str_167 = come_decrement_ref_count2(str_167, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,match_strings_168, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                str2_171 = come_decrement_ref_count2(str2_171, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                list$1charph_push_back(result_150,(char*)come_increment_ref_count(str2_169));
+                str_165 = come_decrement_ref_count2(str_165, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,match_strings_166, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                str2_169 = come_decrement_ref_count2(str2_169, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
-        n_158++;
-        if(_if_conditional63=n_158==count,        _if_conditional63) {
+        n_156++;
+        if(_if_conditional63=n_156==count,        _if_conditional63) {
             break;
         }
     }
-    __result85__ = __result_obj__ = result_152;
-    come_call_finalizer2(list$1charphp_finalize,result_152, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result85__ = __result_obj__ = result_150;
+    come_call_finalizer2(list$1charphp_finalize,result_150, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result85__;
-    come_call_finalizer2(list$1charphp_finalize,result_152, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_150, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 _Bool come_regex_equals(struct come_regex* left, struct come_regex* right){
@@ -4872,215 +4872,215 @@ struct list$1charph* charp_scan_group_strings(char* self, struct come_regex* reg
 void* __result_obj__;
 void* right_value104;
 void* right_value105;
-struct list$1charph* result_172;
-int offset_173;
-int ovec_max_174;
-const char* err_178;
-int erro_ofs_179;
-int options_180;
-char* str_181;
-struct real_pcre8_or_16* re_182;
-_Bool _while_condtional11;
-int options_183;
-int len_184;
-int regex_result_185;
-int i_186;
-int i_187;
+struct list$1charph* result_170;
+int offset_171;
+int ovec_max_172;
+const char* err_176;
+int erro_ofs_177;
+int options_178;
+char* str_179;
+struct real_pcre8_or_16* re_180;
+_Bool _while_condtional10;
+int options_181;
+int len_182;
+int regex_result_183;
+int i_184;
+int i_185;
 _Bool _if_conditional74;
 void* right_value106;
-char* str_188;
+char* str_186;
 _Bool _if_conditional75;
 _Bool _if_conditional76;
 void* right_value107;
-char* str_189;
+char* str_187;
 _Bool _if_conditional77;
-int i_190;
+int i_188;
 void* right_value108;
-char* match_string_191;
+char* match_string_189;
 struct list$1charph* __result97__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value104 = (void*)0;
 right_value105 = (void*)0;
-memset(&result_172, 0, sizeof(struct list$1charph*));
-memset(&offset_173, 0, sizeof(int));
-memset(&ovec_max_174, 0, sizeof(int));
-memset(&erro_ofs_179, 0, sizeof(int));
-memset(&options_180, 0, sizeof(int));
-memset(&str_181, 0, sizeof(char*));
-memset(&re_182, 0, sizeof(struct real_pcre8_or_16*));
-memset(&options_183, 0, sizeof(int));
-memset(&len_184, 0, sizeof(int));
-memset(&regex_result_185, 0, sizeof(int));
-memset(&i_186, 0, sizeof(int));
-memset(&i_187, 0, sizeof(int));
+memset(&result_170, 0, sizeof(struct list$1charph*));
+memset(&offset_171, 0, sizeof(int));
+memset(&ovec_max_172, 0, sizeof(int));
+memset(&erro_ofs_177, 0, sizeof(int));
+memset(&options_178, 0, sizeof(int));
+memset(&str_179, 0, sizeof(char*));
+memset(&re_180, 0, sizeof(struct real_pcre8_or_16*));
+memset(&options_181, 0, sizeof(int));
+memset(&len_182, 0, sizeof(int));
+memset(&regex_result_183, 0, sizeof(int));
+memset(&i_184, 0, sizeof(int));
+memset(&i_185, 0, sizeof(int));
 right_value106 = (void*)0;
-memset(&str_188, 0, sizeof(char*));
+memset(&str_186, 0, sizeof(char*));
 right_value107 = (void*)0;
-memset(&str_189, 0, sizeof(char*));
-memset(&i_190, 0, sizeof(int));
+memset(&str_187, 0, sizeof(char*));
+memset(&i_188, 0, sizeof(int));
 right_value108 = (void*)0;
-memset(&match_string_191, 0, sizeof(char*));
-    result_172=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value105=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value104=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 794, "struct list$1charph"))))))));
+memset(&match_string_189, 0, sizeof(char*));
+    result_170=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value105=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value104=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 794, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value104, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value105, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_173=0;
-    ovec_max_174=16;
-    int start_175[ovec_max_174];
-    memset(&start_175, 0, sizeof(int)    *(ovec_max_174)    );
-    int end_176[ovec_max_174];
-    memset(&end_176, 0, sizeof(int)    *(ovec_max_174)    );
-    int ovec_value_177[ovec_max_174*3];
-    memset(&ovec_value_177, 0, sizeof(int)    *(ovec_max_174*3)    );
-    options_180=reg->options;
-    str_181=reg->str;
-    re_182=reg->re;
-    while(_while_condtional11=(_Bool)1,    _while_condtional11) {
-        options_183=2097152;
-        len_184=strlen(self);
-        regex_result_185=pcre_exec(re_182,(struct pcre_extra*)0,self,len_184,offset_173,options_183,ovec_value_177,ovec_max_174*3);
-        for(        i_186=0;        i_186<ovec_max_174;        i_186++        ){
-            start_175[i_186]=ovec_value_177[i_186*2];
+    offset_171=0;
+    ovec_max_172=16;
+    int start_173[ovec_max_172];
+    memset(&start_173, 0, sizeof(int)    *(ovec_max_172)    );
+    int end_174[ovec_max_172];
+    memset(&end_174, 0, sizeof(int)    *(ovec_max_172)    );
+    int ovec_value_175[ovec_max_172*3];
+    memset(&ovec_value_175, 0, sizeof(int)    *(ovec_max_172*3)    );
+    options_178=reg->options;
+    str_179=reg->str;
+    re_180=reg->re;
+    while(_while_condtional10=(_Bool)1,    _while_condtional10) {
+        options_181=2097152;
+        len_182=strlen(self);
+        regex_result_183=pcre_exec(re_180,(struct pcre_extra*)0,self,len_182,offset_171,options_181,ovec_value_175,ovec_max_172*3);
+        for(        i_184=0;        i_184<ovec_max_172;        i_184++        ){
+            start_173[i_184]=ovec_value_175[i_184*2];
         }
-        for(        i_187=0;        i_187<ovec_max_174;        i_187++        ){
-            end_176[i_187]=ovec_value_177[i_187*2+1];
+        for(        i_185=0;        i_185<ovec_max_172;        i_185++        ){
+            end_174[i_185]=ovec_value_175[i_185*2+1];
         }
-        if(_if_conditional74=regex_result_185==1,        _if_conditional74) {
-            str_188=(char*)come_increment_ref_count(((char*)(right_value106=charp_substring(self,start_175[0],end_176[0]))));
+        if(_if_conditional74=regex_result_183==1,        _if_conditional74) {
+            str_186=(char*)come_increment_ref_count(((char*)(right_value106=charp_substring(self,start_173[0],end_174[0]))));
             right_value106 = come_decrement_ref_count2(right_value106, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(result_172,(char*)come_increment_ref_count(str_188));
-            if(_if_conditional75=offset_173==end_176[0],            _if_conditional75) {
-                offset_173++;
+            list$1charph_push_back(result_170,(char*)come_increment_ref_count(str_186));
+            if(_if_conditional75=offset_171==end_174[0],            _if_conditional75) {
+                offset_171++;
             }
             else {
-                offset_173=end_176[0];
+                offset_171=end_174[0];
             }
-            str_188 = come_decrement_ref_count2(str_188, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_186 = come_decrement_ref_count2(str_186, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional76=regex_result_185>1,            _if_conditional76) {
-                str_189=(char*)come_increment_ref_count(((char*)(right_value107=charp_substring(self,start_175[0],end_176[0]))));
+            if(_if_conditional76=regex_result_183>1,            _if_conditional76) {
+                str_187=(char*)come_increment_ref_count(((char*)(right_value107=charp_substring(self,start_173[0],end_174[0]))));
                 right_value107 = come_decrement_ref_count2(right_value107, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                list$1charph_push_back(result_172,(char*)come_increment_ref_count(str_189));
-                if(_if_conditional77=offset_173==end_176[0],                _if_conditional77) {
-                    offset_173++;
+                list$1charph_push_back(result_170,(char*)come_increment_ref_count(str_187));
+                if(_if_conditional77=offset_171==end_174[0],                _if_conditional77) {
+                    offset_171++;
                 }
                 else {
-                    offset_173=end_176[0];
+                    offset_171=end_174[0];
                 }
-                *num_group_string_in_regex=regex_result_185-1;
-                for(                i_190=1;                i_190<regex_result_185;                i_190++                ){
-                    match_string_191=(char*)come_increment_ref_count(((char*)(right_value108=charp_substring(self,start_175[i_190],end_176[i_190]))));
+                *num_group_string_in_regex=regex_result_183-1;
+                for(                i_188=1;                i_188<regex_result_183;                i_188++                ){
+                    match_string_189=(char*)come_increment_ref_count(((char*)(right_value108=charp_substring(self,start_173[i_188],end_174[i_188]))));
                     right_value108 = come_decrement_ref_count2(right_value108, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(group_strings,(char*)come_increment_ref_count(match_string_191));
-                    match_string_191 = come_decrement_ref_count2(match_string_191, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(group_strings,(char*)come_increment_ref_count(match_string_189));
+                    match_string_189 = come_decrement_ref_count2(match_string_189, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str_189 = come_decrement_ref_count2(str_189, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_187 = come_decrement_ref_count2(str_187, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
     }
-    __result97__ = __result_obj__ = result_172;
-    come_call_finalizer2(list$1charphp_finalize,result_172, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result97__ = __result_obj__ = result_170;
+    come_call_finalizer2(list$1charphp_finalize,result_170, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result97__;
-    come_call_finalizer2(list$1charphp_finalize,result_172, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_170, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 char* charp_strip(char* self){
 void* __result_obj__;
 void* right_value109;
-char* result_192;
-int len_193;
+char* result_190;
+int len_191;
 _Bool _if_conditional78;
 _Bool _if_conditional79;
 _Bool _if_conditional80;
 char* __result98__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value109 = (void*)0;
-memset(&result_192, 0, sizeof(char*));
-memset(&len_193, 0, sizeof(int));
-    result_192=(char*)come_increment_ref_count(((char*)(right_value109=__builtin_string(self))));
+memset(&result_190, 0, sizeof(char*));
+memset(&len_191, 0, sizeof(int));
+    result_190=(char*)come_increment_ref_count(((char*)(right_value109=__builtin_string(self))));
     right_value109 = come_decrement_ref_count2(right_value109, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    len_193=strlen(self);
-    if(_if_conditional78=self[len_193-1]==10,    _if_conditional78) {
-        result_192[len_193-1]=0;
+    len_191=strlen(self);
+    if(_if_conditional78=self[len_191-1]==10,    _if_conditional78) {
+        result_190[len_191-1]=0;
     }
     else {
-        if(_if_conditional79=self[len_193-1]==13,        _if_conditional79) {
-            result_192[len_193-1]=0;
+        if(_if_conditional79=self[len_191-1]==13,        _if_conditional79) {
+            result_190[len_191-1]=0;
         }
         else {
-            if(_if_conditional80=len_193>2&&self[len_193-2]==13&&self[len_193-1]==10,            _if_conditional80) {
-                result_192[len_193-2]=0;
+            if(_if_conditional80=len_191>2&&self[len_191-2]==13&&self[len_191-1]==10,            _if_conditional80) {
+                result_190[len_191-2]=0;
             }
         }
     }
-    __result98__ = __result_obj__ = result_192;
-    result_192 = come_decrement_ref_count2(result_192, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result98__ = __result_obj__ = result_190;
+    result_190 = come_decrement_ref_count2(result_190, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result98__;
-    result_192 = come_decrement_ref_count2(result_192, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_190 = come_decrement_ref_count2(result_190, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 char* charp_printable(char* str){
 void* __result_obj__;
-int len_194;
+int len_192;
 void* right_value110;
-char* result_195;
-int n_196;
-int i_197;
-char c_198;
+char* result_193;
+int n_194;
+int i_195;
+char c_196;
 _Bool _if_conditional81;
 char* __result99__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_194, 0, sizeof(int));
+memset(&len_192, 0, sizeof(int));
 right_value110 = (void*)0;
-memset(&result_195, 0, sizeof(char*));
-memset(&n_196, 0, sizeof(int));
-memset(&i_197, 0, sizeof(int));
-memset(&c_198, 0, sizeof(char));
-    len_194=charp_length(str);
-    result_195=(char*)come_increment_ref_count(((char*)(right_value110=(char*)come_calloc(1, sizeof(char)*(1*(len_194*2+1)), "libcomelang2-str.c", 888, "char"))));
+memset(&result_193, 0, sizeof(char*));
+memset(&n_194, 0, sizeof(int));
+memset(&i_195, 0, sizeof(int));
+memset(&c_196, 0, sizeof(char));
+    len_192=charp_length(str);
+    result_193=(char*)come_increment_ref_count(((char*)(right_value110=(char*)come_calloc(1, sizeof(char)*(1*(len_192*2+1)), "libcomelang2-str.c", 888, "char"))));
     right_value110 = come_decrement_ref_count2(right_value110, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    n_196=0;
-    for(    i_197=0;    i_197<len_194;    i_197++    ){
-        c_198=str[i_197];
-        if(_if_conditional81=(c_198>=0&&c_198<32)||c_198==127,        _if_conditional81) {
-            result_195[n_196++]=94;
-            result_195[n_196++]=c_198+65-1;
+    n_194=0;
+    for(    i_195=0;    i_195<len_192;    i_195++    ){
+        c_196=str[i_195];
+        if(_if_conditional81=(c_196>=0&&c_196<32)||c_196==127,        _if_conditional81) {
+            result_193[n_194++]=94;
+            result_193[n_194++]=c_196+65-1;
         }
         else {
-            result_195[n_196++]=c_198;
+            result_193[n_194++]=c_196;
         }
     }
-    result_195[n_196]=0;
-    __result99__ = __result_obj__ = result_195;
-    result_195 = come_decrement_ref_count2(result_195, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    result_193[n_194]=0;
+    __result99__ = __result_obj__ = result_193;
+    result_193 = come_decrement_ref_count2(result_193, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result99__;
-    result_195 = come_decrement_ref_count2(result_195, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_193 = come_decrement_ref_count2(result_193, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 char* wchar_tp_to_string(int* wstr){
 void* __result_obj__;
-int len_199;
+int len_197;
 void* right_value111;
-char* result_200;
+char* result_198;
 _Bool _if_conditional82;
 char* __result100__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_199, 0, sizeof(int));
+memset(&len_197, 0, sizeof(int));
 right_value111 = (void*)0;
-memset(&result_200, 0, sizeof(char*));
-    len_199=6*(wcslen(wstr)+1);
-    result_200=(char*)come_increment_ref_count(((char*)(right_value111=(char*)come_calloc(1, sizeof(char)*(1*(len_199)), "libcomelang2-str.c", 914, "char"))));
+memset(&result_198, 0, sizeof(char*));
+    len_197=6*(wcslen(wstr)+1);
+    result_198=(char*)come_increment_ref_count(((char*)(right_value111=(char*)come_calloc(1, sizeof(char)*(1*(len_197)), "libcomelang2-str.c", 914, "char"))));
     right_value111 = come_decrement_ref_count2(right_value111, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    if(_if_conditional82=wcstombs(result_200,wstr,len_199)<0,    _if_conditional82) {
-        strncpy(result_200,"",len_199);
+    if(_if_conditional82=wcstombs(result_198,wstr,len_197)<0,    _if_conditional82) {
+        strncpy(result_198,"",len_197);
     }
-    __result100__ = __result_obj__ = result_200;
-    result_200 = come_decrement_ref_count2(result_200, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result100__ = __result_obj__ = result_198;
+    result_198 = come_decrement_ref_count2(result_198, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result100__;
-    result_200 = come_decrement_ref_count2(result_200, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_198 = come_decrement_ref_count2(result_198, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int* charp_to_wstring(char* str){
@@ -5104,7 +5104,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 int* wchar_tp_delete(int* str, int head, int tail){
 void* __result_obj__;
-int len_201;
+int len_199;
 _Bool _if_conditional83;
 void* right_value113;
 void* right_value114;
@@ -5118,32 +5118,32 @@ void* right_value116;
 int* __result104__;
 _Bool _if_conditional88;
 void* right_value117;
-int* sub_str_202;
+int* sub_str_200;
 void* right_value118;
 void* right_value119;
 int* __result105__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_201, 0, sizeof(int));
+memset(&len_199, 0, sizeof(int));
 right_value113 = (void*)0;
 right_value114 = (void*)0;
 right_value115 = (void*)0;
 right_value116 = (void*)0;
 right_value117 = (void*)0;
-memset(&sub_str_202, 0, sizeof(int*));
+memset(&sub_str_200, 0, sizeof(int*));
 right_value118 = (void*)0;
 right_value119 = (void*)0;
-    len_201=wcslen(str);
-    if(_if_conditional83=len_201==0,    _if_conditional83) {
+    len_199=wcslen(str);
+    if(_if_conditional83=len_199==0,    _if_conditional83) {
         __result103__ = __result_obj__ = ((int*)(right_value114=string_to_wstring(((char*)(right_value113=wchar_tp_to_string(str))))));
         right_value113 = come_decrement_ref_count2(right_value113, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value114 = come_decrement_ref_count2(right_value114, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         return __result103__;
     }
     if(_if_conditional84=head<0,    _if_conditional84) {
-        head+=len_201;
+        head+=len_199;
     }
     if(_if_conditional85=tail<0,    _if_conditional85) {
-        tail+=len_201+1;
+        tail+=len_199+1;
     }
     if(_if_conditional86=head<0,    _if_conditional86) {
         head=0;
@@ -5154,70 +5154,70 @@ right_value119 = (void*)0;
         right_value116 = come_decrement_ref_count2(right_value116, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         return __result104__;
     }
-    if(_if_conditional88=tail>=len_201,    _if_conditional88) {
-        tail=len_201;
+    if(_if_conditional88=tail>=len_199,    _if_conditional88) {
+        tail=len_199;
     }
-    sub_str_202=(int*)come_increment_ref_count(((int*)(right_value117=wchar_tp_substring(str,tail,-1))));
+    sub_str_200=(int*)come_increment_ref_count(((int*)(right_value117=wchar_tp_substring(str,tail,-1))));
     right_value117 = come_decrement_ref_count2(right_value117, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    memcpy(str+head,sub_str_202,sizeof(int)*(wstring_length(sub_str_202)+1));
+    memcpy(str+head,sub_str_200,sizeof(int)*(wstring_length(sub_str_200)+1));
     __result105__ = __result_obj__ = ((int*)(right_value119=string_to_wstring(((char*)(right_value118=wchar_tp_to_string(str))))));
-    sub_str_202 = come_decrement_ref_count2(sub_str_202, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    sub_str_200 = come_decrement_ref_count2(sub_str_200, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     right_value118 = come_decrement_ref_count2(right_value118, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     right_value119 = come_decrement_ref_count2(right_value119, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result105__;
-    sub_str_202 = come_decrement_ref_count2(sub_str_202, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    sub_str_200 = come_decrement_ref_count2(sub_str_200, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int wchar_tp_index(int* str, int* search_str, int default_value){
 void* __result_obj__;
-int* head_203;
+int* head_201;
 _Bool _if_conditional89;
 int __result106__;
 int __result107__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&head_203, 0, sizeof(int*));
-    head_203=wcsstr(str,search_str);
-    if(_if_conditional89=head_203==((void*)0),    _if_conditional89) {
+memset(&head_201, 0, sizeof(int*));
+    head_201=wcsstr(str,search_str);
+    if(_if_conditional89=head_201==((void*)0),    _if_conditional89) {
         __result106__ = default_value;
         return __result106__;
     }
-    __result107__ = head_203-str;
+    __result107__ = head_201-str;
     return __result107__;
 }
 
 int wchar_tp_rindex(int* str, int* search_str, int default_value){
 void* __result_obj__;
-int len_204;
-int* p_205;
-_Bool _while_condtional12;
-int len2_206;
-_Bool result_207;
-int i_208;
+int len_202;
+int* p_203;
+_Bool _while_condtional11;
+int len2_204;
+_Bool result_205;
+int i_206;
 _Bool _if_conditional90;
 _Bool _if_conditional91;
 int __result108__;
 int __result109__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_204, 0, sizeof(int));
-memset(&p_205, 0, sizeof(int*));
-memset(&len2_206, 0, sizeof(int));
-memset(&result_207, 0, sizeof(_Bool));
-memset(&i_208, 0, sizeof(int));
-    len_204=wcslen(search_str);
-    p_205=str+wcslen(str)-len_204;
-    while(_while_condtional12=p_205>=str,    _while_condtional12) {
-        len2_206=wcslen(p_205);
-        result_207=(_Bool)1;
-        for(        i_208=0;        i_208<len_204&&i_208<len2_206;        i_208++        ){
-            if(_if_conditional90=p_205[i_208]!=search_str[i_208],            _if_conditional90) {
-                result_207=(_Bool)0;
+memset(&len_202, 0, sizeof(int));
+memset(&p_203, 0, sizeof(int*));
+memset(&len2_204, 0, sizeof(int));
+memset(&result_205, 0, sizeof(_Bool));
+memset(&i_206, 0, sizeof(int));
+    len_202=wcslen(search_str);
+    p_203=str+wcslen(str)-len_202;
+    while(_while_condtional11=p_203>=str,    _while_condtional11) {
+        len2_204=wcslen(p_203);
+        result_205=(_Bool)1;
+        for(        i_206=0;        i_206<len_202&&i_206<len2_204;        i_206++        ){
+            if(_if_conditional90=p_203[i_206]!=search_str[i_206],            _if_conditional90) {
+                result_205=(_Bool)0;
             }
         }
-        if(result_207) {
-            __result108__ = (p_205-str);
+        if(result_205) {
+            __result108__ = (p_203-str);
             return __result108__;
         }
-        p_205--;
+        p_203--;
     }
     __result109__ = default_value;
     return __result109__;
@@ -5225,191 +5225,191 @@ memset(&i_208, 0, sizeof(int));
 
 int* wchar_tp_reverse(int* str){
 void* __result_obj__;
-int len_209;
+int len_207;
 void* right_value120;
-int* result_210;
-int i_211;
+int* result_208;
+int i_209;
 int* __result110__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_209, 0, sizeof(int));
+memset(&len_207, 0, sizeof(int));
 right_value120 = (void*)0;
-memset(&result_210, 0, sizeof(int*));
-memset(&i_211, 0, sizeof(int));
-    len_209=wcslen(str);
-    result_210=(int*)come_increment_ref_count(((int*)(right_value120=(int*)come_calloc(1, sizeof(int)*(1*(len_209+1)), "libcomelang2-str.c", 1014, "int"))));
+memset(&result_208, 0, sizeof(int*));
+memset(&i_209, 0, sizeof(int));
+    len_207=wcslen(str);
+    result_208=(int*)come_increment_ref_count(((int*)(right_value120=(int*)come_calloc(1, sizeof(int)*(1*(len_207+1)), "libcomelang2-str.c", 1014, "int"))));
     right_value120 = come_decrement_ref_count2(right_value120, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    for(    i_211=0;    i_211<len_209;    i_211++    ){
-        result_210[i_211]=str[len_209-i_211-1];
+    for(    i_209=0;    i_209<len_207;    i_209++    ){
+        result_208[i_209]=str[len_207-i_209-1];
     }
-    result_210[len_209]=0;
-    __result110__ = __result_obj__ = result_210;
-    result_210 = come_decrement_ref_count2(result_210, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    result_208[len_207]=0;
+    __result110__ = __result_obj__ = result_208;
+    result_208 = come_decrement_ref_count2(result_208, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result110__;
-    result_210 = come_decrement_ref_count2(result_210, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_208 = come_decrement_ref_count2(result_208, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int* wchar_tp_multiply(int* str, int n){
 void* __result_obj__;
-int len_212;
+int len_210;
 void* right_value121;
-int* result_213;
-int i_214;
+int* result_211;
+int i_212;
 int* __result111__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_212, 0, sizeof(int));
+memset(&len_210, 0, sizeof(int));
 right_value121 = (void*)0;
-memset(&result_213, 0, sizeof(int*));
-memset(&i_214, 0, sizeof(int));
-    len_212=wcslen(str)*n+1;
-    result_213=(int*)come_increment_ref_count(((int*)(right_value121=(int*)come_calloc(1, sizeof(int)*(1*(len_212)), "libcomelang2-str.c", 1029, "int"))));
+memset(&result_211, 0, sizeof(int*));
+memset(&i_212, 0, sizeof(int));
+    len_210=wcslen(str)*n+1;
+    result_211=(int*)come_increment_ref_count(((int*)(right_value121=(int*)come_calloc(1, sizeof(int)*(1*(len_210)), "libcomelang2-str.c", 1029, "int"))));
     right_value121 = come_decrement_ref_count2(right_value121, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    result_213[0]=0;
-    for(    i_214=0;    i_214<n;    i_214++    ){
-        wcscat(result_213,str);
+    result_211[0]=0;
+    for(    i_212=0;    i_212<n;    i_212++    ){
+        wcscat(result_211,str);
     }
-    __result111__ = __result_obj__ = result_213;
-    result_213 = come_decrement_ref_count2(result_213, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result111__ = __result_obj__ = result_211;
+    result_211 = come_decrement_ref_count2(result_211, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result111__;
-    result_213 = come_decrement_ref_count2(result_213, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_211 = come_decrement_ref_count2(result_211, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int* wchar_tp_printable(int* str){
 void* __result_obj__;
-int len_215;
+int len_213;
 void* right_value122;
-int* result_216;
-int n_217;
-int i_218;
-int c_219;
+int* result_214;
+int n_215;
+int i_216;
+int c_217;
 _Bool _if_conditional92;
 int* __result112__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_215, 0, sizeof(int));
+memset(&len_213, 0, sizeof(int));
 right_value122 = (void*)0;
-memset(&result_216, 0, sizeof(int*));
-memset(&n_217, 0, sizeof(int));
-memset(&i_218, 0, sizeof(int));
-memset(&c_219, 0, sizeof(int));
-    len_215=wchar_tp_length(str);
-    result_216=(int*)come_increment_ref_count(((int*)(right_value122=(int*)come_calloc(1, sizeof(int)*(1*(len_215*2+1)), "libcomelang2-str.c", 1043, "int"))));
+memset(&result_214, 0, sizeof(int*));
+memset(&n_215, 0, sizeof(int));
+memset(&i_216, 0, sizeof(int));
+memset(&c_217, 0, sizeof(int));
+    len_213=wchar_tp_length(str);
+    result_214=(int*)come_increment_ref_count(((int*)(right_value122=(int*)come_calloc(1, sizeof(int)*(1*(len_213*2+1)), "libcomelang2-str.c", 1043, "int"))));
     right_value122 = come_decrement_ref_count2(right_value122, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    n_217=0;
-    for(    i_218=0;    i_218<len_215;    i_218++    ){
-        c_219=str[i_218];
-        if(_if_conditional92=(c_219>=0&&c_219<32)||c_219==127,        _if_conditional92) {
-            result_216[n_217++]=94;
-            result_216[n_217++]=c_219+65-1;
+    n_215=0;
+    for(    i_216=0;    i_216<len_213;    i_216++    ){
+        c_217=str[i_216];
+        if(_if_conditional92=(c_217>=0&&c_217<32)||c_217==127,        _if_conditional92) {
+            result_214[n_215++]=94;
+            result_214[n_215++]=c_217+65-1;
         }
         else {
-            result_216[n_217++]=c_219;
+            result_214[n_215++]=c_217;
         }
     }
-    result_216[n_217]=0;
-    __result112__ = __result_obj__ = result_216;
-    result_216 = come_decrement_ref_count2(result_216, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    result_214[n_215]=0;
+    __result112__ = __result_obj__ = result_214;
+    result_214 = come_decrement_ref_count2(result_214, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result112__;
-    result_216 = come_decrement_ref_count2(result_216, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_214 = come_decrement_ref_count2(result_214, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 _Bool charp_match_group_strings(char* self, struct come_regex* reg, int count, struct list$1charph* group_strings){
 void* __result_obj__;
-int offset_220;
-int ovec_max_221;
-const char* err_225;
-int erro_ofs_226;
-int options_227;
-char* str_228;
-struct real_pcre8_or_16* re_229;
-int n_230;
-_Bool _while_condtional13;
-int options_231;
-int len_232;
-int regex_result_233;
-int i_234;
-int i_235;
+int offset_218;
+int ovec_max_219;
+const char* err_223;
+int erro_ofs_224;
+int options_225;
+char* str_226;
+struct real_pcre8_or_16* re_227;
+int n_228;
+_Bool _while_condtional12;
+int options_229;
+int len_230;
+int regex_result_231;
+int i_232;
+int i_233;
 _Bool _if_conditional93;
 _Bool _if_conditional94;
 _Bool __result113__;
 _Bool _if_conditional95;
 _Bool _if_conditional96;
-int i_238;
+int i_236;
 void* right_value123;
-char* match_string_239;
+char* match_string_237;
 _Bool _if_conditional97;
 _Bool __result115__;
 _Bool _if_conditional98;
 _Bool __result116__;
 _Bool __result117__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&offset_220, 0, sizeof(int));
-memset(&ovec_max_221, 0, sizeof(int));
-memset(&erro_ofs_226, 0, sizeof(int));
-memset(&options_227, 0, sizeof(int));
-memset(&str_228, 0, sizeof(char*));
-memset(&re_229, 0, sizeof(struct real_pcre8_or_16*));
-memset(&n_230, 0, sizeof(int));
-memset(&options_231, 0, sizeof(int));
-memset(&len_232, 0, sizeof(int));
-memset(&regex_result_233, 0, sizeof(int));
-memset(&i_234, 0, sizeof(int));
-memset(&i_235, 0, sizeof(int));
-memset(&i_238, 0, sizeof(int));
+memset(&offset_218, 0, sizeof(int));
+memset(&ovec_max_219, 0, sizeof(int));
+memset(&erro_ofs_224, 0, sizeof(int));
+memset(&options_225, 0, sizeof(int));
+memset(&str_226, 0, sizeof(char*));
+memset(&re_227, 0, sizeof(struct real_pcre8_or_16*));
+memset(&n_228, 0, sizeof(int));
+memset(&options_229, 0, sizeof(int));
+memset(&len_230, 0, sizeof(int));
+memset(&regex_result_231, 0, sizeof(int));
+memset(&i_232, 0, sizeof(int));
+memset(&i_233, 0, sizeof(int));
+memset(&i_236, 0, sizeof(int));
 right_value123 = (void*)0;
-memset(&match_string_239, 0, sizeof(char*));
-    offset_220=0;
-    ovec_max_221=16;
-    int start_222[ovec_max_221];
-    memset(&start_222, 0, sizeof(int)    *(ovec_max_221)    );
-    int end_223[ovec_max_221];
-    memset(&end_223, 0, sizeof(int)    *(ovec_max_221)    );
-    int ovec_value_224[ovec_max_221*3];
-    memset(&ovec_value_224, 0, sizeof(int)    *(ovec_max_221*3)    );
-    options_227=reg->options;
-    str_228=reg->str;
-    re_229=reg->re;
-    n_230=0;
-    while(_while_condtional13=(_Bool)1,    _while_condtional13) {
-        options_231=2097152;
-        len_232=strlen(self);
-        regex_result_233=pcre_exec(re_229,(struct pcre_extra*)0,self,len_232,offset_220,options_231,ovec_value_224,ovec_max_221*3);
-        for(        i_234=0;        i_234<ovec_max_221;        i_234++        ){
-            start_222[i_234]=ovec_value_224[i_234*2];
+memset(&match_string_237, 0, sizeof(char*));
+    offset_218=0;
+    ovec_max_219=16;
+    int start_220[ovec_max_219];
+    memset(&start_220, 0, sizeof(int)    *(ovec_max_219)    );
+    int end_221[ovec_max_219];
+    memset(&end_221, 0, sizeof(int)    *(ovec_max_219)    );
+    int ovec_value_222[ovec_max_219*3];
+    memset(&ovec_value_222, 0, sizeof(int)    *(ovec_max_219*3)    );
+    options_225=reg->options;
+    str_226=reg->str;
+    re_227=reg->re;
+    n_228=0;
+    while(_while_condtional12=(_Bool)1,    _while_condtional12) {
+        options_229=2097152;
+        len_230=strlen(self);
+        regex_result_231=pcre_exec(re_227,(struct pcre_extra*)0,self,len_230,offset_218,options_229,ovec_value_222,ovec_max_219*3);
+        for(        i_232=0;        i_232<ovec_max_219;        i_232++        ){
+            start_220[i_232]=ovec_value_222[i_232*2];
         }
-        for(        i_235=0;        i_235<ovec_max_221;        i_235++        ){
-            end_223[i_235]=ovec_value_224[i_235*2+1];
+        for(        i_233=0;        i_233<ovec_max_219;        i_233++        ){
+            end_221[i_233]=ovec_value_222[i_233*2+1];
         }
-        if(_if_conditional93=regex_result_233==1||(group_strings==((void*)0)&&regex_result_233>0),        _if_conditional93) {
-            n_230++;
-            if(_if_conditional94=n_230==count,            _if_conditional94) {
+        if(_if_conditional93=regex_result_231==1||(group_strings==((void*)0)&&regex_result_231>0),        _if_conditional93) {
+            n_228++;
+            if(_if_conditional94=n_228==count,            _if_conditional94) {
                 __result113__ = (_Bool)1;
                 return __result113__;
             }
-            if(_if_conditional95=offset_220==end_223[0],            _if_conditional95) {
-                offset_220++;
+            if(_if_conditional95=offset_218==end_221[0],            _if_conditional95) {
+                offset_218++;
             }
             else {
-                offset_220=end_223[0];
+                offset_218=end_221[0];
             }
         }
         else {
-            if(_if_conditional96=regex_result_233>1,            _if_conditional96) {
-                n_230++;
+            if(_if_conditional96=regex_result_231>1,            _if_conditional96) {
+                n_228++;
                 list$1charph_reset(group_strings);
-                for(                i_238=1;                i_238<regex_result_233;                i_238++                ){
-                    match_string_239=(char*)come_increment_ref_count(((char*)(right_value123=charp_substring(self,start_222[i_238],end_223[i_238]))));
+                for(                i_236=1;                i_236<regex_result_231;                i_236++                ){
+                    match_string_237=(char*)come_increment_ref_count(((char*)(right_value123=charp_substring(self,start_220[i_236],end_221[i_236]))));
                     right_value123 = come_decrement_ref_count2(right_value123, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(group_strings,(char*)come_increment_ref_count(match_string_239));
-                    match_string_239 = come_decrement_ref_count2(match_string_239, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(group_strings,(char*)come_increment_ref_count(match_string_237));
+                    match_string_237 = come_decrement_ref_count2(match_string_237, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                if(_if_conditional97=n_230==count,                _if_conditional97) {
+                if(_if_conditional97=n_228==count,                _if_conditional97) {
                     __result115__ = (_Bool)1;
                     return __result115__;
                 }
-                if(_if_conditional98=offset_220==end_223[0],                _if_conditional98) {
-                    offset_220++;
+                if(_if_conditional98=offset_218==end_221[0],                _if_conditional98) {
+                    offset_218++;
                 }
                 else {
-                    offset_220=end_223[0];
+                    offset_218=end_221[0];
                 }
             }
             else {
@@ -5424,18 +5424,18 @@ memset(&match_string_239, 0, sizeof(char*));
 
 static struct list$1charph* list$1charph_reset(struct list$1charph* self){
 void* __result_obj__;
-struct list_item$1charph* it_236;
-_Bool _while_condtional14;
-struct list_item$1charph* prev_it_237;
+struct list_item$1charph* it_234;
+_Bool _while_condtional13;
+struct list_item$1charph* prev_it_235;
 struct list$1charph* __result114__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&it_236, 0, sizeof(struct list_item$1charph*));
-memset(&prev_it_237, 0, sizeof(struct list_item$1charph*));
-                    it_236=self->head;
-                    while(_while_condtional14=it_236!=((void*)0),                    _while_condtional14) {
-                        prev_it_237=it_236;
-                        it_236=it_236->next;
-                        come_call_finalizer2(list_item$1charphp_finalize,prev_it_237, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+memset(&it_234, 0, sizeof(struct list_item$1charph*));
+memset(&prev_it_235, 0, sizeof(struct list_item$1charph*));
+                    it_234=self->head;
+                    while(_while_condtional13=it_234!=((void*)0),                    _while_condtional13) {
+                        prev_it_235=it_234;
+                        it_234=it_234->next;
+                        come_call_finalizer2(list_item$1charphp_finalize,prev_it_235, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                     }
                     self->head=((void*)0);
                     self->tail=((void*)0);
@@ -5549,124 +5549,124 @@ memset(&__result_obj__, 0, sizeof(void*));
 int* wchar_tp_operator_add(int* left, int* right){
 void* __result_obj__;
 void* right_value126;
-int* result_240;
+int* result_238;
 int* __result130__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value126 = (void*)0;
-memset(&result_240, 0, sizeof(int*));
-    result_240=(int*)come_increment_ref_count(((int*)(right_value126=(int*)come_calloc(1, sizeof(int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str.c", 1207, "int"))));
+memset(&result_238, 0, sizeof(int*));
+    result_238=(int*)come_increment_ref_count(((int*)(right_value126=(int*)come_calloc(1, sizeof(int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str.c", 1207, "int"))));
     right_value126 = come_decrement_ref_count2(right_value126, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    wcscpy(result_240,left);
-    wcscat(result_240,right);
-    __result130__ = __result_obj__ = result_240;
-    result_240 = come_decrement_ref_count2(result_240, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    wcscpy(result_238,left);
+    wcscat(result_238,right);
+    __result130__ = __result_obj__ = result_238;
+    result_238 = come_decrement_ref_count2(result_238, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result130__;
-    result_240 = come_decrement_ref_count2(result_240, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_238 = come_decrement_ref_count2(result_238, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int* wstring_operator_add(int* left, int* right){
 void* __result_obj__;
 void* right_value127;
-int* result_241;
+int* result_239;
 int* __result131__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value127 = (void*)0;
-memset(&result_241, 0, sizeof(int*));
-    result_241=(int*)come_increment_ref_count(((int*)(right_value127=(int*)come_calloc(1, sizeof(int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str.c", 1217, "int"))));
+memset(&result_239, 0, sizeof(int*));
+    result_239=(int*)come_increment_ref_count(((int*)(right_value127=(int*)come_calloc(1, sizeof(int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str.c", 1217, "int"))));
     right_value127 = come_decrement_ref_count2(right_value127, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    wcscpy(result_241,left);
-    wcscat(result_241,right);
-    __result131__ = __result_obj__ = result_241;
-    result_241 = come_decrement_ref_count2(result_241, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    wcscpy(result_239,left);
+    wcscat(result_239,right);
+    __result131__ = __result_obj__ = result_239;
+    result_239 = come_decrement_ref_count2(result_239, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result131__;
-    result_241 = come_decrement_ref_count2(result_241, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_239 = come_decrement_ref_count2(result_239, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 int charp_index(char* str, char* search_str, int default_value){
 void* __result_obj__;
-char* head_242;
+char* head_240;
 _Bool _if_conditional99;
 int __result132__;
 int __result133__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&head_242, 0, sizeof(char*));
-    head_242=strstr(str,search_str);
-    if(_if_conditional99=head_242==((void*)0),    _if_conditional99) {
+memset(&head_240, 0, sizeof(char*));
+    head_240=strstr(str,search_str);
+    if(_if_conditional99=head_240==((void*)0),    _if_conditional99) {
         __result132__ = default_value;
         return __result132__;
     }
-    __result133__ = head_242-str;
+    __result133__ = head_240-str;
     return __result133__;
 }
 
 int charp_index_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
-int ovec_max_243;
-int result_247;
-int offset_248;
-const char* err_249;
-int erro_ofs_250;
-int options_251;
-char* str_252;
-struct real_pcre8_or_16* re_253;
-_Bool _while_condtional15;
-int options_254;
-int len_255;
-int regex_result_256;
-int i_257;
-int i_258;
+int ovec_max_241;
+int result_245;
+int offset_246;
+const char* err_247;
+int erro_ofs_248;
+int options_249;
+char* str_250;
+struct real_pcre8_or_16* re_251;
+_Bool _while_condtional14;
+int options_252;
+int len_253;
+int regex_result_254;
+int i_255;
+int i_256;
 _Bool _if_conditional100;
 int __result134__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&ovec_max_243, 0, sizeof(int));
-memset(&result_247, 0, sizeof(int));
-memset(&offset_248, 0, sizeof(int));
-memset(&erro_ofs_250, 0, sizeof(int));
-memset(&options_251, 0, sizeof(int));
-memset(&str_252, 0, sizeof(char*));
-memset(&re_253, 0, sizeof(struct real_pcre8_or_16*));
-memset(&options_254, 0, sizeof(int));
-memset(&len_255, 0, sizeof(int));
-memset(&regex_result_256, 0, sizeof(int));
-memset(&i_257, 0, sizeof(int));
-memset(&i_258, 0, sizeof(int));
-    ovec_max_243=16;
-    int start_244[ovec_max_243];
-    memset(&start_244, 0, sizeof(int)    *(ovec_max_243)    );
-    int end_245[ovec_max_243];
-    memset(&end_245, 0, sizeof(int)    *(ovec_max_243)    );
-    int ovec_value_246[ovec_max_243*3];
-    memset(&ovec_value_246, 0, sizeof(int)    *(ovec_max_243*3)    );
-    result_247=default_value;
-    offset_248=0;
-    options_251=reg->options;
-    str_252=reg->str;
-    re_253=reg->re;
-    while(_while_condtional15=(_Bool)1,    _while_condtional15) {
-        options_254=2097152;
-        len_255=strlen(self);
-        regex_result_256=pcre_exec(re_253,(struct pcre_extra*)0,self,len_255,offset_248,options_254,ovec_value_246,ovec_max_243*3);
-        for(        i_257=0;        i_257<ovec_max_243;        i_257++        ){
-            start_244[i_257]=ovec_value_246[i_257*2];
+memset(&ovec_max_241, 0, sizeof(int));
+memset(&result_245, 0, sizeof(int));
+memset(&offset_246, 0, sizeof(int));
+memset(&erro_ofs_248, 0, sizeof(int));
+memset(&options_249, 0, sizeof(int));
+memset(&str_250, 0, sizeof(char*));
+memset(&re_251, 0, sizeof(struct real_pcre8_or_16*));
+memset(&options_252, 0, sizeof(int));
+memset(&len_253, 0, sizeof(int));
+memset(&regex_result_254, 0, sizeof(int));
+memset(&i_255, 0, sizeof(int));
+memset(&i_256, 0, sizeof(int));
+    ovec_max_241=16;
+    int start_242[ovec_max_241];
+    memset(&start_242, 0, sizeof(int)    *(ovec_max_241)    );
+    int end_243[ovec_max_241];
+    memset(&end_243, 0, sizeof(int)    *(ovec_max_241)    );
+    int ovec_value_244[ovec_max_241*3];
+    memset(&ovec_value_244, 0, sizeof(int)    *(ovec_max_241*3)    );
+    result_245=default_value;
+    offset_246=0;
+    options_249=reg->options;
+    str_250=reg->str;
+    re_251=reg->re;
+    while(_while_condtional14=(_Bool)1,    _while_condtional14) {
+        options_252=2097152;
+        len_253=strlen(self);
+        regex_result_254=pcre_exec(re_251,(struct pcre_extra*)0,self,len_253,offset_246,options_252,ovec_value_244,ovec_max_241*3);
+        for(        i_255=0;        i_255<ovec_max_241;        i_255++        ){
+            start_242[i_255]=ovec_value_244[i_255*2];
         }
-        for(        i_258=0;        i_258<ovec_max_243;        i_258++        ){
-            end_245[i_258]=ovec_value_246[i_258*2+1];
+        for(        i_256=0;        i_256<ovec_max_241;        i_256++        ){
+            end_243[i_256]=ovec_value_244[i_256*2+1];
         }
-        if(_if_conditional100=regex_result_256==1||regex_result_256>0,        _if_conditional100) {
-            result_247=start_244[0];
+        if(_if_conditional100=regex_result_254==1||regex_result_254>0,        _if_conditional100) {
+            result_245=start_242[0];
             break;
         }
         {
             break;
         }
     }
-    __result134__ = result_247;
+    __result134__ = result_245;
     return __result134__;
 }
 
 char* charp_replace(char* self, int index, char c){
 void* __result_obj__;
-int len_259;
+int len_257;
 _Bool _if_conditional101;
 void* right_value128;
 char* __result135__;
@@ -5676,20 +5676,20 @@ _Bool _if_conditional104;
 void* right_value129;
 char* __result136__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_259, 0, sizeof(int));
+memset(&len_257, 0, sizeof(int));
 right_value128 = (void*)0;
 right_value129 = (void*)0;
-    len_259=strlen(self);
+    len_257=strlen(self);
     if(_if_conditional101=strcmp(self,"")==0,    _if_conditional101) {
         __result135__ = __result_obj__ = ((char*)(right_value128=__builtin_string(self)));
         right_value128 = come_decrement_ref_count2(right_value128, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         return __result135__;
     }
     if(_if_conditional102=index<0,    _if_conditional102) {
-        index+=len_259;
+        index+=len_257;
     }
-    if(_if_conditional103=index>=len_259,    _if_conditional103) {
-        index=len_259-1;
+    if(_if_conditional103=index>=len_257,    _if_conditional103) {
+        index=len_257-1;
     }
     if(_if_conditional104=index<0,    _if_conditional104) {
         index=0;
@@ -5702,282 +5702,282 @@ right_value129 = (void*)0;
 
 char* charp_multiply(char* str, int n){
 void* __result_obj__;
-int len_260;
+int len_258;
 void* right_value130;
-char* result_261;
-int i_262;
+char* result_259;
+int i_260;
 char* __result137__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&len_260, 0, sizeof(int));
+memset(&len_258, 0, sizeof(int));
 right_value130 = (void*)0;
-memset(&result_261, 0, sizeof(char*));
-memset(&i_262, 0, sizeof(int));
-    len_260=strlen(str)*n+1;
-    result_261=(char*)come_increment_ref_count(((char*)(right_value130=(char*)come_calloc(1, sizeof(char)*(1*(len_260)), "libcomelang2-str.c", 1315, "char"))));
+memset(&result_259, 0, sizeof(char*));
+memset(&i_260, 0, sizeof(int));
+    len_258=strlen(str)*n+1;
+    result_259=(char*)come_increment_ref_count(((char*)(right_value130=(char*)come_calloc(1, sizeof(char)*(1*(len_258)), "libcomelang2-str.c", 1315, "char"))));
     right_value130 = come_decrement_ref_count2(right_value130, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    result_261[0]=0;
-    for(    i_262=0;    i_262<n;    i_262++    ){
-        strcat(result_261,str);
+    result_259[0]=0;
+    for(    i_260=0;    i_260<n;    i_260++    ){
+        strcat(result_259,str);
     }
-    __result137__ = __result_obj__ = result_261;
-    result_261 = come_decrement_ref_count2(result_261, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result137__ = __result_obj__ = result_259;
+    result_259 = come_decrement_ref_count2(result_259, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result137__;
-    result_261 = come_decrement_ref_count2(result_261, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_259 = come_decrement_ref_count2(result_259, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 char* charp_sub(char* self, struct come_regex* reg, char* replace){
 void* __result_obj__;
-int offset_263;
-int ovec_max_264;
-const char* err_268;
-int erro_ofs_269;
-int options_270;
-char* str_271;
-struct real_pcre8_or_16* re_272;
+int offset_261;
+int ovec_max_262;
+const char* err_266;
+int erro_ofs_267;
+int options_268;
+char* str_269;
+struct real_pcre8_or_16* re_270;
 void* right_value131;
 void* right_value132;
-struct buffer* result_273;
-_Bool _while_condtional16;
-int options_274;
-int len_275;
-int regex_result_276;
-int i_277;
-int i_278;
+struct buffer* result_271;
+_Bool _while_condtional15;
+int options_272;
+int len_273;
+int regex_result_274;
+int i_275;
+int i_276;
 _Bool _if_conditional105;
 void* right_value133;
-char* str_279;
+char* str_277;
 _Bool _if_conditional106;
 _Bool _if_conditional107;
 void* right_value134;
-char* str_280;
+char* str_278;
 void* right_value135;
-char* str_281;
+char* str_279;
 void* right_value136;
 char* __result138__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&offset_263, 0, sizeof(int));
-memset(&ovec_max_264, 0, sizeof(int));
-memset(&erro_ofs_269, 0, sizeof(int));
-memset(&options_270, 0, sizeof(int));
-memset(&str_271, 0, sizeof(char*));
-memset(&re_272, 0, sizeof(struct real_pcre8_or_16*));
+memset(&offset_261, 0, sizeof(int));
+memset(&ovec_max_262, 0, sizeof(int));
+memset(&erro_ofs_267, 0, sizeof(int));
+memset(&options_268, 0, sizeof(int));
+memset(&str_269, 0, sizeof(char*));
+memset(&re_270, 0, sizeof(struct real_pcre8_or_16*));
 right_value131 = (void*)0;
 right_value132 = (void*)0;
-memset(&result_273, 0, sizeof(struct buffer*));
-memset(&options_274, 0, sizeof(int));
-memset(&len_275, 0, sizeof(int));
-memset(&regex_result_276, 0, sizeof(int));
-memset(&i_277, 0, sizeof(int));
-memset(&i_278, 0, sizeof(int));
+memset(&result_271, 0, sizeof(struct buffer*));
+memset(&options_272, 0, sizeof(int));
+memset(&len_273, 0, sizeof(int));
+memset(&regex_result_274, 0, sizeof(int));
+memset(&i_275, 0, sizeof(int));
+memset(&i_276, 0, sizeof(int));
 right_value133 = (void*)0;
-memset(&str_279, 0, sizeof(char*));
+memset(&str_277, 0, sizeof(char*));
 right_value134 = (void*)0;
-memset(&str_280, 0, sizeof(char*));
+memset(&str_278, 0, sizeof(char*));
 right_value135 = (void*)0;
-memset(&str_281, 0, sizeof(char*));
+memset(&str_279, 0, sizeof(char*));
 right_value136 = (void*)0;
-    offset_263=0;
-    ovec_max_264=16;
-    int start_265[ovec_max_264];
-    memset(&start_265, 0, sizeof(int)    *(ovec_max_264)    );
-    int end_266[ovec_max_264];
-    memset(&end_266, 0, sizeof(int)    *(ovec_max_264)    );
-    int ovec_value_267[ovec_max_264*3];
-    memset(&ovec_value_267, 0, sizeof(int)    *(ovec_max_264*3)    );
-    options_270=reg->options;
-    str_271=reg->str;
-    re_272=reg->re;
-    result_273=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value132=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value131=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1343, "struct buffer"))))))));
+    offset_261=0;
+    ovec_max_262=16;
+    int start_263[ovec_max_262];
+    memset(&start_263, 0, sizeof(int)    *(ovec_max_262)    );
+    int end_264[ovec_max_262];
+    memset(&end_264, 0, sizeof(int)    *(ovec_max_262)    );
+    int ovec_value_265[ovec_max_262*3];
+    memset(&ovec_value_265, 0, sizeof(int)    *(ovec_max_262*3)    );
+    options_268=reg->options;
+    str_269=reg->str;
+    re_270=reg->re;
+    result_271=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value132=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value131=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1343, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value131, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value132, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    while(_while_condtional16=(_Bool)1,    _while_condtional16) {
-        options_274=2097152;
-        len_275=strlen(self);
-        regex_result_276=pcre_exec(re_272,(struct pcre_extra*)0,self,len_275,offset_263,options_274,ovec_value_267,ovec_max_264*3);
-        for(        i_277=0;        i_277<ovec_max_264;        i_277++        ){
-            start_265[i_277]=ovec_value_267[i_277*2];
+    while(_while_condtional15=(_Bool)1,    _while_condtional15) {
+        options_272=2097152;
+        len_273=strlen(self);
+        regex_result_274=pcre_exec(re_270,(struct pcre_extra*)0,self,len_273,offset_261,options_272,ovec_value_265,ovec_max_262*3);
+        for(        i_275=0;        i_275<ovec_max_262;        i_275++        ){
+            start_263[i_275]=ovec_value_265[i_275*2];
         }
-        for(        i_278=0;        i_278<ovec_max_264;        i_278++        ){
-            end_266[i_278]=ovec_value_267[i_278*2+1];
+        for(        i_276=0;        i_276<ovec_max_262;        i_276++        ){
+            end_264[i_276]=ovec_value_265[i_276*2+1];
         }
-        if(_if_conditional105=regex_result_276==1,        _if_conditional105) {
-            str_279=(char*)come_increment_ref_count(((char*)(right_value133=charp_substring(self,offset_263,start_265[0]))));
+        if(_if_conditional105=regex_result_274==1,        _if_conditional105) {
+            str_277=(char*)come_increment_ref_count(((char*)(right_value133=charp_substring(self,offset_261,start_263[0]))));
             right_value133 = come_decrement_ref_count2(right_value133, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            buffer_append_str(result_273,str_279);
-            buffer_append_str(result_273,replace);
-            if(_if_conditional106=offset_263==end_266[0],            _if_conditional106) {
-                offset_263++;
+            buffer_append_str(result_271,str_277);
+            buffer_append_str(result_271,replace);
+            if(_if_conditional106=offset_261==end_264[0],            _if_conditional106) {
+                offset_261++;
             }
             else {
-                offset_263=end_266[0];
+                offset_261=end_264[0];
             }
             if(_if_conditional107=!reg->global,            _if_conditional107) {
-                str_280=(char*)come_increment_ref_count(((char*)(right_value134=charp_substring(self,offset_263,-1))));
+                str_278=(char*)come_increment_ref_count(((char*)(right_value134=charp_substring(self,offset_261,-1))));
                 right_value134 = come_decrement_ref_count2(right_value134, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_273,str_280);
-                str_280 = come_decrement_ref_count2(str_280, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                str_279 = come_decrement_ref_count2(str_279, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_271,str_278);
+                str_278 = come_decrement_ref_count2(str_278, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_277 = come_decrement_ref_count2(str_277, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_280 = come_decrement_ref_count2(str_280, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_278 = come_decrement_ref_count2(str_278, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            str_279 = come_decrement_ref_count2(str_279, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_277 = come_decrement_ref_count2(str_277, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            str_281=(char*)come_increment_ref_count(((char*)(right_value135=charp_substring(self,offset_263,-1))));
+            str_279=(char*)come_increment_ref_count(((char*)(right_value135=charp_substring(self,offset_261,-1))));
             right_value135 = come_decrement_ref_count2(right_value135, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            buffer_append_str(result_273,str_281);
-            str_281 = come_decrement_ref_count2(str_281, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            buffer_append_str(result_271,str_279);
+            str_279 = come_decrement_ref_count2(str_279, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             break;
-            str_281 = come_decrement_ref_count2(str_281, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_279 = come_decrement_ref_count2(str_279, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
     }
-    __result138__ = __result_obj__ = ((char*)(right_value136=buffer_to_string(result_273)));
-    come_call_finalizer2(buffer_finalize,result_273, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    __result138__ = __result_obj__ = ((char*)(right_value136=buffer_to_string(result_271)));
+    come_call_finalizer2(buffer_finalize,result_271, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     right_value136 = come_decrement_ref_count2(right_value136, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result138__;
-    come_call_finalizer2(buffer_finalize,result_273, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(buffer_finalize,result_271, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 char* charp_sub_count(char* self, struct come_regex* reg, char* replace, int count){
 void* __result_obj__;
-int offset_282;
-int ovec_max_283;
-const char* err_287;
-int erro_ofs_288;
-int options_289;
-char* str_290;
-struct real_pcre8_or_16* re_291;
+int offset_280;
+int ovec_max_281;
+const char* err_285;
+int erro_ofs_286;
+int options_287;
+char* str_288;
+struct real_pcre8_or_16* re_289;
 void* right_value137;
 void* right_value138;
-struct buffer* result_292;
-int n_293;
-_Bool _while_condtional17;
-int options_294;
-int len_295;
-int regex_result_296;
-int i_297;
-int i_298;
+struct buffer* result_290;
+int n_291;
+_Bool _while_condtional16;
+int options_292;
+int len_293;
+int regex_result_294;
+int i_295;
+int i_296;
 _Bool _if_conditional108;
 void* right_value139;
-char* str_299;
+char* str_297;
 _Bool _if_conditional109;
 _Bool _if_conditional110;
 void* right_value140;
-char* str_300;
+char* str_298;
 _Bool _if_conditional111;
 void* right_value141;
-char* str_301;
+char* str_299;
 void* right_value142;
-char* str_302;
+char* str_300;
 void* right_value143;
 char* __result139__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&offset_282, 0, sizeof(int));
-memset(&ovec_max_283, 0, sizeof(int));
-memset(&erro_ofs_288, 0, sizeof(int));
-memset(&options_289, 0, sizeof(int));
-memset(&str_290, 0, sizeof(char*));
-memset(&re_291, 0, sizeof(struct real_pcre8_or_16*));
+memset(&offset_280, 0, sizeof(int));
+memset(&ovec_max_281, 0, sizeof(int));
+memset(&erro_ofs_286, 0, sizeof(int));
+memset(&options_287, 0, sizeof(int));
+memset(&str_288, 0, sizeof(char*));
+memset(&re_289, 0, sizeof(struct real_pcre8_or_16*));
 right_value137 = (void*)0;
 right_value138 = (void*)0;
-memset(&result_292, 0, sizeof(struct buffer*));
-memset(&n_293, 0, sizeof(int));
-memset(&options_294, 0, sizeof(int));
-memset(&len_295, 0, sizeof(int));
-memset(&regex_result_296, 0, sizeof(int));
-memset(&i_297, 0, sizeof(int));
-memset(&i_298, 0, sizeof(int));
+memset(&result_290, 0, sizeof(struct buffer*));
+memset(&n_291, 0, sizeof(int));
+memset(&options_292, 0, sizeof(int));
+memset(&len_293, 0, sizeof(int));
+memset(&regex_result_294, 0, sizeof(int));
+memset(&i_295, 0, sizeof(int));
+memset(&i_296, 0, sizeof(int));
 right_value139 = (void*)0;
-memset(&str_299, 0, sizeof(char*));
+memset(&str_297, 0, sizeof(char*));
 right_value140 = (void*)0;
-memset(&str_300, 0, sizeof(char*));
+memset(&str_298, 0, sizeof(char*));
 right_value141 = (void*)0;
-memset(&str_301, 0, sizeof(char*));
+memset(&str_299, 0, sizeof(char*));
 right_value142 = (void*)0;
-memset(&str_302, 0, sizeof(char*));
+memset(&str_300, 0, sizeof(char*));
 right_value143 = (void*)0;
-    offset_282=0;
-    ovec_max_283=16;
-    int start_284[ovec_max_283];
-    memset(&start_284, 0, sizeof(int)    *(ovec_max_283)    );
-    int end_285[ovec_max_283];
-    memset(&end_285, 0, sizeof(int)    *(ovec_max_283)    );
-    int ovec_value_286[ovec_max_283*3];
-    memset(&ovec_value_286, 0, sizeof(int)    *(ovec_max_283*3)    );
-    options_289=reg->options;
-    str_290=reg->str;
-    re_291=reg->re;
-    result_292=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value138=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value137=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1406, "struct buffer"))))))));
+    offset_280=0;
+    ovec_max_281=16;
+    int start_282[ovec_max_281];
+    memset(&start_282, 0, sizeof(int)    *(ovec_max_281)    );
+    int end_283[ovec_max_281];
+    memset(&end_283, 0, sizeof(int)    *(ovec_max_281)    );
+    int ovec_value_284[ovec_max_281*3];
+    memset(&ovec_value_284, 0, sizeof(int)    *(ovec_max_281*3)    );
+    options_287=reg->options;
+    str_288=reg->str;
+    re_289=reg->re;
+    result_290=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value138=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value137=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1406, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value137, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value138, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    n_293=0;
-    while(_while_condtional17=(_Bool)1,    _while_condtional17) {
-        options_294=2097152;
-        len_295=strlen(self);
-        regex_result_296=pcre_exec(re_291,(struct pcre_extra*)0,self,len_295,offset_282,options_294,ovec_value_286,ovec_max_283*3);
-        for(        i_297=0;        i_297<ovec_max_283;        i_297++        ){
-            start_284[i_297]=ovec_value_286[i_297*2];
+    n_291=0;
+    while(_while_condtional16=(_Bool)1,    _while_condtional16) {
+        options_292=2097152;
+        len_293=strlen(self);
+        regex_result_294=pcre_exec(re_289,(struct pcre_extra*)0,self,len_293,offset_280,options_292,ovec_value_284,ovec_max_281*3);
+        for(        i_295=0;        i_295<ovec_max_281;        i_295++        ){
+            start_282[i_295]=ovec_value_284[i_295*2];
         }
-        for(        i_298=0;        i_298<ovec_max_283;        i_298++        ){
-            end_285[i_298]=ovec_value_286[i_298*2+1];
+        for(        i_296=0;        i_296<ovec_max_281;        i_296++        ){
+            end_283[i_296]=ovec_value_284[i_296*2+1];
         }
-        if(_if_conditional108=regex_result_296==1,        _if_conditional108) {
-            n_293++;
-            str_299=(char*)come_increment_ref_count(((char*)(right_value139=charp_substring(self,offset_282,start_284[0]))));
+        if(_if_conditional108=regex_result_294==1,        _if_conditional108) {
+            n_291++;
+            str_297=(char*)come_increment_ref_count(((char*)(right_value139=charp_substring(self,offset_280,start_282[0]))));
             right_value139 = come_decrement_ref_count2(right_value139, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            buffer_append_str(result_292,str_299);
-            buffer_append_str(result_292,replace);
-            if(_if_conditional109=offset_282==end_285[0],            _if_conditional109) {
-                offset_282++;
+            buffer_append_str(result_290,str_297);
+            buffer_append_str(result_290,replace);
+            if(_if_conditional109=offset_280==end_283[0],            _if_conditional109) {
+                offset_280++;
             }
             else {
-                offset_282=end_285[0];
+                offset_280=end_283[0];
             }
             if(_if_conditional110=!reg->global,            _if_conditional110) {
-                str_300=(char*)come_increment_ref_count(((char*)(right_value140=charp_substring(self,offset_282,-1))));
+                str_298=(char*)come_increment_ref_count(((char*)(right_value140=charp_substring(self,offset_280,-1))));
                 right_value140 = come_decrement_ref_count2(right_value140, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_292,str_300);
-                str_300 = come_decrement_ref_count2(str_300, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                str_299 = come_decrement_ref_count2(str_299, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_290,str_298);
+                str_298 = come_decrement_ref_count2(str_298, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_297 = come_decrement_ref_count2(str_297, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_300 = come_decrement_ref_count2(str_300, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_298 = come_decrement_ref_count2(str_298, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional111=n_293==count,            _if_conditional111) {
-                str_301=(char*)come_increment_ref_count(((char*)(right_value141=charp_substring(self,offset_282,-1))));
+            if(_if_conditional111=n_291==count,            _if_conditional111) {
+                str_299=(char*)come_increment_ref_count(((char*)(right_value141=charp_substring(self,offset_280,-1))));
                 right_value141 = come_decrement_ref_count2(right_value141, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_292,str_301);
-                str_301 = come_decrement_ref_count2(str_301, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_290,str_299);
                 str_299 = come_decrement_ref_count2(str_299, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_297 = come_decrement_ref_count2(str_297, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_301 = come_decrement_ref_count2(str_301, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_299 = come_decrement_ref_count2(str_299, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            str_299 = come_decrement_ref_count2(str_299, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_297 = come_decrement_ref_count2(str_297, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            str_302=(char*)come_increment_ref_count(((char*)(right_value142=charp_substring(self,offset_282,-1))));
+            str_300=(char*)come_increment_ref_count(((char*)(right_value142=charp_substring(self,offset_280,-1))));
             right_value142 = come_decrement_ref_count2(right_value142, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            buffer_append_str(result_292,str_302);
-            str_302 = come_decrement_ref_count2(str_302, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            buffer_append_str(result_290,str_300);
+            str_300 = come_decrement_ref_count2(str_300, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             break;
-            str_302 = come_decrement_ref_count2(str_302, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_300 = come_decrement_ref_count2(str_300, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
     }
-    __result139__ = __result_obj__ = ((char*)(right_value143=buffer_to_string(result_292)));
-    come_call_finalizer2(buffer_finalize,result_292, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    __result139__ = __result_obj__ = ((char*)(right_value143=buffer_to_string(result_290)));
+    come_call_finalizer2(buffer_finalize,result_290, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     right_value143 = come_decrement_ref_count2(right_value143, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result139__;
-    come_call_finalizer2(buffer_finalize,result_292, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(buffer_finalize,result_290, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 struct list$1charph* charp_split_str(char* self, char* str){
 void* __result_obj__;
 void* right_value144;
 void* right_value145;
-struct list$1charph* result_303;
+struct list$1charph* result_301;
 void* right_value146;
 void* right_value147;
-struct buffer* buf_304;
-int i_305;
+struct buffer* buf_302;
+int i_303;
 _Bool _if_conditional112;
 void* right_value148;
 _Bool _if_conditional113;
@@ -5986,342 +5986,342 @@ struct list$1charph* __result140__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value144 = (void*)0;
 right_value145 = (void*)0;
-memset(&result_303, 0, sizeof(struct list$1charph*));
+memset(&result_301, 0, sizeof(struct list$1charph*));
 right_value146 = (void*)0;
 right_value147 = (void*)0;
-memset(&buf_304, 0, sizeof(struct buffer*));
-memset(&i_305, 0, sizeof(int));
+memset(&buf_302, 0, sizeof(struct buffer*));
+memset(&i_303, 0, sizeof(int));
 right_value148 = (void*)0;
 right_value149 = (void*)0;
-    result_303=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value145=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value144=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1465, "struct list$1charph"))))))));
+    result_301=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value145=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value144=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1465, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value144, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value145, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    buf_304=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value147=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value146=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1467, "struct buffer"))))))));
+    buf_302=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value147=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value146=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1467, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value146, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value147, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    for(    i_305=0;    i_305<charp_length(self);    i_305++    ){
-        if(_if_conditional112=strstr(self+i_305,str)==self+i_305,        _if_conditional112) {
-            list$1charph_push_back(result_303,(char*)come_increment_ref_count(((char*)(right_value148=__builtin_string(buf_304->buf)))));
+    for(    i_303=0;    i_303<charp_length(self);    i_303++    ){
+        if(_if_conditional112=strstr(self+i_303,str)==self+i_303,        _if_conditional112) {
+            list$1charph_push_back(result_301,(char*)come_increment_ref_count(((char*)(right_value148=__builtin_string(buf_302->buf)))));
             right_value148 = come_decrement_ref_count2(right_value148, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            buffer_reset(buf_304);
-            i_305+=strlen(str)-1;
+            buffer_reset(buf_302);
+            i_303+=strlen(str)-1;
         }
         else {
-            buffer_append_char(buf_304,self[i_305]);
+            buffer_append_char(buf_302,self[i_303]);
         }
     }
-    if(_if_conditional113=buffer_length(buf_304)!=0,    _if_conditional113) {
-        list$1charph_push_back(result_303,(char*)come_increment_ref_count(((char*)(right_value149=__builtin_string(buf_304->buf)))));
+    if(_if_conditional113=buffer_length(buf_302)!=0,    _if_conditional113) {
+        list$1charph_push_back(result_301,(char*)come_increment_ref_count(((char*)(right_value149=__builtin_string(buf_302->buf)))));
         right_value149 = come_decrement_ref_count2(right_value149, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
-    __result140__ = __result_obj__ = result_303;
-    come_call_finalizer2(list$1charphp_finalize,result_303, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    come_call_finalizer2(buffer_finalize,buf_304, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    __result140__ = __result_obj__ = result_301;
+    come_call_finalizer2(list$1charphp_finalize,result_301, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    come_call_finalizer2(buffer_finalize,buf_302, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     return __result140__;
-    come_call_finalizer2(list$1charphp_finalize,result_303, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-    come_call_finalizer2(buffer_finalize,buf_304, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_301, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(buffer_finalize,buf_302, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 struct list$1charph* charp_scan(char* self, struct come_regex* reg){
 void* __result_obj__;
 void* right_value150;
 void* right_value151;
-struct list$1charph* result_306;
-int offset_307;
-int ovec_max_308;
-const char* err_312;
-int erro_ofs_313;
-int options_314;
-char* str_315;
-struct real_pcre8_or_16* re_316;
-_Bool _while_condtional18;
-int options_317;
-int len_318;
-int regex_result_319;
-int i_320;
-int i_321;
+struct list$1charph* result_304;
+int offset_305;
+int ovec_max_306;
+const char* err_310;
+int erro_ofs_311;
+int options_312;
+char* str_313;
+struct real_pcre8_or_16* re_314;
+_Bool _while_condtional17;
+int options_315;
+int len_316;
+int regex_result_317;
+int i_318;
+int i_319;
 _Bool _if_conditional114;
 void* right_value152;
-char* str_322;
+char* str_320;
 _Bool _if_conditional115;
 _Bool _if_conditional116;
 void* right_value153;
-char* str_323;
+char* str_321;
 _Bool _if_conditional117;
-int i_324;
+int i_322;
 void* right_value154;
-char* match_string_325;
+char* match_string_323;
 struct list$1charph* __result141__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value150 = (void*)0;
 right_value151 = (void*)0;
-memset(&result_306, 0, sizeof(struct list$1charph*));
-memset(&offset_307, 0, sizeof(int));
-memset(&ovec_max_308, 0, sizeof(int));
-memset(&erro_ofs_313, 0, sizeof(int));
-memset(&options_314, 0, sizeof(int));
-memset(&str_315, 0, sizeof(char*));
-memset(&re_316, 0, sizeof(struct real_pcre8_or_16*));
-memset(&options_317, 0, sizeof(int));
-memset(&len_318, 0, sizeof(int));
-memset(&regex_result_319, 0, sizeof(int));
-memset(&i_320, 0, sizeof(int));
-memset(&i_321, 0, sizeof(int));
+memset(&result_304, 0, sizeof(struct list$1charph*));
+memset(&offset_305, 0, sizeof(int));
+memset(&ovec_max_306, 0, sizeof(int));
+memset(&erro_ofs_311, 0, sizeof(int));
+memset(&options_312, 0, sizeof(int));
+memset(&str_313, 0, sizeof(char*));
+memset(&re_314, 0, sizeof(struct real_pcre8_or_16*));
+memset(&options_315, 0, sizeof(int));
+memset(&len_316, 0, sizeof(int));
+memset(&regex_result_317, 0, sizeof(int));
+memset(&i_318, 0, sizeof(int));
+memset(&i_319, 0, sizeof(int));
 right_value152 = (void*)0;
-memset(&str_322, 0, sizeof(char*));
+memset(&str_320, 0, sizeof(char*));
 right_value153 = (void*)0;
-memset(&str_323, 0, sizeof(char*));
-memset(&i_324, 0, sizeof(int));
+memset(&str_321, 0, sizeof(char*));
+memset(&i_322, 0, sizeof(int));
 right_value154 = (void*)0;
-memset(&match_string_325, 0, sizeof(char*));
-    result_306=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value151=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value150=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1488, "struct list$1charph"))))))));
+memset(&match_string_323, 0, sizeof(char*));
+    result_304=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value151=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value150=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1488, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value150, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value151, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_307=0;
-    ovec_max_308=16;
-    int start_309[ovec_max_308];
-    memset(&start_309, 0, sizeof(int)    *(ovec_max_308)    );
-    int end_310[ovec_max_308];
-    memset(&end_310, 0, sizeof(int)    *(ovec_max_308)    );
-    int ovec_value_311[ovec_max_308*3];
-    memset(&ovec_value_311, 0, sizeof(int)    *(ovec_max_308*3)    );
-    options_314=reg->options;
-    str_315=reg->str;
-    re_316=reg->re;
-    while(_while_condtional18=(_Bool)1,    _while_condtional18) {
-        options_317=2097152;
-        len_318=strlen(self);
-        regex_result_319=pcre_exec(re_316,(struct pcre_extra*)0,self,len_318,offset_307,options_317,ovec_value_311,ovec_max_308*3);
-        for(        i_320=0;        i_320<ovec_max_308;        i_320++        ){
-            start_309[i_320]=ovec_value_311[i_320*2];
+    offset_305=0;
+    ovec_max_306=16;
+    int start_307[ovec_max_306];
+    memset(&start_307, 0, sizeof(int)    *(ovec_max_306)    );
+    int end_308[ovec_max_306];
+    memset(&end_308, 0, sizeof(int)    *(ovec_max_306)    );
+    int ovec_value_309[ovec_max_306*3];
+    memset(&ovec_value_309, 0, sizeof(int)    *(ovec_max_306*3)    );
+    options_312=reg->options;
+    str_313=reg->str;
+    re_314=reg->re;
+    while(_while_condtional17=(_Bool)1,    _while_condtional17) {
+        options_315=2097152;
+        len_316=strlen(self);
+        regex_result_317=pcre_exec(re_314,(struct pcre_extra*)0,self,len_316,offset_305,options_315,ovec_value_309,ovec_max_306*3);
+        for(        i_318=0;        i_318<ovec_max_306;        i_318++        ){
+            start_307[i_318]=ovec_value_309[i_318*2];
         }
-        for(        i_321=0;        i_321<ovec_max_308;        i_321++        ){
-            end_310[i_321]=ovec_value_311[i_321*2+1];
+        for(        i_319=0;        i_319<ovec_max_306;        i_319++        ){
+            end_308[i_319]=ovec_value_309[i_319*2+1];
         }
-        if(_if_conditional114=regex_result_319==1,        _if_conditional114) {
-            str_322=(char*)come_increment_ref_count(((char*)(right_value152=charp_substring(self,start_309[0],end_310[0]))));
+        if(_if_conditional114=regex_result_317==1,        _if_conditional114) {
+            str_320=(char*)come_increment_ref_count(((char*)(right_value152=charp_substring(self,start_307[0],end_308[0]))));
             right_value152 = come_decrement_ref_count2(right_value152, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(result_306,(char*)come_increment_ref_count(str_322));
-            if(_if_conditional115=offset_307==end_310[0],            _if_conditional115) {
-                offset_307++;
+            list$1charph_push_back(result_304,(char*)come_increment_ref_count(str_320));
+            if(_if_conditional115=offset_305==end_308[0],            _if_conditional115) {
+                offset_305++;
             }
             else {
-                offset_307=end_310[0];
+                offset_305=end_308[0];
             }
-            str_322 = come_decrement_ref_count2(str_322, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_320 = come_decrement_ref_count2(str_320, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional116=regex_result_319>1,            _if_conditional116) {
-                str_323=(char*)come_increment_ref_count(((char*)(right_value153=charp_substring(self,start_309[0],end_310[0]))));
+            if(_if_conditional116=regex_result_317>1,            _if_conditional116) {
+                str_321=(char*)come_increment_ref_count(((char*)(right_value153=charp_substring(self,start_307[0],end_308[0]))));
                 right_value153 = come_decrement_ref_count2(right_value153, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                list$1charph_push_back(result_306,(char*)come_increment_ref_count(str_323));
-                if(_if_conditional117=offset_307==end_310[0],                _if_conditional117) {
-                    offset_307++;
+                list$1charph_push_back(result_304,(char*)come_increment_ref_count(str_321));
+                if(_if_conditional117=offset_305==end_308[0],                _if_conditional117) {
+                    offset_305++;
                 }
                 else {
-                    offset_307=end_310[0];
+                    offset_305=end_308[0];
                 }
-                for(                i_324=1;                i_324<regex_result_319;                i_324++                ){
-                    match_string_325=(char*)come_increment_ref_count(((char*)(right_value154=charp_substring(self,start_309[i_324],end_310[i_324]))));
+                for(                i_322=1;                i_322<regex_result_317;                i_322++                ){
+                    match_string_323=(char*)come_increment_ref_count(((char*)(right_value154=charp_substring(self,start_307[i_322],end_308[i_322]))));
                     right_value154 = come_decrement_ref_count2(right_value154, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(result_306,(char*)come_increment_ref_count(match_string_325));
-                    match_string_325 = come_decrement_ref_count2(match_string_325, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(result_304,(char*)come_increment_ref_count(match_string_323));
+                    match_string_323 = come_decrement_ref_count2(match_string_323, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str_323 = come_decrement_ref_count2(str_323, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_321 = come_decrement_ref_count2(str_321, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
     }
-    __result141__ = __result_obj__ = result_306;
-    come_call_finalizer2(list$1charphp_finalize,result_306, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result141__ = __result_obj__ = result_304;
+    come_call_finalizer2(list$1charphp_finalize,result_304, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result141__;
-    come_call_finalizer2(list$1charphp_finalize,result_306, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_304, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 struct list$1charph* charp_split(char* self, struct come_regex* reg){
 void* __result_obj__;
-const char* err_326;
-int erro_ofs_327;
-int options_328;
-char* str_329;
-struct real_pcre8_or_16* re_330;
+const char* err_324;
+int erro_ofs_325;
+int options_326;
+char* str_327;
+struct real_pcre8_or_16* re_328;
 void* right_value155;
 void* right_value156;
-struct list$1charph* result_331;
-int offset_332;
-int ovec_max_333;
-_Bool _while_condtional19;
-int options_337;
-int len_338;
-int regex_result_339;
-int i_340;
-int i_341;
+struct list$1charph* result_329;
+int offset_330;
+int ovec_max_331;
+_Bool _while_condtional18;
+int options_335;
+int len_336;
+int regex_result_337;
+int i_338;
+int i_339;
 _Bool _if_conditional118;
 void* right_value157;
-char* str_342;
+char* str_340;
 _Bool _if_conditional119;
 _Bool _if_conditional120;
 void* right_value158;
-char* str_343;
+char* str_341;
 _Bool _if_conditional121;
-int i_344;
+int i_342;
 void* right_value159;
-char* match_str_345;
+char* match_str_343;
 _Bool _if_conditional122;
 void* right_value160;
-char* str_346;
+char* str_344;
 struct list$1charph* __result142__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&erro_ofs_327, 0, sizeof(int));
-memset(&options_328, 0, sizeof(int));
-memset(&str_329, 0, sizeof(char*));
-memset(&re_330, 0, sizeof(struct real_pcre8_or_16*));
+memset(&erro_ofs_325, 0, sizeof(int));
+memset(&options_326, 0, sizeof(int));
+memset(&str_327, 0, sizeof(char*));
+memset(&re_328, 0, sizeof(struct real_pcre8_or_16*));
 right_value155 = (void*)0;
 right_value156 = (void*)0;
-memset(&result_331, 0, sizeof(struct list$1charph*));
-memset(&offset_332, 0, sizeof(int));
-memset(&ovec_max_333, 0, sizeof(int));
-memset(&options_337, 0, sizeof(int));
-memset(&len_338, 0, sizeof(int));
-memset(&regex_result_339, 0, sizeof(int));
-memset(&i_340, 0, sizeof(int));
-memset(&i_341, 0, sizeof(int));
+memset(&result_329, 0, sizeof(struct list$1charph*));
+memset(&offset_330, 0, sizeof(int));
+memset(&ovec_max_331, 0, sizeof(int));
+memset(&options_335, 0, sizeof(int));
+memset(&len_336, 0, sizeof(int));
+memset(&regex_result_337, 0, sizeof(int));
+memset(&i_338, 0, sizeof(int));
+memset(&i_339, 0, sizeof(int));
 right_value157 = (void*)0;
-memset(&str_342, 0, sizeof(char*));
+memset(&str_340, 0, sizeof(char*));
 right_value158 = (void*)0;
-memset(&str_343, 0, sizeof(char*));
-memset(&i_344, 0, sizeof(int));
+memset(&str_341, 0, sizeof(char*));
+memset(&i_342, 0, sizeof(int));
 right_value159 = (void*)0;
-memset(&match_str_345, 0, sizeof(char*));
+memset(&match_str_343, 0, sizeof(char*));
 right_value160 = (void*)0;
-memset(&str_346, 0, sizeof(char*));
-    options_328=reg->options;
-    str_329=reg->str;
-    re_330=reg->re;
-    result_331=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value156=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value155=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1569, "struct list$1charph"))))))));
+memset(&str_344, 0, sizeof(char*));
+    options_326=reg->options;
+    str_327=reg->str;
+    re_328=reg->re;
+    result_329=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value156=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value155=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1569, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value155, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value156, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_332=0;
-    ovec_max_333=16;
-    int start_334[ovec_max_333];
-    memset(&start_334, 0, sizeof(int)    *(ovec_max_333)    );
-    int end_335[ovec_max_333];
-    memset(&end_335, 0, sizeof(int)    *(ovec_max_333)    );
-    int ovec_value_336[ovec_max_333*3];
-    memset(&ovec_value_336, 0, sizeof(int)    *(ovec_max_333*3)    );
-    while(_while_condtional19=(_Bool)1,    _while_condtional19) {
-        options_337=2097152;
-        len_338=strlen(self);
-        regex_result_339=pcre_exec(re_330,(struct pcre_extra*)0,self,len_338,offset_332,options_337,ovec_value_336,ovec_max_333*3);
-        for(        i_340=0;        i_340<ovec_max_333;        i_340++        ){
-            start_334[i_340]=ovec_value_336[i_340*2];
+    offset_330=0;
+    ovec_max_331=16;
+    int start_332[ovec_max_331];
+    memset(&start_332, 0, sizeof(int)    *(ovec_max_331)    );
+    int end_333[ovec_max_331];
+    memset(&end_333, 0, sizeof(int)    *(ovec_max_331)    );
+    int ovec_value_334[ovec_max_331*3];
+    memset(&ovec_value_334, 0, sizeof(int)    *(ovec_max_331*3)    );
+    while(_while_condtional18=(_Bool)1,    _while_condtional18) {
+        options_335=2097152;
+        len_336=strlen(self);
+        regex_result_337=pcre_exec(re_328,(struct pcre_extra*)0,self,len_336,offset_330,options_335,ovec_value_334,ovec_max_331*3);
+        for(        i_338=0;        i_338<ovec_max_331;        i_338++        ){
+            start_332[i_338]=ovec_value_334[i_338*2];
         }
-        for(        i_341=0;        i_341<ovec_max_333;        i_341++        ){
-            end_335[i_341]=ovec_value_336[i_341*2+1];
+        for(        i_339=0;        i_339<ovec_max_331;        i_339++        ){
+            end_333[i_339]=ovec_value_334[i_339*2+1];
         }
-        if(_if_conditional118=regex_result_339==1,        _if_conditional118) {
-            str_342=(char*)come_increment_ref_count(((char*)(right_value157=charp_substring(self,offset_332,start_334[0]))));
+        if(_if_conditional118=regex_result_337==1,        _if_conditional118) {
+            str_340=(char*)come_increment_ref_count(((char*)(right_value157=charp_substring(self,offset_330,start_332[0]))));
             right_value157 = come_decrement_ref_count2(right_value157, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(result_331,(char*)come_increment_ref_count(str_342));
-            if(_if_conditional119=offset_332==end_335[0],            _if_conditional119) {
-                offset_332++;
+            list$1charph_push_back(result_329,(char*)come_increment_ref_count(str_340));
+            if(_if_conditional119=offset_330==end_333[0],            _if_conditional119) {
+                offset_330++;
             }
             else {
-                offset_332=end_335[0];
+                offset_330=end_333[0];
             }
-            str_342 = come_decrement_ref_count2(str_342, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_340 = come_decrement_ref_count2(str_340, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional120=regex_result_339>1,            _if_conditional120) {
-                str_343=(char*)come_increment_ref_count(((char*)(right_value158=charp_substring(self,offset_332,start_334[0]))));
+            if(_if_conditional120=regex_result_337>1,            _if_conditional120) {
+                str_341=(char*)come_increment_ref_count(((char*)(right_value158=charp_substring(self,offset_330,start_332[0]))));
                 right_value158 = come_decrement_ref_count2(right_value158, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                list$1charph_push_back(result_331,(char*)come_increment_ref_count(str_343));
-                if(_if_conditional121=offset_332==end_335[0],                _if_conditional121) {
-                    offset_332++;
+                list$1charph_push_back(result_329,(char*)come_increment_ref_count(str_341));
+                if(_if_conditional121=offset_330==end_333[0],                _if_conditional121) {
+                    offset_330++;
                 }
                 else {
-                    offset_332=end_335[0];
+                    offset_330=end_333[0];
                 }
-                for(                i_344=1;                i_344<regex_result_339;                i_344++                ){
-                    match_str_345=(char*)come_increment_ref_count(((char*)(right_value159=charp_substring(self,start_334[i_344],end_335[i_344]))));
+                for(                i_342=1;                i_342<regex_result_337;                i_342++                ){
+                    match_str_343=(char*)come_increment_ref_count(((char*)(right_value159=charp_substring(self,start_332[i_342],end_333[i_342]))));
                     right_value159 = come_decrement_ref_count2(right_value159, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(result_331,(char*)come_increment_ref_count(match_str_345));
-                    match_str_345 = come_decrement_ref_count2(match_str_345, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(result_329,(char*)come_increment_ref_count(match_str_343));
+                    match_str_343 = come_decrement_ref_count2(match_str_343, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str_343 = come_decrement_ref_count2(str_343, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_341 = come_decrement_ref_count2(str_341, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
     }
-    if(_if_conditional122=offset_332<charp_length(self),    _if_conditional122) {
-        str_346=(char*)come_increment_ref_count(((char*)(right_value160=charp_substring(self,offset_332,-1))));
+    if(_if_conditional122=offset_330<charp_length(self),    _if_conditional122) {
+        str_344=(char*)come_increment_ref_count(((char*)(right_value160=charp_substring(self,offset_330,-1))));
         right_value160 = come_decrement_ref_count2(right_value160, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        list$1charph_push_back(result_331,(char*)come_increment_ref_count(str_346));
-        str_346 = come_decrement_ref_count2(str_346, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+        list$1charph_push_back(result_329,(char*)come_increment_ref_count(str_344));
+        str_344 = come_decrement_ref_count2(str_344, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     }
-    __result142__ = __result_obj__ = result_331;
-    come_call_finalizer2(list$1charphp_finalize,result_331, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result142__ = __result_obj__ = result_329;
+    come_call_finalizer2(list$1charphp_finalize,result_329, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result142__;
-    come_call_finalizer2(list$1charphp_finalize,result_331, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_329, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 _Bool charp_match(char* self, struct come_regex* reg){
 void* __result_obj__;
-int offset_347;
-int ovec_max_348;
-const char* err_352;
-int erro_ofs_353;
-int options_354;
-char* str_355;
-struct real_pcre8_or_16* re_356;
-_Bool _while_condtional20;
-int options_357;
-int len_358;
-int regex_result_359;
-int i_360;
-int i_361;
+int offset_345;
+int ovec_max_346;
+const char* err_350;
+int erro_ofs_351;
+int options_352;
+char* str_353;
+struct real_pcre8_or_16* re_354;
+_Bool _while_condtional19;
+int options_355;
+int len_356;
+int regex_result_357;
+int i_358;
+int i_359;
 _Bool _if_conditional123;
 _Bool __result143__;
 _Bool __result144__;
 _Bool __result145__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&offset_347, 0, sizeof(int));
-memset(&ovec_max_348, 0, sizeof(int));
-memset(&erro_ofs_353, 0, sizeof(int));
-memset(&options_354, 0, sizeof(int));
-memset(&str_355, 0, sizeof(char*));
-memset(&re_356, 0, sizeof(struct real_pcre8_or_16*));
-memset(&options_357, 0, sizeof(int));
-memset(&len_358, 0, sizeof(int));
-memset(&regex_result_359, 0, sizeof(int));
-memset(&i_360, 0, sizeof(int));
-memset(&i_361, 0, sizeof(int));
-    offset_347=0;
-    ovec_max_348=16;
-    int start_349[ovec_max_348];
-    memset(&start_349, 0, sizeof(int)    *(ovec_max_348)    );
-    int end_350[ovec_max_348];
-    memset(&end_350, 0, sizeof(int)    *(ovec_max_348)    );
-    int ovec_value_351[ovec_max_348*3];
-    memset(&ovec_value_351, 0, sizeof(int)    *(ovec_max_348*3)    );
-    options_354=reg->options;
-    str_355=reg->str;
-    re_356=reg->re;
-    while(_while_condtional20=(_Bool)1,    _while_condtional20) {
-        options_357=2097152;
-        len_358=strlen(self);
-        regex_result_359=pcre_exec(re_356,(struct pcre_extra*)0,self,len_358,offset_347,options_357,ovec_value_351,ovec_max_348*3);
-        for(        i_360=0;        i_360<ovec_max_348;        i_360++        ){
-            start_349[i_360]=ovec_value_351[i_360*2];
+memset(&offset_345, 0, sizeof(int));
+memset(&ovec_max_346, 0, sizeof(int));
+memset(&erro_ofs_351, 0, sizeof(int));
+memset(&options_352, 0, sizeof(int));
+memset(&str_353, 0, sizeof(char*));
+memset(&re_354, 0, sizeof(struct real_pcre8_or_16*));
+memset(&options_355, 0, sizeof(int));
+memset(&len_356, 0, sizeof(int));
+memset(&regex_result_357, 0, sizeof(int));
+memset(&i_358, 0, sizeof(int));
+memset(&i_359, 0, sizeof(int));
+    offset_345=0;
+    ovec_max_346=16;
+    int start_347[ovec_max_346];
+    memset(&start_347, 0, sizeof(int)    *(ovec_max_346)    );
+    int end_348[ovec_max_346];
+    memset(&end_348, 0, sizeof(int)    *(ovec_max_346)    );
+    int ovec_value_349[ovec_max_346*3];
+    memset(&ovec_value_349, 0, sizeof(int)    *(ovec_max_346*3)    );
+    options_352=reg->options;
+    str_353=reg->str;
+    re_354=reg->re;
+    while(_while_condtional19=(_Bool)1,    _while_condtional19) {
+        options_355=2097152;
+        len_356=strlen(self);
+        regex_result_357=pcre_exec(re_354,(struct pcre_extra*)0,self,len_356,offset_345,options_355,ovec_value_349,ovec_max_346*3);
+        for(        i_358=0;        i_358<ovec_max_346;        i_358++        ){
+            start_347[i_358]=ovec_value_349[i_358*2];
         }
-        for(        i_361=0;        i_361<ovec_max_348;        i_361++        ){
-            end_350[i_361]=ovec_value_351[i_361*2+1];
+        for(        i_359=0;        i_359<ovec_max_346;        i_359++        ){
+            end_348[i_359]=ovec_value_349[i_359*2+1];
         }
-        if(_if_conditional123=regex_result_359>0,        _if_conditional123) {
+        if(_if_conditional123=regex_result_357>0,        _if_conditional123) {
             __result143__ = (_Bool)1;
             return __result143__;
         }
@@ -6336,215 +6336,215 @@ memset(&i_361, 0, sizeof(int));
 
 struct list$1charph* charp_split_maxsplit(char* self, struct come_regex* reg, int maxsplit){
 void* __result_obj__;
-const char* err_362;
-int erro_ofs_363;
-int options_364;
-char* str_365;
-struct real_pcre8_or_16* re_366;
+const char* err_360;
+int erro_ofs_361;
+int options_362;
+char* str_363;
+struct real_pcre8_or_16* re_364;
 void* right_value161;
 void* right_value162;
-struct list$1charph* result_367;
-int offset_368;
-int ovec_max_369;
-int n_373;
-_Bool _while_condtional21;
-int options_374;
-int len_375;
-int regex_result_376;
-int i_377;
-int i_378;
+struct list$1charph* result_365;
+int offset_366;
+int ovec_max_367;
+int n_371;
+_Bool _while_condtional20;
+int options_372;
+int len_373;
+int regex_result_374;
+int i_375;
+int i_376;
 _Bool _if_conditional124;
 void* right_value163;
-char* str_379;
+char* str_377;
 _Bool _if_conditional125;
 _Bool _if_conditional126;
 void* right_value164;
-char* str_380;
+char* str_378;
 _Bool _if_conditional127;
-int i_381;
+int i_379;
 void* right_value165;
-char* match_str_382;
+char* match_str_380;
 _Bool _if_conditional128;
 _Bool _if_conditional129;
 void* right_value166;
-char* str_383;
+char* str_381;
 struct list$1charph* __result146__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&erro_ofs_363, 0, sizeof(int));
-memset(&options_364, 0, sizeof(int));
-memset(&str_365, 0, sizeof(char*));
-memset(&re_366, 0, sizeof(struct real_pcre8_or_16*));
+memset(&erro_ofs_361, 0, sizeof(int));
+memset(&options_362, 0, sizeof(int));
+memset(&str_363, 0, sizeof(char*));
+memset(&re_364, 0, sizeof(struct real_pcre8_or_16*));
 right_value161 = (void*)0;
 right_value162 = (void*)0;
-memset(&result_367, 0, sizeof(struct list$1charph*));
-memset(&offset_368, 0, sizeof(int));
-memset(&ovec_max_369, 0, sizeof(int));
-memset(&n_373, 0, sizeof(int));
-memset(&options_374, 0, sizeof(int));
-memset(&len_375, 0, sizeof(int));
-memset(&regex_result_376, 0, sizeof(int));
-memset(&i_377, 0, sizeof(int));
-memset(&i_378, 0, sizeof(int));
+memset(&result_365, 0, sizeof(struct list$1charph*));
+memset(&offset_366, 0, sizeof(int));
+memset(&ovec_max_367, 0, sizeof(int));
+memset(&n_371, 0, sizeof(int));
+memset(&options_372, 0, sizeof(int));
+memset(&len_373, 0, sizeof(int));
+memset(&regex_result_374, 0, sizeof(int));
+memset(&i_375, 0, sizeof(int));
+memset(&i_376, 0, sizeof(int));
 right_value163 = (void*)0;
-memset(&str_379, 0, sizeof(char*));
+memset(&str_377, 0, sizeof(char*));
 right_value164 = (void*)0;
-memset(&str_380, 0, sizeof(char*));
-memset(&i_381, 0, sizeof(int));
+memset(&str_378, 0, sizeof(char*));
+memset(&i_379, 0, sizeof(int));
 right_value165 = (void*)0;
-memset(&match_str_382, 0, sizeof(char*));
+memset(&match_str_380, 0, sizeof(char*));
 right_value166 = (void*)0;
-memset(&str_383, 0, sizeof(char*));
-    options_364=reg->options;
-    str_365=reg->str;
-    re_366=reg->re;
-    result_367=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value162=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value161=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1691, "struct list$1charph"))))))));
+memset(&str_381, 0, sizeof(char*));
+    options_362=reg->options;
+    str_363=reg->str;
+    re_364=reg->re;
+    result_365=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value162=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value161=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1691, "struct list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value161, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value162, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    offset_368=0;
-    ovec_max_369=16;
-    int start_370[ovec_max_369];
-    memset(&start_370, 0, sizeof(int)    *(ovec_max_369)    );
-    int end_371[ovec_max_369];
-    memset(&end_371, 0, sizeof(int)    *(ovec_max_369)    );
-    int ovec_value_372[ovec_max_369*3];
-    memset(&ovec_value_372, 0, sizeof(int)    *(ovec_max_369*3)    );
-    n_373=0;
-    while(_while_condtional21=(_Bool)1,    _while_condtional21) {
-        options_374=2097152;
-        len_375=strlen(self);
-        regex_result_376=pcre_exec(re_366,(struct pcre_extra*)0,self,len_375,offset_368,options_374,ovec_value_372,ovec_max_369*3);
-        for(        i_377=0;        i_377<ovec_max_369;        i_377++        ){
-            start_370[i_377]=ovec_value_372[i_377*2];
+    offset_366=0;
+    ovec_max_367=16;
+    int start_368[ovec_max_367];
+    memset(&start_368, 0, sizeof(int)    *(ovec_max_367)    );
+    int end_369[ovec_max_367];
+    memset(&end_369, 0, sizeof(int)    *(ovec_max_367)    );
+    int ovec_value_370[ovec_max_367*3];
+    memset(&ovec_value_370, 0, sizeof(int)    *(ovec_max_367*3)    );
+    n_371=0;
+    while(_while_condtional20=(_Bool)1,    _while_condtional20) {
+        options_372=2097152;
+        len_373=strlen(self);
+        regex_result_374=pcre_exec(re_364,(struct pcre_extra*)0,self,len_373,offset_366,options_372,ovec_value_370,ovec_max_367*3);
+        for(        i_375=0;        i_375<ovec_max_367;        i_375++        ){
+            start_368[i_375]=ovec_value_370[i_375*2];
         }
-        for(        i_378=0;        i_378<ovec_max_369;        i_378++        ){
-            end_371[i_378]=ovec_value_372[i_378*2+1];
+        for(        i_376=0;        i_376<ovec_max_367;        i_376++        ){
+            end_369[i_376]=ovec_value_370[i_376*2+1];
         }
-        if(_if_conditional124=regex_result_376==1,        _if_conditional124) {
-            str_379=(char*)come_increment_ref_count(((char*)(right_value163=charp_substring(self,offset_368,start_370[0]))));
+        if(_if_conditional124=regex_result_374==1,        _if_conditional124) {
+            str_377=(char*)come_increment_ref_count(((char*)(right_value163=charp_substring(self,offset_366,start_368[0]))));
             right_value163 = come_decrement_ref_count2(right_value163, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(result_367,(char*)come_increment_ref_count(str_379));
-            if(_if_conditional125=offset_368==end_371[0],            _if_conditional125) {
-                offset_368++;
+            list$1charph_push_back(result_365,(char*)come_increment_ref_count(str_377));
+            if(_if_conditional125=offset_366==end_369[0],            _if_conditional125) {
+                offset_366++;
             }
             else {
-                offset_368=end_371[0];
+                offset_366=end_369[0];
             }
-            str_379 = come_decrement_ref_count2(str_379, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_377 = come_decrement_ref_count2(str_377, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional126=regex_result_376>1,            _if_conditional126) {
-                str_380=(char*)come_increment_ref_count(((char*)(right_value164=charp_substring(self,offset_368,start_370[0]))));
+            if(_if_conditional126=regex_result_374>1,            _if_conditional126) {
+                str_378=(char*)come_increment_ref_count(((char*)(right_value164=charp_substring(self,offset_366,start_368[0]))));
                 right_value164 = come_decrement_ref_count2(right_value164, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                list$1charph_push_back(result_367,(char*)come_increment_ref_count(str_380));
-                if(_if_conditional127=offset_368==end_371[0],                _if_conditional127) {
-                    offset_368++;
+                list$1charph_push_back(result_365,(char*)come_increment_ref_count(str_378));
+                if(_if_conditional127=offset_366==end_369[0],                _if_conditional127) {
+                    offset_366++;
                 }
                 else {
-                    offset_368=end_371[0];
+                    offset_366=end_369[0];
                 }
-                for(                i_381=1;                i_381<regex_result_376;                i_381++                ){
-                    match_str_382=(char*)come_increment_ref_count(((char*)(right_value165=charp_substring(self,start_370[i_381],end_371[i_381]))));
+                for(                i_379=1;                i_379<regex_result_374;                i_379++                ){
+                    match_str_380=(char*)come_increment_ref_count(((char*)(right_value165=charp_substring(self,start_368[i_379],end_369[i_379]))));
                     right_value165 = come_decrement_ref_count2(right_value165, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(result_367,(char*)come_increment_ref_count(match_str_382));
-                    match_str_382 = come_decrement_ref_count2(match_str_382, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(result_365,(char*)come_increment_ref_count(match_str_380));
+                    match_str_380 = come_decrement_ref_count2(match_str_380, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str_380 = come_decrement_ref_count2(str_380, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_378 = come_decrement_ref_count2(str_378, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
                 break;
             }
         }
-        n_373++;
-        if(_if_conditional128=maxsplit==n_373,        _if_conditional128) {
+        n_371++;
+        if(_if_conditional128=maxsplit==n_371,        _if_conditional128) {
             break;
         }
     }
-    if(_if_conditional129=offset_368<charp_length(self),    _if_conditional129) {
-        str_383=(char*)come_increment_ref_count(((char*)(right_value166=charp_substring(self,offset_368,-1))));
+    if(_if_conditional129=offset_366<charp_length(self),    _if_conditional129) {
+        str_381=(char*)come_increment_ref_count(((char*)(right_value166=charp_substring(self,offset_366,-1))));
         right_value166 = come_decrement_ref_count2(right_value166, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        list$1charph_push_back(result_367,(char*)come_increment_ref_count(str_383));
-        str_383 = come_decrement_ref_count2(str_383, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+        list$1charph_push_back(result_365,(char*)come_increment_ref_count(str_381));
+        str_381 = come_decrement_ref_count2(str_381, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     }
-    __result146__ = __result_obj__ = result_367;
-    come_call_finalizer2(list$1charphp_finalize,result_367, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    __result146__ = __result_obj__ = result_365;
+    come_call_finalizer2(list$1charphp_finalize,result_365, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result146__;
-    come_call_finalizer2(list$1charphp_finalize,result_367, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(list$1charphp_finalize,result_365, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 int charp_rindex_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
-const char* err_384;
-int erro_ofs_385;
-int options_386;
-char* str_387;
-struct real_pcre8_or_16* re_388;
+const char* err_382;
+int erro_ofs_383;
+int options_384;
+char* str_385;
+struct real_pcre8_or_16* re_386;
 void* right_value167;
-char* self2_389;
-int ovec_max_390;
-int result_394;
-int offset_395;
-int n_396;
-_Bool _while_condtional22;
-int options_397;
-int len_398;
-int regex_result_399;
-int i_400;
-int i_401;
+char* self2_387;
+int ovec_max_388;
+int result_392;
+int offset_393;
+int n_394;
+_Bool _while_condtional21;
+int options_395;
+int len_396;
+int regex_result_397;
+int i_398;
+int i_399;
 _Bool _if_conditional130;
 _Bool _if_conditional131;
 _Bool _if_conditional132;
 int __result147__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&erro_ofs_385, 0, sizeof(int));
-memset(&options_386, 0, sizeof(int));
-memset(&str_387, 0, sizeof(char*));
-memset(&re_388, 0, sizeof(struct real_pcre8_or_16*));
+memset(&erro_ofs_383, 0, sizeof(int));
+memset(&options_384, 0, sizeof(int));
+memset(&str_385, 0, sizeof(char*));
+memset(&re_386, 0, sizeof(struct real_pcre8_or_16*));
 right_value167 = (void*)0;
-memset(&self2_389, 0, sizeof(char*));
-memset(&ovec_max_390, 0, sizeof(int));
-memset(&result_394, 0, sizeof(int));
-memset(&offset_395, 0, sizeof(int));
-memset(&n_396, 0, sizeof(int));
-memset(&options_397, 0, sizeof(int));
-memset(&len_398, 0, sizeof(int));
-memset(&regex_result_399, 0, sizeof(int));
-memset(&i_400, 0, sizeof(int));
-memset(&i_401, 0, sizeof(int));
-    options_386=reg->options;
-    str_387=reg->str;
-    re_388=reg->re;
-    self2_389=(char*)come_increment_ref_count(((char*)(right_value167=charp_reverse(self))));
+memset(&self2_387, 0, sizeof(char*));
+memset(&ovec_max_388, 0, sizeof(int));
+memset(&result_392, 0, sizeof(int));
+memset(&offset_393, 0, sizeof(int));
+memset(&n_394, 0, sizeof(int));
+memset(&options_395, 0, sizeof(int));
+memset(&len_396, 0, sizeof(int));
+memset(&regex_result_397, 0, sizeof(int));
+memset(&i_398, 0, sizeof(int));
+memset(&i_399, 0, sizeof(int));
+    options_384=reg->options;
+    str_385=reg->str;
+    re_386=reg->re;
+    self2_387=(char*)come_increment_ref_count(((char*)(right_value167=charp_reverse(self))));
     right_value167 = come_decrement_ref_count2(right_value167, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    ovec_max_390=16;
-    int start_391[ovec_max_390];
-    memset(&start_391, 0, sizeof(int)    *(ovec_max_390)    );
-    int end_392[ovec_max_390];
-    memset(&end_392, 0, sizeof(int)    *(ovec_max_390)    );
-    int ovec_value_393[ovec_max_390*3];
-    memset(&ovec_value_393, 0, sizeof(int)    *(ovec_max_390*3)    );
-    result_394=default_value;
-    offset_395=0;
-    n_396=0;
-    while(_while_condtional22=(_Bool)1,    _while_condtional22) {
-        options_397=2097152;
-        len_398=strlen(self2_389);
-        regex_result_399=pcre_exec(re_388,(struct pcre_extra*)0,self2_389,len_398,offset_395,options_397,ovec_value_393,ovec_max_390*3);
-        for(        i_400=0;        i_400<ovec_max_390;        i_400++        ){
-            start_391[i_400]=ovec_value_393[i_400*2];
+    ovec_max_388=16;
+    int start_389[ovec_max_388];
+    memset(&start_389, 0, sizeof(int)    *(ovec_max_388)    );
+    int end_390[ovec_max_388];
+    memset(&end_390, 0, sizeof(int)    *(ovec_max_388)    );
+    int ovec_value_391[ovec_max_388*3];
+    memset(&ovec_value_391, 0, sizeof(int)    *(ovec_max_388*3)    );
+    result_392=default_value;
+    offset_393=0;
+    n_394=0;
+    while(_while_condtional21=(_Bool)1,    _while_condtional21) {
+        options_395=2097152;
+        len_396=strlen(self2_387);
+        regex_result_397=pcre_exec(re_386,(struct pcre_extra*)0,self2_387,len_396,offset_393,options_395,ovec_value_391,ovec_max_388*3);
+        for(        i_398=0;        i_398<ovec_max_388;        i_398++        ){
+            start_389[i_398]=ovec_value_391[i_398*2];
         }
-        for(        i_401=0;        i_401<ovec_max_390;        i_401++        ){
-            end_392[i_401]=ovec_value_393[i_401*2+1];
+        for(        i_399=0;        i_399<ovec_max_388;        i_399++        ){
+            end_390[i_399]=ovec_value_391[i_399*2+1];
         }
-        if(_if_conditional130=regex_result_399>0,        _if_conditional130) {
-            n_396++;
-            if(_if_conditional131=offset_395==end_392[0],            _if_conditional131) {
-                offset_395++;
+        if(_if_conditional130=regex_result_397>0,        _if_conditional130) {
+            n_394++;
+            if(_if_conditional131=offset_393==end_390[0],            _if_conditional131) {
+                offset_393++;
             }
             else {
-                offset_395=end_392[0];
+                offset_393=end_390[0];
             }
-            if(_if_conditional132=n_396==count,            _if_conditional132) {
-                result_394=strlen(self)-end_392[0];
+            if(_if_conditional132=n_394==count,            _if_conditional132) {
+                result_392=strlen(self)-end_390[0];
                 break;
             }
         }
@@ -6552,28 +6552,28 @@ memset(&i_401, 0, sizeof(int));
             break;
         }
     }
-    __result147__ = result_394;
-    self2_389 = come_decrement_ref_count2(self2_389, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    __result147__ = result_392;
+    self2_387 = come_decrement_ref_count2(self2_387, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     return __result147__;
-    self2_389 = come_decrement_ref_count2(self2_389, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    self2_387 = come_decrement_ref_count2(self2_387, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
 _Bool charp_match_count(char* self, struct come_regex* reg, int count){
 void* __result_obj__;
-int offset_402;
-int ovec_max_403;
-const char* err_407;
-int erro_ofs_408;
-int options_409;
-char* str_410;
-struct real_pcre8_or_16* re_411;
-int n_412;
-_Bool _while_condtional23;
-int options_413;
-int len_414;
-int regex_result_415;
-int i_416;
-int i_417;
+int offset_400;
+int ovec_max_401;
+const char* err_405;
+int erro_ofs_406;
+int options_407;
+char* str_408;
+struct real_pcre8_or_16* re_409;
+int n_410;
+_Bool _while_condtional22;
+int options_411;
+int len_412;
+int regex_result_413;
+int i_414;
+int i_415;
 _Bool _if_conditional133;
 _Bool _if_conditional134;
 _Bool __result148__;
@@ -6581,51 +6581,51 @@ _Bool _if_conditional135;
 _Bool __result149__;
 _Bool __result150__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&offset_402, 0, sizeof(int));
-memset(&ovec_max_403, 0, sizeof(int));
-memset(&erro_ofs_408, 0, sizeof(int));
-memset(&options_409, 0, sizeof(int));
-memset(&str_410, 0, sizeof(char*));
-memset(&re_411, 0, sizeof(struct real_pcre8_or_16*));
-memset(&n_412, 0, sizeof(int));
-memset(&options_413, 0, sizeof(int));
-memset(&len_414, 0, sizeof(int));
-memset(&regex_result_415, 0, sizeof(int));
-memset(&i_416, 0, sizeof(int));
-memset(&i_417, 0, sizeof(int));
-    offset_402=0;
-    ovec_max_403=16;
-    int start_404[ovec_max_403];
-    memset(&start_404, 0, sizeof(int)    *(ovec_max_403)    );
-    int end_405[ovec_max_403];
-    memset(&end_405, 0, sizeof(int)    *(ovec_max_403)    );
-    int ovec_value_406[ovec_max_403*3];
-    memset(&ovec_value_406, 0, sizeof(int)    *(ovec_max_403*3)    );
-    options_409=reg->options;
-    str_410=reg->str;
-    re_411=reg->re;
-    n_412=0;
-    while(_while_condtional23=(_Bool)1,    _while_condtional23) {
-        options_413=2097152;
-        len_414=strlen(self);
-        regex_result_415=pcre_exec(re_411,(struct pcre_extra*)0,self,len_414,offset_402,options_413,ovec_value_406,ovec_max_403*3);
-        for(        i_416=0;        i_416<ovec_max_403;        i_416++        ){
-            start_404[i_416]=ovec_value_406[i_416*2];
+memset(&offset_400, 0, sizeof(int));
+memset(&ovec_max_401, 0, sizeof(int));
+memset(&erro_ofs_406, 0, sizeof(int));
+memset(&options_407, 0, sizeof(int));
+memset(&str_408, 0, sizeof(char*));
+memset(&re_409, 0, sizeof(struct real_pcre8_or_16*));
+memset(&n_410, 0, sizeof(int));
+memset(&options_411, 0, sizeof(int));
+memset(&len_412, 0, sizeof(int));
+memset(&regex_result_413, 0, sizeof(int));
+memset(&i_414, 0, sizeof(int));
+memset(&i_415, 0, sizeof(int));
+    offset_400=0;
+    ovec_max_401=16;
+    int start_402[ovec_max_401];
+    memset(&start_402, 0, sizeof(int)    *(ovec_max_401)    );
+    int end_403[ovec_max_401];
+    memset(&end_403, 0, sizeof(int)    *(ovec_max_401)    );
+    int ovec_value_404[ovec_max_401*3];
+    memset(&ovec_value_404, 0, sizeof(int)    *(ovec_max_401*3)    );
+    options_407=reg->options;
+    str_408=reg->str;
+    re_409=reg->re;
+    n_410=0;
+    while(_while_condtional22=(_Bool)1,    _while_condtional22) {
+        options_411=2097152;
+        len_412=strlen(self);
+        regex_result_413=pcre_exec(re_409,(struct pcre_extra*)0,self,len_412,offset_400,options_411,ovec_value_404,ovec_max_401*3);
+        for(        i_414=0;        i_414<ovec_max_401;        i_414++        ){
+            start_402[i_414]=ovec_value_404[i_414*2];
         }
-        for(        i_417=0;        i_417<ovec_max_403;        i_417++        ){
-            end_405[i_417]=ovec_value_406[i_417*2+1];
+        for(        i_415=0;        i_415<ovec_max_401;        i_415++        ){
+            end_403[i_415]=ovec_value_404[i_415*2+1];
         }
-        if(_if_conditional133=regex_result_415>0,        _if_conditional133) {
-            n_412++;
-            if(_if_conditional134=count==n_412,            _if_conditional134) {
+        if(_if_conditional133=regex_result_413>0,        _if_conditional133) {
+            n_410++;
+            if(_if_conditional134=count==n_410,            _if_conditional134) {
                 __result148__ = (_Bool)1;
                 return __result148__;
             }
-            if(_if_conditional135=offset_402==end_405[0],            _if_conditional135) {
-                offset_402++;
+            if(_if_conditional135=offset_400==end_403[0],            _if_conditional135) {
+                offset_400++;
             }
             else {
-                offset_402=end_405[0];
+                offset_400=end_403[0];
             }
         }
         else {
@@ -6639,551 +6639,551 @@ memset(&i_417, 0, sizeof(int));
 
 char* charp_sub_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-int offset_418;
-int ovec_max_419;
-const char* err_423;
-int erro_ofs_424;
-int options_425;
-char* str_426;
-struct real_pcre8_or_16* re_427;
+int offset_416;
+int ovec_max_417;
+const char* err_421;
+int erro_ofs_422;
+int options_423;
+char* str_424;
+struct real_pcre8_or_16* re_425;
 void* right_value168;
 void* right_value169;
-struct buffer* result_428;
-_Bool _while_condtional24;
-int options_429;
-int len_430;
-int regex_result_431;
-int i_432;
-int i_433;
+struct buffer* result_426;
+_Bool _while_condtional23;
+int options_427;
+int len_428;
+int regex_result_429;
+int i_430;
+int i_431;
 _Bool _if_conditional136;
 void* right_value170;
-char* str_434;
+char* str_432;
 void* right_value171;
 void* right_value172;
-struct list$1charph* group_strings_435;
+struct list$1charph* group_strings_433;
 void* right_value173;
-char* match_string_436;
+char* match_string_434;
 void* right_value174;
 void* right_value175;
-char* block_result_437;
+char* block_result_435;
 _Bool _if_conditional137;
 void* right_value176;
 char* __result151__;
 _Bool _if_conditional138;
 _Bool _if_conditional139;
 void* right_value177;
-char* str_438;
+char* str_436;
 _Bool _if_conditional140;
 void* right_value178;
-char* str_439;
+char* str_437;
 _Bool _if_conditional141;
 void* right_value179;
 void* right_value180;
-struct list$1charph* group_strings_440;
-int i_441;
+struct list$1charph* group_strings_438;
+int i_439;
 void* right_value181;
-char* match_string_442;
+char* match_string_440;
 void* right_value182;
-char* match_string_443;
+char* match_string_441;
 void* right_value183;
-char* block_result_444;
+char* block_result_442;
 _Bool _if_conditional142;
 void* right_value184;
 char* __result152__;
 _Bool _if_conditional143;
 void* right_value185;
-char* str_445;
+char* str_443;
 void* right_value186;
-char* str_446;
+char* str_444;
 void* right_value187;
 char* __result153__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&offset_418, 0, sizeof(int));
-memset(&ovec_max_419, 0, sizeof(int));
-memset(&erro_ofs_424, 0, sizeof(int));
-memset(&options_425, 0, sizeof(int));
-memset(&str_426, 0, sizeof(char*));
-memset(&re_427, 0, sizeof(struct real_pcre8_or_16*));
+memset(&offset_416, 0, sizeof(int));
+memset(&ovec_max_417, 0, sizeof(int));
+memset(&erro_ofs_422, 0, sizeof(int));
+memset(&options_423, 0, sizeof(int));
+memset(&str_424, 0, sizeof(char*));
+memset(&re_425, 0, sizeof(struct real_pcre8_or_16*));
 right_value168 = (void*)0;
 right_value169 = (void*)0;
-memset(&result_428, 0, sizeof(struct buffer*));
-memset(&options_429, 0, sizeof(int));
-memset(&len_430, 0, sizeof(int));
-memset(&regex_result_431, 0, sizeof(int));
-memset(&i_432, 0, sizeof(int));
-memset(&i_433, 0, sizeof(int));
+memset(&result_426, 0, sizeof(struct buffer*));
+memset(&options_427, 0, sizeof(int));
+memset(&len_428, 0, sizeof(int));
+memset(&regex_result_429, 0, sizeof(int));
+memset(&i_430, 0, sizeof(int));
+memset(&i_431, 0, sizeof(int));
 right_value170 = (void*)0;
-memset(&str_434, 0, sizeof(char*));
+memset(&str_432, 0, sizeof(char*));
 right_value171 = (void*)0;
 right_value172 = (void*)0;
-memset(&group_strings_435, 0, sizeof(struct list$1charph*));
+memset(&group_strings_433, 0, sizeof(struct list$1charph*));
 right_value173 = (void*)0;
-memset(&match_string_436, 0, sizeof(char*));
+memset(&match_string_434, 0, sizeof(char*));
 right_value174 = (void*)0;
 right_value175 = (void*)0;
-memset(&block_result_437, 0, sizeof(char*));
+memset(&block_result_435, 0, sizeof(char*));
 right_value176 = (void*)0;
 right_value177 = (void*)0;
-memset(&str_438, 0, sizeof(char*));
+memset(&str_436, 0, sizeof(char*));
 right_value178 = (void*)0;
-memset(&str_439, 0, sizeof(char*));
+memset(&str_437, 0, sizeof(char*));
 right_value179 = (void*)0;
 right_value180 = (void*)0;
-memset(&group_strings_440, 0, sizeof(struct list$1charph*));
-memset(&i_441, 0, sizeof(int));
+memset(&group_strings_438, 0, sizeof(struct list$1charph*));
+memset(&i_439, 0, sizeof(int));
 right_value181 = (void*)0;
-memset(&match_string_442, 0, sizeof(char*));
+memset(&match_string_440, 0, sizeof(char*));
 right_value182 = (void*)0;
-memset(&match_string_443, 0, sizeof(char*));
+memset(&match_string_441, 0, sizeof(char*));
 right_value183 = (void*)0;
-memset(&block_result_444, 0, sizeof(char*));
+memset(&block_result_442, 0, sizeof(char*));
 right_value184 = (void*)0;
 right_value185 = (void*)0;
-memset(&str_445, 0, sizeof(char*));
+memset(&str_443, 0, sizeof(char*));
 right_value186 = (void*)0;
-memset(&str_446, 0, sizeof(char*));
+memset(&str_444, 0, sizeof(char*));
 right_value187 = (void*)0;
-    offset_418=0;
-    ovec_max_419=16;
-    int start_420[ovec_max_419];
-    memset(&start_420, 0, sizeof(int)    *(ovec_max_419)    );
-    int end_421[ovec_max_419];
-    memset(&end_421, 0, sizeof(int)    *(ovec_max_419)    );
-    int ovec_value_422[ovec_max_419*3];
-    memset(&ovec_value_422, 0, sizeof(int)    *(ovec_max_419*3)    );
-    options_425=reg->options;
-    str_426=reg->str;
-    re_427=reg->re;
-    result_428=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value169=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value168=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1903, "struct buffer"))))))));
+    offset_416=0;
+    ovec_max_417=16;
+    int start_418[ovec_max_417];
+    memset(&start_418, 0, sizeof(int)    *(ovec_max_417)    );
+    int end_419[ovec_max_417];
+    memset(&end_419, 0, sizeof(int)    *(ovec_max_417)    );
+    int ovec_value_420[ovec_max_417*3];
+    memset(&ovec_value_420, 0, sizeof(int)    *(ovec_max_417*3)    );
+    options_423=reg->options;
+    str_424=reg->str;
+    re_425=reg->re;
+    result_426=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value169=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value168=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 1903, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value168, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value169, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    while(_while_condtional24=(_Bool)1,    _while_condtional24) {
-        options_429=2097152;
-        len_430=strlen(self);
-        regex_result_431=pcre_exec(re_427,(struct pcre_extra*)0,self,len_430,offset_418,options_429,ovec_value_422,ovec_max_419*3);
-        for(        i_432=0;        i_432<ovec_max_419;        i_432++        ){
-            start_420[i_432]=ovec_value_422[i_432*2];
+    while(_while_condtional23=(_Bool)1,    _while_condtional23) {
+        options_427=2097152;
+        len_428=strlen(self);
+        regex_result_429=pcre_exec(re_425,(struct pcre_extra*)0,self,len_428,offset_416,options_427,ovec_value_420,ovec_max_417*3);
+        for(        i_430=0;        i_430<ovec_max_417;        i_430++        ){
+            start_418[i_430]=ovec_value_420[i_430*2];
         }
-        for(        i_433=0;        i_433<ovec_max_419;        i_433++        ){
-            end_421[i_433]=ovec_value_422[i_433*2+1];
+        for(        i_431=0;        i_431<ovec_max_417;        i_431++        ){
+            end_419[i_431]=ovec_value_420[i_431*2+1];
         }
-        if(_if_conditional136=regex_result_431==1,        _if_conditional136) {
-            str_434=(char*)come_increment_ref_count(((char*)(right_value170=charp_substring(self,offset_418,start_420[0]))));
+        if(_if_conditional136=regex_result_429==1,        _if_conditional136) {
+            str_432=(char*)come_increment_ref_count(((char*)(right_value170=charp_substring(self,offset_416,start_418[0]))));
             right_value170 = come_decrement_ref_count2(right_value170, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            buffer_append_str(result_428,str_434);
-            group_strings_435=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value172=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value171=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1923, "struct list$1charph"))))))));
+            buffer_append_str(result_426,str_432);
+            group_strings_433=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value172=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value171=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1923, "struct list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value171, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value172, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            match_string_436=(char*)come_increment_ref_count(((char*)(right_value173=charp_substring(self,start_420[0],end_421[0]))));
+            match_string_434=(char*)come_increment_ref_count(((char*)(right_value173=charp_substring(self,start_418[0],end_419[0]))));
             right_value173 = come_decrement_ref_count2(right_value173, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(group_strings_435,(char*)come_increment_ref_count(((char*)(right_value174=charp_substring(self,start_420[0],end_421[0])))));
+            list$1charph_push_back(group_strings_433,(char*)come_increment_ref_count(((char*)(right_value174=charp_substring(self,start_418[0],end_419[0])))));
             right_value174 = come_decrement_ref_count2(right_value174, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            block_result_437=(char*)come_increment_ref_count(((char*)(right_value175=block(parent,match_string_436,group_strings_435))));
+            block_result_435=(char*)come_increment_ref_count(((char*)(right_value175=block(parent,match_string_434,group_strings_433))));
             right_value175 = come_decrement_ref_count2(right_value175, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional137=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional137) {
-                __result151__ = __result_obj__ = ((char*)(right_value176=buffer_to_string(result_428)));
-                str_434 = come_decrement_ref_count2(str_434, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_435, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                match_string_436 = come_decrement_ref_count2(match_string_436, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                block_result_437 = come_decrement_ref_count2(block_result_437, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(buffer_finalize,result_428, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                __result151__ = __result_obj__ = ((char*)(right_value176=buffer_to_string(result_426)));
+                str_432 = come_decrement_ref_count2(str_432, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_433, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                match_string_434 = come_decrement_ref_count2(match_string_434, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                block_result_435 = come_decrement_ref_count2(block_result_435, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(buffer_finalize,result_426, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                 right_value176 = come_decrement_ref_count2(right_value176, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 return __result151__;
             }
-            buffer_append_str(result_428,block_result_437);
-            if(_if_conditional138=offset_418==end_421[0],            _if_conditional138) {
-                offset_418++;
+            buffer_append_str(result_426,block_result_435);
+            if(_if_conditional138=offset_416==end_419[0],            _if_conditional138) {
+                offset_416++;
             }
             else {
-                offset_418=end_421[0];
+                offset_416=end_419[0];
             }
             if(_if_conditional139=!reg->global,            _if_conditional139) {
-                str_438=(char*)come_increment_ref_count(((char*)(right_value177=charp_substring(self,offset_418,-1))));
+                str_436=(char*)come_increment_ref_count(((char*)(right_value177=charp_substring(self,offset_416,-1))));
                 right_value177 = come_decrement_ref_count2(right_value177, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_428,str_438);
-                str_438 = come_decrement_ref_count2(str_438, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                str_434 = come_decrement_ref_count2(str_434, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_435, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                match_string_436 = come_decrement_ref_count2(match_string_436, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                block_result_437 = come_decrement_ref_count2(block_result_437, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_426,str_436);
+                str_436 = come_decrement_ref_count2(str_436, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_432 = come_decrement_ref_count2(str_432, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_433, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                match_string_434 = come_decrement_ref_count2(match_string_434, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                block_result_435 = come_decrement_ref_count2(block_result_435, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_438 = come_decrement_ref_count2(str_438, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_436 = come_decrement_ref_count2(str_436, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            str_434 = come_decrement_ref_count2(str_434, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,group_strings_435, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            match_string_436 = come_decrement_ref_count2(match_string_436, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            block_result_437 = come_decrement_ref_count2(block_result_437, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_432 = come_decrement_ref_count2(str_432, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,group_strings_433, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            match_string_434 = come_decrement_ref_count2(match_string_434, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            block_result_435 = come_decrement_ref_count2(block_result_435, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional140=regex_result_431>1,            _if_conditional140) {
-                str_439=(char*)come_increment_ref_count(((char*)(right_value178=charp_substring(self,offset_418,start_420[0]))));
+            if(_if_conditional140=regex_result_429>1,            _if_conditional140) {
+                str_437=(char*)come_increment_ref_count(((char*)(right_value178=charp_substring(self,offset_416,start_418[0]))));
                 right_value178 = come_decrement_ref_count2(right_value178, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_428,str_439);
-                if(_if_conditional141=offset_418==end_421[0],                _if_conditional141) {
-                    offset_418++;
+                buffer_append_str(result_426,str_437);
+                if(_if_conditional141=offset_416==end_419[0],                _if_conditional141) {
+                    offset_416++;
                 }
                 else {
-                    offset_418=end_421[0];
+                    offset_416=end_419[0];
                 }
-                group_strings_440=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value180=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value179=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1962, "struct list$1charph"))))))));
+                group_strings_438=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value180=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value179=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1962, "struct list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value179, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value180, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                for(                i_441=1;                i_441<regex_result_431;                i_441++                ){
-                    match_string_442=(char*)come_increment_ref_count(((char*)(right_value181=charp_substring(self,start_420[i_441],end_421[i_441]))));
+                for(                i_439=1;                i_439<regex_result_429;                i_439++                ){
+                    match_string_440=(char*)come_increment_ref_count(((char*)(right_value181=charp_substring(self,start_418[i_439],end_419[i_439]))));
                     right_value181 = come_decrement_ref_count2(right_value181, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(group_strings_440,(char*)come_increment_ref_count(match_string_442));
-                    match_string_442 = come_decrement_ref_count2(match_string_442, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(group_strings_438,(char*)come_increment_ref_count(match_string_440));
+                    match_string_440 = come_decrement_ref_count2(match_string_440, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                match_string_443=(char*)come_increment_ref_count(((char*)(right_value182=charp_substring(self,start_420[0],end_421[0]))));
+                match_string_441=(char*)come_increment_ref_count(((char*)(right_value182=charp_substring(self,start_418[0],end_419[0]))));
                 right_value182 = come_decrement_ref_count2(right_value182, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                block_result_444=(char*)come_increment_ref_count(((char*)(right_value183=block(parent,match_string_443,group_strings_440))));
+                block_result_442=(char*)come_increment_ref_count(((char*)(right_value183=block(parent,match_string_441,group_strings_438))));
                 right_value183 = come_decrement_ref_count2(right_value183, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 if(_if_conditional142=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional142) {
-                    __result152__ = __result_obj__ = ((char*)(right_value184=buffer_to_string(result_428)));
-                    str_439 = come_decrement_ref_count2(str_439, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_440, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    match_string_443 = come_decrement_ref_count2(match_string_443, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    block_result_444 = come_decrement_ref_count2(block_result_444, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(buffer_finalize,result_428, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    __result152__ = __result_obj__ = ((char*)(right_value184=buffer_to_string(result_426)));
+                    str_437 = come_decrement_ref_count2(str_437, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_438, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    match_string_441 = come_decrement_ref_count2(match_string_441, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    block_result_442 = come_decrement_ref_count2(block_result_442, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(buffer_finalize,result_426, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                     right_value184 = come_decrement_ref_count2(right_value184, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     return __result152__;
                 }
-                buffer_append_str(result_428,block_result_444);
+                buffer_append_str(result_426,block_result_442);
                 if(_if_conditional143=!reg->global,                _if_conditional143) {
-                    str_445=(char*)come_increment_ref_count(((char*)(right_value185=charp_substring(self,offset_418,-1))));
+                    str_443=(char*)come_increment_ref_count(((char*)(right_value185=charp_substring(self,offset_416,-1))));
                     right_value185 = come_decrement_ref_count2(right_value185, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    buffer_append_str(result_428,str_445);
-                    str_445 = come_decrement_ref_count2(str_445, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    str_439 = come_decrement_ref_count2(str_439, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_440, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    match_string_443 = come_decrement_ref_count2(match_string_443, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    block_result_444 = come_decrement_ref_count2(block_result_444, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    buffer_append_str(result_426,str_443);
+                    str_443 = come_decrement_ref_count2(str_443, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    str_437 = come_decrement_ref_count2(str_437, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_438, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    match_string_441 = come_decrement_ref_count2(match_string_441, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    block_result_442 = come_decrement_ref_count2(block_result_442, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                     break;
-                    str_445 = come_decrement_ref_count2(str_445, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    str_443 = come_decrement_ref_count2(str_443, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str_439 = come_decrement_ref_count2(str_439, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_440, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                match_string_443 = come_decrement_ref_count2(match_string_443, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                block_result_444 = come_decrement_ref_count2(block_result_444, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_437 = come_decrement_ref_count2(str_437, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_438, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                match_string_441 = come_decrement_ref_count2(match_string_441, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                block_result_442 = come_decrement_ref_count2(block_result_442, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
-                str_446=(char*)come_increment_ref_count(((char*)(right_value186=charp_substring(self,offset_418,-1))));
+                str_444=(char*)come_increment_ref_count(((char*)(right_value186=charp_substring(self,offset_416,-1))));
                 right_value186 = come_decrement_ref_count2(right_value186, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_428,str_446);
-                str_446 = come_decrement_ref_count2(str_446, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_426,str_444);
+                str_444 = come_decrement_ref_count2(str_444, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_446 = come_decrement_ref_count2(str_446, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_444 = come_decrement_ref_count2(str_444, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
         }
     }
-    __result153__ = __result_obj__ = ((char*)(right_value187=buffer_to_string(result_428)));
-    come_call_finalizer2(buffer_finalize,result_428, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    __result153__ = __result_obj__ = ((char*)(right_value187=buffer_to_string(result_426)));
+    come_call_finalizer2(buffer_finalize,result_426, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     right_value187 = come_decrement_ref_count2(right_value187, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result153__;
-    come_call_finalizer2(buffer_finalize,result_428, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(buffer_finalize,result_426, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 char* charp_sub_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
-int offset_447;
-int ovec_max_448;
-const char* err_452;
-int erro_ofs_453;
-int options_454;
-char* str_455;
-struct real_pcre8_or_16* re_456;
+int offset_445;
+int ovec_max_446;
+const char* err_450;
+int erro_ofs_451;
+int options_452;
+char* str_453;
+struct real_pcre8_or_16* re_454;
 void* right_value188;
 void* right_value189;
-struct buffer* result_457;
-int n_458;
-_Bool _while_condtional25;
-int options_459;
-int len_460;
-int regex_result_461;
-int i_462;
-int i_463;
+struct buffer* result_455;
+int n_456;
+_Bool _while_condtional24;
+int options_457;
+int len_458;
+int regex_result_459;
+int i_460;
+int i_461;
 _Bool _if_conditional144;
 void* right_value190;
-char* str_464;
+char* str_462;
 void* right_value191;
 void* right_value192;
-struct list$1charph* group_strings_465;
+struct list$1charph* group_strings_463;
 void* right_value193;
 void* right_value194;
-char* match_string_466;
+char* match_string_464;
 void* right_value195;
-char* block_result_467;
+char* block_result_465;
 _Bool _if_conditional145;
 void* right_value196;
 char* __result154__;
 _Bool _if_conditional146;
 _Bool _if_conditional147;
 void* right_value197;
-char* str_468;
+char* str_466;
 _Bool _if_conditional148;
 void* right_value198;
-char* str_469;
+char* str_467;
 _Bool _if_conditional149;
 void* right_value199;
-char* str_470;
+char* str_468;
 _Bool _if_conditional150;
 void* right_value200;
 void* right_value201;
-struct list$1charph* group_strings_471;
-int i_472;
+struct list$1charph* group_strings_469;
+int i_470;
 void* right_value202;
-char* match_string_473;
+char* match_string_471;
 void* right_value203;
-char* match_string_474;
+char* match_string_472;
 void* right_value204;
-char* block_result_475;
+char* block_result_473;
 _Bool _if_conditional151;
 void* right_value205;
 char* __result155__;
 _Bool _if_conditional152;
 void* right_value206;
-char* str_476;
+char* str_474;
 _Bool _if_conditional153;
 void* right_value207;
-char* str_477;
+char* str_475;
 void* right_value208;
-char* str_478;
+char* str_476;
 void* right_value209;
 char* __result156__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&offset_447, 0, sizeof(int));
-memset(&ovec_max_448, 0, sizeof(int));
-memset(&erro_ofs_453, 0, sizeof(int));
-memset(&options_454, 0, sizeof(int));
-memset(&str_455, 0, sizeof(char*));
-memset(&re_456, 0, sizeof(struct real_pcre8_or_16*));
+memset(&offset_445, 0, sizeof(int));
+memset(&ovec_max_446, 0, sizeof(int));
+memset(&erro_ofs_451, 0, sizeof(int));
+memset(&options_452, 0, sizeof(int));
+memset(&str_453, 0, sizeof(char*));
+memset(&re_454, 0, sizeof(struct real_pcre8_or_16*));
 right_value188 = (void*)0;
 right_value189 = (void*)0;
-memset(&result_457, 0, sizeof(struct buffer*));
-memset(&n_458, 0, sizeof(int));
-memset(&options_459, 0, sizeof(int));
-memset(&len_460, 0, sizeof(int));
-memset(&regex_result_461, 0, sizeof(int));
-memset(&i_462, 0, sizeof(int));
-memset(&i_463, 0, sizeof(int));
+memset(&result_455, 0, sizeof(struct buffer*));
+memset(&n_456, 0, sizeof(int));
+memset(&options_457, 0, sizeof(int));
+memset(&len_458, 0, sizeof(int));
+memset(&regex_result_459, 0, sizeof(int));
+memset(&i_460, 0, sizeof(int));
+memset(&i_461, 0, sizeof(int));
 right_value190 = (void*)0;
-memset(&str_464, 0, sizeof(char*));
+memset(&str_462, 0, sizeof(char*));
 right_value191 = (void*)0;
 right_value192 = (void*)0;
-memset(&group_strings_465, 0, sizeof(struct list$1charph*));
+memset(&group_strings_463, 0, sizeof(struct list$1charph*));
 right_value193 = (void*)0;
 right_value194 = (void*)0;
-memset(&match_string_466, 0, sizeof(char*));
+memset(&match_string_464, 0, sizeof(char*));
 right_value195 = (void*)0;
-memset(&block_result_467, 0, sizeof(char*));
+memset(&block_result_465, 0, sizeof(char*));
 right_value196 = (void*)0;
 right_value197 = (void*)0;
-memset(&str_468, 0, sizeof(char*));
+memset(&str_466, 0, sizeof(char*));
 right_value198 = (void*)0;
-memset(&str_469, 0, sizeof(char*));
+memset(&str_467, 0, sizeof(char*));
 right_value199 = (void*)0;
-memset(&str_470, 0, sizeof(char*));
+memset(&str_468, 0, sizeof(char*));
 right_value200 = (void*)0;
 right_value201 = (void*)0;
-memset(&group_strings_471, 0, sizeof(struct list$1charph*));
-memset(&i_472, 0, sizeof(int));
+memset(&group_strings_469, 0, sizeof(struct list$1charph*));
+memset(&i_470, 0, sizeof(int));
 right_value202 = (void*)0;
-memset(&match_string_473, 0, sizeof(char*));
+memset(&match_string_471, 0, sizeof(char*));
 right_value203 = (void*)0;
-memset(&match_string_474, 0, sizeof(char*));
+memset(&match_string_472, 0, sizeof(char*));
 right_value204 = (void*)0;
-memset(&block_result_475, 0, sizeof(char*));
+memset(&block_result_473, 0, sizeof(char*));
 right_value205 = (void*)0;
 right_value206 = (void*)0;
-memset(&str_476, 0, sizeof(char*));
+memset(&str_474, 0, sizeof(char*));
 right_value207 = (void*)0;
-memset(&str_477, 0, sizeof(char*));
+memset(&str_475, 0, sizeof(char*));
 right_value208 = (void*)0;
-memset(&str_478, 0, sizeof(char*));
+memset(&str_476, 0, sizeof(char*));
 right_value209 = (void*)0;
-    offset_447=0;
-    ovec_max_448=16;
-    int start_449[ovec_max_448];
-    memset(&start_449, 0, sizeof(int)    *(ovec_max_448)    );
-    int end_450[ovec_max_448];
-    memset(&end_450, 0, sizeof(int)    *(ovec_max_448)    );
-    int ovec_value_451[ovec_max_448*3];
-    memset(&ovec_value_451, 0, sizeof(int)    *(ovec_max_448*3)    );
-    options_454=reg->options;
-    str_455=reg->str;
-    re_456=reg->re;
-    result_457=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value189=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value188=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 2011, "struct buffer"))))))));
+    offset_445=0;
+    ovec_max_446=16;
+    int start_447[ovec_max_446];
+    memset(&start_447, 0, sizeof(int)    *(ovec_max_446)    );
+    int end_448[ovec_max_446];
+    memset(&end_448, 0, sizeof(int)    *(ovec_max_446)    );
+    int ovec_value_449[ovec_max_446*3];
+    memset(&ovec_value_449, 0, sizeof(int)    *(ovec_max_446*3)    );
+    options_452=reg->options;
+    str_453=reg->str;
+    re_454=reg->re;
+    result_455=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value189=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value188=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str.c", 2011, "struct buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value188, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value189, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    n_458=0;
-    while(_while_condtional25=(_Bool)1,    _while_condtional25) {
-        options_459=2097152;
-        len_460=strlen(self);
-        regex_result_461=pcre_exec(re_456,(struct pcre_extra*)0,self,len_460,offset_447,options_459,ovec_value_451,ovec_max_448*3);
-        for(        i_462=0;        i_462<ovec_max_448;        i_462++        ){
-            start_449[i_462]=ovec_value_451[i_462*2];
+    n_456=0;
+    while(_while_condtional24=(_Bool)1,    _while_condtional24) {
+        options_457=2097152;
+        len_458=strlen(self);
+        regex_result_459=pcre_exec(re_454,(struct pcre_extra*)0,self,len_458,offset_445,options_457,ovec_value_449,ovec_max_446*3);
+        for(        i_460=0;        i_460<ovec_max_446;        i_460++        ){
+            start_447[i_460]=ovec_value_449[i_460*2];
         }
-        for(        i_463=0;        i_463<ovec_max_448;        i_463++        ){
-            end_450[i_463]=ovec_value_451[i_463*2+1];
+        for(        i_461=0;        i_461<ovec_max_446;        i_461++        ){
+            end_448[i_461]=ovec_value_449[i_461*2+1];
         }
-        if(_if_conditional144=regex_result_461==1,        _if_conditional144) {
-            n_458++;
-            str_464=(char*)come_increment_ref_count(((char*)(right_value190=charp_substring(self,offset_447,start_449[0]))));
+        if(_if_conditional144=regex_result_459==1,        _if_conditional144) {
+            n_456++;
+            str_462=(char*)come_increment_ref_count(((char*)(right_value190=charp_substring(self,offset_445,start_447[0]))));
             right_value190 = come_decrement_ref_count2(right_value190, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            buffer_append_str(result_457,str_464);
-            group_strings_465=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value192=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value191=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2034, "struct list$1charph"))))))));
+            buffer_append_str(result_455,str_462);
+            group_strings_463=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value192=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value191=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2034, "struct list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value191, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value192, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(group_strings_465,(char*)come_increment_ref_count(((char*)(right_value193=charp_substring(self,start_449[0],end_450[0])))));
+            list$1charph_push_back(group_strings_463,(char*)come_increment_ref_count(((char*)(right_value193=charp_substring(self,start_447[0],end_448[0])))));
             right_value193 = come_decrement_ref_count2(right_value193, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            match_string_466=(char*)come_increment_ref_count(((char*)(right_value194=charp_substring(self,start_449[0],end_450[0]))));
+            match_string_464=(char*)come_increment_ref_count(((char*)(right_value194=charp_substring(self,start_447[0],end_448[0]))));
             right_value194 = come_decrement_ref_count2(right_value194, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            block_result_467=(char*)come_increment_ref_count(((char*)(right_value195=block(parent,match_string_466,group_strings_465))));
+            block_result_465=(char*)come_increment_ref_count(((char*)(right_value195=block(parent,match_string_464,group_strings_463))));
             right_value195 = come_decrement_ref_count2(right_value195, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional145=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional145) {
-                __result154__ = __result_obj__ = ((char*)(right_value196=buffer_to_string(result_457)));
-                str_464 = come_decrement_ref_count2(str_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_465, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                match_string_466 = come_decrement_ref_count2(match_string_466, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                block_result_467 = come_decrement_ref_count2(block_result_467, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(buffer_finalize,result_457, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                __result154__ = __result_obj__ = ((char*)(right_value196=buffer_to_string(result_455)));
+                str_462 = come_decrement_ref_count2(str_462, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_463, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                match_string_464 = come_decrement_ref_count2(match_string_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                block_result_465 = come_decrement_ref_count2(block_result_465, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(buffer_finalize,result_455, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                 right_value196 = come_decrement_ref_count2(right_value196, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 return __result154__;
             }
-            buffer_append_str(result_457,block_result_467);
-            if(_if_conditional146=offset_447==end_450[0],            _if_conditional146) {
-                offset_447++;
+            buffer_append_str(result_455,block_result_465);
+            if(_if_conditional146=offset_445==end_448[0],            _if_conditional146) {
+                offset_445++;
             }
             else {
-                offset_447=end_450[0];
+                offset_445=end_448[0];
             }
             if(_if_conditional147=!reg->global,            _if_conditional147) {
-                str_468=(char*)come_increment_ref_count(((char*)(right_value197=charp_substring(self,offset_447,-1))));
+                str_466=(char*)come_increment_ref_count(((char*)(right_value197=charp_substring(self,offset_445,-1))));
                 right_value197 = come_decrement_ref_count2(right_value197, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_457,str_468);
-                str_468 = come_decrement_ref_count2(str_468, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                str_464 = come_decrement_ref_count2(str_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_465, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                match_string_466 = come_decrement_ref_count2(match_string_466, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                block_result_467 = come_decrement_ref_count2(block_result_467, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_455,str_466);
+                str_466 = come_decrement_ref_count2(str_466, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_462 = come_decrement_ref_count2(str_462, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_463, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                match_string_464 = come_decrement_ref_count2(match_string_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                block_result_465 = come_decrement_ref_count2(block_result_465, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_468 = come_decrement_ref_count2(str_468, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_466 = come_decrement_ref_count2(str_466, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional148=n_458==count,            _if_conditional148) {
-                str_469=(char*)come_increment_ref_count(((char*)(right_value198=charp_substring(self,offset_447,-1))));
+            if(_if_conditional148=n_456==count,            _if_conditional148) {
+                str_467=(char*)come_increment_ref_count(((char*)(right_value198=charp_substring(self,offset_445,-1))));
                 right_value198 = come_decrement_ref_count2(right_value198, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_457,str_469);
-                str_469 = come_decrement_ref_count2(str_469, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                str_464 = come_decrement_ref_count2(str_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_465, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                match_string_466 = come_decrement_ref_count2(match_string_466, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                block_result_467 = come_decrement_ref_count2(block_result_467, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_455,str_467);
+                str_467 = come_decrement_ref_count2(str_467, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_462 = come_decrement_ref_count2(str_462, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_463, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                match_string_464 = come_decrement_ref_count2(match_string_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                block_result_465 = come_decrement_ref_count2(block_result_465, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_469 = come_decrement_ref_count2(str_469, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_467 = come_decrement_ref_count2(str_467, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            str_464 = come_decrement_ref_count2(str_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            come_call_finalizer2(list$1charphp_finalize,group_strings_465, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            match_string_466 = come_decrement_ref_count2(match_string_466, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-            block_result_467 = come_decrement_ref_count2(block_result_467, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            str_462 = come_decrement_ref_count2(str_462, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            come_call_finalizer2(list$1charphp_finalize,group_strings_463, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            match_string_464 = come_decrement_ref_count2(match_string_464, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+            block_result_465 = come_decrement_ref_count2(block_result_465, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
-            if(_if_conditional149=regex_result_461>1,            _if_conditional149) {
-                n_458++;
-                str_470=(char*)come_increment_ref_count(((char*)(right_value199=charp_substring(self,offset_447,start_449[0]))));
+            if(_if_conditional149=regex_result_459>1,            _if_conditional149) {
+                n_456++;
+                str_468=(char*)come_increment_ref_count(((char*)(right_value199=charp_substring(self,offset_445,start_447[0]))));
                 right_value199 = come_decrement_ref_count2(right_value199, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_457,str_470);
-                if(_if_conditional150=offset_447==end_450[0],                _if_conditional150) {
-                    offset_447++;
+                buffer_append_str(result_455,str_468);
+                if(_if_conditional150=offset_445==end_448[0],                _if_conditional150) {
+                    offset_445++;
                 }
                 else {
-                    offset_447=end_450[0];
+                    offset_445=end_448[0];
                 }
-                group_strings_471=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value201=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value200=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2081, "struct list$1charph"))))))));
+                group_strings_469=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value201=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value200=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2081, "struct list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value200, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value201, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                for(                i_472=1;                i_472<regex_result_461;                i_472++                ){
-                    match_string_473=(char*)come_increment_ref_count(((char*)(right_value202=charp_substring(self,start_449[i_472],end_450[i_472]))));
+                for(                i_470=1;                i_470<regex_result_459;                i_470++                ){
+                    match_string_471=(char*)come_increment_ref_count(((char*)(right_value202=charp_substring(self,start_447[i_470],end_448[i_470]))));
                     right_value202 = come_decrement_ref_count2(right_value202, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    list$1charph_push_back(group_strings_471,(char*)come_increment_ref_count(match_string_473));
-                    match_string_473 = come_decrement_ref_count2(match_string_473, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    list$1charph_push_back(group_strings_469,(char*)come_increment_ref_count(match_string_471));
+                    match_string_471 = come_decrement_ref_count2(match_string_471, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                match_string_474=(char*)come_increment_ref_count(((char*)(right_value203=charp_substring(self,start_449[0],end_450[0]))));
+                match_string_472=(char*)come_increment_ref_count(((char*)(right_value203=charp_substring(self,start_447[0],end_448[0]))));
                 right_value203 = come_decrement_ref_count2(right_value203, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                block_result_475=(char*)come_increment_ref_count(((char*)(right_value204=block(parent,match_string_474,group_strings_471))));
+                block_result_473=(char*)come_increment_ref_count(((char*)(right_value204=block(parent,match_string_472,group_strings_469))));
                 right_value204 = come_decrement_ref_count2(right_value204, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 if(_if_conditional151=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional151) {
-                    __result155__ = __result_obj__ = ((char*)(right_value205=buffer_to_string(result_457)));
-                    str_470 = come_decrement_ref_count2(str_470, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_471, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    match_string_474 = come_decrement_ref_count2(match_string_474, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    block_result_475 = come_decrement_ref_count2(block_result_475, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(buffer_finalize,result_457, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    __result155__ = __result_obj__ = ((char*)(right_value205=buffer_to_string(result_455)));
+                    str_468 = come_decrement_ref_count2(str_468, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_469, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    match_string_472 = come_decrement_ref_count2(match_string_472, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    block_result_473 = come_decrement_ref_count2(block_result_473, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(buffer_finalize,result_455, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                     right_value205 = come_decrement_ref_count2(right_value205, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     return __result155__;
                 }
-                buffer_append_str(result_457,block_result_475);
+                buffer_append_str(result_455,block_result_473);
                 if(_if_conditional152=!reg->global,                _if_conditional152) {
-                    str_476=(char*)come_increment_ref_count(((char*)(right_value206=charp_substring(self,offset_447,-1))));
+                    str_474=(char*)come_increment_ref_count(((char*)(right_value206=charp_substring(self,offset_445,-1))));
                     right_value206 = come_decrement_ref_count2(right_value206, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    buffer_append_str(result_457,str_476);
-                    str_476 = come_decrement_ref_count2(str_476, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    str_470 = come_decrement_ref_count2(str_470, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_471, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    match_string_474 = come_decrement_ref_count2(match_string_474, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    block_result_475 = come_decrement_ref_count2(block_result_475, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    buffer_append_str(result_455,str_474);
+                    str_474 = come_decrement_ref_count2(str_474, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    str_468 = come_decrement_ref_count2(str_468, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_469, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    match_string_472 = come_decrement_ref_count2(match_string_472, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    block_result_473 = come_decrement_ref_count2(block_result_473, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                     break;
-                    str_476 = come_decrement_ref_count2(str_476, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    str_474 = come_decrement_ref_count2(str_474, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                if(_if_conditional153=n_458==count,                _if_conditional153) {
-                    str_477=(char*)come_increment_ref_count(((char*)(right_value207=charp_substring(self,offset_447,-1))));
+                if(_if_conditional153=n_456==count,                _if_conditional153) {
+                    str_475=(char*)come_increment_ref_count(((char*)(right_value207=charp_substring(self,offset_445,-1))));
                     right_value207 = come_decrement_ref_count2(right_value207, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    buffer_append_str(result_457,str_477);
-                    str_477 = come_decrement_ref_count2(str_477, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    str_470 = come_decrement_ref_count2(str_470, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    come_call_finalizer2(list$1charphp_finalize,group_strings_471, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    match_string_474 = come_decrement_ref_count2(match_string_474, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                    block_result_475 = come_decrement_ref_count2(block_result_475, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    buffer_append_str(result_455,str_475);
+                    str_475 = come_decrement_ref_count2(str_475, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    str_468 = come_decrement_ref_count2(str_468, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    come_call_finalizer2(list$1charphp_finalize,group_strings_469, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    match_string_472 = come_decrement_ref_count2(match_string_472, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    block_result_473 = come_decrement_ref_count2(block_result_473, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                     break;
-                    str_477 = come_decrement_ref_count2(str_477, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                    str_475 = come_decrement_ref_count2(str_475, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                str_470 = come_decrement_ref_count2(str_470, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                come_call_finalizer2(list$1charphp_finalize,group_strings_471, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                match_string_474 = come_decrement_ref_count2(match_string_474, (void*)0, (void*)0, 0, 0, 0, (void*)0);
-                block_result_475 = come_decrement_ref_count2(block_result_475, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_468 = come_decrement_ref_count2(str_468, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                come_call_finalizer2(list$1charphp_finalize,group_strings_469, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                match_string_472 = come_decrement_ref_count2(match_string_472, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                block_result_473 = come_decrement_ref_count2(block_result_473, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             else {
-                str_478=(char*)come_increment_ref_count(((char*)(right_value208=charp_substring(self,offset_447,-1))));
+                str_476=(char*)come_increment_ref_count(((char*)(right_value208=charp_substring(self,offset_445,-1))));
                 right_value208 = come_decrement_ref_count2(right_value208, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                buffer_append_str(result_457,str_478);
-                str_478 = come_decrement_ref_count2(str_478, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                buffer_append_str(result_455,str_476);
+                str_476 = come_decrement_ref_count2(str_476, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 break;
-                str_478 = come_decrement_ref_count2(str_478, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+                str_476 = come_decrement_ref_count2(str_476, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
         }
     }
-    __result156__ = __result_obj__ = ((char*)(right_value209=buffer_to_string(result_457)));
-    come_call_finalizer2(buffer_finalize,result_457, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    __result156__ = __result_obj__ = ((char*)(right_value209=buffer_to_string(result_455)));
+    come_call_finalizer2(buffer_finalize,result_455, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     right_value209 = come_decrement_ref_count2(right_value209, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result156__;
-    come_call_finalizer2(buffer_finalize,result_457, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(buffer_finalize,result_455, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 unsigned int wchar_tp_get_hash_key(int* value){
 void* __result_obj__;
-int result_479;
-int* p_480;
-_Bool _while_condtional26;
+int result_477;
+int* p_478;
+_Bool _while_condtional25;
 unsigned int __result157__;
 memset(&__result_obj__, 0, sizeof(void*));
-memset(&result_479, 0, sizeof(int));
-memset(&p_480, 0, sizeof(int*));
-    result_479=0;
-    p_480=value;
-    while(_while_condtional26=*p_480,    _while_condtional26) {
-        result_479+=(*p_480);
-        p_480++;
+memset(&result_477, 0, sizeof(int));
+memset(&p_478, 0, sizeof(int*));
+    result_477=0;
+    p_478=value;
+    while(_while_condtional25=*p_478,    _while_condtional25) {
+        result_477+=(*p_478);
+        p_478++;
     }
-    __result157__ = result_479;
+    __result157__ = result_477;
     return __result157__;
 }
 
@@ -7241,26 +7241,26 @@ right_value210 = (void*)0;
 char* string_chomp(char* str){
 void* __result_obj__;
 void* right_value211;
-char* result_481;
+char* result_479;
 _Bool _if_conditional154;
 void* right_value212;
 char* __result166__;
 char* __result167__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value211 = (void*)0;
-memset(&result_481, 0, sizeof(char*));
+memset(&result_479, 0, sizeof(char*));
 right_value212 = (void*)0;
-    result_481=(char*)come_increment_ref_count(((char*)(right_value211=__builtin_string(str))));
+    result_479=(char*)come_increment_ref_count(((char*)(right_value211=__builtin_string(str))));
     right_value211 = come_decrement_ref_count2(right_value211, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    if(_if_conditional154=result_481[string_length(result_481)-1]==10,    _if_conditional154) {
-        __result166__ = __result_obj__ = ((char*)(right_value212=string_substring(result_481,0,-2)));
-        result_481 = come_decrement_ref_count2(result_481, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    if(_if_conditional154=result_479[string_length(result_479)-1]==10,    _if_conditional154) {
+        __result166__ = __result_obj__ = ((char*)(right_value212=string_substring(result_479,0,-2)));
+        result_479 = come_decrement_ref_count2(result_479, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         right_value212 = come_decrement_ref_count2(right_value212, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         return __result166__;
     }
-    __result167__ = __result_obj__ = result_481;
-    result_481 = come_decrement_ref_count2(result_481, (void*)0, (void*)0, 0, 1, 0, (void*)0);
+    __result167__ = __result_obj__ = result_479;
+    result_479 = come_decrement_ref_count2(result_479, (void*)0, (void*)0, 0, 1, 0, (void*)0);
     return __result167__;
-    result_481 = come_decrement_ref_count2(result_481, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+    result_479 = come_decrement_ref_count2(result_479, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 

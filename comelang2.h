@@ -918,7 +918,7 @@ impl list <T>
     list<T>*% sort(list<T>* self) {
         return self.merge_sort();
     }
-    template <any> list<any>*% map(list<T>* self, void* parent, any (*block)(void*, T&))
+    list<any>*% map(list<T>* self, void* parent, any (*block)(void*, T&))
     {
         auto result = new list<any>.initialize();
 
@@ -935,6 +935,25 @@ impl list <T>
 
         return result;
     }
+/*
+    template<R> list<R>*% map2(list<T>* self, void* parent, R (*block)(void*, T&))
+    {
+        auto result = new list<R>.initialize();
+
+        list_item<T>* it = self.head;
+        while(it != null) {
+            result.push_back(block(parent, it.item));
+            
+            if(((sDummyCurrentStack*)parent)->__method_block_result_kind__ != 0) {
+                return result;
+            }
+
+            it = it.next;
+        }
+
+        return result;
+    }
+*/
     list<T>*% reverse(list<T>* self) {
         list<T>%* result = new list<T>();
 

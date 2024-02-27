@@ -740,6 +740,7 @@ int come_main(int argc, char** argv) version 2
             sVarTable*% lv_table = new sVarTable(global:false, parent:null);
             info.lv_table = lv_table;
             info.generics_type_names = new list<string>();
+            info.method_generics_type_names = new list<string>();
             info.generics_classes = new map<string, sClass*%>();
             info.verbose = verbose;
             info.output_header_file = true;
@@ -925,6 +926,7 @@ int come_main(int argc, char** argv) version 2
             sVarTable*% lv_table = new sVarTable(global:false, parent:null);
             info.lv_table = lv_table;
             info.generics_type_names = new list<string>();
+            info.method_generics_type_names = new list<string>();
             info.generics_classes = new map<string, sClass*%>();
             info.verbose = verbose;
             

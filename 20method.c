@@ -157,9 +157,10 @@ struct sMethodCallNode {
     int sline;
     string sname;
     int method_block_sline;
+    list<sType*%>*% method_generics_types;
 };
 
-sMethodCallNode*% sMethodCallNode*::initialize(sMethodCallNode*% self, char* fun_name,sNode*% obj, list<tuple2<string,sNode*%>*%>*% params, buffer* method_block, int method_block_sline , sInfo* info)
+sMethodCallNode*% sMethodCallNode*::initialize(sMethodCallNode*% self, char* fun_name,sNode*% obj, list<tuple2<string,sNode*%>*%>*% params, buffer* method_block, int method_block_sline, list<sType*%>* method_generics_types , sInfo* info)
 {
     self.obj = clone obj;
     self.fun_name = string(fun_name);
@@ -168,6 +169,7 @@ sMethodCallNode*% sMethodCallNode*::initialize(sMethodCallNode*% self, char* fun
     self.sline = info.sline;
     self.sname = string(info.sname);
     self.method_block_sline = method_block_sline;
+    self.method_generics_types = clone method_generics_types;
     
     return self;
 }
@@ -226,6 +228,9 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
     sNode* obj = self.obj;
     buffer* method_block = self.method_block;
     int method_block_sline = self.method_block_sline;
+    
+    list<sType*%>*% method_generics_types = info->method_generics_types;
+    info->method_generics_types = clone self.method_generics_types;
     
     if(!node_compile(obj)) {
         return false;
@@ -728,6 +733,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
             }
         }
     }
+    info->method_generics_types = method_generics_types;
     
     return true;
 }
@@ -740,6 +746,60 @@ sNode*% parse_method_call(sNode*% obj, string fun_name, sInfo* info) version 20
     if(*info->p == '-' && *(info->p+1) == '>') {
         info->p +=2;
         skip_spaces_and_lf();
+    }
+    
+    bool parse_method_generics_type = false;
+    {
+        char* p = info->p;
+        int sline = info->sline;
+        
+        if(*info->p == '<') {
+            info->p++;
+            skip_spaces_and_lf();
+            
+            if(xisalpha(*info->p) || *info->p == '_') {
+                string word = parse_word();
+                
+                if(is_type_name(word)) {
+                    parse_method_generics_type = true;
+                }
+            }
+        }
+        
+        info->p = p;
+        info->sline = sline;
+    }
+    
+    list<sType*%>*% method_generics_types = new list<sType*%>();
+    if(parse_method_generics_type && *info->p == '<') {
+        info->p++;
+        skip_spaces_and_lf();
+        
+        while(true) {
+            if(*info->p == '\0') {
+                err_msg(info, "unexpected source end");
+                exit(2);
+            }
+            else if(*info->p == '>') {
+                info->p++;
+                skip_spaces_and_lf();
+                break;
+            }
+            else if(*info->p == ',') {
+                info->p++;
+                skip_spaces_and_lf();
+            }
+            else {
+                var type, name, err = parse_type(parse_variable_name:false, parse_multiple_type:false);
+                
+                if(!err) {
+                    err_msg(info, "invalid method generics paramtor type");
+                    exit(2);
+                }
+                
+                method_generics_types.push_back(clone type);
+            }
+        }
     }
     
     if(*info->p != '{') {
@@ -796,8 +856,6 @@ sNode*% parse_method_call(sNode*% obj, string fun_name, sInfo* info) version 20
         }
     }
     
-    parse_sharp();
-    
     buffer*% method_block = null;
     int method_block_sline = 0;
     if(*info->p == '{') {
@@ -821,7 +879,12 @@ sNode*% parse_method_call(sNode*% obj, string fun_name, sInfo* info) version 20
     
     parse_sharp();
     
-    sNode*% node = new sMethodCallNode(fun_name, clone obj, params, method_block, method_block_sline, info) implements sNode;
+    if(*info->p == '<') {
+    }
+    
+    parse_sharp();
+    
+    sNode*% node = new sMethodCallNode(fun_name, clone obj, params, method_block, method_block_sline, method_generics_types, info) implements sNode;
     
     return node;
 }

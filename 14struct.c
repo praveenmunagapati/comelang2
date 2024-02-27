@@ -87,6 +87,12 @@ void output_struct(sClass* klass, sInfo* info)
 
 bool is_no_contained_generics_types(sType* type, sInfo* info)
 {
+    sType* type2 = type->mNoSolvedGenericsType.v1;
+    
+    if(type2 && is_no_contained_generics_types(type2, info)) {
+        return false;
+    }
+    
     sClass* klass = type->mClass;
     
     if(klass->mGenerics) {
@@ -104,6 +110,30 @@ bool is_no_contained_generics_types(sType* type, sInfo* info)
     }
     
     return true;
+}
+
+bool is_contained_method_generics_types(sType* type, sInfo* info)
+{
+    sType* type2 = type->mNoSolvedGenericsType.v1;
+    
+    if(type2 && is_contained_method_generics_types(type2, info)) {
+        return true;
+    }
+    
+    sClass* klass = type->mClass;
+    
+    if(klass->mMethodGenerics) {
+        return true;
+    }
+    for(int i=0; i<type->mGenericsTypes.length(); i++) {
+        bool result = is_contained_method_generics_types(type->mGenericsTypes[i], info);
+        
+        if(result) {
+            return true;
+        }
+    }
+    
+    return false;
 }
 
 bool output_generics_struct(sType* type, sType* generics_type, sInfo* info)
@@ -152,11 +182,16 @@ bool output_generics_struct(sType* type, sType* generics_type, sInfo* info)
         
         info.classes.insert(string(new_name), new_class);
         
+        bool existance_method_generics = false;
         int i = 0;
         foreach(it, generics_class.mFields) {
             var name, type = it;
             
             sType*% new_type = solve_generics(type, generics_type, info);
+            
+            if(is_contained_method_generics_types(new_type, info)) {
+                //existance_method_generics = true;
+            }
             
             new_class.mFields.push_back((clone name, clone new_type));
         }
@@ -166,7 +201,9 @@ bool output_generics_struct(sType* type, sType* generics_type, sInfo* info)
         type->mClass = new_class;
         type->mGenericsTypes.reset();
         
-        output_struct(new_class, info);
+        if(!existance_method_generics) {
+            output_struct(new_class, info);
+        }
     }
     else {
         if(type->mNoSolvedGenericsType.v1 == null) {
