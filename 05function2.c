@@ -128,9 +128,6 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
         if(info.come_fun.mName === "main") {
             add_come_code(info, "come_heap_init(%d, %d, %d);\n", gComeMalloc, gComeDebug, gComeGC);
         }
-        if(info.come_fun.mName !== "come_push_stackframe") {
-            add_come_code(info, "come_push_stackframe(\"%s\", %d);\n", info->sname, info->sline);
-        }
         
         sType*% result_type = new sType("void*");
         
@@ -141,9 +138,6 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
         if(info.come_fun.mName === "main") {
             free_objects(info->gv_table, null@ret_value, info);
             add_come_code(info, xsprintf("come_heap_final();\n"));
-        }
-        if(info.come_fun.mName !== "come_push_stackframe") {
-            add_come_code(info, "come_pop_stackframe();\n");
         }
     }
     
