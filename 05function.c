@@ -215,6 +215,9 @@ bool sReturnNode*::compile(sReturnNode* self, sInfo* info)
             free_objects(info->gv_table, null@ret_value, info);
             add_come_code(info, xsprintf("come_heap_final();\n"));
         }
+        if(info.come_fun.mName !== "come_push_stackframe") {
+            add_come_code(info, "come_pop_stackframe();\n");
+        }
         
         add_come_code(info, "return __result%d__;\n", num_result_stack);
     }
@@ -229,6 +232,9 @@ bool sReturnNode*::compile(sReturnNode* self, sInfo* info)
         if(info.come_fun.mName === "main") {
             free_objects(info->gv_table, null@ret_value, info);
             add_come_code(info, xsprintf("come_heap_final();\n"));
+        }
+        if(info.come_fun.mName !== "come_push_stackframe") {
+            add_come_code(info, "come_pop_stackframe();\n");
         }
         add_come_code(info, "return;\n");
     }

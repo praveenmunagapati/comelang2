@@ -733,6 +733,8 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
             }
         }
     }
+    
+    delete info->method_generics_types;
     info->method_generics_types = method_generics_types;
     
     return true;

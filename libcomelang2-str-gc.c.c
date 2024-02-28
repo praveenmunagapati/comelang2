@@ -1978,11 +1978,14 @@ static inline _Bool die(char* msg){
 void* __result_obj__;
 _Bool __result1__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2.h", 57);
     perror(msg);
     stackframe();
     exit(4);
     __result1__ = (_Bool)0;
+    come_pop_stackframe();
     return __result1__;
+come_pop_stackframe();
 }
 static inline struct smart_pointer$1char* buffer_to_pointer(struct buffer* self){
 void* __result_obj__;
@@ -1990,11 +1993,14 @@ struct smart_pointer$1char* result_0;
 struct smart_pointer$1char* __result2__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
+come_push_stackframe("./comelang2.h", 1959);
     result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1951, "struct smart_pointer$1char");
     result_0->memory=buffer_clone(self);
     result_0->p=result_0->memory->buf;
     __result2__ = __result_obj__ = result_0;
+    come_pop_stackframe();
     return __result2__;
+come_pop_stackframe();
 }
 static inline struct smart_pointer$1char* buffer_to_char_pointer(struct buffer* self){
 void* __result_obj__;
@@ -2002,11 +2008,14 @@ struct smart_pointer$1char* result_1;
 struct smart_pointer$1char* __result3__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
+come_push_stackframe("./comelang2.h", 1969);
     result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1961, "struct smart_pointer$1char");
     result_1->memory=buffer_clone(self);
     result_1->p=(char*)result_1->memory->buf;
     __result3__ = __result_obj__ = result_1;
+    come_pop_stackframe();
     return __result3__;
+come_pop_stackframe();
 }
 static inline struct smart_pointer$1short* buffer_to_short_pointer(struct buffer* self){
 void* __result_obj__;
@@ -2014,11 +2023,14 @@ struct smart_pointer$1short* result_2;
 struct smart_pointer$1short* __result4__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
+come_push_stackframe("./comelang2.h", 1979);
     result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1971, "struct smart_pointer$1short");
     result_2->memory=buffer_clone(self);
     result_2->p=(short short*)result_2->memory->buf;
     __result4__ = __result_obj__ = result_2;
+    come_pop_stackframe();
     return __result4__;
+come_pop_stackframe();
 }
 static inline struct smart_pointer$1int* buffer_to_int_pointer(struct buffer* self){
 void* __result_obj__;
@@ -2026,11 +2038,14 @@ struct smart_pointer$1int* result_3;
 struct smart_pointer$1int* __result5__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
+come_push_stackframe("./comelang2.h", 1989);
     result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1981, "struct smart_pointer$1int");
     result_3->memory=buffer_clone(self);
     result_3->p=(int*)result_3->memory->buf;
     __result5__ = __result_obj__ = result_3;
+    come_pop_stackframe();
     return __result5__;
+come_pop_stackframe();
 }
 static inline struct smart_pointer$1long* buffer_to_long_pointer(struct buffer* self){
 void* __result_obj__;
@@ -2038,291 +2053,414 @@ struct smart_pointer$1long* result_4;
 struct smart_pointer$1long* __result6__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
+come_push_stackframe("./comelang2.h", 1999);
     result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1991, "struct smart_pointer$1long");
     result_4->memory=buffer_clone(self);
     result_4->p=(long*)result_4->memory->buf;
     __result6__ = __result_obj__ = result_4;
+    come_pop_stackframe();
     return __result6__;
+come_pop_stackframe();
 }
 static inline unsigned int* wstring_substring(unsigned int* str, int head, int tail){
 void* __result_obj__;
 unsigned int* __result7__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 50);
     __result7__ = __result_obj__ = wchar_tp_substring(str,head,tail);
+    come_pop_stackframe();
     return __result7__;
+come_pop_stackframe();
 }
 static inline int string_index_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
 int __result8__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 56);
     __result8__ = charp_index_count(str,search_str,count,default_value);
+    come_pop_stackframe();
     return __result8__;
+come_pop_stackframe();
 }
 static inline int string_index_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
 int __result9__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 62);
     __result9__ = charp_index_regex_count(self,reg,count,default_value);
+    come_pop_stackframe();
     return __result9__;
+come_pop_stackframe();
 }
 static inline int string_rindex(char* str, char* search_str, int default_value){
 void* __result_obj__;
 int __result10__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 68);
     __result10__ = charp_rindex(str,search_str,default_value);
+    come_pop_stackframe();
     return __result10__;
+come_pop_stackframe();
 }
 static inline int string_rindex_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
 int __result11__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 74);
     __result11__ = charp_rindex_regex(self,reg,default_value);
+    come_pop_stackframe();
     return __result11__;
+come_pop_stackframe();
 }
 static inline int string_rindex_count(char* str, char* search_str, int count, int default_value){
 void* __result_obj__;
 int __result12__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 80);
     __result12__ = charp_rindex_count(str,search_str,default_value,-1);
+    come_pop_stackframe();
     return __result12__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_scan_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
 struct list$1charph* __result13__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 86);
     __result13__ = __result_obj__ = charp_scan_block(self,reg,parent,block);
+    come_pop_stackframe();
     return __result13__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_scan_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
 struct list$1charph* __result14__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 92);
     __result14__ = __result_obj__ = charp_scan_block_count(self,reg,count,parent,block);
+    come_pop_stackframe();
     return __result14__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_split_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
 struct list$1charph* __result15__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 98);
     __result15__ = __result_obj__ = charp_split_block(self,reg,parent,block);
+    come_pop_stackframe();
     return __result15__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_split_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
 struct list$1charph* __result16__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 104);
     __result16__ = __result_obj__ = charp_split_block_count(self,reg,count,parent,block);
+    come_pop_stackframe();
     return __result16__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_scan_group_strings(char* self, struct come_regex* reg, struct list$1charph* group_strings, int* num_group_string_in_regex){
 void* __result_obj__;
 struct list$1charph* __result17__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 110);
     __result17__ = __result_obj__ = charp_scan_group_strings(self,reg,group_strings,num_group_string_in_regex);
+    come_pop_stackframe();
     return __result17__;
+come_pop_stackframe();
 }
 static inline char* string_strip(char* self){
 void* __result_obj__;
 char* __result18__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 116);
     __result18__ = __result_obj__ = charp_strip(self);
+    come_pop_stackframe();
     return __result18__;
+come_pop_stackframe();
 }
 static inline char* string_printable(char* str){
 void* __result_obj__;
 char* __result19__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 122);
     __result19__ = __result_obj__ = string_printable(str);
+    come_pop_stackframe();
     return __result19__;
+come_pop_stackframe();
 }
 static inline unsigned int* string_to_wstring(char* str){
 void* __result_obj__;
 unsigned int* __result20__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 128);
     __result20__ = __result_obj__ = charp_to_wstring(str);
+    come_pop_stackframe();
     return __result20__;
+come_pop_stackframe();
 }
 static inline char* wstring_to_string(unsigned int* wstr){
 void* __result_obj__;
 char* __result21__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 136);
     __result21__ = __result_obj__ = wchar_tp_to_string(wstr);
+    come_pop_stackframe();
     return __result21__;
+come_pop_stackframe();
 }
 static inline int wstring_length(unsigned int* str){
 void* __result_obj__;
 int __result22__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 142);
     __result22__ = wchar_tp_length(str);
+    come_pop_stackframe();
     return __result22__;
+come_pop_stackframe();
 }
 static inline unsigned int* wstring_delete(unsigned int* str, int head, int tail){
 void* __result_obj__;
 unsigned int* __result23__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 148);
     __result23__ = __result_obj__ = wchar_tp_delete(str,head,tail);
+    come_pop_stackframe();
     return __result23__;
+come_pop_stackframe();
 }
 static inline int wstring_index(unsigned int* str, unsigned int* search_str, int default_value){
 void* __result_obj__;
 int __result24__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 154);
     __result24__ = wchar_tp_index(str,search_str,default_value);
+    come_pop_stackframe();
     return __result24__;
+come_pop_stackframe();
 }
 static inline int wstring_rindex(unsigned int* str, unsigned int* search_str, int default_value){
 void* __result_obj__;
 int __result25__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 160);
     __result25__ = wchar_tp_rindex(str,search_str,default_value);
+    come_pop_stackframe();
     return __result25__;
+come_pop_stackframe();
 }
 static inline unsigned int* wstring_reverse(unsigned int* str){
 void* __result_obj__;
 unsigned int* __result26__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 166);
     __result26__ = __result_obj__ = wchar_tp_reverse(str);
+    come_pop_stackframe();
     return __result26__;
+come_pop_stackframe();
 }
 static inline unsigned int* wstring_multiply(unsigned int* str, int n){
 void* __result_obj__;
 unsigned int* __result27__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 172);
     __result27__ = __result_obj__ = wchar_tp_multiply(str,n);
+    come_pop_stackframe();
     return __result27__;
+come_pop_stackframe();
 }
 static inline unsigned int* wstring_printable(unsigned int* str){
 void* __result_obj__;
 unsigned int* __result28__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 178);
     __result28__ = __result_obj__ = wchar_tp_printable(str);
+    come_pop_stackframe();
     return __result28__;
+come_pop_stackframe();
 }
 static inline unsigned int wstring_get_hash_key(unsigned int* value){
 void* __result_obj__;
 unsigned int __result29__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 200);
     __result29__ = wchar_tp_get_hash_key(value);
+    come_pop_stackframe();
     return __result29__;
+come_pop_stackframe();
 }
 static inline _Bool string_match_group_strings(char* self, struct come_regex* reg, int count, struct list$1charph* group_strings){
 void* __result_obj__;
 _Bool __result30__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 212);
     __result30__ = charp_match_group_strings(self,reg,count,group_strings);
+    come_pop_stackframe();
     return __result30__;
+come_pop_stackframe();
 }
 static inline int string_index(char* str, char* search_str, int default_value){
 void* __result_obj__;
 int __result31__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 218);
     __result31__ = charp_index(str,search_str,default_value);
+    come_pop_stackframe();
     return __result31__;
+come_pop_stackframe();
 }
 static inline int string_index_regex(char* self, struct come_regex* reg, int default_value){
 void* __result_obj__;
 int __result32__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 225);
     __result32__ = charp_index_regex(self,reg,default_value);
+    come_pop_stackframe();
     return __result32__;
+come_pop_stackframe();
 }
 static inline char* string_replace(char* self, int index, char c){
 void* __result_obj__;
 char* __result33__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 231);
     __result33__ = __result_obj__ = charp_replace(self,index,c);
+    come_pop_stackframe();
     return __result33__;
+come_pop_stackframe();
 }
 static inline char* string_multiply(char* str, int n){
 void* __result_obj__;
 char* __result34__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 237);
     __result34__ = __result_obj__ = charp_multiply(str,n);
+    come_pop_stackframe();
     return __result34__;
+come_pop_stackframe();
 }
 static inline char* string_sub(char* self, struct come_regex* reg, char* replace){
 void* __result_obj__;
 char* __result35__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 243);
     __result35__ = __result_obj__ = charp_sub(self,reg,replace);
+    come_pop_stackframe();
     return __result35__;
+come_pop_stackframe();
 }
 static inline char* string_sub_count(char* self, struct come_regex* reg, char* replace, int count){
 void* __result_obj__;
 char* __result36__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 249);
     __result36__ = __result_obj__ = charp_sub_count(self,reg,replace,count);
+    come_pop_stackframe();
     return __result36__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_split_str(char* self, char* str){
 void* __result_obj__;
 struct list$1charph* __result37__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 255);
     __result37__ = __result_obj__ = charp_split_str(self,str);
+    come_pop_stackframe();
     return __result37__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_scan(char* self, struct come_regex* reg){
 void* __result_obj__;
 struct list$1charph* __result38__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 261);
     __result38__ = __result_obj__ = charp_scan(self,reg);
+    come_pop_stackframe();
     return __result38__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_split(char* self, struct come_regex* reg){
 void* __result_obj__;
 struct list$1charph* __result39__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 267);
     __result39__ = __result_obj__ = charp_split(self,reg);
+    come_pop_stackframe();
     return __result39__;
+come_pop_stackframe();
 }
 static inline _Bool string_match(char* self, struct come_regex* reg){
 void* __result_obj__;
 _Bool __result40__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 273);
     __result40__ = charp_match(self,reg);
+    come_pop_stackframe();
     return __result40__;
+come_pop_stackframe();
 }
 static inline struct list$1charph* string_split_maxsplit(char* self, struct come_regex* reg, int maxsplit){
 void* __result_obj__;
 struct list$1charph* __result41__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 279);
     __result41__ = __result_obj__ = charp_split_maxsplit(self,reg,maxsplit);
+    come_pop_stackframe();
     return __result41__;
+come_pop_stackframe();
 }
 static inline int string_rindex_regex_count(char* self, struct come_regex* reg, int count, int default_value){
 void* __result_obj__;
 int __result42__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 285);
     __result42__ = charp_rindex_regex_count(self,reg,count,default_value);
+    come_pop_stackframe();
     return __result42__;
+come_pop_stackframe();
 }
 static inline _Bool string_match_count(char* self, struct come_regex* reg, int count){
 void* __result_obj__;
 _Bool __result43__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 291);
     __result43__ = charp_match_count(self,reg,count);
+    come_pop_stackframe();
     return __result43__;
+come_pop_stackframe();
 }
 static inline char* string_sub_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
 char* __result44__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 297);
     __result44__ = __result_obj__ = charp_sub_block(self,reg,parent,block);
+    come_pop_stackframe();
     return __result44__;
+come_pop_stackframe();
 }
 static inline char* string_sub_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
 void* __result_obj__;
 char* __result45__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 303);
     __result45__ = __result_obj__ = charp_sub_block_count(self,reg,count,parent,block);
+    come_pop_stackframe();
     return __result45__;
+come_pop_stackframe();
 }
 static inline char* charp_chomp(char* str){
 void* __result_obj__;
 char* __result47__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("./comelang2-str.h", 320);
     __result47__ = __result_obj__ = string_chomp(str);
+    come_pop_stackframe();
     return __result47__;
+come_pop_stackframe();
 }
 
 // body function
@@ -2378,10 +2516,12 @@ struct come_regex* self_5;
 _Bool _if_conditional1;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&self_5, 0, sizeof(struct come_regex*));
+come_push_stackframe("libcomelang2-str-gc.c", 15);
     self_5=obj;
     if(_if_conditional1=self_5&&self_5->re,    _if_conditional1) {
         free(self_5->re);
     }
+come_pop_stackframe();
 }
 
 struct come_regex* come_regex_initialize(struct come_regex* self, char* str, _Bool ignore_case, _Bool multiline, _Bool global, _Bool extended, _Bool dotall, _Bool anchored, _Bool dollar_endonly, _Bool ungreedy){
@@ -2395,6 +2535,7 @@ struct come_regex* __result48__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&erro_ofs_7, 0, sizeof(int));
 memset(&options_8, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 49);
     options_8=2048|(ignore_case?1:0)|(multiline?2:0)|(extended?8:0)|(dotall?4:0)|(dollar_endonly?32:0)|(ungreedy?512:0);
     self->str=__builtin_string(str);
     self->ignore_case=ignore_case;
@@ -2415,7 +2556,9 @@ memset(&options_8, 0, sizeof(int));
         GC_register_finalizer(self,regex_finalizer,((void*)0),((void*)0),((void*)0));
     }
     __result48__ = __result_obj__ = self;
+    come_pop_stackframe();
     return __result48__;
+come_pop_stackframe();
 }
 
 void come_regex_finalize(struct come_regex* reg){
@@ -2423,27 +2566,35 @@ void* __result_obj__;
 _Bool _if_conditional4;
 _Bool _if_conditional5;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 59);
     if(_if_conditional4=reg&&reg->str,    _if_conditional4) {
     }
     if(_if_conditional5=reg&&reg->re,    _if_conditional5) {
         free(reg->re);
     }
+come_pop_stackframe();
 }
 
 struct come_regex* charp_to_regex(char* self, _Bool ignore_case, _Bool multiline, _Bool global, _Bool extended, _Bool dotall, _Bool anchored, _Bool dollar_endonly, _Bool ungreedy){
 void* __result_obj__;
 struct come_regex* __result49__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 64);
     __result49__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 61, "struct come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
+    come_pop_stackframe();
     return __result49__;
+come_pop_stackframe();
 }
 
 struct come_regex* string_to_regex(char* self, _Bool ignore_case, _Bool multiline, _Bool global, _Bool extended, _Bool dotall, _Bool anchored, _Bool dollar_endonly, _Bool ungreedy){
 void* __result_obj__;
 struct come_regex* __result50__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 70);
     __result50__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 66, "struct come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
+    come_pop_stackframe();
     return __result50__;
+come_pop_stackframe();
 }
 
 struct come_regex* come_regex_clone(struct come_regex* reg){
@@ -2458,8 +2609,10 @@ struct come_regex* __result52__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_9, 0, sizeof(struct come_regex*));
 memset(&erro_ofs_11, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 105);
     if(_if_conditional6=reg==((void*)0),    _if_conditional6) {
         __result51__ = __result_obj__ = ((void*)0);
+        come_pop_stackframe();
         return __result51__;
     }
     result_9=(struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 76, "struct come_regex");
@@ -2480,15 +2633,20 @@ memset(&erro_ofs_11, 0, sizeof(int));
         exit(1);
     }
     __result52__ = __result_obj__ = result_9;
+    come_pop_stackframe();
     return __result52__;
+come_pop_stackframe();
 }
 
 char* come_regex_to_string(struct come_regex* regex){
 void* __result_obj__;
 char* __result53__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 110);
     __result53__ = __result_obj__ = __builtin_string(regex->str);
+    come_pop_stackframe();
     return __result53__;
+come_pop_stackframe();
 }
 
 char* string_lower_case(char* str){
@@ -2500,6 +2658,7 @@ char* __result54__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_12, 0, sizeof(char*));
 memset(&i_13, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 122);
     result_12=__builtin_string(str);
     for(    i_13=0;    i_13<strlen(str);    i_13++    ){
         if(_if_conditional8=str[i_13]>=65&&str[i_13]<=90,        _if_conditional8) {
@@ -2507,7 +2666,9 @@ memset(&i_13, 0, sizeof(int));
         }
     }
     __result54__ = __result_obj__ = result_12;
+    come_pop_stackframe();
     return __result54__;
+come_pop_stackframe();
 }
 
 char* string_upper_case(char* str){
@@ -2519,6 +2680,7 @@ char* __result55__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_14, 0, sizeof(char*));
 memset(&i_15, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 134);
     result_14=__builtin_string(str);
     for(    i_15=0;    i_15<strlen(str);    i_15++    ){
         if(_if_conditional9=str[i_15]>=97&&str[i_15]<=122,        _if_conditional9) {
@@ -2526,7 +2688,9 @@ memset(&i_15, 0, sizeof(int));
         }
     }
     __result55__ = __result_obj__ = result_14;
+    come_pop_stackframe();
     return __result55__;
+come_pop_stackframe();
 }
 
 unsigned int* wchar_tp_substring(unsigned int* str, int head, int tail){
@@ -2549,8 +2713,10 @@ unsigned int* __result60__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_16, 0, sizeof(int));
 memset(&result_17, 0, sizeof(unsigned int*));
+come_push_stackframe("libcomelang2-str-gc.c", 179);
     if(_if_conditional10=str==((void*)0),    _if_conditional10) {
         __result56__ = __result_obj__ = __builtin_wstring("");
+        come_pop_stackframe();
         return __result56__;
     }
     len_16=wcslen(str);
@@ -2562,6 +2728,7 @@ memset(&result_17, 0, sizeof(unsigned int*));
     }
     if(_if_conditional13=head>tail,    _if_conditional13) {
         __result57__ = __result_obj__ = __builtin_wstring("");
+        come_pop_stackframe();
         return __result57__;
     }
     if(_if_conditional14=head<0,    _if_conditional14) {
@@ -2572,17 +2739,21 @@ memset(&result_17, 0, sizeof(unsigned int*));
     }
     if(_if_conditional16=head==tail,    _if_conditional16) {
         __result58__ = __result_obj__ = __builtin_wstring("");
+        come_pop_stackframe();
         return __result58__;
     }
     if(_if_conditional17=tail-head+1<1,    _if_conditional17) {
         __result59__ = __result_obj__ = __builtin_wstring("");
+        come_pop_stackframe();
         return __result59__;
     }
     result_17=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(tail-head+1)), "libcomelang2-str-gc.c", 171, "unsigned int");
     memcpy(result_17,str+head,sizeof(unsigned int)*(tail-head));
     result_17[tail-head]=0;
     __result60__ = __result_obj__ = result_17;
+    come_pop_stackframe();
     return __result60__;
+come_pop_stackframe();
 }
 
 unsigned int* __builtin_wstring(char* str){
@@ -2598,8 +2769,10 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_18, 0, sizeof(int));
 memset(&wstr_19, 0, sizeof(unsigned int*));
 memset(&ret_20, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 198);
     if(_if_conditional18=str==((void*)0),    _if_conditional18) {
         __result61__ = __result_obj__ = ((void*)0);
+        come_pop_stackframe();
         return __result61__;
     }
     len_18=strlen(str);
@@ -2610,7 +2783,9 @@ memset(&ret_20, 0, sizeof(int));
         wstr_19[0]=0;
     }
     __result62__ = __result_obj__ = wstr_19;
+    come_pop_stackframe();
     return __result62__;
+come_pop_stackframe();
 }
 
 int charp_index_count(char* str, char* search_str, int count, int default_value){
@@ -2631,6 +2806,7 @@ memset(&len_22, 0, sizeof(int));
 memset(&i_23, 0, sizeof(int));
 memset(&len2_24, 0, sizeof(int));
 memset(&j_25, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 223);
     n_21=0;
     len_22=strlen(str);
     for(    i_23=0;    i_23<len_22;    i_23++    ){
@@ -2644,12 +2820,15 @@ memset(&j_25, 0, sizeof(int));
             n_21++;
             if(_if_conditional22=n_21==count,            _if_conditional22) {
                 __result63__ = i_23;
+                come_pop_stackframe();
                 return __result63__;
             }
         }
     }
     __result64__ = default_value;
+    come_pop_stackframe();
     return __result64__;
+come_pop_stackframe();
 }
 
 int charp_index_regex_count(char* self, struct come_regex* reg, int count, int default_value){
@@ -2687,6 +2866,7 @@ memset(&len_39, 0, sizeof(int));
 memset(&regex_result_40, 0, sizeof(int));
 memset(&i_41, 0, sizeof(int));
 memset(&i_42, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 281);
     ovec_max_26=16;
     int start_27[ovec_max_26];
     memset(&start_27, 0, sizeof(int)    *(ovec_max_26)    );
@@ -2728,7 +2908,9 @@ memset(&i_42, 0, sizeof(int));
         }
     }
     __result65__ = result_30;
+    come_pop_stackframe();
     return __result65__;
+come_pop_stackframe();
 }
 
 int charp_rindex(char* str, char* search_str, int default_value){
@@ -2742,17 +2924,21 @@ int __result67__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_43, 0, sizeof(int));
 memset(&p_44, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 299);
     len_43=strlen(search_str);
     p_44=str+strlen(str)-len_43;
     while(_while_condtional2=p_44>=str,    _while_condtional2) {
         if(_if_conditional26=strncmp(p_44,search_str,len_43)==0,        _if_conditional26) {
             __result66__ = p_44-str;
+            come_pop_stackframe();
             return __result66__;
         }
         p_44--;
     }
     __result67__ = default_value;
+    come_pop_stackframe();
     return __result67__;
+come_pop_stackframe();
 }
 
 int charp_rindex_regex(char* self, struct come_regex* reg, int default_value){
@@ -2788,6 +2974,7 @@ memset(&len_58, 0, sizeof(int));
 memset(&regex_result_59, 0, sizeof(int));
 memset(&i_60, 0, sizeof(int));
 memset(&i_61, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 347);
     options_47=reg->options;
     str_48=reg->str;
     re_49=reg->re;
@@ -2820,7 +3007,9 @@ memset(&i_61, 0, sizeof(int));
         }
     }
     __result68__ = result_55;
+    come_pop_stackframe();
     return __result68__;
+come_pop_stackframe();
 }
 
 int charp_rindex_count(char* str, char* search_str, int count, int default_value){
@@ -2837,6 +3026,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_62, 0, sizeof(int));
 memset(&p_63, 0, sizeof(char*));
 memset(&n_64, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 370);
     len_62=strlen(search_str);
     p_63=str+strlen(str)-len_62;
     n_64=0;
@@ -2845,13 +3035,16 @@ memset(&n_64, 0, sizeof(int));
             n_64++;
             if(_if_conditional29=n_64==count,            _if_conditional29) {
                 __result69__ = p_63-str;
+                come_pop_stackframe();
                 return __result69__;
             }
         }
         p_63--;
     }
     __result70__ = default_value;
+    come_pop_stackframe();
     return __result70__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_scan_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
@@ -2908,6 +3101,7 @@ memset(&group_strings_88, 0, sizeof(struct list$1charph*));
 memset(&i_89, 0, sizeof(int));
 memset(&match_string_90, 0, sizeof(char*));
 memset(&str2_91, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 459);
     result_65=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 372, "struct list$1charph"));
     offset_66=0;
     ovec_max_67=16;
@@ -2936,6 +3130,7 @@ memset(&str2_91, 0, sizeof(char*));
             str2_83=block(parent,str_81,group_strings_82);
             if(_if_conditional31=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional31) {
                 __result72__ = __result_obj__ = result_65;
+                come_pop_stackframe();
                 return __result72__;
             }
             list$1charph_push_back(result_65,str2_83);
@@ -2957,6 +3152,7 @@ memset(&str2_91, 0, sizeof(char*));
                 str2_91=block(parent,str_87,group_strings_88);
                 if(_if_conditional36=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional36) {
                     __result74__ = __result_obj__ = result_65;
+                    come_pop_stackframe();
                     return __result74__;
                 }
                 list$1charph_push_back(result_65,str2_91);
@@ -2973,18 +3169,23 @@ memset(&str2_91, 0, sizeof(char*));
         }
     }
     __result75__ = __result_obj__ = result_65;
+    come_pop_stackframe();
     return __result75__;
+come_pop_stackframe();
 }
 
 static struct list$1charph* list$1charph_initialize(struct list$1charph* self){
 void* __result_obj__;
 struct list$1charph* __result71__;
 memset(&__result_obj__, 0, sizeof(void*));
+    come_push_stackframe("libcomelang2-str-gc.c", 372);
         self->head=((void*)0);
         self->tail=((void*)0);
         self->len=0;
         __result71__ = __result_obj__ = self;
+        come_pop_stackframe();
         return __result71__;
+    come_pop_stackframe();
 }
 
 static struct list$1charph* list$1charph_push_back(struct list$1charph* self, char* item){
@@ -2999,6 +3200,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&litem_84, 0, sizeof(struct list_item$1charph*));
 memset(&litem_85, 0, sizeof(struct list_item$1charph*));
 memset(&litem_86, 0, sizeof(struct list_item$1charph*));
+            come_push_stackframe("libcomelang2-str-gc.c", 414);
                 if(_if_conditional32=self->len==0,                _if_conditional32) {
                     litem_84=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 225, "struct list_item$1charph");
                     litem_84->prev=((void*)0);
@@ -3027,7 +3229,9 @@ memset(&litem_86, 0, sizeof(struct list_item$1charph*));
                 }
                 self->len++;
                 __result73__ = __result_obj__ = self;
+                come_pop_stackframe();
                 return __result73__;
+            come_pop_stackframe();
 }
 
 struct list$1charph* charp_scan_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
@@ -3088,6 +3292,7 @@ memset(&group_strings_113, 0, sizeof(struct list$1charph*));
 memset(&i_114, 0, sizeof(int));
 memset(&match_string_115, 0, sizeof(char*));
 memset(&str2_116, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 559);
     result_92=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 461, "struct list$1charph"));
     offset_93=0;
     ovec_max_94=16;
@@ -3117,6 +3322,7 @@ memset(&str2_116, 0, sizeof(char*));
             str2_111=block(parent,str_109,group_strings_110);
             if(_if_conditional39=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional39) {
                 __result76__ = __result_obj__ = result_92;
+                come_pop_stackframe();
                 return __result76__;
             }
             list$1charph_push_back(result_92,str2_111);
@@ -3142,6 +3348,7 @@ memset(&str2_116, 0, sizeof(char*));
                 str2_116=block(parent,str_112,group_strings_113);
                 if(_if_conditional43=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional43) {
                     __result77__ = __result_obj__ = result_92;
+                    come_pop_stackframe();
                     return __result77__;
                 }
                 list$1charph_push_back(result_92,str2_116);
@@ -3162,7 +3369,9 @@ memset(&str2_116, 0, sizeof(char*));
         }
     }
     __result78__ = __result_obj__ = result_92;
+    come_pop_stackframe();
     return __result78__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_split_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
@@ -3228,6 +3437,7 @@ memset(&str2_140, 0, sizeof(char*));
 memset(&str_141, 0, sizeof(char*));
 memset(&match_strings_142, 0, sizeof(struct list$1charph*));
 memset(&str2_143, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 657);
     options_119=reg->options;
     str_120=reg->str;
     re_121=reg->re;
@@ -3256,6 +3466,7 @@ memset(&str2_143, 0, sizeof(char*));
             str2_135=block(parent,str_133,match_strings_134);
             if(_if_conditional47=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional47) {
                 __result79__ = __result_obj__ = result_122;
+                come_pop_stackframe();
                 return __result79__;
             }
             list$1charph_push_back(result_122,str2_135);
@@ -3283,6 +3494,7 @@ memset(&str2_143, 0, sizeof(char*));
                 str2_140=block(parent,str_136,match_strings_137);
                 if(_if_conditional51=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional51) {
                     __result80__ = __result_obj__ = result_122;
+                    come_pop_stackframe();
                     return __result80__;
                 }
                 list$1charph_push_back(result_122,str2_140);
@@ -3298,12 +3510,15 @@ memset(&str2_143, 0, sizeof(char*));
         str2_143=block(parent,str_141,match_strings_142);
         if(_if_conditional53=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional53) {
             __result81__ = __result_obj__ = result_122;
+            come_pop_stackframe();
             return __result81__;
         }
         list$1charph_push_back(result_122,str2_143);
     }
     __result82__ = __result_obj__ = result_122;
+    come_pop_stackframe();
     return __result82__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_split_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
@@ -3363,6 +3578,7 @@ memset(&match_strings_165, 0, sizeof(struct list$1charph*));
 memset(&i_166, 0, sizeof(int));
 memset(&match_str_167, 0, sizeof(char*));
 memset(&str2_168, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 751);
     options_146=reg->options;
     str_147=reg->str;
     re_148=reg->re;
@@ -3392,6 +3608,7 @@ memset(&str2_168, 0, sizeof(char*));
             str2_163=block(parent,str_161,match_strings_162);
             if(_if_conditional55=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional55) {
                 __result83__ = __result_obj__ = result_149;
+                come_pop_stackframe();
                 return __result83__;
             }
             list$1charph_push_back(result_149,str2_163);
@@ -3419,6 +3636,7 @@ memset(&str2_168, 0, sizeof(char*));
                 str2_168=block(parent,str_164,match_strings_165);
                 if(_if_conditional59=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional59) {
                     __result84__ = __result_obj__ = result_149;
+                    come_pop_stackframe();
                     return __result84__;
                 }
                 list$1charph_push_back(result_149,str2_168);
@@ -3433,7 +3651,9 @@ memset(&str2_168, 0, sizeof(char*));
         }
     }
     __result85__ = __result_obj__ = result_149;
+    come_pop_stackframe();
     return __result85__;
+come_pop_stackframe();
 }
 
 _Bool come_regex_equals(struct come_regex* left, struct come_regex* right){
@@ -3460,48 +3680,61 @@ _Bool _if_conditional70;
 _Bool __result95__;
 _Bool __result96__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 788);
     if(_if_conditional61=strcmp(left->str,right->str)!=0,    _if_conditional61) {
         __result86__ = (_Bool)0;
+        come_pop_stackframe();
         return __result86__;
     }
     if(_if_conditional62=left->ignore_case!=right->ignore_case,    _if_conditional62) {
         __result87__ = (_Bool)0;
+        come_pop_stackframe();
         return __result87__;
     }
     if(_if_conditional63=left->multiline!=right->multiline,    _if_conditional63) {
         __result88__ = (_Bool)0;
+        come_pop_stackframe();
         return __result88__;
     }
     if(_if_conditional64=left->global!=right->global,    _if_conditional64) {
         __result89__ = (_Bool)0;
+        come_pop_stackframe();
         return __result89__;
     }
     if(_if_conditional65=left->extended!=right->extended,    _if_conditional65) {
         __result90__ = (_Bool)0;
+        come_pop_stackframe();
         return __result90__;
     }
     if(_if_conditional66=left->dotall!=right->dotall,    _if_conditional66) {
         __result91__ = (_Bool)0;
+        come_pop_stackframe();
         return __result91__;
     }
     if(_if_conditional67=left->anchored!=right->anchored,    _if_conditional67) {
         __result92__ = (_Bool)0;
+        come_pop_stackframe();
         return __result92__;
     }
     if(_if_conditional68=left->dollar_endonly!=right->dollar_endonly,    _if_conditional68) {
         __result93__ = (_Bool)0;
+        come_pop_stackframe();
         return __result93__;
     }
     if(_if_conditional69=left->ungreedy!=right->ungreedy,    _if_conditional69) {
         __result94__ = (_Bool)0;
+        come_pop_stackframe();
         return __result94__;
     }
     if(_if_conditional70=left->options!=right->options,    _if_conditional70) {
         __result95__ = (_Bool)0;
+        come_pop_stackframe();
         return __result95__;
     }
     __result96__ = (_Bool)1;
+    come_pop_stackframe();
     return __result96__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_scan_group_strings(char* self, struct come_regex* reg, struct list$1charph* group_strings, int* num_group_string_in_regex){
@@ -3546,6 +3779,7 @@ memset(&str_185, 0, sizeof(char*));
 memset(&str_186, 0, sizeof(char*));
 memset(&i_187, 0, sizeof(int));
 memset(&match_string_188, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 862);
     result_169=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 790, "struct list$1charph"));
     offset_170=0;
     ovec_max_171=16;
@@ -3600,7 +3834,9 @@ memset(&match_string_188, 0, sizeof(char*));
         }
     }
     __result97__ = __result_obj__ = result_169;
+    come_pop_stackframe();
     return __result97__;
+come_pop_stackframe();
 }
 
 char* charp_strip(char* self){
@@ -3614,6 +3850,7 @@ char* __result98__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_189, 0, sizeof(char*));
 memset(&len_190, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 881);
     result_189=__builtin_string(self);
     len_190=strlen(self);
     if(_if_conditional75=self[len_190-1]==10,    _if_conditional75) {
@@ -3630,7 +3867,9 @@ memset(&len_190, 0, sizeof(int));
         }
     }
     __result98__ = __result_obj__ = result_189;
+    come_pop_stackframe();
     return __result98__;
+come_pop_stackframe();
 }
 
 char* charp_printable(char* str){
@@ -3648,6 +3887,7 @@ memset(&result_192, 0, sizeof(char*));
 memset(&n_193, 0, sizeof(int));
 memset(&i_194, 0, sizeof(int));
 memset(&c_195, 0, sizeof(char));
+come_push_stackframe("libcomelang2-str-gc.c", 906);
     len_191=charp_length(str);
     result_192=(char*)come_calloc(1, sizeof(char)*(1*(len_191*2+1)), "libcomelang2-str-gc.c", 884, "char");
     n_193=0;
@@ -3663,7 +3903,9 @@ memset(&c_195, 0, sizeof(char));
     }
     result_192[n_193]=0;
     __result99__ = __result_obj__ = result_192;
+    come_pop_stackframe();
     return __result99__;
+come_pop_stackframe();
 }
 
 char* wchar_tp_to_string(unsigned int* wstr){
@@ -3675,29 +3917,38 @@ char* __result100__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_196, 0, sizeof(int));
 memset(&result_197, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 920);
     len_196=4*(wcslen(wstr)+1);
     result_197=(char*)come_calloc(1, sizeof(char)*(1*(len_196)), "libcomelang2-str-gc.c", 910, "char");
     if(_if_conditional79=wcstombs(result_197,wstr,len_196)<0,    _if_conditional79) {
         strncpy(result_197,"",len_196);
     }
     __result100__ = __result_obj__ = result_197;
+    come_pop_stackframe();
     return __result100__;
+come_pop_stackframe();
 }
 
 unsigned int* charp_to_wstring(char* str){
 void* __result_obj__;
 unsigned int* __result101__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 925);
     __result101__ = __result_obj__ = __builtin_wstring(str);
+    come_pop_stackframe();
     return __result101__;
+come_pop_stackframe();
 }
 
 int wchar_tp_length(unsigned int* str){
 void* __result_obj__;
 int __result102__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 930);
     __result102__ = wcslen(str);
+    come_pop_stackframe();
     return __result102__;
+come_pop_stackframe();
 }
 
 unsigned int* wchar_tp_delete(unsigned int* str, int head, int tail){
@@ -3716,9 +3967,11 @@ unsigned int* __result105__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_198, 0, sizeof(int));
 memset(&sub_str_199, 0, sizeof(unsigned int*));
+come_push_stackframe("libcomelang2-str-gc.c", 967);
     len_198=wcslen(str);
     if(_if_conditional80=len_198==0,    _if_conditional80) {
         __result103__ = __result_obj__ = string_to_wstring(wchar_tp_to_string(str));
+        come_pop_stackframe();
         return __result103__;
     }
     if(_if_conditional81=head<0,    _if_conditional81) {
@@ -3732,6 +3985,7 @@ memset(&sub_str_199, 0, sizeof(unsigned int*));
     }
     if(_if_conditional84=tail<0,    _if_conditional84) {
         __result104__ = __result_obj__ = string_to_wstring(wchar_tp_to_string(str));
+        come_pop_stackframe();
         return __result104__;
     }
     if(_if_conditional85=tail>=len_198,    _if_conditional85) {
@@ -3740,7 +3994,9 @@ memset(&sub_str_199, 0, sizeof(unsigned int*));
     sub_str_199=wchar_tp_substring(str,tail,-1);
     memcpy(str+head,sub_str_199,sizeof(unsigned int)*(wstring_length(sub_str_199)+1));
     __result105__ = __result_obj__ = string_to_wstring(wchar_tp_to_string(str));
+    come_pop_stackframe();
     return __result105__;
+come_pop_stackframe();
 }
 
 int wchar_tp_index(unsigned int* str, unsigned int* search_str, int default_value){
@@ -3751,13 +4007,17 @@ int __result106__;
 int __result107__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&head_200, 0, sizeof(unsigned int*));
+come_push_stackframe("libcomelang2-str-gc.c", 980);
     head_200=wcsstr(str,search_str);
     if(_if_conditional86=head_200==((void*)0),    _if_conditional86) {
         __result106__ = default_value;
+        come_pop_stackframe();
         return __result106__;
     }
     __result107__ = head_200-str;
+    come_pop_stackframe();
     return __result107__;
+come_pop_stackframe();
 }
 
 int wchar_tp_rindex(unsigned int* str, unsigned int* search_str, int default_value){
@@ -3778,6 +4038,7 @@ memset(&p_202, 0, sizeof(unsigned int*));
 memset(&len2_203, 0, sizeof(int));
 memset(&result_204, 0, sizeof(_Bool));
 memset(&i_205, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1007);
     len_201=wcslen(search_str);
     p_202=str+wcslen(str)-len_201;
     while(_while_condtional10=p_202>=str,    _while_condtional10) {
@@ -3790,12 +4051,15 @@ memset(&i_205, 0, sizeof(int));
         }
         if(result_204) {
             __result108__ = (p_202-str);
+            come_pop_stackframe();
             return __result108__;
         }
         p_202--;
     }
     __result109__ = default_value;
+    come_pop_stackframe();
     return __result109__;
+come_pop_stackframe();
 }
 
 unsigned int* wchar_tp_reverse(unsigned int* str){
@@ -3808,6 +4072,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_206, 0, sizeof(int));
 memset(&result_207, 0, sizeof(unsigned int*));
 memset(&i_208, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1021);
     len_206=wcslen(str);
     result_207=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_206+1)), "libcomelang2-str-gc.c", 1010, "unsigned int");
     for(    i_208=0;    i_208<len_206;    i_208++    ){
@@ -3815,7 +4080,9 @@ memset(&i_208, 0, sizeof(int));
     }
     result_207[len_206]=0;
     __result110__ = __result_obj__ = result_207;
+    come_pop_stackframe();
     return __result110__;
+come_pop_stackframe();
 }
 
 unsigned int* wchar_tp_multiply(unsigned int* str, int n){
@@ -3828,6 +4095,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_209, 0, sizeof(int));
 memset(&result_210, 0, sizeof(unsigned int*));
 memset(&i_211, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1036);
     len_209=wcslen(str)*n+1;
     result_210=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_209)), "libcomelang2-str-gc.c", 1025, "unsigned int");
     result_210[0]=0;
@@ -3835,7 +4103,9 @@ memset(&i_211, 0, sizeof(int));
         wcscat(result_210,str);
     }
     __result111__ = __result_obj__ = result_210;
+    come_pop_stackframe();
     return __result111__;
+come_pop_stackframe();
 }
 
 unsigned int* wchar_tp_printable(unsigned int* str){
@@ -3853,6 +4123,7 @@ memset(&result_213, 0, sizeof(unsigned int*));
 memset(&n_214, 0, sizeof(int));
 memset(&i_215, 0, sizeof(int));
 memset(&c_216, 0, sizeof(unsigned int));
+come_push_stackframe("libcomelang2-str-gc.c", 1061);
     len_212=wchar_tp_length(str);
     result_213=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_212*2+1)), "libcomelang2-str-gc.c", 1039, "unsigned int");
     n_214=0;
@@ -3868,7 +4139,9 @@ memset(&c_216, 0, sizeof(unsigned int));
     }
     result_213[n_214]=0;
     __result112__ = __result_obj__ = result_213;
+    come_pop_stackframe();
     return __result112__;
+come_pop_stackframe();
 }
 
 _Bool charp_match_group_strings(char* self, struct come_regex* reg, int count, struct list$1charph* group_strings){
@@ -3914,6 +4187,7 @@ memset(&i_231, 0, sizeof(int));
 memset(&i_232, 0, sizeof(int));
 memset(&i_235, 0, sizeof(int));
 memset(&match_string_236, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1140);
     offset_217=0;
     ovec_max_218=16;
     int start_219[ovec_max_218];
@@ -3940,6 +4214,7 @@ memset(&match_string_236, 0, sizeof(char*));
             n_227++;
             if(_if_conditional91=n_227==count,            _if_conditional91) {
                 __result113__ = (_Bool)1;
+                come_pop_stackframe();
                 return __result113__;
             }
             if(_if_conditional92=offset_217==end_220[0],            _if_conditional92) {
@@ -3959,6 +4234,7 @@ memset(&match_string_236, 0, sizeof(char*));
                 }
                 if(_if_conditional94=n_227==count,                _if_conditional94) {
                     __result115__ = (_Bool)1;
+                    come_pop_stackframe();
                     return __result115__;
                 }
                 if(_if_conditional95=offset_217==end_220[0],                _if_conditional95) {
@@ -3970,12 +4246,15 @@ memset(&match_string_236, 0, sizeof(char*));
             }
             else {
                 __result116__ = (_Bool)0;
+                come_pop_stackframe();
                 return __result116__;
             }
         }
     }
     __result117__ = (_Bool)0;
+    come_pop_stackframe();
     return __result117__;
+come_pop_stackframe();
 }
 
 static struct list$1charph* list$1charph_reset(struct list$1charph* self){
@@ -3987,6 +4266,7 @@ struct list$1charph* __result114__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&it_233, 0, sizeof(struct list_item$1charph*));
 memset(&prev_it_234, 0, sizeof(struct list_item$1charph*));
+                come_push_stackframe("libcomelang2-str-gc.c", 1113);
                     it_233=self->head;
                     while(_while_condtional12=it_233!=((void*)0),                    _while_condtional12) {
                         prev_it_234=it_233;
@@ -3996,103 +4276,141 @@ memset(&prev_it_234, 0, sizeof(struct list_item$1charph*));
                     self->tail=((void*)0);
                     self->len=0;
                     __result114__ = __result_obj__ = self;
+                    come_pop_stackframe();
                     return __result114__;
+                come_pop_stackframe();
 }
 
 int wchar_tp_compare(unsigned int* left, unsigned int* right){
 void* __result_obj__;
 int __result118__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1145);
     __result118__ = wcscmp(left,right);
+    come_pop_stackframe();
     return __result118__;
+come_pop_stackframe();
 }
 
 int wstring_compare(unsigned int* left, unsigned int* right){
 void* __result_obj__;
 int __result119__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1150);
     __result119__ = wcscmp(left,right);
+    come_pop_stackframe();
     return __result119__;
+come_pop_stackframe();
 }
 
 unsigned int come_regex_get_hash_key(struct come_regex* reg){
 void* __result_obj__;
 unsigned int __result120__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1155);
     __result120__ = string_get_hash_key(reg->str);
+    come_pop_stackframe();
     return __result120__;
+come_pop_stackframe();
 }
 
 _Bool wchar_tp_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
 _Bool __result121__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1161);
     __result121__ = left==right;
+    come_pop_stackframe();
     return __result121__;
+come_pop_stackframe();
 }
 
 unsigned int* wchar_tp_operator_mult(unsigned int* str, int n){
 void* __result_obj__;
 unsigned int* __result122__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1166);
     __result122__ = __result_obj__ = wchar_tp_multiply(str,n);
+    come_pop_stackframe();
     return __result122__;
+come_pop_stackframe();
 }
 
 unsigned int* wstring_operator_mult(unsigned int* str, int n){
 void* __result_obj__;
 unsigned int* __result123__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1171);
     __result123__ = __result_obj__ = wchar_tp_multiply(str,n);
+    come_pop_stackframe();
     return __result123__;
+come_pop_stackframe();
 }
 
 _Bool wchar_tp_operator_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
 _Bool __result124__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1176);
     __result124__ = wcscmp(left,right)==0;
+    come_pop_stackframe();
     return __result124__;
+come_pop_stackframe();
 }
 
 _Bool wstring_operator_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
 _Bool __result125__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1181);
     __result125__ = wcscmp(left,right)==0;
+    come_pop_stackframe();
     return __result125__;
+come_pop_stackframe();
 }
 
 _Bool wchar_tp_operator_not_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
 _Bool __result126__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1186);
     __result126__ = wcscmp(left,right)!=0;
+    come_pop_stackframe();
     return __result126__;
+come_pop_stackframe();
 }
 
 _Bool wstring_operator_not_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
 _Bool __result127__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1191);
     __result127__ = wcscmp(left,right)!=0;
+    come_pop_stackframe();
     return __result127__;
+come_pop_stackframe();
 }
 
 _Bool come_regex_operator_equals(struct come_regex* left, struct come_regex* right){
 void* __result_obj__;
 _Bool __result128__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1196);
     __result128__ = come_regex_equals(left,right);
+    come_pop_stackframe();
     return __result128__;
+come_pop_stackframe();
 }
 
 _Bool come_regex_operator_not_equals(struct come_regex* left, struct come_regex* right){
 void* __result_obj__;
 _Bool __result129__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 1201);
     __result129__ = !come_regex_equals(left,right);
+    come_pop_stackframe();
     return __result129__;
+come_pop_stackframe();
 }
 
 unsigned int* wchar_tp_operator_add(unsigned int* left, unsigned int* right){
@@ -4101,11 +4419,14 @@ unsigned int* result_237;
 unsigned int* __result130__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_237, 0, sizeof(unsigned int*));
+come_push_stackframe("libcomelang2-str-gc.c", 1211);
     result_237=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1203, "unsigned int");
     wcscpy(result_237,left);
     wcscat(result_237,right);
     __result130__ = __result_obj__ = result_237;
+    come_pop_stackframe();
     return __result130__;
+come_pop_stackframe();
 }
 
 unsigned int* wstring_operator_add(unsigned int* left, unsigned int* right){
@@ -4114,11 +4435,14 @@ unsigned int* result_238;
 unsigned int* __result131__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_238, 0, sizeof(unsigned int*));
+come_push_stackframe("libcomelang2-str-gc.c", 1221);
     result_238=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1213, "unsigned int");
     wcscpy(result_238,left);
     wcscat(result_238,right);
     __result131__ = __result_obj__ = result_238;
+    come_pop_stackframe();
     return __result131__;
+come_pop_stackframe();
 }
 
 int charp_index(char* str, char* search_str, int default_value){
@@ -4129,13 +4453,17 @@ int __result132__;
 int __result133__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&head_239, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1235);
     head_239=strstr(str,search_str);
     if(_if_conditional96=head_239==((void*)0),    _if_conditional96) {
         __result132__ = default_value;
+        come_pop_stackframe();
         return __result132__;
     }
     __result133__ = head_239-str;
+    come_pop_stackframe();
     return __result133__;
+come_pop_stackframe();
 }
 
 int charp_index_regex(char* self, struct come_regex* reg, int default_value){
@@ -4169,6 +4497,7 @@ memset(&len_252, 0, sizeof(int));
 memset(&regex_result_253, 0, sizeof(int));
 memset(&i_254, 0, sizeof(int));
 memset(&i_255, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1282);
     ovec_max_240=16;
     int start_241[ovec_max_240];
     memset(&start_241, 0, sizeof(int)    *(ovec_max_240)    );
@@ -4200,7 +4529,9 @@ memset(&i_255, 0, sizeof(int));
         }
     }
     __result134__ = result_244;
+    come_pop_stackframe();
     return __result134__;
+come_pop_stackframe();
 }
 
 char* charp_replace(char* self, int index, char c){
@@ -4214,9 +4545,11 @@ _Bool _if_conditional101;
 char* __result136__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_256, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1307);
     len_256=strlen(self);
     if(_if_conditional98=strcmp(self,"")==0,    _if_conditional98) {
         __result135__ = __result_obj__ = __builtin_string(self);
+        come_pop_stackframe();
         return __result135__;
     }
     if(_if_conditional99=index<0,    _if_conditional99) {
@@ -4230,7 +4563,9 @@ memset(&len_256, 0, sizeof(int));
     }
     self[index]=c;
     __result136__ = __result_obj__ = __builtin_string(self);
+    come_pop_stackframe();
     return __result136__;
+come_pop_stackframe();
 }
 
 char* charp_multiply(char* str, int n){
@@ -4243,6 +4578,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_257, 0, sizeof(int));
 memset(&result_258, 0, sizeof(char*));
 memset(&i_259, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1322);
     len_257=strlen(str)*n+1;
     result_258=(char*)come_calloc(1, sizeof(char)*(1*(len_257)), "libcomelang2-str-gc.c", 1311, "char");
     result_258[0]=0;
@@ -4250,7 +4586,9 @@ memset(&i_259, 0, sizeof(int));
         strcat(result_258,str);
     }
     __result137__ = __result_obj__ = result_258;
+    come_pop_stackframe();
     return __result137__;
+come_pop_stackframe();
 }
 
 char* charp_sub(char* self, struct come_regex* reg, char* replace){
@@ -4292,6 +4630,7 @@ memset(&i_275, 0, sizeof(int));
 memset(&str_276, 0, sizeof(char*));
 memset(&str_277, 0, sizeof(char*));
 memset(&str_278, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1385);
     offset_260=0;
     ovec_max_261=16;
     int start_262[ovec_max_261];
@@ -4337,7 +4676,9 @@ memset(&str_278, 0, sizeof(char*));
         }
     }
     __result138__ = __result_obj__ = buffer_to_string(result_270);
+    come_pop_stackframe();
     return __result138__;
+come_pop_stackframe();
 }
 
 char* charp_sub_count(char* self, struct come_regex* reg, char* replace, int count){
@@ -4384,6 +4725,7 @@ memset(&str_296, 0, sizeof(char*));
 memset(&str_297, 0, sizeof(char*));
 memset(&str_298, 0, sizeof(char*));
 memset(&str_299, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1457);
     offset_279=0;
     ovec_max_280=16;
     int start_281[ovec_max_280];
@@ -4436,7 +4778,9 @@ memset(&str_299, 0, sizeof(char*));
         }
     }
     __result139__ = __result_obj__ = buffer_to_string(result_289);
+    come_pop_stackframe();
     return __result139__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_split_str(char* self, char* str){
@@ -4451,6 +4795,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_300, 0, sizeof(struct list$1charph*));
 memset(&buf_301, 0, sizeof(struct buffer*));
 memset(&i_302, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1482);
     result_300=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1461, "struct list$1charph"));
     buf_301=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1463, "struct buffer"));
     for(    i_302=0;    i_302<charp_length(self);    i_302++    ){
@@ -4467,7 +4812,9 @@ memset(&i_302, 0, sizeof(int));
         list$1charph_push_back(result_300,__builtin_string(buf_301->buf));
     }
     __result140__ = __result_obj__ = result_300;
+    come_pop_stackframe();
     return __result140__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_scan(char* self, struct come_regex* reg){
@@ -4512,6 +4859,7 @@ memset(&str_319, 0, sizeof(char*));
 memset(&str_320, 0, sizeof(char*));
 memset(&i_321, 0, sizeof(int));
 memset(&match_string_322, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1555);
     result_303=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1484, "struct list$1charph"));
     offset_304=0;
     ovec_max_305=16;
@@ -4565,7 +4913,9 @@ memset(&match_string_322, 0, sizeof(char*));
         }
     }
     __result141__ = __result_obj__ = result_303;
+    come_pop_stackframe();
     return __result141__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_split(char* self, struct come_regex* reg){
@@ -4613,6 +4963,7 @@ memset(&str_340, 0, sizeof(char*));
 memset(&i_341, 0, sizeof(int));
 memset(&match_str_342, 0, sizeof(char*));
 memset(&str_343, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1632);
     options_325=reg->options;
     str_326=reg->str;
     re_327=reg->re;
@@ -4670,7 +5021,9 @@ memset(&str_343, 0, sizeof(char*));
         list$1charph_push_back(result_328,str_343);
     }
     __result142__ = __result_obj__ = result_328;
+    come_pop_stackframe();
     return __result142__;
+come_pop_stackframe();
 }
 
 _Bool charp_match(char* self, struct come_regex* reg){
@@ -4704,6 +5057,7 @@ memset(&len_355, 0, sizeof(int));
 memset(&regex_result_356, 0, sizeof(int));
 memset(&i_357, 0, sizeof(int));
 memset(&i_358, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1677);
     offset_344=0;
     ovec_max_345=16;
     int start_346[ovec_max_345];
@@ -4727,15 +5081,19 @@ memset(&i_358, 0, sizeof(int));
         }
         if(_if_conditional120=regex_result_356>0,        _if_conditional120) {
             __result143__ = (_Bool)1;
+            come_pop_stackframe();
             return __result143__;
         }
         else {
             __result144__ = (_Bool)0;
+            come_pop_stackframe();
             return __result144__;
         }
     }
     __result145__ = (_Bool)0;
+    come_pop_stackframe();
     return __result145__;
+come_pop_stackframe();
 }
 
 struct list$1charph* charp_split_maxsplit(char* self, struct come_regex* reg, int maxsplit){
@@ -4786,6 +5144,7 @@ memset(&str_377, 0, sizeof(char*));
 memset(&i_378, 0, sizeof(int));
 memset(&match_str_379, 0, sizeof(char*));
 memset(&str_380, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1762);
     options_361=reg->options;
     str_362=reg->str;
     re_363=reg->re;
@@ -4848,7 +5207,9 @@ memset(&str_380, 0, sizeof(char*));
         list$1charph_push_back(result_364,str_380);
     }
     __result146__ = __result_obj__ = result_364;
+    come_pop_stackframe();
     return __result146__;
+come_pop_stackframe();
 }
 
 int charp_rindex_regex_count(char* self, struct come_regex* reg, int count, int default_value){
@@ -4888,6 +5249,7 @@ memset(&len_395, 0, sizeof(int));
 memset(&regex_result_396, 0, sizeof(int));
 memset(&i_397, 0, sizeof(int));
 memset(&i_398, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1824);
     options_383=reg->options;
     str_384=reg->str;
     re_385=reg->re;
@@ -4930,7 +5292,9 @@ memset(&i_398, 0, sizeof(int));
         }
     }
     __result147__ = result_391;
+    come_pop_stackframe();
     return __result147__;
+come_pop_stackframe();
 }
 
 _Bool charp_match_count(char* self, struct come_regex* reg, int count){
@@ -4968,6 +5332,7 @@ memset(&len_411, 0, sizeof(int));
 memset(&regex_result_412, 0, sizeof(int));
 memset(&i_413, 0, sizeof(int));
 memset(&i_414, 0, sizeof(int));
+come_push_stackframe("libcomelang2-str-gc.c", 1882);
     offset_399=0;
     ovec_max_400=16;
     int start_401[ovec_max_400];
@@ -4994,6 +5359,7 @@ memset(&i_414, 0, sizeof(int));
             n_409++;
             if(_if_conditional131=count==n_409,            _if_conditional131) {
                 __result148__ = (_Bool)1;
+                come_pop_stackframe();
                 return __result148__;
             }
             if(_if_conditional132=offset_399==end_402[0],            _if_conditional132) {
@@ -5005,11 +5371,14 @@ memset(&i_414, 0, sizeof(int));
         }
         else {
             __result149__ = (_Bool)0;
+            come_pop_stackframe();
             return __result149__;
         }
     }
     __result150__ = (_Bool)0;
+    come_pop_stackframe();
     return __result150__;
+come_pop_stackframe();
 }
 
 char* charp_sub_block(char* self, struct come_regex* reg, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
@@ -5078,6 +5447,7 @@ memset(&match_string_440, 0, sizeof(char*));
 memset(&block_result_441, 0, sizeof(char*));
 memset(&str_442, 0, sizeof(char*));
 memset(&str_443, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 1990);
     offset_415=0;
     ovec_max_416=16;
     int start_417[ovec_max_416];
@@ -5109,6 +5479,7 @@ memset(&str_443, 0, sizeof(char*));
             block_result_434=block(parent,match_string_433,group_strings_432);
             if(_if_conditional134=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional134) {
                 __result151__ = __result_obj__ = buffer_to_string(result_425);
+                come_pop_stackframe();
                 return __result151__;
             }
             buffer_append_str(result_425,block_result_434);
@@ -5143,6 +5514,7 @@ memset(&str_443, 0, sizeof(char*));
                 block_result_441=block(parent,match_string_440,group_strings_437);
                 if(_if_conditional139=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional139) {
                     __result152__ = __result_obj__ = buffer_to_string(result_425);
+                    come_pop_stackframe();
                     return __result152__;
                 }
                 buffer_append_str(result_425,block_result_441);
@@ -5160,7 +5532,9 @@ memset(&str_443, 0, sizeof(char*));
         }
     }
     __result153__ = __result_obj__ = buffer_to_string(result_425);
+    come_pop_stackframe();
     return __result153__;
+come_pop_stackframe();
 }
 
 char* charp_sub_block_count(char* self, struct come_regex* reg, int count, void* parent, char* (*block)(void*,char*,struct list$1charph*)){
@@ -5237,6 +5611,7 @@ memset(&block_result_472, 0, sizeof(char*));
 memset(&str_473, 0, sizeof(char*));
 memset(&str_474, 0, sizeof(char*));
 memset(&str_475, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 2116);
     offset_444=0;
     ovec_max_445=16;
     int start_446[ovec_max_445];
@@ -5270,6 +5645,7 @@ memset(&str_475, 0, sizeof(char*));
             block_result_464=block(parent,match_string_463,group_strings_462);
             if(_if_conditional142=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional142) {
                 __result154__ = __result_obj__ = buffer_to_string(result_454);
+                come_pop_stackframe();
                 return __result154__;
             }
             buffer_append_str(result_454,block_result_464);
@@ -5310,6 +5686,7 @@ memset(&str_475, 0, sizeof(char*));
                 block_result_472=block(parent,match_string_471,group_strings_468);
                 if(_if_conditional148=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,                _if_conditional148) {
                     __result155__ = __result_obj__ = buffer_to_string(result_454);
+                    come_pop_stackframe();
                     return __result155__;
                 }
                 buffer_append_str(result_454,block_result_472);
@@ -5332,7 +5709,9 @@ memset(&str_475, 0, sizeof(char*));
         }
     }
     __result156__ = __result_obj__ = buffer_to_string(result_454);
+    come_pop_stackframe();
     return __result156__;
+come_pop_stackframe();
 }
 
 unsigned int wchar_tp_get_hash_key(unsigned int* value){
@@ -5344,6 +5723,7 @@ unsigned int __result157__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_476, 0, sizeof(int));
 memset(&p_477, 0, sizeof(unsigned int*));
+come_push_stackframe("libcomelang2-str-gc.c", 2130);
     result_476=0;
     p_477=value;
     while(_while_condtional24=*p_477,    _while_condtional24) {
@@ -5351,55 +5731,75 @@ memset(&p_477, 0, sizeof(unsigned int*));
         p_477++;
     }
     __result157__ = result_476;
+    come_pop_stackframe();
     return __result157__;
+come_pop_stackframe();
 }
 
 _Bool wstring_equals(unsigned int* left, unsigned int* right){
 void* __result_obj__;
 _Bool __result159__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 2140);
     __result159__ = wcscmp(left,right)==0;
+    come_pop_stackframe();
     return __result159__;
+come_pop_stackframe();
 }
 
 _Bool wchar_t_operator_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
 _Bool __result161__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 2150);
     __result161__ = left==right;
+    come_pop_stackframe();
     return __result161__;
+come_pop_stackframe();
 }
 
 _Bool wchar_t_operator_not_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
 _Bool __result162__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 2155);
     __result162__ = left!=right;
+    come_pop_stackframe();
     return __result162__;
+come_pop_stackframe();
 }
 
 unsigned int wchar_t_get_hash_key(unsigned int value){
 void* __result_obj__;
 unsigned int __result163__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 2160);
     __result163__ = value;
+    come_pop_stackframe();
     return __result163__;
+come_pop_stackframe();
 }
 
 _Bool wchar_t_equals(unsigned int left, unsigned int right){
 void* __result_obj__;
 _Bool __result164__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 2165);
     __result164__ = left==right;
+    come_pop_stackframe();
     return __result164__;
+come_pop_stackframe();
 }
 
 char* wchar_t_to_string(unsigned int wc){
 void* __result_obj__;
 char* __result165__;
 memset(&__result_obj__, 0, sizeof(void*));
+come_push_stackframe("libcomelang2-str-gc.c", 2170);
     __result165__ = __result_obj__ = xsprintf("%ls",wc);
+    come_pop_stackframe();
     return __result165__;
+come_pop_stackframe();
 }
 
 char* string_chomp(char* str){
@@ -5410,12 +5810,16 @@ char* __result166__;
 char* __result167__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_478, 0, sizeof(char*));
+come_push_stackframe("libcomelang2-str-gc.c", 2180);
     result_478=__builtin_string(str);
     if(_if_conditional151=result_478[string_length(result_478)-1]==10,    _if_conditional151) {
         __result166__ = __result_obj__ = string_substring(result_478,0,-2);
+        come_pop_stackframe();
         return __result166__;
     }
     __result167__ = __result_obj__ = result_478;
+    come_pop_stackframe();
     return __result167__;
+come_pop_stackframe();
 }
 

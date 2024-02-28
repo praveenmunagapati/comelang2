@@ -817,15 +817,23 @@ sType*%, string clone_object(sType* type, char* obj, sInfo* info)
 
     /// call cloner ///
     if(cloner != null) {
-        result = xsprintf("%s(%s)", fun_name2, c_value);
         result_type = cloner->mResultType;
         result_type = solve_generics(result_type, type, info);
+        
+        result = xsprintf("%s(%s)", fun_name2, c_value);
+        
+        if(gComeDebug) {
+            result = append_stackframe(result, result_type, info);
+        }
     }
     else {
+        result_type = clone type;
         type2->mHeap = true;
         string type_name = make_type_name_string(type2);
         result = xsprintf("(%s)come_memdup(%s, \"%s\", %d, \"%s\")", type_name, c_value, info.sname, info.sline, type_name);
-        result_type = clone type;
+        if(gComeDebug) {
+            result = append_stackframe(result, result_type, info);
+        }
     }
     
     info.right_value_objects = dummy_heap right_value_objects;
