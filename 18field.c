@@ -440,7 +440,7 @@ bool sNullCheckNode*::compile(sNullCheckNode* self, sInfo* info)
     else if(left_value.type->mPointerNum > 0) {
         CVALUE*% come_value = new CVALUE;
         
-        come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline);
+        come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
         come_value.type = clone left_value.type;
         come_value.var = null;
         

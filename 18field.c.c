@@ -113,6 +113,7 @@ extern _Bool gComeGC;
 extern _Bool gComeC;
 extern _Bool gComeMalloc;
 extern _Bool gCommonHeader;
+extern int gComeDebugStackFrameID;
 struct sType;
 struct tuple2$2charphsTypeph
 {
@@ -1026,7 +1027,7 @@ void* mempcpy(void* anonymous_var_nameX459, const void* anonymous_var_nameX460, 
 
 char* basename();
 
-void come_push_stackframe(char* sname, int sline);
+void come_push_stackframe(char* sname, int sline, int id);
 
 void come_pop_stackframe();
 
@@ -1034,7 +1035,7 @@ void stackframe();
 
 void come_save_stackframe(char* sname, int sline);
 
-void* come_null_check(void* mem, char* sname, int sline);
+void* come_null_check(void* mem, char* sname, int sline, int id);
 
 void* come_range_check(void* mem, void* begin, void* end, char* sname, int sline);
 
@@ -1832,7 +1833,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value0 = (void*)0;
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
 right_value1 = (void*)0;
-    result_0=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1951, "struct smart_pointer$1char"))));
+    result_0=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1954, "struct smart_pointer$1char"))));
     come_call_finalizer2(smart_pointer$1charp_finalize,right_value0, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj1=result_0->memory;
     result_0->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value1=buffer_clone(self))));
@@ -1855,7 +1856,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value2 = (void*)0;
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
 right_value3 = (void*)0;
-    result_1=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value2=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1961, "struct smart_pointer$1char"))));
+    result_1=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value2=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1964, "struct smart_pointer$1char"))));
     come_call_finalizer2(smart_pointer$1charp_finalize,right_value2, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj2=result_1->memory;
     result_1->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value3=buffer_clone(self))));
@@ -1878,7 +1879,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value4 = (void*)0;
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
 right_value5 = (void*)0;
-    result_2=(struct smart_pointer$1short*)come_increment_ref_count(((struct smart_pointer$1short*)(right_value4=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1971, "struct smart_pointer$1short"))));
+    result_2=(struct smart_pointer$1short*)come_increment_ref_count(((struct smart_pointer$1short*)(right_value4=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1974, "struct smart_pointer$1short"))));
     come_call_finalizer2(smart_pointer$1shortp_finalize,right_value4, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj3=result_2->memory;
     result_2->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value5=buffer_clone(self))));
@@ -1901,7 +1902,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value6 = (void*)0;
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
 right_value7 = (void*)0;
-    result_3=(struct smart_pointer$1int*)come_increment_ref_count(((struct smart_pointer$1int*)(right_value6=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1981, "struct smart_pointer$1int"))));
+    result_3=(struct smart_pointer$1int*)come_increment_ref_count(((struct smart_pointer$1int*)(right_value6=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1984, "struct smart_pointer$1int"))));
     come_call_finalizer2(smart_pointer$1intp_finalize,right_value6, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj4=result_3->memory;
     result_3->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value7=buffer_clone(self))));
@@ -1924,7 +1925,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value8 = (void*)0;
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
 right_value9 = (void*)0;
-    result_4=(struct smart_pointer$1long*)come_increment_ref_count(((struct smart_pointer$1long*)(right_value8=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1991, "struct smart_pointer$1long"))));
+    result_4=(struct smart_pointer$1long*)come_increment_ref_count(((struct smart_pointer$1long*)(right_value8=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1994, "struct smart_pointer$1long"))));
     come_call_finalizer2(smart_pointer$1longp_finalize,right_value8, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     __dec_obj5=result_4->memory;
     result_4->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value9=buffer_clone(self))));
@@ -4507,7 +4508,7 @@ right_value149 = (void*)0;
                 come_value_112=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value146=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "18field.c", 441, "struct CVALUE"))));
                 come_call_finalizer2(CVALUE_finalize,right_value146, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 __dec_obj72=come_value_112->c_value;
-                come_value_112->c_value=(char*)come_increment_ref_count(((char*)(right_value148=xsprintf("((%s)come_null_check(%s, \"%s\", %d))",((char*)(right_value147=make_type_name_string(left_value_103->type,(_Bool)0,(_Bool)0,(_Bool)0,info))),left_value_103->c_value,info->sname,info->sline))));
+                come_value_112->c_value=(char*)come_increment_ref_count(((char*)(right_value148=xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))",((char*)(right_value147=make_type_name_string(left_value_103->type,(_Bool)0,(_Bool)0,(_Bool)0,info))),left_value_103->c_value,info->sname,info->sline,gComeDebugStackFrameID++))));
                 __dec_obj72 = come_decrement_ref_count2(__dec_obj72, (void*)0, (void*)0, 0,0,0, (void*)0);
                 right_value147 = come_decrement_ref_count2(right_value147, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 right_value148 = come_decrement_ref_count2(right_value148, (void*)0, (void*)0, 1, 0, 0, __result_obj__);

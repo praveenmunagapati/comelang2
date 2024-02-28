@@ -20,6 +20,7 @@ extern bool gComeGC;
 extern bool gComeC;
 extern bool gComeMalloc;
 extern bool gCommonHeader;
+extern int gComeDebugStackFrameID;
 
 struct sType;
 

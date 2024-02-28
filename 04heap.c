@@ -1209,7 +1209,7 @@ string append_stackframe(char* c_value, sType* type, sInfo* info)
 {
     if(type->mClass->mName === "void" && type->mPointerNum == 0) {
         if(gComeDebug) {
-            return s"(come_push_stackframe(\"\{info.sname}\", \{info.sline}),\{c_value},come_pop_stackframe())";
+            return s"(come_push_stackframe(\"\{info.sname}\", \{info.sline},\{gComeDebugStackFrameID++}),\{c_value},come_pop_stackframe())";
         }
     }
     else if(gComeDebug) {
@@ -1218,7 +1218,7 @@ string append_stackframe(char* c_value, sType* type, sInfo* info)
         
         string var_name = xsprintf("__exception_result_var_b%d", n);
         add_come_code_at_function_head(info, "%s;\n", make_define_var(type, var_name));
-        return s"(come_push_stackframe(\"\{info.sname}\", \{info.sline}),\{var_name}=\{c_value}, come_pop_stackframe(), \{var_name})";
+        return s"(come_push_stackframe(\"\{info.sname}\", \{info.sline}, \{gComeDebugStackFrameID++}),\{var_name}=\{c_value}, come_pop_stackframe(), \{var_name})";
     }
     
     return string(c_value);

@@ -14,6 +14,7 @@ bool gCommonHeader = false;
 bool gComeMalloc = false;
 bool gComeDebug = false;
 bool gComeOriginalSourcePosition = true;
+int gComeDebugStackFrameID = 0;
 
 void come_init() version 2
 {

@@ -27,12 +27,12 @@ struct sDummyCurrentStack
     int __method_block_result_kind__;
 };
 
-void come_push_stackframe(char* sname, int sline);
+void come_push_stackframe(char* sname, int sline, int id);
 void come_pop_stackframe();
 void stackframe();
 void come_save_stackframe(char* sname, int sline);
 
-void* come_null_check(void* mem, char* sname, int sline);
+void* come_null_check(void* mem, char* sname, int sline, int id);
 void* come_range_check(void* mem, void* begin, void* end, char* sname, int sline);
 
 bool bool::expect(bool self, void* parent, void (*block)(void* parent)) ;
@@ -1173,7 +1173,10 @@ impl map <T, T2>
         if(self == null) {
             return null;
         }
+        
         var result = new map<T,T2>();
+        
+        result.key_list = new list<T&>();
 
         for(var it = self.begin(); !self.end(); it = self.next()) {
             T2&| default_value;

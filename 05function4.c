@@ -389,7 +389,7 @@ void check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
         else {
             var buf2 = new buffer();
             
-            buf2.append_str(s"come_null_check(\{come_value.c_value}, \"\{info->sname}\", \{info->sline})");
+            buf2.append_str(s"come_null_check(\{come_value.c_value}, \"\{info->sname}\", \{info->sline}, \{gComeDebugStackFrameID++})");
             
             come_value.c_value = buf2.to_string();
             come_value.type = clone left_type;

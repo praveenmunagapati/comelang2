@@ -12,15 +12,17 @@ using C
 
 char* gComeStackFrameSName[COME_STACKFRAME_MAX_GLOBAL];
 int gComeStackFrameSLine[COME_STACKFRAME_MAX_GLOBAL];
+int gComeStackFrameID[COME_STACKFRAME_MAX_GLOBAL];
 int gNumComeStackFrame = 0;
 
 char* gComeStackFrameBuffer = NULL;
 
-void come_push_stackframe(char* sname, int sline)
+void come_push_stackframe(char* sname, int sline, int id)
 {
     if(gNumComeStackFrame < COME_STACKFRAME_MAX_GLOBAL) {
         gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
         gComeStackFrameSLine[gNumComeStackFrame] = sline;
+        gComeStackFrameID[gNumComeStackFrame] = id;
     
         gNumComeStackFrame++;
     }
@@ -38,7 +40,7 @@ void come_save_stackframe(char* sname, int sline)
     buffer*% buf = new buffer();
     buf.append_str(xsprintf("%s %d\n", sname, sline));
     for(int i=gNumComeStackFrame-2; i>=0; i--) {
-        buf.append_str(xsprintf("%s %d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i]));
+        buf.append_str(xsprintf("%s %d #%d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i], gComeStackFrameID[i]));
     }
     
     if(gComeStackFrameBuffer) {
@@ -50,7 +52,7 @@ void come_save_stackframe(char* sname, int sline)
 void stackframe()
 {
     for(int i=gNumComeStackFrame-1; i>=0; i--) {
-        printf("%s %d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i]);
+        printf("%s %d #%d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i], gComeStackFrameID[i]);
     }
 }
 
@@ -59,10 +61,10 @@ string come_get_stackframe()
     return string(gComeStackFrameBuffer);
 }
 
-void* come_null_check(void* mem, char* sname, int sline)
+void* come_null_check(void* mem, char* sname, int sline, int id)
 {
     if(mem == null) {
-        printf("%s %d: null check error\n", sname, sline);
+        printf("%s %d #%d: null check error\n", sname, sline, id);
         stackframe();
         exit(2);
     }
@@ -226,6 +228,7 @@ struct sMemHeader
     char* class_name;
     char* sname[COME_STACKFRAME_MAX];
     int sline[COME_STACKFRAME_MAX];
+    int id[COME_STACKFRAME_MAX];
 };
 
 sMemHeader* gAllocMem;
@@ -256,6 +259,7 @@ void come_heap_init(int come_malloc, int come_debug, int come_gc)
     gComeStackFrameBuffer = NULL;
     memset(gComeStackFrameSName, 0, sizeof(char*)*COME_STACKFRAME_MAX_GLOBAL);
     memset(gComeStackFrameSLine, 0, sizeof(int)*COME_STACKFRAME_MAX_GLOBAL);
+    memset(gComeStackFrameID, 0, sizeof(int)*COME_STACKFRAME_MAX_GLOBAL);
     
     gHeapPages.mSizePages = 4;
     
@@ -295,7 +299,7 @@ void come_heap_final()
             }
             for(int i=0; i<COME_STACKFRAME_MAX; i++) {
                 if(it->sname[i]) {
-                    printf("%s %d, ", it->sname[i], it->sline[i]);
+                    printf("%s %d #%d, ", it->sname[i], it->sline[i], it->id[i]);
                     flag = true;
                 }
             }
@@ -389,16 +393,18 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         it->size = size + sizeof(sMemHeader);
         //it->free_next = NULL;
         
-        come_push_stackframe(sname, sline);
+        come_push_stackframe(sname, sline, 0);
 
         
         if(gNumComeStackFrame < COME_STACKFRAME_MAX) {
             memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*gNumComeStackFrame);
             memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*gNumComeStackFrame);
+            memcpy(it.id, gComeStackFrameID, sizeof(int)*gNumComeStackFrame);
         }
         else {
             memcpy(it.sname, gComeStackFrameSName + gNumComeStackFrame - COME_STACKFRAME_MAX -1, sizeof(char*)*COME_STACKFRAME_MAX);
             memcpy(it.sline, gComeStackFrameSLine + gNumComeStackFrame - COME_STACKFRAME_MAX -1, sizeof(int)*COME_STACKFRAME_MAX);
+            memcpy(it.id, gComeStackFrameID + gNumComeStackFrame - COME_STACKFRAME_MAX -1, sizeof(int)*COME_STACKFRAME_MAX);
         }
         
         come_pop_stackframe();

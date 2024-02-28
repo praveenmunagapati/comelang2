@@ -838,13 +838,13 @@ int transpile(sInfo* info) version 5
     {
         var name = string("come_null_check");
         var result_type = new sType("void*");
-        var param_types = [new sType("void*"), new sType("char*"), new sType("int")];
-        var param_names = [string("mem"), string("sname"), string("sline")];
+        var param_types = [new sType("void*"), new sType("char*"), new sType("int"), new sType("int")];
+        var param_names = [string("mem"), string("sname"), string("sline"), string("id")];
         var param_default_parametors = new list<string>();
         var main_fun = new sFun(name, result_type, param_types, param_names
             , param_default_parametors, true@external, false@var_args
             , null@block, false@static_
-            , string("void* come_null_check(void* mem, char* sname, int sline)")
+            , string("void* come_null_check(void* mem, char* sname, int sline, int id)")
             , string("")
             , info);
         
