@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 15.0.1
+version 16.0.0
 
 ``` C
 #include <comelang2.h>
@@ -1596,6 +1596,47 @@ a.c 7: range check error
 libcomelang2.c 96
 a.c 7
 ```
+
+# Method Generics
+
+```C
+impl list<T>
+{
+    template<R> list<R>*% map2(list<T>* self, void* parent, R (*block)(void*, T&))
+    {
+        auto result = new list<R>.initialize();
+
+        list_item<T>* it = self.head;
+        while(it != null) {
+            result.push_back(block(parent, it.item));
+            
+            if(((sDummyCurrentStack*)parent)->__method_block_result_kind__ != 0) {
+                return result;
+            }
+
+            it = it.next;
+        }
+
+        return result;
+    }
+}
+
+int main(int argc, char** argv)
+{
+    list<int>*% li = new list<int>();
+    
+    li.add(1).add(2).add(3);
+    
+    li.map2<string> {
+        return xsprintf("%d", it);
+    }.each {
+        puts(it);
+    }
+}
+```
+
+no type iference
+
 
 require -cg option for show stackframe()
 
