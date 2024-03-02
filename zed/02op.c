@@ -149,8 +149,8 @@ bool vm(sInfo* info) version 2
                 info->stack.push_back(new ZVALUE(kind: kIntValue, int_value:value));
             }
             else if(left_value.kind == kStrValue && right_value.kind == kStrValue) {
-                wchar_t* lvalue = borrow gc_inc(left_value.strValue);
-                wchar_t* rvalue = borrow gc_inc(right_value.strValue);
+                wchar_t* lvalue = left_value.strValue;
+                wchar_t* rvalue = right_value.strValue;
                 
                 wstring value = lvalue + rvalue;
                 
@@ -160,8 +160,8 @@ bool vm(sInfo* info) version 2
                 info->stack.push_back(new ZVALUE(kind: kStrValue, str_value:value));
             }
             else if(left_value.kind == kMapValue && right_value.kind == kMapValue) {
-                map<ZVALUE*%, ZVALUE*%>* lvalue = borrow gc_inc(left_value.mapValue);
-                map<ZVALUE*%, ZVALUE*%>* rvalue = borrow gc_inc(right_value.mapValue);
+                map<ZVALUE*%, ZVALUE*%>* lvalue = left_value.mapValue;
+                map<ZVALUE*%, ZVALUE*%>* rvalue = right_value.mapValue;
                 
                 map<ZVALUE*%, ZVALUE*%>*% value = lvalue + rvalue;
                 
@@ -171,8 +171,8 @@ bool vm(sInfo* info) version 2
                 info->stack.push_back(new ZVALUE(kind: kMapValue, map_value:value));
             }
             else if(left_value.kind == kListValue && right_value.kind == kListValue) {
-                list<ZVALUE*%>* lvalue = borrow gc_inc(left_value.listValue);
-                list<ZVALUE*%>* rvalue = borrow gc_inc(right_value.listValue);
+                list<ZVALUE*%>* lvalue = left_value.listValue;
+                list<ZVALUE*%>* rvalue = right_value.listValue;
                 
                 list<ZVALUE*%>*% value = lvalue + rvalue;
                 

@@ -1,0 +1,34 @@
+a.c.c:86:11: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+   86 |     short short* p;
+      |           ^~~~~
+a.c.c:661:63: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  661 | struct buffer* buffer_append_short(struct buffer* self, short short value);
+      |                                                               ^~~~~
+a.c.c:683:26: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  683 | _Bool short_equals(short short self, short short right);
+      |                          ^~~~~
+a.c.c:683:44: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  683 | _Bool short_equals(short short self, short short right);
+      |                                            ^~~~~
+a.c.c:717:39: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  717 | unsigned int short_get_hash_key(short short value);
+      |                                       ^~~~~
+a.c.c:737:29: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  737 | short int short_clone(short short self);
+      |                             ^~~~~
+a.c.c:813:29: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  813 | char* short_to_string(short short self);
+      |                             ^~~~~
+a.c.c:833:25: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  833 | int short_compare(short short left, short short right);
+      |                         ^~~~~
+a.c.c:833:43: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+  833 | int short_compare(short short left, short short right);
+      |                                           ^~~~~
+./comelang2.h:1970:100: warning: duplicate 'short' declaration specifier [-Wduplicate-decl-specifier]
+ 1970 |     ((struct smart_pointer$1short*)come_null_check(result_2, "./comelang2.h", 1970, 19))->p=(short short*)((struct buffer*)come_null_check(((struct smart_pointer$1short*)come_null_check(result_2, "./comelang2.h", 1970, 20))->memory, "./comelang2.h", 1970, 21))->buf;
+      |                                                                                                    ^~~~~
+a.c:7:112: warning: expression result unused [-Wunused-value]
+    7 |     (come_push_stackframe("a.c", 7, 36),__exception_result_var_b6=printf("a %p\n",a_5), come_pop_stackframe(), __exception_result_var_b6);
+      |                                                                                                                ^~~~~~~~~~~~~~~~~~~~~~~~~
+11 warnings generated.

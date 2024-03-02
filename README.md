@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 15.0.0
+version 15.0.1
 
 ``` C
 #include <comelang2.h>
@@ -405,6 +405,7 @@ bash fast_build.sh (getting with -O2 comelang2)
 13.2.0 faster code.
 14.0.0 real complete.
 15.0.0 real complete....may be. I will improve shsh, zed, vin and remove memory leaks from this software.
+15.0.1 appended method generics. list::map2. Improved usablity for detecting memory leaks.
 
 # Language specifications
 
