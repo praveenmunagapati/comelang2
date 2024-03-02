@@ -268,14 +268,12 @@ bool parse_statment(sInfo* info)
         string line = buf.to_string();
         
         if(line.match(/^cd\s*$/)) {
-puts("AAA");
             char* path = getenv("HOME");
             chdir(path);
             
             setenv("PWD", path, 1);
         }
         else if(line.match(/^cd /)) {
-puts("BBB");
             var str = clone line.scan(/^cd +(.+)/)[1];
             
             if(str) {
@@ -287,7 +285,6 @@ puts("BBB");
             }
         }
         else if(line.match(/^if /)) {
-puts("CCC");
             info->p = p;
             
             info->p += 2;
@@ -541,7 +538,6 @@ puts("CCC");
             }
         }
         else if(line.match(/^while /)) {
-puts("DDD");
             info->p = p;
             
             info->p += strlen("while");
@@ -625,7 +621,6 @@ puts("DDD");
             }
         }
         else if(line.match(/^cd /)) {
-puts("EEE");
             var str = line.scan(/^cd +(.+)/).item(1, null);
             
             if(str) {
@@ -637,7 +632,6 @@ puts("EEE");
             }
         }
         else if(line.match(/^export /)) {
-puts("FFFF");
             var li = line.scan(/^export +(.+)=(.+)/);
             
             var name = li.item(1, null);
@@ -648,7 +642,6 @@ puts("FFFF");
             }
         }
         else if(zed_command) {
-puts("GGG");
             info->p = p;
             
             buffer*% arg = new buffer();
@@ -665,13 +658,11 @@ puts("GGG");
             if(arg.to_string() === "") {
                 break;
             }
-puts(arg.to_string());
             
             info->commands[-1].args.push_back(string("zed"));
             info->commands[-1].args.push_back(arg.to_string());
         }
         else {
-puts("HHH");
             info->p = p;
             
             string arg = parse_word(info);
