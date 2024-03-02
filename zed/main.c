@@ -16,8 +16,11 @@ unsigned int ZVALUE*::get_hash_key(ZVALUE* self)
         case kIntValue:
             return self.intValue.get_hash_key();
             
-        case kStrValue:
-            return self.strValue.get_hash_key();
+        case kStrValue: {
+            unsigned int result = self.strValue.get_hash_key();
+            return result;
+            }
+            break;
             
         case kBoolValue:
             return self.boolValue.get_hash_key();
@@ -61,12 +64,14 @@ unsigned int ZVALUE*::get_hash_key(ZVALUE* self)
 
 bool ZVALUE*::equals(ZVALUE* self, ZVALUE* right)
 {
+    bool result;
     switch(self.kind) {
         case kIntValue:
             return self.intValue.equals(right.intValue);
             
         case kStrValue:
-            return self.strValue.equals(right.strValue);
+            result = self.strValue.equals(right.strValue);
+            return result;
             
         case kBoolValue:
             return self.boolValue.equals(right.boolValue);

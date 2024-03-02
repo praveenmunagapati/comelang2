@@ -347,7 +347,7 @@ bool vm(sInfo* info) version 10
                     }
                     else if(fun_name === "map") {
                         if(params.length() == 0) {
-                            list<ZVALUE*%>*% list1 = obj.listValue.map {
+                            list<ZVALUE*%>*% list1 = obj.listValue.map2<ZVALUE*%> {
                                 using unsafe;
                                 
                                 ZVALUE*% var_value = clone it;
@@ -379,7 +379,9 @@ bool vm(sInfo* info) version 10
                                     exit(1);
                                 }
                                 
-                                return clone info2->result_value;
+                                ZVALUE*% ret_value = clone info2->result_value;
+                                
+                                return ret_value;
                             }
                             
                             result = new ZVALUE(kind:kListValue, list_value:list1);

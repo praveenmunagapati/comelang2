@@ -297,7 +297,9 @@ int main(int argc, char** argv)
     map<ZVALUE*%, ZVALUE*%>*% m = new map<ZVALUE*%, ZVALUE*%>();
     
     m.insert(new ZVALUE(kind:kStrValue, str_value:wstring("AAA")), new ZVALUE(kind:kIntValue, int_value:123));
+    m.insert(new ZVALUE(kind:kStrValue, str_value:wstring("BBB")), new ZVALUE(kind:kIntValue, int_value:456));
     
+/*
     var value = m.at(new ZVALUE(kind:kStrValue, str_value:wstring("AAA")), null);
     
     printf("%d\n", value.intValue);
@@ -313,9 +315,14 @@ int main(int argc, char** argv)
     var value2 = zvalue.mapValue.at(new ZVALUE(kind:kStrValue, str_value:wstring("AAA")), null);
     
     printf("%d\n", value2.intValue);
-/*
+*/
     var m2 = clone m;
     
+    foreach(it, m2) {
+        printf("%ls\n", it->strValue);
+    }
+    
+/*
     var value2 = m2.at(new ZVALUE(kind:kStrValue, str_value:wstring("AAA")), null);
     
     printf("%d\n", value2.intValue);

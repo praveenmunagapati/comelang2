@@ -43,13 +43,13 @@ bool sListNode*::compile(sListNode* self, sInfo* info)
 struct sMapNode
 {
     int id;
-    map<sNode*%, sNode*%>*% value;
+    list<tuple2<sNode*%, sNode*%>*%>*% value;
 };
 
-sMapNode*% sMapNode*::initialize(sMapNode*% self, map<sNode*%, sNode*%>*% value)
+sMapNode*% sMapNode*::initialize(sMapNode*% self, list<tuple2<sNode*%, sNode*%>*%>*% value)
 {
     self.id = gNodeID++;
-    self.value = value;
+    self.value = clone value;
     
     return self;
 }
@@ -61,12 +61,12 @@ unsigned int sMapNode*::id(sMapNode* self)
 
 bool sMapNode*::compile(sMapNode* self, sInfo* info)
 {
-    map<sNode*%, sNode*%>* map_ = self.value;
+    list<tuple2<sNode*%, sNode*%>*%>* value = self.value;
     
-    foreach(it, map_) {
-        sNode* item = map_[it];
+    foreach(it, value) {
+        var key, item = it;
         
-        if(!it.compile->(info)) {
+        if(!key.compile->(info)) {
             return false;
         }
         
@@ -76,9 +76,9 @@ bool sMapNode*::compile(sMapNode* self, sInfo* info)
     }
     
     info.codes.append_int(OP_MAP_VALUE);
-    info.codes.append_int(map_.length());
+    info.codes.append_int(value.length());
     
-    info.stack_num -= map_.length() * 2;
+    info.stack_num -= value.length() * 2;
     info.stack_num++;
     
     return true;
@@ -158,7 +158,7 @@ sNode*% exp_node(sInfo* info) version 3
         if(*info->p == ':') {
             info->p = p;
             
-            map<sNode*%, sNode*%>*% map_ = new map<sNode*%, sNode*%>();
+            list<tuple2<sNode*%, sNode*%>*%>*% value = new list<tuple2<sNode*%, sNode*%>*%>();
             
             while(true) {
                 sNode*% node = expression(info);
@@ -178,7 +178,7 @@ sNode*% exp_node(sInfo* info) version 3
                     return null;
                 }
                 
-                map_.insert(node, node2);
+                value.add(new tuple2<sNode*%, sNode*%>(node, node2));
                 
                 if(*info->p == ',') {
                     info->p++;
@@ -192,7 +192,7 @@ sNode*% exp_node(sInfo* info) version 3
                 }
             }
             
-            return new sNode(new sMapNode(map_));
+            return new sNode(new sMapNode(value));
         }
         else {
             info->p = p;
