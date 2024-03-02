@@ -295,7 +295,7 @@ void come_heap_final()
             bool flag = false;
             printf("#%d ", n);
             if(it->class_name) {
-                printf("%p (%s): ", it, it->class_name);
+                printf("%p (%s): ", (char*)it + sizeof(sMemHeader) + sizeof(size_t) + sizeof(size_t), it->class_name);
             }
             for(int i=0; i<COME_STACKFRAME_MAX; i++) {
                 if(it->sname[i]) {

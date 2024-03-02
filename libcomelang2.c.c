@@ -2146,7 +2146,7 @@ memset(&i_16, 0, sizeof(int));
                 flag_11=(_Bool)0;
                 printf("#%d ",n_10);
                 if(it_9->class_name) {
-                    printf("%p (%s): ",it_9,it_9->class_name);
+                    printf("%p (%s): ",(char*)it_9+sizeof(struct sMemHeader)+sizeof(unsigned long int)+sizeof(unsigned long int),it_9->class_name);
                 }
                 for(                i_12=0;                i_12<16;                i_12++                ){
                     if(_if_conditional29=it_9->sname[i_12],                    _if_conditional29) {
