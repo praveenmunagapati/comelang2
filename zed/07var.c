@@ -206,7 +206,7 @@ bool vm(sInfo* info) version 7
             
             ZVALUE* map_ = gVars.at(var_name, null);
             
-            if(map_ == null || (map_.kind != kMapValue && map_.kind != kListValue)) {
+            if(map_ == null || (map_.kind != kMapValue && map_.kind != kListValue && map_.kind != kStrValue)) {
                 fprintf(stderr, "invalid obj value for array index\n");
                 exit(2);
             }
@@ -249,8 +249,29 @@ bool vm(sInfo* info) version 7
                     }
                     break;
                     
+                case kStrValue: {
+                    int index_value = -1;
+                    if(index.kind == kIntValue) {
+                        index_value = index.intValue;
+                    }
+                    else {
+                        fprintf(stderr, "require int value for array index\n");
+                        exit(2);
+                    }
+                    
+                    wchar_t result = map_.strValue[index_value];
+                    
+                    if(result == '\0') {
+                        fprintf(stderr, "invalid index\n");
+                        exit(1);
+                    }
+                    
+                    info.stack.push_back(new ZVALUE(kind:kStrValue, str_value:xsprintf("%lc", result).to_wstring()));
+                    }
+                    break;
+                    
                 default:
-                    fprintf(stderr, "require list or map for index node\n");
+                    fprintf(stderr, "require list or map or string for index node\n");
                     exit(1);
             }
             }
