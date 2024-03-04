@@ -148,6 +148,28 @@ bool vm(sInfo* info) version 2
                 
                 info->stack.push_back(new ZVALUE(kind: kIntValue, int_value:value));
             }
+            else if(left_value.kind == kIntValue && right_value.kind == kStrValue) {
+                int lvalue = left_value.intValue;
+                wchar_t* rvalue = right_value.strValue;
+                
+                wstring value = lvalue.to_wstring() + rvalue;
+                
+                info.stack.delete(-1, -1);
+                info.stack.delete(-1, -1);
+                
+                info->stack.push_back(new ZVALUE(kind: kStrValue, str_value:value));
+            }
+            else if(left_value.kind == kStrValue && right_value.kind == kIntValue) {
+                wchar_t* lvalue = left_value.strValue;
+                int rvalue = right_value.intValue;
+                
+                wstring value = lvalue + rvalue.to_wstring();
+                
+                info.stack.delete(-1, -1);
+                info.stack.delete(-1, -1);
+                
+                info->stack.push_back(new ZVALUE(kind: kStrValue, str_value:value));
+            }
             else if(left_value.kind == kStrValue && right_value.kind == kStrValue) {
                 wchar_t* lvalue = left_value.strValue;
                 wchar_t* rvalue = right_value.strValue;

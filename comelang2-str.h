@@ -133,6 +133,11 @@ static inline string wstring::to_string(wchar_t* wstr)
     return wchar_t*::to_string(wstr);
 }
 
+static inline wstring int::to_wstring(int self)
+{
+    return xsprintf("%d", self).to_wstring();
+}
+
 int wchar_t*::length(wchar_t* str);
 static inline int wstring::length(wchar_t* str)
 {
