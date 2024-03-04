@@ -62,6 +62,15 @@ ZVALUE*%, bool str_method(string fun_name, ZVALUE* obj, list<ZVALUE*%>* params, 
             return (new ZVALUE(kind:kListValue, list_value:clone list2), true);
         }
     }
+    else if(fun_name === "xsprintf") {
+        if(params.length() == 1 && params[0].kind == kStrValue) {
+            wchar_t* param0 = params[0].strValue;
+            
+            string str1 = obj.strValue.to_string().xsprintf(param0);
+            
+            return (new ZVALUE(kind:kStrValue, str_value:str1.to_wstring()), true);
+        }
+    }
     else if(fun_name === "compare") {
         if(params.length() == 1 && params[0].kind == kStrValue) {
             string param0 = params[0].strValue.to_string();

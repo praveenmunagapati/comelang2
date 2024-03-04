@@ -2229,6 +2229,22 @@ string char*::operator_load_range_element(char* str, int head, int tail);
 string char*::reverse(char* str) ;
 string string::reverse(char* str) ;
 string xsprintf(char* msg, ...);
+
+static inline string string::xsprintf(char* self, char* msg, ...)
+{
+    return xsprintf(msg, self);
+}
+
+static inline string char*::xsprintf(char* self, char* msg, ...)
+{
+    return xsprintf(msg, self);
+}
+
+static inline string int::xsprintf(int self, char* msg, ...)
+{
+    return xsprintf(msg, self);
+}
+
 string char*::delete(char* str, int head, int tail) ;
 string string::delete(char* str, int head, int tail);
 list<string>*% string::split_char(char* self, char c) ;

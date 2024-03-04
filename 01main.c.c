@@ -1726,6 +1726,36 @@ right_value9 = (void*)0;
     return __result6__;
     come_call_finalizer2(smart_pointer$1longp_finalize,result_4, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
+static inline char* string_xsprintf(char* self, char* msg, ...){
+void* __result_obj__;
+void* right_value10;
+char* __result7__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value10 = (void*)0;
+    __result7__ = __result_obj__ = ((char*)(right_value10=xsprintf(msg,self)));
+    right_value10 = come_decrement_ref_count2(right_value10, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    return __result7__;
+}
+static inline char* charp_xsprintf(char* self, char* msg, ...){
+void* __result_obj__;
+void* right_value11;
+char* __result8__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value11 = (void*)0;
+    __result8__ = __result_obj__ = ((char*)(right_value11=xsprintf(msg,self)));
+    right_value11 = come_decrement_ref_count2(right_value11, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    return __result8__;
+}
+static inline char* int_xsprintf(int self, char* msg, ...){
+void* __result_obj__;
+void* right_value12;
+char* __result9__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value12 = (void*)0;
+    __result9__ = __result_obj__ = ((char*)(right_value12=xsprintf(msg,self)));
+    right_value12 = come_decrement_ref_count2(right_value12, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    return __result9__;
+}
 
 // body function
 
@@ -1770,23 +1800,26 @@ memset(&__result_obj__, 0, sizeof(void*));
         }
 }
 
+
+
+
 int come_main_v1(int argc, char** argv){
 void* __result_obj__;
-int __result7__;
+int __result10__;
 memset(&__result_obj__, 0, sizeof(void*));
     puts("HELLO COMELANG");
-    __result7__ = 0;
-    return __result7__;
+    __result10__ = 0;
+    return __result10__;
 }
 
 int main(int argc, char** argv){
 void* __result_obj__;
-int __result8__;
+int __result11__;
 memset(&__result_obj__, 0, sizeof(void*));
 come_heap_init(0, 0, 0);
-    __result8__ = come_main_v2(argc,argv);
+    __result11__ = come_main_v2(argc,argv);
     come_heap_final();
-    return __result8__;
+    return __result11__;
 come_heap_final();
 }
 
