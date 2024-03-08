@@ -2,7 +2,9 @@
 
 int main(int argc, char** argv) 
 {
-    var a = [s"ABC", s"DEF"];
+    char* a = 1;
+
+//    var a = [s"ABC", 1];
     puts(dynamic_typeof(a));
     
     return 0;

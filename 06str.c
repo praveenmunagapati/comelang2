@@ -430,7 +430,7 @@ bool sListNode*::compile(sListNode* self, sInfo* info)
     list<sNode*%>* list_elements = self.list_elements;
     
     list<CVALUE*%>*% params = new list<CVALUE*%>();
-    sType*% list_element_type;
+    sType*% list_element_type = null;
     
     foreach(it, list_elements) {
         if(!node_compile(it)) {
@@ -439,6 +439,10 @@ bool sListNode*::compile(sListNode* self, sInfo* info)
         
         CVALUE*% come_value = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
+        
+        if(list_element_type) {
+            check_assign_type(s"invalid list element type", list_element_type, come_value.type, come_value);
+        }
         
         params.push_back(come_value);
         
@@ -787,8 +791,8 @@ bool sMapNode*::compile(sMapNode* self, sInfo* info)
 
     list<CVALUE*%>*% key_params = new list<CVALUE*%>();
     list<CVALUE*%>*% element_params = new list<CVALUE*%>();
-    sType*% map_key_type;
-    sType*% map_element_type;
+    sType*% map_key_type = null;
+    sType*% map_element_type = null;
     
     for(int i=0; i<map_key_elements.length(); i++) {
         sNode* key_elements = map_key_elements[i];
@@ -801,6 +805,10 @@ bool sMapNode*::compile(sMapNode* self, sInfo* info)
         CVALUE*% come_value = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
         
+        if(map_key_type) {
+            check_assign_type(s"invalid map key type", map_key_type, come_value.type, come_value);
+        }
+        
         key_params.push_back(come_value);
         
         if(!node_compile(elements)) {
@@ -809,6 +817,10 @@ bool sMapNode*::compile(sMapNode* self, sInfo* info)
         
         CVALUE*% come_value2 = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
+        
+        if(map_element_type) {
+            check_assign_type(s"invalid map element type", map_element_type, come_value2.type, come_value2);
+        }
         
         element_params.push_back(come_value2);
         
