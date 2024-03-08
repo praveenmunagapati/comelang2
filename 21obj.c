@@ -468,6 +468,206 @@ bool sSizeOfExpNode*::compile(sSizeOfExpNode* self, sInfo* info)
     return true;
 }
 
+struct sTypeOfNode {
+    sType*% type;
+    int sline;
+    string sname;
+};
+
+sTypeOfNode*% sTypeOfNode*::initialize(sTypeOfNode*% self, sType*% type, sInfo* info)
+{
+    self.type = clone type;
+    
+    self.sline = info.sline;
+    self.sname = string(info.sname);
+    
+    return self;
+}
+
+int sTypeOfNode*::sline(sTypeOfNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sTypeOfNode*::sname(sTypeOfNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+bool sTypeOfNode*::terminated()
+{
+    return false;
+}
+
+string sTypeOfNode*::kind()
+{
+    return string("sTypeOfNode");
+}
+
+bool sTypeOfNode*::compile(sTypeOfNode* self, sInfo* info)
+{
+    sType* type = self.type;
+    
+    CVALUE*% come_value = new CVALUE;
+
+    var type2 = solve_generics(type, info->generics_type, info);
+    
+    string type_name = make_type_name_string(type2);
+    
+    come_value.c_value = xsprintf("\"%s\"", type_name);
+    come_value.type = new sType("char*");
+    come_value.var = null;
+    
+    add_come_last_code(info, "%s;\n", come_value.c_value);
+    
+    info.stack.push_back(come_value);
+    
+    return true;
+}
+
+struct sTypeOfExpNode {
+    sNode*% exp;
+    int sline;
+    string sname;
+};
+
+sTypeOfExpNode*% sTypeOfExpNode*::initialize(sTypeOfExpNode*% self, sNode*% exp, sInfo* info)
+{
+    self.exp = clone exp;
+    
+    self.sline = info.sline;
+    self.sname = string(info.sname);
+    
+    return self;
+}
+
+int sTypeOfExpNode*::sline(sTypeOfExpNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sTypeOfExpNode*::sname(sTypeOfExpNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+bool sTypeOfExpNode*::terminated()
+{
+    return false;
+}
+
+string sTypeOfExpNode*::kind()
+{
+    return string("sTypeOfExpNode");
+}
+
+bool sTypeOfExpNode*::compile(sTypeOfExpNode* self, sInfo* info)
+{
+    sNode*% exp = self.exp;
+    
+    if(!node_compile(exp)) {
+        return false;
+    }
+    
+    CVALUE*% come_value = get_value_from_stack(-1, info);
+    dec_stack_ptr(1, info);
+    
+    sType*% type = clone come_value.type;
+    
+    var type2 = solve_generics(type, info->generics_type, info);
+    
+    string type_name = make_type_name_string(type2);
+    
+    come_value.c_value = xsprintf("\"%s\"", type_name);
+    come_value.type = new sType("char*");
+    come_value.var = null;
+    
+    add_come_last_code(info, "%s;\n", come_value.c_value);
+    
+    info.stack.push_back(come_value);
+    
+    return true;
+}
+
+struct sDynamicTypeOfNode {
+    sNode*% exp;
+    int sline;
+    string sname;
+};
+
+sDynamicTypeOfNode*% sDynamicTypeOfNode*::initialize(sDynamicTypeOfNode*% self, sNode*% exp, sInfo* info)
+{
+    self.exp = clone exp;
+    
+    self.sline = info.sline;
+    self.sname = string(info.sname);
+    
+    return self;
+}
+
+int sDynamicTypeOfNode*::sline(sDynamicTypeOfNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sDynamicTypeOfNode*::sname(sDynamicTypeOfNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+bool sDynamicTypeOfNode*::terminated()
+{
+    return false;
+}
+
+string sDynamicTypeOfNode*::kind()
+{
+    return string("sDynamicTypeOfNode");
+}
+
+bool sDynamicTypeOfNode*::compile(sDynamicTypeOfNode* self, sInfo* info)
+{
+    sNode*% exp = self.exp;
+    
+    if(!node_compile(exp)) {
+        return false;
+    }
+    
+    CVALUE*% come_value = get_value_from_stack(-1, info);
+    dec_stack_ptr(1, info);
+    
+    if(!come_value.type.mHeap) {
+        sType*% type = clone come_value.type;
+        
+        var type2 = solve_generics(type, info->generics_type, info);
+        
+        string type_name = make_type_name_string(type2);
+        
+        come_value.c_value = xsprintf("\"%s\"", type_name);
+        come_value.type = new sType("char*");
+        come_value.var = null;
+        
+        add_come_last_code(info, "%s;\n", come_value.c_value);
+        
+        info.stack.push_back(come_value);
+        
+        return true;
+    }
+    else {
+        CVALUE*% come_value2 = new CVALUE;
+        
+        come_value2.c_value = xsprintf("come_dynamic_typeof(%s)", come_value.c_value);
+        come_value2.type = new sType("char*");
+        come_value2.var = null;
+        
+        add_come_last_code(info, "%s;\n", come_value2.c_value);
+        
+        info.stack.push_back(come_value2);
+    }
+    
+    return true;
+}
+
 struct sAlignOfNode {
     sType*% type;
     int sline;
@@ -1704,6 +1904,55 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             
             return new sSizeOfExpNode(exp, info) implements sNode;
         }
+    }
+    else if(buf === "typeof") {
+        expected_next_character('(');
+        
+        /// backtrace ///
+        bool is_type_name_flag = false;
+        {
+            char* p = info.p;
+            int sline = info.sline;
+            
+            if(xisalpha(*info->p) || *info->p == '_') {
+                var word = parse_word();
+                
+                if(is_type_name(word)) {
+                    is_type_name_flag = true;
+                }
+            }
+            
+            info.p = p;
+            info.sline = sline;
+        }
+        
+        if(is_type_name_flag) {
+            var type, name, err = parse_type();
+            if(!err) {
+                err_msg(info, "parse type");
+                exit(2);
+            }
+            
+            expected_next_character(')');
+            
+            return new sTypeOfNode(type, info) implements sNode;
+        }
+        else {
+            var exp = expression();
+            
+            expected_next_character(')');
+            
+            return new sTypeOfExpNode(exp, info) implements sNode;
+        }
+    }
+    else if(buf === "dynamic_typeof") {
+        expected_next_character('(');
+        
+        var exp = expression();
+        
+        expected_next_character(')');
+        
+        return new sDynamicTypeOfNode(exp, info) implements sNode;
     }
     else if(buf === "_Alignof") {
         expected_next_character('(');

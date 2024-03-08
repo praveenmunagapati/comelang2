@@ -212,6 +212,7 @@ struct sMemHeaderTiny
 {
     size_t size;
     int allocated;   //AALLOCATED_MAGIC_NUM
+    char* class_name;
     struct sMemHeaderTiny* next;
     struct sMemHeaderTiny* prev;
     struct sMemHeaderTiny* free_next;
@@ -221,11 +222,11 @@ struct sMemHeader
 {
     size_t size;
     int allocated;            /// ALLOCATED_MAGIC_NUM 
+    char* class_name;
     struct sMemHeader* next;
     struct sMemHeader* prev;
     struct sMemHeader* free_next;
     
-    char* class_name;
     char* sname[COME_STACKFRAME_MAX];
     int sline[COME_STACKFRAME_MAX];
     int id[COME_STACKFRAME_MAX];
@@ -436,6 +437,13 @@ static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sl
         
         it->allocated = ALLOCATED_MAGIC_NUM;
         
+        if(class_name) { 
+            it->class_name = strdup(class_name); 
+        }
+        else {
+            it->class_name = null;
+        }
+        
         it->size = size + sizeof(sMemHeaderTiny);
         //it->free_next = NULL;
         
@@ -534,6 +542,10 @@ static void come_free_mem_of_heap_pool(void* mem)
             
             it->allocated = 0;
             
+            if(it->class_name) {
+                free(it->class_name);
+            }
+            
             sMemHeaderTiny* prev_it = it->prev;
             sMemHeaderTiny* next_it = it->next;
             
@@ -629,6 +641,18 @@ static bool is_valid_object(char* mem)
     return false;
 }
 */
+
+char* come_dynamic_typeof(void* mem)
+{
+    sMemHeaderTiny* it = (sMemHeaderTiny*)((char*)mem - sizeof(size_t) - sizeof(size_t) - sizeof(sMemHeaderTiny));
+    
+    if(it->allocated != ALLOCATED_MAGIC_NUM) {
+        fprintf(stderr, "invalid heap object(%p)\n", it);
+        exit(2);
+    }
+    
+    return it->class_name;
+}
 
 //void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
 void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0, char* class_name=null)

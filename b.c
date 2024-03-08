@@ -1,16 +1,10 @@
 
-int fun(int x, int y)
-{
-    return 0;
-}
-
-int fun(int x, int y)
-{
-    return 2;
-}
-
 int main(int argc, char** argv)
 {
+    int a = 123;
+    
+    if(__typeof__(a) == int) {
+    }
     
     return 0;
 }

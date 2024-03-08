@@ -12,27 +12,21 @@ using C
 //////////////////////////////
 /// exception
 //////////////////////////////
+#define COME_STACKFRAME_MAX_GLOBAL 1024
 
 char* gComeStackFrameSName[COME_STACKFRAME_MAX];
 int gComeStackFrameSLine[COME_STACKFRAME_MAX];
+int gComeStackFrameID[COME_STACKFRAME_MAX_GLOBAL];
 int gNumComeStackFrame = 0;
 
 char* gComeStackFrameBuffer = NULL;
 
-void come_push_stackframe(char* sname, int sline)
+void come_push_stackframe(char* sname, int sline, int id)
 {
-    if(gNumComeStackFrame == COME_STACKFRAME_MAX) {
-        int i;
-        for(i=0; i<COME_STACKFRAME_MAX-1; i++) {
-            gComeStackFrameSName[i] = gComeStackFrameSName[i+1];
-            gComeStackFrameSLine[i] = gComeStackFrameSLine[i+1];
-        }
-        gComeStackFrameSName[i] = sname;
-        gComeStackFrameSLine[i] = sline;
-    }
-    else {
+    if(gNumComeStackFrame < COME_STACKFRAME_MAX_GLOBAL) {
         gComeStackFrameSName[gNumComeStackFrame] = sname;  // const string
         gComeStackFrameSLine[gNumComeStackFrame] = sline;
+        gComeStackFrameID[gNumComeStackFrame] = id;
     
         gNumComeStackFrame++;
     }
@@ -50,7 +44,7 @@ void come_save_stackframe(char* sname, int sline)
     buffer*% buf = new buffer();
     buf.append_str(xsprintf("%s %d\n", sname, sline));
     for(int i=gNumComeStackFrame-2; i>=0; i--) {
-        buf.append_str(xsprintf("%s %d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i]));
+        buf.append_str(xsprintf("%s %d #%d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i], gComeStackFrameID[i]));
     }
     
     if(gComeStackFrameBuffer) {
@@ -67,7 +61,7 @@ void exception_stackframe()
 void stackframe()
 {
     for(int i=gNumComeStackFrame-1; i>=0; i--) {
-        printf("%s %d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i]);
+        printf("%s %d #%d\n", gComeStackFrameSName[i], gComeStackFrameSLine[i], gComeStackFrameID[i]);
     }
 }
 
@@ -76,10 +70,10 @@ string come_get_stackframe()
     return string(gComeStackFrameBuffer);
 }
 
-void* come_null_check(void* mem, char* sname, int sline)
+void* come_null_check(void* mem, char* sname, int sline, int id)
 {
     if(mem == null) {
-        printf("%s %d: null check error\n", sname, sline);
+        printf("%s %d #%d: null check error\n", sname, sline, id);
         stackframe();
         exit(2);
     }
@@ -213,9 +207,39 @@ void xassert(char* msg, bool test)
 //////////////////////////////
 #define HEAP_POOL_PAGE_SIZE 4048
 
+any gComeResultObject = NULL;
+
 static bool gComeMallocLib = false;
 static bool gComeDebugLib = false;
 bool gComeGCLib = false;
+
+#define ALLOCATED_MAGIC_NUM 177783
+
+struct sMemHeaderTiny
+{
+    size_t size;
+    int allocated;   //AALLOCATED_MAGIC_NUM
+    char* class_name;
+    struct sMemHeaderTiny* next;
+    struct sMemHeaderTiny* prev;
+    struct sMemHeaderTiny* free_next;
+};
+
+struct sMemHeader
+{
+    size_t size;
+    int allocated;            /// ALLOCATED_MAGIC_NUM 
+    char* class_name;
+    struct sMemHeader* next;
+    struct sMemHeader* prev;
+    struct sMemHeader* free_next;
+    
+    char* sname[COME_STACKFRAME_MAX];
+    int sline[COME_STACKFRAME_MAX];
+    int id[COME_STACKFRAME_MAX];
+};
+
+sMemHeader* gAllocMem;
 
 void come_heap_init(int come_malloc, int come_debug, int come_gc)
 {
@@ -241,71 +265,107 @@ void come_heap_final()
 
 static void* come_alloc_mem_from_heap_pool(size_t size, char* sname=null, int sline=0, char* class_name=null)
 {
-    if(gComeGCLib) {
-        void* result = GC_malloc(size);
-        memset(result, 0, size);
-        return result;
+    if(gComeDebugLib) {
+        void* result = GC_malloc(size + sizeof(sMemHeader));
+        memset(result, 0, size + sizeof(sMemHeader));
+        
+        sMemHeader* it = result;
+        
+        it->allocated = ALLOCATED_MAGIC_NUM;
+        
+        it->size = size + sizeof(sMemHeader);
+        //it->free_next = NULL;
+        
+        come_push_stackframe(sname, sline, 0);
+
+        
+        if(gNumComeStackFrame < COME_STACKFRAME_MAX) {
+            memcpy(it.sname, gComeStackFrameSName, sizeof(char*)*gNumComeStackFrame);
+            memcpy(it.sline, gComeStackFrameSLine, sizeof(int)*gNumComeStackFrame);
+            memcpy(it.id, gComeStackFrameID, sizeof(int)*gNumComeStackFrame);
+        }
+        else {
+            memcpy(it.sname, gComeStackFrameSName + gNumComeStackFrame - COME_STACKFRAME_MAX -1, sizeof(char*)*COME_STACKFRAME_MAX);
+            memcpy(it.sline, gComeStackFrameSLine + gNumComeStackFrame - COME_STACKFRAME_MAX -1, sizeof(int)*COME_STACKFRAME_MAX);
+            memcpy(it.id, gComeStackFrameID + gNumComeStackFrame - COME_STACKFRAME_MAX -1, sizeof(int)*COME_STACKFRAME_MAX);
+        }
+        
+        come_pop_stackframe();
+        
+        it->next = gAllocMem;
+        it->prev = null;
+        
+        if(class_name) { 
+            it->class_name = GC_strdup(class_name); 
+        }
+        else {
+            it->class_name = null;
+        }
+        
+        if(gAllocMem) {
+            gAllocMem->prev = it;
+        }
+        
+        gAllocMem = it;
+        
+        return (char*)result + sizeof(sMemHeader);
     }
     else {
-        return calloc(1, size);
+        void* result = GC_malloc(size + sizeof(sMemHeaderTiny));
+        memset(result, 0, size + sizeof(sMemHeaderTiny));
+        
+        sMemHeaderTiny* it = result;
+        
+        it->allocated = ALLOCATED_MAGIC_NUM;
+        
+        if(class_name) { 
+            it->class_name = GC_strdup(class_name); 
+        }
+        else {
+            it->class_name = null;
+        }
+        
+        it->size = size + sizeof(sMemHeaderTiny);
+        //it->free_next = NULL;
+        
+        it->next = (sMemHeaderTiny*)gAllocMem;
+        it->prev = null;
+        
+        if(gAllocMem) {
+            ((sMemHeaderTiny*)gAllocMem)->prev = it;
+        }
+        
+        gAllocMem = (sMemHeader*)it;
+        
+        return (char*)result + sizeof(sMemHeaderTiny);
     }
 }
 
 static void come_free_mem_of_heap_pool(char* mem)
 {
     if(mem) {
-        if(gComeGCLib) {
+        if(gComeDebugLib) {
         }
         else {
-            free(mem);
         }
     }
 }
 
-/*
-static bool is_valid_object(char* mem) 
+char* come_dynamic_typeof(void* mem)
 {
-    if(mem) {
-        if(!gComeMallocLib) {
-            return true;
-        }
-        else {
-            char* mem2 = mem - sizeof(size_t) - sizeof(size_t);
-            
-            unsigned int key = (size_t)mem2 % gSizeMemHeaders;
-            
-            sMemHeader* it = gMemHeaderTable + key;
-            
-            while(true) {
-                if(it->mem == null) {
-                    return false;
-                }
-                else if(it->mem == mem) {
-                    return true;
-                }
-                else {
-                    it++;
-                    
-                    if(it == gMemHeaderTable + gSizeMemHeaders) {
-                        it = gMemHeaderTable;
-                    }
-                    else if(it == gMemHeaderTable + key) {
-                        puts("mem header unexpected error");
-                        exit(2);
-                    }
-                }
-            }
-        }
+    sMemHeaderTiny* it = (sMemHeaderTiny*)((char*)mem - sizeof(size_t) - sizeof(size_t) - sizeof(sMemHeaderTiny));
+    
+    if(it->allocated != ALLOCATED_MAGIC_NUM) {
+        fprintf(stderr, "invalid heap object(%p)\n", it);
+        exit(2);
     }
     
-    return false;
+    return it->class_name;
 }
-*/
 
-//void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0)
+
 void* come_calloc(size_t count, size_t size, char* sname=null, int sline=0, char* class_name=null)
 {
-    //char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline, null);
     char* mem = come_alloc_mem_from_heap_pool(sizeof(size_t)+sizeof(size_t)+count*size, sname, sline, class_name);
     
     size_t* ref_count = (size_t*)mem;
@@ -324,13 +384,6 @@ void come_free_object(void* mem)
     if(mem == NULL) {
         return;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return ;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -342,32 +395,17 @@ void come_free(void* mem)
     if(mem == NULL) {
         return;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return ;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
     come_free_mem_of_heap_pool((char*)ref_count);
 }
 
-//void* come_memdup(void* block, char* sname=null, int sline=0)
 void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=null)
 {
     if(!block) {
         return null;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(block)) {
-            return null;
-        }
-    }
-*/
 
     char* mem = (char*)block - sizeof(size_t) - sizeof(size_t);
     
@@ -375,7 +413,6 @@ void* come_memdup(void* block, char* sname=null, int sline=0, char* class_name=n
 
     size_t size = *size_p - sizeof(size_t) - sizeof(size_t);
 
-    //void* result = come_calloc(1, size, sname, sline);
     void* result = come_calloc(1, size, sname, sline, class_name);
 
     memcpy(result, block, size);
@@ -388,13 +425,6 @@ void* come_increment_ref_count(void* mem)
     if(mem == NULL) {
         return mem;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return mem;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -408,13 +438,6 @@ void* come_print_ref_count(void* mem)
     if(mem == NULL) {
         return mem;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return mem;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -428,13 +451,6 @@ void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj
     if(mem == NULL) {
         return NULL;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem)) {
-            return mem;
-        }
-    }
-*/
     
     size_t* ref_count = (size_t*)((char*)mem - sizeof(size_t) - sizeof(size_t));
     
@@ -462,13 +478,6 @@ void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protoco
     if(mem == NULL) {
         return;
     }
-/*
-    if(gComeMallocLib) {
-        if(!is_valid_object(mem) && !call_finalizer_only) {
-            return;
-        }
-    }
-*/
     
     if(call_finalizer_only) {
         if(fun) {

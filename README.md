@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 16.0.1
+version 16.0.2
 
 ``` C
 #include <comelang2.h>
@@ -1635,7 +1635,38 @@ int main(int argc, char** argv)
 }
 ```
 
-no type iference
+no type inference
+
+# typeof, dynamic_typeof
+
+```C
+#include <comelang2.h>
+
+int main(int argc, char** argv) 
+{
+    int a = 123;
+    puts(typeof(a));
+    
+    return 0;
+}
+```
+
+statically typeof
+
+```C
+#include <comelang2.h>
+
+int main(int argc, char** argv) 
+{
+    var a = ["ABC", "DEF"];
+    puts(dynamic_typeof(a));
+    
+    return 0;
+}
+```
+
+dynamic typeof(For heap object)
+
 
 
 require -cg option for show stackframe()

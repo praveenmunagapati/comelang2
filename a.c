@@ -2,9 +2,8 @@
 
 int main(int argc, char** argv) 
 {
-    int* a = gc_inc(new int);
-    
-printf("a %p\n", a);
+    var a = ["ABC", "DEF"];
+    puts(dynamic_typeof(a));
     
     return 0;
 }

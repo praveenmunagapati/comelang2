@@ -1492,7 +1492,6 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         dec_stack_ptr(1, info);
         
         type = clone come_value.type;
-        
 
         if(parse_variable_name) {
             parse_sharp();
