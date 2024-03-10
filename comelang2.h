@@ -283,7 +283,7 @@ impl list <T>
     
     T& begin(list<T>* self) {
         if(self == null) {
-            T&| result;
+            T&` result;
             memset(&result, 0, sizeof(T));
             return result;
         }
@@ -293,14 +293,14 @@ impl list <T>
             return self.it.item;
         }
         
-        T&| result;
+        T&` result;
         memset(&result, 0, sizeof(T));
         return result;
     }
 
     T& next(list<T>* self) {
         if(self == null || self.it == null) {
-            T&| result;
+            T&` result;
             memset(&result, 0, sizeof(T));
             return result;
         }
@@ -311,7 +311,7 @@ impl list <T>
             return self.it.item;
         }
         
-        T&| result;
+        T&` result;
         memset(&result, 0, sizeof(T));
         return result;
     }
@@ -690,7 +690,7 @@ impl list <T>
             i++;
         };
 
-        T| default_value;
+        T` default_value;
         memset(&default_value, 0, sizeof(T));
         return default_value;
     }
@@ -1180,7 +1180,7 @@ impl map <T, T2>
         result.key_list = new list<T&>();
 
         for(var it = self.begin(); !self.end(); it = self.next()) {
-            T2&| default_value;
+            T2&` default_value;
             memset(&default_value, 0, sizeof(T2));
             
             var it2 = self.at(it, default_value);
@@ -1199,7 +1199,7 @@ impl map <T, T2>
         
         list_item<T&>* it = self.key_list.head;
         while(it) {
-            T2&| default_value;
+            T2&` default_value;
             memset(&default_value, 0, sizeof(T2));
             T2& it2 = self.at(it.item, default_value);
             
@@ -1294,7 +1294,7 @@ impl map <T, T2>
     
     T& begin(map<T, T2>* self) {
         if(self == null) {
-            T&| result;
+            T&` result;
             memset(&result, 0, sizeof(T));
             return result;
         }
@@ -1304,14 +1304,14 @@ impl map <T, T2>
             return self.key_list.it.item;
         }
         
-        T&| result;
+        T&` result;
         memset(&result, 0, sizeof(T));
         return result;
     }
 
     T& next(map<T, T2>* self) {
         if(self == null || self.key_list.it == null) {
-            T&| result;
+            T&` result;
             memset(&result, 0, sizeof(T));
             return result;
         }
@@ -1321,7 +1321,7 @@ impl map <T, T2>
             return self.key_list.it.item;
         }
         
-        T&| result;
+        T&` result;
         memset(&result, 0, sizeof(T));
         return result;
     }
@@ -1339,7 +1339,7 @@ impl map <T, T2>
         int len = 0;
 
         for(var it = self.begin(); !self.end(); it = self.next()) {
-            T2&| default_value;
+            T2&` default_value;
             memset(&default_value, 0, sizeof(T2));
             T2& it2 = self.at(it, default_value);
             unsigned int hash = it.get_hash_key() % size;
@@ -1539,7 +1539,7 @@ puts("SAME KEY");
         return self;
     }
     T2& operator_load_element(map<T, T2>* self, T& key) {
-        T2| default_value;
+        T2` default_value;
         memset(&default_value, 0, sizeof(T2));
         
         unsigned int hash = ((T)key).get_hash_key() % self.size;
@@ -1586,12 +1586,12 @@ puts("SAME KEY");
         bool result = true;
         for(var it = left.key_list.begin(); !left.key_list.end(); it = left.key_list.next())
         {
-            T2&| default_value;
+            T2&` default_value;
             memset(&default_value, 0, sizeof(T2));
             T& it2 = right.key_list.item(n, default_value);
             
             if(it.equals(it2)) {
-                T2&| default_value2;
+                T2&` default_value2;
                 memset(&default_value2, 0, sizeof(T2));
                 T2& item = left.at(it, default_value2);
                 T2& item2 = left.at(it2, default_value2);
@@ -1652,7 +1652,7 @@ puts("SAME KEY");
         int n = 0;
         for(var it = left.key_list.begin(); !left.key_list.end(); it = left.key_list.next())
         {
-            T2&| default_value;
+            T2&` default_value;
             memset(&default_value, 0, sizeof(T2));
             T2& it2 = left.at(it, default_value);
             
@@ -1663,7 +1663,7 @@ puts("SAME KEY");
         n=0;
         for(var it = right.key_list.begin(); !right.key_list.end(); it = right.key_list.next())
         {
-            T2&| default_value;
+            T2&` default_value;
             memset(&default_value, 0, sizeof(T2));
             T2& it2 = left.at(it, default_value);
             
@@ -1680,7 +1680,7 @@ puts("SAME KEY");
             int n = 0;
             for(var it = left.key_list.begin(); !left.key_list.end(); it = left.key_list.next())
             {
-                T2&| default_value;
+                T2&` default_value;
                 memset(&default_value, 0, sizeof(T2));
                 
                 T2& it2 = left.at(it, default_value);
@@ -1706,7 +1706,7 @@ puts("SAME KEY");
         var result = new list<T2>();
         
         for(var it = self.key_list.begin(); !self.key_list.end(); it = self.key_list.next()) { 
-            T2&| default_value;
+            T2&` default_value;
             memset(&default_value, 0, sizeof(T2));
         
             var it2 = self.at(it, default_value);
@@ -2317,5 +2317,40 @@ string char*::print(char* self);
 /// loop
 //////////////////////////////
 void int::times(int self, void* parent, void (*block)(void* parent, int it));
+
+//////////////////////////////
+// integer
+//////////////////////////////
+struct integer
+{
+    long value;
+};
+
+integer*% integer*::initialize(integer*% self, long value);
+integer*% char::to_integer(char self);
+integer*% short::to_integer(short self);
+integer*% int::to_integer(int self);
+integer*% long::to_integer(long self);
+int integer*::to_int(integer* self);
+bool integer::equals(integer* self, integer* right);
+int integer::compare(integer* self, integer* right);
+bool integer::operator_equals(integer* self, integer* right);
+bool integer::operator_not_equals(integer* self, integer* right);
+integer*% integer::operator_add(integer* left, integer* right);
+integer*% integer::operator_sub(integer* left, integer* right);
+integer*% integer::operator_mult(integer* left, integer* right);
+integer*% integer::operator_div(integer* left, integer* right);
+integer*% integer::operator_mod(integer* left, integer* right);
+integer*% integer::operator_lshift(integer* left, integer* right);
+integer*% integer::operator_rshift(integer* left, integer* right);
+integer*% integer::operator_gteq(integer* left, integer* right);
+integer*% integer::operator_lteq(integer* left, integer* right);
+integer*% integer::operator_lt(integer* left, integer* right);
+integer*% integer::operator_gt(integer* left, integer* right);
+integer*% integer::operator_and(integer* left, integer* right);
+integer*% integer::operator_xor(integer* left, integer* right);
+integer*% integer::operator_or(integer* left, integer* right);
+integer*% integer::operator_andand(integer* left, integer* right);
+integer*% integer::operator_oror(integer* left, integer* right);
 
 #endif

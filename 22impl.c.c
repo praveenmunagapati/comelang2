@@ -108,6 +108,10 @@ struct list$1charph
     int len;
     struct list_item$1charph* it;
 };
+struct integer
+{
+    long value;
+};
 extern _Bool gComeDebug;
 extern _Bool gComeGC;
 extern _Bool gComeC;
@@ -162,10 +166,6 @@ struct sNode
     _Bool (*terminated)(void*);
     char* (*kind)(void*);
 };
-struct tuple1$1sTypeph
-{
-    struct sType* v1;
-};
 struct list_item$1sTypeph
 {
     struct sType* item;
@@ -178,6 +178,10 @@ struct list$1sTypeph
     struct list_item$1sTypeph* tail;
     int len;
     struct list_item$1sTypeph* it;
+};
+struct tuple1$1sTypeph
+{
+    struct sType* v1;
 };
 struct list_item$1sNodeph
 {
@@ -195,6 +199,7 @@ struct list$1sNodeph
 struct sType
 {
     struct sClass* mClass;
+    struct list$1sTypeph* mMultipleTypes;
     struct tuple1$1sTypeph* mNoSolvedGenericsType;
     struct tuple1$1sTypeph* mOriginalLoadVarType;
     char* mGenericsName;
@@ -1276,6 +1281,58 @@ char* charp_print(char* self);
 
 void int_times(int self, void* parent, void (*block)(void*,int));
 
+struct integer* integer_initialize(struct integer* self, long value);
+
+struct integer* char_to_integer(char self);
+
+struct integer* short_to_integer(short short self);
+
+struct integer* int_to_integer(int self);
+
+struct integer* long_to_integer(long self);
+
+int integer_to_int(struct integer* self);
+
+_Bool integer_equals(struct integer* self, struct integer* right);
+
+int integer_compare(struct integer* self, struct integer* right);
+
+_Bool integer_operator_equals(struct integer* self, struct integer* right);
+
+_Bool integer_operator_not_equals(struct integer* self, struct integer* right);
+
+struct integer* integer_operator_add(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_sub(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_mult(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_div(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_mod(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_lshift(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_rshift(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_gteq(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_lteq(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_lt(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_gt(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_and(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_xor(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_or(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_andand(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_oror(struct integer* left, struct integer* right);
+
 int come_main_v1(int argc, char** argv);
 
 _Bool node_compile(struct sNode* node, struct sInfo* info);
@@ -1408,7 +1465,9 @@ void skip_pointer_attribute(struct sInfo* info);
 
 struct sNode* parse_normal_block(struct sInfo* info);
 
-void check_assign_type(char* msg, struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, _Bool check_no_pointer, struct sInfo* info);
+_Bool check_assign_type(char* msg, struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, _Bool check_no_pointer, _Bool print_err_msg, struct sInfo* info);
+
+void cast_type(struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, struct sInfo* info);
 
 char* parse_attribute(struct sInfo* info);
 
@@ -1460,7 +1519,7 @@ struct sBlock* sBlock_initialize(struct sBlock* self, struct sInfo* info);
 
 _Bool create_generics_fun(char* fun_name, struct sGenericsFun* generics_fun, struct sType* generics_type, struct sInfo* info);
 
-struct tuple3$3sTypephcharphbool* parse_type(struct sInfo* info, _Bool parse_variable_name, _Bool parse_multiple_type);
+struct tuple3$3sTypephcharphbool* parse_type(struct sInfo* info, _Bool parse_variable_name, _Bool parse_multiple_type, _Bool in_function_parametor);
 
 struct tuple2$2sTypephcharph* parse_variable_name(struct sType* base_type_name, _Bool first, struct sInfo* info);
 
@@ -1604,9 +1663,9 @@ static struct list$1charph* list$1charph_reset(struct list$1charph* self);
 static void list_item$1charphp_finalize(struct list_item$1charph* self);
 static struct list$1charph* list$1charph_push_back(struct list$1charph* self, char* item);
 static void sType_finalize(struct sType* self);
-static void tuple1$1sTypephp_finalize(struct tuple1$1sTypeph* self);
 static void list$1sTypephp_finalize(struct list$1sTypeph* self);
 static void list_item$1sTypephp_finalize(struct list_item$1sTypeph* self);
+static void tuple1$1sTypephp_finalize(struct tuple1$1sTypeph* self);
 static void list$1sNodephp_finalize(struct list$1sNodeph* self);
 static void list_item$1sNodephp_finalize(struct list_item$1sNodeph* self);
 static void list$1charphp_finalize(struct list$1charph* self);
@@ -1837,8 +1896,8 @@ char* buf_20;
 void* right_value22;
 struct sNode* node_21;
 _Bool _while_condtional8;
-_Bool _if_conditional27;
 _Bool _if_conditional28;
+_Bool _if_conditional29;
 struct sType* __dec_obj10;
 struct sNode* __result12__;
 void* right_value23;
@@ -1916,8 +1975,8 @@ right_value23 = (void*)0;
                 skip_spaces_and_lf(info);
             }
             parse_sharp_v5(info);
-            if(_if_conditional27=node_21!=((void*)0),            _if_conditional27) {
-                if(_if_conditional28=!node_compile(node_21,info),                _if_conditional28) {
+            if(_if_conditional28=node_21!=((void*)0),            _if_conditional28) {
+                if(_if_conditional29=!node_compile(node_21,info),                _if_conditional29) {
                     err_msg(info,"compiling is faield(Y)");
                     exit(2);
                 }
@@ -2040,62 +2099,57 @@ static void sType_finalize(struct sType* self){
 void* __result_obj__;
 _Bool _if_conditional12;
 _Bool _if_conditional14;
-_Bool _if_conditional15;
 _Bool _if_conditional16;
+_Bool _if_conditional17;
 _Bool _if_conditional18;
-_Bool _if_conditional20;
+_Bool _if_conditional19;
 _Bool _if_conditional21;
 _Bool _if_conditional22;
 _Bool _if_conditional23;
 _Bool _if_conditional24;
 _Bool _if_conditional25;
 _Bool _if_conditional26;
+_Bool _if_conditional27;
 memset(&__result_obj__, 0, sizeof(void*));
-            if(_if_conditional12=self!=((void*)0)&&self->mNoSolvedGenericsType!=((void*)0),            _if_conditional12) {
+            if(_if_conditional12=self!=((void*)0)&&self->mMultipleTypes!=((void*)0),            _if_conditional12) {
+                come_call_finalizer2(list$1sTypephp_finalize,self->mMultipleTypes, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            }
+            if(_if_conditional14=self!=((void*)0)&&self->mNoSolvedGenericsType!=((void*)0),            _if_conditional14) {
                 come_call_finalizer2(tuple1$1sTypephp_finalize,self->mNoSolvedGenericsType, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional14=self!=((void*)0)&&self->mOriginalLoadVarType!=((void*)0),            _if_conditional14) {
+            if(_if_conditional16=self!=((void*)0)&&self->mOriginalLoadVarType!=((void*)0),            _if_conditional16) {
                 come_call_finalizer2(tuple1$1sTypephp_finalize,self->mOriginalLoadVarType, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional15=self!=((void*)0)&&self->mGenericsName!=((void*)0),            _if_conditional15) {
+            if(_if_conditional17=self!=((void*)0)&&self->mGenericsName!=((void*)0),            _if_conditional17) {
                 self->mGenericsName = come_decrement_ref_count2(self->mGenericsName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional16=self!=((void*)0)&&self->mGenericsTypes!=((void*)0),            _if_conditional16) {
+            if(_if_conditional18=self!=((void*)0)&&self->mGenericsTypes!=((void*)0),            _if_conditional18) {
                 come_call_finalizer2(list$1sTypephp_finalize,self->mGenericsTypes, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional18=self!=((void*)0)&&self->mArrayNum!=((void*)0),            _if_conditional18) {
+            if(_if_conditional19=self!=((void*)0)&&self->mArrayNum!=((void*)0),            _if_conditional19) {
                 come_call_finalizer2(list$1sNodephp_finalize,self->mArrayNum, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional20=self!=((void*)0)&&self->mParamTypes!=((void*)0),            _if_conditional20) {
+            if(_if_conditional21=self!=((void*)0)&&self->mParamTypes!=((void*)0),            _if_conditional21) {
                 come_call_finalizer2(list$1sTypephp_finalize,self->mParamTypes, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional21=self!=((void*)0)&&self->mParamNames!=((void*)0),            _if_conditional21) {
+            if(_if_conditional22=self!=((void*)0)&&self->mParamNames!=((void*)0),            _if_conditional22) {
                 come_call_finalizer2(list$1charphp_finalize,self->mParamNames, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional22=self!=((void*)0)&&self->mResultType!=((void*)0),            _if_conditional22) {
+            if(_if_conditional23=self!=((void*)0)&&self->mResultType!=((void*)0),            _if_conditional23) {
                 come_call_finalizer2(tuple1$1sTypephp_finalize,self->mResultType, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional23=self!=((void*)0)&&self->mAlignas!=((void*)0),            _if_conditional23) {
+            if(_if_conditional24=self!=((void*)0)&&self->mAlignas!=((void*)0),            _if_conditional24) {
                 if(self->mAlignas) { self->mAlignas = come_decrement_ref_count2(self->mAlignas, ((struct sNode*)self->mAlignas)->finalize, ((struct sNode*)self->mAlignas)->_protocol_obj, 0, 0, 0, (void*)0); } 
             }
-            if(_if_conditional24=self!=((void*)0)&&self->mSizeNum!=((void*)0),            _if_conditional24) {
+            if(_if_conditional25=self!=((void*)0)&&self->mSizeNum!=((void*)0),            _if_conditional25) {
                 if(self->mSizeNum) { self->mSizeNum = come_decrement_ref_count2(self->mSizeNum, ((struct sNode*)self->mSizeNum)->finalize, ((struct sNode*)self->mSizeNum)->_protocol_obj, 0, 0, 0, (void*)0); } 
             }
-            if(_if_conditional25=self!=((void*)0)&&self->mOriginalTypeName!=((void*)0),            _if_conditional25) {
+            if(_if_conditional26=self!=((void*)0)&&self->mOriginalTypeName!=((void*)0),            _if_conditional26) {
                 self->mOriginalTypeName = come_decrement_ref_count2(self->mOriginalTypeName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-            if(_if_conditional26=self!=((void*)0)&&self->mAsmName!=((void*)0),            _if_conditional26) {
+            if(_if_conditional27=self!=((void*)0)&&self->mAsmName!=((void*)0),            _if_conditional27) {
                 self->mAsmName = come_decrement_ref_count2(self->mAsmName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
-}
-
-static void tuple1$1sTypephp_finalize(struct tuple1$1sTypeph* self){
-void* __result_obj__;
-_Bool _if_conditional13;
-memset(&__result_obj__, 0, sizeof(void*));
-                    if(_if_conditional13=self!=((void*)0)&&self->v1!=((void*)0),                    _if_conditional13) {
-                        come_call_finalizer2(sType_finalize,self->v1, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-                    }
 }
 
 static void list$1sTypephp_finalize(struct list$1sTypeph* self){
@@ -2116,11 +2170,20 @@ memset(&prev_it_14, 0, sizeof(struct list_item$1sTypeph*));
 
 static void list_item$1sTypephp_finalize(struct list_item$1sTypeph* self){
 void* __result_obj__;
-_Bool _if_conditional17;
+_Bool _if_conditional13;
 memset(&__result_obj__, 0, sizeof(void*));
-                            if(_if_conditional17=self!=((void*)0)&&self->item!=((void*)0),                            _if_conditional17) {
+                            if(_if_conditional13=self!=((void*)0)&&self->item!=((void*)0),                            _if_conditional13) {
                                 come_call_finalizer2(sType_finalize,self->item, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                             }
+}
+
+static void tuple1$1sTypephp_finalize(struct tuple1$1sTypeph* self){
+void* __result_obj__;
+_Bool _if_conditional15;
+memset(&__result_obj__, 0, sizeof(void*));
+                    if(_if_conditional15=self!=((void*)0)&&self->v1!=((void*)0),                    _if_conditional15) {
+                        come_call_finalizer2(sType_finalize,self->v1, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                    }
 }
 
 static void list$1sNodephp_finalize(struct list$1sNodeph* self){
@@ -2141,9 +2204,9 @@ memset(&prev_it_16, 0, sizeof(struct list_item$1sNodeph*));
 
 static void list_item$1sNodephp_finalize(struct list_item$1sNodeph* self){
 void* __result_obj__;
-_Bool _if_conditional19;
+_Bool _if_conditional20;
 memset(&__result_obj__, 0, sizeof(void*));
-                            if(_if_conditional19=self!=((void*)0)&&self->item!=((void*)0),                            _if_conditional19) {
+                            if(_if_conditional20=self!=((void*)0)&&self->item!=((void*)0),                            _if_conditional20) {
                                 if(self->item) { self->item = come_decrement_ref_count2(self->item, ((struct sNode*)self->item)->finalize, ((struct sNode*)self->item)->_protocol_obj, 0, 0, 0, (void*)0); } 
                             }
 }

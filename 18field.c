@@ -231,19 +231,21 @@ bool sStoreFieldNode*::compile(sStoreFieldNode* self, sInfo* info)
     
     CVALUE*% come_value = new CVALUE;
     
-    if(field_type->mHeap && !right_type->mHeap) {
-        if(right_type->mClass->mName === "void" && right_type->mPointerNum == 1)
+    check_assign_type(s"\{name} is assigned to", field_type, right_type, right_value);
+    
+    right_type = clone right_value.type;
+    
+    if(field_type->mHeap && !right_value.type->mHeap) {
+        if(right_value.type->mClass->mName === "void" && right_value.type->mPointerNum == 1)
         {
         }
         else {
-            if(!right_type->mDelegate && !right_type->mShare && !gComeGC) {
+            if(!right_value.type->mDelegate && !right_value.type->mShare && !gComeGC) {
                 err_msg(info, "require right value as heap object(%s)", name);
                 return false;
             }
         }
     }
-    
-    check_assign_type(s"\{name} is assigned to", field_type, right_type, right_value);
     if(field_type->mHeap && right_type->mHeap && field_type->mPointerNum > 0 && right_type->mPointerNum > 0) 
     {
         if(left_value.type->mPointerNum == 1) {

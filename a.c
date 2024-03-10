@@ -1,14 +1,15 @@
 #include <comelang2.h>
 
-void fun(char* a)
+void fun(int|char n)
 {
-    puts(a);
+    printf("%d\n", n);
 }
 
 int main(int argc, char** argv) 
 {
-    var b = [1,2,3];
-    fun(b);
+    int a = 1;
+    
+    fun(a);
     
     return 0;
 }

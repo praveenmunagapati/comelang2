@@ -59,6 +59,8 @@ struct sType
 {
     sClass* mClass;
     
+    list<sType*%>*% mMultipleTypes;
+    
     tuple1<sType*%>*% mNoSolvedGenericsType;
     tuple1<sType*%>*% mOriginalLoadVarType;
     
@@ -401,7 +403,8 @@ void backtrace_parse_type(sInfo* info=info);
 void transpile_toplevel(bool block=false, sInfo* info=info);
 void skip_pointer_attribute(sInfo* info=info);
 sNode*% parse_normal_block(sInfo* info=info);
-void check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* come_value, bool check_no_pointer=false, sInfo* info=info);
+bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* come_value, bool check_no_pointer=false, bool print_err_msg=true, sInfo* info=info);
+void cast_type(sType* left_type, sType* right_type, CVALUE* come_value, sInfo* info=info);
 string parse_attribute(sInfo* info=info);
 void come_init() version 5;
 void come_final() version 5;
@@ -428,7 +431,7 @@ int expected_next_character(char c, sInfo* info=info);
 sBlock*% sBlock*::initialize(sBlock*% self, sInfo* info);
 bool create_generics_fun(string fun_name, sGenericsFun* generics_fun, sType* generics_type, sInfo* info);
 
-tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_name=false, bool parse_multiple_type=true);
+tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_name=false, bool parse_multiple_type=true, bool in_function_parametor=false);
 tuple2<sType*%, string>*% parse_variable_name(sType*% base_type_name, bool first, sInfo* info);
 sBlock*% parse_block(sInfo* info=info, bool no_block_level=false);
 int transpile_block(sBlock* block, list<sType*%>* param_types, list<string>* param_names, sInfo* info, bool no_var_table=false, bool loop_block=false);

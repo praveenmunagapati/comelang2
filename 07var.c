@@ -541,19 +541,21 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
                 add_come_last_code(info, "%s;\n", come_value.c_value);
             }
             else {
-                if(left_type->mHeap && !right_type->mHeap) {
-                    if(right_type->mClass->mName === "void" && right_type->mPointerNum == 1)
+                check_assign_type(s"\{self.name} is assining to", left_type, right_type, right_value);
+                
+                if(left_type->mHeap && !right_value.type->mHeap) {
+                    if(right_value.type->mClass->mName === "void" && right_value.type->mPointerNum == 1)
                     {
                     }
                     else {
-                        if(!right_type->mDelegate && !right_type->mShare && !gComeGC) {
+                        if(!right_value.type->mDelegate && !right_value.type->mShare && !gComeGC) {
                             err_msg(info, "require right value as heap object(%s)", self.name);
                             return false;
                         }
                     }
                 }
                 
-                check_assign_type(s"\{self.name} is assining to", left_type, right_type, right_value);
+                
                 come_value.c_value = xsprintf("%s=%s", var_->mCValueName, right_value.c_value);
                 come_value.type = clone left_type;
                 come_value.var = var_;

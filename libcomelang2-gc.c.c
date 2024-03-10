@@ -108,6 +108,10 @@ struct list$1charph
     int len;
     struct list_item$1charph* it;
 };
+struct integer
+{
+    long value;
+};
 extern _Bool gComeDebug;
 extern _Bool gComeGC;
 extern _Bool gComeC;
@@ -162,10 +166,6 @@ struct sNode
     _Bool (*terminated)(void*);
     char* (*kind)(void*);
 };
-struct tuple1$1sTypeph
-{
-    struct sType* v1;
-};
 struct list_item$1sTypeph
 {
     struct sType* item;
@@ -178,6 +178,10 @@ struct list$1sTypeph
     struct list_item$1sTypeph* tail;
     int len;
     struct list_item$1sTypeph* it;
+};
+struct tuple1$1sTypeph
+{
+    struct sType* v1;
 };
 struct list_item$1sNodeph
 {
@@ -195,6 +199,7 @@ struct list$1sNodeph
 struct sType
 {
     struct sClass* mClass;
+    struct list$1sTypeph* mMultipleTypes;
     struct tuple1$1sTypeph* mNoSolvedGenericsType;
     struct tuple1$1sTypeph* mOriginalLoadVarType;
     char* mGenericsName;
@@ -1222,7 +1227,9 @@ void skip_pointer_attribute(struct sInfo* info);
 
 struct sNode* parse_normal_block(struct sInfo* info);
 
-void check_assign_type(char* msg, struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, _Bool check_no_pointer, struct sInfo* info);
+_Bool check_assign_type(char* msg, struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, _Bool check_no_pointer, _Bool print_err_msg, struct sInfo* info);
+
+void cast_type(struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, struct sInfo* info);
 
 char* parse_attribute(struct sInfo* info);
 
@@ -1274,7 +1281,7 @@ struct sBlock* sBlock_initialize(struct sBlock* self, struct sInfo* info);
 
 _Bool create_generics_fun(char* fun_name, struct sGenericsFun* generics_fun, struct sType* generics_type, struct sInfo* info);
 
-struct tuple3$3sTypephcharphbool* parse_type(struct sInfo* info, _Bool parse_variable_name, _Bool parse_multiple_type);
+struct tuple3$3sTypephcharphbool* parse_type(struct sInfo* info, _Bool parse_variable_name, _Bool parse_multiple_type, _Bool in_function_parametor);
 
 struct tuple2$2sTypephcharph* parse_variable_name(struct sType* base_type_name, _Bool first, struct sInfo* info);
 
@@ -2083,6 +2090,58 @@ int int_printf(int self, char* msg);
 char* string_puts(char* self);
 
 void int_times(int self, void* parent, void (*block)(void*,int));
+
+struct integer* integer_initialize(struct integer* self, long value);
+
+int integer_to_int(struct integer* self);
+
+struct integer* char_to_integer(char self);
+
+struct integer* short_to_integer(short short self);
+
+struct integer* int_to_integer(int self);
+
+struct integer* long_to_integer(long self);
+
+int integer_compare(struct integer* left, struct integer* right);
+
+_Bool integer_equals(struct integer* self, struct integer* right);
+
+_Bool integer_operator_equals(struct integer* self, struct integer* right);
+
+_Bool integer_operator_not_equals(struct integer* self, struct integer* right);
+
+struct integer* integer_operator_add(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_sub(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_mult(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_div(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_mod(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_lshift(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_rshift(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_gteq(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_lteq(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_lt(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_gt(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_and(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_xor(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_or(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_andand(struct integer* left, struct integer* right);
+
+struct integer* integer_operator_oror(struct integer* left, struct integer* right);
 
 // inline function
 static inline _Bool die(char* msg){
@@ -5451,5 +5510,233 @@ memset(&i_157, 0, sizeof(int));
             return;
         }
     }
+}
+
+struct integer* integer_initialize(struct integer* self, long value){
+void* __result_obj__;
+struct integer* __result307__;
+memset(&__result_obj__, 0, sizeof(void*));
+    self->value=value;
+    __result307__ = __result_obj__ = self;
+    return __result307__;
+}
+
+int integer_to_int(struct integer* self){
+void* __result_obj__;
+int __result308__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result308__ = self->value;
+    return __result308__;
+}
+
+struct integer* char_to_integer(char self){
+void* __result_obj__;
+struct integer* __result309__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result309__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2293, "struct integer"),self);
+    return __result309__;
+}
+
+struct integer* short_to_integer(short short self){
+void* __result_obj__;
+struct integer* __result310__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result310__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2298, "struct integer"),self);
+    return __result310__;
+}
+
+struct integer* int_to_integer(int self){
+void* __result_obj__;
+struct integer* __result311__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result311__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2303, "struct integer"),self);
+    return __result311__;
+}
+
+struct integer* long_to_integer(long self){
+void* __result_obj__;
+struct integer* __result312__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result312__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2308, "struct integer"),self);
+    return __result312__;
+}
+
+int integer_compare(struct integer* left, struct integer* right){
+void* __result_obj__;
+_Bool _if_conditional238;
+int __result313__;
+_Bool _if_conditional239;
+int __result314__;
+int __result315__;
+int __result316__;
+memset(&__result_obj__, 0, sizeof(void*));
+    if(_if_conditional238=left->value<right->value,    _if_conditional238) {
+        __result313__ = -1;
+        return __result313__;
+    }
+    else {
+        if(_if_conditional239=left->value>right->value,        _if_conditional239) {
+            __result314__ = 1;
+            return __result314__;
+        }
+        else {
+            __result315__ = 0;
+            return __result315__;
+        }
+    }
+    __result316__ = 0;
+    return __result316__;
+}
+
+_Bool integer_equals(struct integer* self, struct integer* right){
+void* __result_obj__;
+_Bool __result317__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result317__ = self->value==right->value;
+    return __result317__;
+}
+
+_Bool integer_operator_equals(struct integer* self, struct integer* right){
+void* __result_obj__;
+_Bool __result318__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result318__ = self->value==right->value;
+    return __result318__;
+}
+
+_Bool integer_operator_not_equals(struct integer* self, struct integer* right){
+void* __result_obj__;
+_Bool __result319__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result319__ = self->value!=right->value;
+    return __result319__;
+}
+
+struct integer* integer_operator_add(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result320__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result320__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2343, "struct integer"),left->value+right->value);
+    return __result320__;
+}
+
+struct integer* integer_operator_sub(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result321__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result321__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2348, "struct integer"),left->value-right->value);
+    return __result321__;
+}
+
+struct integer* integer_operator_mult(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result322__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result322__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2353, "struct integer"),left->value*right->value);
+    return __result322__;
+}
+
+struct integer* integer_operator_div(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result323__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result323__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2358, "struct integer"),left->value/right->value);
+    return __result323__;
+}
+
+struct integer* integer_operator_mod(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result324__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result324__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2363, "struct integer"),left->value%right->value);
+    return __result324__;
+}
+
+struct integer* integer_operator_lshift(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result325__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result325__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2368, "struct integer"),left->value<<right->value);
+    return __result325__;
+}
+
+struct integer* integer_operator_rshift(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result326__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result326__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2373, "struct integer"),left->value>>right->value);
+    return __result326__;
+}
+
+struct integer* integer_operator_gteq(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result327__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result327__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2378, "struct integer"),left->value>=right->value);
+    return __result327__;
+}
+
+struct integer* integer_operator_lteq(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result328__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result328__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2383, "struct integer"),left->value<=right->value);
+    return __result328__;
+}
+
+struct integer* integer_operator_lt(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result329__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result329__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2388, "struct integer"),left->value<right->value);
+    return __result329__;
+}
+
+struct integer* integer_operator_gt(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result330__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result330__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2393, "struct integer"),left->value>right->value);
+    return __result330__;
+}
+
+struct integer* integer_operator_and(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result331__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result331__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2398, "struct integer"),left->value&right->value);
+    return __result331__;
+}
+
+struct integer* integer_operator_xor(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result332__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result332__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2403, "struct integer"),left->value^right->value);
+    return __result332__;
+}
+
+struct integer* integer_operator_or(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result333__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result333__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2408, "struct integer"),left->value|right->value);
+    return __result333__;
+}
+
+struct integer* integer_operator_andand(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result334__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result334__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2413, "struct integer"),left->value&&right->value);
+    return __result334__;
+}
+
+struct integer* integer_operator_oror(struct integer* left, struct integer* right){
+void* __result_obj__;
+struct integer* __result335__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result335__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2418, "struct integer"),left->value||right->value);
+    return __result335__;
 }
 

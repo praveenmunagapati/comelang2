@@ -1513,6 +1513,8 @@ bool sCastNode*::compile(sCastNode* self, sInfo* info)
     
     CVALUE*% come_value = new CVALUE;
     
+    cast_type(type2, left_value.type, left_value);
+    
     come_value.c_value = xsprintf("(%s)%s", make_type_name_string(type2), left_value.c_value);
     come_value.type = clone type2;
     come_value.var = null;

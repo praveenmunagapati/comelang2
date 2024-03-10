@@ -329,6 +329,7 @@ sType*% sType*::initialize(sType*% self, char* name, bool heap=false, sInfo* inf
     }
     
     self.mNoSolvedGenericsType = new tuple1<sType*%>(null);
+    self.mMultipleTypes = new list<sType*%>();
     self.mOriginalLoadVarType = new tuple1<sType*%>(null);
     self.mGenericsTypes = new list<sType*%>();
     self.mArrayNum = new list<sNode*%>();

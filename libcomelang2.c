@@ -1258,6 +1258,7 @@ string buffer*::to_string(buffer* self)
     return string(self.buf);
 }
 
+
 //////////////////////////////
 /// base library(equals)
 //////////////////////////////
@@ -2678,4 +2679,149 @@ void int::times(int self, void* parent, void (*block)(void* parent, int it))
             return;
         }
     }
+}
+
+//////////////////////////////
+// integer
+//////////////////////////////
+integer*% integer*::initialize(integer*% self, long value)
+{
+    self.value = value;
+    
+    return self;
+}
+
+int integer*::to_int(integer* self)
+{
+    return self.value;
+}
+
+integer*% char::to_integer(char self)
+{
+    return new integer(self);
+}
+
+integer*% short::to_integer(short self)
+{
+    return new integer(self);
+}
+
+integer*% int::to_integer(int self)
+{
+    return new integer(self);
+}
+
+integer*% long::to_integer(long self)
+{
+    return new integer(self);
+}
+
+int integer::compare(integer* left, integer* right)
+{
+    if(left.value < right.value) {
+        return -1;
+    }
+    else if(left.value > right.value) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+    
+    return 0;
+}
+
+bool integer::equals(integer* self, integer* right)
+{
+    return self.value == right.value;
+}
+
+bool integer::operator_equals(integer* self, integer* right)
+{
+    return self.value == right.value;
+}
+
+bool integer::operator_not_equals(integer* self, integer* right)
+{
+    return self.value != right.value;
+}
+
+integer*% integer::operator_add(integer* left, integer* right)
+{
+    return new integer(left.value + right.value);
+}
+
+integer*% integer::operator_sub(integer* left, integer* right)
+{
+    return new integer(left.value - right.value);
+}
+
+integer*% integer::operator_mult(integer* left, integer* right)
+{
+    return new integer(left.value * right.value);
+}
+
+integer*% integer::operator_div(integer* left, integer* right)
+{
+    return new integer(left.value / right.value);
+}
+
+integer*% integer::operator_mod(integer* left, integer* right)
+{
+    return new integer(left.value % right.value);
+}
+
+integer*% integer::operator_lshift(integer* left, integer* right)
+{
+    return new integer(left.value << right.value);
+}
+
+integer*% integer::operator_rshift(integer* left, integer* right)
+{
+    return new integer(left.value >> right.value);
+}
+
+integer*% integer::operator_gteq(integer* left, integer* right)
+{
+    return new integer(left.value >= right.value);
+}
+
+integer*% integer::operator_lteq(integer* left, integer* right)
+{
+    return new integer(left.value <= right.value);
+}
+
+integer*% integer::operator_lt(integer* left, integer* right)
+{
+    return new integer(left.value < right.value);
+}
+
+integer*% integer::operator_gt(integer* left, integer* right)
+{
+    return new integer(left.value > right.value);
+}
+
+integer*% integer::operator_and(integer* left, integer* right)
+{
+    return new integer(left.value & right.value);
+}
+
+integer*% integer::operator_xor(integer* left, integer* right)
+{
+    return new integer(left.value ^ right.value);
+}
+
+integer*% integer::operator_or(integer* left, integer* right)
+{
+    return new integer(left.value | right.value);
+}
+
+integer*% integer::operator_andand(integer* left, integer* right)
+{
+    return new integer(left.value && right.value);
+}
+
+integer*% integer::operator_oror(integer* left, integer* right)
+{
+    return new integer(left.value || right.value);
 }

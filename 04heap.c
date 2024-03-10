@@ -165,6 +165,11 @@ sType*% solve_generics(sType* type, sType* generics_type, sInfo* info)
             var type = solve_generics(it, generics_type, info);
             result->mGenericsTypes.push_back(clone type);
         }
+        result.mMultipleTypes.reset();
+        foreach(it, type->mMultipleTypes) {
+            var type = solve_generics(it, generics_type, info);
+            result->mMultipleTypes.push_back(clone type);
+        }
         
         if(!output_generics_struct(result, generics_type, info))
         {
