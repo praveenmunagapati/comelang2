@@ -431,6 +431,13 @@ void check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
             printf("right type is %s pointer num %d\n", right_type2->mClass->mName, right_type2->mPointerNum);
             exit(2);
         }
+        else if(left_type->mClass->mName !== right_type2->mClass->mName) {
+            err_msg(info, "type error5");
+            printf("left type is %s pointer num %d\n", left_type->mClass->mName, left_type->mPointerNum);
+            printf("right type is %s pointer num %d\n", right_type2->mClass->mName, right_type2->mPointerNum);
+            exit(2);
+        }
+/*
         else {
             string method_name = create_method_name(right_type2, false@no_pointer_name, "to_string", info);
             
@@ -462,6 +469,7 @@ void check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
             
             right_type2 = clone type;
         }
+*/
     }
     else if(left_type->mPointerNum > 0) {
         if(right_type2->mPointerNum > 0) {
