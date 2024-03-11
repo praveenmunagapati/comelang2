@@ -480,7 +480,7 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
             }
             return false;
         }
-        else if(left_type->mPointerNum > 0 && right_type2->mPointerNum == 0 && right_type2->mClass->mName === "lambda" && left_type->mClass->mName === "lambda") {
+        else if(left_type->mClass->mName === "lambda" && right_type2->mClass->mName === "lambda") {
         }
         else if(right_type2->mPointerNum > 0) {
             if(print_err_msg) {
@@ -691,6 +691,8 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
         else if(left_type->mClass->mName === "va_list" || right_type2->mClass->mName === "va_list") {
         }
         else if(left_type->mClass->mName === "__builtin_va_list" || right_type2->mClass->mName === "__builtin_va_list") {
+        }
+        else if(left_type->mClass->mName === "lambda" && right_type2->mClass->mName === "lambda") {
         }
         else if(left_type->mPointerNum > 0 && right_type2->mPointerNum == 0 && right_type2->mClass->mName === "lambda" && left_type->mClass->mName === "lambda") {
             if(print_err_msg) {
