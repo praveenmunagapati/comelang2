@@ -651,6 +651,25 @@ void add_come_code_at_source_head(sInfo* info, const char* msg, ...)
     free(msg2);
 }
 
+void add_come_code_at_come_header(sInfo* info, const char* msg, ...)
+{
+    if(info->no_output_come_code) {
+        return;
+    }
+    if(info->sname === info->base_sname) {
+        char* msg2;
+    
+        va_list args;
+        va_start(args, msg);
+        int len = vasprintf(&msg2, msg, args);
+        va_end(args);
+        
+        info.module.mHeader.append_str(xsprintf("%s", msg2));
+        
+        free(msg2);
+    }
+}
+
 int transpile(sInfo* info) version 3
 {
     var name = string("main");
@@ -769,51 +788,7 @@ bool output_header_file(sInfo* info)
         fprintf(f, "#include <comelang2.h>\n");
     }
     
-    fprintf(f, "// source head\n");
-    fprintf(f, "%s\n", info.module.mSourceHead.to_string());
-    
-    fprintf(f, "// header function\n");
-    foreach(it, info.funcs) {
-        sFun* it2 = info.funcs[string(it)];
-        
-        string header = header_function(it2, info);
-        
-        if(it2->mStatic && it2->mResultType->mInline) {
-        }
-        else if(it2->mStatic) {
-        }
-        else if(it2->mResultType->mInline) {
-        }
-        else if(it !== "__builtin_va_start" && it !== "__builtin_va_end") {
-            if(it2->mDeclareSName === info.base_sname) {
-                fprintf(f, "%s\n", header, it);
-            }
-        }
-    }
-    
-    fprintf(f, "// inline function\n");
-    foreach(it, info.funcs) {
-        sFun* it2 = info.funcs[string(it)];
-
-        string header = header_function(it2, info);
-        
-        if(it2->mStatic && it2->mResultType->mInline) {
-            if(it2->mDeclareSName === info.base_sname) {
-                string output = output_function(it2, info);
-                fprintf(f, "static inline %s", output);
-            }
-        }
-        else if(it2->mResultType->mInline) {
-            if(it2->mDeclareSName === info.base_sname) {
-                string output = output_function(it2, info);
-                fprintf(f, "static inline %s", output);
-            }
-        }
-        else if(it2->mStatic) {
-        }
-        else if(it !== "__builtin_va_start" && it !== "__builtin_va_end") {
-        }
-    }
+    fprintf(f, "%s\n", info.module.mHeader.to_string());
     
     fprintf(f, "\n");
     

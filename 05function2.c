@@ -858,6 +858,8 @@ int transpile(sInfo* info) version 5
 
 sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
 {
+    char* source_head = info->p;
+    
     bool is_type_name_flag = is_type_name(buf);
     int sline = info.sline;
         
@@ -1102,6 +1104,15 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
             
             info->method_generics_type_names.reset();
             
+/*
+            char* source_tail = info.p;
+            
+            buffer*% header = new buffer();
+            header.append(source_head, source_tail - source_head);
+            
+            add_come_code_at_come_header(info, "%s", header.to_string());
+*/
+            
             return node;
         }
     }
@@ -1110,6 +1121,15 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
     else if(define_variable_between_brace) {
         info.p = head;
         info.sline = sline;
+        
+/*
+        char* source_tail = info.p;
+        
+        buffer*% header = new buffer();
+        header.append(source_head, source_tail - source_head);
+        
+        add_come_code_at_come_header(info, "%s", header.to_string());
+*/
         
         return parse_global_variable(info);
     }
@@ -1231,6 +1251,15 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
                     info.funcs.insert(clone fun_name, fun);
                 }
                 
+/*
+                char* source_tail = info.p;
+                
+                buffer*% header = new buffer();
+                header.append(source_head, source_tail - source_head);
+                
+                add_come_code_at_come_header(info, "%s", header.to_string());
+*/
+                
                 return new sFunNode(fun, info) implements sNode;
             }
             else {
@@ -1249,7 +1278,16 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
         info.p = head;
         info.sline = sline;
         
-        return parse_global_variable(info);
+        sNode*% node = parse_global_variable(info);
+        
+        char* source_tail = info.p;
+        
+        buffer*% header = new buffer();
+        header.append(source_head, source_tail - source_head);
+        
+        add_come_code_at_come_header(info, "%s %s;\n", buf, header.to_string());
+        
+        return node;
     }
     
     info.p = head;
@@ -1385,6 +1423,7 @@ bool create_generics_fun(string fun_name, sGenericsFun* generics_fun, sType* gen
 sNode*% parse_function(sInfo* info)
 {
     char* header_head = info.p;
+    char* source_head = info.p;
     var result_type, var_name, err = parse_type();
     
     if(!err) {
@@ -1510,9 +1549,27 @@ sNode*% parse_function(sInfo* info)
         info.generics_funcs.insert(string(fun_name3), fun);
         
         delete base_fun_name;
+        
+/*
+        char* source_tail = info.p;
+        
+        buffer*% header = new buffer();
+        header.append(source_head, source_tail - source_head);
+        
+        add_come_code_at_come_header(info, "%s", header.to_string());
+*/
+        
         return (sNode*%)null;
     }
     else if(*info->p == '{') {
+        char* source_tail = info.p -1;
+        
+        buffer*% header = new buffer();
+        header.append(source_head, source_tail - source_head);
+        header.append_str(";\n");
+        
+        add_come_code_at_come_header(info, "%s", header.to_string());
+        
         sBlock*% block = parse_block();
     
         
@@ -1571,6 +1628,14 @@ sNode*% parse_function(sInfo* info)
             }
             
             delete base_fun_name;
+            
+            char* source_tail = info.p;
+            
+            buffer*% header = new buffer();
+            header.append(source_head, source_tail - source_head);
+            
+            add_come_code_at_come_header(info, "%s", header.to_string());
+            
             return new sFunNode(fun, info) implements sNode;
         }
         else {
@@ -1597,6 +1662,14 @@ sNode*% parse_function(sInfo* info)
             }
             
             delete base_fun_name;
+            
+            char* source_tail = info.p;
+            
+            buffer*% header = new buffer();
+            header.append(source_head, source_tail - source_head);
+            
+            add_come_code_at_come_header(info, "%s", header.to_string());
+            
             return new sFunNode(fun, info) implements sNode;
         }
     }

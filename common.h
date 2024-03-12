@@ -207,6 +207,8 @@ struct sModule
     string mLastCode;
     string mLastCode2;
     string mLastCode3;
+    
+    buffer*% mHeader;
 };
 
 struct sVarTable;
@@ -354,6 +356,7 @@ void show_type(sType* type, sInfo* info);
 string create_generics_name(sType* generics_type, sInfo* info);
 void add_last_code_to_source(sInfo* info);
 void add_come_code_at_function_head(sInfo* info, char* code, ...);
+void add_come_code_at_come_header(sInfo* info, const char* msg, ...);
 void add_come_code_at_function_head2(sInfo* info, char* code, ...);
 void add_come_code_at_source_head(sInfo* info, const char* msg, ...);
 void add_come_code(sInfo* info, const char* msg, ...);

@@ -270,6 +270,7 @@ sModule*% sModule*::initialize(sModule*% self)
     self.mSource = new buffer();
     self.mLastCode = null;
     self.mLastCode2 = null;
+    self.mHeader = new buffer();
     
     return self;
 }
@@ -578,11 +579,11 @@ uninstall:
 \trm -f "$(DESTDIR)/share/doc/\{project_name}/README.md"
 
 run: \{project_name}
-\trm *.log
+\trm -f *.log
 \t./\{project_name}
 
 debug: \{project_name_debug}
-\trm *.log
+\trm -f *.log
 \t./\{project_name_debug}
     """.write(s"\{project_name}/Makefile", append:false);
     

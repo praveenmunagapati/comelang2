@@ -312,6 +312,7 @@ struct sModule
     char* mLastCode;
     char* mLastCode2;
     char* mLastCode3;
+    struct buffer* mHeader;
 };
 struct sVarTable;
 struct list_item$1charp
@@ -1440,6 +1441,8 @@ char* create_generics_name(struct sType* generics_type, struct sInfo* info);
 void add_last_code_to_source(struct sInfo* info);
 
 void add_come_code_at_function_head(struct sInfo* info, char* code, ...);
+
+void add_come_code_at_come_header(struct sInfo* info, const char* msg, ...);
 
 void add_come_code_at_function_head2(struct sInfo* info, char* code, ...);
 

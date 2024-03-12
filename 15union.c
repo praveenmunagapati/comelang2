@@ -125,7 +125,18 @@ sNode*% parse_union(string type_name, sInfo* info)
 sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 97
 {
     if(buf === "union") {
+        char* source_head = info.p;
+        
         string type_name = parse_word();
+        bool output = true;
+                
+        if(info.classes.at(type_name, null) == null) {
+            info.classes.insert(type_name, new sClass(name:string(type_name), union_:true));
+        }
+        else {
+            output = false;
+            info.classes.insert(type_name, new sClass(name:string(type_name), union_:true));
+        }
         
         info.classes.insert(type_name, new sClass(name:string(type_name), union_:true));
         
@@ -152,7 +163,15 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 97
             }
         }
         
-        return new sUnionNode(type, true@output, info) implements sNode;
+        char* source_tail = info.p;
+        
+        buffer*% header = new buffer();
+        header.append_str("union ");
+        header.append(source_head, source_tail - source_head);
+        
+        add_come_code_at_come_header(info, "%s;\n", header.to_string());
+        
+        return new sUnionNode(type, output, info) implements sNode;
     }
     
     return inherit(buf, head, head_sline, info);

@@ -474,7 +474,7 @@ sNode*% parse_struct(string type_name, sInfo* info)
 sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
 {
     if(buf === "struct") {
-        char* header_head = head;
+        char* source_head = head;
         
         string type_name = parse_word();
         
@@ -489,6 +489,14 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
             else {
                 struct_class = clone info.classes.at(type_name, null);
             }
+            
+            char* source_tail = info.p;
+            
+            buffer*% header = new buffer();
+            header.append_str("struct ");
+            header.append(source_head, source_tail - source_head);
+            
+            add_come_code_at_come_header(info, "%s", header.to_string());
             
             return new sStructNobodyNode(string(type_name), struct_class, info) implements sNode;
         }
@@ -587,14 +595,25 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
                 
                 info.generics_type_names.reset();
                 
+                char* source_tail = info.p;
+                
+                buffer*% header = new buffer();
+                header.append_str("struct ");
+                header.append(source_head, source_tail - source_head);
+                
+                add_come_code_at_come_header(info, "%s;\n", header.to_string());
+                
                 return new sGenericsStructNode(info) implements sNode;
             }
             else {
+                bool output = true;
+                
                 sClass*% struct_class;
                 if(info.classes.at(type_name, null) == null) {
                     struct_class = new sClass(name:type_name, struct_:true);
                 }
                 else {
+                    output = false;
                     struct_class = clone info.classes.at(type_name, null);
                 }
                 
@@ -661,7 +680,16 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
                 
                 info.generics_type_names.reset();
                 
-                return new sStructNode(string(type_name), clone struct_class, true@output, info) implements sNode;
+                if(info.classes.at(type_name, null) == null) {
+                    char* source_tail = info.p;
+                    
+                    buffer*% header = new buffer();
+                    header.append(source_head, source_tail - source_head);
+                    
+                    add_come_code_at_come_header(info, "%s;\n", header.to_string());
+                }
+                
+                return new sStructNode(string(type_name), clone struct_class, output, info) implements sNode;
             }
         }
     }

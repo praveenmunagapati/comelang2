@@ -57,6 +57,10 @@ bool sEnumNode*::compile(sEnumNode* self, sInfo* info)
     foreach(it, elements) {
         var name, value = it;
         
+        if(info.gv_table.mVars.at(string(name), null) != null) {
+            self.mOutput = false;
+        }
+        
         if(value == null) {
             buf.append_str(name);
             buf.append_str("\n");
@@ -183,11 +187,21 @@ sNode*% parse_enum(string type_name, sInfo* info)
 sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 96
 {
     if(buf === "enum") {
+        char* source_head = info.p;
+        
+        bool output = true;
+        
         string type_name = null;
         if(*info->p == '{') {
             type_name = string("");
         }
         else {
+            if(info.classes.at(type_name, null) == null) {
+            }
+            else {
+                output = false;
+            }
+            
             type_name = parse_word();
             
             info.classes.insert(type_name, new sClass(name:type_name, enum_:true));
@@ -232,7 +246,15 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 96
             }
         }
         
-        return new sEnumNode(type_name, elements, true@output, info) implements sNode;
+        char* source_tail = info.p;
+        
+        buffer*% header = new buffer();
+        header.append_str("enum ");
+        header.append(source_head, source_tail - source_head);
+        
+        add_come_code_at_come_header(info, "%s;\n", header.to_string());
+        
+        return new sEnumNode(type_name, elements, output, info) implements sNode;
     }
     
     return inherit(buf, head, head_sline, info);

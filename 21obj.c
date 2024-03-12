@@ -6,7 +6,6 @@ struct sNullNodeX
   string sname;
 };
 
-
 sNullNodeX*% sNullNodeX*::initialize(sNullNodeX*% self, sInfo* info)
 {
     self.sline = info.sline;

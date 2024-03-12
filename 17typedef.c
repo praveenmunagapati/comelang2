@@ -105,6 +105,8 @@ string sTypedefNode*::sname(sTypedefNode* self, sInfo* info)
 
 sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 95
 {
+    char* source_head = info.p;
+    
     if(buf === "typedef") {
         bool in_typedef = info.in_typedef;
         info.in_typedef = true;
@@ -139,9 +141,25 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 95
                 multiple_declare.push_back(variable_name);
             }
             
+            char* source_tail = info.p;
+            
+            buffer*% header = new buffer();
+            header.append_str("typedef ");
+            header.append(source_head, source_tail - source_head);
+            
+            add_come_code_at_come_header(info, "%s", header.to_string());
+            
             return new sTypedefNode(type_name, type, multiple_declare, info) implements sNode;
         }
         else {
+            char* source_tail = info.p;
+            
+            buffer*% header = new buffer();
+            header.append_str("typedef ");
+            header.append(source_head, source_tail - source_head);
+            
+            add_come_code_at_come_header(info, "%s;\n", header.to_string());
+            
             return new sTypedefNode(type_name, type, null@multiple_declare, info) implements sNode;
         }
     }

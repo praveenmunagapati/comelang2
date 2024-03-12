@@ -112,209 +112,21 @@ struct integer
 {
     long value;
 };
-extern _Bool gComeDebug;
-extern _Bool gComeGC;
-extern _Bool gComeC;
-extern _Bool gComeMalloc;
-extern _Bool gCommonHeader;
-extern int gComeDebugStackFrameID;
-struct sType;
-struct tuple2$2charphsTypeph
-{
-    char* v1;
-    struct sType* v2;
-};
-struct list_item$1tuple2$2charphsTypephph
-{
-    struct tuple2$2charphsTypeph* item;
-    struct list_item$1tuple2$2charphsTypephph* prev;
-    struct list_item$1tuple2$2charphsTypephph* next;
-};
-struct list$1tuple2$2charphsTypephph
-{
-    struct list_item$1tuple2$2charphsTypephph* head;
-    struct list_item$1tuple2$2charphsTypephph* tail;
-    int len;
-    struct list_item$1tuple2$2charphsTypephph* it;
-};
+struct sInfo anonymous_var_nameX540;
 struct sClass
 {
-    _Bool mStruct;
-    _Bool mFloat;
-    _Bool mUnion;
-    _Bool mGenerics;
-    _Bool mMethodGenerics;
-    _Bool mEnum;
-    _Bool mProtocol;
-    _Bool mNumber;
     char* mName;
-    int mGenericsNum;
-    int mMethodGenericsNum;
-    struct list$1tuple2$2charphsTypephph* mFields;
-    _Bool mOutputed;
-    char* mDeclareSName;
-};
-struct sInfo;
-struct sNode
-{
-    void* _protocol_obj;
-    void (*finalize)(void*);
-    void* (*clone)(void*);
-    _Bool (*compile)(void*,struct sInfo*);
-    int (*sline)(void*);
-    char* (*sname)(void*);
-    _Bool (*terminated)(void*);
-    char* (*kind)(void*);
-};
-struct list_item$1sTypeph
-{
-    struct sType* item;
-    struct list_item$1sTypeph* prev;
-    struct list_item$1sTypeph* next;
-};
-struct list$1sTypeph
-{
-    struct list_item$1sTypeph* head;
-    struct list_item$1sTypeph* tail;
-    int len;
-    struct list_item$1sTypeph* it;
-};
-struct tuple1$1sTypeph
-{
-    struct sType* v1;
-};
-struct list_item$1sNodeph
-{
-    struct sNode* item;
-    struct list_item$1sNodeph* prev;
-    struct list_item$1sNodeph* next;
-};
-struct list$1sNodeph
-{
-    struct list_item$1sNodeph* head;
-    struct list_item$1sNodeph* tail;
-    int len;
-    struct list_item$1sNodeph* it;
 };
 struct sType
 {
     struct sClass* mClass;
-    struct list$1sTypeph* mMultipleTypes;
-    struct tuple1$1sTypeph* mNoSolvedGenericsType;
-    struct tuple1$1sTypeph* mOriginalLoadVarType;
-    char* mGenericsName;
-    struct list$1sTypeph* mGenericsTypes;
-    struct list$1sNodeph* mArrayNum;
-    _Bool mOmitArrayNum;
-    struct list$1sTypeph* mParamTypes;
-    struct list$1charph* mParamNames;
-    struct tuple1$1sTypeph* mResultType;
-    _Bool mVarArgs;
-    struct sNode* mAlignas;
-    _Bool mUnsigned;
-    _Bool mShort;
-    _Bool mLong;
-    _Bool mLongLong;
-    _Bool mConstant;
-    _Bool mRegister;
-    _Bool mVolatile;
-    _Bool mStatic;
-    _Bool mExtern;
-    _Bool mRestrict;
-    _Bool mImmutable;
-    _Bool mHeap;
-    _Bool mDummyHeap;
-    _Bool mDelegate;
-    _Bool mShare;
-    _Bool mClone;
-    _Bool mNoHeap;
-    _Bool mNoCallingDestructor;
-    _Bool mRefference;
-    _Bool mException;
-    int mPointerNum;
-    int mOriginalTypeNamePointerNum;
-    int mNoArrayPointerNum;
-    struct sNode* mSizeNum;
-    unsigned int mDynamicArrayNum;
-    unsigned int mTypeOfExpression;
-    char* mOriginalTypeName;
-    int mOriginalPointerNum;
-    _Bool mFunctionParam;
-    _Bool mAllocaValue;
-    _Bool mGenericsStruct;
-    _Bool mSolvedGenericsName;
-    _Bool mComeMemCore;
-    _Bool mInline;
-    _Bool mNullValue;
-    char* mAsmName;
-};
-struct sVar;
-struct CVALUE
-{
-    char* c_value;
-    struct sType* type;
-    struct sVar* var;
 };
 struct sVar
 {
     char* mName;
     char* mCValueName;
     struct sType* mType;
-    int mBlockLevel;
-    _Bool mGlobal;
-    _Bool mAllocaValue;
-    _Bool mFunctionParam;
-    _Bool mNoFree;
-    char* mFunName;
 };
-struct sVarTable;
-struct sBlock;
-struct sFun
-{
-    char* mName;
-    struct sType* mResultType;
-    struct list$1sTypeph* mParamTypes;
-    struct list$1charph* mParamNames;
-    struct list$1charph* mParamDefaultParametors;
-    struct sType* mLambdaType;
-    struct sBlock* mBlock;
-    _Bool mExternal;
-    _Bool mVarArgs;
-    struct buffer* mSource;
-    struct buffer* mSourceHead;
-    struct buffer* mSourceHead2;
-    struct buffer* mSourceDefer;
-    _Bool mStatic;
-    char* mComeHeader;
-    _Bool mCloner;
-    char* mDeclareSName;
-};
-struct sGenericsFun
-{
-    struct sType* mImplType;
-    struct list$1charph* mGenericsTypeNames;
-    struct list$1charph* mMethodGenericsTypeNames;
-    char* mName;
-    struct sType* mResultType;
-    struct list$1sTypeph* mParamTypes;
-    struct list$1charph* mParamNames;
-    struct list$1charph* mParamDefaultParametors;
-    char* mBlock;
-    int mSLine;
-    _Bool mVarArgs;
-    char* mGenericsSName;
-    int mGenericsSLine;
-};
-struct sModule
-{
-    struct buffer* mSourceHead;
-    struct buffer* mSource;
-    char* mLastCode;
-    char* mLastCode2;
-    char* mLastCode3;
-    struct buffer* mHeader;
-};
-struct sVarTable;
 struct list_item$1charp
 {
     char* item;
@@ -345,39 +157,11 @@ struct sVarTable
     struct sVarTable* mParent;
     int mID;
 };
-struct sBlock
+struct CVALUE
 {
-    struct list$1sNodeph* mNodes;
-    struct sVarTable* mVarTable;
-};
-struct sRightValueObject
-{
-    struct sType* mType;
-    char* mVarName;
-    char* mFunName;
-    _Bool mFreed;
-    int mID;
-    int mBlockLevel;
-};
-struct map$2charphsFunph
-{
-    char** keys;
-    _Bool* item_existance;
-    struct sFun** items;
-    int size;
-    int len;
-    struct list$1charp* key_list;
-    int it;
-};
-struct map$2charphsGenericsFunph
-{
-    char** keys;
-    _Bool* item_existance;
-    struct sGenericsFun** items;
-    int size;
-    int len;
-    struct list$1charp* key_list;
-    int it;
+    char* c_value;
+    struct sType* type;
+    struct sVar* var;
 };
 struct map$2charphsClassph
 {
@@ -388,29 +172,6 @@ struct map$2charphsClassph
     int len;
     struct list$1charp* key_list;
     int it;
-};
-struct map$2charphsTypeph
-{
-    char** keys;
-    _Bool* item_existance;
-    struct sType** items;
-    int size;
-    int len;
-    struct list$1charp* key_list;
-    int it;
-};
-struct list_item$1sRightValueObjectph
-{
-    struct sRightValueObject* item;
-    struct list_item$1sRightValueObjectph* prev;
-    struct list_item$1sRightValueObjectph* next;
-};
-struct list$1sRightValueObjectph
-{
-    struct list_item$1sRightValueObjectph* head;
-    struct list_item$1sRightValueObjectph* tail;
-    int len;
-    struct list_item$1sRightValueObjectph* it;
 };
 struct list_item$1CVALUEph
 {
@@ -427,86 +188,112 @@ struct list$1CVALUEph
 };
 struct sInfo
 {
-    char* p;
-    char* head;
-    struct buffer* original_source;
     struct buffer* source;
+    struct smart_pointer$1char* p;
     char* sname;
-    char* base_sname;
     int sline;
-    int err_num;
-    char* err_line;
-    char* clang_option;
-    char* cpp_option;
-    _Bool no_output_err;
-    _Bool no_output_come_code;
-    struct sFun* come_fun;
-    char* come_fun_name;
-    struct sFun* caller_fun;
-    int caller_line;
-    char* caller_sname;
-    int block_level;
-    struct map$2charphsFunph* funcs;
-    struct map$2charphsGenericsFunph* generics_funcs;
     struct map$2charphsClassph* classes;
-    struct map$2charphsTypeph* types;
-    struct map$2charphsClassph* generics_classes;
-    struct sModule* module;
-    struct sType* type;
-    struct list$1sRightValueObjectph* right_value_objects;
-    struct sType* generics_type;
-    struct list$1sTypeph* method_generics_types;
     struct list$1CVALUEph* stack;
-    struct sType* come_function_result_type;
-    struct sVarTable* lv_table;
-    struct sVarTable* gv_table;
-    _Bool no_comma;
-    _Bool no_assign;
-    _Bool last_statment_is_return;
-    struct list$1charph* generics_type_names;
-    struct list$1charph* method_generics_type_names;
-    struct sType* impl_type;
-    int current_stack_num;
-    int num_method_block;
-    struct sClass* current_stack_frame_struct;
-    struct list$1sTypeph* param_types;
-    struct list$1charph* param_names;
-    _Bool define_struct;
-    _Bool in_typedef;
-    _Bool in_loop;
-    char* output_file_name;
-    struct sVarTable* current_loop_vtable;
-    _Bool verbose;
-    _Bool output_header_file;
-    int num_current_stack;
-    int num_source_files;
-    int max_source_files;
-    _Bool without_semicolon;
-    _Bool writing_source_file_position;
-    struct sType* function_result_type;
 };
-struct tuple2$2sTypephcharph
+struct sNode
 {
-    struct sType* v1;
-    char* v2;
+    void* _protocol_obj;
+    void (*finalize)(void*);
+    void* (*clone)(void*);
+    _Bool (*compile)(void*,struct sInfo*);
+    int (*sline)(void*);
+    char* (*sname)(void*);
+    _Bool (*terminated)(void*);
+    char* (*kind)(void*);
 };
-struct tuple4$4list$1sTypephphlist$1charphphlist$1charphphbool
+struct sIntNode
 {
-    struct list$1sTypeph* v1;
-    struct list$1charph* v2;
-    struct list$1charph* v3;
-    _Bool v4;
+    int value;
+    int sline;
+    char* sname;
 };
-struct tuple2$2sFunpcharph
+struct sInfo;
+struct sClass
 {
-    struct sFun* v1;
-    char* v2;
+    char* mName;
+    char* mName;
 };
-struct tuple3$3sTypephcharphbool
+struct sType
 {
-    struct sType* v1;
-    char* v2;
-    _Bool v3;
+    struct sClass* mClass;
+    struct sClass* mClass;
+};
+struct sVar
+{
+    char* mName;
+    char* mCValueName;
+    struct sType* mType;
+    char* mName;
+    char* mCValueName;
+    struct sType* mType;
+};
+struct sVarTable
+{
+    struct map$2charphsVarph* mVars;
+    _Bool mGlobal;
+    struct sVarTable* mParent;
+    int mID;
+    struct map$2charphsVarph* mVars;
+    _Bool mGlobal;
+    struct sVarTable* mParent;
+    int mID;
+};
+struct CVALUE
+{
+    char* c_value;
+    struct sType* type;
+    struct sVar* var;
+    char* c_value;
+    struct sType* type;
+    struct sVar* var;
+};
+struct sInfo
+{
+    struct buffer* source;
+    struct smart_pointer$1char* p;
+    char* sname;
+    int sline;
+    struct map$2charphsClassph* classes;
+    struct list$1CVALUEph* stack;
+    struct buffer* source;
+    struct smart_pointer$1char* p;
+    char* sname;
+    int sline;
+    struct map$2charphsClassph* classes;
+    struct list$1CVALUEph* stack;
+};
+struct sNode
+{
+    void* _protocol_obj;
+    void (*finalize)(void*);
+    void* (*clone)(void*);
+    _Bool (*compile)(void*,struct sInfo*);
+    int (*sline)(void*);
+    char* (*sname)(void*);
+    _Bool (*terminated)(void*);
+    char* (*kind)(void*);
+    void* _protocol_obj;
+    void (*finalize)(void*);
+    void* (*clone)(void*);
+    _Bool (*compile)(void*,struct sInfo*);
+    int (*sline)(void*);
+    char* (*sname)(void*);
+    _Bool (*terminated)(void*);
+    char* (*kind)(void*);
+};
+struct sIntNode
+{
+    int value;
+    int sline;
+    char* sname;
+    int value;
+    int sline;
+    char* sname;
 };
 
 // header function
@@ -1334,333 +1121,28 @@ struct integer* integer_operator_andand(struct integer* left, struct integer* ri
 
 struct integer* integer_operator_oror(struct integer* left, struct integer* right);
 
-_Bool node_compile(struct sNode* node, struct sInfo* info);
+struct sClass* sClass_initialize(struct sClass* self, char* name, struct sInfo* info);
 
-int come_main_v2(int argc, char** argv);
+static void sClass_finalize(struct sClass* self);
+struct sType* sType_initialize(struct sType* self, char* class_name, struct sInfo* info);
 
-void come_init_v2();
+static struct sClass* map$2charphsClassph_at(struct map$2charphsClassph* self, char* key, struct sClass* default_value);
+static void sType_finalize(struct sType* self);
+struct sIntNode* sIntNode_initialize(struct sIntNode* self, int value, struct sInfo* info);
 
-void come_final_v2();
+static void sIntNode_finalize(struct sIntNode* self);
+char* sIntNode_kind();
 
-void err_msg(struct sInfo* info, char* msg, ...);
+_Bool sIntNode_compile(struct sIntNode* self, struct sInfo* info);
 
-int transpile_v2(struct sInfo* info);
+static void CVALUE_finalize(struct CVALUE* self);
+static struct list$1CVALUEph* list$1CVALUEph_push_back(struct list$1CVALUEph* self, struct CVALUE* item);
+static void list_item$1CVALUEphp_finalize(struct list_item$1CVALUEph* self);
+_Bool sIntNode_terminated();
 
-_Bool output_source_file_v2(struct sInfo* info);
+int sIntNode_sline(struct sIntNode* self, struct sInfo* info);
 
-struct sModule* sModule_initialize(struct sModule* self);
-
-struct sType* sType_initialize(struct sType* self, char* name, _Bool heap, struct sInfo* info);
-
-struct sVarTable* sVarTable_initialize(struct sVarTable* self, _Bool global, struct sVarTable* parent);
-
-void sVarTable_finalize(struct sVarTable* self);
-
-struct sClass* sClass_initialize(struct sClass* self, char* name, _Bool number, _Bool union_, _Bool generics, _Bool method_generics, _Bool protocol_, _Bool struct_, _Bool float_, int generics_num, int method_generics_num, _Bool enum_, struct sInfo* info);
-
-struct sFun* sFun_initialize(struct sFun* self, char* name, struct sType* result_type, struct list$1sTypeph* param_types, struct list$1charph* param_names, struct list$1charph* param_default_parametors, _Bool external, _Bool var_args, struct sBlock* block, _Bool static_, char* come_header, char* declare_sname, struct sInfo* info);
-
-char* make_type_name_string(struct sType* type, _Bool in_header, _Bool array_cast_pointer, _Bool no_pointer, struct sInfo* info);
-
-char* make_come_type_name_string(struct sType* type, struct sInfo* info);
-
-void come_init_v3();
-
-void come_final_v3();
-
-char* header_function(struct sFun* fun, struct sInfo* info);
-
-int transpile_v3(struct sInfo* info);
-
-_Bool output_source_file_v3(struct sInfo* info);
-
-void show_type(struct sType* type, struct sInfo* info);
-
-char* create_generics_name(struct sType* generics_type, struct sInfo* info);
-
-void add_last_code_to_source(struct sInfo* info);
-
-void add_come_code_at_function_head(struct sInfo* info, char* code, ...);
-
-void add_come_code_at_come_header(struct sInfo* info, const char* msg, ...);
-
-void add_come_code_at_function_head2(struct sInfo* info, char* code, ...);
-
-void add_come_code_at_source_head(struct sInfo* info, const char* msg, ...);
-
-void add_come_code(struct sInfo* info, const char* msg, ...);
-
-void add_come_last_code(struct sInfo* info, const char* msg, ...);
-
-void add_come_last_code2(struct sInfo* info, const char* msg, ...);
-
-void add_come_last_code3(struct sInfo* info, const char* msg, ...);
-
-void add_last_code_to_source_with_comma(struct sInfo* info);
-
-void dec_stack_ptr(int value, struct sInfo* info);
-
-struct CVALUE* get_value_from_stack(int offset, struct sInfo* info);
-
-char* make_define_var(struct sType* type, char* name, _Bool in_header, struct sInfo* info);
-
-void transpiler_clear_last_code(struct sInfo* info);
-
-_Bool output_header_file(struct sInfo* info);
-
-_Bool existance_free_right_value_objects(struct sInfo* info);
-
-void std_move(struct sType* left_type, struct sType* right_type, struct CVALUE* right_value, struct sInfo* info);
-
-char* append_stackframe(char* c_value, struct sType* type, struct sInfo* info);
-
-_Bool create_equals_method(struct sType* type, struct sInfo* info);
-
-_Bool create_operator_equals_method(struct sType* type, struct sInfo* info);
-
-_Bool create_operator_not_equals_method(struct sType* type, struct sInfo* info);
-
-struct sType* solve_generics(struct sType* type, struct sType* generics_type, struct sInfo* info);
-
-struct sVar* get_variable_from_table(struct sVarTable* table, char* name);
-
-void free_objects_on_return(struct sBlock* current_block, struct sInfo* info, struct sVar* ret_value, _Bool top_block);
-
-void free_objects_on_break(struct sInfo* info);
-
-void free_object(struct sType* type, char* obj, _Bool no_decrement, _Bool no_free, struct sInfo* info, _Bool comma, _Bool ret_value, _Bool force_delete_);
-
-struct tuple2$2sTypephcharph* clone_object(struct sType* type, char* obj, struct sInfo* info);
-
-void free_right_value_objects(struct sInfo* info, _Bool comma);
-
-void free_objects(struct sVarTable* table, struct sVar* ret_value, struct sInfo* info);
-
-char* append_object_to_right_values(char* obj, struct sType* type, struct sInfo* info);
-
-_Bool is_right_values(int right_value_num, struct sInfo* info);
-
-int get_right_value_id_from_obj(char* obj);
-
-void remove_object_from_right_values(int right_value_num, struct sInfo* info);
-
-char* increment_ref_count_object(struct sType* type, char* obj, struct sInfo* info);
-
-void decrement_ref_count_object(struct sType* type, char* obj, struct sInfo* info, _Bool force_delete_);
-
-_Bool strmemcmp(char* p, char* p2);
-
-void caller_begin(struct sInfo* info);
-
-void caller_end(struct sInfo* info);
-
-_Bool operator_overload_fun_self(struct sType* type, char* fun_name, struct CVALUE* left_value, struct sInfo* info);
-
-struct sNode* craete_logical_denial(struct sNode* node, struct sInfo* info);
-
-void backtrace_parse_type(struct sInfo* info);
-
-void transpile_toplevel(_Bool block, struct sInfo* info);
-
-void skip_pointer_attribute(struct sInfo* info);
-
-struct sNode* parse_normal_block(struct sInfo* info);
-
-_Bool check_assign_type(char* msg, struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, _Bool check_no_pointer, _Bool print_err_msg, struct sInfo* info);
-
-void cast_type(struct sType* left_type, struct sType* right_type, struct CVALUE* come_value, struct sInfo* info);
-
-char* parse_attribute(struct sInfo* info);
-
-void come_init_v5();
-
-void come_final_v5();
-
-struct sNode* parse_global_variable(struct sInfo* info);
-
-struct sNode* get_number(_Bool minus, struct sInfo* info);
-
-struct sNode* get_oct_number(struct sInfo* info);
-
-struct sNode* get_hex_number(_Bool minus, struct sInfo* info);
-
-struct sNode* create_int_node(int value, struct sInfo* info);
-
-struct sNode* post_position_operator3_v5(struct sNode* node, struct sInfo* info);
-
-struct tuple4$4list$1sTypephphlist$1charphphlist$1charphphbool* parse_params(struct sInfo* info);
-
-struct tuple2$2sFunpcharph* create_finalizer_automatically(struct sType* type, char* fun_name, struct sInfo* info);
-
-struct tuple2$2sFunpcharph* create_force_finalizer_automatically(struct sType* type, char* fun_name, struct sInfo* info);
-
-struct tuple2$2sFunpcharph* create_cloner_automatically(struct sType* type, char* fun_name, struct sInfo* info);
-
-struct tuple2$2sFunpcharph* create_equals_automatically(struct sType* type, char* fun_name, struct sInfo* info);
-
-struct tuple2$2sFunpcharph* create_operator_equals_automatically(struct sType* type, char* fun_name, struct sInfo* info);
-
-struct tuple2$2sFunpcharph* create_operator_not_equals_automatically(struct sType* type, char* fun_name, struct sInfo* info);
-
-char* skip_block(struct sInfo* info);
-
-_Bool is_contained_generics_class(struct sType* type, struct sInfo* info);
-
-_Bool is_type_name(char* buf, struct sInfo* info);
-
-_Bool parsecmp(char* str, struct sInfo* info);
-
-char* parse_word(struct sInfo* info);
-
-void skip_spaces_and_lf(struct sInfo* info);
-
-int expected_next_character(char c, struct sInfo* info);
-
-struct sBlock* sBlock_initialize(struct sBlock* self, struct sInfo* info);
-
-_Bool create_generics_fun(char* fun_name, struct sGenericsFun* generics_fun, struct sType* generics_type, struct sInfo* info);
-
-struct tuple3$3sTypephcharphbool* parse_type(struct sInfo* info, _Bool parse_variable_name, _Bool parse_multiple_type, _Bool in_function_parametor);
-
-struct tuple2$2sTypephcharph* parse_variable_name(struct sType* base_type_name, _Bool first, struct sInfo* info);
-
-struct sBlock* parse_block(struct sInfo* info, _Bool no_block_level);
-
-int transpile_block(struct sBlock* block, struct list$1sTypeph* param_types, struct list$1charph* param_names, struct sInfo* info, _Bool no_var_table, _Bool loop_block);
-
-void arrange_stack(struct sInfo* info, int top);
-
-struct sNode* parse_function(struct sInfo* info);
-
-struct sNode* expression_v5(struct sInfo* info);
-
-struct sNode* statment(struct sInfo* info);
-
-struct sNode* top_level_v1(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* top_level_v99(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* expression_node_v1(struct sInfo* info);
-
-struct sNode* expression_node_v99(struct sInfo* info);
-
-int transpile_v5(struct sInfo* info);
-
-void parse_sharp_v5(struct sInfo* info);
-
-struct sNode* string_node_v5(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* post_position_operator_v5(struct sNode* node, struct sInfo* info);
-
-char* create_method_name(struct sType* obj_type, _Bool no_pointer_name, char* fun_name, struct sInfo* info);
-
-struct sNode* expression_node_v98(struct sInfo* info);
-
-struct sNode* parse_tuple(struct sInfo* info);
-
-struct sNode* store_var(char* name, struct list$1charph* multiple_assign, struct sType* type, _Bool alloc, struct sNode* right_node, struct sInfo* info);
-
-struct sNode* load_var(char* name, struct sInfo* info);
-
-struct sNode* string_node_v7(char* buf, char* head, int head_sline, struct sInfo* info);
-
-void add_variable_to_table(char* name, struct sType* type, struct sInfo* info);
-
-void add_variable_to_global_table(char* name, struct sType* type, struct sInfo* info);
-
-void add_variable_to_global_table_with_int_value(char* name, struct sType* type, char* c_value, struct sInfo* info);
-
-struct sNode* string_node_v8(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* parse_if_method_call(struct sNode* expression_node, struct sInfo* info);
-
-struct sNode* parse_elif_method_call(struct sNode* expression_node, struct sInfo* info);
-
-struct sNode* parse_or_statment(struct sNode* expression_node, struct sInfo* info);
-
-struct sNode* parse_and_statment(struct sNode* expression_node, struct sInfo* info);
-
-struct sNode* string_node_v9(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* string_node_v10(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* string_node_v11(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* string_node_v12(char* buf, char* head, int head_sline, struct sInfo* info);
-
-_Bool operator_overload_fun(struct sType* type, char* fun_name, struct CVALUE* left_value, struct CVALUE* right_value, struct sInfo* info);
-
-struct sNode* expression_v13(struct sInfo* info);
-
-struct sNode* post_op_v13(struct sNode* node, struct sInfo* info);
-
-struct sNode* string_node_v13(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* create_null_object(struct sInfo* info);
-
-struct sNode* string_node_v14(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* parse_struct(char* type_name, struct sInfo* info);
-
-char* get_none_generics_name(char* class_name);
-
-struct sNode* top_level_v98(char* buf, char* head, int head_sline, struct sInfo* info);
-
-_Bool output_generics_struct(struct sType* type, struct sType* generics_type, struct sInfo* info);
-
-void output_struct(struct sClass* klass, struct sInfo* info);
-
-struct sNode* string_node_v15(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* parse_union(char* type_name, struct sInfo* info);
-
-struct sNode* top_level_v97(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* parse_enum(char* type_name, struct sInfo* info);
-
-struct sNode* top_level_v96(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* top_level_v95(char* buf, char* head, int head_sline, struct sInfo* info);
-
-_Bool compiletime_get_exception_value(struct sInfo* info);
-
-struct sNode* store_field(struct sNode* left, struct sNode* right, char* name, struct sInfo* info);
-
-struct sNode* exception_get_value(struct sNode* node, struct sInfo* info);
-
-struct sNode* post_position_operator_v18(struct sNode* node, struct sInfo* info);
-
-struct sNode* post_position_operator2_v18(struct sNode* node, struct sInfo* info);
-
-struct sNode* parse_method_call_v18(struct sNode* obj, char* fun_name, struct sInfo* info);
-
-struct sNode* post_position_operator2_v19(struct sNode* node, struct sInfo* info);
-
-char* make_generics_function(struct sType* type, char* fun_name, struct sInfo* info);
-
-struct sNode* parse_method_call_v20(struct sNode* obj, char* fun_name, struct sInfo* info);
-
-struct sNode* string_node_v20(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* post_position_operator3_v20(struct sNode* node, struct sInfo* info);
-
-struct sNode* create_object(struct sType* type, struct sInfo* info);
-
-struct sNode* create_true_object(struct sInfo* info);
-
-struct sNode* create_false_object(struct sInfo* info);
-
-struct sNode* string_node_v21(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* top_level_v94(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* post_position_operator3_v21(struct sNode* node, struct sInfo* info);
-
-struct sNode* top_level_v93(char* buf, char* head, int head_sline, struct sInfo* info);
-
-struct sNode* top_level_v92(char* buf, char* head, int head_sline, struct sInfo* info);
-
-int come_main_v1(int argc, char** argv);
+char* sIntNode_sname(struct sIntNode* self, struct sInfo* info);
 
 int main(int argc, char** argv);
 
@@ -1669,9 +1151,13 @@ static inline _Bool die(char* msg){
 void* __result_obj__;
 _Bool __result1__;
 memset(&__result_obj__, 0, sizeof(void*));
+    # 50 "/usr/local/include/comelang2.h"
     perror(msg);
+    # 51 "/usr/local/include/comelang2.h"
     stackframe();
+    # 52 "/usr/local/include/comelang2.h"
     exit(4);
+    # 54 "/usr/local/include/comelang2.h"
     __result1__ = (_Bool)0;
     return __result1__;
 }
@@ -1686,13 +1172,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value0 = (void*)0;
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
 right_value1 = (void*)0;
-    result_0=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1948, "smart_pointer$1char"))));
+    # 1948 "/usr/local/include/comelang2.h"
+    result_0=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "/usr/local/include/comelang2.h", 1948, "smart_pointer$1char"))));
     come_call_finalizer2(smart_pointer$1charp_finalize,right_value0, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1950 "/usr/local/include/comelang2.h"
     __dec_obj1=result_0->memory;
     result_0->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value1=buffer_clone(self))));
     come_call_finalizer2(buffer_finalize,__dec_obj1, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,right_value1, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1951 "/usr/local/include/comelang2.h"
     result_0->p=result_0->memory->buf;
+    # 1953 "/usr/local/include/comelang2.h"
     __result2__ = __result_obj__ = result_0;
     come_call_finalizer2(smart_pointer$1charp_finalize,result_0, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result2__;
@@ -1709,13 +1199,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value2 = (void*)0;
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
 right_value3 = (void*)0;
-    result_1=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value2=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1958, "smart_pointer$1char"))));
+    # 1958 "/usr/local/include/comelang2.h"
+    result_1=(struct smart_pointer$1char*)come_increment_ref_count(((struct smart_pointer$1char*)(right_value2=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "/usr/local/include/comelang2.h", 1958, "smart_pointer$1char"))));
     come_call_finalizer2(smart_pointer$1charp_finalize,right_value2, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1960 "/usr/local/include/comelang2.h"
     __dec_obj2=result_1->memory;
     result_1->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value3=buffer_clone(self))));
     come_call_finalizer2(buffer_finalize,__dec_obj2, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,right_value3, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1961 "/usr/local/include/comelang2.h"
     result_1->p=(char*)result_1->memory->buf;
+    # 1963 "/usr/local/include/comelang2.h"
     __result3__ = __result_obj__ = result_1;
     come_call_finalizer2(smart_pointer$1charp_finalize,result_1, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result3__;
@@ -1732,13 +1226,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value4 = (void*)0;
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
 right_value5 = (void*)0;
-    result_2=(struct smart_pointer$1short*)come_increment_ref_count(((struct smart_pointer$1short*)(right_value4=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1968, "smart_pointer$1short"))));
+    # 1968 "/usr/local/include/comelang2.h"
+    result_2=(struct smart_pointer$1short*)come_increment_ref_count(((struct smart_pointer$1short*)(right_value4=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "/usr/local/include/comelang2.h", 1968, "smart_pointer$1short"))));
     come_call_finalizer2(smart_pointer$1shortp_finalize,right_value4, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1970 "/usr/local/include/comelang2.h"
     __dec_obj3=result_2->memory;
     result_2->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value5=buffer_clone(self))));
     come_call_finalizer2(buffer_finalize,__dec_obj3, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,right_value5, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1971 "/usr/local/include/comelang2.h"
     result_2->p=(short short*)result_2->memory->buf;
+    # 1973 "/usr/local/include/comelang2.h"
     __result4__ = __result_obj__ = result_2;
     come_call_finalizer2(smart_pointer$1shortp_finalize,result_2, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result4__;
@@ -1755,13 +1253,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value6 = (void*)0;
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
 right_value7 = (void*)0;
-    result_3=(struct smart_pointer$1int*)come_increment_ref_count(((struct smart_pointer$1int*)(right_value6=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1978, "smart_pointer$1int"))));
+    # 1978 "/usr/local/include/comelang2.h"
+    result_3=(struct smart_pointer$1int*)come_increment_ref_count(((struct smart_pointer$1int*)(right_value6=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "/usr/local/include/comelang2.h", 1978, "smart_pointer$1int"))));
     come_call_finalizer2(smart_pointer$1intp_finalize,right_value6, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1980 "/usr/local/include/comelang2.h"
     __dec_obj4=result_3->memory;
     result_3->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value7=buffer_clone(self))));
     come_call_finalizer2(buffer_finalize,__dec_obj4, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,right_value7, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1981 "/usr/local/include/comelang2.h"
     result_3->p=(int*)result_3->memory->buf;
+    # 1983 "/usr/local/include/comelang2.h"
     __result5__ = __result_obj__ = result_3;
     come_call_finalizer2(smart_pointer$1intp_finalize,result_3, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result5__;
@@ -1778,13 +1280,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 right_value8 = (void*)0;
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
 right_value9 = (void*)0;
-    result_4=(struct smart_pointer$1long*)come_increment_ref_count(((struct smart_pointer$1long*)(right_value8=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1988, "smart_pointer$1long"))));
+    # 1988 "/usr/local/include/comelang2.h"
+    result_4=(struct smart_pointer$1long*)come_increment_ref_count(((struct smart_pointer$1long*)(right_value8=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "/usr/local/include/comelang2.h", 1988, "smart_pointer$1long"))));
     come_call_finalizer2(smart_pointer$1longp_finalize,right_value8, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1990 "/usr/local/include/comelang2.h"
     __dec_obj5=result_4->memory;
     result_4->memory=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value9=buffer_clone(self))));
     come_call_finalizer2(buffer_finalize,__dec_obj5, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,right_value9, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 1991 "/usr/local/include/comelang2.h"
     result_4->p=(long*)result_4->memory->buf;
+    # 1993 "/usr/local/include/comelang2.h"
     __result6__ = __result_obj__ = result_4;
     come_call_finalizer2(smart_pointer$1longp_finalize,result_4, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result6__;
@@ -1796,6 +1302,7 @@ void* right_value10;
 char* __result7__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value10 = (void*)0;
+    # 2236 "/usr/local/include/comelang2.h"
     __result7__ = __result_obj__ = ((char*)(right_value10=xsprintf(msg,self)));
     right_value10 = come_decrement_ref_count2(right_value10, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result7__;
@@ -1806,6 +1313,7 @@ void* right_value11;
 char* __result8__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value11 = (void*)0;
+    # 2241 "/usr/local/include/comelang2.h"
     __result8__ = __result_obj__ = ((char*)(right_value11=xsprintf(msg,self)));
     right_value11 = come_decrement_ref_count2(right_value11, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result8__;
@@ -1816,6 +1324,7 @@ void* right_value12;
 char* __result9__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value12 = (void*)0;
+    # 2246 "/usr/local/include/comelang2.h"
     __result9__ = __result_obj__ = ((char*)(right_value12=xsprintf(msg,self)));
     right_value12 = come_decrement_ref_count2(right_value12, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     return __result9__;
@@ -1828,7 +1337,10 @@ static void smart_pointer$1charp_finalize(struct smart_pointer$1char* self){
 void* __result_obj__;
 _Bool _if_conditional1;
 memset(&__result_obj__, 0, sizeof(void*));
+        # 1 "smart_pointer$1charp_finalize"
+        # 0 "smart_pointer$1charp_finalize"
         if(_if_conditional1=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional1) {
+            # 0 "smart_pointer$1charp_finalize"
             come_call_finalizer2(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
 }
@@ -1839,7 +1351,10 @@ static void smart_pointer$1shortp_finalize(struct smart_pointer$1short* self){
 void* __result_obj__;
 _Bool _if_conditional2;
 memset(&__result_obj__, 0, sizeof(void*));
+        # 1 "smart_pointer$1shortp_finalize"
+        # 0 "smart_pointer$1shortp_finalize"
         if(_if_conditional2=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional2) {
+            # 0 "smart_pointer$1shortp_finalize"
             come_call_finalizer2(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
 }
@@ -1849,7 +1364,10 @@ static void smart_pointer$1intp_finalize(struct smart_pointer$1int* self){
 void* __result_obj__;
 _Bool _if_conditional3;
 memset(&__result_obj__, 0, sizeof(void*));
+        # 1 "smart_pointer$1intp_finalize"
+        # 0 "smart_pointer$1intp_finalize"
         if(_if_conditional3=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional3) {
+            # 0 "smart_pointer$1intp_finalize"
             come_call_finalizer2(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
 }
@@ -1859,7 +1377,10 @@ static void smart_pointer$1longp_finalize(struct smart_pointer$1long* self){
 void* __result_obj__;
 _Bool _if_conditional4;
 memset(&__result_obj__, 0, sizeof(void*));
+        # 1 "smart_pointer$1longp_finalize"
+        # 0 "smart_pointer$1longp_finalize"
         if(_if_conditional4=self!=((void*)0)&&self->memory!=((void*)0),        _if_conditional4) {
+            # 0 "smart_pointer$1longp_finalize"
             come_call_finalizer2(buffer_finalize,self->memory, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
 }
@@ -1867,23 +1388,369 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 
 
-int come_main_v1(int argc, char** argv){
+struct sClass* sClass_initialize(struct sClass* self, char* name, struct sInfo* info){
 void* __result_obj__;
-int __result10__;
+void* right_value13;
+char* __dec_obj6;
+struct sClass* __result10__;
 memset(&__result_obj__, 0, sizeof(void*));
-    puts("HELLO COMELANG");
-    __result10__ = 0;
+right_value13 = (void*)0;
+    # 11 "01main.c"
+    __dec_obj6=self->mName;
+    self->mName=(char*)come_increment_ref_count(((char*)(right_value13=__builtin_string(name))));
+    __dec_obj6 = come_decrement_ref_count2(__dec_obj6, (void*)0, (void*)0, 0,0,0, (void*)0);
+    right_value13 = come_decrement_ref_count2(right_value13, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    # 13 "01main.c"
+    __result10__ = __result_obj__ = self;
+    come_call_finalizer2(sClass_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result10__;
+    come_call_finalizer2(sClass_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+}
+
+static void sClass_finalize(struct sClass* self){
+void* __result_obj__;
+_Bool _if_conditional5;
+memset(&__result_obj__, 0, sizeof(void*));
+        # 1 "sClass_finalize"
+        # 0 "sClass_finalize"
+        if(_if_conditional5=self!=((void*)0)&&self->mName!=((void*)0),        _if_conditional5) {
+            # 0 "sClass_finalize"
+            self->mName = come_decrement_ref_count2(self->mName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+        }
+}
+
+struct sType* sType_initialize(struct sType* self, char* class_name, struct sInfo* info){
+void* __result_obj__;
+void* right_value14;
+struct sType* __result15__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value14 = (void*)0;
+    # 53 "01main.c"
+    self->mClass=map$2charphsClassph_at(info->classes,((char*)(right_value14=__builtin_string(class_name))),((void*)0));
+    right_value14 = come_decrement_ref_count2(right_value14, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    # 55 "01main.c"
+    __result15__ = __result_obj__ = self;
+    come_call_finalizer2(sType_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    return __result15__;
+    come_call_finalizer2(sType_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+}
+
+static struct sClass* map$2charphsClassph_at(struct map$2charphsClassph* self, char* key, struct sClass* default_value){
+void* __result_obj__;
+unsigned int hash_5;
+unsigned int it_6;
+_Bool _while_condtional1;
+_Bool _if_conditional6;
+_Bool _if_conditional7;
+struct sClass* __result11__;
+_Bool _if_conditional8;
+_Bool _if_conditional9;
+struct sClass* __result12__;
+struct sClass* __result13__;
+struct sClass* __result14__;
+memset(&__result_obj__, 0, sizeof(void*));
+memset(&hash_5, 0, sizeof(unsigned int));
+memset(&it_6, 0, sizeof(unsigned int));
+        # 1223 "/usr/local/include/comelang2.h"
+        hash_5=string_get_hash_key(((char*)key))%self->size;
+        # 1224 "/usr/local/include/comelang2.h"
+        it_6=hash_5;
+        # 1248 "/usr/local/include/comelang2.h"
+        while(_while_condtional1=(_Bool)1,        _while_condtional1) {
+            # 1246 "/usr/local/include/comelang2.h"
+            # 1227 "/usr/local/include/comelang2.h"
+            if(_if_conditional6=self->item_existance[it_6],            _if_conditional6) {
+                # 1234 "/usr/local/include/comelang2.h"
+                # 1229 "/usr/local/include/comelang2.h"
+                if(_if_conditional7=string_equals(self->keys[it_6],key),                _if_conditional7) {
+                    # 1231 "/usr/local/include/comelang2.h"
+                    __result11__ = __result_obj__ = self->items[it_6];
+                    come_call_finalizer2(sClass_finalize,default_value, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                    return __result11__;
+                }
+                # 1234 "/usr/local/include/comelang2.h"
+                it_6++;
+                # 1242 "/usr/local/include/comelang2.h"
+                # 1236 "/usr/local/include/comelang2.h"
+                if(_if_conditional8=it_6>=self->size,                _if_conditional8) {
+                    # 1237 "/usr/local/include/comelang2.h"
+                    it_6=0;
+                }
+                else {
+                    # 1242 "/usr/local/include/comelang2.h"
+                    # 1239 "/usr/local/include/comelang2.h"
+                    if(_if_conditional9=it_6==hash_5,                    _if_conditional9) {
+                        # 1240 "/usr/local/include/comelang2.h"
+                        __result12__ = __result_obj__ = default_value;
+                        come_call_finalizer2(sClass_finalize,default_value, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                        return __result12__;
+                    }
+                }
+            }
+            else {
+                # 1244 "/usr/local/include/comelang2.h"
+                __result13__ = __result_obj__ = default_value;
+                come_call_finalizer2(sClass_finalize,default_value, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+                return __result13__;
+            }
+        }
+        # 1248 "/usr/local/include/comelang2.h"
+        __result14__ = __result_obj__ = default_value;
+        come_call_finalizer2(sClass_finalize,default_value, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+        return __result14__;
+        come_call_finalizer2(sClass_finalize,default_value, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+}
+
+static void sType_finalize(struct sType* self){
+void* __result_obj__;
+memset(&__result_obj__, 0, sizeof(void*));
+}
+
+struct sIntNode* sIntNode_initialize(struct sIntNode* self, int value, struct sInfo* info){
+void* __result_obj__;
+void* right_value15;
+char* __dec_obj7;
+struct sIntNode* __result16__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value15 = (void*)0;
+    # 76 "01main.c"
+    self->value=value;
+    # 78 "01main.c"
+    self->sline=info->sline;
+    # 79 "01main.c"
+    __dec_obj7=self->sname;
+    self->sname=(char*)come_increment_ref_count(((char*)(right_value15=__builtin_string(info->sname))));
+    __dec_obj7 = come_decrement_ref_count2(__dec_obj7, (void*)0, (void*)0, 0,0,0, (void*)0);
+    right_value15 = come_decrement_ref_count2(right_value15, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    # 81 "01main.c"
+    __result16__ = __result_obj__ = self;
+    come_call_finalizer2(sIntNode_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+    return __result16__;
+    come_call_finalizer2(sIntNode_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+}
+
+static void sIntNode_finalize(struct sIntNode* self){
+void* __result_obj__;
+_Bool _if_conditional10;
+memset(&__result_obj__, 0, sizeof(void*));
+        # 1 "sIntNode_finalize"
+        # 0 "sIntNode_finalize"
+        if(_if_conditional10=self!=((void*)0)&&self->sname!=((void*)0),        _if_conditional10) {
+            # 0 "sIntNode_finalize"
+            self->sname = come_decrement_ref_count2(self->sname, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+        }
+}
+
+char* sIntNode_kind(){
+void* __result_obj__;
+void* right_value16;
+char* __result17__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value16 = (void*)0;
+    # 86 "01main.c"
+    __result17__ = __result_obj__ = ((char*)(right_value16=__builtin_string("sIntNode")));
+    right_value16 = come_decrement_ref_count2(right_value16, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    return __result17__;
+}
+
+_Bool sIntNode_compile(struct sIntNode* self, struct sInfo* info){
+void* __result_obj__;
+void* right_value17;
+struct CVALUE* come_value_7;
+void* right_value18;
+char* __dec_obj8;
+void* right_value19;
+void* right_value20;
+struct sType* __dec_obj9;
+_Bool __result19__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value17 = (void*)0;
+memset(&come_value_7, 0, sizeof(struct CVALUE*));
+right_value18 = (void*)0;
+right_value19 = (void*)0;
+right_value20 = (void*)0;
+    # 91 "01main.c"
+    come_value_7=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value17=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "01main.c", 91, "CVALUE"))));
+    come_call_finalizer2(CVALUE_finalize,right_value17, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 93 "01main.c"
+    __dec_obj8=come_value_7->c_value;
+    come_value_7->c_value=(char*)come_increment_ref_count(((char*)(right_value18=xsprintf("%d",self->value))));
+    __dec_obj8 = come_decrement_ref_count2(__dec_obj8, (void*)0, (void*)0, 0,0,0, (void*)0);
+    right_value18 = come_decrement_ref_count2(right_value18, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    # 94 "01main.c"
+    __dec_obj9=come_value_7->type;
+    come_value_7->type=(struct sType*)come_increment_ref_count(((struct sType*)(right_value20=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value19=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "01main.c", 94, "sType")))),"int",info))));
+    come_call_finalizer2(sType_finalize,__dec_obj9, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    come_call_finalizer2(sType_finalize,right_value19, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    come_call_finalizer2(sType_finalize,right_value20, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    # 95 "01main.c"
+    come_value_7->var=((void*)0);
+    # 97 "01main.c"
+    list$1CVALUEph_push_back(info->stack,(struct CVALUE*)come_increment_ref_count(come_value_7));
+    # 101 "01main.c"
+    __result19__ = (_Bool)1;
+    come_call_finalizer2(CVALUE_finalize,come_value_7, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+    return __result19__;
+    come_call_finalizer2(CVALUE_finalize,come_value_7, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+}
+
+static void CVALUE_finalize(struct CVALUE* self){
+void* __result_obj__;
+_Bool _if_conditional11;
+_Bool _if_conditional12;
+memset(&__result_obj__, 0, sizeof(void*));
+        # 1 "CVALUE_finalize"
+        # 0 "CVALUE_finalize"
+        if(_if_conditional11=self!=((void*)0)&&self->c_value!=((void*)0),        _if_conditional11) {
+            # 0 "CVALUE_finalize"
+            self->c_value = come_decrement_ref_count2(self->c_value, (void*)0, (void*)0, 0, 0, 0, (void*)0);
+        }
+        # 2 "CVALUE_finalize"
+        # 1 "CVALUE_finalize"
+        if(_if_conditional12=self!=((void*)0)&&self->type!=((void*)0),        _if_conditional12) {
+            # 1 "CVALUE_finalize"
+            come_call_finalizer2(sType_finalize,self->type, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+        }
+}
+
+static struct list$1CVALUEph* list$1CVALUEph_push_back(struct list$1CVALUEph* self, struct CVALUE* item){
+void* __result_obj__;
+_Bool _if_conditional13;
+void* right_value21;
+struct list_item$1CVALUEph* litem_8;
+struct CVALUE* __dec_obj10;
+_Bool _if_conditional15;
+void* right_value22;
+struct list_item$1CVALUEph* litem_9;
+struct CVALUE* __dec_obj11;
+void* right_value23;
+struct list_item$1CVALUEph* litem_10;
+struct CVALUE* __dec_obj12;
+struct list$1CVALUEph* __result18__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value21 = (void*)0;
+memset(&litem_8, 0, sizeof(struct list_item$1CVALUEph*));
+right_value22 = (void*)0;
+memset(&litem_9, 0, sizeof(struct list_item$1CVALUEph*));
+right_value23 = (void*)0;
+memset(&litem_10, 0, sizeof(struct list_item$1CVALUEph*));
+        # 256 "/usr/local/include/comelang2.h"
+        # 225 "/usr/local/include/comelang2.h"
+        if(_if_conditional13=self->len==0,        _if_conditional13) {
+            # 226 "/usr/local/include/comelang2.h"
+            litem_8=(struct list_item$1CVALUEph*)come_increment_ref_count(((struct list_item$1CVALUEph*)(right_value21=(struct list_item$1CVALUEph*)come_calloc(1, sizeof(struct list_item$1CVALUEph)*(1), "/usr/local/include/comelang2.h", 226, "list_item$1CVALUEph"))));
+            come_call_finalizer2(list_item$1CVALUEphp_finalize,right_value21, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+            # 228 "/usr/local/include/comelang2.h"
+            litem_8->prev=((void*)0);
+            # 229 "/usr/local/include/comelang2.h"
+            litem_8->next=((void*)0);
+            # 230 "/usr/local/include/comelang2.h"
+            __dec_obj10=litem_8->item;
+            litem_8->item=(struct CVALUE*)come_increment_ref_count(item);
+            come_call_finalizer2(CVALUE_finalize,__dec_obj10, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+            # 232 "/usr/local/include/comelang2.h"
+            self->tail=litem_8;
+            # 233 "/usr/local/include/comelang2.h"
+            self->head=litem_8;
+        }
+        else {
+            # 256 "/usr/local/include/comelang2.h"
+            # 235 "/usr/local/include/comelang2.h"
+            if(_if_conditional15=self->len==1,            _if_conditional15) {
+                # 236 "/usr/local/include/comelang2.h"
+                litem_9=(struct list_item$1CVALUEph*)come_increment_ref_count(((struct list_item$1CVALUEph*)(right_value22=(struct list_item$1CVALUEph*)come_calloc(1, sizeof(struct list_item$1CVALUEph)*(1), "/usr/local/include/comelang2.h", 236, "list_item$1CVALUEph"))));
+                come_call_finalizer2(list_item$1CVALUEphp_finalize,right_value22, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+                # 238 "/usr/local/include/comelang2.h"
+                litem_9->prev=self->head;
+                # 239 "/usr/local/include/comelang2.h"
+                litem_9->next=((void*)0);
+                # 240 "/usr/local/include/comelang2.h"
+                __dec_obj11=litem_9->item;
+                litem_9->item=(struct CVALUE*)come_increment_ref_count(item);
+                come_call_finalizer2(CVALUE_finalize,__dec_obj11, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                # 242 "/usr/local/include/comelang2.h"
+                self->tail=litem_9;
+                # 243 "/usr/local/include/comelang2.h"
+                self->head->next=litem_9;
+            }
+            else {
+                # 246 "/usr/local/include/comelang2.h"
+                litem_10=(struct list_item$1CVALUEph*)come_increment_ref_count(((struct list_item$1CVALUEph*)(right_value23=(struct list_item$1CVALUEph*)come_calloc(1, sizeof(struct list_item$1CVALUEph)*(1), "/usr/local/include/comelang2.h", 246, "list_item$1CVALUEph"))));
+                come_call_finalizer2(list_item$1CVALUEphp_finalize,right_value23, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+                # 248 "/usr/local/include/comelang2.h"
+                litem_10->prev=self->tail;
+                # 249 "/usr/local/include/comelang2.h"
+                litem_10->next=((void*)0);
+                # 250 "/usr/local/include/comelang2.h"
+                __dec_obj12=litem_10->item;
+                litem_10->item=(struct CVALUE*)come_increment_ref_count(item);
+                come_call_finalizer2(CVALUE_finalize,__dec_obj12, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                # 252 "/usr/local/include/comelang2.h"
+                self->tail->next=litem_10;
+                # 253 "/usr/local/include/comelang2.h"
+                self->tail=litem_10;
+            }
+        }
+        # 256 "/usr/local/include/comelang2.h"
+        self->len++;
+        # 258 "/usr/local/include/comelang2.h"
+        __result18__ = __result_obj__ = self;
+        come_call_finalizer2(CVALUE_finalize,item, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+        return __result18__;
+        come_call_finalizer2(CVALUE_finalize,item, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
+}
+
+static void list_item$1CVALUEphp_finalize(struct list_item$1CVALUEph* self){
+void* __result_obj__;
+_Bool _if_conditional14;
+memset(&__result_obj__, 0, sizeof(void*));
+                # 1 "list_item$1CVALUEphp_finalize"
+                # 0 "list_item$1CVALUEphp_finalize"
+                if(_if_conditional14=self!=((void*)0)&&self->item!=((void*)0),                _if_conditional14) {
+                    # 0 "list_item$1CVALUEphp_finalize"
+                    come_call_finalizer2(CVALUE_finalize,self->item, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
+                }
+}
+
+_Bool sIntNode_terminated(){
+void* __result_obj__;
+_Bool __result20__;
+memset(&__result_obj__, 0, sizeof(void*));
+    # 106 "01main.c"
+    __result20__ = (_Bool)0;
+    return __result20__;
+}
+
+int sIntNode_sline(struct sIntNode* self, struct sInfo* info){
+void* __result_obj__;
+int __result21__;
+memset(&__result_obj__, 0, sizeof(void*));
+    # 111 "01main.c"
+    __result21__ = self->sline;
+    return __result21__;
+}
+
+char* sIntNode_sname(struct sIntNode* self, struct sInfo* info){
+void* __result_obj__;
+void* right_value24;
+char* __result22__;
+memset(&__result_obj__, 0, sizeof(void*));
+right_value24 = (void*)0;
+    # 116 "01main.c"
+    __result22__ = __result_obj__ = ((char*)(right_value24=__builtin_string(self->sname)));
+    right_value24 = come_decrement_ref_count2(right_value24, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+    return __result22__;
 }
 
 int main(int argc, char** argv){
 void* __result_obj__;
-int __result11__;
+int __result23__;
 memset(&__result_obj__, 0, sizeof(void*));
 come_heap_init(0, 0, 0);
-    __result11__ = come_main_v2(argc,argv);
+    # 121 "01main.c"
+    __result23__ = 0;
     come_heap_final();
-    return __result11__;
+    return __result23__;
 come_heap_final();
 }
 

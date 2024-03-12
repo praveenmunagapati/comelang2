@@ -1,9 +1,34 @@
 #include <comelang2.h>
 
+typedef int XXX;
+
+typedef int XXX;
+
+enum { kA, kB, kC };
+
+enum { kA, kB, kC };
+
+union uData
+{
+    int a;
+    float b;
+};
+
+union uData
+{
+    double c;
+    long a;
+};
+
 struct sData
 {
     int a;
     int b;
+};
+
+struct sData
+{
+    int x;
 };
 
 void fun(sData*%|char*% x)

@@ -3,6 +3,8 @@
 sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 93
 {
     if(buf === "impl") {
+        char* source_head = info.p;
+        
         var word = parse_word(info);
         
         if(*info->p == '<') {
@@ -74,6 +76,13 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 93
         expected_next_character('}');
         info.generics_type_names.reset();
         info->impl_type = null;
+        
+        char* source_tail = info.p;
+        
+        buffer*% header = new buffer();
+        header.append(source_head, source_tail - source_head);
+        
+        add_come_code_at_come_header(info, "impl %s\n", header.to_string());
         
         return (sNode*%)null;
     }

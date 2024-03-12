@@ -95,6 +95,8 @@ sType*%, string parse_interface_function(sInfo* info)
 sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 92
 {
     if(buf === "interface" || buf === "protocol") {
+        char* source_head = info.p;
+        
         var type_name = parse_word();
         
         sClass*% klass;
@@ -146,6 +148,14 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 92
             }
             parse_sharp();
         }
+        
+        char* source_tail = info.p;
+        
+        buffer*% header = new buffer();
+        header.append_str("interface ");
+        header.append(source_head, source_tail - source_head);
+        
+        add_come_code_at_come_header(info, "%s", header.to_string());
         
         return new sInterfaceNode(string(type_name), klass, info) implements sNode;
     }
