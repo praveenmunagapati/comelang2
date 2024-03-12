@@ -16,7 +16,7 @@ fi
 
 if [ -e TypeScriptForRuby/Makefile ]
 then
-    (cd TypeScriptForRuby; make distclean)
+    (cd TypeScriptForRuby; make clean)
 fi
 
 if [ -e zed/Makefile ]
