@@ -14,6 +14,11 @@ then
     (cd vin; make distclean)
 fi
 
+if [ -e TypeScriptForRuby/Makefile ]
+then
+    (cd TypeScriptForRuby; make distclean)
+fi
+
 if [ -e zed/Makefile ]
 then
     (cd zed; make distclean)
