@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 16.0.2
+version 17.0.0
 
 ``` C
 #include <comelang2.h>
@@ -406,6 +406,7 @@ bash fast_build.sh (getting with -O2 comelang2)
 14.0.0 real complete.
 15.0.0 real complete....may be. I will improve shsh, zed, vin and remove memory leaks from this software.
 15.0.1 appended method generics. list::map2. Improved usablity for detecting memory leaks.
+17.0.0 Multiple Typing for function paramtors like typescript. dynamic_typeof, typeof.
 
 # Language specifications
 
@@ -1597,6 +1598,8 @@ libcomelang2.c 96
 a.c 7
 ```
 
+require -cg option for show stackframe()
+
 # Method Generics
 
 ```C
@@ -1667,9 +1670,43 @@ int main(int argc, char** argv)
 
 dynamic typeof(For heap object)
 
+# Multiple Typing for function
 
+```C
+#include <comelang2.h>
 
-require -cg option for show stackframe()
+struct sData
+{
+    int a;
+    int b;
+};
+
+void fun(sData*%|char*% x)
+{
+    if(dynamic_typeof(x) === "sData") {
+        sData* y = x;
+        printf("%d %d\n", y.a, y.b);
+    }
+    else if(dynamic_typeof(x) === "char") {
+        puts(x);
+    }
+}
+
+int main()
+{
+    sData*% a = new sData;
+    
+    a.a = 123;
+    a.b = 124;
+    
+    fun(string("ABC"));
+    fun(a);
+    
+    return 0;
+}
+```
+
+For function parametors only.
 
 # Memory leak detector
 

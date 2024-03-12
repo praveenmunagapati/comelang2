@@ -2048,7 +2048,7 @@ struct smart_pointer$1char* result_0;
 struct smart_pointer$1char* __result2__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
-    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1948, "struct smart_pointer$1char");
+    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1948, "smart_pointer$1char");
     result_0->memory=buffer_clone(self);
     result_0->p=result_0->memory->buf;
     __result2__ = __result_obj__ = result_0;
@@ -2060,7 +2060,7 @@ struct smart_pointer$1char* result_1;
 struct smart_pointer$1char* __result3__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
-    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1958, "struct smart_pointer$1char");
+    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1958, "smart_pointer$1char");
     result_1->memory=buffer_clone(self);
     result_1->p=(char*)result_1->memory->buf;
     __result3__ = __result_obj__ = result_1;
@@ -2072,7 +2072,7 @@ struct smart_pointer$1short* result_2;
 struct smart_pointer$1short* __result4__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
-    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1968, "struct smart_pointer$1short");
+    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1968, "smart_pointer$1short");
     result_2->memory=buffer_clone(self);
     result_2->p=(short short*)result_2->memory->buf;
     __result4__ = __result_obj__ = result_2;
@@ -2084,7 +2084,7 @@ struct smart_pointer$1int* result_3;
 struct smart_pointer$1int* __result5__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
-    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1978, "struct smart_pointer$1int");
+    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1978, "smart_pointer$1int");
     result_3->memory=buffer_clone(self);
     result_3->p=(int*)result_3->memory->buf;
     __result5__ = __result_obj__ = result_3;
@@ -2096,7 +2096,7 @@ struct smart_pointer$1long* result_4;
 struct smart_pointer$1long* __result6__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
-    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1988, "struct smart_pointer$1long");
+    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1988, "smart_pointer$1long");
     result_4->memory=buffer_clone(self);
     result_4->p=(long*)result_4->memory->buf;
     __result6__ = __result_obj__ = result_4;
@@ -2524,7 +2524,7 @@ struct come_regex* charp_to_regex(char* self, _Bool ignore_case, _Bool multiline
 void* __result_obj__;
 struct come_regex* __result53__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result53__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 61, "struct come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
+    __result53__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 61, "come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
     return __result53__;
 }
 
@@ -2532,7 +2532,7 @@ struct come_regex* string_to_regex(char* self, _Bool ignore_case, _Bool multilin
 void* __result_obj__;
 struct come_regex* __result54__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result54__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 66, "struct come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
+    __result54__ = __result_obj__ = come_regex_initialize((struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 66, "come_regex"),self,ignore_case,multiline,global,extended,dotall,anchored,dollar_endonly,ungreedy);
     return __result54__;
 }
 
@@ -2552,7 +2552,7 @@ memset(&erro_ofs_11, 0, sizeof(int));
         __result55__ = __result_obj__ = ((void*)0);
         return __result55__;
     }
-    result_9=(struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 76, "struct come_regex");
+    result_9=(struct come_regex*)come_calloc(1, sizeof(struct come_regex)*(1), "libcomelang2-str-gc.c", 76, "come_regex");
     result_9->str=string_clone(reg->str);
     result_9->ignore_case=reg->ignore_case;
     result_9->multiline=reg->multiline;
@@ -2668,7 +2668,7 @@ memset(&result_17, 0, sizeof(unsigned int*));
         __result63__ = __result_obj__ = __builtin_wstring("");
         return __result63__;
     }
-    result_17=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(tail-head+1)), "libcomelang2-str-gc.c", 171, "unsigned int");
+    result_17=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(tail-head+1)), "libcomelang2-str-gc.c", 171, "int");
     memcpy(result_17,str+head,sizeof(unsigned int)*(tail-head));
     result_17[tail-head]=0;
     __result64__ = __result_obj__ = result_17;
@@ -2693,7 +2693,7 @@ memset(&ret_20, 0, sizeof(int));
         return __result65__;
     }
     len_18=strlen(str);
-    wstr_19=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_18+1)), "libcomelang2-str-gc.c", 186, "unsigned int");
+    wstr_19=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_18+1)), "libcomelang2-str-gc.c", 186, "int");
     ret_20=mbstowcs(wstr_19,str,len_18+1);
     wstr_19[ret_20]=0;
     if(_if_conditional19=ret_20<0,    _if_conditional19) {
@@ -2998,7 +2998,7 @@ memset(&group_strings_88, 0, sizeof(struct list$1charph*));
 memset(&i_89, 0, sizeof(int));
 memset(&match_string_90, 0, sizeof(char*));
 memset(&str2_91, 0, sizeof(char*));
-    result_65=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 372, "struct list$1charph"));
+    result_65=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 372, "list$1charph"));
     offset_66=0;
     ovec_max_67=16;
     int start_68[ovec_max_67];
@@ -3022,7 +3022,7 @@ memset(&str2_91, 0, sizeof(char*));
         }
         if(_if_conditional30=regex_result_78==1,        _if_conditional30) {
             str_81=charp_substring(self,start_68[0],end_69[0]);
-            group_strings_82=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 406, "struct list$1charph"));
+            group_strings_82=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 406, "list$1charph"));
             str2_83=block(parent,str_81,group_strings_82);
             if(_if_conditional31=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional31) {
                 __result76__ = __result_obj__ = result_65;
@@ -3039,7 +3039,7 @@ memset(&str2_91, 0, sizeof(char*));
         else {
             if(_if_conditional35=regex_result_78>1,            _if_conditional35) {
                 str_87=charp_substring(self,start_68[0],end_69[0]);
-                group_strings_88=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 427, "struct list$1charph"));
+                group_strings_88=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 427, "list$1charph"));
                 for(                i_89=1;                i_89<regex_result_78;                i_89++                ){
                     match_string_90=charp_substring(self,start_68[i_89],end_69[i_89]);
                     list$1charph_push_back(group_strings_88,match_string_90);
@@ -3090,7 +3090,7 @@ memset(&litem_84, 0, sizeof(struct list_item$1charph*));
 memset(&litem_85, 0, sizeof(struct list_item$1charph*));
 memset(&litem_86, 0, sizeof(struct list_item$1charph*));
                 if(_if_conditional32=self->len==0,                _if_conditional32) {
-                    litem_84=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 226, "struct list_item$1charph");
+                    litem_84=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 226, "list_item$1charph");
                     litem_84->prev=((void*)0);
                     litem_84->next=((void*)0);
                     litem_84->item=item;
@@ -3099,7 +3099,7 @@ memset(&litem_86, 0, sizeof(struct list_item$1charph*));
                 }
                 else {
                     if(_if_conditional33=self->len==1,                    _if_conditional33) {
-                        litem_85=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 236, "struct list_item$1charph");
+                        litem_85=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 236, "list_item$1charph");
                         litem_85->prev=self->head;
                         litem_85->next=((void*)0);
                         litem_85->item=item;
@@ -3107,7 +3107,7 @@ memset(&litem_86, 0, sizeof(struct list_item$1charph*));
                         self->head->next=litem_85;
                     }
                     else {
-                        litem_86=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 246, "struct list_item$1charph");
+                        litem_86=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 246, "list_item$1charph");
                         litem_86->prev=self->tail;
                         litem_86->next=((void*)0);
                         litem_86->item=item;
@@ -3178,7 +3178,7 @@ memset(&group_strings_113, 0, sizeof(struct list$1charph*));
 memset(&i_114, 0, sizeof(int));
 memset(&match_string_115, 0, sizeof(char*));
 memset(&str2_116, 0, sizeof(char*));
-    result_92=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 461, "struct list$1charph"));
+    result_92=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 461, "list$1charph"));
     offset_93=0;
     ovec_max_94=16;
     int start_95[ovec_max_94];
@@ -3203,7 +3203,7 @@ memset(&str2_116, 0, sizeof(char*));
         }
         if(_if_conditional38=regex_result_106==1,        _if_conditional38) {
             str_109=charp_substring(self,start_95[0],end_96[0]);
-            group_strings_110=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 497, "struct list$1charph"));
+            group_strings_110=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 497, "list$1charph"));
             str2_111=block(parent,str_109,group_strings_110);
             if(_if_conditional39=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional39) {
                 __result80__ = __result_obj__ = result_92;
@@ -3224,7 +3224,7 @@ memset(&str2_116, 0, sizeof(char*));
         else {
             if(_if_conditional42=regex_result_106>1,            _if_conditional42) {
                 str_112=charp_substring(self,start_95[0],end_96[0]);
-                group_strings_113=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 523, "struct list$1charph"));
+                group_strings_113=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 523, "list$1charph"));
                 for(                i_114=1;                i_114<regex_result_106;                i_114++                ){
                     match_string_115=charp_substring(self,start_95[i_114],end_96[i_114]);
                     list$1charph_push_back(group_strings_113,match_string_115);
@@ -3321,7 +3321,7 @@ memset(&str2_143, 0, sizeof(char*));
     options_119=reg->options;
     str_120=reg->str;
     re_121=reg->re;
-    result_122=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 569, "struct list$1charph"));
+    result_122=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 569, "list$1charph"));
     offset_123=0;
     ovec_max_124=16;
     int start_125[ovec_max_124];
@@ -3342,7 +3342,7 @@ memset(&str2_143, 0, sizeof(char*));
         }
         if(_if_conditional46=regex_result_130==1,        _if_conditional46) {
             str_133=charp_substring(self,offset_123,start_125[0]);
-            match_strings_134=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 596, "struct list$1charph"));
+            match_strings_134=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 596, "list$1charph"));
             str2_135=block(parent,str_133,match_strings_134);
             if(_if_conditional47=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional47) {
                 __result83__ = __result_obj__ = result_122;
@@ -3365,7 +3365,7 @@ memset(&str2_143, 0, sizeof(char*));
                 else {
                     offset_123=end_126[0];
                 }
-                match_strings_137=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 623, "struct list$1charph"));
+                match_strings_137=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 623, "list$1charph"));
                 for(                i_138=1;                i_138<regex_result_130;                i_138++                ){
                     match_str_139=charp_substring(self,start_125[i_138],end_126[i_138]);
                     list$1charph_push_back(match_strings_137,match_str_139);
@@ -3384,7 +3384,7 @@ memset(&str2_143, 0, sizeof(char*));
     }
     if(_if_conditional52=offset_123<charp_length(self),    _if_conditional52) {
         str_141=charp_substring(self,offset_123,-1);
-        match_strings_142=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 645, "struct list$1charph"));
+        match_strings_142=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 645, "list$1charph"));
         str2_143=block(parent,str_141,match_strings_142);
         if(_if_conditional53=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional53) {
             __result85__ = __result_obj__ = result_122;
@@ -3456,7 +3456,7 @@ memset(&str2_168, 0, sizeof(char*));
     options_146=reg->options;
     str_147=reg->str;
     re_148=reg->re;
-    result_149=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 667, "struct list$1charph"));
+    result_149=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 667, "list$1charph"));
     offset_150=0;
     ovec_max_151=16;
     int start_152[ovec_max_151];
@@ -3478,7 +3478,7 @@ memset(&str2_168, 0, sizeof(char*));
         }
         if(_if_conditional54=regex_result_158==1,        _if_conditional54) {
             str_161=charp_substring(self,offset_150,start_152[0]);
-            match_strings_162=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 696, "struct list$1charph"));
+            match_strings_162=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 696, "list$1charph"));
             str2_163=block(parent,str_161,match_strings_162);
             if(_if_conditional55=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,            _if_conditional55) {
                 __result87__ = __result_obj__ = result_149;
@@ -3501,7 +3501,7 @@ memset(&str2_168, 0, sizeof(char*));
                 else {
                     offset_150=end_153[0];
                 }
-                match_strings_165=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 722, "struct list$1charph"));
+                match_strings_165=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 722, "list$1charph"));
                 for(                i_166=1;                i_166<regex_result_158;                i_166++                ){
                     match_str_167=charp_substring(self,start_152[i_166],end_153[i_166]);
                     list$1charph_push_back(match_strings_165,match_str_167);
@@ -3636,7 +3636,7 @@ memset(&str_185, 0, sizeof(char*));
 memset(&str_186, 0, sizeof(char*));
 memset(&i_187, 0, sizeof(int));
 memset(&match_string_188, 0, sizeof(char*));
-    result_169=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 790, "struct list$1charph"));
+    result_169=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 790, "list$1charph"));
     offset_170=0;
     ovec_max_171=16;
     int start_172[ovec_max_171];
@@ -3899,7 +3899,7 @@ memset(&len_206, 0, sizeof(int));
 memset(&result_207, 0, sizeof(unsigned int*));
 memset(&i_208, 0, sizeof(int));
     len_206=wcslen(str);
-    result_207=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_206+1)), "libcomelang2-str-gc.c", 1010, "unsigned int");
+    result_207=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_206+1)), "libcomelang2-str-gc.c", 1010, "int");
     for(    i_208=0;    i_208<len_206;    i_208++    ){
         result_207[i_208]=str[len_206-i_208-1];
     }
@@ -3919,7 +3919,7 @@ memset(&len_209, 0, sizeof(int));
 memset(&result_210, 0, sizeof(unsigned int*));
 memset(&i_211, 0, sizeof(int));
     len_209=wcslen(str)*n+1;
-    result_210=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_209)), "libcomelang2-str-gc.c", 1025, "unsigned int");
+    result_210=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_209)), "libcomelang2-str-gc.c", 1025, "int");
     result_210[0]=0;
     for(    i_211=0;    i_211<n;    i_211++    ){
         wcscat(result_210,str);
@@ -3944,7 +3944,7 @@ memset(&n_214, 0, sizeof(int));
 memset(&i_215, 0, sizeof(int));
 memset(&c_216, 0, sizeof(unsigned int));
     len_212=wchar_tp_length(str);
-    result_213=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_212*2+1)), "libcomelang2-str-gc.c", 1039, "unsigned int");
+    result_213=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(len_212*2+1)), "libcomelang2-str-gc.c", 1039, "int");
     n_214=0;
     for(    i_215=0;    i_215<len_212;    i_215++    ){
         c_216=str[i_215];
@@ -4191,7 +4191,7 @@ unsigned int* result_237;
 unsigned int* __result134__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_237, 0, sizeof(unsigned int*));
-    result_237=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1203, "unsigned int");
+    result_237=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1203, "int");
     wcscpy(result_237,left);
     wcscat(result_237,right);
     __result134__ = __result_obj__ = result_237;
@@ -4204,7 +4204,7 @@ unsigned int* result_238;
 unsigned int* __result135__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_238, 0, sizeof(unsigned int*));
-    result_238=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1213, "unsigned int");
+    result_238=(unsigned int*)come_calloc(1, sizeof(unsigned int)*(1*(wcslen(left)+wcslen(right)+1)), "libcomelang2-str-gc.c", 1213, "int");
     wcscpy(result_238,left);
     wcscat(result_238,right);
     __result135__ = __result_obj__ = result_238;
@@ -4393,7 +4393,7 @@ memset(&str_278, 0, sizeof(char*));
     options_267=reg->options;
     str_268=reg->str;
     re_269=reg->re;
-    result_270=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1339, "struct buffer"));
+    result_270=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1339, "buffer"));
     while(_while_condtional14=(_Bool)1,    _while_condtional14) {
         options_271=2097152;
         len_272=strlen(self);
@@ -4485,7 +4485,7 @@ memset(&str_299, 0, sizeof(char*));
     options_286=reg->options;
     str_287=reg->str;
     re_288=reg->re;
-    result_289=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1402, "struct buffer"));
+    result_289=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1402, "buffer"));
     n_290=0;
     while(_while_condtional15=(_Bool)1,    _while_condtional15) {
         options_291=2097152;
@@ -4541,8 +4541,8 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_300, 0, sizeof(struct list$1charph*));
 memset(&buf_301, 0, sizeof(struct buffer*));
 memset(&i_302, 0, sizeof(int));
-    result_300=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1461, "struct list$1charph"));
-    buf_301=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1463, "struct buffer"));
+    result_300=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1461, "list$1charph"));
+    buf_301=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1463, "buffer"));
     for(    i_302=0;    i_302<charp_length(self);    i_302++    ){
         if(_if_conditional109=strstr(self+i_302,str)==self+i_302,        _if_conditional109) {
             list$1charph_push_back(result_300,__builtin_string(buf_301->buf));
@@ -4602,7 +4602,7 @@ memset(&str_319, 0, sizeof(char*));
 memset(&str_320, 0, sizeof(char*));
 memset(&i_321, 0, sizeof(int));
 memset(&match_string_322, 0, sizeof(char*));
-    result_303=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1484, "struct list$1charph"));
+    result_303=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1484, "list$1charph"));
     offset_304=0;
     ovec_max_305=16;
     int start_306[ovec_max_305];
@@ -4706,7 +4706,7 @@ memset(&str_343, 0, sizeof(char*));
     options_325=reg->options;
     str_326=reg->str;
     re_327=reg->re;
-    result_328=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1565, "struct list$1charph"));
+    result_328=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1565, "list$1charph"));
     offset_329=0;
     ovec_max_330=16;
     int start_331[ovec_max_330];
@@ -4879,7 +4879,7 @@ memset(&str_380, 0, sizeof(char*));
     options_361=reg->options;
     str_362=reg->str;
     re_363=reg->re;
-    result_364=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1687, "struct list$1charph"));
+    result_364=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1687, "list$1charph"));
     offset_365=0;
     ovec_max_366=16;
     int start_367[ovec_max_366];
@@ -5179,7 +5179,7 @@ memset(&str_443, 0, sizeof(char*));
     options_422=reg->options;
     str_423=reg->str;
     re_424=reg->re;
-    result_425=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1899, "struct buffer"));
+    result_425=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 1899, "buffer"));
     while(_while_condtional22=(_Bool)1,    _while_condtional22) {
         options_426=2097152;
         len_427=strlen(self);
@@ -5193,7 +5193,7 @@ memset(&str_443, 0, sizeof(char*));
         if(_if_conditional133=regex_result_428==1,        _if_conditional133) {
             str_431=charp_substring(self,offset_415,start_417[0]);
             buffer_append_str(result_425,str_431);
-            group_strings_432=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1919, "struct list$1charph"));
+            group_strings_432=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1919, "list$1charph"));
             match_string_433=charp_substring(self,start_417[0],end_418[0]);
             list$1charph_push_back(group_strings_432,charp_substring(self,start_417[0],end_418[0]));
             block_result_434=block(parent,match_string_433,group_strings_432);
@@ -5224,7 +5224,7 @@ memset(&str_443, 0, sizeof(char*));
                 else {
                     offset_415=end_418[0];
                 }
-                group_strings_437=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1958, "struct list$1charph"));
+                group_strings_437=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 1958, "list$1charph"));
                 for(                i_438=1;                i_438<regex_result_428;                i_438++                ){
                     match_string_439=charp_substring(self,start_417[i_438],end_418[i_438]);
                     list$1charph_push_back(group_strings_437,match_string_439);
@@ -5338,7 +5338,7 @@ memset(&str_475, 0, sizeof(char*));
     options_451=reg->options;
     str_452=reg->str;
     re_453=reg->re;
-    result_454=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 2007, "struct buffer"));
+    result_454=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-str-gc.c", 2007, "buffer"));
     n_455=0;
     while(_while_condtional23=(_Bool)1,    _while_condtional23) {
         options_456=2097152;
@@ -5354,7 +5354,7 @@ memset(&str_475, 0, sizeof(char*));
             n_455++;
             str_461=charp_substring(self,offset_444,start_446[0]);
             buffer_append_str(result_454,str_461);
-            group_strings_462=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 2030, "struct list$1charph"));
+            group_strings_462=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 2030, "list$1charph"));
             list$1charph_push_back(group_strings_462,charp_substring(self,start_446[0],end_447[0]));
             match_string_463=charp_substring(self,start_446[0],end_447[0]);
             block_result_464=block(parent,match_string_463,group_strings_462);
@@ -5391,7 +5391,7 @@ memset(&str_475, 0, sizeof(char*));
                 else {
                     offset_444=end_447[0];
                 }
-                group_strings_468=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 2077, "struct list$1charph"));
+                group_strings_468=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str-gc.c", 2077, "list$1charph"));
                 for(                i_469=1;                i_469<regex_result_458;                i_469++                ){
                     match_string_470=charp_substring(self,start_446[i_469],end_447[i_469]);
                     list$1charph_push_back(group_strings_468,match_string_470);

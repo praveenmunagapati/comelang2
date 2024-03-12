@@ -110,7 +110,9 @@ bool sNewNode*::compile(sNewNode* self, sInfo* info)
     
     string type_name = make_type_name_string(type2, array_cast_pointer:true);
     
-    come_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d, \"%s\")", type_name, type_name, num_string.to_string(), info.sname, info.sline, type_name);
+    string type_name2 = make_come_type_name_string(type2);
+    
+    come_value.c_value = xsprintf("(%s*)come_calloc(1, sizeof(%s)*(%s), \"%s\", %d, \"%s\")", type_name, type_name, num_string.to_string(), info.sname, info.sline, type_name2);
     
     type2->mHeap = true;
     type2->mPointerNum++;

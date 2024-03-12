@@ -2160,7 +2160,7 @@ struct smart_pointer$1char* result_0;
 struct smart_pointer$1char* __result2__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_0, 0, sizeof(struct smart_pointer$1char*));
-    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1948, "struct smart_pointer$1char");
+    result_0=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1948, "smart_pointer$1char");
     result_0->memory=buffer_clone(self);
     result_0->p=result_0->memory->buf;
     __result2__ = __result_obj__ = result_0;
@@ -2172,7 +2172,7 @@ struct smart_pointer$1char* result_1;
 struct smart_pointer$1char* __result3__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_1, 0, sizeof(struct smart_pointer$1char*));
-    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1958, "struct smart_pointer$1char");
+    result_1=(struct smart_pointer$1char*)come_calloc(1, sizeof(struct smart_pointer$1char)*(1), "./comelang2.h", 1958, "smart_pointer$1char");
     result_1->memory=buffer_clone(self);
     result_1->p=(char*)result_1->memory->buf;
     __result3__ = __result_obj__ = result_1;
@@ -2184,7 +2184,7 @@ struct smart_pointer$1short* result_2;
 struct smart_pointer$1short* __result4__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_2, 0, sizeof(struct smart_pointer$1short*));
-    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1968, "struct smart_pointer$1short");
+    result_2=(struct smart_pointer$1short*)come_calloc(1, sizeof(struct smart_pointer$1short)*(1), "./comelang2.h", 1968, "smart_pointer$1short");
     result_2->memory=buffer_clone(self);
     result_2->p=(short short*)result_2->memory->buf;
     __result4__ = __result_obj__ = result_2;
@@ -2196,7 +2196,7 @@ struct smart_pointer$1int* result_3;
 struct smart_pointer$1int* __result5__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_3, 0, sizeof(struct smart_pointer$1int*));
-    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1978, "struct smart_pointer$1int");
+    result_3=(struct smart_pointer$1int*)come_calloc(1, sizeof(struct smart_pointer$1int)*(1), "./comelang2.h", 1978, "smart_pointer$1int");
     result_3->memory=buffer_clone(self);
     result_3->p=(int*)result_3->memory->buf;
     __result5__ = __result_obj__ = result_3;
@@ -2208,7 +2208,7 @@ struct smart_pointer$1long* result_4;
 struct smart_pointer$1long* __result6__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_4, 0, sizeof(struct smart_pointer$1long*));
-    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1988, "struct smart_pointer$1long");
+    result_4=(struct smart_pointer$1long*)come_calloc(1, sizeof(struct smart_pointer$1long)*(1), "./comelang2.h", 1988, "smart_pointer$1long");
     result_4->memory=buffer_clone(self);
     result_4->p=(long*)result_4->memory->buf;
     __result6__ = __result_obj__ = result_4;
@@ -2275,7 +2275,7 @@ _Bool _if_conditional3;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&buf_5, 0, sizeof(struct buffer*));
 memset(&i_6, 0, sizeof(int));
-    buf_5=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 44, "struct buffer"));
+    buf_5=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 44, "buffer"));
     buffer_append_str(buf_5,xsprintf("%s %d\n",sname,sline));
     for(    i_6=gNumComeStackFrame-2;    i_6>=0;    i_6--    ){
         buffer_append_str(buf_5,xsprintf("%s %d #%d\n",gComeStackFrameSName[i_6],gComeStackFrameSLine[i_6],gComeStackFrameID[i_6]));
@@ -2906,7 +2906,7 @@ memset(&result_37, 0, sizeof(struct buffer*));
         __result44__ = __result_obj__ = ((void*)0);
         return __result44__;
     }
-    result_37=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 571, "struct buffer");
+    result_37=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 571, "buffer");
     result_37->size=self->size;
     result_37->buf=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2-gc.c", 574, "char");
     result_37->len=self->len;
@@ -3277,7 +3277,7 @@ struct buffer* __result67__;
 struct buffer* __result68__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_70, 0, sizeof(struct buffer*));
-    result_70=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 821, "struct buffer"));
+    result_70=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 821, "buffer"));
     if(_if_conditional76=self==((void*)0),    _if_conditional76) {
         __result67__ = __result_obj__ = result_70;
         return __result67__;
@@ -3295,7 +3295,7 @@ struct buffer* __result69__;
 struct buffer* __result70__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_71, 0, sizeof(struct buffer*));
-    result_71=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 834, "struct buffer"));
+    result_71=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 834, "buffer"));
     if(_if_conditional77=self==((void*)0),    _if_conditional77) {
         __result69__ = __result_obj__ = result_71;
         return __result69__;
@@ -3621,7 +3621,7 @@ memset(&i_77, 0, sizeof(int));
         __result109__ = __result_obj__ = __builtin_string("");
         return __result109__;
     }
-    buf_76=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1023, "struct buffer"));
+    buf_76=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1023, "buffer"));
     for(    i_77=0;    i_77<right;    i_77++    ){
         buffer_append_str(buf_76,self);
     }
@@ -3643,7 +3643,7 @@ memset(&i_79, 0, sizeof(int));
         __result111__ = __result_obj__ = __builtin_string("");
         return __result111__;
     }
-    buf_78=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1037, "struct buffer"));
+    buf_78=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1037, "buffer"));
     for(    i_79=0;    i_79<right;    i_79++    ){
         buffer_append_str(buf_78,self);
     }
@@ -4399,11 +4399,11 @@ memset(&result_110, 0, sizeof(struct list$1charph*));
 memset(&str_111, 0, sizeof(struct buffer*));
 memset(&i_112, 0, sizeof(int));
     if(_if_conditional157=self==((void*)0),    _if_conditional157) {
-        __result187__ = __result_obj__ = list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1556, "struct list$1charph"));
+        __result187__ = __result_obj__ = list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1556, "list$1charph"));
         return __result187__;
     }
-    result_110=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1559, "struct list$1charph"));
-    str_111=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1561, "struct buffer"));
+    result_110=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1559, "list$1charph"));
+    str_111=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1561, "buffer"));
     for(    i_112=0;    i_112<charp_length(self);    i_112++    ){
         if(_if_conditional158=self[i_112]==c,        _if_conditional158) {
             list$1charph_push_back(result_110,__builtin_string(str_111->buf));
@@ -4444,7 +4444,7 @@ memset(&litem_113, 0, sizeof(struct list_item$1charph*));
 memset(&litem_114, 0, sizeof(struct list_item$1charph*));
 memset(&litem_115, 0, sizeof(struct list_item$1charph*));
                 if(_if_conditional159=self->len==0,                _if_conditional159) {
-                    litem_113=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 226, "struct list_item$1charph");
+                    litem_113=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 226, "list_item$1charph");
                     litem_113->prev=((void*)0);
                     litem_113->next=((void*)0);
                     litem_113->item=item;
@@ -4453,7 +4453,7 @@ memset(&litem_115, 0, sizeof(struct list_item$1charph*));
                 }
                 else {
                     if(_if_conditional160=self->len==1,                    _if_conditional160) {
-                        litem_114=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 236, "struct list_item$1charph");
+                        litem_114=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 236, "list_item$1charph");
                         litem_114->prev=self->head;
                         litem_114->next=((void*)0);
                         litem_114->item=item;
@@ -4461,7 +4461,7 @@ memset(&litem_115, 0, sizeof(struct list_item$1charph*));
                         self->head->next=litem_114;
                     }
                     else {
-                        litem_115=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 246, "struct list_item$1charph");
+                        litem_115=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 246, "list_item$1charph");
                         litem_115->prev=self->tail;
                         litem_115->next=((void*)0);
                         litem_115->item=item;
@@ -4489,11 +4489,11 @@ memset(&result_116, 0, sizeof(struct list$1charph*));
 memset(&str_117, 0, sizeof(struct buffer*));
 memset(&i_118, 0, sizeof(int));
     if(_if_conditional162=self==((void*)0),    _if_conditional162) {
-        __result190__ = __result_obj__ = list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1582, "struct list$1charph"));
+        __result190__ = __result_obj__ = list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1582, "list$1charph"));
         return __result190__;
     }
-    result_116=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1585, "struct list$1charph"));
-    str_117=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1587, "struct buffer"));
+    result_116=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 1585, "list$1charph"));
+    str_117=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1587, "buffer"));
     for(    i_118=0;    i_118<charp_length(self);    i_118++    ){
         if(_if_conditional163=self[i_118]==c,        _if_conditional163) {
             list$1charph_push_back(result_116,__builtin_string(str_117->buf));
@@ -5062,7 +5062,7 @@ memset(&size_127, 0, sizeof(int));
         __result262__ = __result_obj__ = __builtin_string("");
         return __result262__;
     }
-    buf_125=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1938, "struct buffer"));
+    buf_125=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 1938, "buffer"));
     while(_while_condtional6=1,    _while_condtional6) {
         char buf2_126[1024];
         memset(&buf2_126, 0, sizeof(char)        *(1024)        );
@@ -5268,7 +5268,7 @@ memset(&result2_143, 0, sizeof(int));
         __result283__ = __result_obj__ = __builtin_string("");
         return __result283__;
     }
-    buf_139=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 2078, "struct buffer"));
+    buf_139=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 2078, "buffer"));
     while(_while_condtional7=1,    _while_condtional7) {
         char buf2_140[1024];
         memset(&buf2_140, 0, sizeof(char)        *(1024)        );
@@ -5319,7 +5319,7 @@ memset(&result2_149, 0, sizeof(int));
         __result287__ = __result_obj__ = __builtin_string("");
         return __result287__;
     }
-    buf_145=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 2115, "struct buffer"));
+    buf_145=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 2115, "buffer"));
     while(_while_condtional8=1,    _while_condtional8) {
         char buf2_146[1024];
         memset(&buf2_146, 0, sizeof(char)        *(1024)        );
@@ -5349,7 +5349,7 @@ _Bool _if_conditional228;
 struct list$1charph* __result291__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_150, 0, sizeof(struct list$1charph*));
-    result_150=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 2142, "struct list$1charph"));
+    result_150=list$1charph_initialize((struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-gc.c", 2142, "list$1charph"));
     if(_if_conditional227=f==((void*)0),    _if_conditional227) {
         __result290__ = __result_obj__ = result_150;
         return __result290__;
@@ -5533,7 +5533,7 @@ struct integer* char_to_integer(char self){
 void* __result_obj__;
 struct integer* __result309__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result309__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2293, "struct integer"),self);
+    __result309__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2293, "integer"),self);
     return __result309__;
 }
 
@@ -5541,7 +5541,7 @@ struct integer* short_to_integer(short short self){
 void* __result_obj__;
 struct integer* __result310__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result310__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2298, "struct integer"),self);
+    __result310__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2298, "integer"),self);
     return __result310__;
 }
 
@@ -5549,7 +5549,7 @@ struct integer* int_to_integer(int self){
 void* __result_obj__;
 struct integer* __result311__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result311__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2303, "struct integer"),self);
+    __result311__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2303, "integer"),self);
     return __result311__;
 }
 
@@ -5557,7 +5557,7 @@ struct integer* long_to_integer(long self){
 void* __result_obj__;
 struct integer* __result312__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result312__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2308, "struct integer"),self);
+    __result312__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2308, "integer"),self);
     return __result312__;
 }
 
@@ -5616,7 +5616,7 @@ struct integer* integer_operator_add(struct integer* left, struct integer* right
 void* __result_obj__;
 struct integer* __result320__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result320__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2343, "struct integer"),left->value+right->value);
+    __result320__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2343, "integer"),left->value+right->value);
     return __result320__;
 }
 
@@ -5624,7 +5624,7 @@ struct integer* integer_operator_sub(struct integer* left, struct integer* right
 void* __result_obj__;
 struct integer* __result321__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result321__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2348, "struct integer"),left->value-right->value);
+    __result321__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2348, "integer"),left->value-right->value);
     return __result321__;
 }
 
@@ -5632,7 +5632,7 @@ struct integer* integer_operator_mult(struct integer* left, struct integer* righ
 void* __result_obj__;
 struct integer* __result322__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result322__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2353, "struct integer"),left->value*right->value);
+    __result322__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2353, "integer"),left->value*right->value);
     return __result322__;
 }
 
@@ -5640,7 +5640,7 @@ struct integer* integer_operator_div(struct integer* left, struct integer* right
 void* __result_obj__;
 struct integer* __result323__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result323__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2358, "struct integer"),left->value/right->value);
+    __result323__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2358, "integer"),left->value/right->value);
     return __result323__;
 }
 
@@ -5648,7 +5648,7 @@ struct integer* integer_operator_mod(struct integer* left, struct integer* right
 void* __result_obj__;
 struct integer* __result324__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result324__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2363, "struct integer"),left->value%right->value);
+    __result324__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2363, "integer"),left->value%right->value);
     return __result324__;
 }
 
@@ -5656,7 +5656,7 @@ struct integer* integer_operator_lshift(struct integer* left, struct integer* ri
 void* __result_obj__;
 struct integer* __result325__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result325__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2368, "struct integer"),left->value<<right->value);
+    __result325__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2368, "integer"),left->value<<right->value);
     return __result325__;
 }
 
@@ -5664,7 +5664,7 @@ struct integer* integer_operator_rshift(struct integer* left, struct integer* ri
 void* __result_obj__;
 struct integer* __result326__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result326__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2373, "struct integer"),left->value>>right->value);
+    __result326__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2373, "integer"),left->value>>right->value);
     return __result326__;
 }
 
@@ -5672,7 +5672,7 @@ struct integer* integer_operator_gteq(struct integer* left, struct integer* righ
 void* __result_obj__;
 struct integer* __result327__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result327__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2378, "struct integer"),left->value>=right->value);
+    __result327__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2378, "integer"),left->value>=right->value);
     return __result327__;
 }
 
@@ -5680,7 +5680,7 @@ struct integer* integer_operator_lteq(struct integer* left, struct integer* righ
 void* __result_obj__;
 struct integer* __result328__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result328__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2383, "struct integer"),left->value<=right->value);
+    __result328__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2383, "integer"),left->value<=right->value);
     return __result328__;
 }
 
@@ -5688,7 +5688,7 @@ struct integer* integer_operator_lt(struct integer* left, struct integer* right)
 void* __result_obj__;
 struct integer* __result329__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result329__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2388, "struct integer"),left->value<right->value);
+    __result329__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2388, "integer"),left->value<right->value);
     return __result329__;
 }
 
@@ -5696,7 +5696,7 @@ struct integer* integer_operator_gt(struct integer* left, struct integer* right)
 void* __result_obj__;
 struct integer* __result330__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result330__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2393, "struct integer"),left->value>right->value);
+    __result330__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2393, "integer"),left->value>right->value);
     return __result330__;
 }
 
@@ -5704,7 +5704,7 @@ struct integer* integer_operator_and(struct integer* left, struct integer* right
 void* __result_obj__;
 struct integer* __result331__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result331__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2398, "struct integer"),left->value&right->value);
+    __result331__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2398, "integer"),left->value&right->value);
     return __result331__;
 }
 
@@ -5712,7 +5712,7 @@ struct integer* integer_operator_xor(struct integer* left, struct integer* right
 void* __result_obj__;
 struct integer* __result332__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result332__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2403, "struct integer"),left->value^right->value);
+    __result332__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2403, "integer"),left->value^right->value);
     return __result332__;
 }
 
@@ -5720,7 +5720,7 @@ struct integer* integer_operator_or(struct integer* left, struct integer* right)
 void* __result_obj__;
 struct integer* __result333__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result333__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2408, "struct integer"),left->value|right->value);
+    __result333__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2408, "integer"),left->value|right->value);
     return __result333__;
 }
 
@@ -5728,7 +5728,7 @@ struct integer* integer_operator_andand(struct integer* left, struct integer* ri
 void* __result_obj__;
 struct integer* __result334__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result334__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2413, "struct integer"),left->value&&right->value);
+    __result334__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2413, "integer"),left->value&&right->value);
     return __result334__;
 }
 
@@ -5736,7 +5736,7 @@ struct integer* integer_operator_oror(struct integer* left, struct integer* righ
 void* __result_obj__;
 struct integer* __result335__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result335__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2418, "struct integer"),left->value||right->value);
+    __result335__ = __result_obj__ = integer_initialize((struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2-gc.c", 2418, "integer"),left->value||right->value);
     return __result335__;
 }
 

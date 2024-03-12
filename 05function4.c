@@ -328,18 +328,18 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
             }
         }
         
-        left_type2->mMultipleTypes.reset();
-        
-        if(check_assign_type(msg, left_type2, right_type, come_value, check_no_pointer, false@print_err_msg, info)) {
-            found_match_type = true;
-        }
-        
         if(!found_match_type) {
             err_msg(info, "type errorX");
             printf("left type is %s pointer num %d\n", left_type->mClass->mName, left_type->mPointerNum);
             printf("right type is %s pointer num %d\n", right_type2->mClass->mName, right_type2->mPointerNum);
             exit(2);
+            
         }
+        string tmp = xsprintf("(void*)%s", come_value.c_value);
+        come_value.c_value = clone tmp;
+        come_value.type = new sType("void*");
+        come_value.type->mHeap = left_type->mMultipleTypes[0].mHeap;
+        come_value.var = null;
         
         return true;
     }
@@ -2131,8 +2131,6 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
                 types.push_back(clone type2);
             }
             
-            type.mMultipleTypes = clone types;
-            
             bool heap = types[0].mHeap;
             foreach(it, types) {
                 if(heap != it->mHeap) {
@@ -2141,21 +2139,25 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
                 heap = it->mHeap;
             }
             
-            type = new sType("void");
-            type->mHeap = heap;
-            type->mPointerNum = 1;
+            sType*% type3 = new sType("void");
+            type3->mHeap = heap;
+            type3->mPointerNum = 1;
             
-            if(is_contained_generics_class(type, info)) {
-                type = solve_generics(type, info.generics_type, info);
+            type3.mMultipleTypes = clone types;
+            
+            if(is_contained_generics_class(type3, info)) {
+                type3 = solve_generics(type3, info.generics_type, info);
             }
             else {
-                if(!output_generics_struct(type, type, info))
+                if(!output_generics_struct(type3, type3, info))
                 {
                     string new_name = create_generics_name(type, info);
                     printf("output generics is failed(%s)\n", new_name);
                     exit(9);
                 }
             }
+            
+            type = clone type3;
         }
 
         if(parse_variable_name) {

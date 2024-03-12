@@ -1,14 +1,30 @@
 #include <comelang2.h>
 
-void fun(int|char n)
+struct sData
 {
-    printf("%d\n", n);
+    int a;
+    int b;
+};
+
+void fun(sData*%|char*% x)
+{
+    if(dynamic_typeof(x) === "sData") {
+        sData* y = x;
+        printf("%d %d\n", y.a, y.b);
+    }
+    else if(dynamic_typeof(x) === "char") {
+        puts(x);
+    }
 }
 
-int main(int argc, char** argv) 
+int main()
 {
-    int a = 1;
+    sData*% a = new sData;
     
+    a.a = 123;
+    a.b = 124;
+    
+    fun(string("ABC"));
     fun(a);
     
     return 0;

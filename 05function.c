@@ -1322,7 +1322,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
                         n++;
                     }
                     if(n < fun.mParamTypes.length()) {
-                        check_assign_type(s"\{fun_name} calling param #\{n}", param_types[n], come_value.type, come_value);
+                        check_assign_type(s"\{fun_name} calling param(1) #\{n}", param_types[n], come_value.type, come_value);
                     }
                     if(n < fun.mParamTypes.length() && param_types[n].mHeap && come_value.type.mHeap) {
                         std_move(param_types[n], come_value.type, come_value);
@@ -1330,7 +1330,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
                 }
                 else {
                     if(i < fun.mParamTypes.length()) {
-                        check_assign_type(s"\{fun_name} calling param #\{i}", param_types[i], come_value.type, come_value);
+                        check_assign_type(s"\{fun_name} calling param(2) #\{i}", param_types[i], come_value.type, come_value);
                     }
                     if(i < fun.mParamTypes.length() && param_types[i].mHeap && come_value.type.mHeap) {
                         std_move(param_types[i], come_value.type, come_value);
@@ -1380,7 +1380,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
                     info.sline = sline;
             
                     CVALUE*% come_value = get_value_from_stack(-1, info);
-                    check_assign_type(s"\{fun_name} calling param #\{i}", param_types[i], come_value.type, come_value);
+                    check_assign_type(s"\{fun_name} calling param(3) #\{i}", param_types[i], come_value.type, come_value);
                     if(param_types[i].mHeap && come_value.type.mHeap) {
                         std_move(param_types[i], come_value.type, come_value);
                     }
@@ -1406,7 +1406,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
                 CVALUE* come_value = label_params[param_name];
                 
                 if(come_value) {
-                    check_assign_type(s"\{fun_name} calling param \{i}", param_types[i], come_value.type, come_value);
+                    check_assign_type(s"\{fun_name} calling param(4) \{i}", param_types[i], come_value.type, come_value);
                     come_params.replace(i, clone come_value);
                 }
             }

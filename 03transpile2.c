@@ -171,6 +171,12 @@ string make_come_type_name_string(sType* type, sInfo* info=info)
         }
     }
     
+    if(type->mArrayNum.length() > 0) {
+        for(int i=0; i<type->mArrayNum.length(); i++) {
+            buf.append_str("[]");
+        }
+    }
+    
     if(type->mHeap) {
         buf.append_str("%");
     }
