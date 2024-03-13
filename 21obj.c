@@ -1946,6 +1946,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             return new sTypeOfExpNode(exp, info) implements sNode;
         }
     }
+/*
     else if(buf === "dynamic_typeof") {
         expected_next_character('(');
         
@@ -1955,6 +1956,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         
         return new sDynamicTypeOfNode(exp, info) implements sNode;
     }
+*/
     else if(buf === "_Alignof") {
         expected_next_character('(');
         

@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 18.0.0
+version 19.0.0
 
 ``` C
 #include <comelang2.h>
@@ -408,6 +408,7 @@ bash fast_build.sh (getting with -O2 comelang2)
 15.0.1 appended method generics. list::map2. Improved usablity for detecting memory leaks.
 17.0.0 Multiple Typing for function paramtors like typescript. dynamic_typeof, typeof.
 18.0.0 Fixed package manager bug.
+19.0.0 Prohibits Multiple Types and dynamic_typeof.
 
 # Language specifications
 
@@ -1641,7 +1642,7 @@ int main(int argc, char** argv)
 
 no type inference
 
-# typeof, dynamic_typeof
+# typeof
 
 ```C
 #include <comelang2.h>
@@ -1656,58 +1657,6 @@ int main(int argc, char** argv)
 ```
 
 statically typeof
-
-```C
-#include <comelang2.h>
-
-int main(int argc, char** argv) 
-{
-    var a = ["ABC", "DEF"];
-    puts(dynamic_typeof(a));
-    
-    return 0;
-}
-```
-
-dynamic typeof(For heap object)
-
-# Multiple Typing for function
-
-```C
-#include <comelang2.h>
-
-struct sData
-{
-    int a;
-    int b;
-};
-
-void fun(sData*%|char*% x)
-{
-    if(dynamic_typeof(x) === "sData") {
-        sData* y = x;
-        printf("%d %d\n", y.a, y.b);
-    }
-    else if(dynamic_typeof(x) === "char") {
-        puts(x);
-    }
-}
-
-int main()
-{
-    sData*% a = new sData;
-    
-    a.a = 123;
-    a.b = 124;
-    
-    fun(string("ABC"));
-    fun(a);
-    
-    return 0;
-}
-```
-
-For function parametors only.
 
 # Memory leak detector
 

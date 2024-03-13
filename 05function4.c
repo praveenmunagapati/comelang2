@@ -2113,6 +2113,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
                 }
             }
         }
+/*
         if(*info->p == '|' && in_function_parametor) {
             list<sType*%>*% types = new list<sType*%>();
             
@@ -2159,6 +2160,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             
             type = clone type3;
         }
+*/
 
         if(parse_variable_name) {
             parse_sharp();
