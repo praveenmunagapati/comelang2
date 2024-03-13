@@ -438,7 +438,221 @@ Compatible with C language. If you can write C, you should be able to write it r
 
 automatically-free-systemの規則さえわかればCプログラマーならすぐ使えると思います。
 
-# Automatically-free-system
+# Libraries
+
+There are list, map, tuple, buffer, and string. There is no vector.
+
+ライブラリにはlist, map, tuple, buffer, stringがあります。vectorはありません。
+
+# list
+
+```
+#incldue <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    list<char*>*% li = ["AAA", "BBB", "CCC", "DDD", "EEE"];
+    
+    foreach(it, li.sublist(0,3)) {   // "AAA"\n"BBB"\n"CCC"
+        puts(it);
+    }
+    
+    li.add("FFF");
+    
+    foreach(it, li) {   // "AAA"\n"BBB"\n"CCC"\n"DDD"\n"EEE"\n"FFF"
+        puts(it);
+    }
+    
+    return 0;
+}
+```
+
+# map
+
+map is a dictionary.
+
+mapは辞書です。
+
+```
+#include <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    map<char*, int>*% ma = new map<char*, int>();
+    
+    ma.insert("AAA", 1);
+    ma.insert("BBB", 2);
+    ma.insert("CCC", 3);
+    
+    foreach(it, ma) {
+        int item = ma[it];
+        
+        printf("element %s %d\n", it, item);
+    }
+    
+    return 0;
+}
+```
+
+insert adds an element. foreach's iterator only returns the key. If you want to access item, please use it.
+
+foreachのイテレーターはキーしかアクセスできません。itがイテレーター名です。
+
+The map representation is
+
+```
+#include <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    map<char*, int>*% ma = ["AAA":1, "BBB":2, "CCC":3]:
+    
+    foreach(it, ma) {
+        int item = ma[it];
+
+        printf("%s %d\n", it, ma[it]);
+    }
+    
+    return 0;
+}
+```
+
+It becomes.
+
+# tuple
+
+A tuple is a container for elements of different types.
+
+```
+#include <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    tuple3<int, int, char*>*% tu = new tuple3<int, int, char*>(1, 2, "ABC");
+    
+    printf("%d %d %s\n", tu.v1, tu.v2, tu.v3);
+    
+    return 0;
+}
+```
+
+```
+#include <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    tuple3<int, int, char*>*% tu = (1,2,"ABC");
+    
+    printf("%d %d %s\n", tu.v1, tu.v2, tu.v3);
+    
+    return 0;
+}
+```
+
+# buffer
+
+buffer is memory that can be appended.
+
+```
+#include <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    buffer*% buf = new buffer();
+    
+    buf.append_str("ABC");
+    buf.append_str("DEF");
+    
+    puts(buf.to_string()));
+    
+    buffer*% buf2 = new buffer();
+    
+    buf2.append_int(1);
+    buf2.append_int(2);
+    buf2.append_int(3);
+    
+    int* p = (int*)buf2.buf;
+    
+    printf("%d\n", *p);  // 1
+    p++;
+    printf("%d\n", *p);  // 2
+    p++;
+    printf("%d\n", *p);  // 3
+    p++;
+    
+    return 0;
+}
+```
+
+# string 
+
+```
+#include <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    puts(xsprintf("%d", 1 + 1));     // ==> 2
+    puts(string("ABC").substring(0, 1));  // ==> "A"
+    
+    return 0;
+}
+```
+
+# Default parametor values, parametor labels
+
+``` C
+#include<stdio.h>
+
+int fun(int x = 123, int y = 345, int z = 456) 
+{
+    printf("x %d y %d z %d\n", x, y, z);
+}
+
+struct sData 
+{
+    int x;
+    int y;
+    int z;
+};
+
+int sData*::fun(sData* self, int x = 123, int y = 345, int z = 456)
+{
+    self.x = x;
+    self.y = y;
+    self.z = z;
+}
+
+void sData*::show(sData* self)
+{
+    printf("x %d y %d z %d\n", self.x, self.y, self.z);
+}
+
+int main(int argc, char** argv) 
+{
+    fun();           // x 123 y 345 z 456 are outputed
+    fun(y:2);        // x 123 y 2 z 456
+    
+    fun(y:1, x:3);   // x 3 y 1 z 456
+    
+    fun(1);          // x 1 y 345 z 456
+    fun(1,2);        // x 1 y 2 z 456
+    
+    sData data;
+    (&data).fun(1,2,3);
+    (&data).show();   // x 123 y 345 z 456
+    
+    (&data).fun(y:2); // x 123 y 2 z 456
+    (&data).show();   // x 123 y 2 z 456
+    
+    (&data).fun(1);
+    (&data).show();   // x 1 y 345 z 456
+    
+    return 0;
+}
+```
+
+
+# Automatically-free-system(Reffrence Count GC)
 
 Basically, if the return value of a function that generates a heap or the return value of new is assigned to a variable, the reference count will be increased by 1. A heap with a reference count of 0 will be freed if it is not assigned to a variable after executing one statement.
 
@@ -705,220 +919,6 @@ This is because the object still exists even if the variable that owns it disapp
 If you are nervous, add % to the variable and assign the cloned one to ensure ownership.
 
 この場合はstrはfunの実行時は存在しているためセグメンテーションフォルトしません。もし、神経質になる場合はfun(char*% str)としてfun(clone str)として呼び出せばいいでしょう。
-
-# Libraries
-
-There are list, map, tuple, buffer, and string. There is no vector.
-
-ライブラリにはlist, map, tuple, buffer, stringがあります。vectorはありません。
-
-# list
-
-```
-#incldue <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    list<char*>*% li = ["AAA", "BBB", "CCC", "DDD", "EEE"];
-    
-    foreach(it, li.sublist(0,3)) {   // "AAA"\n"BBB"\n"CCC"
-        puts(it);
-    }
-    
-    li.add("FFF");
-    
-    foreach(it, li) {   // "AAA"\n"BBB"\n"CCC"\n"DDD"\n"EEE"\n"FFF"
-        puts(it);
-    }
-    
-    return 0;
-}
-```
-
-# map
-
-map is a dictionary.
-
-mapは辞書です。
-
-```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    map<char*, int>*% ma = new map<char*, int>();
-    
-    ma.insert("AAA", 1);
-    ma.insert("BBB", 2);
-    ma.insert("CCC", 3);
-    
-    foreach(it, ma) {
-        int item = ma[it];
-        
-        printf("element %s %d\n", it, item);
-    }
-    
-    return 0;
-}
-```
-
-insert adds an element. foreach's iterator only returns the key. If you want to access item, please use it.
-
-foreachのイテレーターはキーしかアクセスできません。itがイテレーター名です。
-
-The map representation is
-
-```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    map<char*, int>*% ma = ["AAA":1, "BBB":2, "CCC":3]:
-    
-    foreach(it, ma) {
-        int item = ma[it];
-
-        printf("%s %d\n", it, ma[it]);
-    }
-    
-    return 0;
-}
-```
-
-It becomes.
-
-# tuple
-
-A tuple is a container for elements of different types.
-
-```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    tuple3<int, int, char*>*% tu = new tuple3<int, int, char*>(1, 2, "ABC");
-    
-    printf("%d %d %s\n", tu.v1, tu.v2, tu.v3);
-    
-    return 0;
-}
-```
-
-```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    tuple3<int, int, char*>*% tu = (1,2,"ABC");
-    
-    printf("%d %d %s\n", tu.v1, tu.v2, tu.v3);
-    
-    return 0;
-}
-```
-
-# buffer
-
-buffer is memory that can be appended.
-
-```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    buffer*% buf = new buffer();
-    
-    buf.append_str("ABC");
-    buf.append_str("DEF");
-    
-    puts(buf.to_string()));
-    
-    buffer*% buf2 = new buffer();
-    
-    buf2.append_int(1);
-    buf2.append_int(2);
-    buf2.append_int(3);
-    
-    int* p = (int*)buf2.buf;
-    
-    printf("%d\n", *p);  // 1
-    p++;
-    printf("%d\n", *p);  // 2
-    p++;
-    printf("%d\n", *p);  // 3
-    p++;
-    
-    return 0;
-}
-```
-
-# string 
-
-```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    puts(xsprintf("%d", 1 + 1));     // ==> 2
-    puts(string("ABC").substring(0, 1));  // ==> "A"
-    
-    return 0;
-}
-```
-
-# Default parametor values, parametor labels
-
-``` C
-#include<stdio.h>
-
-int fun(int x = 123, int y = 345, int z = 456) 
-{
-    printf("x %d y %d z %d\n", x, y, z);
-}
-
-struct sData 
-{
-    int x;
-    int y;
-    int z;
-};
-
-int sData*::fun(sData* self, int x = 123, int y = 345, int z = 456)
-{
-    self.x = x;
-    self.y = y;
-    self.z = z;
-}
-
-void sData*::show(sData* self)
-{
-    printf("x %d y %d z %d\n", self.x, self.y, self.z);
-}
-
-int main(int argc, char** argv) 
-{
-    fun();           // x 123 y 345 z 456 are outputed
-    fun(y:2);        // x 123 y 2 z 456
-    
-    fun(y:1, x:3);   // x 3 y 1 z 456
-    
-    fun(1);          // x 1 y 345 z 456
-    fun(1,2);        // x 1 y 2 z 456
-    
-    sData data;
-    (&data).fun(1,2,3);
-    (&data).show();   // x 123 y 345 z 456
-    
-    (&data).fun(y:2); // x 123 y 2 z 456
-    (&data).show();   // x 123 y 2 z 456
-    
-    (&data).fun(1);
-    (&data).show();   // x 1 y 345 z 456
-    
-    return 0;
-}
-```
-
 
 # operator overloads
 
