@@ -3,18 +3,21 @@
 struct sInterfaceNode {
     string name;
     sClass*% klass;
+    bool mOutput;
     
     int sline;
     string sname;
 };
 
-sInterfaceNode*% sInterfaceNode*::initialize(sInterfaceNode*% self, string name, sClass*% klass, sInfo* info)
+sInterfaceNode*% sInterfaceNode*::initialize(sInterfaceNode*% self, string name, sClass*% klass, bool output, sInfo* info)
 {
     self.name = string(name);
     self.klass = clone klass;
     
     self.sline = info.sline;
     self.sname = string(info.sname);
+    
+    self.mOutput = output;
     
     return self;
 }
@@ -60,7 +63,9 @@ bool sInterfaceNode*::compile(sInterfaceNode* self, sInfo* info)
     
     buf.append_str("};\n");
     
-    add_come_code_at_source_head(info, "%s", buf.to_string());
+    if(self.mOutput) {
+        add_come_code_at_source_head(info, "%s", buf.to_string());
+    }
     
     info.classes.insert(string(name), clone klass);
     
@@ -97,6 +102,8 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 92
     if(buf === "interface" || buf === "protocol") {
         char* source_head = info.p;
         
+        bool output = true;
+        
         var type_name = parse_word();
         
         sClass*% klass;
@@ -105,6 +112,10 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 92
         }
         else {
             klass = clone info.classes.at(type_name, null);
+            
+            if(klass->mFields.length() > 0) {
+                output = false;
+            }
         }
         
         expected_next_character('{');
@@ -157,7 +168,7 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 92
         
         add_come_code_at_come_header(info, "%s", header.to_string());
         
-        return new sInterfaceNode(string(type_name), klass, info) implements sNode;
+        return new sInterfaceNode(string(type_name), klass, output, info) implements sNode;
     }
     
     return inherit(buf, head, head_sline, info);
