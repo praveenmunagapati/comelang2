@@ -1,56 +1,12 @@
 #include <comelang2.h>
 
-typedef int XXX;
-
-typedef int XXX;
-
-enum { kA, kB, kC };
-
-enum { kA, kB, kC };
-
-union uData
-{
-    int a;
-    float b;
-};
-
-union uData
-{
-    double c;
-    long a;
-};
-
-struct sData
-{
-    int a;
-    int b;
-};
-
-struct sData
-{
-    int x;
-};
-
-void fun(sData*%|char*% x)
-{
-    if(dynamic_typeof(x) === "sData") {
-        sData* y = x;
-        printf("%d %d\n", y.a, y.b);
-    }
-    else if(dynamic_typeof(x) === "char") {
-        puts(x);
-    }
-}
-
 int main()
 {
-    sData*% a = new sData;
+    var li = [1,2,3,3];
     
-    a.a = 123;
-    a.b = 124;
+    li.remove(3);
     
-    fun(string("ABC"));
-    fun(a);
+    li.to_string().puts();
     
     return 0;
 }
