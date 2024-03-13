@@ -647,7 +647,7 @@ char* come_dynamic_typeof(void* mem)
     sMemHeaderTiny* it = (sMemHeaderTiny*)((char*)mem - sizeof(size_t) - sizeof(size_t) - sizeof(sMemHeaderTiny));
     
     if(it->allocated != ALLOCATED_MAGIC_NUM) {
-        fprintf(stderr, "invalid heap object(%p)\n", it);
+        printf("invalid heap object(%p)\n", it);
         exit(2);
     }
     

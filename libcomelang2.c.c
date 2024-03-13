@@ -2603,7 +2603,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&it_47, 0, sizeof(struct sMemHeaderTiny*));
     it_47=(struct sMemHeaderTiny*)((char*)mem-sizeof(unsigned long int)-sizeof(unsigned long int)-sizeof(struct sMemHeaderTiny));
     if(_if_conditional65=it_47->allocated!=177783,    _if_conditional65) {
-        fprintf((stderr),"invalid heap object(%p)\n",it_47);
+        printf("invalid heap object(%p)\n",it_47);
         exit(2);
     }
     __result30__ = __result_obj__ = it_47->class_name;
