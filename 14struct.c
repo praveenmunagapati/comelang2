@@ -397,8 +397,10 @@ sNode*% parse_struct(string type_name, sInfo* info)
         info.classes.insert(string(type_name), klass);
     }
     else {
-        output = false;
         klass = clone info.classes.at(type_name, null);
+        if(klass->mFields.length() > 0) {
+            output = false;
+        }
     }
     
     klass.mFields.reset();
@@ -613,8 +615,10 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
                     struct_class = new sClass(name:type_name, struct_:true);
                 }
                 else {
-                    output = false;
                     struct_class = clone info.classes.at(type_name, null);
+                    if(struct_class->mFields.length() > 0) {
+                        output = false;
+                    }
                 }
                 
                 expected_next_character('{') ;

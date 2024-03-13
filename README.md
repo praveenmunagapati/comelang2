@@ -7,7 +7,7 @@ Yet another modern C compiler. It has librares with automatically-free-system wi
 
 もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
 
-version 17.0.0
+version 18.0.0
 
 ``` C
 #include <comelang2.h>
@@ -407,6 +407,7 @@ bash fast_build.sh (getting with -O2 comelang2)
 15.0.0 real complete....may be. I will improve shsh, zed, vin and remove memory leaks from this software.
 15.0.1 appended method generics. list::map2. Improved usablity for detecting memory leaks.
 17.0.0 Multiple Typing for function paramtors like typescript. dynamic_typeof, typeof.
+18.0.0 Fixed package manager bug.
 
 # Language specifications
 
