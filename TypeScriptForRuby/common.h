@@ -15,27 +15,10 @@ struct sVar {
     string mCValueName;
     sType*% mType;
 };
-struct sVarTable {
-    map<string, sVar*%>*% mVars;
-    bool mGlobal;
-    struct sVarTable* mParent;
-    int mID;
-};
 struct CVALUE {
     string c_value;
     sType*% type;
     sVar* var;
-};
-struct sInfo
-{
-    buffer*% source;
-
-    smart_pointer<char>*% p;
-    string sname;
-    int sline;
-
-    map<string, sClass*%>*% classes;
-    list<CVALUE*%>*% stack;
 };
 sType*% sType*::initialize(sType*% self, char* class_name, sInfo* info=info);
 interface sNode

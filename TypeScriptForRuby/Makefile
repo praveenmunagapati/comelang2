@@ -78,9 +78,9 @@ uninstall:
 	rm -f "$(DESTDIR)/share/doc/TypeScriptForRuby/README.md"
 
 run: TypeScriptForRuby
-	rm *.log
+	rm -f *.log
 	./TypeScriptForRuby
 
 debug: TypeScriptForRuby-debug
-	rm *.log
+	rm -f *.log
 	./TypeScriptForRuby-debug
