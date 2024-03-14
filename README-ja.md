@@ -379,11 +379,17 @@ cloneはディープコピーです。要素も再起的にcloneされて、メ�
 
 ```C
 var li = [1,2,3,4,5];
+var li2 = li;
+```
+
+li2はliと同じものを指しています。[1,2,3,4,5]のヒープはリファレンスカウントが２のためliとli2がスコープを抜けるとその時リファレンスカウントが-2されて0になり、[1,2,3,4,5]は解放されます。
+
+```C
+var li = [1,2,3,4,5];
 list<int>* li2 = li;
 ```
 
-li2はliと同じものを指しています。ただし、liがスコープを抜けるとメモリは解放されてli2にアクセスするとセグメンテーションフォルトを起こします。
-list<int>*% li2 = li;とするとリファレンスカウントが+1されて2となるためliがスコープを抜けてリファレンスカウントが-1されても、li2にアクセスできます。
+この場合もliとli2は同じものをさしていますが、liが解放された後にli2にアクセスするとセグメンテーションフォルトを起します。
 
 list<T>* add(list<T>* self, T item)
 
@@ -437,17 +443,18 @@ T& item(list<T>* self, int position, T default_value)
 
 ```C
     var li = ["ABC", "DEF", "GHI"];
-    puts(li.item(0, null));
-    puts(li.item(-1, null));
+    puts(li.item(0, null)); // ABC
+    puts(li.item(-1, null)); // GHI
+    puts(li.item(-9999, "")); // ""
 ```
 
-ABC\nとGHI\nが出力されます。default_valueは範囲外アクセスの場合その値が返されます。<0の場合は後方から数えた要素が返されます。
+default_valueは範囲外アクセスの場合その値が返されます。<0の場合は後方から数えた要素が返されます。
 
 int length(list<T>* self)
 
 ```C
     var li = [1,2,3];
-    puts(li.length().to_string());
+    puts(li.length().to_string()); // 3
 ```
 
 要素の数が返されます。
@@ -457,7 +464,7 @@ list<T>* insert(list<T>* self, int position, T item)
 ```C
     var li = [1,2,3];
     
-    li.insert(1@position, 5@item);
+    li.insert(1@position, 5@item); // [1,5,2,3]
 ```
 
 要素をpositionに追加します。@postionはアノテーションでコメントとして扱われます。
@@ -472,7 +479,7 @@ list<T>* reset(list<T>* self)
     
     li.reset();
     
-    li.length().to_string().puts();
+    li.length().to_string().puts(); // 0
 ```
 
 要素をクリアします。0が出力されます。
@@ -482,7 +489,7 @@ list<T>* remove(list<T>* self, T item)
 ```C
     var li = [1,2,3];
     
-    li.remove(3);
+    li.remove(3); // [1,2]
     
     li.to_string().puts();
 ```
@@ -495,7 +502,8 @@ list<T>* delete(list<T>* self, int head, int tail)
 ```C
     var li = [1,2,3,4,5];
     
-    li.delete(3,-1);
+    li.delete(3,-1); // [1,2,3]
+    li.delete(0,1); // [2,3];
 ```
 
 範囲に入っているものを削除します。-1は末尾です。
@@ -506,7 +514,7 @@ list<T>* replace(list<T>* self, int position, T item)
 ```C
     var li = [1,2,3,4,5];
     
-    li.replace(1, 7);
+    li.replace(1, 7); // [1,7,3,4,5]
 ```
 
 アイテムを置き換えます。
@@ -514,40 +522,164 @@ liは[1,7,3,4,5]です。要素がヒープの場合置き換える要素はリ�
 
 int find(list<T>* self, T& item, int default_value) 
 
-
 ```C
     var li = [1,2,3,4,5];
     
-    li.find(3, -1@default_value);
+    li.find(3, -1@default_value); // 2
 ```
 
 equalsがマッチする要素の先頭からの位置を返します。この場合2です。default_valueは見つからなかった場合の値です。
 
 bool equals(list<T>* left, list<T>* right)
+
+```C
+    [1,2,3].equals([1,2,3]).to_string().puts(); // true
+```
+
+オブジェクトが引数と内容が一緒か確認します。要素ごとにequalsが実行されすべての要素で真ならtrueを返します。
+
 list<T>*% sublist(list<T>* self, int begin, int tail) 
-T& operator_store_element(list<T>* self, int position, T item) 
+
+```C
+    [1,2,3,4,5].sublist(0,2); // [1,2]
+    [1,2,3,4,5].sublist(3,-1); // [4,5]
+    [1,2,3,4,5].sublist(3,-2); // [4]
+```
+
+
 T& operator_load_element(list<T>* self, int position) 
+
+```C
+    var li = [1,2,3,4,5];
+    
+    printf("%d\n", li[3]); // 4
+    printf("%d\n", li[-1]); // 5
+    printf("%d\n", li[-9999]); // 0
+```
+
+範囲外は0clearされた値を返します。
+
+T& operator_store_element(list<T>* self, int position, T item) 
+
+```C
+    var li = [1,2,3,4,5];
+    
+    li[0] = 123; // [123,2,3,4,5]
+```
+
 list<T>*% operator_load_range_element(list<T>* self, int begin, int tail) 
+
+```C
+    var li = [1,2,3,4,5];
+    
+    li[0..2].to_string().puts(); // [1,2]
+    li[3..-1].to_string().puts(); // [4,5]
+```
+
 bool operator_equals(list<T>* self, list<T>* right) 
+
+```C
+    [1,2,3] === [1,2,3]; // true
+    [1,2,2] === [1,2,3]; // false
+```
+
+各要素にequalsが呼ばれます。
+
 bool operator_not_equals(list<T>* left, list<T>* right) 
+
+```C
+    [1,2,3] !== [1,2,3]; // false
+    [1,2,2] !== [1,2,3]; // true
+```
+
 bool contained(list<T>* self, T item) 
+
+```C
+    [1,2,3].contained(3); // true
+    [1,2,3].contained(4); // false
+```
+
 list<T>*% merge_list_with_lambda(list<T>* left, list<T>* right, int (*compare)(T&,T&)) 
 list<T>*% merge_sort_with_lambda(list<T>* self, int (*compare)(T&,T&)) 
 list<T>*% sort_with_lambda(list<T>* self, int (*compare)(T&,T&)) 
+
+```C
+    [3,7,2,5].sort_with_lambda(int lambda(int left, int right) {
+        if(left < right) {
+            return -1;
+        }
+        else if(left > right) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+        
+        return 0;
+    }); // [2,3,5,7]
+```
+
+lambda式でソートします。
+
 list<T>*% merge_list(list<T>* left, list<T>* right) 
 list<T>*% merge_sort(list<T>* self) 
 list<T>*% sort(list<T>* self) 
+
+```C
+    [3,7,2,5].sort(); // [2,3,5,7]
+```
+
 list<any>*% map(list<T>* self, void* parent, any (*block)(void*, T&))
+
+```C
+    ["1","2","3"].map { return atoi(it) }  // [1,2,3]
+```
+
+各要素に式を実行して、その結果のリストを返します。ただ、このmapはanyを返すのでヒープを使うものはメモリリークを起こします。次のmap2を使ってください。
+
 template<R> list<R>*% map2(list<T>* self, void* parent, R (*block)(void*, T&))
+
+```C
+    [1,2,3].map<string> { return it.to_string() } // ["1", "2", "3"]
+```
+
 list<T>*% reverse(list<T>* self) 
+
+```C
+    [1,2,3].reverse(); // [3,2,1]
+```
+
 list<T>*% uniq(list<T>* self) 
+
+```C
+    [8,8,2,2,3,3].uniq(); // [8,2,3]
+```
+
+隣あった同じ要素を削除します。sort()しないとダメかもしれません。
+
 list<T>*% filter(list<T>* self, void* parent, bool (*block)(void*, T&))
 
+```C
+    [1,2,3,4,5].filter { return it > 2 };  // [3,4,5]
+```
+
 list<T>*% operator_add(list<T>*% left, list<T>*% right) 
+
+```C
+    [1,2,3] + [4,5]; // [1,2,3,4,5]
+```
+
 list<T>*% operator_mult(list<T>* left, int right) 
+
+```C
+    [1,2,3] * 2; // [1,2,3,1,2,3]
+```
+
 string join(list<T>* self, char* sep=" ") 
 
-#define foreach(o1, o2) for(var o2_saved = (o2), var o1 = (o2_saved).begin(); !(o2_saved).end(); o1 = (o2_saved).next())
+```C
+    [1,2,3].join("+");    // 1+2+3
+```
 
 # map
 
