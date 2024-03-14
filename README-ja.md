@@ -683,8 +683,6 @@ string join(list<T>* self, char* sep=" ")
 
 # map
 
-map is a dictionary.
-
 mapは辞書です。
 
 ```
@@ -708,34 +706,171 @@ int main(int argc, char** argv)
 }
 ```
 
-insert adds an element. foreach's iterator only returns the key. If you want to access item, please use it.
+map<T,T2>*% initialize(map<T,T2>*% self)
 
-foreachのイテレーターはキーしかアクセスできません。itがイテレーター名です。
+```C
+var ma = new map<char*,int>();
+ma.insert("AAA", 1);
+ma.insert("BBB", 2);
+ma.insert("CCC", 3).insert("DDD", 4);
+```
 
-The map representation is
+map<T,T2>*% initialize_with_values(map<T,T2>*% self, int num_keys, T&* keys, T2&* values) 
 
 ```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    map<char*, int>*% ma = ["AAA":1, "BBB":2, "CCC":3]:
+    char* keys[] = { "AAA", "BBB", "CCC", "DDD" };
+    int values[] = { 1, 2, 3, 4 };
     
-    foreach(it, ma) {
-        int item = ma[it];
+    var ma = new map<char*,int>.initialize_with_values(4, keys, values);
+```
 
-        printf("%s %d\n", it, ma[it]);
+void finalize(map<T,T2>* self)
+void force_finalize(map<T,T2>* self) 
+
+map<T, T2>*% clone(map<T, T2>* self)
+
+```
+    var ma = ["AAA":1, "BBB":2, "CCC":3];
+    var ma2 = clone ma;
+```
+
+
+string to_string(map<T,T2>* self)
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].to_string().puts();   // [AAA:1,BBB:2,CCC:3]
+```
+
+すべての要素とキーにto_string()が実装されている必要があります。comelang2の基本的な型はすべてto_string()が実装されてます。
+
+T2& at(map<T, T2>* self, T& key, T2 default_value) 
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].at("AAA", -1).to_string().puts();  // 1
+```
+
+キーで値をとります。default_valueが見つからない場合の値です。
+
+map<T,T2>* remove(map<T, T2>* self, T& key) 
+
+```
+    var ma = ["AAA":1, "BBB":2, "CCC":3].remove("AAA");
+    ma.to_string().puts();   // [BBB:2, CCC:3]
+```
+
+キーで値を削除します。
+
+T& begin(map<T, T2>* self)
+T& next(map<T, T2>* self) 
+bool end(map<T, T2>* self) 
+
+foreachのためにあります。すべてのキーにアクセスするには以下のようにします。
+
+```
+    var ma = ["AAA":1, "BBB":2, "CCC"];
+    
+    foreach(key, ma) {
+        var item = ma[key];
+        
+        printf("%s %d\n", key, item);
     }
-    
-    return 0;
-}
 ```
 
-It becomes.
+出力はAAA 1\nBBB 2\n CCC 3\nです。
+foreach(key, ["AAA":1, "BBB":2, "CCC":3])とはできません。foreachはマクロのため,が意味を持つためです。
+ちょっとforeachをマクロでなく言語仕様に含めるかもしれません。
+
+void rehash(map<T,T2>* self) 
+
+内部的に使用します。
+
+map<T,T2>* insert(map<T,T2>* self, T key, T2 item)
+
+```
+    var ma = ["AAA":1].insert("BBB",2).insert("CCC",3);
+    ma.to_string().puts(); // [AAA:1,BBB:2,CCC:3]
+```
+
+map<T,T2>* insert2(map<T,T2>* self, T key, T2 item) 
+
+insertと同じです。cloneで使用していたと思います。insertだけだと無限ループするためでした。
+
+T2& operator_load_element(map<T, T2>* self, T& key) 
+
+```
+    var ma = ["AAA":1,"BBB":2,"CCC":3];
+    var item = ma["AAA"];
+    item.to_string().puts(); // 1
+```
+
+キーが見つからない場合0クリアされた値を返します。例外処理がないので、仕方がないです。
+
+T2 operator_store_element(map<T, T2>* self, T key, T2 item) 
+
+```
+    var ma = ["AAA":1, "BBB":2];
+    ma["CCC"] = 3;
+    ma.to_string().puts(); // [AAA:1,BBB:2,CCC:3]
+```
+
+bool equals(map<T, T2>* left, map<T, T2>* right)
+
+```
+    ["AAA":1,"BBB":2,"CCC":3].equals(["AAA":1,"BBB":2,"CCC":3]); // true
+    ["AAA":1].equals(["BBB":2]); // false
+```
+
+bool operator_equals(map<T, T2>* left, map<T,T2>* right) 
+
+```
+    ["AAA":1,"BBB":2,"CCC":3] === ["AAA":1,"BBB":2,"CCC":3]; // true
+    ["AAA":1] === ["BBB":2]; // false
+```
+
+bool operator_not_equals(map<T, T2>* left, map<T,T2>* right) 
+
+```
+    ["AAA":1,"BBB":2,"CCC":3] !== ["AAA":1,"BBB":2,"CCC":3]; // false
+    ["AAA":1] !== ["BBB":2]; // true
+```
+
+bool find(map<T, T2>* self, T& key) 
+
+```
+    ["AAA":1, "BBB":2].find("AAA"); // true;
+    ["AAA":1, "BBB":2].find("CCC"); // false;
+```
+
+キーが含まれればtrueを返します。
+
+
+map<T,T2>*% operator_add(map<T,T2>* left, map<T,T2>* right) 
+
+```
+    (["AAA":1] + ["BBB":2]).to_string().puts(); // [AAA:1,BBB:2]
+```
+
+map<T,T2>*% operator_mult(map<T,T2>* left, int right) 
+
+```
+    (["AAA":1] * 2).to_string().puts(); // [AAA:1,AAA:1]
+```
+
+list<T>*% keys(map<T, T2>* self)
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].keys().to_string().puts();  // [AAA,BBB,CCC]
+```
+
+list<T2>*% values(map<T, T2>* self) 
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].values().to_string().puts();  // [1,2,3]
+```
 
 # tuple
 
-A tuple is a container for elements of different types.
+タプルは型の違う要素を持つコレクションです。簡易的な構造体と呼べるかもしれません。
 
 ```
 #include <comelang2.h>
@@ -750,22 +885,54 @@ int main(int argc, char** argv)
 }
 ```
 
-```
-#include <comelang2.h>
+tupleは5つまで定義されてます。
 
-int main(int argc, char** argv)
-{
-    tuple3<int, int, char*>*% tu = (1,2,"ABC");
+```
+    tuple5<int,int,int,string,char*>*% tu = (1,2,3,s"ABC","DEF");
     
-    printf("%d %d %s\n", tu.v1, tu.v2, tu.v3);
+    tu.to_string().puts(); // (1,2,3,ABC,DEF)
+```
+
+tupleにはcatchがあり簡易的な例外処理として使えると思います。
+
+```
+int, bool div(int a, int b)
+{
+    if(b == 0) {
+        return (0, false);
+    }
+    
+    return (a/b, true);
+}
+
+int main(int argc, char* argv)
+{
+    int value = div(1,0).catch {
+        puts("0 divition");   // 0で割っているため、ここに入る
+        exit(1);
+    }
+    
+    printf("value %d\n", value);
     
     return 0;
 }
 ```
 
+int, boolはtuple2<int, bool>*%と同じ意味です。複数の値を返すために使います。複数の値を各変数に格納したい時、個の場合はvar a,b = div(1,1);とすればいいです。aにint, bにboolが入ります。
+
+要素にアクセスするにはv1などとします。
+
+```
+    var tu = (1,2,"ABC");
+    
+    tu.v1 === 1; // true
+    tu.v2 === 2; // true
+    tu.v3 === "ABC"; // true
+```
+
 # buffer
 
-buffer is memory that can be appended.
+bufferは追記できるメモリーです。
 
 ```
 #include <comelang2.h>
@@ -797,6 +964,177 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
+
+buffer*% buffer*::initialize(buffer*% self);
+
+```
+    var buf = new buffer();
+```
+
+void buffer*::finalize(buffer* self);
+void buffer*::force_finalize(buffer* self);
+
+buffer*% buffer*::clone(buffer* self);
+
+```
+    var buf = new buffer();
+    buf.append_int(1);
+    buf.append_int(2);
+    buf.append_int(3);
+    
+    var buf2 = clone buf;
+```
+
+int buffer*::length(buffer* self);
+
+```
+    var buf = new buffer();
+    buf.append_char('a');
+    buf.append_char('b');
+    buf.append_char('c');
+    
+    buf.length().to_string().puts(); // 3
+```
+
+メモリーのバイト数を返します。
+
+void buffer*::reset(buffer* self);
+
+```
+    var buf = new buffer();
+    
+    buf.append_char('a');
+    buf.append_char('b');
+    buf.append_char('c');
+    
+    buf.reset();
+    
+    buf.length().to_string().puts(); // 0
+```
+
+メモリーをクリアします。
+
+void buffer*::trim(buffer* self, int len);
+
+lenだけ末尾のメモリを削除します。
+
+```
+    var buf = new buffer();
+    
+    buf.append_str("ABCDEFG");
+    buf.trim(3);
+    buf.to_string().puts(); // ABCD
+```
+
+buffer* buffer*::append(buffer* self, char* mem, size_t size);
+
+memのsizeだけメモリを追加します。
+
+```
+    var buf = new buffer();
+    buf.append("ABCDEFG", 2);
+    
+    buf.to_string().puts(); // AB
+```
+
+buffer* buffer*::append_char(buffer* self, char c);
+buffer* buffer*::append_str(buffer* self, char* str);
+buffer* buffer*::append_nullterminated_str(buffer* self, char* str);
+buffer* buffer*::append_int(buffer* self, int value);
+buffer* buffer*::append_long(buffer* self, long value);
+buffer* buffer*::append_short(buffer* self, short value);
+
+メモリーを追加します。
+
+buffer* buffer*::alignment(buffer* self);
+
+メモリーのアライメントを取ります。
+
+int buffer*::compare(buffer* left, buffer* right);
+
+bufferの大きさを比べます。<0で左が小さい、>0で右が小さい。== 0で同じ大きさです。
+sortで使います。
+
+buffer*% string::to_buffer(char* self);
+buffer*% char*::to_buffer(char* self);
+
+文字列をbufferに変換します。
+
+```
+    var buf = "ABCDEFG".to_buffer();
+    buf.append_str("HIJ");
+    
+    buf.to_string().puts(); // ABCDEFGHIJ
+```
+
+string buffer*::to_string(buffer* self);
+
+bufferを文字列に変換します。
+
+# smart_pointer
+
+メモリセーフなポインタです。範囲外アクセスはsegmentaition faultをおこさずスタックトレースを表示します。スタックトレースを表示したい場合-cgオプションでのコンパイルが必要です。-cgオプションがない場合はソースファイル名と行番号を表示して落ちます。
+
+
+struct smart_pointer<T> {
+    buffer*% memory;
+    T* p;
+};
+
+static inline smart_pointer<char>*% buffer*::to_pointer(buffer* self)
+
+```
+    var p = "ABCDEFG".to_buffer().to_pointer();
+    
+    printf("%c\n", *p);   // A
+    p++;
+    printf("%c\n", *p);   // B
+    p+=2;
+    printf("%c\n", *p);   // B
+    
+    p+=999;               // -cgオプションでコンパイルしていた場合スタックフレームを表示して落ちる。-cgオプションがない場合はソースファイル名と行番号を出力して落ちる
+```
+
+static inline smart_pointer<char>*% buffer*::to_char_pointer(buffer* self)
+static inline smart_pointer<short>*% buffer*::to_short_pointer(buffer* self)
+static inline smart_pointer<int>*% buffer*::to_int_pointer(buffer* self)
+static inline smart_pointer<long>*% buffer*::to_long_pointer(buffer* self)
+
+各型名のポインタを作成します。
+
+```
+    var buf = new buffer();
+    
+    buf.append_int(1);
+    buf.append_int(2);
+    buf.append_int(3);
+    
+    var p = buf.to_int_pointer();
+    
+    printf("%d\n", *p); // 1
+    p++;
+    printf("%d\n", *p); // 2
+    p++;
+    printf("%d\n", *p); // 3
+    p++; // 範囲外。落ちるがセグメンテーションフォルトは起こさない。ソースの位置を表示する
+```
+
+smart_pointer<T>*% initialize(smart_pointer<T>*% self, void* memory, int size)
+smart_pointer<T>*% operator_add(smart_pointer<T>* self, int value)
+smart_pointer<T>*% operator_sub(smart_pointer<T>* self, int value)
+T operator_derefference(smart_pointer<T>* self)
+smart_pointer<T>* operator_plus_plus(smart_pointer<T>* self)
+smart_pointer<T>* operator_minus_minus(smart_pointer<T>* self)
+smart_pointer<T>* operator_plus_equal(smart_pointer<T>* self, int value)
+smart_pointer<T>* operator_minus_equal(smart_pointer<T>* self, int value)
+bool as_bool(smart_pointer<T>* self)
+int as_char(smart_pointer<T>* self)
+short as_short(smart_pointer<T>* self)
+int as_int(smart_pointer<T>* self)
+long as_long(smart_pointer<T>* self)
+float as_float(smart_pointer<T>* self)
+double as_double(smart_pointer<T>* self)
+string to_string(smart_pointer<T>* self)
 
 # string 
 
