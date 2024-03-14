@@ -3,11 +3,11 @@
 
 come together!
 
-Yet another modern C compiler. It has librares with automatically-free-system with detecting memory leaks.
+Another modern C compiler. It has a heap system that is a cross between an automatically-free-system and a reference-counted GC, and includes a collection library and a string library.
 
-もう一つのモダンなCコンパイラ。automatically-free-systemのライブラリを備えます。
+もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。
 
-version 19.0.0
+version 20.0.0
 
 ``` C
 #include <comelang2.h>
@@ -200,105 +200,69 @@ int main()
 }
 ```
 
-1. It is compatible with C language. The C preprocessor also works.
+1. Compatible with C language. The C preprocessor also works.
 
-C言語と互換性があります。Cプリプロセッサーも動きます。
+2. There are automatically-free-systems like Rust, V, and Nim.
 
-2. It has automatically-free-system like rust or v or nim
+3. There are generics and inline functions.
 
-RustやVやNimのようなautomatically-free-systemがあります。
+4. There is a mixin-layer system. You can implement your application layer by layer.
 
-3. It has Generics, inline function
+5. There is an interface. Polymorphism can be implemented.
 
-ジェネリクスとinline関数があります。
+6. There is a Ruby-like method block.
 
-4. It has a mixin-layers system. You can implement your application in layers. 
+7. Supports default parameters and parameter labels.
 
-mixin-layerシステムがあります。レイヤーを重ねるようにアプリケーションを実装できます。
+8. There are operator overloads.
 
-5. Protocol(Interface).
+9. I have an expression embedded string.
 
-インターフェースがあります。多態が実装できます。
+10. Using nil prevents null segmentation fault.
 
-6. method block like Ruby
+11. There are smart pointers that are memory safe and do not cause segmentation faults.
 
-Rubyのようなメソッドブロックがあります。
+12. Has memory leak detection function.
 
-9. Default parametor values, and label parametor are supported.
+1. C言語と互換性があります。Cプリプロセッサーも動きます。
 
-デフォルトパラメータとパラメーターラベルをサポートしています。
+2. RustやVやNimのようなautomatically-free-systemがあります。
 
-10. operator overload.
+3. ジェネリクスとinline関数があります。
 
-演算子のオーバーロードがあります。 
+4. mixin-layerシステムがあります。レイヤーを重ねるようにアプリケーションを実装できます。
 
-10. Embeded expression in string
+5. インターフェースがあります。多態が実装できます。
 
-式埋め込み文字列があります。
+6. Rubyのようなメソッドブロックがあります。
 
-11. null(nil) checking for occuring segmentation fault.
+7. デフォルトパラメータとパラメーターラベルをサポートしています。
 
-nilを使うとnull segmentation faultが防げます。
+8. 演算子のオーバーロードがあります。 
 
-With using nil, you can prevent from null segmentation fault.
+9. 式埋め込み文字列があります。
 
-12. smart pointer
+10. nilを使うとnull segmentation faultが防げます。
 
-Memory safe pointer
+11. メモリーセーフなセグメンテーションフォルトを起こさないスマートポインターがあります。
 
-13. memory leak detector
+12. メモリリーク検出機能があります。
 
-Memory leak detector
+# インストール
 
-```c 
-#include <comelang2.h>
+Requires clang, make, autoconf, valgrind, gdb, lldb, musl-dev (alpine linux), and pcre-dev.
 
-void fun()
-{
-    var a = gc_inc(new int);
-    *a = 123;
+bash fast_build.sh will automatically install the necessary packages.
 
-    stackframe();
-                        
-    printf("%d\n", *a);
-}
-                            
-int main(int argc, char** argv) 
-{
-    fun();
-                                    
-    return 0;
-}
-~/comelang2 # comelang2 a.c
-~/comelang2 # ./a
-123
-1 memory leaks. 1 alloc, 0 free.If you require debugging, copmpile with -cg option
-~/comelang2 # comelang2 -cg a.c
-~/comelang2 # ./a
-a.c 9
-a.c 16
-123
-#1 (int): a.c 16, a.c 5, 
-1 memory leaks. 1 alloc, 0 free.
-~/comelang2 # 
-```
-                                        
+Supports Linux, MacOS (Darwin), iSH (iPhone), termux (Android) userland (Android), and raspberry pi.
 
-# INSTALL
+This is a quick build.
 
-Required libraries are clang, make, autoconf, valgrind, gdb, lldb, musl-dev(alpine linux), pcre-dev
-
-clangとmake, autoconf, valgrind, gdb, lldb, musl-dev, pcre-devが必要です。
-
-Run bash fast_build.sh for installing required package automatically.
+clangとmake, autoconf, valgrind, gdb, lldb, musl-dev(alpine linux), pcre-devが必要です。
 
 bash fast_build.shとすると自動的に必要なパッケージがインストールされます。
 
-For Linux, MacOS(Darwin), iSH(iPhone), termux(Android), userland(Android), raspberry pi
-
 LinuxとMacOS(Darwin), iSH(iPhone), termux(Android) userland(Android), raspberry piをサポートしています。
-
-Fast Build. No self host. 
 
 早いビルドはこれです。
 
@@ -308,9 +272,9 @@ cd comelang2
 bash fast_build.sh
 ```
 
-With self-host
-
 セルフホストする場合はこちらです。
+
+Click here if you want to self-host.
 
 ```
 git clone https://github.com/ab25cq/comelang2
@@ -320,99 +284,23 @@ bash clean-self-host.sh
 bash fast_build.sh (getting with -O2 comelang2)
 ```
 
+To install a vi clone called vin, a string processing interpreter called zed, a console filer called mf, and an original shell called shsh, do the following:
+
+vinというviクローン、zedという文字列処理インタプリタ、mfというコンソールファイラ、shshというオリジナルのシェルをインストールするには以下のようにします。
+
+```
+bash all_build.sh
+```
+
 # Histories
 
-0.9.0 Project started
-0.9.1 Success on the infinity self hosted
-0.9.2 Deleted memory leak. Comelang2 has no memory leaks
-0.9.3 Complete project. I will write manyual
-0.9.4 Supported Apple Mac
-0.9.5 Memory turning. The running speed is faster 3 times
-0.9.6 Memory turning. The running speed is faster 12 times then first code
-0.9.7 Manual
-0.9.8 Null checking. Memory leak checks
-0.9.9 string libraries
-1.0.1 MacOS supported. Text editor vin is worked
-1.0.2 some libraries bug is fixed.
-1.0.3 some libraries bug is fixed.
-1.0.5 Really compelate. self-host memory leaks is zero!
-1.0.6 When inserting const string value to collection, it had occured bug, now fixed.
-1.0.7 Some bug fixed.
-1.0.8 Err message.
-1.0.9 improved self-host system
-1.1.0 Append my original paging heap system.
-1.1.1 Compile with -g option, can trace memory leak with valgrind.
-1.1.2 Bug fixed.
-1.1.3 Bug fixed.
-1.1.4 Bug fixed.
-1.1.5 Bug fixed.
-1.1.6 Type checking at assign value.
-1.1.8 Rechecked working in MacOS
-1.2.0 iSH(iPhone) supported
-1.2.1 termux(Anrdoid), userland(Android) supported. Many bug fixed.
-1.2.2 bug fixed.
-1.2.3 appended shsh, mf
-1.2.5 Complete project. I'll maintain this, but I will not change many.
-1.2.6 Old termux(android) supported.
-1.2.7 raspberry pi supported.
-1.2.8 list::any, list::all are appended.
-1.2.9 Heap string is appended
-1.3.0 Exception is appended
-1.3.2 map, list [] is aborted when no finding value.
-1.3.5 map, list [] are no exception. It occurs big errors.
-1.3.6 (expression).if, (expression).elif, or statment added.
-1.3.7 Some list methods return self
-1.4.0 here document bug was fiexed.
-1.5.0 and statment was added. Some bug fixed.
-1.6.0 exception has been complete. Print out stackfarame.
-1.6.1 appended return!, break!, continue! in method block
-1.7.0 package manager
-1.7.1 package manager bug fixed
-1.7.2 Null check bug fixed
-1.8.0 ver m = ["AAA":0, "BBB":1, "CCC":2] m["AAA"]! will not throw exception. m["GGG"] will throw exception.
-1.8.1 Damn bugs has been fixed.
-1.8.2 Null checker bug is fixed.
-1.8.3 Added exception to base library
-1.8.6 fixed many critical bugs
-1.8.7 fixed bugs
-1.9.0 fixed comelang2 memory leak
-1.9.1 fixed memory leak bugs
-2.0.0 complete 
-2.0.5 some bug fix
-2.0.6 some gug fix
-2.1.0 null(nil) checker
-2.1.1 bug fixed
-3.0.0 smart pointer
-3.1.0 detecting memory leak
-3.1.1 exception is faster the the past.
-3.2.2 stackframe() function has been added
-3.5.0 stackframe() function bug has been fixed. 
-3.5.1 Source file line number bug was fixed.
-5.0.0 stackframe() function and exception require -g option
-5.0.1 project manager improved. Test at termux, userland, alpine linux, raspberry pi.
-5.0.2 Improved automatically free system.
-5.0.3 stackframe() function and exception require -cg option
-5.0.4 Original malloc removed. 
-7.0.5 boehm GC supported.
-8.0.0 comelang2 memory leak is 0
-10.0.0 comelang2 is complete
-11.0.0 comelang2 is complete. memory leak detector. memory leaks of comelang2 is perfectory 0.
-12.0.0 Resupported MacOS.
-12.0.1 README.md for -gc option
-12.0.3 stackframe() bug was fiexed. comelang2 is complete.
-13.0.0 removed exception system
-13.1.0 faster code.
-13.2.0 faster code.
-14.0.0 real complete.
-15.0.0 real complete....may be. I will improve shsh, zed, vin and remove memory leaks from this software.
-15.0.1 appended method generics. list::map2. Improved usablity for detecting memory leaks.
-17.0.0 Multiple Typing for function paramtors like typescript. dynamic_typeof, typeof.
-18.0.0 Fixed package manager bug.
-19.0.0 Prohibits Multiple Types and dynamic_typeof.
+20.0.0 The documentation has been improved.
+
+20.0.0 ドキュメントを整備しました。
 
 # Language specifications
 
-It is almost the same as C language. Since it is not POSIX compliant, it is not compatible with C language in every detail, but I think that anyone who can use C language can use it immediately. If you don't use the heap system and do #include <comelang2.h>, you can just use it as a C compiler. 
+The syntax is almost the same as C language. It may not be POSIX compliant. If you do not #include <comelang2.h>, you can use it as a normal C compiler.
 
 文法はC言語とほとんど一緒です。POSIXに準拠しているとは言えないかもしれません。#include <comelang2.h>をしないと普通のCコンパイラとして使えます。
 
@@ -432,15 +320,15 @@ int main()
 HELLO WORLD
 ```
 
-# Grammer
+# grammar
 
-Compatible with C language. If you can write C, you should be able to write it right away as long as you understand the rules for automatically-free system.
+It is not POSIX compliant, but is compatible with the C language. I think most C header files can be included as is.
 
-automatically-free-systemの規則さえわかればCプログラマーならすぐ使えると思います。
+POSIXには準拠していませんが、C言語と互換性があります。大抵のCヘッダーファイルはそのままincludeできると思います。
 
 # Libraries
 
-There are list, map, tuple, buffer, and string. There is no vector.
+The grammar library includes list, map, tuple, buffer, and string. There is no vector.
 
 ライブラリにはlist, map, tuple, buffer, stringがあります。vectorはありません。
 
@@ -457,14 +345,466 @@ int main(int argc, char** argv)
         puts(it);
     }
     
-    li.add("FFF");
+    li.add("FFF").add("GGG");
     
-    foreach(it, li) {   // "AAA"\n"BBB"\n"CCC"\n"DDD"\n"EEE"\n"FFF"
+    foreach(it, li) {   // "AAA"\n"BBB"\n"CCC"\n"DDD"\n"EEE"\n"FFF"\n"GGG"\n
         puts(it);
     }
     
     return 0;
 }
+```
+
+li.each { puts(it); } can also access all list elements, but break, continue, and return cannot be used. It is more efficient to use foreach. foreach takes the first argument as the name of the variable containing the element, and the second argument as the list.
+
+foreach is implemented as a macro.
+
+li.each { puts(it); }としても全てのリストの要素にアクセスできますが、break, continu, returnが使えません。foreachを使った方が効率的にもいいです。foreachは第一引数が要素が入った変数の名前、第二引数がリストとなります。
+
+foreachはマクロで実装されてます。
+
+#define foreach(o1, o2) for(var o2_saved = (o2), var o1 = (o2_saved).begin(); !(o2_saved).end(); o1 = (o2_saved).next())
+
+Below is an explanation of all methods.
+
+以下は全メソッドの解説です。
+
+list<T>*% initialize(list<T>*% self);
+
+A constructor. It will be called by typing new list<int>();. Internally this is new list<int>.initialize();
+It is an abbreviation of
+
+The constructor must add a % to the first argument and add 1 to the reference count. If you do not add %, it will be determined that the heap can be freed and will be automatically freed. The return value must also be marked with a % to prevent it from being released.
+
+Write return self; at the end of the constructor. It cannot be omitted.
+
+コンストラクタです。new list<int>();とすれば呼び出されます。これは内部的にはnew list<int>.initialize();
+の略です。
+
+コンストラクタは第一引数に%をつけてリファレンスカウントを＋１しなければなりません。%をつけてないと解放していいヒープだと判断されて自動的にfreeされます。戻り値も%をつけて解放されないようにしないといけません。
+
+コンストラクタの最後にはreturn self;と書いてください。略することはできません。
+
+```C
+var li = new list<int>.initialize();
+li.add(1).add(2).add(3);
+
+var li2 = new list<int>();
+li2.add(1).add(2).add(3);
+```
+
+list<T>*% initialize_with_values(list<T>*% self, int num_value, T&* values) 
+
+Creates a list initialized with an array.
+
+配列で初期化されたリストを作成します。
+
+```C
+int values[3] = { 1, 2, 3 };
+
+var li = new list<int>.initialize_with_values(3, values);
+```
+
+void finalize(list<T>* self) 
+
+It's a destructor. Called when automatically deleted or manually deleted.
+
+デストラクターです。自動的に消去される場合、手動でdeleteする場合に呼ばれます。
+
+```C
+list<int>* li = borrow gc_inc(new list<int>());
+li.add(1).add(2).add(3);
+delete li;  // finalize is called. finalizeが呼ばれる
+```
+
+gc_inc increments the heap reference count by 1. borrow removes the heap from being automatically released and allows it to be assigned to a variable without a %. In this case the heap is managed manually and memory leaks will occur if you don't delete it. If a memory leak occurs When you run the program, the number of memory leaks will be displayed. If you compile with the -cg option, the stack frame at the location of the source file where the heap was generated will be displayed. I think it's easy to debug.
+
+gc_incはヒープのリファレンスカウントを+1します。borrowはヒープの自動解放対象から外し、%をつけない変数に代入できるようにします。この場合ヒープは手動で管理されて、deleteしないとメモリリークが発生します。 メモリリークが発生した場合プログラムを実行するとメモリリークの回数が表示されます。-cgオプションをつけてコンパイルするとヒープが生成されたソースファイルの位置のスタックフレームが表示されます。デバッグも容易だと思います。
+
+void force_finalize(list<T>* self) 
+
+```C
+list<int>* li = borrow gc_inc(gc_inc(new list<int>()));
+li.add(1).add(2).add(3);
+force_delete li;  // force_finalize is called. force_finalizeが呼ばれる
+```
+
+Frees the heap regardless of the reference count.
+
+リファレンスカウントの数に関わらずヒープを解放します。
+
+list<T>*% clone(list<T>* self)
+
+```C
+var li = [1,2,3,4,5];
+var li2 = clone li;   // cloneがよばれる
+```
+
+clone is a deep copy. Elements are also recursively cloned to duplicate memory. Since li and li2 have a reference count of 1, they will be automatically deleted when they exit the scope.
+
+If you don't want to deep copy, follow the steps below.
+
+cloneはディープコピーです。要素も再起的にcloneされて、メモリが複製されます。liとli2はリファレンスカウントが1のためスコープを抜けると自動的に消去されます。
+
+ディープコピーしたくない場合は以下です。
+
+```C
+var li = [1,2,3,4,5];
+var li2 = li;
+```
+
+li2 refers to the same thing as li. The heap of [1,2,3,4,5] has a reference count of 2, so when li and li2 exit the scope, the reference count is -2 and becomes 0, and [1,2,3,4,5 ] will be released.
+
+li2はliと同じものを指しています。[1,2,3,4,5]のヒープはリファレンスカウントが２のためliとli2がスコープを抜けるとその時リファレンスカウントが-2されて0になり、[1,2,3,4,5]は解放されます。
+
+```C
+var li = [1,2,3,4,5];
+list<int>* li2 = li;
+```
+
+In this case, li and li2 refer to the same thing, but if li2 is accessed after li is released, a segmentation fault will occur.
+
+この場合もliとli2は同じものをさしていますが、liが解放された後にli2にアクセスするとセグメンテーションフォルトを起します。
+
+list<T>* add(list<T>* self, T item)
+
+```C
+var li = [s"ABC", s"DEF", s"GHQ"]:
+li.add(s"OPQ");
+```
+
+s"ABC" is a string type character string and is allocated on the heap. The same is true for string("ABC"). string is defined as typedef char*% string; and can also be treated as a simple char type array. So, putting(s"ABC"); will output ABC\n. In this case, the generated string will be automatically freed.
+
+li is list<string>*%. The reference count of s"OPQ" in li.add(s"OPQ"); is incremented by 1 and it is correctly stored in li. The stored s"ABC", s"DEF", s"GHQ", and s"OPQ" are correctly freed when li is freed.
+
+s"ABC"はstring型の文字列でヒープに確保されます。string("ABC")としても同じです。stringはtypedef char*% string;と定義されていて、単なるchar型の配列としても扱えます。なのでputs(s"ABC");とするとABC\nが出力されます。この場合生成された文字列は自動的にfreeされます。
+
+li is list<string>*%. The reference count of s"OPQ" in li.add(s"OPQ"); is incremented by 1 and it is correctly stored in li. The stored s"ABC", s"DEF", s"GHQ", and s"OPQ" are correctly freed when li is freed.
+
+liはlist<string>*%です。li.add(s"OPQ");のs"OPQ"はリファレンスカウントが+1されて、正しくliに格納されます。liが解放されるとき格納された、s"ABC", s"DEF", s"GHQ", s"OPQ"は正しくfreeされます。
+
+void pop_front(list<T>* self) 
+
+Delete the beginning of the list. If the heap is stored, the element will be freed. If it is a non-heap pointer such as "ABC", it will not be freed.
+
+リストの先頭を削除します。ヒープが格納されていた場合要素がfreeされます。ヒープでなく"ABC"などヒープでないポインタの場合はfreeされません。
+
+list<T>* push_back(list<T>* self, T item)
+
+Same as add.
+
+addと同じです。
+
+string to_string(list<T>* self)
+
+```C
+    var li = ["ABC", "DEF", "GHQ"];
+    puts(li.to_string());
+```
+
+[ABC,DEF,GHQ] will be output. to_string is executed on all elements. The type defined in comelang2 has to_string() implemented. For the original class, you must implement to_string in order to execute this method.
+
+li is list<char*>*%, which stores string pointers. The stored element will not be freed because it is not char*%.
+
+[ABC,DEF,GHQ]が出力されます。要素の全てにto_stringが実行されます。comelang2で定義されている型はto_string()が実装されています。オリジナルのクラスの場合、このメソッドを実行するためにはto_stringを実装する必要があります。
+
+liはlist<char*>*%で文字列のポインタが格納されています。char*%ではないため格納された要素はfreeされません。
+
+T& begin(list<T>* self) 
+T& next(list<T>* self) 
+bool end(list<T>* self) 
+
+Defined for foreach. Use this if you want to access all elements.
+
+foreachのため定義されてます。すべての要素にアクセスしたい場合使います。
+
+list<T>* each(list<T>* self, void* parent, void (*block)(void*, T&,int,bool*)) 
+
+```C
+    var li = ["ABC", "DEF", "GHI"];
+    
+    li.each {
+        puts(it);
+    }
+```
+
+ABC\nDEF\nGHI\n will be output. Method block arguments are stored in it, it2, and it3. In this case, it contains each element. Unlike foreach, break, continue, and return cannot be executed. Returning just escapes from the method block.
+
+ABC\nDEF\nGHI\nが出力されます。メソッドブロックはit,it2,it3にメソッドブロックの引数が格納されます。この場合itは各要素が入っています。foreachと違い、break, continue, returnは実行できません。returnするとメソッドブロックから脱出するだけです。
+
+T& item(list<T>* self, int position, T default_value) 
+
+```C
+    var li = ["ABC", "DEF", "GHI"];
+    puts(li.item(0, null)); // ABC
+    puts(li.item(-1, null)); // GHI
+    puts(li.item(-9999, "")); // ""
+```
+
+default_value is the value returned in case of out-of-range access. If <0, the elements counted from the back are returned.
+
+default_valueは範囲外アクセスの場合その値が返されます。<0の場合は後方から数えた要素が返されます。
+
+int length(list<T>* self)
+
+```C
+    var li = [1,2,3];
+    puts(li.length().to_string()); // 3
+```
+
+Returns the number of elements.
+
+要素の数が返されます。
+
+list<T>* insert(list<T>* self, int position, T item)
+
+```C
+    var li = [1,2,3];
+    
+    li.insert(1@position, 5@item); // [1,5,2,3]
+```
+
+Add element to position. @postion is an annotation and is treated as a comment.
+
+li should be [1,5,2,3].
+
+要素をpositionに追加します。@postionはアノテーションでコメントとして扱われます。
+
+liは[1,5,2,3]となるはずです。
+
+
+list<T>* reset(list<T>* self) 
+
+```C
+    var li = [1,2,3];
+    
+    li.reset();
+    
+    li.length().to_string().puts(); // 0
+```
+
+Clears the element. 0 will be output.
+
+要素をクリアします。0が出力されます。
+
+list<T>* remove(list<T>* self, T item) 
+
+```C
+    var li = [1,2,3];
+    
+    li.remove(3); // [1,2]
+    
+    li.to_string().puts();
+```
+
+Delete items that match item and equals.
+li is [1,2].
+
+itemとequalsがマッチするものを削除します。
+liは[1,2]です。
+
+list<T>* delete(list<T>* self, int head, int tail)
+
+```C
+    var li = [1,2,3,4,5];
+    
+    li.delete(3,-1); // [1,2,3]
+    li.delete(0,1); // [2,3];
+```
+
+Delete what is in the range. -1 is the tail.
+li is [1,2,3].
+
+範囲に入っているものを削除します。-1は末尾です。
+liは[1,2,3]です。
+
+list<T>* replace(list<T>* self, int position, T item)
+
+```C
+    var li = [1,2,3,4,5];
+    
+    li.replace(1, 7); // [1,7,3,4,5]
+```
+
+Replace the item.
+li is [1,7,3,4,5]. If the element is a heap, the reference count of the replaced element will be -1, and if the reference count is 0, it will be deleted.
+
+アイテムを置き換えます。
+liは[1,7,3,4,5]です。要素がヒープの場合置き換える要素はリファレンスカウントが-1されて、リファレンスカウントが0なら削除されます。
+
+int find(list<T>* self, T& item, int default_value) 
+
+```C
+    var li = [1,2,3,4,5];
+    
+    li.find(3, -1@default_value); // 2
+```
+
+Returns the position from the beginning of the element matched by equals. In this case it is 2. default_value is the value if not found.
+
+equalsがマッチする要素の先頭からの位置を返します。この場合2です。default_valueは見つからなかった場合の値です。
+
+bool equals(list<T>* left, list<T>* right)
+
+```C
+    [1,2,3].equals([1,2,3]).to_string().puts(); // true
+```
+
+Checks whether the object has the same argument and content. Equals is executed for each element and returns true if it is true for all elements.
+
+オブジェクトが引数と内容が一緒か確認します。要素ごとにequalsが実行されすべての要素で真ならtrueを返します。
+
+list<T>*% sublist(list<T>* self, int begin, int tail) 
+
+```C
+    [1,2,3,4,5].sublist(0,2); // [1,2]
+    [1,2,3,4,5].sublist(3,-1); // [4,5]
+    [1,2,3,4,5].sublist(3,-2); // [4]
+```
+
+
+T& operator_load_element(list<T>* self, int position) 
+
+```C
+    var li = [1,2,3,4,5];
+    
+    printf("%d\n", li[3]); // 4
+    printf("%d\n", li[-1]); // 5
+    printf("%d\n", li[-9999]); // 0
+```
+
+If it is out of range, a 0cleared value will be returned.
+
+範囲外は0clearされた値を返します。
+
+T& operator_store_element(list<T>* self, int position, T item) 
+
+```C
+    var li = [1,2,3,4,5];
+    
+    li[0] = 123; // [123,2,3,4,5]
+```
+
+list<T>*% operator_load_range_element(list<T>* self, int begin, int tail) 
+
+```C
+    var li = [1,2,3,4,5];
+    
+    li[0..2].to_string().puts(); // [1,2]
+    li[3..-1].to_string().puts(); // [4,5]
+```
+
+bool operator_equals(list<T>* self, list<T>* right) 
+
+```C
+    [1,2,3] === [1,2,3]; // true
+    [1,2,2] === [1,2,3]; // false
+```
+
+equals is called for each element.
+
+各要素にequalsが呼ばれます。
+
+bool operator_not_equals(list<T>* left, list<T>* right) 
+
+```C
+    [1,2,3] !== [1,2,3]; // false
+    [1,2,2] !== [1,2,3]; // true
+```
+
+bool contained(list<T>* self, T item) 
+
+```C
+    [1,2,3].contained(3); // true
+    [1,2,3].contained(4); // false
+```
+
+list<T>*% merge_list_with_lambda(list<T>* left, list<T>* right, int (*compare)(T&,T&)) 
+list<T>*% merge_sort_with_lambda(list<T>* self, int (*compare)(T&,T&)) 
+list<T>*% sort_with_lambda(list<T>* self, int (*compare)(T&,T&)) 
+
+```C
+    [3,7,2,5].sort_with_lambda(int lambda(int left, int right) {
+        if(left < right) {
+            return -1;
+        }
+        else if(left > right) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+        
+        return 0;
+    }); // [2,3,5,7]
+```
+
+Sort by lambda expression.
+
+lambda式でソートします。
+
+list<T>*% merge_list(list<T>* left, list<T>* right) 
+list<T>*% merge_sort(list<T>* self) 
+list<T>*% sort(list<T>* self) 
+
+```C
+    [3,7,2,5].sort(); // [2,3,5,7]
+```
+
+list<any>*% map(list<T>* self, void* parent, any (*block)(void*, T&))
+
+```C
+    ["1","2","3"].map { return atoi(it) }  // [1,2,3]
+```
+
+Executes an expression on each element and returns a list of results. However, since this map returns any, anything that uses the heap will cause a memory leak. Please use the following map2.
+
+各要素に式を実行して、その結果のリストを返します。ただ、このmapはanyを返すのでヒープを使うものはメモリリークを起こします。次のmap2を使ってください。
+
+template<R> list<R>*% map2(list<T>* self, void* parent, R (*block)(void*, T&))
+
+```C
+    [1,2,3].map<string> { return it.to_string() } // ["1", "2", "3"]
+```
+
+list<T>*% reverse(list<T>* self) 
+
+```C
+    [1,2,3].reverse(); // [3,2,1]
+```
+
+list<T>*% uniq(list<T>* self) 
+
+```C
+    [8,8,2,2,3,3].uniq(); // [8,2,3]
+```
+
+Delete adjacent identical elements. It may not work unless you use sort().
+
+隣あった同じ要素を削除します。sort()しないとダメかもしれません。
+
+list<T>*% filter(list<T>* self, void* parent, bool (*block)(void*, T&))
+
+```C
+    [1,2,3,4,5].filter { return it > 2 };  // [3,4,5]
+```
+
+list<T>*% operator_add(list<T>*% left, list<T>*% right) 
+
+```C
+    [1,2,3] + [4,5]; // [1,2,3,4,5]
+```
+
+list<T>*% operator_mult(list<T>* left, int right) 
+
+```C
+    [1,2,3] * 2; // [1,2,3,1,2,3]
+```
+
+string join(list<T>* self, char* sep=" ") 
+
+```C
+    [1,2,3].join("+");    // 1+2+3
 ```
 
 # map
@@ -494,34 +834,193 @@ int main(int argc, char** argv)
 }
 ```
 
-insert adds an element. foreach's iterator only returns the key. If you want to access item, please use it.
+map<T,T2>*% initialize(map<T,T2>*% self)
 
-foreachのイテレーターはキーしかアクセスできません。itがイテレーター名です。
+```C
+var ma = new map<char*,int>();
+ma.insert("AAA", 1);
+ma.insert("BBB", 2);
+ma.insert("CCC", 3).insert("DDD", 4);
+```
 
-The map representation is
+map<T,T2>*% initialize_with_values(map<T,T2>*% self, int num_keys, T&* keys, T2&* values) 
 
 ```
-#include <comelang2.h>
-
-int main(int argc, char** argv)
-{
-    map<char*, int>*% ma = ["AAA":1, "BBB":2, "CCC":3]:
+    char* keys[] = { "AAA", "BBB", "CCC", "DDD" };
+    int values[] = { 1, 2, 3, 4 };
     
-    foreach(it, ma) {
-        int item = ma[it];
+    var ma = new map<char*,int>.initialize_with_values(4, keys, values);
+```
 
-        printf("%s %d\n", it, ma[it]);
+void finalize(map<T,T2>* self)
+void force_finalize(map<T,T2>* self) 
+
+map<T, T2>*% clone(map<T, T2>* self)
+
+```
+    var ma = ["AAA":1, "BBB":2, "CCC":3];
+    var ma2 = clone ma;
+```
+
+
+string to_string(map<T,T2>* self)
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].to_string().puts();   // [AAA:1,BBB:2,CCC:3]
+```
+
+All elements and keys must implement to_string(). All basic types of comelang2 have to_string() implemented.
+
+すべての要素とキーにto_string()が実装されている必要があります。comelang2の基本的な型はすべてto_string()が実装されてます。
+
+T2& at(map<T, T2>* self, T& key, T2 default_value) 
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].at("AAA", -1).to_string().puts();  // 1
+```
+
+Takes value by key. This is the value if default_value is not found.
+
+キーで値をとります。default_valueが見つからない場合の値です。
+
+map<T,T2>* remove(map<T, T2>* self, T& key) 
+
+```
+    var ma = ["AAA":1, "BBB":2, "CCC":3].remove("AAA");
+    ma.to_string().puts();   // [BBB:2, CCC:3]
+```
+
+Delete value by key.
+
+キーで値を削除します。
+
+T& begin(map<T, T2>* self)
+T& next(map<T, T2>* self) 
+bool end(map<T, T2>* self) 
+
+It is for foreach. To access all keys:
+
+foreachのためにあります。すべてのキーにアクセスするには以下のようにします。
+
+```
+    var ma = ["AAA":1, "BBB":2, "CCC"];
+    
+    foreach(key, ma) {
+        var item = ma[key];
+        
+        printf("%s %d\n", key, item);
     }
-    
-    return 0;
-}
 ```
 
-It becomes.
+The output is AAA 1\nBBB 2\n CCC 3\n.
+foreach(key, ["AAA":1, "BBB":2, "CCC":3]) is not possible. Because foreach is a macro, it has meaning.
+Maybe include foreach in the language specification instead of a macro.
+
+出力はAAA 1\nBBB 2\n CCC 3\nです。
+foreach(key, ["AAA":1, "BBB":2, "CCC":3])とはできません。foreachはマクロのため,が意味を持つためです。
+ちょっとforeachをマクロでなく言語仕様に含めるかもしれません。
+
+void rehash(map<T,T2>* self) 
+
+For internal use.
+
+内部的に使用します。
+
+map<T,T2>* insert(map<T,T2>* self, T key, T2 item)
+
+```
+    var ma = ["AAA":1].insert("BBB",2).insert("CCC",3);
+    ma.to_string().puts(); // [AAA:1,BBB:2,CCC:3]
+```
+
+map<T,T2>* insert2(map<T,T2>* self, T key, T2 item) 
+
+Same as insert. I think it was used with clone. This is because if you only insert it, it will cause an infinite loop.
+
+insertと同じです。cloneで使用していたと思います。insertだけだと無限ループするためでした。
+
+T2& operator_load_element(map<T, T2>* self, T& key) 
+
+```
+    var ma = ["AAA":1,"BBB":2,"CCC":3];
+    var item = ma["AAA"];
+    item.to_string().puts(); // 1
+```
+
+Returns a value cleared to 0 if the key is not found. There's no exception handling, so there's nothing you can do about it.
+
+キーが見つからない場合0クリアされた値を返します。例外処理がないので、仕方がないです。
+
+T2 operator_store_element(map<T, T2>* self, T key, T2 item) 
+
+```
+    var ma = ["AAA":1, "BBB":2];
+    ma["CCC"] = 3;
+    ma.to_string().puts(); // [AAA:1,BBB:2,CCC:3]
+```
+
+bool equals(map<T, T2>* left, map<T, T2>* right)
+
+```
+    ["AAA":1,"BBB":2,"CCC":3].equals(["AAA":1,"BBB":2,"CCC":3]); // true
+    ["AAA":1].equals(["BBB":2]); // false
+```
+
+bool operator_equals(map<T, T2>* left, map<T,T2>* right) 
+
+```
+    ["AAA":1,"BBB":2,"CCC":3] === ["AAA":1,"BBB":2,"CCC":3]; // true
+    ["AAA":1] === ["BBB":2]; // false
+```
+
+bool operator_not_equals(map<T, T2>* left, map<T,T2>* right) 
+
+```
+    ["AAA":1,"BBB":2,"CCC":3] !== ["AAA":1,"BBB":2,"CCC":3]; // false
+    ["AAA":1] !== ["BBB":2]; // true
+```
+
+bool find(map<T, T2>* self, T& key) 
+
+```
+    ["AAA":1, "BBB":2].find("AAA"); // true;
+    ["AAA":1, "BBB":2].find("CCC"); // false;
+```
+
+Returns true if the key is included.
+
+キーが含まれればtrueを返します。
+
+
+map<T,T2>*% operator_add(map<T,T2>* left, map<T,T2>* right) 
+
+```
+    (["AAA":1] + ["BBB":2]).to_string().puts(); // [AAA:1,BBB:2]
+```
+
+map<T,T2>*% operator_mult(map<T,T2>* left, int right) 
+
+```
+    (["AAA":1] * 2).to_string().puts(); // [AAA:1,AAA:1]
+```
+
+list<T>*% keys(map<T, T2>* self)
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].keys().to_string().puts();  // [AAA,BBB,CCC]
+```
+
+list<T2>*% values(map<T, T2>* self) 
+
+```
+    ["AAA":1, "BBB":2, "CCC":3].values().to_string().puts();  // [1,2,3]
+```
 
 # tuple
 
-A tuple is a container for elements of different types.
+A tuple is a collection of elements of different types. It may be called a simple structure.
+
+タプルは型の違う要素を持つコレクションです。簡易的な構造体と呼べるかもしれません。
 
 ```
 #include <comelang2.h>
@@ -536,22 +1035,64 @@ int main(int argc, char** argv)
 }
 ```
 
-```
-#include <comelang2.h>
+Up to 5 tuples are defined.
 
-int main(int argc, char** argv)
-{
-    tuple3<int, int, char*>*% tu = (1,2,"ABC");
+tupleは5つまで定義されてます。
+
+```
+    tuple5<int,int,int,string,char*>*% tu = (1,2,3,s"ABC","DEF");
     
-    printf("%d %d %s\n", tu.v1, tu.v2, tu.v3);
+    tu.to_string().puts(); // (1,2,3,ABC,DEF)
+```
+
+I think tuple has catch and can be used for simple exception handling.
+
+tupleにはcatchがあり簡易的な例外処理として使えると思います。
+
+```
+int, bool div(int a, int b)
+{
+    if(b == 0) {
+        return (0, false);
+    }
+    
+    return (a/b, true);
+}
+
+int main(int argc, char* argv)
+{
+    int value = div(1,0).catch {
+        puts("0 divition");   // // Enter here because we are dividing by 0. 0で割っているため、ここに入る
+        exit(1);
+    }
+    
+    printf("value %d\n", value);
     
     return 0;
 }
 ```
 
+int, bool have the same meaning as tuple2<int, bool>*%. Used to return multiple values. When you want to store multiple values in each variable, you can use var a,b = div(1,1); Int is placed in a and bool is placed in b.
+
+To access the element, use v1 etc.
+
+int, boolはtuple2<int, bool>*%と同じ意味です。複数の値を返すために使います。複数の値を各変数に格納したい時、個の場合はvar a,b = div(1,1);とすればいいです。aにint, bにboolが入ります。
+
+要素にアクセスするにはv1などとします。
+
+```
+    var tu = (1,2,"ABC");
+    
+    tu.v1 === 1; // true
+    tu.v2 === 2; // true
+    tu.v3 === "ABC"; // true
+```
+
 # buffer
 
-buffer is memory that can be appended.
+Buffer is memory that can be appended.
+
+bufferは追記できるメモリーです。
 
 ```
 #include <comelang2.h>
@@ -584,6 +1125,228 @@ int main(int argc, char** argv)
 }
 ```
 
+buffer*% buffer*::initialize(buffer*% self);
+
+```
+    var buf = new buffer();
+```
+
+void buffer*::finalize(buffer* self);
+void buffer*::force_finalize(buffer* self);
+
+buffer*% buffer*::clone(buffer* self);
+
+```
+    var buf = new buffer();
+    buf.append_int(1);
+    buf.append_int(2);
+    buf.append_int(3);
+    
+    var buf2 = clone buf;
+```
+
+int buffer*::length(buffer* self);
+
+```
+    var buf = new buffer();
+    buf.append_char('a');
+    buf.append_char('b');
+    buf.append_char('c');
+    
+    buf.length().to_string().puts(); // 3
+```
+
+Returns the number of bytes of memory.
+
+メモリーのバイト数を返します。
+
+void buffer*::reset(buffer* self);
+
+```
+    var buf = new buffer();
+    
+    buf.append_char('a');
+    buf.append_char('b');
+    buf.append_char('c');
+    
+    buf.reset();
+    
+    buf.length().to_string().puts(); // 0
+```
+
+Clear memory.
+
+メモリーをクリアします。
+
+void buffer*::trim(buffer* self, int len);
+
+Delete trailing memory by len.
+
+lenだけ末尾のメモリを削除します。
+
+```
+    var buf = new buffer();
+    
+    buf.append_str("ABCDEFG");
+    buf.trim(3);
+    buf.to_string().puts(); // ABCD
+```
+
+buffer* buffer*::append(buffer* self, char* mem, size_t size);
+
+Add memory by mem size.
+
+memのsizeだけメモリを追加します。
+
+```
+    var buf = new buffer();
+    buf.append("ABCDEFG", 2);
+    
+    buf.to_string().puts(); // AB
+```
+
+buffer* buffer*::append_char(buffer* self, char c);
+buffer* buffer*::append_str(buffer* self, char* str);
+buffer* buffer*::append_nullterminated_str(buffer* self, char* str);
+buffer* buffer*::append_int(buffer* self, int value);
+buffer* buffer*::append_long(buffer* self, long value);
+buffer* buffer*::append_short(buffer* self, short value);
+
+Add memory.
+
+メモリーを追加します。
+
+buffer* buffer*::alignment(buffer* self);
+
+Align memory.
+
+メモリーのアライメントを取ります。
+
+int buffer*::compare(buffer* left, buffer* right);
+
+Compare the buffer sizes. <0 means smaller on the left, >0 means smaller on the right. == 0 and have the same size.
+Used in sort.
+
+bufferの大きさを比べます。<0で左が小さい、>0で右が小さい。== 0で同じ大きさです。
+sortで使います。
+
+buffer*% string::to_buffer(char* self);
+buffer*% char*::to_buffer(char* self);
+
+Convert string to buffer.
+
+文字列をbufferに変換します。
+
+```
+    var buf = "ABCDEFG".to_buffer();
+    buf.append_str("HIJ");
+    
+    buf.to_string().puts(); // ABCDEFGHIJ
+```
+
+string buffer*::to_string(buffer* self);
+
+Convert buffer to string.
+
+bufferを文字列に変換します。
+
+# smart_pointer
+
+A memory-safe pointer. Out-of-bounds accesses will not cause a segmentation fault and will display a stack trace. If you want to display the stack trace, you need to compile with the -cg option. If there is no -cg option, the source file name and line number will be displayed and the program will crash.
+
+メモリセーフなポインタです。範囲外アクセスはsegmentaition faultをおこさずスタックトレースを表示します。スタックトレースを表示したい場合-cgオプションでのコンパイルが必要です。-cgオプションがない場合はソースファイル名と行番号を表示して落ちます。
+
+
+struct smart_pointer<T> {
+    buffer*% memory;
+    T* p;
+};
+
+static inline smart_pointer<char>*% buffer*::to_pointer(buffer* self)
+
+```
+    var p = "ABCDEFG".to_buffer().to_pointer();
+    
+    printf("%c\n", *p);   // A
+    p++;
+    printf("%c\n", *p);   // B
+    p+=2;
+    printf("%c\n", *p);   // B
+    
+    p+=999;               // -cgオプションでコンパイルしていた場合スタックフレームを表示して落ちる。-cgオプションがない場合はソースファイル名と行番号を出力して落ちる
+                          // When compiling with the -cg option, the stack frame is displayed and crashes. If there is no -cg option, output the source file name and line number and crash.
+```
+
+static inline smart_pointer<bool>*% buffer*::to_pointer(buffer* self)
+static inline smart_pointer<char>*% buffer*::to_char_pointer(buffer* self)
+static inline smart_pointer<short>*% buffer*::to_short_pointer(buffer* self)
+static inline smart_pointer<int>*% buffer*::to_int_pointer(buffer* self)
+static inline smart_pointer<long>*% buffer*::to_long_pointer(buffer* self)
+
+Create a pointer for each type name.
+
+各型名のポインタを作成します。
+
+```
+    var buf = new buffer();
+    
+    buf.append_int(1);
+    buf.append_int(2);
+    buf.append_int(3);
+    
+    var p = buf.to_int_pointer();
+    
+    printf("%d\n", *p); // 1
+    p++;
+    printf("%d\n", *p); // 2
+    p++;
+    printf("%d\n", *p); // 3
+    p++; // 範囲外。落ちるがセグメンテーションフォルトは起こさない。ソースの位置を表示する
+         // Out of range. It crashes but does not cause a segmentation fault. Show source location
+```
+
+smart_pointer<T>*% initialize(smart_pointer<T>*% self, void* memory, int size)
+smart_pointer<T>*% operator_add(smart_pointer<T>* self, int value)
+smart_pointer<T>*% operator_sub(smart_pointer<T>* self, int value)
+T operator_derefference(smart_pointer<T>* self)
+smart_pointer<T>* operator_plus_plus(smart_pointer<T>* self)
+smart_pointer<T>* operator_minus_minus(smart_pointer<T>* self)
+smart_pointer<T>* operator_plus_equal(smart_pointer<T>* self, int value)
+smart_pointer<T>* operator_minus_equal(smart_pointer<T>* self, int value)
+
+bool as_bool(smart_pointer<T>* self)
+
+Extracts memory as bool.
+
+メモリーをboolとして取り出します。
+
+char as_char(smart_pointer<T>* self)
+
+Extracts memory as char.
+
+メモリーをcharとして取り出します。
+
+```
+    var p = "ABCDEFG".to_buffer().to_pointer();
+    
+    p.as_char(); // A
+```
+
+short as_short(smart_pointer<T>* self)
+
+```
+    var p = "ABCDEFG".to_buffer().to_pointer();
+    
+    p.as_shart(); // バイト列ABをshortとして表した値
+                  // Value representing byte string AB as short
+```
+
+int as_int(smart_pointer<T>* self)
+long as_long(smart_pointer<T>* self)
+float as_float(smart_pointer<T>* self)
+double as_double(smart_pointer<T>* self)
+string to_string(smart_pointer<T>* self)
+
 # string 
 
 ```
@@ -598,7 +1361,254 @@ int main(int argc, char** argv)
 }
 ```
 
-# Default parametor values, parametor labels
+int string::length(char* str);
+
+```
+    s"ABC".length(); // 3
+```
+
+int char*::length(char* str);
+
+```
+    "ABC".length(); // 3
+```
+
+string char*::substring(char* str, int head, int tail);
+string string::substring(char* str, int head, int tail);
+
+```
+    "ABC".substring(0,2); // AB
+```
+
+string string::operator_load_range_element(char* str, int head, int tail);
+string char*::operator_load_range_element(char* str, int head, int tail);
+
+```
+    "ABC"[0..2]; // AB
+```
+
+string char*::reverse(char* str) ;
+string string::reverse(char* str) ;
+
+```
+    "ABC".reverse();   // CBA
+```
+
+string xsprintf(char* msg, ...);
+
+```
+    var str = xsprintf("%d+%d+%d", 1,2,3); // 1+2+3
+```
+
+static inline string string::xsprintf(char* self, char* msg, ...)
+static inline string char*::xsprintf(char* self, char* msg, ...)
+
+```
+    s"ABC".xsprintf("[%s]").puts(); // [ABC]
+```
+
+static inline string int::xsprintf(int self, char* msg, ...)
+
+```
+    [1,2,3,4,5].item(0, -1).xsprintf("[%d]\n").puts();  // [1]
+```
+
+string char*::delete(char* str, int head, int tail) ;
+string string::delete(char* str, int head, int tail);
+
+```
+    var str = s"ABCDEFG".delete(0,1); // CDEFG
+```
+list<string>*% string::split_char(char* self, char c) ;
+list<string>*% char*::split_char(char* self, char c);
+
+``
+    s"A,B,C".split_char(','); // [A,B,C]
+```
+
+path related wrapper
+
+pathの関連のラッパー
+
+string xrealpath(char* path);
+
+string version of realpath(3)
+
+realpath(3)のstring版
+
+```
+xrealpath("/aaa/../bbb"); // /bbb
+```
+
+Maybe.
+
+多分。
+
+string xbasename(char* path);
+
+string version of basename(3)
+
+basename(3)のstring版
+
+string xextname(char* path);
+
+return extension
+
+拡張子を返す
+
+string xdirname(char* path);
+
+return directory
+
+ディレクトリを返す
+
+string xnoextname(char* path);
+
+Returns the file name without the extension.
+
+拡張子をとったファイル名を返す。
+
+int FILE*::write(FILE* f, char* str);
+
+```
+    FILE* f = fopen("AAA", "a");
+    
+    f.write("ABC");
+    
+    f.fclose();
+```
+
+I just made it object oriented.
+
+オブジェクト指向っぽくしただけ。
+
+string FILE*::read(FILE* f);
+
+similar
+
+同様
+
+int FILE*::fclose(FILE* f) ;
+
+similar
+
+同様。
+
+int* FILE*::fprintf(FILE* f, const char* msg, ...);
+
+```
+    FILE* f = fopen("AAA", "a"9;
+    
+    f.fprintf("%d\n", 1+1);
+    
+    f.close();
+```
+
+similar
+同様
+
+list<string>*% FILE*::readlines(FILE* f);
+
+```
+    "AAA\nBBB\nCCC\n".write("FILE", append:true);
+    
+    FILE* f = fopen("FILE", "r");
+    
+    var li = f.readlines();
+    
+    li[0].puts(); // AAA
+    li[1].puts(); // BBB
+    li[2].puts(); // CCC
+```
+
+int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f));
+
+
+I forgot. do not use. Just fclose automatically after the block is released.
+
+
+忘れた。使わない。ブロックが出た後自動的にfcloseするだけ。
+
+int string::write(char* self, char* file_name, bool append=false);
+int char*::write(char* self, char* file_name, bool append=false) ;
+
+string char*::read(char* file_name) ;
+string string::read(char* file_name) ;
+
+```
+    "ABC".write("FILE-NAME", append:true);
+    "ABC".write("FILE-NAME", append:true);
+    "ABC".write("FILE-NAME", append:true);
+    
+    "FILE-NAME".read().puts(); // ABC\nABC\nABC
+```
+
+If append:false, no appending will be done. append:false is the parameter label. Easy to view source files.
+It is also good to use true@append and annotations.
+
+append:falseだと追記なし。append:falseはパラメーターラベル。ソースファイルが見やすい。
+true@appendとアノテーションを使うのもいい。
+
+void int::times(int self, void* parent, void (*block)(void* parent, int it));
+
+```
+    3.times { puts("HO!"); } // HO!HO!HO!
+```
+
+I just want to write shocking code in Ruby.
+
+Rubyで衝撃を受けたコードを書きたいだけ。
+
+# integer
+
+struct integer
+{
+    long value;
+};
+
+integer*% integer*::initialize(integer*% self, long value);
+integer*% char::to_integer(char self);
+integer*% short::to_integer(short self);
+integer*% int::to_integer(int self);
+integer*% long::to_integer(long self);
+int integer*::to_int(integer* self);
+bool integer::equals(integer* self, integer* right);
+int integer::compare(integer* self, integer* right);
+bool integer::operator_equals(integer* self, integer* right);
+bool integer::operator_not_equals(integer* self, integer* right);
+integer*% integer::operator_add(integer* left, integer* right);
+integer*% integer::operator_sub(integer* left, integer* right);
+integer*% integer::operator_mult(integer* left, integer* right);
+integer*% integer::operator_div(integer* left, integer* right);
+integer*% integer::operator_mod(integer* left, integer* right);
+integer*% integer::operator_lshift(integer* left, integer* right);
+integer*% integer::operator_rshift(integer* left, integer* right);
+integer*% integer::operator_gteq(integer* left, integer* right);
+integer*% integer::operator_lteq(integer* left, integer* right);
+integer*% integer::operator_lt(integer* left, integer* right);
+integer*% integer::operator_gt(integer* left, integer* right);
+integer*% integer::operator_and(integer* left, integer* right);
+integer*% integer::operator_xor(integer* left, integer* right);
+integer*% integer::operator_or(integer* left, integer* right);
+integer*% integer::operator_andand(integer* left, integer* right);
+integer*% integer::operator_oror(integer* left, integer* right);
+
+Well, the heap version of the numeric type. I'm sure you could have written it like this.
+
+まあ、数値型のヒープ版。確か、こう書けたはず。
+
+```
+    integer*% a = 1;
+    integer*% b = 2;
+    
+    int c = a + b;   // 3
+```
+
+a,b are values taken on the heap
+
+a,bはヒープ上に取られた値
+
+# Default parameters, parameter labels
 
 ``` C
 #include<stdio.h>
@@ -651,10 +1661,10 @@ int main(int argc, char** argv)
 }
 ```
 
+# Reference count GC
 
-# Automatically-free-system(Reffrence Count GC)
+Basically, when you assign to a variable with % appended to the type name, the reference count of the heap is increased by 1. When the variable marked with % disappears, the reference count is decremented by 1.
 
-Basically, if the return value of a function that generates a heap or the return value of new is assigned to a variable, the reference count will be increased by 1. A heap with a reference count of 0 will be freed if it is not assigned to a variable after executing one statement.
 
 基本的に型名に%つけた変数に代入するとヒープはリファレンスカウントが+1されます。%をつけた変数が消える時リファレンスカウントが-1されます。
 
@@ -669,9 +1679,6 @@ int main(int argc, char** argv)
 }
 ```
 
-You must add % to variables to which heap values are assigned. Variables appended with % will decrement the reference count of the object it owns by 1 when exiting the block.
-The above code has no memory leak.
-
 ```
 int main(int argc, char** argv)
 {
@@ -683,7 +1690,7 @@ int main(int argc, char** argv)
 }
 ```
 
-In this case, a compilation error will occur because you are trying to assign the new heap to a variable without a %. In order to pass the compilation
+The above will result in a compilation error.
 
 上記はコンパイルエラーとなります。
 
@@ -698,8 +1705,7 @@ int main(int argc, char** argv)
 }
 ```
 
-will do. However, in this case, even after a exits the block, the heap reference count of new int is not set to -1, so a memory leak occurs.
-You can use valgrind to check for memory leaks. If you call this file a.c, you can check it as follows.
+There will be no compilation error. This is a memory leak.
 
 コンパイルエラーとなりません。これはメモリリークとなります。
 
@@ -713,7 +1719,7 @@ You can use valgrind to check for memory leaks. If you call this file a.c, you c
 > valgrind ./a
 ```
 
-It should report that there is a memory leak. If you want to know where the memory leak occurred
+Adding the -g option allows you to track memory leaks with valgrind. Depending on your environment, you may need to set it to -gdwarf-4.
 
 -gオプションをつけるとvalgrindでのメモリリークの追跡が可能になります。環境によっては-gdwarf-4としないといけないかもしれません。
 
@@ -727,8 +1733,29 @@ It should report that there is a memory leak. If you want to know where the memo
 > valgrind --leak-check=full ./a
 ```
 
+postscript. Comelang2 alone can also track memory leaks.
 
-If you add % to the fields of C primitive arrays and structures, the reference count will be incremented by 1.
+追記。comelang2単体でもメモリリークの追跡ができます。
+
+```
+> comelang2 a.c
+> ./a
+1 memory leaks
+```
+
+You can see that there is a memory leak as is. The detection cost is O(1) and is almost non-existent. It's fast.
+
+そのままでメモリリークが存在することがわかります。検出コストはO(1)でほとんどかかってません。高速です。
+
+```
+> comelang2 -cg a.c
+> ./a
+```
+Display memory leak location, type name, and stack frame (function history)
+
+If a field in a structure has a % symbol, assigning to that field will increase the reference count by 1.
+
+メモリリークがある場所と型名、スタックフレーム（関数履歴）を表示する
 
 構造体のフィールドに%がついている場合そのフィールドに代入するとリファレンスカウントが+1されます。
 
@@ -749,17 +1776,15 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
+string is defined as typedef char*% string; string("ABC") allocates ABC\0 on the heap and returns a pointer.
+When assigned to data.a, the heap's reference count is increased by 1.
+When data disappears, the finalizer for sData is automatically defined and data.a is also freed.
 
-string is a typedef for char*%. string("ABC"); creates the string ABC in the heap and returns the heap.
-When assigned to data.a, the reference count of the object returned by string("ABC") is increased by 1.
-When the data of sData leaves the block, the finalizer of sData is automatically defined and data.a is also released.
+The same principle applies when passing a heap to a function. When assigned to an argument, the reference count is incremented by 1, and when the function returns, the reference count is incremented by -1.
 
 stringはtypedef char*% string;と定義されています。string("ABC")はABC\0をヒープで確保してポインタを返します。
 data.aに代入される時、そのヒープはリファレンスカウントが+1されます。
 dataが消える時、sDataのファイナライザーが自動的に定義されてdata.aも解放されます。
-
-
-When passing an object to a function, if the argument type has a %, the heap reference count will be incremented by 1.
 
 関数にヒープを渡す時も原則通りです。引数に代入される時リファレンスカウントが+1されて関数から戻る時リファレンスカウントが-1されます。
 
@@ -779,9 +1804,7 @@ int main(int argc, char** argv)
 }
 ```
 
-When exiting from fun, the heap reference count of argument a is set to -1, so at the end of main, string ("ABC") has a reference count of 0 and is freed as expected.
-
-If there is a heap in the return value of the function, unless it is assigned to a variable with a %, the reference count will remain 0 and it will be freed.
+If the return value of a function is a heap, if the return value is not assigned to a variable with a %, the reference count will be 0 and the heap will be freed as an rvalue.
 
 関数の戻り値がヒープの場合戻り値が%をつけた変数に代入されないとリファレンスカウントが0のため右辺値としてヒープがフリーされます。
 
@@ -802,7 +1825,7 @@ int main(int argc, char** argv)
 }
 ```
 
-If you want to force the reference count to +1, use gc_inc, and if you want to force the reference count to -1, use gc_dec.
+If you want to force the reference count to +1, use gc_inc(). If you want to force -1, use gc_dec().
 
 リファレンスカウントを強制的に+1したい場合はgc_inc()とします。強制的に-1したい場合はgc_dec()とします。
 
@@ -817,9 +1840,9 @@ int main(int argc, char** argv)
 }
 ```
 
-これはメモリリークします。aは型名に%がついていないためaが消える時にリファレンスカウントが-1されないためです。
+This leaks memory. This is because a does not have a % in its type name, so the reference count will not be decremented by 1 when a disappears.
 
-If you want to set the reference count to -1, you can also use delete. Both call the finalizer and free memory when the reference count reaches 0.
+これはメモリリークします。aは型名に%がついていないためaが消える時にリファレンスカウントが-1されないためです。
 
 ```
 int main(int argc, char** argv)
@@ -834,10 +1857,7 @@ int main(int argc, char** argv)
 }
 ```
 
-No memory leaks.
-
-
-When adding % to a variable that does not have %, add dummy_heap.
+To force the addition of %, use dumbm_heap.
 
 強制的に%をつけるにはdumm_heapとします。
 
@@ -851,11 +1871,11 @@ int main(int argc, char** argv)
 }
 ```
 
-In this case, b's reference count becomes 0 and it is freed when main ends. Since a does not have a %, it has nothing to do with the reference count.
+In this case, the new int heap will be freed when b disappears.
+
+If you want to free objects on the heap, please clone them.
 
 この場合bが消える時にnew intのヒープは解放されます。
-
-Use clone to copy objects. This is a deep copy and will create exactly the same thing. Structures etc. are also automatically created and cloned.
 
 ヒープのオブジェクトをフリーしたい場合cloneしてください。
 
@@ -878,9 +1898,9 @@ int main(int argc, char** argv)
 }
 ```
 
-これはメモリリーク0です。
+This is 0 memory leaks.
 
-If you want to check whether a type is heap at compile time, use isheap(type name).
+これはメモリリーク0です。
 
 ```
  int main(int argc, char** argv)
@@ -892,11 +1912,9 @@ If you want to check whether a type is heap at compile time, use isheap(type nam
       return 0;
 }
 ```
+You can see that % is added to the type name when compiling with isheap(type name). Generics would be useful.
+
 isheap(型名）でコンパイル時に型名に%がつけてあるかわかります。ジェネリクスで便利でしょう。
-
-This is used to determine whether the type argument of the generics is heap when creating a generics library. There won't be much use for anything else.
-
-Heap values can also be assigned to pointers without %.
 
 ```
 int fun(char* str)
@@ -913,10 +1931,7 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-
-In this case, fun(str) will cause a segmentation fault when str runs out of life. However, if you want to own it, there will be no problem as long as you add a %. When assigning to a variable with % added, the reference count will be increased by 1.
-This is because the object still exists even if the variable that owns it disappears.
-If you are nervous, add % to the variable and assign the cloned one to ensure ownership.
+In this case, str exists when fun is executed, so no segmentation fault occurs. If you are nervous, you can call it as fun(char*% str) and as fun(clone str).
 
 この場合はstrはfunの実行時は存在しているためセグメンテーションフォルトしません。もし、神経質になる場合はfun(char*% str)としてfun(clone str)として呼び出せばいいでしょう。
 
@@ -964,8 +1979,6 @@ bool string::operator_equals(char* left, char* right);
 ```
 
 # mixin-layers system
-
-Mixin-layers is a programming technique that creates an application so that layers are layered. The mechanism is to allow overwriting of a function and call the overwritten function from the overwritten function.
 
 ``` C
 #include <stdio.h>
@@ -1115,8 +2128,6 @@ int main(int argc, char** argv)
 
 # Null checking
 
-If you add !, the source file name and line number will be output if the value is null. Checked at runtime.
-
 ``` C
 > vin a.c
 #include <stdio.h>
@@ -1191,11 +2202,23 @@ int main(int argc, char** argv)
 a.c 5: null check
 ```
 
-nil can be assigned to of null value variable type.(?)
+nil can be assigned to a variable marked with ?. When assigned to a variable without ?, it is dynamically checked to see if it is null. (Does not cause segmentation fault)
+Cast if you don't want to cause a check.
 
-null can be assigend to all variable type.
+nilは?をつけた変数に代入できます。?がついていない変数に代入される時nullかどうか動的にチェックされます。(セグメンテーションフォルトを起こさない）
+チェックを起こしたくない場合はキャストしてください。
 
-You can use nil instead of null for strictly checking null value.
+```
+    char*? a = nil;
+    
+    puts(a);        /// -cg displays stack frames. If -cg is not specified, display the source file name and line number.-cgをつけているとスタックフレームを表示する。-cgをつけてない場合はソースファイル名と行番号を表示する
+    
+    puts((char*)a);  // segmentation fault. セグメンテーションフォルト
+```
+
+Null can be assigned to any variable. If you want to check whether it is null or not, please add !.
+
+nullはすべての変数に代入できます。nullかどうかをチェックしたい場合は!をつけてください。
 
 # Using C
 
@@ -1254,7 +2277,9 @@ int main(int argc, char* argv)
 
 # BoehmGC
 
-If you use -gc option, you can use memory management of boehm GC. This require to build with bash clean-self-host.sh
+If you use the -gc option, all memory management will be done by boehmGC. %,dummy_heap, borrow etc. are ignored. This may free you from troublesome memory management.
+
+-gcオプションを使うとすべてのメモリ管理がboehmGCによって行われます。%,dummy_heap, borrowなどは無視されます。こっちの方が煩わしいメモリ管理から解放されるかもしれません。
 
 # System call errro handling like perl
 
@@ -1660,7 +2685,39 @@ statically typeof
 
 # Memory leak detector
 
-Default checked memory leaks. With -cg option, show stackframe at memory leak point.
+```c 
+#include <comelang2.h>
+
+void fun()
+{
+    var a = gc_inc(new int);
+    *a = 123;
+
+    stackframe();
+                        
+    printf("%d\n", *a);
+}
+                            
+int main(int argc, char** argv) 
+{
+    fun();
+                                    
+    return 0;
+}
+~/comelang2 # comelang2 a.c
+~/comelang2 # ./a
+123
+1 memory leaks. 1 alloc, 0 free.If you require debugging, copmpile with -cg option
+~/comelang2 # comelang2 -cg a.c
+~/comelang2 # ./a
+a.c 9
+a.c 16
+123
+#1 (int): a.c 16, a.c 5, 
+1 memory leaks. 1 alloc, 0 free.
+~/comelang2 # 
+```
+                                        
 
 # afterword
 
