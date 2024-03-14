@@ -2109,7 +2109,7 @@ impl smart_pointer<T>
         return p;
     }
     
-    int as_char(smart_pointer<T>* self)
+    char as_char(smart_pointer<T>* self)
     {
         char p = *(char*)self.p;
         return p;

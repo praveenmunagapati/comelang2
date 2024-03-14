@@ -1095,6 +1095,7 @@ static inline smart_pointer<char>*% buffer*::to_pointer(buffer* self)
     p+=999;               // -cgオプションでコンパイルしていた場合スタックフレームを表示して落ちる。-cgオプションがない場合はソースファイル名と行番号を出力して落ちる
 ```
 
+static inline smart_pointer<bool>*% buffer*::to_pointer(buffer* self)
 static inline smart_pointer<char>*% buffer*::to_char_pointer(buffer* self)
 static inline smart_pointer<short>*% buffer*::to_short_pointer(buffer* self)
 static inline smart_pointer<int>*% buffer*::to_int_pointer(buffer* self)
@@ -1127,9 +1128,29 @@ smart_pointer<T>* operator_plus_plus(smart_pointer<T>* self)
 smart_pointer<T>* operator_minus_minus(smart_pointer<T>* self)
 smart_pointer<T>* operator_plus_equal(smart_pointer<T>* self, int value)
 smart_pointer<T>* operator_minus_equal(smart_pointer<T>* self, int value)
+
 bool as_bool(smart_pointer<T>* self)
-int as_char(smart_pointer<T>* self)
+
+メモリーをboolとして取り出します。
+
+char as_char(smart_pointer<T>* self)
+
+メモリーをcharとして取り出します。
+
+```
+    var p = "ABCDEFG".to_buffer().to_pionter();
+    
+    p.as_char(); // A
+```
+
 short as_short(smart_pointer<T>* self)
+
+```
+    var p = "ABCDEFG".to_buffer().to_pionter();
+    
+    p.as_shart(); // バイト列ABをshortとして表した値
+```
+
 int as_int(smart_pointer<T>* self)
 long as_long(smart_pointer<T>* self)
 float as_float(smart_pointer<T>* self)
@@ -1150,7 +1171,220 @@ int main(int argc, char** argv)
 }
 ```
 
-# Default parametor values, parametor labels
+int string::length(char* str);
+
+```
+    s"ABC".length(); // 3
+```
+
+int char*::length(char* str);
+
+```
+    "ABC".length(); // 3
+```
+
+string char*::substring(char* str, int head, int tail);
+string string::substring(char* str, int head, int tail);
+
+```
+    "ABC".substring(0,2); // AB
+```
+
+string string::operator_load_range_element(char* str, int head, int tail);
+string char*::operator_load_range_element(char* str, int head, int tail);
+
+```
+    "ABC"[0..2]; // AB
+```
+
+string char*::reverse(char* str) ;
+string string::reverse(char* str) ;
+
+```
+    "ABC".reverse();   // CBA
+```
+
+string xsprintf(char* msg, ...);
+
+```
+    var str = xsprintf("%d+%d+%d", 1,2,3); // 1+2+3
+```
+
+static inline string string::xsprintf(char* self, char* msg, ...)
+static inline string char*::xsprintf(char* self, char* msg, ...)
+
+```
+    s"ABC".xsprintf("[%s]").puts(); // [ABC]
+```
+
+static inline string int::xsprintf(int self, char* msg, ...)
+
+```
+    [1,2,3,4,5].item(0, -1).xsprintf("[%d]\n").puts();  // [1]
+```
+
+string char*::delete(char* str, int head, int tail) ;
+string string::delete(char* str, int head, int tail);
+
+```
+    var str = s"ABCDEFG".delete(0,1); // CDEFG
+```
+list<string>*% string::split_char(char* self, char c) ;
+list<string>*% char*::split_char(char* self, char c);
+
+``
+    s"A,B,C".split_char(','); // [A,B,C]
+```
+
+pathの関連のラッパー
+
+string xrealpath(char* path);
+
+realpath(3)のstring版
+
+```
+xrealpath("/aaa/../bbb"); // /bbb
+```
+
+多分。
+
+string xbasename(char* path);
+
+basename(3)のstring版
+
+string xextname(char* path);
+
+拡張子を返す
+
+string xdirname(char* path);
+
+ディレクトリを返す
+
+string xnoextname(char* path);
+
+拡張子をとったファイル名を返す。
+
+int FILE*::write(FILE* f, char* str);
+
+```
+    FILE* f = fopen("AAA", "a");
+    
+    f.write("ABC");
+    
+    f.fclose();
+```
+
+オブジェクト指向っぽくしただけ。
+
+string FILE*::read(FILE* f);
+
+同様
+
+int FILE*::fclose(FILE* f) ;
+
+同様。
+
+int* FILE*::fprintf(FILE* f, const char* msg, ...);
+
+```
+    FILE* f = fopen("AAA", "a"9;
+    
+    f.fprintf("%d\n", 1+1);
+    
+    f.close();
+```
+
+同様
+
+list<string>*% FILE*::readlines(FILE* f);
+
+```
+    "AAA\nBBB\nCCC\n".write("FILE", append:true);
+    
+    FILE* f = fopen("FILE", "r");
+    
+    var li = f.readlines();
+    
+    li[0].puts(); // AAA
+    li[1].puts(); // BBB
+    li[2].puts(); // CCC
+```
+
+int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f));
+
+忘れた。使わない。ブロックが出た後自動的にfcloseするだけ。
+
+int string::write(char* self, char* file_name, bool append=false);
+int char*::write(char* self, char* file_name, bool append=false) ;
+
+string char*::read(char* file_name) ;
+string string::read(char* file_name) ;
+
+```
+    "ABC".write("FILE-NAME", append:true);
+    "ABC".write("FILE-NAME", append:true);
+    "ABC".write("FILE-NAME", append:true);
+    
+    "FILE-NAME".read().puts(); // ABC\nABC\nABC
+```
+
+append:falseだと追記なし。append:falseはパラメーターラベル。ソースファイルが見やすい。
+true@appendとアノテーションを使うのもいい。
+
+void int::times(int self, void* parent, void (*block)(void* parent, int it));
+
+```
+    3.times { puts("HO!"); } // HO!HO!HO!
+```
+
+Rubyで衝撃を受けたコードを書きたいだけ。
+
+# integer
+
+struct integer
+{
+    long value;
+};
+
+integer*% integer*::initialize(integer*% self, long value);
+integer*% char::to_integer(char self);
+integer*% short::to_integer(short self);
+integer*% int::to_integer(int self);
+integer*% long::to_integer(long self);
+int integer*::to_int(integer* self);
+bool integer::equals(integer* self, integer* right);
+int integer::compare(integer* self, integer* right);
+bool integer::operator_equals(integer* self, integer* right);
+bool integer::operator_not_equals(integer* self, integer* right);
+integer*% integer::operator_add(integer* left, integer* right);
+integer*% integer::operator_sub(integer* left, integer* right);
+integer*% integer::operator_mult(integer* left, integer* right);
+integer*% integer::operator_div(integer* left, integer* right);
+integer*% integer::operator_mod(integer* left, integer* right);
+integer*% integer::operator_lshift(integer* left, integer* right);
+integer*% integer::operator_rshift(integer* left, integer* right);
+integer*% integer::operator_gteq(integer* left, integer* right);
+integer*% integer::operator_lteq(integer* left, integer* right);
+integer*% integer::operator_lt(integer* left, integer* right);
+integer*% integer::operator_gt(integer* left, integer* right);
+integer*% integer::operator_and(integer* left, integer* right);
+integer*% integer::operator_xor(integer* left, integer* right);
+integer*% integer::operator_or(integer* left, integer* right);
+integer*% integer::operator_andand(integer* left, integer* right);
+integer*% integer::operator_oror(integer* left, integer* right);
+
+まあ、数値型のヒープ版。確か、こう書けたはず。
+
+```
+    integer*% a = 1;
+    integer*% b = 2;
+    
+    int c = a + b;   // 3
+```
+
+a,bはヒープ上に取られた値
+
+# デフォルトパラメーター、パラメーターラベル
 
 ``` C
 #include<stdio.h>
@@ -1203,10 +1437,7 @@ int main(int argc, char** argv)
 }
 ```
 
-
-# Automatically-free-system(Reffrence Count GC)
-
-Basically, if the return value of a function that generates a heap or the return value of new is assigned to a variable, the reference count will be increased by 1. A heap with a reference count of 0 will be freed if it is not assigned to a variable after executing one statement.
+# リファレンスカウントGC
 
 基本的に型名に%つけた変数に代入するとヒープはリファレンスカウントが+1されます。%をつけた変数が消える時リファレンスカウントが-1されます。
 
@@ -1221,9 +1452,6 @@ int main(int argc, char** argv)
 }
 ```
 
-You must add % to variables to which heap values are assigned. Variables appended with % will decrement the reference count of the object it owns by 1 when exiting the block.
-The above code has no memory leak.
-
 ```
 int main(int argc, char** argv)
 {
@@ -1234,8 +1462,6 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-
-In this case, a compilation error will occur because you are trying to assign the new heap to a variable without a %. In order to pass the compilation
 
 上記はコンパイルエラーとなります。
 
@@ -1250,9 +1476,6 @@ int main(int argc, char** argv)
 }
 ```
 
-will do. However, in this case, even after a exits the block, the heap reference count of new int is not set to -1, so a memory leak occurs.
-You can use valgrind to check for memory leaks. If you call this file a.c, you can check it as follows.
-
 コンパイルエラーとなりません。これはメモリリークとなります。
 
 ```
@@ -1264,8 +1487,6 @@ You can use valgrind to check for memory leaks. If you call this file a.c, you c
 > comelang2 -gdwarf-4 a.c
 > valgrind ./a
 ```
-
-It should report that there is a memory leak. If you want to know where the memory leak occurred
 
 -gオプションをつけるとvalgrindでのメモリリークの追跡が可能になります。環境によっては-gdwarf-4としないといけないかもしれません。
 
@@ -1279,8 +1500,21 @@ It should report that there is a memory leak. If you want to know where the memo
 > valgrind --leak-check=full ./a
 ```
 
+追記。comelang2単体でもメモリリークの追跡ができます。
 
-If you add % to the fields of C primitive arrays and structures, the reference count will be incremented by 1.
+```
+> comelang2 a.c
+> ./a
+1 memory leaks
+```
+
+そのままでメモリリークが存在することがわかります。検出コストはO(1)でほとんどかかってません。高速です。
+
+```
+> comelang2 -cg a.c
+> ./a
+```
+メモリリークがある場所と型名、スタックフレーム（関数履歴）を表示する
 
 構造体のフィールドに%がついている場合そのフィールドに代入するとリファレンスカウントが+1されます。
 
@@ -1301,17 +1535,9 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-
-string is a typedef for char*%. string("ABC"); creates the string ABC in the heap and returns the heap.
-When assigned to data.a, the reference count of the object returned by string("ABC") is increased by 1.
-When the data of sData leaves the block, the finalizer of sData is automatically defined and data.a is also released.
-
 stringはtypedef char*% string;と定義されています。string("ABC")はABC\0をヒープで確保してポインタを返します。
 data.aに代入される時、そのヒープはリファレンスカウントが+1されます。
 dataが消える時、sDataのファイナライザーが自動的に定義されてdata.aも解放されます。
-
-
-When passing an object to a function, if the argument type has a %, the heap reference count will be incremented by 1.
 
 関数にヒープを渡す時も原則通りです。引数に代入される時リファレンスカウントが+1されて関数から戻る時リファレンスカウントが-1されます。
 
@@ -1330,10 +1556,6 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-
-When exiting from fun, the heap reference count of argument a is set to -1, so at the end of main, string ("ABC") has a reference count of 0 and is freed as expected.
-
-If there is a heap in the return value of the function, unless it is assigned to a variable with a %, the reference count will remain 0 and it will be freed.
 
 関数の戻り値がヒープの場合戻り値が%をつけた変数に代入されないとリファレンスカウントが0のため右辺値としてヒープがフリーされます。
 
@@ -1354,8 +1576,6 @@ int main(int argc, char** argv)
 }
 ```
 
-If you want to force the reference count to +1, use gc_inc, and if you want to force the reference count to -1, use gc_dec.
-
 リファレンスカウントを強制的に+1したい場合はgc_inc()とします。強制的に-1したい場合はgc_dec()とします。
 
 ```
@@ -1371,8 +1591,6 @@ int main(int argc, char** argv)
 
 これはメモリリークします。aは型名に%がついていないためaが消える時にリファレンスカウントが-1されないためです。
 
-If you want to set the reference count to -1, you can also use delete. Both call the finalizer and free memory when the reference count reaches 0.
-
 ```
 int main(int argc, char** argv)
 {
@@ -1386,11 +1604,6 @@ int main(int argc, char** argv)
 }
 ```
 
-No memory leaks.
-
-
-When adding % to a variable that does not have %, add dummy_heap.
-
 強制的に%をつけるにはdumm_heapとします。
 
 ```
@@ -1403,11 +1616,7 @@ int main(int argc, char** argv)
 }
 ```
 
-In this case, b's reference count becomes 0 and it is freed when main ends. Since a does not have a %, it has nothing to do with the reference count.
-
 この場合bが消える時にnew intのヒープは解放されます。
-
-Use clone to copy objects. This is a deep copy and will create exactly the same thing. Structures etc. are also automatically created and cloned.
 
 ヒープのオブジェクトをフリーしたい場合cloneしてください。
 
@@ -1432,8 +1641,6 @@ int main(int argc, char** argv)
 
 これはメモリリーク0です。
 
-If you want to check whether a type is heap at compile time, use isheap(type name).
-
 ```
  int main(int argc, char** argv)
  {
@@ -1445,10 +1652,6 @@ If you want to check whether a type is heap at compile time, use isheap(type nam
 }
 ```
 isheap(型名）でコンパイル時に型名に%がつけてあるかわかります。ジェネリクスで便利でしょう。
-
-This is used to determine whether the type argument of the generics is heap when creating a generics library. There won't be much use for anything else.
-
-Heap values can also be assigned to pointers without %.
 
 ```
 int fun(char* str)
@@ -1465,10 +1668,6 @@ int main(int argc, char** argv)
     return 0;
 }
 ```
-
-In this case, fun(str) will cause a segmentation fault when str runs out of life. However, if you want to own it, there will be no problem as long as you add a %. When assigning to a variable with % added, the reference count will be increased by 1.
-This is because the object still exists even if the variable that owns it disappears.
-If you are nervous, add % to the variable and assign the cloned one to ensure ownership.
 
 この場合はstrはfunの実行時は存在しているためセグメンテーションフォルトしません。もし、神経質になる場合はfun(char*% str)としてfun(clone str)として呼び出せばいいでしょう。
 
@@ -1516,8 +1715,6 @@ bool string::operator_equals(char* left, char* right);
 ```
 
 # mixin-layers system
-
-Mixin-layers is a programming technique that creates an application so that layers are layered. The mechanism is to allow overwriting of a function and call the overwritten function from the overwritten function.
 
 ``` C
 #include <stdio.h>
@@ -1667,8 +1864,6 @@ int main(int argc, char** argv)
 
 # Null checking
 
-If you add !, the source file name and line number will be output if the value is null. Checked at runtime.
-
 ``` C
 > vin a.c
 #include <stdio.h>
@@ -1743,11 +1938,18 @@ int main(int argc, char** argv)
 a.c 5: null check
 ```
 
-nil can be assigned to of null value variable type.(?)
+nilは?をつけた変数に代入できます。?がついていない変数に代入される時nullかどうか動的にチェックされます。(セグメンテーションフォルトを起こさない）
+チェックを起こしたくない場合はキャストしてください。
 
-null can be assigend to all variable type.
+```
+    char*? a = nil;
+    
+    puts(a);        /// -cgをつけているとスタックフレームを表示する。-cgをつけてない場合はソースファイル名と行番号を表示する
+    
+    puts((char*)a);  // セグメンテーションフォルト
+```
 
-You can use nil instead of null for strictly checking null value.
+nullはすべての変数に代入できます。nullかどうかをチェックしたい場合は!をつけてください。
 
 # Using C
 
@@ -1806,7 +2008,7 @@ int main(int argc, char* argv)
 
 # BoehmGC
 
-If you use -gc option, you can use memory management of boehm GC. This require to build with bash clean-self-host.sh
+-gcオプションを使うとすべてのメモリ管理がboehmGCによって行われます。%,dummy_heap, borrowなどは無視されます。こっちの方が煩わしいメモリ管理から解放されるかもしれません。
 
 # System call errro handling like perl
 
