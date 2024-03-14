@@ -363,13 +363,17 @@ li.each { puts(it); }としても全てのリストの要素にアクセスで�
 
 foreachはマクロで実装されてます。
 
+```C
 #define foreach(o1, o2) for(var o2_saved = (o2), var o1 = (o2_saved).begin(); !(o2_saved).end(); o1 = (o2_saved).next())
+```
 
 Below is an explanation of all methods.
 
 以下は全メソッドの解説です。
 
+```C
 list<T>*% initialize(list<T>*% self);
+```
 
 A constructor. It will be called by typing new list<int>();. Internally this is new list<int>.initialize();
 It is an abbreviation of
@@ -393,7 +397,9 @@ var li2 = new list<int>();
 li2.add(1).add(2).add(3);
 ```
 
+```C
 list<T>*% initialize_with_values(list<T>*% self, int num_value, T&* values) 
+```
 
 Creates a list initialized with an array.
 
@@ -405,7 +411,9 @@ int values[3] = { 1, 2, 3 };
 var li = new list<int>.initialize_with_values(3, values);
 ```
 
+```C
 void finalize(list<T>* self) 
+```
 
 It's a destructor. Called when automatically deleted or manually deleted.
 
@@ -421,7 +429,9 @@ gc_inc increments the heap reference count by 1. borrow removes the heap from be
 
 gc_incはヒープのリファレンスカウントを+1します。borrowはヒープの自動解放対象から外し、%をつけない変数に代入できるようにします。この場合ヒープは手動で管理されて、deleteしないとメモリリークが発生します。 メモリリークが発生した場合プログラムを実行するとメモリリークの回数が表示されます。-cgオプションをつけてコンパイルするとヒープが生成されたソースファイルの位置のスタックフレームが表示されます。デバッグも容易だと思います。
 
+```C
 void force_finalize(list<T>* self) 
+```
 
 ```C
 list<int>* li = borrow gc_inc(gc_inc(new list<int>()));
@@ -433,7 +443,9 @@ Frees the heap regardless of the reference count.
 
 リファレンスカウントの数に関わらずヒープを解放します。
 
+```C
 list<T>*% clone(list<T>* self)
+```
 
 ```C
 var li = [1,2,3,4,5];
@@ -466,7 +478,9 @@ In this case, li and li2 refer to the same thing, but if li2 is accessed after l
 
 この場合もliとli2は同じものをさしていますが、liが解放された後にli2にアクセスするとセグメンテーションフォルトを起します。
 
+```C
 list<T>* add(list<T>* self, T item)
+```
 
 ```C
 var li = [s"ABC", s"DEF", s"GHQ"]:
@@ -483,19 +497,25 @@ li is list<string>*%. The reference count of s"OPQ" in li.add(s"OPQ"); is increm
 
 liはlist<string>*%です。li.add(s"OPQ");のs"OPQ"はリファレンスカウントが+1されて、正しくliに格納されます。liが解放されるとき格納された、s"ABC", s"DEF", s"GHQ", s"OPQ"は正しくfreeされます。
 
+```C
 void pop_front(list<T>* self) 
+```
 
 Delete the beginning of the list. If the heap is stored, the element will be freed. If it is a non-heap pointer such as "ABC", it will not be freed.
 
 リストの先頭を削除します。ヒープが格納されていた場合要素がfreeされます。ヒープでなく"ABC"などヒープでないポインタの場合はfreeされません。
 
+```C
 list<T>* push_back(list<T>* self, T item)
+```
 
 Same as add.
 
 addと同じです。
 
+```C
 string to_string(list<T>* self)
+```
 
 ```C
     var li = ["ABC", "DEF", "GHQ"];
@@ -510,15 +530,19 @@ li is list<char*>*%, which stores string pointers. The stored element will not b
 
 liはlist<char*>*%で文字列のポインタが格納されています。char*%ではないため格納された要素はfreeされません。
 
+```C
 T& begin(list<T>* self) 
 T& next(list<T>* self) 
 bool end(list<T>* self) 
+```
 
 Defined for foreach. Use this if you want to access all elements.
 
 foreachのため定義されてます。すべての要素にアクセスしたい場合使います。
 
+```C
 list<T>* each(list<T>* self, void* parent, void (*block)(void*, T&,int,bool*)) 
+```
 
 ```C
     var li = ["ABC", "DEF", "GHI"];
@@ -532,7 +556,9 @@ ABC\nDEF\nGHI\n will be output. Method block arguments are stored in it, it2, an
 
 ABC\nDEF\nGHI\nが出力されます。メソッドブロックはit,it2,it3にメソッドブロックの引数が格納されます。この場合itは各要素が入っています。foreachと違い、break, continue, returnは実行できません。returnするとメソッドブロックから脱出するだけです。
 
+```C
 T& item(list<T>* self, int position, T default_value) 
+```
 
 ```C
     var li = ["ABC", "DEF", "GHI"];
@@ -545,7 +571,9 @@ default_value is the value returned in case of out-of-range access. If <0, the e
 
 default_valueは範囲外アクセスの場合その値が返されます。<0の場合は後方から数えた要素が返されます。
 
+```C
 int length(list<T>* self)
+```
 
 ```C
     var li = [1,2,3];
@@ -556,7 +584,9 @@ Returns the number of elements.
 
 要素の数が返されます。
 
+```C
 list<T>* insert(list<T>* self, int position, T item)
+```
 
 ```C
     var li = [1,2,3];
@@ -572,8 +602,9 @@ li should be [1,5,2,3].
 
 liは[1,5,2,3]となるはずです。
 
-
+```C
 list<T>* reset(list<T>* self) 
+```
 
 ```C
     var li = [1,2,3];
@@ -587,7 +618,9 @@ Clears the element. 0 will be output.
 
 要素をクリアします。0が出力されます。
 
+```C
 list<T>* remove(list<T>* self, T item) 
+```
 
 ```C
     var li = [1,2,3];
@@ -603,7 +636,9 @@ li is [1,2].
 itemとequalsがマッチするものを削除します。
 liは[1,2]です。
 
+```C
 list<T>* delete(list<T>* self, int head, int tail)
+```
 
 ```C
     var li = [1,2,3,4,5];
@@ -618,7 +653,9 @@ li is [1,2,3].
 範囲に入っているものを削除します。-1は末尾です。
 liは[1,2,3]です。
 
+```C
 list<T>* replace(list<T>* self, int position, T item)
+```
 
 ```C
     var li = [1,2,3,4,5];
@@ -632,7 +669,9 @@ li is [1,7,3,4,5]. If the element is a heap, the reference count of the replaced
 アイテムを置き換えます。
 liは[1,7,3,4,5]です。要素がヒープの場合置き換える要素はリファレンスカウントが-1されて、リファレンスカウントが0なら削除されます。
 
+```C
 int find(list<T>* self, T& item, int default_value) 
+```
 
 ```C
     var li = [1,2,3,4,5];
@@ -644,7 +683,9 @@ Returns the position from the beginning of the element matched by equals. In thi
 
 equalsがマッチする要素の先頭からの位置を返します。この場合2です。default_valueは見つからなかった場合の値です。
 
+```C
 bool equals(list<T>* left, list<T>* right)
+```
 
 ```C
     [1,2,3].equals([1,2,3]).to_string().puts(); // true
@@ -654,7 +695,9 @@ Checks whether the object has the same argument and content. Equals is executed 
 
 オブジェクトが引数と内容が一緒か確認します。要素ごとにequalsが実行されすべての要素で真ならtrueを返します。
 
+```C
 list<T>*% sublist(list<T>* self, int begin, int tail) 
+```
 
 ```C
     [1,2,3,4,5].sublist(0,2); // [1,2]
@@ -677,7 +720,9 @@ If it is out of range, a 0cleared value will be returned.
 
 範囲外は0clearされた値を返します。
 
+```C
 T& operator_store_element(list<T>* self, int position, T item) 
+```
 
 ```C
     var li = [1,2,3,4,5];
@@ -685,7 +730,9 @@ T& operator_store_element(list<T>* self, int position, T item)
     li[0] = 123; // [123,2,3,4,5]
 ```
 
+```C
 list<T>*% operator_load_range_element(list<T>* self, int begin, int tail) 
+```
 
 ```C
     var li = [1,2,3,4,5];
@@ -694,7 +741,9 @@ list<T>*% operator_load_range_element(list<T>* self, int begin, int tail)
     li[3..-1].to_string().puts(); // [4,5]
 ```
 
+```C
 bool operator_equals(list<T>* self, list<T>* right) 
+```
 
 ```C
     [1,2,3] === [1,2,3]; // true
@@ -705,23 +754,29 @@ equals is called for each element.
 
 各要素にequalsが呼ばれます。
 
+```C
 bool operator_not_equals(list<T>* left, list<T>* right) 
+```
 
 ```C
     [1,2,3] !== [1,2,3]; // false
     [1,2,2] !== [1,2,3]; // true
 ```
 
+```C
 bool contained(list<T>* self, T item) 
+```
 
 ```C
     [1,2,3].contained(3); // true
     [1,2,3].contained(4); // false
 ```
 
+```C
 list<T>*% merge_list_with_lambda(list<T>* left, list<T>* right, int (*compare)(T&,T&)) 
 list<T>*% merge_sort_with_lambda(list<T>* self, int (*compare)(T&,T&)) 
 list<T>*% sort_with_lambda(list<T>* self, int (*compare)(T&,T&)) 
+```
 
 ```C
     [3,7,2,5].sort_with_lambda(int lambda(int left, int right) {
@@ -743,15 +798,19 @@ Sort by lambda expression.
 
 lambda式でソートします。
 
+```C
 list<T>*% merge_list(list<T>* left, list<T>* right) 
 list<T>*% merge_sort(list<T>* self) 
 list<T>*% sort(list<T>* self) 
+```
 
 ```C
     [3,7,2,5].sort(); // [2,3,5,7]
 ```
 
+```C
 list<any>*% map(list<T>* self, void* parent, any (*block)(void*, T&))
+```
 
 ```C
     ["1","2","3"].map { return atoi(it) }  // [1,2,3]
@@ -761,19 +820,25 @@ Executes an expression on each element and returns a list of results. However, s
 
 各要素に式を実行して、その結果のリストを返します。ただ、このmapはanyを返すのでヒープを使うものはメモリリークを起こします。次のmap2を使ってください。
 
+```C
 template<R> list<R>*% map2(list<T>* self, void* parent, R (*block)(void*, T&))
+```
 
 ```C
     [1,2,3].map<string> { return it.to_string() } // ["1", "2", "3"]
 ```
 
+```C
 list<T>*% reverse(list<T>* self) 
+```
 
 ```C
     [1,2,3].reverse(); // [3,2,1]
 ```
 
+```C
 list<T>*% uniq(list<T>* self) 
+```
 
 ```C
     [8,8,2,2,3,3].uniq(); // [8,2,3]
@@ -783,25 +848,33 @@ Delete adjacent identical elements. It may not work unless you use sort().
 
 隣あった同じ要素を削除します。sort()しないとダメかもしれません。
 
+```C
 list<T>*% filter(list<T>* self, void* parent, bool (*block)(void*, T&))
+```
 
 ```C
     [1,2,3,4,5].filter { return it > 2 };  // [3,4,5]
 ```
 
+```C
 list<T>*% operator_add(list<T>*% left, list<T>*% right) 
+```
 
 ```C
     [1,2,3] + [4,5]; // [1,2,3,4,5]
 ```
 
+```C
 list<T>*% operator_mult(list<T>* left, int right) 
+```
 
 ```C
     [1,2,3] * 2; // [1,2,3,1,2,3]
 ```
 
+```C
 string join(list<T>* self, char* sep=" ") 
+```
 
 ```C
     [1,2,3].join("+");    // 1+2+3
@@ -834,7 +907,9 @@ int main(int argc, char** argv)
 }
 ```
 
+```C
 map<T,T2>*% initialize(map<T,T2>*% self)
+```
 
 ```C
 var ma = new map<char*,int>();
@@ -843,7 +918,9 @@ ma.insert("BBB", 2);
 ma.insert("CCC", 3).insert("DDD", 4);
 ```
 
+```C
 map<T,T2>*% initialize_with_values(map<T,T2>*% self, int num_keys, T&* keys, T2&* values) 
+```
 
 ```
     char* keys[] = { "AAA", "BBB", "CCC", "DDD" };
@@ -852,10 +929,14 @@ map<T,T2>*% initialize_with_values(map<T,T2>*% self, int num_keys, T&* keys, T2&
     var ma = new map<char*,int>.initialize_with_values(4, keys, values);
 ```
 
+```C
 void finalize(map<T,T2>* self)
 void force_finalize(map<T,T2>* self) 
+```
 
+```C
 map<T, T2>*% clone(map<T, T2>* self)
+```
 
 ```
     var ma = ["AAA":1, "BBB":2, "CCC":3];
@@ -863,7 +944,9 @@ map<T, T2>*% clone(map<T, T2>* self)
 ```
 
 
+```C
 string to_string(map<T,T2>* self)
+```
 
 ```
     ["AAA":1, "BBB":2, "CCC":3].to_string().puts();   // [AAA:1,BBB:2,CCC:3]
@@ -873,7 +956,9 @@ All elements and keys must implement to_string(). All basic types of comelang2 h
 
 すべての要素とキーにto_string()が実装されている必要があります。comelang2の基本的な型はすべてto_string()が実装されてます。
 
+```C
 T2& at(map<T, T2>* self, T& key, T2 default_value) 
+```
 
 ```
     ["AAA":1, "BBB":2, "CCC":3].at("AAA", -1).to_string().puts();  // 1
@@ -883,7 +968,9 @@ Takes value by key. This is the value if default_value is not found.
 
 キーで値をとります。default_valueが見つからない場合の値です。
 
+```C
 map<T,T2>* remove(map<T, T2>* self, T& key) 
+```
 
 ```
     var ma = ["AAA":1, "BBB":2, "CCC":3].remove("AAA");
@@ -894,9 +981,11 @@ Delete value by key.
 
 キーで値を削除します。
 
+```C
 T& begin(map<T, T2>* self)
 T& next(map<T, T2>* self) 
 bool end(map<T, T2>* self) 
+```
 
 It is for foreach. To access all keys:
 
@@ -920,26 +1009,34 @@ Maybe include foreach in the language specification instead of a macro.
 foreach(key, ["AAA":1, "BBB":2, "CCC":3])とはできません。foreachはマクロのため,が意味を持つためです。
 ちょっとforeachをマクロでなく言語仕様に含めるかもしれません。
 
+```C
 void rehash(map<T,T2>* self) 
+```
 
 For internal use.
 
 内部的に使用します。
 
+```C
 map<T,T2>* insert(map<T,T2>* self, T key, T2 item)
+```
 
 ```
     var ma = ["AAA":1].insert("BBB",2).insert("CCC",3);
     ma.to_string().puts(); // [AAA:1,BBB:2,CCC:3]
 ```
 
+```C
 map<T,T2>* insert2(map<T,T2>* self, T key, T2 item) 
+```
 
 Same as insert. I think it was used with clone. This is because if you only insert it, it will cause an infinite loop.
 
 insertと同じです。cloneで使用していたと思います。insertだけだと無限ループするためでした。
 
+```C
 T2& operator_load_element(map<T, T2>* self, T& key) 
+```
 
 ```
     var ma = ["AAA":1,"BBB":2,"CCC":3];
@@ -951,7 +1048,9 @@ Returns a value cleared to 0 if the key is not found. There's no exception handl
 
 キーが見つからない場合0クリアされた値を返します。例外処理がないので、仕方がないです。
 
+```C
 T2 operator_store_element(map<T, T2>* self, T key, T2 item) 
+```
 
 ```
     var ma = ["AAA":1, "BBB":2];
@@ -959,28 +1058,36 @@ T2 operator_store_element(map<T, T2>* self, T key, T2 item)
     ma.to_string().puts(); // [AAA:1,BBB:2,CCC:3]
 ```
 
+```C
 bool equals(map<T, T2>* left, map<T, T2>* right)
+```
 
 ```
     ["AAA":1,"BBB":2,"CCC":3].equals(["AAA":1,"BBB":2,"CCC":3]); // true
     ["AAA":1].equals(["BBB":2]); // false
 ```
 
+```C
 bool operator_equals(map<T, T2>* left, map<T,T2>* right) 
+```
 
 ```
     ["AAA":1,"BBB":2,"CCC":3] === ["AAA":1,"BBB":2,"CCC":3]; // true
     ["AAA":1] === ["BBB":2]; // false
 ```
 
+```C
 bool operator_not_equals(map<T, T2>* left, map<T,T2>* right) 
+```
 
 ```
     ["AAA":1,"BBB":2,"CCC":3] !== ["AAA":1,"BBB":2,"CCC":3]; // false
     ["AAA":1] !== ["BBB":2]; // true
 ```
 
+```C
 bool find(map<T, T2>* self, T& key) 
+```
 
 ```
     ["AAA":1, "BBB":2].find("AAA"); // true;
@@ -992,25 +1099,33 @@ Returns true if the key is included.
 キーが含まれればtrueを返します。
 
 
+```C
 map<T,T2>*% operator_add(map<T,T2>* left, map<T,T2>* right) 
+```
 
 ```
     (["AAA":1] + ["BBB":2]).to_string().puts(); // [AAA:1,BBB:2]
 ```
 
+```C
 map<T,T2>*% operator_mult(map<T,T2>* left, int right) 
+```
 
 ```
     (["AAA":1] * 2).to_string().puts(); // [AAA:1,AAA:1]
 ```
 
+```C
 list<T>*% keys(map<T, T2>* self)
+```
 
 ```
     ["AAA":1, "BBB":2, "CCC":3].keys().to_string().puts();  // [AAA,BBB,CCC]
 ```
 
+```C
 list<T2>*% values(map<T, T2>* self) 
+```
 
 ```
     ["AAA":1, "BBB":2, "CCC":3].values().to_string().puts();  // [1,2,3]
@@ -1125,16 +1240,20 @@ int main(int argc, char** argv)
 }
 ```
 
+```C
 buffer*% buffer*::initialize(buffer*% self);
+```
 
 ```
     var buf = new buffer();
 ```
 
+```C
 void buffer*::finalize(buffer* self);
 void buffer*::force_finalize(buffer* self);
 
 buffer*% buffer*::clone(buffer* self);
+```
 
 ```
     var buf = new buffer();
@@ -1145,7 +1264,9 @@ buffer*% buffer*::clone(buffer* self);
     var buf2 = clone buf;
 ```
 
+```C
 int buffer*::length(buffer* self);
+```
 
 ```
     var buf = new buffer();
@@ -1160,7 +1281,9 @@ Returns the number of bytes of memory.
 
 メモリーのバイト数を返します。
 
+```C
 void buffer*::reset(buffer* self);
+```
 
 ```
     var buf = new buffer();
@@ -1178,7 +1301,9 @@ Clear memory.
 
 メモリーをクリアします。
 
+```C
 void buffer*::trim(buffer* self, int len);
+```
 
 Delete trailing memory by len.
 
@@ -1192,7 +1317,9 @@ lenだけ末尾のメモリを削除します。
     buf.to_string().puts(); // ABCD
 ```
 
+```C
 buffer* buffer*::append(buffer* self, char* mem, size_t size);
+```
 
 Add memory by mem size.
 
@@ -1205,24 +1332,30 @@ memのsizeだけメモリを追加します。
     buf.to_string().puts(); // AB
 ```
 
+```C
 buffer* buffer*::append_char(buffer* self, char c);
 buffer* buffer*::append_str(buffer* self, char* str);
 buffer* buffer*::append_nullterminated_str(buffer* self, char* str);
 buffer* buffer*::append_int(buffer* self, int value);
 buffer* buffer*::append_long(buffer* self, long value);
 buffer* buffer*::append_short(buffer* self, short value);
+```
 
 Add memory.
 
 メモリーを追加します。
 
+```C
 buffer* buffer*::alignment(buffer* self);
+```
 
 Align memory.
 
 メモリーのアライメントを取ります。
 
+```C
 int buffer*::compare(buffer* left, buffer* right);
+```
 
 Compare the buffer sizes. <0 means smaller on the left, >0 means smaller on the right. == 0 and have the same size.
 Used in sort.
@@ -1230,8 +1363,10 @@ Used in sort.
 bufferの大きさを比べます。<0で左が小さい、>0で右が小さい。== 0で同じ大きさです。
 sortで使います。
 
+```C
 buffer*% string::to_buffer(char* self);
 buffer*% char*::to_buffer(char* self);
+```
 
 Convert string to buffer.
 
@@ -1244,7 +1379,9 @@ Convert string to buffer.
     buf.to_string().puts(); // ABCDEFGHIJ
 ```
 
+```C
 string buffer*::to_string(buffer* self);
+```
 
 Convert buffer to string.
 
@@ -1257,12 +1394,16 @@ A memory-safe pointer. Out-of-bounds accesses will not cause a segmentation faul
 メモリセーフなポインタです。範囲外アクセスはsegmentaition faultをおこさずスタックトレースを表示します。スタックトレースを表示したい場合-cgオプションでのコンパイルが必要です。-cgオプションがない場合はソースファイル名と行番号を表示して落ちます。
 
 
+```C
 struct smart_pointer<T> {
     buffer*% memory;
     T* p;
 };
+```
 
+```C
 static inline smart_pointer<char>*% buffer*::to_pointer(buffer* self)
+```
 
 ```
     var p = "ABCDEFG".to_buffer().to_pointer();
@@ -1277,11 +1418,13 @@ static inline smart_pointer<char>*% buffer*::to_pointer(buffer* self)
                           // When compiling with the -cg option, the stack frame is displayed and crashes. If there is no -cg option, output the source file name and line number and crash.
 ```
 
+```C
 static inline smart_pointer<bool>*% buffer*::to_pointer(buffer* self)
 static inline smart_pointer<char>*% buffer*::to_char_pointer(buffer* self)
 static inline smart_pointer<short>*% buffer*::to_short_pointer(buffer* self)
 static inline smart_pointer<int>*% buffer*::to_int_pointer(buffer* self)
 static inline smart_pointer<long>*% buffer*::to_long_pointer(buffer* self)
+```
 
 Create a pointer for each type name.
 
@@ -1305,6 +1448,7 @@ Create a pointer for each type name.
          // Out of range. It crashes but does not cause a segmentation fault. Show source location
 ```
 
+```C
 smart_pointer<T>*% initialize(smart_pointer<T>*% self, void* memory, int size)
 smart_pointer<T>*% operator_add(smart_pointer<T>* self, int value)
 smart_pointer<T>*% operator_sub(smart_pointer<T>* self, int value)
@@ -1313,14 +1457,19 @@ smart_pointer<T>* operator_plus_plus(smart_pointer<T>* self)
 smart_pointer<T>* operator_minus_minus(smart_pointer<T>* self)
 smart_pointer<T>* operator_plus_equal(smart_pointer<T>* self, int value)
 smart_pointer<T>* operator_minus_equal(smart_pointer<T>* self, int value)
+```
 
+```C
 bool as_bool(smart_pointer<T>* self)
+```
 
 Extracts memory as bool.
 
 メモリーをboolとして取り出します。
 
+```C
 char as_char(smart_pointer<T>* self)
+```
 
 Extracts memory as char.
 
@@ -1332,7 +1481,9 @@ Extracts memory as char.
     p.as_char(); // A
 ```
 
+```C
 short as_short(smart_pointer<T>* self)
+```
 
 ```
     var p = "ABCDEFG".to_buffer().to_pointer();
@@ -1341,11 +1492,13 @@ short as_short(smart_pointer<T>* self)
                   // Value representing byte string AB as short
 ```
 
+```C
 int as_int(smart_pointer<T>* self)
 long as_long(smart_pointer<T>* self)
 float as_float(smart_pointer<T>* self)
 double as_double(smart_pointer<T>* self)
 string to_string(smart_pointer<T>* self)
+```
 
 # string 
 
@@ -1361,66 +1514,86 @@ int main(int argc, char** argv)
 }
 ```
 
+```C
 int string::length(char* str);
+```
 
 ```
     s"ABC".length(); // 3
 ```
 
+```C
 int char*::length(char* str);
+```
 
 ```
     "ABC".length(); // 3
 ```
 
+```C
 string char*::substring(char* str, int head, int tail);
 string string::substring(char* str, int head, int tail);
+```
 
 ```
     "ABC".substring(0,2); // AB
 ```
 
+```C
 string string::operator_load_range_element(char* str, int head, int tail);
 string char*::operator_load_range_element(char* str, int head, int tail);
+```
 
 ```
     "ABC"[0..2]; // AB
 ```
 
+```C
 string char*::reverse(char* str) ;
 string string::reverse(char* str) ;
+```
 
 ```
     "ABC".reverse();   // CBA
 ```
 
+```C
 string xsprintf(char* msg, ...);
+```
 
 ```
     var str = xsprintf("%d+%d+%d", 1,2,3); // 1+2+3
 ```
 
+```C
 static inline string string::xsprintf(char* self, char* msg, ...)
 static inline string char*::xsprintf(char* self, char* msg, ...)
+```
 
 ```
     s"ABC".xsprintf("[%s]").puts(); // [ABC]
 ```
 
+```C
 static inline string int::xsprintf(int self, char* msg, ...)
+```
 
 ```
     [1,2,3,4,5].item(0, -1).xsprintf("[%d]\n").puts();  // [1]
 ```
 
+```C
 string char*::delete(char* str, int head, int tail) ;
 string string::delete(char* str, int head, int tail);
+```
 
 ```
     var str = s"ABCDEFG".delete(0,1); // CDEFG
 ```
+```C
 list<string>*% string::split_char(char* self, char c) ;
 list<string>*% char*::split_char(char* self, char c);
+```
 
 ``
     s"A,B,C".split_char(','); // [A,B,C]
@@ -1430,7 +1603,9 @@ path related wrapper
 
 pathの関連のラッパー
 
+```C
 string xrealpath(char* path);
+```
 
 string version of realpath(3)
 
@@ -1444,31 +1619,41 @@ Maybe.
 
 多分。
 
+```C
 string xbasename(char* path);
+```
 
 string version of basename(3)
 
 basename(3)のstring版
 
+```C
 string xextname(char* path);
+```
 
 return extension
 
 拡張子を返す
 
+```C
 string xdirname(char* path);
+```
 
 return directory
 
 ディレクトリを返す
 
+```C
 string xnoextname(char* path);
+```
 
 Returns the file name without the extension.
 
 拡張子をとったファイル名を返す。
 
+```C
 int FILE*::write(FILE* f, char* str);
+```
 
 ```
     FILE* f = fopen("AAA", "a");
@@ -1482,19 +1667,25 @@ I just made it object oriented.
 
 オブジェクト指向っぽくしただけ。
 
+```C
 string FILE*::read(FILE* f);
+```
 
 similar
 
 同様
 
+```C
 int FILE*::fclose(FILE* f) ;
+```
 
 similar
 
 同様。
 
+```C
 int* FILE*::fprintf(FILE* f, const char* msg, ...);
+```
 
 ```
     FILE* f = fopen("AAA", "a"9;
@@ -1507,7 +1698,9 @@ int* FILE*::fprintf(FILE* f, const char* msg, ...);
 similar
 同様
 
+```C
 list<string>*% FILE*::readlines(FILE* f);
+```
 
 ```
     "AAA\nBBB\nCCC\n".write("FILE", append:true);
@@ -1521,7 +1714,9 @@ list<string>*% FILE*::readlines(FILE* f);
     li[2].puts(); // CCC
 ```
 
+```C
 int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void* parent, FILE* f));
+```
 
 
 I forgot. do not use. Just fclose automatically after the block is released.
@@ -1529,11 +1724,13 @@ I forgot. do not use. Just fclose automatically after the block is released.
 
 忘れた。使わない。ブロックが出た後自動的にfcloseするだけ。
 
+```C
 int string::write(char* self, char* file_name, bool append=false);
 int char*::write(char* self, char* file_name, bool append=false) ;
 
 string char*::read(char* file_name) ;
 string string::read(char* file_name) ;
+```C
 
 ```
     "ABC".write("FILE-NAME", append:true);
@@ -1549,7 +1746,9 @@ It is also good to use true@append and annotations.
 append:falseだと追記なし。append:falseはパラメーターラベル。ソースファイルが見やすい。
 true@appendとアノテーションを使うのもいい。
 
+```C
 void int::times(int self, void* parent, void (*block)(void* parent, int it));
+```
 
 ```
     3.times { puts("HO!"); } // HO!HO!HO!
@@ -1561,6 +1760,7 @@ Rubyで衝撃を受けたコードを書きたいだけ。
 
 # integer
 
+```C
 struct integer
 {
     long value;
@@ -1592,6 +1792,7 @@ integer*% integer::operator_xor(integer* left, integer* right);
 integer*% integer::operator_or(integer* left, integer* right);
 integer*% integer::operator_andand(integer* left, integer* right);
 integer*% integer::operator_oror(integer* left, integer* right);
+```
 
 Well, the heap version of the numeric type. I'm sure you could have written it like this.
 
