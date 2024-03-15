@@ -1595,7 +1595,7 @@ list<string>*% string::split_char(char* self, char c) ;
 list<string>*% char*::split_char(char* self, char c);
 ```
 
-``
+```C
     s"A,B,C".split_char(','); // [A,B,C]
 ```
 
@@ -1611,7 +1611,7 @@ string version of realpath(3)
 
 realpath(3)のstring版
 
-```
+```C
 xrealpath("/aaa/../bbb"); // /bbb
 ```
 
