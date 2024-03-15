@@ -1730,6 +1730,7 @@ int char*::write(char* self, char* file_name, bool append=false) ;
 
 string char*::read(char* file_name) ;
 string string::read(char* file_name) ;
+```
 
 ```C
     "ABC".write("FILE-NAME", append:true);
