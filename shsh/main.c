@@ -909,8 +909,6 @@ int, bool run(char* source)
         }
         
         while(*info->p == '\n' || *info->p == ';') info->p++;
-        
-        tcsetpgrp(0, getpgrp()) or die("tcsetpgrp");
     }
     
     return (info->rcode, false);
@@ -1257,8 +1255,6 @@ int readline_init_text()
 int main(int argc, char** argv)
 {
     setlocale(LC_ALL, "");
-    
-    tcsetpgrp(0, setpgrp()) or die("tcsetpgrp");
     
     bool command = false;
     string file_name = null;
