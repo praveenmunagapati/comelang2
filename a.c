@@ -1,11 +1,22 @@
 #include <comelang2.h>
 
+struct sInfo
+{
+    list<string>*% li;
+};
+
 int main()
 {
-    var li = [1,2,3,3];
+    sInfo info;
     
-    li.remove(3);
+    info.li = new list<string>();
+    info.li.add(s"AAA").add(s"BBB");
     
+    var li = clone info.li;
+    
+    li.add(s"CCC");
+    
+    puts(info.li.to_string());
     li.to_string().puts();
     
     return 0;

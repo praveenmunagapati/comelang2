@@ -251,6 +251,7 @@ bool parse_statment(sInfo* info)
     
     while(true) {
         bool zed_command = false;
+        bool sub_shell = false;
         if(*info->p == '!') {
             info->p++;
             zed_command = true;
@@ -259,15 +260,64 @@ bool parse_statment(sInfo* info)
             zed_command = true;
         }
         
+        if(*info->p == '(') {
+            info->p++;
+            sub_shell = true;
+        }
+        
         buffer*% buf = new buffer();
         char* p = info->p;
-        while(*info->p != '\n' && *info->p != '\0' && *info->p != ';') {
+        while(*info->p != '\n' && *info->p != '\0' && *info->p != ';' && *info->p != ')') {
             buf.append_char(*info->p);
             info->p++;
         }
         string line = buf.to_string();
         
-        if(line.match(/^cd\s*$/)) {
+        if(zed_command) {
+            info->p = p;
+            
+            buffer*% arg = new buffer();
+            while(*info->p) {
+                if(*info->p == '|' && *(info->p+1) != '|') {
+                    break;
+                }
+                else {
+                    arg.append_char(*info->p);
+                    info->p++;
+                }
+            }
+            
+            if(arg.to_string() === "") {
+                break;
+            }
+            
+            info->commands[-1].args.push_back(string("zed"));
+            info->commands[-1].args.push_back(arg.to_string());
+        }
+        else if(sub_shell) {
+            info->p = p;
+            
+            buffer*% arg = new buffer();
+            while(*info->p) {
+                if(*info->p == ')') {
+                    info->p++;
+                    break;
+                }
+                else {
+                    arg.append_char(*info->p);
+                    info->p++;
+                }
+            }
+            
+            if(arg.to_string() === "") {
+                break;
+            }
+            
+            info->commands[-1].args.push_back(string("bash"));
+            info->commands[-1].args.push_back(string("-c"));
+            info->commands[-1].args.push_back(arg.to_string());
+        }
+        else if(line.match(/^cd\s*$/)) {
             char* path = getenv("HOME");
             chdir(path);
             
@@ -641,27 +691,6 @@ bool parse_statment(sInfo* info)
                 setenv(name, value, 1);
             }
         }
-        else if(zed_command) {
-            info->p = p;
-            
-            buffer*% arg = new buffer();
-            while(*info->p) {
-                if(*info->p == '|' && *(info->p+1) != '|') {
-                    break;
-                }
-                else {
-                    arg.append_char(*info->p);
-                    info->p++;
-                }
-            }
-            
-            if(arg.to_string() === "") {
-                break;
-            }
-            
-            info->commands[-1].args.push_back(string("zed"));
-            info->commands[-1].args.push_back(arg.to_string());
-        }
         else {
             info->p = p;
             
@@ -855,11 +884,7 @@ int, bool run(char* source)
                 }
             }
             
-            tcsetpgrp(0, getpgrp()).except {
-                perror("tcsetpgrp");
-                
-                exit(1);
-            }
+            tcsetpgrp(0, getpgrp()) or die("tcsetpgrp");
             
             info.rcode = WEXITSTATUS(status);
             
@@ -884,6 +909,8 @@ int, bool run(char* source)
         }
         
         while(*info->p == '\n' || *info->p == ';') info->p++;
+        
+        tcsetpgrp(0, getpgrp()) or die("tcsetpgrp");
     }
     
     return (info->rcode, false);
@@ -907,81 +934,6 @@ void sig_int(int signal)
     rl_redisplay();
 }
 
-void set_signal()
-{
-    struct sigaction sa;
-    
-    memset(&sa, 0, sizeof(sa));
-    
-    sa.sa_sigaction = sigchld_action;
-    sa.sa_flags = SA_RESTART|SA_SIGINFO;
-    sigaction(SIGCHLD, &sa, NULL).except {
-        perror("sigaction1");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sigaction(SIGCONT, &sa, NULL).except {
-        perror("sigaction3");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_DFL;
-    sigaction(SIGWINCH, &sa, NULL).except {
-        perror("sigaction4");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGTTOU, &sa, NULL).except {
-        perror("sigaction5");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGTTIN, &sa, NULL).except {
-        perror("sigaction6");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = sig_tstp;
-    sa.sa_flags = 0;
-    sigaction(SIGTSTP, &sa, NULL).except {
-        perror("sigaction7");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGQUIT, &sa, NULL).except {
-        perror("sigaction8");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGPIPE, &sa, NULL).except {
-        perror("sigaction10");
-        exit(1);
-    }
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_flags = SA_SIGINFO;
-    sa.sa_handler = (sig_t)sig_int;
-    if(sigaction(SIGINT, &sa, null) < 0) {
-        perror("sigaction2");
-        exit(1);
-    }
-}
-
 void sigchld_block(int block)
 {
     sigset_t sigset;
@@ -998,8 +950,8 @@ void sigchld_block(int block)
 
 void sig_int_optc(int signum)
 {
-    gSigInt = true;
     sigchld_block(1);
+    gSigInt = true;
     sigchld_block(0);
 }
 
@@ -1017,79 +969,100 @@ void sig_cont_optc(int signum, siginfo_t* info, void* ctx)
     sigchld_block(0);
 }
 
+void set_signal()
+{
+    struct sigaction sa;
+    
+    memset(&sa, 0, sizeof(sa));
+    
+    sa.sa_sigaction = sigchld_action;
+    sa.sa_flags = SA_RESTART|SA_SIGINFO;
+    sigaction(SIGCHLD, &sa, NULL) or die("sigaction1");
+
+    memset(&sa, 0, sizeof(sa));
+    sigaction(SIGCONT, &sa, NULL) or die("sigaction3");
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = SIG_DFL;
+    sigaction(SIGWINCH, &sa, NULL) or die("sigaction4");
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = SIG_IGN;
+    sa.sa_flags = 0;
+    sigaction(SIGTTOU, &sa, NULL) or die("sigaction5");
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = SIG_IGN;
+    sa.sa_flags = 0;
+    sigaction(SIGTTIN, &sa, NULL) or die("sigaction6");
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = sig_tstp;
+    sa.sa_flags = 0;
+    sigaction(SIGTSTP, &sa, NULL) or die("sigaction7");
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = SIG_IGN;
+    sa.sa_flags = 0;
+    sigaction(SIGQUIT, &sa, NULL) or die("sigaction8");
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = SIG_IGN;
+    sa.sa_flags = 0;
+    sigaction(SIGPIPE, &sa, NULL) or die("sigaction10");
+
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_flags = SA_SIGINFO;
+    sa.sa_handler = (sig_t)sig_int;
+    sigaction(SIGINT, &sa, null) or die("sigaction2");
+}
+
 void set_signal_optc()
 {
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
     sa.sa_sigaction = sigchld_action;
     sa.sa_flags = SA_SIGINFO|SA_RESTART;
-    if(sigaction(SIGCHLD, &sa, NULL) < 0) {
-        perror("sigaction1");
-        exit(1);
-    }
+    sigaction(SIGCHLD, &sa, NULL) or die("siagaction1");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_flags = SA_SIGINFO;
     sa.sa_handler = sig_int_optc;
-    if(sigaction(SIGINT, &sa, NULL) < 0) {
-        perror("sigaction2");
-        exit(1);
-    }
+    sigaction(SIGINT, &sa, NULL) or die("sigaction2");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_sigaction = sig_tstp_optc;
     sa.sa_flags = SA_RESTART;
-    if(sigaction(SIGTSTP, &sa, NULL) < 0) {
-        perror("sigaction7");
-        exit(1);
-    }
+    sigaction(SIGTSTP, &sa, NULL) or die("sigaction7");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_sigaction = sig_cont_optc;
     sa.sa_flags = SA_RESTART;
-    if(sigaction(SIGCONT, &sa, NULL) < 0) {
-        perror("sigaction3");
-        exit(1);
-    }
+    sigaction(SIGCONT, &sa, NULL) or die("sigaction3");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = SIG_DFL;
-    if(sigaction(SIGWINCH, &sa, NULL) < 0) {
-        perror("sigaction4");
-        exit(1);
-    }
+    sigaction(SIGWINCH, &sa, NULL) or die("sigaction4");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = SIG_IGN;
     sa.sa_flags = 0;
-    if(sigaction(SIGTTOU, &sa, NULL) < 0) {
-        perror("sigaction5");
-        exit(1);
-    }
+    sigaction(SIGTTOU, &sa, NULL) or die("sigaction5");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = SIG_IGN;
     sa.sa_flags = 0;
-    if(sigaction(SIGTTIN, &sa, NULL) < 0) {
-        perror("sigaction6");
-        exit(1);
-    }
+    sigaction(SIGTTIN, &sa, NULL) or die("sigaction6");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = SIG_IGN;
     sa.sa_flags = 0;
-    if(sigaction(SIGQUIT, &sa, NULL) < 0) {
-        perror("sigaction8");
-        exit(1);
-    }
+    sigaction(SIGQUIT, &sa, NULL) or die("sigaction8");
 
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = SIG_IGN;
     sa.sa_flags = 0;
-    if(sigaction(SIGPIPE, &sa, NULL) < 0) {
-        perror("sigaction10");
-        exit(1);
-    }
+    sigaction(SIGPIPE, &sa, NULL) or die("sigaction10");
 }
 
 string line_buffer_from_head_to_cursor_point()
@@ -1284,6 +1257,8 @@ int readline_init_text()
 int main(int argc, char** argv)
 {
     setlocale(LC_ALL, "");
+    
+    tcsetpgrp(0, setpgrp()) or die("tcsetpgrp");
     
     bool command = false;
     string file_name = null;
