@@ -825,7 +825,7 @@ template<R> list<R>*% map2(list<T>* self, void* parent, R (*block)(void*, T&))
 ```
 
 ```C
-    [1,2,3].map<string> { return it.to_string() } // ["1", "2", "3"]
+    [1,2,3].map2<string> { return it.to_string() } // ["1", "2", "3"]
 ```
 
 ```C
