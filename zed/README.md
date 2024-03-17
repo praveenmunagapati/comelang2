@@ -1,3 +1,5 @@
+A text processing language for one-liners.
+If you want to write a script, use bash, Python, or Ruby.
 
 ワンライナー用のテキスト処理言語です。
 スクリプトを書きたい場合はbashやPythonやRubyを使ってください。
