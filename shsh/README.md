@@ -1,13 +1,15 @@
 shsh
 
-simple shell
+シンプルなシェルです。zedを組み込んでいてワンライナーが書きやすいです。
 
-Yet another shell implemented by comelang2
+先頭の文字が!や.[a-zA-Z]の場合zedでテキスト処理ができます。
 
-If head of character ! or .[a-zA-Z], used zed command
+リダイレクト、サブシェル、環境変数関連は実装しています。
+
+zedについてはzedの方のREADMEを見てください。
 
 ```
-> echo aaa | .scan(/./).join("+")
+> echo aaa | .scan(/./).join("+") | less
 a+a+a
 
 > !1+1

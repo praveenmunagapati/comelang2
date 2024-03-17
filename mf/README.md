@@ -1,6 +1,6 @@
 mf
 
-1000 lines console filer by comelang2
+シンプルなファイラーです。shshを使ってコマンドを簡単に実行できます。
 
-See source file for understanding this software.
+ファイルの削除だけシステムコールを使っていて、シェルで消せないファイルを削除することができます。
 
