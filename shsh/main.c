@@ -282,9 +282,11 @@ bool parse_statment(sInfo* info)
                 if(*info->p == '|' && *(info->p+1) != '|') {
                     break;
                 }
+/*
                 else if(*info->p == ';') {
                     break;
                 }
+*/
                 else {
                     arg.append_char(*info->p);
                     info->p++;
@@ -338,7 +340,7 @@ bool parse_statment(sInfo* info)
                                 info->p++;
                                 brace_nest--;
                             }
-                            else if(*info->p == '|' || *info->p == ';') {
+                            else if(*info->p == '|') {
                                 arg.append_char(*info->p);
                                 info->p++;
                                 break;
