@@ -250,8 +250,9 @@ bool parse_statment(sInfo* info)
     info->commands.add(new sCommand());
     
     while(true) {
-        bool zed_command = false;
         bool sub_shell = false;
+        
+        bool zed_command = false;
         if(*info->p == '!') {
             info->p++;
             zed_command = true;
@@ -281,6 +282,9 @@ bool parse_statment(sInfo* info)
                 if(*info->p == '|' && *(info->p+1) != '|') {
                     break;
                 }
+                else if(*info->p == ';') {
+                    break;
+                }
                 else {
                     arg.append_char(*info->p);
                     info->p++;
@@ -299,7 +303,54 @@ bool parse_statment(sInfo* info)
             
             buffer*% arg = new buffer();
             while(*info->p) {
-                if(*info->p == ')') {
+                if(*info->p == '|') {
+                    arg.append_char(*info->p);
+                    info->p++;
+                    
+                    while(*info->p == ' ' || *info->p == '\t') { 
+                        arg.append_char(*info->p);
+                        info->p++; 
+                    }
+                    
+                    bool zed_command = false;
+                    if(*info->p == '!') {
+                        arg.append_char(*info->p);
+                        info->p++;
+                        zed_command = true;
+                    }
+                    else if(*info->p == '.' && xisalpha(*(info->p+1))) {
+                        zed_command = true;
+                    }
+                    
+                    if(zed_command) {
+                        int brace_nest = 0;
+                        while(*info->p) {
+                            if(*info->p == '(') {
+                                arg.append_char(*info->p);
+                                info->p++;
+                                brace_nest++;
+                            }
+                            else if(*info->p == ')') {
+                                if(brace_nest == 0) {
+                                    break;
+                                }
+                                arg.append_char(*info->p);
+                                info->p++;
+                                brace_nest--;
+                            }
+                            else if(*info->p == '|' || *info->p == ';') {
+                                arg.append_char(*info->p);
+                                info->p++;
+                                break;
+                            }
+                            else {
+                                arg.append_char(*info->p);
+                                info->p++;
+                            }
+                        }
+                    }
+                }
+                else if(*info->p == ')') {
                     info->p++;
                     break;
                 }
@@ -313,7 +364,7 @@ bool parse_statment(sInfo* info)
                 break;
             }
             
-            info->commands[-1].args.push_back(string("bash"));
+            info->commands[-1].args.push_back(string("shsh"));
             info->commands[-1].args.push_back(string("-c"));
             info->commands[-1].args.push_back(arg.to_string());
         }
@@ -874,7 +925,11 @@ int, bool run(char* source)
         else {
             int status = 0;
             int options = WUNTRACED;
-            pid_t pid2 = waitpid(pid, &status, options);
+            pid_t pid2 = 0;
+            do {
+                pid2 = waitpid(pid, &status, options);
+            } while(!WIFEXITED(status) && !WIFSIGNALED(status));
+            
             if(pid2 < 0) {
                 if(gSigInt) {
                 }
@@ -914,14 +969,6 @@ int, bool run(char* source)
     return (info->rcode, false);
 }
 
-void sigchld_action(int signum, siginfo_t* info, void* ctx)
-{
-}
-
-void sig_tstp(int signum)
-{
-}
-
 void sig_int(int signal)
 {
     gSigInt = true;
@@ -932,135 +979,14 @@ void sig_int(int signal)
     rl_redisplay();
 }
 
-void sigchld_block(int block)
-{
-    sigset_t sigset;
-
-    sigemptyset(&sigset);
-    sigaddset(&sigset, SIGCHLD);
-
-    if(sigprocmask((block?SIG_BLOCK:SIG_UNBLOCK), &sigset, NULL) != 0)
-    {
-        fprintf(stderr, "error\n");
-        exit(1);
-    }
-}
-
-void sig_int_optc(int signum)
-{
-    sigchld_block(1);
-    gSigInt = true;
-    sigchld_block(0);
-}
-
-void sig_tstp_optc(int signum, siginfo_t* info, void* ctx)
-{
-    sigchld_block(1);
-    killpg(0, SIGSTOP);
-    sigchld_block(0);
-}
-
-void sig_cont_optc(int signum, siginfo_t* info, void* ctx)
-{
-    sigchld_block(1);
-    //mrestore_ttysettings();
-    sigchld_block(0);
-}
-
 void set_signal()
 {
     struct sigaction sa;
     
     memset(&sa, 0, sizeof(sa));
-    
-    sa.sa_sigaction = sigchld_action;
-    sa.sa_flags = SA_RESTART|SA_SIGINFO;
-    sigaction(SIGCHLD, &sa, NULL) or die("sigaction1");
-
-    memset(&sa, 0, sizeof(sa));
-    sigaction(SIGCONT, &sa, NULL) or die("sigaction3");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_DFL;
-    sigaction(SIGWINCH, &sa, NULL) or die("sigaction4");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGTTOU, &sa, NULL) or die("sigaction5");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGTTIN, &sa, NULL) or die("sigaction6");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = sig_tstp;
-    sa.sa_flags = 0;
-    sigaction(SIGTSTP, &sa, NULL) or die("sigaction7");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGQUIT, &sa, NULL) or die("sigaction8");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGPIPE, &sa, NULL) or die("sigaction10");
-
-    memset(&sa, 0, sizeof(sa));
     sa.sa_flags = SA_SIGINFO;
     sa.sa_handler = (sig_t)sig_int;
     sigaction(SIGINT, &sa, null) or die("sigaction2");
-}
-
-void set_signal_optc()
-{
-    struct sigaction sa;
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_sigaction = sigchld_action;
-    sa.sa_flags = SA_SIGINFO|SA_RESTART;
-    sigaction(SIGCHLD, &sa, NULL) or die("siagaction1");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_flags = SA_SIGINFO;
-    sa.sa_handler = sig_int_optc;
-    sigaction(SIGINT, &sa, NULL) or die("sigaction2");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_sigaction = sig_tstp_optc;
-    sa.sa_flags = SA_RESTART;
-    sigaction(SIGTSTP, &sa, NULL) or die("sigaction7");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_sigaction = sig_cont_optc;
-    sa.sa_flags = SA_RESTART;
-    sigaction(SIGCONT, &sa, NULL) or die("sigaction3");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_DFL;
-    sigaction(SIGWINCH, &sa, NULL) or die("sigaction4");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGTTOU, &sa, NULL) or die("sigaction5");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGTTIN, &sa, NULL) or die("sigaction6");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGQUIT, &sa, NULL) or die("sigaction8");
-
-    memset(&sa, 0, sizeof(sa));
-    sa.sa_handler = SIG_IGN;
-    sa.sa_flags = 0;
-    sigaction(SIGPIPE, &sa, NULL) or die("sigaction10");
 }
 
 string line_buffer_from_head_to_cursor_point()
@@ -1347,8 +1273,6 @@ int main(int argc, char** argv)
         else {
             command_str = string(file_name).read();
         }
-        
-        set_signal_optc();
         
         var rcode, err = run(command_str);
         
