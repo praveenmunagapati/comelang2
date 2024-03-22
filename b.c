@@ -1,11 +1,7 @@
 
-int main(int argc, char** argv)
+
+int fun(int x, int y)
 {
-    int a = 123;
-    
-    if(__typeof__(a) == int) {
-    }
-    
-    return 0;
+    return x + y;
 }
 

@@ -3305,7 +3305,7 @@ right_value62 = (void*)0;
     input_file_name_50=(char*)come_increment_ref_count(((char*)(right_value57=string_operator_add(info->sname,".c"))));
     right_value57 = come_decrement_ref_count2(right_value57, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     output_file_name_51=((void*)0);
-    if(info->output_file_name) {
+    if(_if_conditional40=info->output_file_name&&output_object_file,    _if_conditional40) {
         __dec_obj13=output_file_name_51;
         output_file_name_51=(char*)come_increment_ref_count(((char*)(right_value58=__builtin_string(info->output_file_name))));
         __dec_obj13 = come_decrement_ref_count2(__dec_obj13, (void*)0, (void*)0, 0,0,0, (void*)0);

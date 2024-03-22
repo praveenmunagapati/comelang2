@@ -188,7 +188,7 @@ static bool compile(sInfo* info, bool output_object_file, list<string>* object_f
     string input_file_name = info.sname + ".c";
     
     string output_file_name = null;
-    if(info.output_file_name) {
+    if(info.output_file_name && output_object_file) {
         output_file_name = string(info.output_file_name);
     }
     else {

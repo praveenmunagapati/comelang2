@@ -32,27 +32,30 @@ struct sModule
     string mLastCode;
     buffer*% mSource;
 };
+
 struct sInfo
 {
     buffer*% source;
-    smart_pointer<char*>*% p;
+    smart_pointer<char>*% p;
     string sname;
     int sline;
     
     list<CVALUE*%>*% stack;
     
     sType*% type;
-    list<sClass*%>*% classes;
+    map<string, sClass*%>*% classes;
     
     bool no_output_come_code;
     
     sModule*% module;
 };
 
-sModule*% sModule*::initialize(sModule*% self, sInfo* info)
+sModule*% sModule*::initialize(sModule*% self)
 {
     self.mLastCode = null;
     self.mSource = new buffer();
+    
+    return self;
 }
 
 sType*% sType*::initialize(sType*% self, char* name, sInfo* info=info)
@@ -61,7 +64,7 @@ sType*% sType*::initialize(sType*% self, char* name, sInfo* info=info)
     
     self.mClass = klass;
     self.mMultipleTypes = new list<sType*%>();
-    self.mGenericsTypes = list<sType*%>();
+    self.mGenericsTypes = new list<sType*%>();
     
     return self;
 }
@@ -92,6 +95,23 @@ void add_last_code_to_source(sInfo* info)
        add_come_code(info, "%s", info.module.mLastCode);
        info.module.mLastCode = null;
     }
+}
+
+void add_come_last_code(sInfo* info, const char* msg, ...)
+{
+    if(info->no_output_come_code) {
+        return;
+    }
+    char* msg2;
+
+    va_list args;
+    va_start(args, msg);
+    int len = vasprintf(&msg2, msg, args);
+    va_end(args);
+    
+    info.module.mLastCode = xsprintf("%s", msg2);
+    
+    free(msg2);
 }
 
 interface sNode {
@@ -156,7 +176,7 @@ string sIntNode*::sname(sIntNode* self, sInfo* info)
 
 sNode*%, bool parse(sInfo* info)
 {
-    if(xisdigits(*info.p)) {
+    if(xisdigit(*info.p)) {
         int n = 0;
         while(true) {
             if(xisdigit(*info.p)) {
@@ -180,7 +200,7 @@ sNode*%, bool parse(sInfo* info)
 bool output_source(sInfo* info)
 {
     string sname = xnoextname(info.sname) + ".rb";
-    info.module.to_string().write(sname);
+    info.module.mSource.to_string().write(sname);
     
     return true;
 }
@@ -194,7 +214,7 @@ int main(int argc, char** argv)
             eval = true;
         }
         else {
-            file_name = argv[i];
+            file_name = string(argv[i]);
         }
     }
     
@@ -206,7 +226,7 @@ int main(int argc, char** argv)
     info.sline = 1;
     info.stack = new list<CVALUE*%>();
     info.type = null;
-    info.classes = new list<sClass*%>();
+    info.classes = new map<string,sClass*%>();
     info.no_output_come_code = false;
     info.module = new sModule();
     
@@ -229,3 +249,4 @@ int main(int argc, char** argv)
     
     return 0;
 }
+
