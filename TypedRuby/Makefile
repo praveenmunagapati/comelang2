@@ -6,10 +6,10 @@ exec_prefix=${prefix}
 bindir=${exec_prefix}/bin
 datadir=${datarootdir}
 mandir=${datarootdir}/man
-sharedstatedir=${prefix}/TypeScriptForRuby
-sysconfdir=${prefix}/etc/TypeScriptForRuby
-includedir=${prefix}/include/TypeScriptForRuby
-datarootdir=${prefix}/share/TypeScriptForRuby
+sharedstatedir=${prefix}/TypedRuby
+sysconfdir=${prefix}/etc/TypedRuby
+includedir=${prefix}/include/TypedRuby
+datarootdir=${prefix}/share/TypedRuby
 docdir=${datarootdir}/doc
 libdir=${exec_prefix}/lib
 
@@ -26,13 +26,13 @@ DESTDIR=/usr/local/
 SRCS=$(wildcard *.c)
 SINGLE_SRCS=$(filter-out %.c.c, $(SRCS))
 OBJS=$(SINGLE_SRCS:.c=.o)
-TARGET=TypeScriptForRuby
-TARGET_DEBUG=TypeScriptForRuby-debug
+TARGET=TypedRuby
+TARGET_DEBUG=TypedRuby-debug
 
 #########################################
 # main
 #########################################
-all: common.h TypeScriptForRuby
+all: common.h TypedRuby
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
@@ -58,29 +58,29 @@ common.h: *.c
 #########################################
 install:
 	mkdir -p "$(DESTDIR)/bin"
-	$(INSTALL) -m 755 ./TypeScriptForRuby "$(DESTDIR)/bin"
+	$(INSTALL) -m 755 ./TypedRuby "$(DESTDIR)/bin"
 	mkdir -p "$(DESTDIR)/include"
 	mkdir -p "$(DESTDIR)/lib"
-	mkdir -p "$(DESTDIR)/share/doc/TypeScriptForRuby"
-	$(INSTALL) -m 644 README.md "$(DESTDIR)/share/doc/TypeScriptForRuby/README.md"
+	mkdir -p "$(DESTDIR)/share/doc/TypedRuby"
+	$(INSTALL) -m 644 README.md "$(DESTDIR)/share/doc/TypedRuby/README.md"
 
 #########################################
 # clean
 #########################################
 clean:
-	rm -fR *.o *.c.i *.c.out *.c.c TypeScriptForRuby *.log *.out
+	rm -fR *.o *.c.i *.c.out *.c.c TypedRuby *.log *.out
 
 #########################################
 # uninstall
 #########################################
 uninstall:
-	rm -f "$(DESTDIR)"/bin/TypeScriptForRuby
-	rm -f "$(DESTDIR)/share/doc/TypeScriptForRuby/README.md"
+	rm -f "$(DESTDIR)"/bin/TypedRuby
+	rm -f "$(DESTDIR)/share/doc/TypedRuby/README.md"
 
-run: TypeScriptForRuby
+run: TypedRuby
 	rm -f *.log
-	./TypeScriptForRuby
+	./TypedRuby
 
-debug: TypeScriptForRuby-debug
+debug: TypedRuby-debug
 	rm -f *.log
-	./TypeScriptForRuby-debug
+	./TypedRuby-debug
