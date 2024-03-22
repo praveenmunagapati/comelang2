@@ -65,9 +65,8 @@ bool sInterfaceNode*::compile(sInterfaceNode* self, sInfo* info)
     
     if(self.mOutput) {
         add_come_code_at_source_head(info, "%s", buf.to_string());
+        info.classes.insert(string(name), clone klass);
     }
-    
-    info.classes.insert(string(name), clone klass);
     
     return true;
 }

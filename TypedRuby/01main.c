@@ -174,7 +174,7 @@ string sIntNode*::sname(sIntNode* self, sInfo* info)
     return string(self.sname);
 }
 
-sNode*%, bool parse(sInfo* info)
+sNode*%,bool parse(sInfo* info)
 {
     if(xisdigit(*info.p)) {
         int n = 0;
@@ -191,10 +191,10 @@ sNode*%, bool parse(sInfo* info)
             }
         }
         
-        return (new sIntNode(n, info), true);
+        return (new sIntNode(n, info) implements sNode, true);
     }
     
-    return (null, false);
+    return ((sNode*%)null, false);
 }
 
 bool output_source(sInfo* info)
@@ -231,7 +231,7 @@ int main(int argc, char** argv)
     info.module = new sModule();
     
     while(*info.p) {
-        sNode*% node = parse(&info).catch {
+        var node = parse(&info).catch {
             puts("parser error");
             exit(2);
         }
@@ -249,4 +249,3 @@ int main(int argc, char** argv)
     
     return 0;
 }
-

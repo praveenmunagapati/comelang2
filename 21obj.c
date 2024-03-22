@@ -2137,7 +2137,7 @@ sNode*% post_position_operator3(sNode*% node, sInfo* info) version 21
         info->p += strlen("implements");
         skip_spaces_and_lf();
         
-        var type3, name2,err = parse_type();
+        var type3, name2,err = parse_type(parse_multiple_type:false);
         if(!err) {
             printf("%s %d: parse_type failed\n", info->sname, info->sline);
             exit(2);

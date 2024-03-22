@@ -2073,6 +2073,16 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             }
         }
         
+        if(*info->p == '%') {
+            info->p++;
+            skip_spaces_and_lf();
+            
+            type->mHeap = true;
+            if(type->mNoSolvedGenericsType.v1) {
+                type->mNoSolvedGenericsType.v1.mHeap = true;
+            }
+        }
+        
         if(parse_multiple_type && *info->p == ',') {
             list<sType*%>*% types = new list<sType*%>();
             

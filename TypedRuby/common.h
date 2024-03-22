@@ -60,7 +60,7 @@ bool sIntNode*::compile(sIntNode* self, sInfo* info);
 bool sIntNode*::terminated();
 int sIntNode*::sline(sIntNode* self, sInfo* info);
 string sIntNode*::sname(sIntNode* self, sInfo* info);
-sNode*%, bool parse(sInfo* info);
+sNode*%,bool parse(sInfo* info);
 bool output_source(sInfo* info);
 int main(int argc, char** argv);
 

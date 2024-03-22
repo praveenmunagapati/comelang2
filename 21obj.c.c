@@ -10056,7 +10056,7 @@ right_value544 = (void*)0;
     if(_if_conditional448=strmemcmp(info->p,"implements"),    _if_conditional448) {
         info->p+=strlen("implements");
         skip_spaces_and_lf(info);
-        multiple_assign_var11=((struct tuple3$3sTypephcharphbool*)(right_value535=parse_type(info,(_Bool)0,(_Bool)1,(_Bool)0)));
+        multiple_assign_var11=((struct tuple3$3sTypephcharphbool*)(right_value535=parse_type(info,(_Bool)0,(_Bool)0,(_Bool)0)));
         type3_246=(struct sType*)come_increment_ref_count(multiple_assign_var11->v1);
         name2_247=(char*)come_increment_ref_count(multiple_assign_var11->v2);
         err_248=multiple_assign_var11->v3;

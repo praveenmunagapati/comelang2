@@ -2494,6 +2494,7 @@ sNode*% expression_node(sInfo* info=info) version 99
             info.no_output_come_code = true;
             
             sNode*% node = expression();
+            sNode*% node2 = post_position_operator3(node, info);
             
             info.no_comma = no_comma;
             info.no_output_err = no_output_err;
