@@ -62,6 +62,7 @@ int sIntNode*::sline(sIntNode* self, sInfo* info);
 string sIntNode*::sname(sIntNode* self, sInfo* info);
 sNode*%,bool parse(sInfo* info);
 bool output_source(sInfo* info);
+void skip_spaces(sInfo* info);
 int main(int argc, char** argv);
 
 

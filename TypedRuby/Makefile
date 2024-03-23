@@ -79,7 +79,7 @@ uninstall:
 
 run: TypedRuby
 	rm -f *.log
-	./TypedRuby
+	./TypedRuby a.trb
 
 debug: TypedRuby-debug
 	rm -f *.log

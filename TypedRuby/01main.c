@@ -154,7 +154,7 @@ bool sIntNode*::compile(sIntNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s;\n", come_value.c_value);
+    add_come_last_code(info, "%s\n", come_value.c_value);
     
     return true;
 }
@@ -180,8 +180,8 @@ sNode*%,bool parse(sInfo* info)
         int n = 0;
         while(true) {
             if(xisdigit(*info.p)) {
+                n = n * 10 + (*info.p - '0');
                 info->p++;
-                n = n * 10 + *info.p - '0';
             }
             else if(*info->p == '_') {
                 info->p++;
@@ -203,6 +203,13 @@ bool output_source(sInfo* info)
     info.module.mSource.to_string().write(sname);
     
     return true;
+}
+
+void skip_spaces(sInfo* info)
+{
+    while(*info->p == ' ' || *info->p == '\t' || (*info->p == '\n' && info->sline++)) {
+        info->p++;
+    }
 }
 
 int main(int argc, char** argv)
@@ -231,15 +238,18 @@ int main(int argc, char** argv)
     info.module = new sModule();
     
     while(*info.p) {
+        skip_spaces(&info);
         var node = parse(&info).catch {
             puts("parser error");
             exit(2);
         }
+        skip_spaces(&info);
         
         node.compile(&info).catch {
             puts("compile error");
             exit(2);
         }
+        add_last_code_to_source(&info);
     }
     
     output_source(&info).catch {
