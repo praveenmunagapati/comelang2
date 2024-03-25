@@ -47,7 +47,10 @@ struct sInfo
     
     bool no_output_come_code;
     
+    int err_num;
+    
     sModule*% module;
+    bool no_output_err;
 };
 
 sModule*% sModule*::initialize(sModule*% self)
@@ -114,6 +117,37 @@ void add_come_last_code(sInfo* info, const char* msg, ...)
     free(msg2);
 }
 
+CVALUE*% get_value_from_stack(int offset=-1, sInfo* info=info)
+{
+    info.module.mLastCode = null;
+    return clone info.stack[offset];
+}
+
+void err_msg(sInfo* info, char* msg, ...)
+{
+    if(!info.no_output_err) {
+        char* msg2;
+    
+        va_list args;
+        va_start(args, msg);
+        vasprintf(&msg2,msg,args);
+        va_end(args);
+        
+        printf("%s %d: %s\n", info.sname, info.sline, msg2);
+        info.err_num++;
+        stackframe();
+
+        free(msg2);
+    }
+}
+
+void skip_spaces(sInfo* info=info)
+{
+    while(*info->p == ' ' || *info->p == '\t' || (*info->p == '\n' && info->sline++)) {
+        info->p++;
+    }
+}
+
 interface sNode {
     bool compile(sInfo* info);
     int sline();
@@ -174,7 +208,149 @@ string sIntNode*::sname(sIntNode* self, sInfo* info)
     return string(self.sname);
 }
 
-sNode*%,bool parse(sInfo* info)
+struct sAddNode
+{
+    sNode*% left_node;
+    sNode*% right_node;
+    
+    int sline;
+    string sname;
+};
+
+sAddNode*% sAddNode*::initialize(sAddNode*% self, sNode*% left_node, sNode*% right_node, sInfo* info=info)
+{
+    self.left_node = left_node;
+    self.right_node = right_node;
+    
+    self.sline = info->sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+string sAddNode*::kind()
+{
+    return string("sAddNode");
+}
+
+bool sAddNode*::compile(sAddNode* self, sInfo* info)
+{
+    sNode*% left_node = self.left_node;
+    left_node.compile(info).catch {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% left_value = get_value_from_stack();
+    
+    sNode*% right_node = self.right_node;
+    right_node.compile(info).catch {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% right_value = get_value_from_stack();
+    
+    CVALUE*% come_value = new CVALUE;
+    
+    come_value.c_value = xsprintf("%s+%s", left_value.c_value, right_value.c_value);
+    come_value.type = clone left_value.type;
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
+    
+    return true;
+}
+
+bool sAddNode*::terminated()
+{
+    return false;
+}
+
+int sAddNode*::sline(sAddNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sAddNode*::sname(sAddNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+struct sSubNode
+{
+    sNode*% left_node;
+    sNode*% right_node;
+    
+    int sline;
+    string sname;
+};
+
+sSubNode*% sSubNode*::initialize(sSubNode*% self, sNode*% left_node, sNode*% right_node, sInfo* info=info)
+{
+    self.left_node = left_node;
+    self.right_node = right_node;
+    
+    self.sline = info->sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+string sSubNode*::kind()
+{
+    return string("sSubNode");
+}
+
+bool sSubNode*::compile(sSubNode* self, sInfo* info)
+{
+    sNode*% left_node = self.left_node;
+    left_node.compile(info).catch {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% left_value = get_value_from_stack();
+    
+    sNode*% right_node = self.right_node;
+    right_node.compile(info).catch {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% right_value = get_value_from_stack();
+    
+    CVALUE*% come_value = new CVALUE;
+    
+    come_value.c_value = xsprintf("%s-%s", left_value.c_value, right_value.c_value);
+    come_value.type = clone left_value.type;
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
+    
+    return true;
+}
+
+bool sSubNode*::terminated()
+{
+    return false;
+}
+
+int sSubNode*::sline(sSubNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sSubNode*::sname(sSubNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+sNode*% expression_node(sInfo* info=info)
 {
     if(xisdigit(*info.p)) {
         int n = 0;
@@ -191,10 +367,69 @@ sNode*%,bool parse(sInfo* info)
             }
         }
         
-        return (new sIntNode(n, info) implements sNode, true);
+        return new sIntNode(n, info) implements sNode;
     }
     
-    return ((sNode*%)null, false);
+    return null;
+}
+
+sNode*% add_sub_expression_node(sInfo* info=info)
+{
+    sNode*% node = expression_node();
+    
+    while(true) {
+        if(*info->p == '+' && ((*info->p+1) != '+' || (*info->p+1) != '=')) {
+            info->p++;
+            skip_spaces();
+            
+            sNode*% right_node = expression_node();
+            
+            if(node == null) {
+                return null;
+            }
+            if(right_node == null) {
+                return null;
+            }
+            
+            return new sAddNode(node, right_node) implements sNode;
+        }
+        else if(*info->p == '-' && ((*info->p+1) != '-' || (*info->p+1) != '=')) {
+            info->p++;
+            skip_spaces();
+            
+            sNode*% right_node = expression_node();
+            
+            if(node == null) {
+                return null;
+            }
+            if(right_node == null) {
+                return null;
+            }
+            
+            return new sSubNode(node, right_node) implements sNode;
+        }
+        else {
+            break;
+        }
+    }
+    
+    return node;
+}
+
+sNode*% expression(sInfo* info=info)
+{
+    return add_sub_expression_node();
+}
+
+sNode*%,bool parse(sInfo* info)
+{
+    sNode*% node = expression();
+    
+    if(node == null) {
+        return ((sNode*%)null, false);
+    }
+    
+    return (node, true);
 }
 
 bool output_source(sInfo* info)
@@ -203,13 +438,6 @@ bool output_source(sInfo* info)
     info.module.mSource.to_string().write(sname);
     
     return true;
-}
-
-void skip_spaces(sInfo* info)
-{
-    while(*info->p == ' ' || *info->p == '\t' || (*info->p == '\n' && info->sline++)) {
-        info->p++;
-    }
 }
 
 int main(int argc, char** argv)
