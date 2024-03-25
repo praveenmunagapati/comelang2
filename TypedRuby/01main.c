@@ -4,6 +4,13 @@ struct sClass {
     string mName;
 };
 
+sClass*% sClass*::initialize(sClass*% self, char* name)
+{
+    self.mName = string(name);
+    
+    return self;
+}
+
 struct sType;
 
 struct sType
@@ -183,7 +190,7 @@ bool sIntNode*::compile(sIntNode* self, sInfo* info)
     CVALUE*% come_value = new CVALUE;
     
     come_value.c_value = xsprintf("%d", self.value);
-    come_value.type = new sType("int");
+    come_value.type = new sType("Integer");
     come_value.var = null;
     
     info.stack.push_back(come_value);
@@ -252,6 +259,11 @@ bool sAddNode*::compile(sAddNode* self, sInfo* info)
     CVALUE*% right_value = get_value_from_stack();
     
     CVALUE*% come_value = new CVALUE;
+    
+    if(left_value.type.mClass.mName !== right_value.type.mClass.mName) {
+        err_msg(info, "invalid type +");
+        return false;
+    }
     
     come_value.c_value = xsprintf("%s+%s", left_value.c_value, right_value.c_value);
     come_value.type = clone left_value.type;
@@ -322,6 +334,11 @@ bool sSubNode*::compile(sSubNode* self, sInfo* info)
     
     CVALUE*% right_value = get_value_from_stack();
     
+    if(left_value.type.mClass.mName !== right_value.type.mClass.mName) {
+        err_msg(info, "invalid type +");
+        return false;
+    }
+    
     CVALUE*% come_value = new CVALUE;
     
     come_value.c_value = xsprintf("%s-%s", left_value.c_value, right_value.c_value);
@@ -350,6 +367,59 @@ string sSubNode*::sname(sSubNode* self, sInfo* info)
     return string(self.sname);
 }
 
+struct sStrNode
+{
+    string value;
+    int sline;
+    string sname;
+};
+
+sStrNode*% sStrNode*::initialize(sStrNode*% self, string value, int sline, sInfo* info)
+{
+    self.value = string(value);
+    
+    self.sline = sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+bool sStrNode*::terminated()
+{
+    return false;
+}
+
+
+string sStrNode*::kind()
+{
+    return string("sStrNode");
+}
+
+bool sStrNode*::compile(sStrNode* self, sInfo* info)
+{
+    CVALUE*% come_value = new CVALUE;
+    
+    come_value.c_value = xsprintf("\"%s\"", self.value);
+    come_value.type = new sType("String");
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+
+    add_come_last_code(info, "%s;\n", come_value.c_value);
+    
+    return true;
+}
+
+int sStrNode*::sline(sStrNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sStrNode*::sname(sStrNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
 sNode*% expression_node(sInfo* info=info)
 {
     if(xisdigit(*info.p)) {
@@ -369,7 +439,66 @@ sNode*% expression_node(sInfo* info=info)
         
         return new sIntNode(n, info) implements sNode;
     }
+    else if(*info->p == '"') 
+    {
+        info->p++;
+
+        int sline = info->sline;
+
+        buffer*% value = new buffer();
+
+        while(1) {
+            if(*info->p == '"') {
+                info->p++;
+                
+                char* p = info->p.p;
+                int sline = info->sline;
+                
+                skip_spaces();
+                
+                if(*info->p == '"') {
+                    info->p++;
+                }
+                else {
+                    info->p.p = p;
+                    info->sline = sline;
+                    break;
+                }
+            }
+            else if(*info->p == '\\') {
+                value.append_char('\\');
+                info->p++;
+                
+                if(*info->p == '"') {
+                    value.append_char('"');
+                    info->p++;
+                }
+                else {
+                    value.append_char(*info->p);
+                    info->p++;
+                }
+            }
+            else if(*info->p == '\0') {
+                int sline2 = info->sline;
+                info->sline = sline;
+                err_msg(info, "close \" to make string value");
+                info->sline = sline2;
+                exit(2);
+            }
+            else {
+                if(*info->p == '\n') info->sline++;
+
+                value.append_char(*info->p);
+                info->p++;
+            }
+        }
+
+        skip_spaces();
+        
+        return new sStrNode(value.to_string(), sline, info) implements sNode;
+    }
     
+puts("AAA");
     return null;
 }
 
@@ -440,6 +569,12 @@ bool output_source(sInfo* info)
     return true;
 }
 
+void init_typed_ruby(sInfo* info)
+{
+    info.classes.insert(string("Integer"), new sClass("Integer"));
+    info.classes.insert(string("String"), new sClass("String"));
+}
+
 int main(int argc, char** argv)
 {
     string? file_name = nil;
@@ -464,6 +599,8 @@ int main(int argc, char** argv)
     info.classes = new map<string,sClass*%>();
     info.no_output_come_code = false;
     info.module = new sModule();
+    
+    init_typed_ruby(&info);
     
     while(*info.p) {
         skip_spaces(&info);

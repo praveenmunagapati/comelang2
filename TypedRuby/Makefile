@@ -26,6 +26,7 @@ DESTDIR=/usr/local/
 SRCS=$(wildcard *.c)
 SINGLE_SRCS=$(filter-out %.c.c, $(SRCS))
 OBJS=$(SINGLE_SRCS:.c=.o)
+DEBUG_OBJS=$(SINGLE_SRCS:.c=.debug.o)
 TARGET=TypedRuby
 TARGET_DEBUG=TypedRuby-debug
 
@@ -37,11 +38,14 @@ all: common.h TypedRuby
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(TARGET_DEBUG): $(OBJS)
+$(TARGET_DEBUG): $(DEBUG_OBJS)
 	$(CC) $(CFLAGS_DEBUG) $^ -o $@
 
 %.o: %.c header
 	$(CC) $(CFLAGS) -c $< -o $@
+
+%.debug.o: %.c header
+	$(CC) $(CFLAGS_DEBUG) -c $< -o $@
 
 #########################################
 # header
@@ -68,7 +72,7 @@ install:
 # clean
 #########################################
 clean:
-	rm -fR *.o *.c.i *.c.out *.c.c TypedRuby *.log *.out
+	rm -fR *.o *.c.i *.c.out *.c.c TypedRuby *.log *.out common.h TypedRuby-debug
 
 #########################################
 # uninstall
@@ -80,8 +84,7 @@ uninstall:
 run: TypedRuby
 	rm -f *.log
 	./TypedRuby a.trb
-	cat a.rb
 
 debug: TypedRuby-debug
 	rm -f *.log
-	./TypedRuby-debug
+	./TypedRuby-debug a.trb

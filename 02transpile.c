@@ -527,6 +527,7 @@ DESTDIR=\{prefix}
 SRCS=$(wildcard *.c)
 SINGLE_SRCS=$(filter-out %.c.c, $(SRCS))
 OBJS=$(SINGLE_SRCS:.c=.o)
+DEBUG_OBJS=$(SINGLE_SRCS:.c=.debug.o)
 TARGET=\{project_name}
 TARGET_DEBUG=\{project_name_debug}
 
@@ -538,11 +539,14 @@ all: common.h \{project_name}
 $(TARGET): $(OBJS)
 \t$(CC) $(CFLAGS) $^ -o $@
 
-$(TARGET_DEBUG): $(OBJS)
+$(TARGET_DEBUG): $(DEBUG_OBJS)
 \t$(CC) $(CFLAGS_DEBUG) $^ -o $@
 
 %.o: %.c header
 \t$(CC) $(CFLAGS) -c $< -o $@
+
+%.debug.o: %.c header
+\t$(CC) $(CFLAGS_DEBUG) -c $< -o $@
 
 \#########################################
 \# header
@@ -569,7 +573,7 @@ install:
 \# clean
 \#########################################
 clean:
-\trm -fR *.o *.c.i *.c.out *.c.c \{project_name} *.log *.out
+\trm -fR *.o *.c.i *.c.out *.c.c \{project_name} *.log *.out common.h \{project_name_debug}
 
 \#########################################
 \# uninstall

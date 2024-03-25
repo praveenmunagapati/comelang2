@@ -1,34 +1,18 @@
 #include <comelang2.h>
 
-interface IA
-{
-    bool show();
+struct sClass {
+    string mName;
 };
 
-struct sData
+sClass*% sClass*::initialize(sClass*% self, char* name)
 {
-    int a;
-    int b;
-};
-
-impl sData
-{
-    bool show(sData* self) {
-        printf("%d %d\n", self.a, self.b);
-    }
+    self.mName = string(name);
+    
+    return self;
 }
-
-IA*%,bool fun()
-{
-    return (new sData implements IA, true);
-}
-
 
 int main(int argc, char** argv)
 {
-    var ia, err = fun();
-    
-    ia.show();
     
     return 0;
 }
