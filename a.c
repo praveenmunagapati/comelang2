@@ -1,18 +1,10 @@
 #include <comelang2.h>
 
-struct sClass {
-    string mName;
-};
-
-sClass*% sClass*::initialize(sClass*% self, char* name)
-{
-    self.mName = string(name);
-    
-    return self;
-}
-
 int main(int argc, char** argv)
 {
+    int a[3] = { 1, 2, 3};
+    
+    printf("%d\n", a[5]);
     
     return 0;
 }
