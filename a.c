@@ -6,11 +6,16 @@ struct sData
     int b;
 };
 
+void sData*::fun(sData* self)
+{
+    printf("%d %d\n", self.a, self.b);
+}
+
 int main(int argc, char** argv)
 {
     sData* a = null;
     
-    printf("%d\n", a->a);
+    a.fun();
     
     return 0;
 }

@@ -239,6 +239,10 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
     CVALUE*% obj_value = get_value_from_stack(-1, info);
     dec_stack_ptr(1, info);
     
+    if(gComeDebug) {
+        obj_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(obj_value.type)!, obj_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
+    }
+    
 /*
     sType*% obj_type = solve_generics(obj_value.type, info.generics_type, info);
 */
