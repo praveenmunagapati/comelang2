@@ -551,6 +551,35 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 come_params.push_back(come_value);
                 params.push_back((s"len", null));
             }
+            else if(fun_name === "length") {
+                buffer*% buf = new buffer();
+                
+                int i=0;
+                foreach(it, obj_array_type.mArrayNum) {
+                    if(!node_compile(it)) {
+                        err_msg(info, "invalid array num");
+                        exit(1);
+                    }
+                    
+                    CVALUE*% come_value = get_value_from_stack(-1, info);
+                    dec_stack_ptr(1, info);
+                
+                    buf.append_str(xsprintf("%s", come_value.c_value));
+                    if(i != obj_array_type.mArrayNum.length()-1) {
+                        buf.append_str("*");
+                    }
+                    i++;
+                }
+                
+                CVALUE*% come_value = new CVALUE;
+                
+                come_value.c_value = buf.to_string();
+                come_value.var = null;
+                come_value.type = new sType("long");
+                
+                come_params.push_back(come_value);
+                params.push_back((s"len", null));
+            }
         }
         
         if(params.length() < fun.mParamTypes.length()+(method_block?-2:0))

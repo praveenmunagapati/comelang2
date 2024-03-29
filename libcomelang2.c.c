@@ -2055,35 +2055,77 @@ right_value45 = (void*)0;
     come_call_finalizer2(smart_pointer$1doublep_finalize,right_value45, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     return __result24__;
 }
+static inline unsigned long int charpa_length(char* self, unsigned long int len){
+void* __result_obj__;
+unsigned long int __result25__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result25__ = len;
+    return __result25__;
+}
+static inline unsigned long int shortpa_length(short short* self, unsigned long int len){
+void* __result_obj__;
+unsigned long int __result26__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result26__ = len;
+    return __result26__;
+}
+static inline unsigned long int intpa_length(int* self, unsigned long int len){
+void* __result_obj__;
+unsigned long int __result27__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result27__ = len;
+    return __result27__;
+}
+static inline unsigned long int longpa_length(long* self, unsigned long int len){
+void* __result_obj__;
+unsigned long int __result28__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result28__ = len;
+    return __result28__;
+}
+static inline unsigned long int floatpa_length(float* self, unsigned long int len){
+void* __result_obj__;
+unsigned long int __result29__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result29__ = len;
+    return __result29__;
+}
+static inline unsigned long int doublepa_length(double* self, unsigned long int len){
+void* __result_obj__;
+unsigned long int __result30__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result30__ = len;
+    return __result30__;
+}
 static inline char* string_xsprintf(char* self, char* msg, ...){
 void* __result_obj__;
 void* right_value46;
-char* __result25__;
+char* __result31__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value46 = (void*)0;
-    __result25__ = __result_obj__ = ((char*)(right_value46=xsprintf(msg,self)));
+    __result31__ = __result_obj__ = ((char*)(right_value46=xsprintf(msg,self)));
     right_value46 = come_decrement_ref_count2(right_value46, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result25__;
+    return __result31__;
 }
 static inline char* charp_xsprintf(char* self, char* msg, ...){
 void* __result_obj__;
 void* right_value47;
-char* __result26__;
+char* __result32__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value47 = (void*)0;
-    __result26__ = __result_obj__ = ((char*)(right_value47=xsprintf(msg,self)));
+    __result32__ = __result_obj__ = ((char*)(right_value47=xsprintf(msg,self)));
     right_value47 = come_decrement_ref_count2(right_value47, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result26__;
+    return __result32__;
 }
 static inline char* int_xsprintf(int self, char* msg, ...){
 void* __result_obj__;
 void* right_value48;
-char* __result27__;
+char* __result33__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value48 = (void*)0;
-    __result27__ = __result_obj__ = ((char*)(right_value48=xsprintf(msg,self)));
+    __result33__ = __result_obj__ = ((char*)(right_value48=xsprintf(msg,self)));
     right_value48 = come_decrement_ref_count2(right_value48, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result27__;
+    return __result33__;
 }
 
 // body function
@@ -2294,6 +2336,12 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 
 
+
+
+
+
+
+
 void come_push_stackframe(char* sname, int sline, int id){
 void* __result_obj__;
 _Bool _if_conditional7;
@@ -2363,26 +2411,26 @@ memset(&i_13, 0, sizeof(int));
 char* come_get_stackframe(){
 void* __result_obj__;
 void* right_value54;
-char* __result28__;
+char* __result34__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value54 = (void*)0;
-    __result28__ = __result_obj__ = ((char*)(right_value54=__builtin_string(gComeStackFrameBuffer)));
+    __result34__ = __result_obj__ = ((char*)(right_value54=__builtin_string(gComeStackFrameBuffer)));
     right_value54 = come_decrement_ref_count2(right_value54, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result28__;
+    return __result34__;
 }
 
 void* come_null_check(void* mem, char* sname, int sline, int id){
 void* __result_obj__;
 _Bool _if_conditional10;
-void* __result29__;
+void* __result35__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional10=mem==((void*)0),    _if_conditional10) {
         printf("%s %d #%d: null check error\n",sname,sline,id);
         stackframe();
         exit(2);
     }
-    __result29__ = __result_obj__ = mem;
-    return __result29__;
+    __result35__ = __result_obj__ = mem;
+    return __result35__;
 }
 
 void* come_range_check(void* mem, void* begin, void* end, char* sname, int sline){
@@ -2390,7 +2438,7 @@ void* __result_obj__;
 _Bool _if_conditional11;
 _Bool _if_conditional12;
 _Bool _if_conditional13;
-void* __result30__;
+void* __result36__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional11=mem==((void*)0),    _if_conditional11) {
         printf("%s %d: null check error\n",sname,sline);
@@ -2407,136 +2455,136 @@ memset(&__result_obj__, 0, sizeof(void*));
         stackframe();
         exit(2);
     }
-    __result30__ = __result_obj__ = mem;
-    return __result30__;
+    __result36__ = __result_obj__ = mem;
+    return __result36__;
 }
 
 _Bool bool_expect(_Bool self, void* parent, void (*block)(void*)){
 void* __result_obj__;
 _Bool _if_conditional14;
 _Bool _if_conditional15;
-_Bool __result31__;
-_Bool __result32__;
+_Bool __result37__;
+_Bool __result38__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional14=!self,    _if_conditional14) {
         block(parent);
         if(_if_conditional15=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional15) {
-            __result31__ = self;
-            return __result31__;
+            __result37__ = self;
+            return __result37__;
         }
         stackframe();
         exit(1);
     }
-    __result32__ = self;
-    return __result32__;
+    __result38__ = self;
+    return __result38__;
 }
 
 _Bool bool_value(_Bool self){
 void* __result_obj__;
-_Bool __result33__;
+_Bool __result39__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result33__ = self;
-    return __result33__;
+    __result39__ = self;
+    return __result39__;
 }
 
 int int_catch(int self, void* parent, void (*block)(void*)){
 void* __result_obj__;
 _Bool _if_conditional16;
 _Bool _if_conditional17;
-int __result34__;
-int __result35__;
+int __result40__;
+int __result41__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional16=self<0,    _if_conditional16) {
         block(parent);
         if(_if_conditional17=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional17) {
-            __result34__ = self;
-            return __result34__;
+            __result40__ = self;
+            return __result40__;
         }
     }
-    __result35__ = self;
-    return __result35__;
+    __result41__ = self;
+    return __result41__;
 }
 
 int int_expect(int self, void* parent, void (*block)(void*)){
 void* __result_obj__;
 _Bool _if_conditional18;
 _Bool _if_conditional19;
-int __result36__;
-int __result37__;
+int __result42__;
+int __result43__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional18=self<0,    _if_conditional18) {
         block(parent);
         if(_if_conditional19=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional19) {
-            __result36__ = self;
-            return __result36__;
+            __result42__ = self;
+            return __result42__;
         }
         stackframe();
         exit(1);
     }
-    __result37__ = self;
-    return __result37__;
+    __result43__ = self;
+    return __result43__;
 }
 
 int int_value(int self){
 void* __result_obj__;
-int __result38__;
+int __result44__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result38__ = self;
-    return __result38__;
+    __result44__ = self;
+    return __result44__;
 }
 
 int int_except(int self, void* parent, void (*block)(void*)){
 void* __result_obj__;
 _Bool _if_conditional20;
 _Bool _if_conditional21;
-int __result39__;
-int __result40__;
+int __result45__;
+int __result46__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional20=self<0,    _if_conditional20) {
         block(parent);
         if(_if_conditional21=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional21) {
-            __result39__ = self;
-            return __result39__;
+            __result45__ = self;
+            return __result45__;
         }
     }
-    __result40__ = self;
-    return __result40__;
+    __result46__ = self;
+    return __result46__;
 }
 
 _Bool bool_except(_Bool self, void* parent, void (*block)(void*)){
 void* __result_obj__;
 _Bool _if_conditional22;
 _Bool _if_conditional23;
-_Bool __result41__;
-_Bool __result42__;
+_Bool __result47__;
+_Bool __result48__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional22=!self,    _if_conditional22) {
         block(parent);
         if(_if_conditional23=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional23) {
-            __result41__ = self;
-            return __result41__;
+            __result47__ = self;
+            return __result47__;
         }
     }
-    __result42__ = self;
-    return __result42__;
+    __result48__ = self;
+    return __result48__;
 }
 
 _Bool bool_catch(_Bool self, void* parent, void (*block)(void*)){
 void* __result_obj__;
 _Bool _if_conditional24;
 _Bool _if_conditional25;
-_Bool __result43__;
-_Bool __result44__;
+_Bool __result49__;
+_Bool __result50__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional24=!self,    _if_conditional24) {
         block(parent);
         if(_if_conditional25=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional25) {
-            __result43__ = self;
-            return __result43__;
+            __result49__ = self;
+            return __result49__;
         }
     }
-    __result44__ = self;
-    return __result44__;
+    __result50__ = self;
+    return __result50__;
 }
 
 void xassert(char* msg, _Bool test){
@@ -2668,7 +2716,7 @@ _Bool _if_conditional39;
 int new_size_pages_26;
 void** new_pages_27;
 int i_28;
-void* __result45__;
+void* __result51__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_23, 0, sizeof(void*));
 memset(&it_24, 0, sizeof(struct sMemHeaderTiny*));
@@ -2709,8 +2757,8 @@ memset(&i_28, 0, sizeof(int));
     else {
         result_23=calloc(1,size);
     }
-    __result45__ = __result_obj__ = result_23;
-    return __result45__;
+    __result51__ = __result_obj__ = result_23;
+    return __result51__;
 }
 
 static void* come_alloc_mem_from_heap_pool(unsigned long int size, char* sname, int sline, char* class_name){
@@ -2721,11 +2769,11 @@ struct sMemHeader* it_30;
 _Bool _if_conditional41;
 _Bool _if_conditional42;
 _Bool _if_conditional43;
-void* __result46__;
+void* __result52__;
 void* result_31;
 struct sMemHeaderTiny* it_32;
 _Bool _if_conditional44;
-void* __result47__;
+void* __result53__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_29, 0, sizeof(void*));
 memset(&it_30, 0, sizeof(struct sMemHeader*));
@@ -2761,8 +2809,8 @@ memset(&it_32, 0, sizeof(struct sMemHeaderTiny*));
         }
         gAllocMem=it_30;
         gNumAlloc++;
-        __result46__ = __result_obj__ = (char*)result_29+sizeof(struct sMemHeader);
-        return __result46__;
+        __result52__ = __result_obj__ = (char*)result_29+sizeof(struct sMemHeader);
+        return __result52__;
     }
     else {
         result_31=alloc_from_pages(size+sizeof(struct sMemHeaderTiny));
@@ -2776,8 +2824,8 @@ memset(&it_32, 0, sizeof(struct sMemHeaderTiny*));
         }
         gAllocMem=(struct sMemHeader*)it_32;
         gNumAlloc++;
-        __result47__ = __result_obj__ = (char*)result_31+sizeof(struct sMemHeaderTiny);
-        return __result47__;
+        __result53__ = __result_obj__ = (char*)result_31+sizeof(struct sMemHeaderTiny);
+        return __result53__;
     }
 }
 
@@ -2959,7 +3007,7 @@ char* come_dynamic_typeof(void* mem){
 void* __result_obj__;
 struct sMemHeader* it_53;
 _Bool _if_conditional65;
-char* __result48__;
+char* __result54__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&it_53, 0, sizeof(struct sMemHeader*));
     it_53=(struct sMemHeader*)((char*)mem-sizeof(unsigned long int)-sizeof(unsigned long int)-sizeof(struct sMemHeaderTiny));
@@ -2967,8 +3015,8 @@ memset(&it_53, 0, sizeof(struct sMemHeader*));
         printf("invalid heap object(%p)\n",it_53);
         exit(2);
     }
-    __result48__ = __result_obj__ = it_53->class_name;
-    return __result48__;
+    __result54__ = __result_obj__ = it_53->class_name;
+    return __result54__;
 }
 
 void* come_calloc(unsigned long int count, unsigned long int size, char* sname, int sline, char* class_name){
@@ -2976,7 +3024,7 @@ void* __result_obj__;
 char* mem_54;
 unsigned long int* ref_count_55;
 unsigned long int* size2_56;
-void* __result49__;
+void* __result55__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&mem_54, 0, sizeof(char*));
 memset(&ref_count_55, 0, sizeof(unsigned long int*));
@@ -2986,8 +3034,8 @@ memset(&size2_56, 0, sizeof(unsigned long int*));
     *ref_count_55=0;
     size2_56=(unsigned long int*)(mem_54+sizeof(unsigned long int));
     *size2_56=size*count+sizeof(unsigned long int)+sizeof(unsigned long int);
-    __result49__ = __result_obj__ = mem_54+sizeof(unsigned long int)+sizeof(unsigned long int);
-    return __result49__;
+    __result55__ = __result_obj__ = mem_54+sizeof(unsigned long int)+sizeof(unsigned long int);
+    return __result55__;
 }
 
 void come_free_object(void* mem){
@@ -3019,85 +3067,85 @@ memset(&ref_count_58, 0, sizeof(unsigned long int*));
 void* come_memdup(void* block, char* sname, int sline, char* class_name){
 void* __result_obj__;
 _Bool _if_conditional68;
-void* __result50__;
+void* __result56__;
 char* mem_59;
 unsigned long int* size_p_60;
 unsigned long int size_61;
 void* result_62;
-void* __result51__;
+void* __result57__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&mem_59, 0, sizeof(char*));
 memset(&size_p_60, 0, sizeof(unsigned long int*));
 memset(&size_61, 0, sizeof(unsigned long int));
 memset(&result_62, 0, sizeof(void*));
     if(_if_conditional68=!block,    _if_conditional68) {
-        __result50__ = __result_obj__ = ((void*)0);
-        return __result50__;
+        __result56__ = __result_obj__ = ((void*)0);
+        return __result56__;
     }
     mem_59=(char*)block-sizeof(unsigned long int)-sizeof(unsigned long int);
     size_p_60=(unsigned long int*)(mem_59+sizeof(unsigned long int));
     size_61=*size_p_60-sizeof(unsigned long int)-sizeof(unsigned long int);
     result_62=come_calloc(1,size_61,sname,sline,class_name);
     memcpy(result_62,block,size_61);
-    __result51__ = __result_obj__ = result_62;
-    return __result51__;
+    __result57__ = __result_obj__ = result_62;
+    return __result57__;
 }
 
 void* come_increment_ref_count(void* mem){
 void* __result_obj__;
 _Bool _if_conditional69;
-void* __result52__;
+void* __result58__;
 unsigned long int* ref_count_63;
-void* __result53__;
+void* __result59__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&ref_count_63, 0, sizeof(unsigned long int*));
     if(_if_conditional69=mem==((void*)0),    _if_conditional69) {
-        __result52__ = __result_obj__ = mem;
-        return __result52__;
+        __result58__ = __result_obj__ = mem;
+        return __result58__;
     }
     ref_count_63=(unsigned long int*)((char*)mem-sizeof(unsigned long int)-sizeof(unsigned long int));
     (*ref_count_63)++;
-    __result53__ = __result_obj__ = mem;
-    return __result53__;
+    __result59__ = __result_obj__ = mem;
+    return __result59__;
 }
 
 void* come_print_ref_count(void* mem){
 void* __result_obj__;
 _Bool _if_conditional70;
-void* __result54__;
+void* __result60__;
 unsigned long int* ref_count_64;
-void* __result55__;
+void* __result61__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&ref_count_64, 0, sizeof(unsigned long int*));
     if(_if_conditional70=mem==((void*)0),    _if_conditional70) {
-        __result54__ = __result_obj__ = mem;
-        return __result54__;
+        __result60__ = __result_obj__ = mem;
+        return __result60__;
     }
     ref_count_64=(unsigned long int*)((char*)mem-sizeof(unsigned long int)-sizeof(unsigned long int));
     printf("ref_count %ld\n",*ref_count_64);
-    __result55__ = __result_obj__ = mem;
-    return __result55__;
+    __result61__ = __result_obj__ = mem;
+    return __result61__;
 }
 
 void* come_decrement_ref_count(void* mem, void* protocol_fun, void* protocol_obj, _Bool no_decrement, _Bool no_free, _Bool force_delete_){
 void* __result_obj__;
 _Bool _if_conditional71;
-void* __result56__;
+void* __result62__;
 unsigned long int* ref_count_65;
 _Bool _if_conditional72;
 unsigned long int count_66;
 _Bool _if_conditional73;
 _Bool _if_conditional74;
 void (*finalizer_67)(void*);
-void* __result57__;
-void* __result58__;
+void* __result63__;
+void* __result64__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&ref_count_65, 0, sizeof(unsigned long int*));
 memset(&count_66, 0, sizeof(unsigned long int));
 memset(&finalizer_67, 0, sizeof(void (*)(void*)));
     if(_if_conditional71=mem==((void*)0),    _if_conditional71) {
-        __result56__ = __result_obj__ = ((void*)0);
-        return __result56__;
+        __result62__ = __result_obj__ = ((void*)0);
+        return __result62__;
     }
     ref_count_65=(unsigned long int*)((char*)mem-sizeof(unsigned long int)-sizeof(unsigned long int));
     if(_if_conditional72=!no_decrement,    _if_conditional72) {
@@ -3111,41 +3159,41 @@ memset(&finalizer_67, 0, sizeof(void (*)(void*)));
             come_free_object(protocol_obj);
         }
         come_free_object(mem);
-        __result57__ = __result_obj__ = ((void*)0);
-        return __result57__;
+        __result63__ = __result_obj__ = ((void*)0);
+        return __result63__;
     }
-    __result58__ = __result_obj__ = mem;
-    return __result58__;
+    __result64__ = __result_obj__ = mem;
+    return __result64__;
 }
 
 void* come_decrement_ref_count2(void* mem, void* protocol_fun, void* protocol_obj, _Bool no_decrement, _Bool no_free, _Bool force_delete_, void* result_obj){
 void* __result_obj__;
 _Bool _if_conditional75;
 _Bool _if_conditional76;
-void* __result59__;
+void* __result65__;
 _Bool _if_conditional77;
-void* __result60__;
+void* __result66__;
 unsigned long int* ref_count_68;
 _Bool _if_conditional78;
 unsigned long int count_69;
 _Bool _if_conditional79;
 _Bool _if_conditional80;
 void (*finalizer_70)(void*);
-void* __result61__;
-void* __result62__;
+void* __result67__;
+void* __result68__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&ref_count_68, 0, sizeof(unsigned long int*));
 memset(&count_69, 0, sizeof(unsigned long int));
 memset(&finalizer_70, 0, sizeof(void (*)(void*)));
     if(result_obj) {
         if(_if_conditional76=mem==result_obj,        _if_conditional76) {
-            __result59__ = __result_obj__ = mem;
-            return __result59__;
+            __result65__ = __result_obj__ = mem;
+            return __result65__;
         }
     }
     if(_if_conditional77=mem==((void*)0),    _if_conditional77) {
-        __result60__ = __result_obj__ = ((void*)0);
-        return __result60__;
+        __result66__ = __result_obj__ = ((void*)0);
+        return __result66__;
     }
     ref_count_68=(unsigned long int*)((char*)mem-sizeof(unsigned long int)-sizeof(unsigned long int));
     if(_if_conditional78=!no_decrement,    _if_conditional78) {
@@ -3159,11 +3207,11 @@ memset(&finalizer_70, 0, sizeof(void (*)(void*)));
             come_free_object(protocol_obj);
         }
         come_free_object(mem);
-        __result61__ = __result_obj__ = ((void*)0);
-        return __result61__;
+        __result67__ = __result_obj__ = ((void*)0);
+        return __result67__;
     }
-    __result62__ = __result_obj__ = mem;
-    return __result62__;
+    __result68__ = __result_obj__ = mem;
+    return __result68__;
 }
 
 void come_call_finalizer(void* fun, void* mem, void* protocol_fun, void* protocol_obj, int call_finalizer_only, int no_decrement, int no_free, int force_delete_){
@@ -3296,26 +3344,26 @@ memset(&finalizer_82, 0, sizeof(void (*)(void*)));
 char* __builtin_string(char* str){
 void* __result_obj__;
 _Bool _if_conditional101;
-char* __result63__;
+char* __result69__;
 int len_83;
 void* right_value55;
 char* result_84;
-char* __result64__;
+char* __result70__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_83, 0, sizeof(int));
 right_value55 = (void*)0;
 memset(&result_84, 0, sizeof(char*));
     if(_if_conditional101=str==((void*)0),    _if_conditional101) {
-        __result63__ = __result_obj__ = ((void*)0);
-        return __result63__;
+        __result69__ = __result_obj__ = ((void*)0);
+        return __result69__;
     }
     len_83=strlen(str)+1;
     result_84=(char*)come_increment_ref_count(((char*)(right_value55=(char*)come_calloc(1, sizeof(char)*(1*(len_83)), "libcomelang2.c", 935, "char"))));
     right_value55 = come_decrement_ref_count2(right_value55, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     strncpy(result_84,str,len_83);
-    __result64__ = __result_obj__ = result_84;
+    __result70__ = __result_obj__ = result_84;
     result_84 = come_decrement_ref_count2(result_84, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result64__;
+    return __result70__;
     result_84 = come_decrement_ref_count2(result_84, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -3324,7 +3372,7 @@ void* __result_obj__;
 _Bool found_85;
 int i_86;
 _Bool _if_conditional102;
-_Bool __result65__;
+_Bool __result71__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&found_85, 0, sizeof(_Bool));
 memset(&i_86, 0, sizeof(int));
@@ -3335,15 +3383,15 @@ memset(&i_86, 0, sizeof(int));
             break;
         }
     }
-    __result65__ = found_85;
-    return __result65__;
+    __result71__ = found_85;
+    return __result71__;
 }
 
 struct buffer* buffer_initialize(struct buffer* self){
 void* __result_obj__;
 void* right_value56;
 char* __dec_obj12;
-struct buffer* __result66__;
+struct buffer* __result72__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value56 = (void*)0;
     self->size=128;
@@ -3353,9 +3401,9 @@ right_value56 = (void*)0;
     right_value56 = come_decrement_ref_count2(right_value56, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     self->buf[0]=0;
     self->len=0;
-    __result66__ = __result_obj__ = self;
+    __result72__ = __result_obj__ = self;
     come_call_finalizer2(buffer_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    return __result66__;
+    return __result72__;
     come_call_finalizer2(buffer_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
 }
 
@@ -3380,19 +3428,19 @@ memset(&__result_obj__, 0, sizeof(void*));
 struct buffer* buffer_clone(struct buffer* self){
 void* __result_obj__;
 _Bool _if_conditional105;
-struct buffer* __result67__;
+struct buffer* __result73__;
 void* right_value57;
 struct buffer* result_87;
 void* right_value58;
 char* __dec_obj13;
-struct buffer* __result68__;
+struct buffer* __result74__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value57 = (void*)0;
 memset(&result_87, 0, sizeof(struct buffer*));
 right_value58 = (void*)0;
     if(_if_conditional105=self==((void*)0),    _if_conditional105) {
-        __result67__ = __result_obj__ = ((void*)0);
-        return __result67__;
+        __result73__ = __result_obj__ = ((void*)0);
+        return __result73__;
     }
     result_87=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value57=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 982, "buffer"))));
     come_call_finalizer2(buffer_finalize,right_value57, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -3403,24 +3451,24 @@ right_value58 = (void*)0;
     right_value58 = come_decrement_ref_count2(right_value58, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     result_87->len=self->len;
     memcpy(result_87->buf,self->buf,self->len);
-    __result68__ = __result_obj__ = result_87;
+    __result74__ = __result_obj__ = result_87;
     come_call_finalizer2(buffer_finalize,result_87, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    return __result68__;
+    return __result74__;
     come_call_finalizer2(buffer_finalize,result_87, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 int buffer_length(struct buffer* self){
 void* __result_obj__;
 _Bool _if_conditional106;
-int __result69__;
-int __result70__;
+int __result75__;
+int __result76__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional106=self==((void*)0),    _if_conditional106) {
-        __result69__ = 0;
-        return __result69__;
+        __result75__ = 0;
+        return __result75__;
     }
-    __result70__ = self->len;
-    return __result70__;
+    __result76__ = self->len;
+    return __result76__;
 }
 
 void buffer_reset(struct buffer* self){
@@ -3448,7 +3496,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 struct buffer* buffer_append(struct buffer* self, char* mem, unsigned long int size){
 void* __result_obj__;
 _Bool _if_conditional109;
-struct buffer* __result71__;
+struct buffer* __result77__;
 _Bool _if_conditional110;
 void* right_value59;
 char* old_buf_88;
@@ -3456,7 +3504,7 @@ int old_len_89;
 int new_size_90;
 void* right_value60;
 char* __dec_obj14;
-struct buffer* __result72__;
+struct buffer* __result78__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value59 = (void*)0;
 memset(&old_buf_88, 0, sizeof(char*));
@@ -3464,8 +3512,8 @@ memset(&old_len_89, 0, sizeof(int));
 memset(&new_size_90, 0, sizeof(int));
 right_value60 = (void*)0;
     if(_if_conditional109=self==((void*)0)||mem==((void*)0),    _if_conditional109) {
-        __result71__ = __result_obj__ = self;
-        return __result71__;
+        __result77__ = __result_obj__ = self;
+        return __result77__;
     }
     if(_if_conditional110=self->len+size+1+1>=self->size,    _if_conditional110) {
         old_buf_88=(char*)come_increment_ref_count(((char*)(right_value59=(char*)come_calloc(1, sizeof(char)*(1*(self->size)), "libcomelang2.c", 1024, "char"))));
@@ -3485,14 +3533,14 @@ right_value60 = (void*)0;
     memcpy(self->buf+self->len,mem,size);
     self->len+=size;
     self->buf[self->len]=0;
-    __result72__ = __result_obj__ = self;
-    return __result72__;
+    __result78__ = __result_obj__ = self;
+    return __result78__;
 }
 
 struct buffer* buffer_append_char(struct buffer* self, char c){
 void* __result_obj__;
 _Bool _if_conditional111;
-struct buffer* __result73__;
+struct buffer* __result79__;
 _Bool _if_conditional112;
 void* right_value61;
 char* old_buf_91;
@@ -3500,7 +3548,7 @@ int old_len_92;
 int new_size_93;
 void* right_value62;
 char* __dec_obj15;
-struct buffer* __result74__;
+struct buffer* __result80__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value61 = (void*)0;
 memset(&old_buf_91, 0, sizeof(char*));
@@ -3508,8 +3556,8 @@ memset(&old_len_92, 0, sizeof(int));
 memset(&new_size_93, 0, sizeof(int));
 right_value62 = (void*)0;
     if(_if_conditional111=self==((void*)0),    _if_conditional111) {
-        __result73__ = __result_obj__ = ((void*)0);
-        return __result73__;
+        __result79__ = __result_obj__ = ((void*)0);
+        return __result79__;
     }
     if(_if_conditional112=self->len+1+1+1>=self->size,    _if_conditional112) {
         old_buf_91=(char*)come_increment_ref_count(((char*)(right_value61=charp_clone(self->buf))));
@@ -3528,14 +3576,14 @@ right_value62 = (void*)0;
     self->buf[self->len]=c;
     self->len++;
     self->buf[self->len]=0;
-    __result74__ = __result_obj__ = self;
-    return __result74__;
+    __result80__ = __result_obj__ = self;
+    return __result80__;
 }
 
 struct buffer* buffer_append_str(struct buffer* self, char* mem){
 void* __result_obj__;
 _Bool _if_conditional113;
-struct buffer* __result75__;
+struct buffer* __result81__;
 int size_94;
 _Bool _if_conditional114;
 void* right_value63;
@@ -3544,7 +3592,7 @@ int old_len_96;
 int new_size_97;
 void* right_value64;
 char* __dec_obj16;
-struct buffer* __result76__;
+struct buffer* __result82__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&size_94, 0, sizeof(int));
 right_value63 = (void*)0;
@@ -3553,8 +3601,8 @@ memset(&old_len_96, 0, sizeof(int));
 memset(&new_size_97, 0, sizeof(int));
 right_value64 = (void*)0;
     if(_if_conditional113=self==((void*)0)||mem==((void*)0),    _if_conditional113) {
-        __result75__ = __result_obj__ = self;
-        return __result75__;
+        __result81__ = __result_obj__ = self;
+        return __result81__;
     }
     size_94=strlen(mem);
     if(_if_conditional114=self->len+size_94+1+1>=self->size,    _if_conditional114) {
@@ -3575,14 +3623,14 @@ right_value64 = (void*)0;
     memcpy(self->buf+self->len,mem,size_94);
     self->len+=size_94;
     self->buf[self->len]=0;
-    __result76__ = __result_obj__ = self;
-    return __result76__;
+    __result82__ = __result_obj__ = self;
+    return __result82__;
 }
 
 struct buffer* buffer_append_nullterminated_str(struct buffer* self, char* mem){
 void* __result_obj__;
 _Bool _if_conditional115;
-struct buffer* __result77__;
+struct buffer* __result83__;
 int size_98;
 _Bool _if_conditional116;
 void* right_value65;
@@ -3591,7 +3639,7 @@ int old_len_100;
 int new_size_101;
 void* right_value66;
 char* __dec_obj17;
-struct buffer* __result78__;
+struct buffer* __result84__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&size_98, 0, sizeof(int));
 right_value65 = (void*)0;
@@ -3600,8 +3648,8 @@ memset(&old_len_100, 0, sizeof(int));
 memset(&new_size_101, 0, sizeof(int));
 right_value66 = (void*)0;
     if(_if_conditional115=self==((void*)0)||mem==((void*)0),    _if_conditional115) {
-        __result77__ = __result_obj__ = self;
-        return __result77__;
+        __result83__ = __result_obj__ = self;
+        return __result83__;
     }
     size_98=strlen(mem)+1;
     if(_if_conditional116=self->len+size_98+1+1+1>=self->size,    _if_conditional116) {
@@ -3623,14 +3671,14 @@ right_value66 = (void*)0;
     self->len+=size_98;
     self->buf[self->len]=0;
     self->len++;
-    __result78__ = __result_obj__ = self;
-    return __result78__;
+    __result84__ = __result_obj__ = self;
+    return __result84__;
 }
 
 struct buffer* buffer_append_int(struct buffer* self, int value){
 void* __result_obj__;
 _Bool _if_conditional117;
-struct buffer* __result79__;
+struct buffer* __result85__;
 int* mem_102;
 int size_103;
 _Bool _if_conditional118;
@@ -3640,7 +3688,7 @@ int old_len_105;
 int new_size_106;
 void* right_value68;
 char* __dec_obj18;
-struct buffer* __result80__;
+struct buffer* __result86__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&mem_102, 0, sizeof(int*));
 memset(&size_103, 0, sizeof(int));
@@ -3650,8 +3698,8 @@ memset(&old_len_105, 0, sizeof(int));
 memset(&new_size_106, 0, sizeof(int));
 right_value68 = (void*)0;
     if(_if_conditional117=self==((void*)0),    _if_conditional117) {
-        __result79__ = __result_obj__ = ((void*)0);
-        return __result79__;
+        __result85__ = __result_obj__ = ((void*)0);
+        return __result85__;
     }
     mem_102=&value;
     size_103=sizeof(int);
@@ -3673,8 +3721,8 @@ right_value68 = (void*)0;
     memcpy(self->buf+self->len,mem_102,size_103);
     self->len+=size_103;
     self->buf[self->len]=0;
-    __result80__ = __result_obj__ = self;
-    return __result80__;
+    __result86__ = __result_obj__ = self;
+    return __result86__;
 }
 
 struct buffer* buffer_append_long(struct buffer* self, long value){
@@ -3688,7 +3736,7 @@ int old_len_110;
 int new_size_111;
 void* right_value70;
 char* __dec_obj19;
-struct buffer* __result81__;
+struct buffer* __result87__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&mem_107, 0, sizeof(long*));
 memset(&size_108, 0, sizeof(int));
@@ -3717,14 +3765,14 @@ right_value70 = (void*)0;
     memcpy(self->buf+self->len,mem_107,size_108);
     self->len+=size_108;
     self->buf[self->len]=0;
-    __result81__ = __result_obj__ = self;
-    return __result81__;
+    __result87__ = __result_obj__ = self;
+    return __result87__;
 }
 
 struct buffer* buffer_append_short(struct buffer* self, short short value){
 void* __result_obj__;
 _Bool _if_conditional120;
-struct buffer* __result82__;
+struct buffer* __result88__;
 short short* mem_112;
 int size_113;
 _Bool _if_conditional121;
@@ -3734,7 +3782,7 @@ int old_len_115;
 int new_size_116;
 void* right_value72;
 char* __dec_obj20;
-struct buffer* __result83__;
+struct buffer* __result89__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&mem_112, 0, sizeof(short short*));
 memset(&size_113, 0, sizeof(int));
@@ -3744,8 +3792,8 @@ memset(&old_len_115, 0, sizeof(int));
 memset(&new_size_116, 0, sizeof(int));
 right_value72 = (void*)0;
     if(_if_conditional120=self==((void*)0),    _if_conditional120) {
-        __result82__ = __result_obj__ = ((void*)0);
-        return __result82__;
+        __result88__ = __result_obj__ = ((void*)0);
+        return __result88__;
     }
     mem_112=&value;
     size_113=sizeof(short short);
@@ -3767,29 +3815,29 @@ right_value72 = (void*)0;
     memcpy(self->buf+self->len,mem_112,size_113);
     self->len+=size_113;
     self->buf[self->len]=0;
-    __result83__ = __result_obj__ = self;
-    return __result83__;
+    __result89__ = __result_obj__ = self;
+    return __result89__;
 }
 
 struct buffer* buffer_alignment(struct buffer* self){
 void* __result_obj__;
 _Bool _if_conditional122;
-struct buffer* __result84__;
+struct buffer* __result90__;
 int len_117;
 _Bool _if_conditional123;
 int new_size_118;
 void* right_value73;
 char* __dec_obj21;
 int i_119;
-struct buffer* __result85__;
+struct buffer* __result91__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&len_117, 0, sizeof(int));
 memset(&new_size_118, 0, sizeof(int));
 right_value73 = (void*)0;
 memset(&i_119, 0, sizeof(int));
     if(_if_conditional122=self==((void*)0),    _if_conditional122) {
-        __result84__ = __result_obj__ = ((void*)0);
-        return __result84__;
+        __result90__ = __result_obj__ = ((void*)0);
+        return __result90__;
     }
     len_117=self->len;
     len_117=(len_117+3)&~3;
@@ -3805,38 +3853,38 @@ memset(&i_119, 0, sizeof(int));
         self->buf[i_119]=0;
     }
     self->len=len_117;
-    __result85__ = __result_obj__ = self;
-    return __result85__;
+    __result91__ = __result_obj__ = self;
+    return __result91__;
 }
 
 int buffer_compare(struct buffer* left, struct buffer* right){
 void* __result_obj__;
 _Bool _if_conditional124;
-int __result86__;
+int __result92__;
 _Bool _if_conditional125;
-int __result87__;
+int __result93__;
 _Bool _if_conditional126;
-int __result88__;
-int __result89__;
+int __result94__;
+int __result95__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional124=left==((void*)0)&&right==((void*)0),    _if_conditional124) {
-        __result86__ = 0;
-        return __result86__;
+        __result92__ = 0;
+        return __result92__;
     }
     else {
         if(_if_conditional125=left==((void*)0),        _if_conditional125) {
-            __result87__ = -1;
-            return __result87__;
+            __result93__ = -1;
+            return __result93__;
         }
         else {
             if(_if_conditional126=right==((void*)0),            _if_conditional126) {
-                __result88__ = 1;
-                return __result88__;
+                __result94__ = 1;
+                return __result94__;
             }
         }
     }
-    __result89__ = strcmp(left->buf,right->buf);
-    return __result89__;
+    __result95__ = strcmp(left->buf,right->buf);
+    return __result95__;
 }
 
 struct buffer* string_to_buffer(char* self){
@@ -3845,8 +3893,8 @@ void* right_value74;
 void* right_value75;
 struct buffer* result_120;
 _Bool _if_conditional127;
-struct buffer* __result90__;
-struct buffer* __result91__;
+struct buffer* __result96__;
+struct buffer* __result97__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value74 = (void*)0;
 right_value75 = (void*)0;
@@ -3855,14 +3903,14 @@ memset(&result_120, 0, sizeof(struct buffer*));
     come_call_finalizer2(buffer_finalize,right_value74, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value75, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     if(_if_conditional127=self==((void*)0),    _if_conditional127) {
-        __result90__ = __result_obj__ = result_120;
+        __result96__ = __result_obj__ = result_120;
         come_call_finalizer2(buffer_finalize,result_120, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-        return __result90__;
+        return __result96__;
     }
     buffer_append_str(result_120,self);
-    __result91__ = __result_obj__ = result_120;
+    __result97__ = __result_obj__ = result_120;
     come_call_finalizer2(buffer_finalize,result_120, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    return __result91__;
+    return __result97__;
     come_call_finalizer2(buffer_finalize,result_120, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
@@ -3872,8 +3920,8 @@ void* right_value76;
 void* right_value77;
 struct buffer* result_121;
 _Bool _if_conditional128;
-struct buffer* __result92__;
-struct buffer* __result93__;
+struct buffer* __result98__;
+struct buffer* __result99__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value76 = (void*)0;
 right_value77 = (void*)0;
@@ -3882,14 +3930,14 @@ memset(&result_121, 0, sizeof(struct buffer*));
     come_call_finalizer2(buffer_finalize,right_value76, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(buffer_finalize,right_value77, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     if(_if_conditional128=self==((void*)0),    _if_conditional128) {
-        __result92__ = __result_obj__ = result_121;
+        __result98__ = __result_obj__ = result_121;
         come_call_finalizer2(buffer_finalize,result_121, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-        return __result92__;
+        return __result98__;
     }
     buffer_append_str(result_121,self);
-    __result93__ = __result_obj__ = result_121;
+    __result99__ = __result_obj__ = result_121;
     come_call_finalizer2(buffer_finalize,result_121, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    return __result93__;
+    return __result99__;
     come_call_finalizer2(buffer_finalize,result_121, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
@@ -3897,71 +3945,23 @@ char* buffer_to_string(struct buffer* self){
 void* __result_obj__;
 _Bool _if_conditional129;
 void* right_value78;
-char* __result94__;
+char* __result100__;
 void* right_value79;
-char* __result95__;
+char* __result101__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value78 = (void*)0;
 right_value79 = (void*)0;
     if(_if_conditional129=self==((void*)0),    _if_conditional129) {
-        __result94__ = __result_obj__ = ((char*)(right_value78=__builtin_string("")));
+        __result100__ = __result_obj__ = ((char*)(right_value78=__builtin_string("")));
         right_value78 = come_decrement_ref_count2(right_value78, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result94__;
+        return __result100__;
     }
-    __result95__ = __result_obj__ = ((char*)(right_value79=__builtin_string(self->buf)));
+    __result101__ = __result_obj__ = ((char*)(right_value79=__builtin_string(self->buf)));
     right_value79 = come_decrement_ref_count2(right_value79, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result95__;
-}
-
-_Bool bool_equals(_Bool self, _Bool right){
-void* __result_obj__;
-_Bool __result96__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result96__ = self==right;
-    return __result96__;
-}
-
-_Bool int_equals(int self, int right){
-void* __result_obj__;
-_Bool __result97__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result97__ = self==right;
-    return __result97__;
-}
-
-_Bool char_equals(char self, char right){
-void* __result_obj__;
-_Bool __result98__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result98__ = self==right;
-    return __result98__;
-}
-
-_Bool short_equals(short short self, short short right){
-void* __result_obj__;
-_Bool __result99__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result99__ = self==right;
-    return __result99__;
-}
-
-_Bool long_equals(long self, long right){
-void* __result_obj__;
-_Bool __result100__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result100__ = self==right;
-    return __result100__;
-}
-
-_Bool size_t_equals(unsigned long int self, unsigned long int right){
-void* __result_obj__;
-_Bool __result101__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result101__ = self==right;
     return __result101__;
 }
 
-_Bool float_equals(float self, float right){
+_Bool bool_equals(_Bool self, _Bool right){
 void* __result_obj__;
 _Bool __result102__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -3969,7 +3969,7 @@ memset(&__result_obj__, 0, sizeof(void*));
     return __result102__;
 }
 
-_Bool double_equals(double self, double right){
+_Bool int_equals(int self, int right){
 void* __result_obj__;
 _Bool __result103__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -3977,213 +3977,261 @@ memset(&__result_obj__, 0, sizeof(void*));
     return __result103__;
 }
 
+_Bool char_equals(char self, char right){
+void* __result_obj__;
+_Bool __result104__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result104__ = self==right;
+    return __result104__;
+}
+
+_Bool short_equals(short short self, short short right){
+void* __result_obj__;
+_Bool __result105__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result105__ = self==right;
+    return __result105__;
+}
+
+_Bool long_equals(long self, long right){
+void* __result_obj__;
+_Bool __result106__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result106__ = self==right;
+    return __result106__;
+}
+
+_Bool size_t_equals(unsigned long int self, unsigned long int right){
+void* __result_obj__;
+_Bool __result107__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result107__ = self==right;
+    return __result107__;
+}
+
+_Bool float_equals(float self, float right){
+void* __result_obj__;
+_Bool __result108__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result108__ = self==right;
+    return __result108__;
+}
+
+_Bool double_equals(double self, double right){
+void* __result_obj__;
+_Bool __result109__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result109__ = self==right;
+    return __result109__;
+}
+
 _Bool string_equals(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional130;
-_Bool __result104__;
+_Bool __result110__;
 _Bool _if_conditional131;
-_Bool __result105__;
+_Bool __result111__;
 _Bool _if_conditional132;
-_Bool __result106__;
-_Bool __result107__;
+_Bool __result112__;
+_Bool __result113__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional130=self==((void*)0)&&right==((void*)0),    _if_conditional130) {
-        __result104__ = (_Bool)1;
-        return __result104__;
+        __result110__ = (_Bool)1;
+        return __result110__;
     }
     else {
         if(_if_conditional131=self==((void*)0),        _if_conditional131) {
-            __result105__ = (_Bool)0;
-            return __result105__;
+            __result111__ = (_Bool)0;
+            return __result111__;
         }
         else {
             if(_if_conditional132=right==((void*)0),            _if_conditional132) {
-                __result106__ = (_Bool)0;
-                return __result106__;
+                __result112__ = (_Bool)0;
+                return __result112__;
             }
         }
     }
-    __result107__ = strcmp(self,right)==0;
-    return __result107__;
+    __result113__ = strcmp(self,right)==0;
+    return __result113__;
 }
 
 _Bool charp_equals(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional133;
-_Bool __result108__;
+_Bool __result114__;
 _Bool _if_conditional134;
-_Bool __result109__;
+_Bool __result115__;
 _Bool _if_conditional135;
-_Bool __result110__;
-_Bool __result111__;
+_Bool __result116__;
+_Bool __result117__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional133=self==((void*)0)&&right==((void*)0),    _if_conditional133) {
-        __result108__ = (_Bool)1;
-        return __result108__;
+        __result114__ = (_Bool)1;
+        return __result114__;
     }
     else {
         if(_if_conditional134=self==((void*)0),        _if_conditional134) {
-            __result109__ = (_Bool)0;
-            return __result109__;
+            __result115__ = (_Bool)0;
+            return __result115__;
         }
         else {
             if(_if_conditional135=right==((void*)0),            _if_conditional135) {
-                __result110__ = (_Bool)0;
-                return __result110__;
+                __result116__ = (_Bool)0;
+                return __result116__;
             }
         }
     }
-    __result111__ = strcmp(self,right)==0;
-    return __result111__;
+    __result117__ = strcmp(self,right)==0;
+    return __result117__;
 }
 
 _Bool string_operator_equals(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional136;
-_Bool __result112__;
+_Bool __result118__;
 _Bool _if_conditional137;
-_Bool __result113__;
+_Bool __result119__;
 _Bool _if_conditional138;
-_Bool __result114__;
-_Bool __result115__;
+_Bool __result120__;
+_Bool __result121__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional136=self==((void*)0)&&right==((void*)0),    _if_conditional136) {
-        __result112__ = (_Bool)1;
-        return __result112__;
+        __result118__ = (_Bool)1;
+        return __result118__;
     }
     else {
         if(_if_conditional137=self==((void*)0),        _if_conditional137) {
-            __result113__ = (_Bool)0;
-            return __result113__;
+            __result119__ = (_Bool)0;
+            return __result119__;
         }
         else {
             if(_if_conditional138=right==((void*)0),            _if_conditional138) {
-                __result114__ = (_Bool)0;
-                return __result114__;
+                __result120__ = (_Bool)0;
+                return __result120__;
             }
         }
     }
-    __result115__ = strcmp(self,right)==0;
-    return __result115__;
+    __result121__ = strcmp(self,right)==0;
+    return __result121__;
 }
 
 _Bool charp_operator_equals(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional139;
-_Bool __result116__;
+_Bool __result122__;
 _Bool _if_conditional140;
-_Bool __result117__;
+_Bool __result123__;
 _Bool _if_conditional141;
-_Bool __result118__;
-_Bool __result119__;
+_Bool __result124__;
+_Bool __result125__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional139=self==((void*)0)&&right==((void*)0),    _if_conditional139) {
-        __result116__ = (_Bool)1;
-        return __result116__;
+        __result122__ = (_Bool)1;
+        return __result122__;
     }
     else {
         if(_if_conditional140=self==((void*)0),        _if_conditional140) {
-            __result117__ = (_Bool)0;
-            return __result117__;
+            __result123__ = (_Bool)0;
+            return __result123__;
         }
         else {
             if(_if_conditional141=right==((void*)0),            _if_conditional141) {
-                __result118__ = (_Bool)0;
-                return __result118__;
+                __result124__ = (_Bool)0;
+                return __result124__;
             }
         }
     }
-    __result119__ = strcmp(self,right)==0;
-    return __result119__;
+    __result125__ = strcmp(self,right)==0;
+    return __result125__;
 }
 
 _Bool string_operator_not_equals(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional142;
-_Bool __result120__;
+_Bool __result126__;
 _Bool _if_conditional143;
-_Bool __result121__;
+_Bool __result127__;
 _Bool _if_conditional144;
-_Bool __result122__;
-_Bool __result123__;
+_Bool __result128__;
+_Bool __result129__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional142=self==((void*)0)&&right==((void*)0),    _if_conditional142) {
-        __result120__ = (_Bool)0;
-        return __result120__;
+        __result126__ = (_Bool)0;
+        return __result126__;
     }
     else {
         if(_if_conditional143=self==((void*)0),        _if_conditional143) {
-            __result121__ = (_Bool)1;
-            return __result121__;
+            __result127__ = (_Bool)1;
+            return __result127__;
         }
         else {
             if(_if_conditional144=right==((void*)0),            _if_conditional144) {
-                __result122__ = (_Bool)1;
-                return __result122__;
+                __result128__ = (_Bool)1;
+                return __result128__;
             }
         }
     }
-    __result123__ = strcmp(self,right)!=0;
-    return __result123__;
+    __result129__ = strcmp(self,right)!=0;
+    return __result129__;
 }
 
 _Bool charp_operator_not_equals(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional145;
-_Bool __result124__;
+_Bool __result130__;
 _Bool _if_conditional146;
-_Bool __result125__;
+_Bool __result131__;
 _Bool _if_conditional147;
-_Bool __result126__;
-_Bool __result127__;
+_Bool __result132__;
+_Bool __result133__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional145=self==((void*)0)&&right==((void*)0),    _if_conditional145) {
-        __result124__ = (_Bool)0;
-        return __result124__;
+        __result130__ = (_Bool)0;
+        return __result130__;
     }
     else {
         if(_if_conditional146=self==((void*)0),        _if_conditional146) {
-            __result125__ = (_Bool)1;
-            return __result125__;
+            __result131__ = (_Bool)1;
+            return __result131__;
         }
         else {
             if(_if_conditional147=right==((void*)0),            _if_conditional147) {
-                __result126__ = (_Bool)1;
-                return __result126__;
+                __result132__ = (_Bool)1;
+                return __result132__;
             }
         }
     }
-    __result127__ = strcmp(self,right)!=0;
-    return __result127__;
+    __result133__ = strcmp(self,right)!=0;
+    return __result133__;
 }
 
 char* charp_operator_add(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional148;
 void* right_value80;
-char* __result128__;
+char* __result134__;
 int len_122;
 void* right_value81;
 char* result_123;
-char* __result129__;
+char* __result135__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value80 = (void*)0;
 memset(&len_122, 0, sizeof(int));
 right_value81 = (void*)0;
 memset(&result_123, 0, sizeof(char*));
     if(_if_conditional148=self==((void*)0)||right==((void*)0),    _if_conditional148) {
-        __result128__ = __result_obj__ = ((char*)(right_value80=__builtin_string("")));
+        __result134__ = __result_obj__ = ((char*)(right_value80=__builtin_string("")));
         right_value80 = come_decrement_ref_count2(right_value80, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result128__;
+        return __result134__;
     }
     len_122=strlen(self)+strlen(right);
     result_123=(char*)come_increment_ref_count(((char*)(right_value81=(char*)come_calloc(1, sizeof(char)*(1*(len_122+1)), "libcomelang2.c", 1407, "char"))));
     right_value81 = come_decrement_ref_count2(right_value81, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     strncpy(result_123,self,len_122+1);
     strncat(result_123,right,len_122+1);
-    __result129__ = __result_obj__ = result_123;
+    __result135__ = __result_obj__ = result_123;
     result_123 = come_decrement_ref_count2(result_123, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result129__;
+    return __result135__;
     result_123 = come_decrement_ref_count2(result_123, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4191,29 +4239,29 @@ char* string_operator_add(char* self, char* right){
 void* __result_obj__;
 _Bool _if_conditional149;
 void* right_value82;
-char* __result130__;
+char* __result136__;
 int len_124;
 void* right_value83;
 char* result_125;
-char* __result131__;
+char* __result137__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value82 = (void*)0;
 memset(&len_124, 0, sizeof(int));
 right_value83 = (void*)0;
 memset(&result_125, 0, sizeof(char*));
     if(_if_conditional149=self==((void*)0)||right==((void*)0),    _if_conditional149) {
-        __result130__ = __result_obj__ = ((char*)(right_value82=__builtin_string("")));
+        __result136__ = __result_obj__ = ((char*)(right_value82=__builtin_string("")));
         right_value82 = come_decrement_ref_count2(right_value82, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result130__;
+        return __result136__;
     }
     len_124=strlen(self)+strlen(right);
     result_125=(char*)come_increment_ref_count(((char*)(right_value83=(char*)come_calloc(1, sizeof(char)*(1*(len_124+1)), "libcomelang2.c", 1422, "char"))));
     right_value83 = come_decrement_ref_count2(right_value83, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     strncpy(result_125,self,len_124+1);
     strncat(result_125,right,len_124+1);
-    __result131__ = __result_obj__ = result_125;
+    __result137__ = __result_obj__ = result_125;
     result_125 = come_decrement_ref_count2(result_125, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result131__;
+    return __result137__;
     result_125 = come_decrement_ref_count2(result_125, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4221,13 +4269,13 @@ char* charp_operator_mult(char* self, int right){
 void* __result_obj__;
 _Bool _if_conditional150;
 void* right_value84;
-char* __result132__;
+char* __result138__;
 void* right_value85;
 void* right_value86;
 struct buffer* buf_126;
 int i_127;
 void* right_value87;
-char* __result133__;
+char* __result139__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value84 = (void*)0;
 right_value85 = (void*)0;
@@ -4236,9 +4284,9 @@ memset(&buf_126, 0, sizeof(struct buffer*));
 memset(&i_127, 0, sizeof(int));
 right_value87 = (void*)0;
     if(_if_conditional150=self==((void*)0),    _if_conditional150) {
-        __result132__ = __result_obj__ = ((char*)(right_value84=__builtin_string("")));
+        __result138__ = __result_obj__ = ((char*)(right_value84=__builtin_string("")));
         right_value84 = come_decrement_ref_count2(right_value84, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result132__;
+        return __result138__;
     }
     buf_126=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value86=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value85=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 1435, "buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value85, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -4246,10 +4294,10 @@ right_value87 = (void*)0;
     for(    i_127=0;    i_127<right;    i_127++    ){
         buffer_append_str(buf_126,self);
     }
-    __result133__ = __result_obj__ = ((char*)(right_value87=buffer_to_string(buf_126)));
+    __result139__ = __result_obj__ = ((char*)(right_value87=buffer_to_string(buf_126)));
     come_call_finalizer2(buffer_finalize,buf_126, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     right_value87 = come_decrement_ref_count2(right_value87, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result133__;
+    return __result139__;
     come_call_finalizer2(buffer_finalize,buf_126, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
@@ -4257,13 +4305,13 @@ char* string_operator_mult(char* self, int right){
 void* __result_obj__;
 _Bool _if_conditional151;
 void* right_value88;
-char* __result134__;
+char* __result140__;
 void* right_value89;
 void* right_value90;
 struct buffer* buf_128;
 int i_129;
 void* right_value91;
-char* __result135__;
+char* __result141__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value88 = (void*)0;
 right_value89 = (void*)0;
@@ -4272,9 +4320,9 @@ memset(&buf_128, 0, sizeof(struct buffer*));
 memset(&i_129, 0, sizeof(int));
 right_value91 = (void*)0;
     if(_if_conditional151=self==((void*)0),    _if_conditional151) {
-        __result134__ = __result_obj__ = ((char*)(right_value88=__builtin_string("")));
+        __result140__ = __result_obj__ = ((char*)(right_value88=__builtin_string("")));
         right_value88 = come_decrement_ref_count2(right_value88, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result134__;
+        return __result140__;
     }
     buf_128=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value90=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value89=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 1449, "buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value89, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -4282,91 +4330,91 @@ right_value91 = (void*)0;
     for(    i_129=0;    i_129<right;    i_129++    ){
         buffer_append_str(buf_128,self);
     }
-    __result135__ = __result_obj__ = ((char*)(right_value91=buffer_to_string(buf_128)));
+    __result141__ = __result_obj__ = ((char*)(right_value91=buffer_to_string(buf_128)));
     come_call_finalizer2(buffer_finalize,buf_128, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     right_value91 = come_decrement_ref_count2(right_value91, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result135__;
+    return __result141__;
     come_call_finalizer2(buffer_finalize,buf_128, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 unsigned int bool_get_hash_key(_Bool value){
 void* __result_obj__;
-unsigned int __result136__;
+unsigned int __result142__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result136__ = (int_get_hash_key(((int)value)));
-    return __result136__;
+    __result142__ = (int_get_hash_key(((int)value)));
+    return __result142__;
 }
 
 unsigned int char_get_hash_key(char value){
 void* __result_obj__;
-unsigned int __result137__;
+unsigned int __result143__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result137__ = value;
-    return __result137__;
+    __result143__ = value;
+    return __result143__;
 }
 
 unsigned int short_get_hash_key(short int value){
 void* __result_obj__;
-unsigned int __result138__;
+unsigned int __result144__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result138__ = value;
-    return __result138__;
+    __result144__ = value;
+    return __result144__;
 }
 
 unsigned int int_get_hash_key(int value){
 void* __result_obj__;
-unsigned int __result139__;
+unsigned int __result145__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result139__ = value;
-    return __result139__;
+    __result145__ = value;
+    return __result145__;
 }
 
 unsigned int long_get_hash_key(long value){
 void* __result_obj__;
-unsigned int __result140__;
+unsigned int __result146__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result140__ = value;
-    return __result140__;
+    __result146__ = value;
+    return __result146__;
 }
 
 unsigned int size_t_get_hash_key(unsigned long int value){
 void* __result_obj__;
-unsigned int __result141__;
+unsigned int __result147__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result141__ = value;
-    return __result141__;
+    __result147__ = value;
+    return __result147__;
 }
 
 unsigned int float_get_hash_key(float value){
 void* __result_obj__;
-unsigned int __result142__;
+unsigned int __result148__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result142__ = (unsigned int)value;
-    return __result142__;
+    __result148__ = (unsigned int)value;
+    return __result148__;
 }
 
 unsigned int double_get_hash_key(double value){
 void* __result_obj__;
-unsigned int __result143__;
+unsigned int __result149__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result143__ = (unsigned int)value;
-    return __result143__;
+    __result149__ = (unsigned int)value;
+    return __result149__;
 }
 
 unsigned int string_get_hash_key(char* value){
 void* __result_obj__;
 _Bool _if_conditional152;
-unsigned int __result144__;
+unsigned int __result150__;
 int result_130;
 char* p_131;
 _Bool _while_condtional1;
-unsigned int __result145__;
+unsigned int __result151__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_130, 0, sizeof(int));
 memset(&p_131, 0, sizeof(char*));
     if(_if_conditional152=value==((void*)0),    _if_conditional152) {
-        __result144__ = 0;
-        return __result144__;
+        __result150__ = 0;
+        return __result150__;
     }
     result_130=0;
     p_131=value;
@@ -4374,24 +4422,24 @@ memset(&p_131, 0, sizeof(char*));
         result_130+=(*p_131);
         p_131++;
     }
-    __result145__ = result_130;
-    return __result145__;
+    __result151__ = result_130;
+    return __result151__;
 }
 
 unsigned int charp_get_hash_key(char* value){
 void* __result_obj__;
 _Bool _if_conditional153;
-unsigned int __result146__;
+unsigned int __result152__;
 int result_132;
 char* p_133;
 _Bool _while_condtional2;
-unsigned int __result147__;
+unsigned int __result153__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_132, 0, sizeof(int));
 memset(&p_133, 0, sizeof(char*));
     if(_if_conditional153=value==((void*)0),    _if_conditional153) {
-        __result146__ = 0;
-        return __result146__;
+        __result152__ = 0;
+        return __result152__;
     }
     result_132=0;
     p_133=value;
@@ -4399,238 +4447,238 @@ memset(&p_133, 0, sizeof(char*));
         result_132+=(*p_133);
         p_133++;
     }
-    __result147__ = result_132;
-    return __result147__;
+    __result153__ = result_132;
+    return __result153__;
 }
 
 _Bool bool_clone(_Bool self){
 void* __result_obj__;
-_Bool __result148__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result148__ = self;
-    return __result148__;
-}
-
-char char_clone(char self){
-void* __result_obj__;
-char __result149__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result149__ = self;
-    return __result149__;
-}
-
-short int short_clone(short short self){
-void* __result_obj__;
-short int __result150__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result150__ = self;
-    return __result150__;
-}
-
-int int_clone(int self){
-void* __result_obj__;
-int __result151__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result151__ = self;
-    return __result151__;
-}
-
-long int long_clone(long self){
-void* __result_obj__;
-long int __result152__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result152__ = self;
-    return __result152__;
-}
-
-unsigned long int size_t_clone(unsigned long int self){
-void* __result_obj__;
-unsigned long int __result153__;
-memset(&__result_obj__, 0, sizeof(void*));
-    __result153__ = self;
-    return __result153__;
-}
-
-double double_clone(double self){
-void* __result_obj__;
-double __result154__;
+_Bool __result154__;
 memset(&__result_obj__, 0, sizeof(void*));
     __result154__ = self;
     return __result154__;
 }
 
-float float_clone(float self){
+char char_clone(char self){
 void* __result_obj__;
-float __result155__;
+char __result155__;
 memset(&__result_obj__, 0, sizeof(void*));
     __result155__ = self;
     return __result155__;
 }
 
+short int short_clone(short short self){
+void* __result_obj__;
+short int __result156__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result156__ = self;
+    return __result156__;
+}
+
+int int_clone(int self){
+void* __result_obj__;
+int __result157__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result157__ = self;
+    return __result157__;
+}
+
+long int long_clone(long self){
+void* __result_obj__;
+long int __result158__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result158__ = self;
+    return __result158__;
+}
+
+unsigned long int size_t_clone(unsigned long int self){
+void* __result_obj__;
+unsigned long int __result159__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result159__ = self;
+    return __result159__;
+}
+
+double double_clone(double self){
+void* __result_obj__;
+double __result160__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result160__ = self;
+    return __result160__;
+}
+
+float float_clone(float self){
+void* __result_obj__;
+float __result161__;
+memset(&__result_obj__, 0, sizeof(void*));
+    __result161__ = self;
+    return __result161__;
+}
+
 char* charp_clone(char* self){
 void* __result_obj__;
 _Bool _if_conditional154;
-char* __result156__;
+char* __result162__;
 void* right_value92;
-char* __result157__;
+char* __result163__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value92 = (void*)0;
     if(_if_conditional154=self==((void*)0),    _if_conditional154) {
-        __result156__ = __result_obj__ = ((void*)0);
-        return __result156__;
+        __result162__ = __result_obj__ = ((void*)0);
+        return __result162__;
     }
-    __result157__ = __result_obj__ = ((char*)(right_value92=__builtin_string(self)));
+    __result163__ = __result_obj__ = ((char*)(right_value92=__builtin_string(self)));
     right_value92 = come_decrement_ref_count2(right_value92, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result157__;
+    return __result163__;
 }
 
 char* string_clone(char* self){
 void* __result_obj__;
 _Bool _if_conditional155;
-char* __result158__;
+char* __result164__;
 void* right_value93;
-char* __result159__;
+char* __result165__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value93 = (void*)0;
     if(_if_conditional155=self==((void*)0),    _if_conditional155) {
-        __result158__ = __result_obj__ = ((void*)0);
-        return __result158__;
+        __result164__ = __result_obj__ = ((void*)0);
+        return __result164__;
     }
-    __result159__ = __result_obj__ = ((char*)(right_value93=__builtin_string(self)));
+    __result165__ = __result_obj__ = ((char*)(right_value93=__builtin_string(self)));
     right_value93 = come_decrement_ref_count2(right_value93, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result159__;
+    return __result165__;
 }
 
 _Bool xiswalpha(unsigned int c){
 void* __result_obj__;
 _Bool result_134;
-_Bool __result160__;
+_Bool __result166__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_134, 0, sizeof(_Bool));
     result_134=(c>=97&&c<=122)||(c>=65&&c<=90);
-    __result160__ = result_134;
-    return __result160__;
+    __result166__ = result_134;
+    return __result166__;
 }
 
 _Bool xiswblank(unsigned int c){
 void* __result_obj__;
-_Bool __result161__;
+_Bool __result167__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result161__ = c==32||c==9;
-    return __result161__;
+    __result167__ = c==32||c==9;
+    return __result167__;
 }
 
 _Bool xiswdigit(unsigned int c){
 void* __result_obj__;
-_Bool __result162__;
+_Bool __result168__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result162__ = (c>=48&&c<=57);
-    return __result162__;
+    __result168__ = (c>=48&&c<=57);
+    return __result168__;
 }
 
 _Bool xiswalnum(unsigned int c){
 void* __result_obj__;
-_Bool __result163__;
+_Bool __result169__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result163__ = xiswalpha(c)||xiswdigit(c);
-    return __result163__;
+    __result169__ = xiswalpha(c)||xiswdigit(c);
+    return __result169__;
 }
 
 _Bool xisalpha(char c){
 void* __result_obj__;
 _Bool result_135;
-_Bool __result164__;
+_Bool __result170__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_135, 0, sizeof(_Bool));
     result_135=(c>=97&&c<=122)||(c>=65&&c<=90);
-    __result164__ = result_135;
-    return __result164__;
+    __result170__ = result_135;
+    return __result170__;
 }
 
 _Bool xisblank(char c){
 void* __result_obj__;
-_Bool __result165__;
+_Bool __result171__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result165__ = c==32||c==9;
-    return __result165__;
+    __result171__ = c==32||c==9;
+    return __result171__;
 }
 
 _Bool xisdigit(char c){
 void* __result_obj__;
-_Bool __result166__;
+_Bool __result172__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result166__ = (c>=48&&c<=57);
-    return __result166__;
+    __result172__ = (c>=48&&c<=57);
+    return __result172__;
 }
 
 _Bool xisalnum(char c){
 void* __result_obj__;
-_Bool __result167__;
+_Bool __result173__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result167__ = xisalpha(c)||xisdigit(c);
-    return __result167__;
+    __result173__ = xisalpha(c)||xisdigit(c);
+    return __result173__;
 }
 
 _Bool xisascii(char c){
 void* __result_obj__;
 _Bool result_136;
-_Bool __result168__;
+_Bool __result174__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_136, 0, sizeof(_Bool));
     result_136=(c>=32&&c<=126);
-    __result168__ = result_136;
-    return __result168__;
+    __result174__ = result_136;
+    return __result174__;
 }
 
 _Bool xiswascii(unsigned int c){
 void* __result_obj__;
 _Bool result_137;
-_Bool __result169__;
+_Bool __result175__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_137, 0, sizeof(_Bool));
     result_137=(c>=32&&c<=126);
-    __result169__ = result_137;
-    return __result169__;
+    __result175__ = result_137;
+    return __result175__;
 }
 
 int string_length(char* str){
 void* __result_obj__;
 _Bool _if_conditional156;
-int __result170__;
-int __result171__;
+int __result176__;
+int __result177__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional156=str==((void*)0),    _if_conditional156) {
-        __result170__ = 0;
-        return __result170__;
+        __result176__ = 0;
+        return __result176__;
     }
-    __result171__ = strlen(str);
-    return __result171__;
+    __result177__ = strlen(str);
+    return __result177__;
 }
 
 int charp_length(char* str){
 void* __result_obj__;
 _Bool _if_conditional157;
-int __result172__;
-int __result173__;
+int __result178__;
+int __result179__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional157=str==((void*)0),    _if_conditional157) {
-        __result172__ = 0;
-        return __result172__;
+        __result178__ = 0;
+        return __result178__;
     }
-    __result173__ = strlen(str);
-    return __result173__;
+    __result179__ = strlen(str);
+    return __result179__;
 }
 
 char* string_reverse(char* str){
 void* __result_obj__;
 _Bool _if_conditional158;
 void* right_value94;
-char* __result174__;
+char* __result180__;
 int len_138;
 void* right_value95;
 char* result_139;
 int i_140;
-char* __result175__;
+char* __result181__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value94 = (void*)0;
 memset(&len_138, 0, sizeof(int));
@@ -4638,9 +4686,9 @@ right_value95 = (void*)0;
 memset(&result_139, 0, sizeof(char*));
 memset(&i_140, 0, sizeof(int));
     if(_if_conditional158=str==((void*)0),    _if_conditional158) {
-        __result174__ = __result_obj__ = ((char*)(right_value94=__builtin_string("")));
+        __result180__ = __result_obj__ = ((char*)(right_value94=__builtin_string("")));
         right_value94 = come_decrement_ref_count2(right_value94, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result174__;
+        return __result180__;
     }
     len_138=strlen(str);
     result_139=(char*)come_increment_ref_count(((char*)(right_value95=(char*)come_calloc(1, sizeof(char)*(1*(len_138+1)), "libcomelang2.c", 1666, "char"))));
@@ -4649,9 +4697,9 @@ memset(&i_140, 0, sizeof(int));
         result_139[i_140]=str[len_138-i_140-1];
     }
     result_139[len_138]=0;
-    __result175__ = __result_obj__ = result_139;
+    __result181__ = __result_obj__ = result_139;
     result_139 = come_decrement_ref_count2(result_139, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result175__;
+    return __result181__;
     result_139 = come_decrement_ref_count2(result_139, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4659,12 +4707,12 @@ char* charp_reverse(char* str){
 void* __result_obj__;
 _Bool _if_conditional159;
 void* right_value96;
-char* __result176__;
+char* __result182__;
 int len_141;
 void* right_value97;
 char* result_142;
 int i_143;
-char* __result177__;
+char* __result183__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value96 = (void*)0;
 memset(&len_141, 0, sizeof(int));
@@ -4672,9 +4720,9 @@ right_value97 = (void*)0;
 memset(&result_142, 0, sizeof(char*));
 memset(&i_143, 0, sizeof(int));
     if(_if_conditional159=str==((void*)0),    _if_conditional159) {
-        __result176__ = __result_obj__ = ((char*)(right_value96=__builtin_string("")));
+        __result182__ = __result_obj__ = ((char*)(right_value96=__builtin_string("")));
         right_value96 = come_decrement_ref_count2(right_value96, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result176__;
+        return __result182__;
     }
     len_141=strlen(str);
     result_142=(char*)come_increment_ref_count(((char*)(right_value97=(char*)come_calloc(1, sizeof(char)*(1*(len_141+1)), "libcomelang2.c", 1683, "char"))));
@@ -4683,9 +4731,9 @@ memset(&i_143, 0, sizeof(int));
         result_142[i_143]=str[len_141-i_143-1];
     }
     result_142[len_141]=0;
-    __result177__ = __result_obj__ = result_142;
+    __result183__ = __result_obj__ = result_142;
     result_142 = come_decrement_ref_count2(result_142, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result177__;
+    return __result183__;
     result_142 = come_decrement_ref_count2(result_142, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4693,25 +4741,25 @@ char* string_operator_load_range_element(char* str, int head, int tail){
 void* __result_obj__;
 _Bool _if_conditional160;
 void* right_value98;
-char* __result178__;
+char* __result184__;
 int len_144;
 _Bool _if_conditional161;
 _Bool _if_conditional162;
 _Bool _if_conditional163;
 void* right_value99;
 void* right_value100;
-char* __result179__;
+char* __result185__;
 _Bool _if_conditional164;
 _Bool _if_conditional165;
 _Bool _if_conditional166;
 void* right_value101;
-char* __result180__;
+char* __result186__;
 _Bool _if_conditional167;
 void* right_value102;
-char* __result181__;
+char* __result187__;
 void* right_value103;
 char* result_145;
-char* __result182__;
+char* __result188__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value98 = (void*)0;
 memset(&len_144, 0, sizeof(int));
@@ -4722,9 +4770,9 @@ right_value102 = (void*)0;
 right_value103 = (void*)0;
 memset(&result_145, 0, sizeof(char*));
     if(_if_conditional160=str==((void*)0),    _if_conditional160) {
-        __result178__ = __result_obj__ = ((char*)(right_value98=__builtin_string("")));
+        __result184__ = __result_obj__ = ((char*)(right_value98=__builtin_string("")));
         right_value98 = come_decrement_ref_count2(right_value98, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result178__;
+        return __result184__;
     }
     len_144=strlen(str);
     if(_if_conditional161=head<0,    _if_conditional161) {
@@ -4734,10 +4782,10 @@ memset(&result_145, 0, sizeof(char*));
         tail+=len_144+1;
     }
     if(_if_conditional163=head>tail,    _if_conditional163) {
-        __result179__ = __result_obj__ = ((char*)(right_value100=string_reverse(((char*)(right_value99=charp_substring(str,tail,head))))));
+        __result185__ = __result_obj__ = ((char*)(right_value100=string_reverse(((char*)(right_value99=charp_substring(str,tail,head))))));
         right_value99 = come_decrement_ref_count2(right_value99, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value100 = come_decrement_ref_count2(right_value100, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result179__;
+        return __result185__;
     }
     if(_if_conditional164=head<0,    _if_conditional164) {
         head=0;
@@ -4746,22 +4794,22 @@ memset(&result_145, 0, sizeof(char*));
         tail=len_144;
     }
     if(_if_conditional166=head==tail,    _if_conditional166) {
-        __result180__ = __result_obj__ = ((char*)(right_value101=__builtin_string("")));
+        __result186__ = __result_obj__ = ((char*)(right_value101=__builtin_string("")));
         right_value101 = come_decrement_ref_count2(right_value101, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result180__;
+        return __result186__;
     }
     if(_if_conditional167=tail-head+1<1,    _if_conditional167) {
-        __result181__ = __result_obj__ = ((char*)(right_value102=__builtin_string("")));
+        __result187__ = __result_obj__ = ((char*)(right_value102=__builtin_string("")));
         right_value102 = come_decrement_ref_count2(right_value102, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result181__;
+        return __result187__;
     }
     result_145=(char*)come_increment_ref_count(((char*)(right_value103=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2.c", 1728, "char"))));
     right_value103 = come_decrement_ref_count2(right_value103, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     memcpy(result_145,str+head,tail-head);
     result_145[tail-head]=0;
-    __result182__ = __result_obj__ = result_145;
+    __result188__ = __result_obj__ = result_145;
     result_145 = come_decrement_ref_count2(result_145, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result182__;
+    return __result188__;
     result_145 = come_decrement_ref_count2(result_145, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4769,25 +4817,25 @@ char* charp_operator_load_range_element(char* str, int head, int tail){
 void* __result_obj__;
 _Bool _if_conditional168;
 void* right_value104;
-char* __result183__;
+char* __result189__;
 int len_146;
 _Bool _if_conditional169;
 _Bool _if_conditional170;
 _Bool _if_conditional171;
 void* right_value105;
 void* right_value106;
-char* __result184__;
+char* __result190__;
 _Bool _if_conditional172;
 _Bool _if_conditional173;
 _Bool _if_conditional174;
 void* right_value107;
-char* __result185__;
+char* __result191__;
 _Bool _if_conditional175;
 void* right_value108;
-char* __result186__;
+char* __result192__;
 void* right_value109;
 char* result_147;
-char* __result187__;
+char* __result193__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value104 = (void*)0;
 memset(&len_146, 0, sizeof(int));
@@ -4798,9 +4846,9 @@ right_value108 = (void*)0;
 right_value109 = (void*)0;
 memset(&result_147, 0, sizeof(char*));
     if(_if_conditional168=str==((void*)0),    _if_conditional168) {
-        __result183__ = __result_obj__ = ((char*)(right_value104=__builtin_string("")));
+        __result189__ = __result_obj__ = ((char*)(right_value104=__builtin_string("")));
         right_value104 = come_decrement_ref_count2(right_value104, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result183__;
+        return __result189__;
     }
     len_146=strlen(str);
     if(_if_conditional169=head<0,    _if_conditional169) {
@@ -4810,10 +4858,10 @@ memset(&result_147, 0, sizeof(char*));
         tail+=len_146+1;
     }
     if(_if_conditional171=head>tail,    _if_conditional171) {
-        __result184__ = __result_obj__ = ((char*)(right_value106=string_reverse(((char*)(right_value105=charp_substring(str,tail,head))))));
+        __result190__ = __result_obj__ = ((char*)(right_value106=string_reverse(((char*)(right_value105=charp_substring(str,tail,head))))));
         right_value105 = come_decrement_ref_count2(right_value105, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value106 = come_decrement_ref_count2(right_value106, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result184__;
+        return __result190__;
     }
     if(_if_conditional172=head<0,    _if_conditional172) {
         head=0;
@@ -4822,22 +4870,22 @@ memset(&result_147, 0, sizeof(char*));
         tail=len_146;
     }
     if(_if_conditional174=head==tail,    _if_conditional174) {
-        __result185__ = __result_obj__ = ((char*)(right_value107=__builtin_string("")));
+        __result191__ = __result_obj__ = ((char*)(right_value107=__builtin_string("")));
         right_value107 = come_decrement_ref_count2(right_value107, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result185__;
+        return __result191__;
     }
     if(_if_conditional175=tail-head+1<1,    _if_conditional175) {
-        __result186__ = __result_obj__ = ((char*)(right_value108=__builtin_string("")));
+        __result192__ = __result_obj__ = ((char*)(right_value108=__builtin_string("")));
         right_value108 = come_decrement_ref_count2(right_value108, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result186__;
+        return __result192__;
     }
     result_147=(char*)come_increment_ref_count(((char*)(right_value109=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2.c", 1771, "char"))));
     right_value109 = come_decrement_ref_count2(right_value109, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     memcpy(result_147,str+head,tail-head);
     result_147[tail-head]=0;
-    __result187__ = __result_obj__ = result_147;
+    __result193__ = __result_obj__ = result_147;
     result_147 = come_decrement_ref_count2(result_147, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result187__;
+    return __result193__;
     result_147 = come_decrement_ref_count2(result_147, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4845,25 +4893,25 @@ char* charp_substring(char* str, int head, int tail){
 void* __result_obj__;
 _Bool _if_conditional176;
 void* right_value110;
-char* __result188__;
+char* __result194__;
 int len_148;
 _Bool _if_conditional177;
 _Bool _if_conditional178;
 _Bool _if_conditional179;
 void* right_value111;
 void* right_value112;
-char* __result189__;
+char* __result195__;
 _Bool _if_conditional180;
 _Bool _if_conditional181;
 _Bool _if_conditional182;
 void* right_value113;
-char* __result190__;
+char* __result196__;
 _Bool _if_conditional183;
 void* right_value114;
-char* __result191__;
+char* __result197__;
 void* right_value115;
 char* result_149;
-char* __result192__;
+char* __result198__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value110 = (void*)0;
 memset(&len_148, 0, sizeof(int));
@@ -4874,9 +4922,9 @@ right_value114 = (void*)0;
 right_value115 = (void*)0;
 memset(&result_149, 0, sizeof(char*));
     if(_if_conditional176=str==((void*)0),    _if_conditional176) {
-        __result188__ = __result_obj__ = ((char*)(right_value110=__builtin_string("")));
+        __result194__ = __result_obj__ = ((char*)(right_value110=__builtin_string("")));
         right_value110 = come_decrement_ref_count2(right_value110, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result188__;
+        return __result194__;
     }
     len_148=strlen(str);
     if(_if_conditional177=head<0,    _if_conditional177) {
@@ -4886,10 +4934,10 @@ memset(&result_149, 0, sizeof(char*));
         tail+=len_148+1;
     }
     if(_if_conditional179=head>tail,    _if_conditional179) {
-        __result189__ = __result_obj__ = ((char*)(right_value112=string_reverse(((char*)(right_value111=charp_substring(str,tail,head))))));
+        __result195__ = __result_obj__ = ((char*)(right_value112=string_reverse(((char*)(right_value111=charp_substring(str,tail,head))))));
         right_value111 = come_decrement_ref_count2(right_value111, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value112 = come_decrement_ref_count2(right_value112, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result189__;
+        return __result195__;
     }
     if(_if_conditional180=head<0,    _if_conditional180) {
         head=0;
@@ -4898,22 +4946,22 @@ memset(&result_149, 0, sizeof(char*));
         tail=len_148;
     }
     if(_if_conditional182=head==tail,    _if_conditional182) {
-        __result190__ = __result_obj__ = ((char*)(right_value113=__builtin_string("")));
+        __result196__ = __result_obj__ = ((char*)(right_value113=__builtin_string("")));
         right_value113 = come_decrement_ref_count2(right_value113, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result190__;
+        return __result196__;
     }
     if(_if_conditional183=tail-head+1<1,    _if_conditional183) {
-        __result191__ = __result_obj__ = ((char*)(right_value114=__builtin_string("")));
+        __result197__ = __result_obj__ = ((char*)(right_value114=__builtin_string("")));
         right_value114 = come_decrement_ref_count2(right_value114, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result191__;
+        return __result197__;
     }
     result_149=(char*)come_increment_ref_count(((char*)(right_value115=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2.c", 1814, "char"))));
     right_value115 = come_decrement_ref_count2(right_value115, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     memcpy(result_149,str+head,tail-head);
     result_149[tail-head]=0;
-    __result192__ = __result_obj__ = result_149;
+    __result198__ = __result_obj__ = result_149;
     result_149 = come_decrement_ref_count2(result_149, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result192__;
+    return __result198__;
     result_149 = come_decrement_ref_count2(result_149, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4921,25 +4969,25 @@ char* string_substring(char* str, int head, int tail){
 void* __result_obj__;
 _Bool _if_conditional184;
 void* right_value116;
-char* __result193__;
+char* __result199__;
 int len_150;
 _Bool _if_conditional185;
 _Bool _if_conditional186;
 _Bool _if_conditional187;
 void* right_value117;
 void* right_value118;
-char* __result194__;
+char* __result200__;
 _Bool _if_conditional188;
 _Bool _if_conditional189;
 _Bool _if_conditional190;
 void* right_value119;
-char* __result195__;
+char* __result201__;
 _Bool _if_conditional191;
 void* right_value120;
-char* __result196__;
+char* __result202__;
 void* right_value121;
 char* result_151;
-char* __result197__;
+char* __result203__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value116 = (void*)0;
 memset(&len_150, 0, sizeof(int));
@@ -4950,9 +4998,9 @@ right_value120 = (void*)0;
 right_value121 = (void*)0;
 memset(&result_151, 0, sizeof(char*));
     if(_if_conditional184=str==((void*)0),    _if_conditional184) {
-        __result193__ = __result_obj__ = ((char*)(right_value116=__builtin_string("")));
+        __result199__ = __result_obj__ = ((char*)(right_value116=__builtin_string("")));
         right_value116 = come_decrement_ref_count2(right_value116, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result193__;
+        return __result199__;
     }
     len_150=strlen(str);
     if(_if_conditional185=head<0,    _if_conditional185) {
@@ -4962,10 +5010,10 @@ memset(&result_151, 0, sizeof(char*));
         tail+=len_150+1;
     }
     if(_if_conditional187=head>tail,    _if_conditional187) {
-        __result194__ = __result_obj__ = ((char*)(right_value118=string_reverse(((char*)(right_value117=charp_substring(str,tail,head))))));
+        __result200__ = __result_obj__ = ((char*)(right_value118=string_reverse(((char*)(right_value117=charp_substring(str,tail,head))))));
         right_value117 = come_decrement_ref_count2(right_value117, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value118 = come_decrement_ref_count2(right_value118, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result194__;
+        return __result200__;
     }
     if(_if_conditional188=head<0,    _if_conditional188) {
         head=0;
@@ -4974,22 +5022,22 @@ memset(&result_151, 0, sizeof(char*));
         tail=len_150;
     }
     if(_if_conditional190=head==tail,    _if_conditional190) {
-        __result195__ = __result_obj__ = ((char*)(right_value119=__builtin_string("")));
+        __result201__ = __result_obj__ = ((char*)(right_value119=__builtin_string("")));
         right_value119 = come_decrement_ref_count2(right_value119, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result195__;
+        return __result201__;
     }
     if(_if_conditional191=tail-head+1<1,    _if_conditional191) {
-        __result196__ = __result_obj__ = ((char*)(right_value120=__builtin_string("")));
+        __result202__ = __result_obj__ = ((char*)(right_value120=__builtin_string("")));
         right_value120 = come_decrement_ref_count2(right_value120, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result196__;
+        return __result202__;
     }
     result_151=(char*)come_increment_ref_count(((char*)(right_value121=(char*)come_calloc(1, sizeof(char)*(1*(tail-head+1)), "libcomelang2.c", 1857, "char"))));
     right_value121 = come_decrement_ref_count2(right_value121, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     memcpy(result_151,str+head,tail-head);
     result_151[tail-head]=0;
-    __result197__ = __result_obj__ = result_151;
+    __result203__ = __result_obj__ = result_151;
     result_151 = come_decrement_ref_count2(result_151, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result197__;
+    return __result203__;
     result_151 = come_decrement_ref_count2(result_151, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -4997,16 +5045,16 @@ char* xsprintf(char* msg, ...){
 void* __result_obj__;
 _Bool _if_conditional192;
 void* right_value122;
-char* __result198__;
+char* __result204__;
 va_list args_152;
 char* result_153;
 int len_154;
 _Bool _if_conditional193;
 void* right_value123;
-char* __result199__;
+char* __result205__;
 void* right_value124;
 char* result2_155;
-char* __result200__;
+char* __result206__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value122 = (void*)0;
 memset(&args_152, 0, sizeof(va_list));
@@ -5016,26 +5064,26 @@ right_value123 = (void*)0;
 right_value124 = (void*)0;
 memset(&result2_155, 0, sizeof(char*));
     if(_if_conditional192=msg==((void*)0),    _if_conditional192) {
-        __result198__ = __result_obj__ = ((char*)(right_value122=__builtin_string("")));
+        __result204__ = __result_obj__ = ((char*)(right_value122=__builtin_string("")));
         right_value122 = come_decrement_ref_count2(right_value122, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result198__;
+        return __result204__;
     }
     __builtin_va_start(args_152,msg);
     len_154=vasprintf(&result_153,msg,args_152);
     __builtin_va_end(args_152);
     if(_if_conditional193=len_154<0,    _if_conditional193) {
-        __result199__ = __result_obj__ = ((char*)(right_value123=__builtin_string("")));
+        __result205__ = __result_obj__ = ((char*)(right_value123=__builtin_string("")));
         come_call_finalizer2(va_list_finalize,(&args_152), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
         right_value123 = come_decrement_ref_count2(right_value123, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result199__;
+        return __result205__;
     }
     result2_155=(char*)come_increment_ref_count(((char*)(right_value124=__builtin_string(result_153))));
     right_value124 = come_decrement_ref_count2(right_value124, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     free(result_153);
-    __result200__ = __result_obj__ = result2_155;
+    __result206__ = __result_obj__ = result2_155;
     come_call_finalizer2(va_list_finalize,(&args_152), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
     result2_155 = come_decrement_ref_count2(result2_155, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result200__;
+    return __result206__;
     come_call_finalizer2(va_list_finalize,(&args_152), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
     result2_155 = come_decrement_ref_count2(result2_155, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
@@ -5049,22 +5097,22 @@ char* charp_delete(char* str, int head, int tail){
 void* __result_obj__;
 _Bool _if_conditional194;
 void* right_value125;
-char* __result201__;
+char* __result207__;
 int len_156;
 _Bool _if_conditional195;
 void* right_value126;
-char* __result202__;
+char* __result208__;
 _Bool _if_conditional196;
 _Bool _if_conditional197;
 _Bool _if_conditional198;
 _Bool _if_conditional199;
 void* right_value127;
-char* __result203__;
+char* __result209__;
 _Bool _if_conditional200;
 void* right_value128;
 char* sub_str_157;
 void* right_value129;
-char* __result204__;
+char* __result210__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value125 = (void*)0;
 memset(&len_156, 0, sizeof(int));
@@ -5074,15 +5122,15 @@ right_value128 = (void*)0;
 memset(&sub_str_157, 0, sizeof(char*));
 right_value129 = (void*)0;
     if(_if_conditional194=str==((void*)0),    _if_conditional194) {
-        __result201__ = __result_obj__ = ((char*)(right_value125=__builtin_string("")));
+        __result207__ = __result_obj__ = ((char*)(right_value125=__builtin_string("")));
         right_value125 = come_decrement_ref_count2(right_value125, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result201__;
+        return __result207__;
     }
     len_156=strlen(str);
     if(_if_conditional195=strcmp(str,"")==0,    _if_conditional195) {
-        __result202__ = __result_obj__ = ((char*)(right_value126=__builtin_string(str)));
+        __result208__ = __result_obj__ = ((char*)(right_value126=__builtin_string(str)));
         right_value126 = come_decrement_ref_count2(right_value126, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result202__;
+        return __result208__;
     }
     if(_if_conditional196=head<0,    _if_conditional196) {
         head+=len_156;
@@ -5094,9 +5142,9 @@ right_value129 = (void*)0;
         head=0;
     }
     if(_if_conditional199=tail<0,    _if_conditional199) {
-        __result203__ = __result_obj__ = ((char*)(right_value127=__builtin_string(str)));
+        __result209__ = __result_obj__ = ((char*)(right_value127=__builtin_string(str)));
         right_value127 = come_decrement_ref_count2(right_value127, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result203__;
+        return __result209__;
     }
     if(_if_conditional200=tail>=len_156,    _if_conditional200) {
         tail=len_156;
@@ -5104,10 +5152,10 @@ right_value129 = (void*)0;
     sub_str_157=(char*)come_increment_ref_count(((char*)(right_value128=charp_substring(str,tail,-1))));
     right_value128 = come_decrement_ref_count2(right_value128, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     memcpy(str+head,sub_str_157,string_length(sub_str_157)+1);
-    __result204__ = __result_obj__ = ((char*)(right_value129=__builtin_string(str)));
+    __result210__ = __result_obj__ = ((char*)(right_value129=__builtin_string(str)));
     sub_str_157 = come_decrement_ref_count2(sub_str_157, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     right_value129 = come_decrement_ref_count2(right_value129, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result204__;
+    return __result210__;
     sub_str_157 = come_decrement_ref_count2(sub_str_157, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -5115,22 +5163,22 @@ char* string_delete(char* str, int head, int tail){
 void* __result_obj__;
 _Bool _if_conditional201;
 void* right_value130;
-char* __result205__;
+char* __result211__;
 int len_158;
 _Bool _if_conditional202;
 void* right_value131;
-char* __result206__;
+char* __result212__;
 _Bool _if_conditional203;
 _Bool _if_conditional204;
 _Bool _if_conditional205;
 _Bool _if_conditional206;
 void* right_value132;
-char* __result207__;
+char* __result213__;
 _Bool _if_conditional207;
 void* right_value133;
 char* sub_str_159;
 void* right_value134;
-char* __result208__;
+char* __result214__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value130 = (void*)0;
 memset(&len_158, 0, sizeof(int));
@@ -5140,15 +5188,15 @@ right_value133 = (void*)0;
 memset(&sub_str_159, 0, sizeof(char*));
 right_value134 = (void*)0;
     if(_if_conditional201=str==((void*)0),    _if_conditional201) {
-        __result205__ = __result_obj__ = ((char*)(right_value130=__builtin_string("")));
+        __result211__ = __result_obj__ = ((char*)(right_value130=__builtin_string("")));
         right_value130 = come_decrement_ref_count2(right_value130, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result205__;
+        return __result211__;
     }
     len_158=strlen(str);
     if(_if_conditional202=strcmp(str,"")==0,    _if_conditional202) {
-        __result206__ = __result_obj__ = ((char*)(right_value131=__builtin_string(str)));
+        __result212__ = __result_obj__ = ((char*)(right_value131=__builtin_string(str)));
         right_value131 = come_decrement_ref_count2(right_value131, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result206__;
+        return __result212__;
     }
     if(_if_conditional203=head<0,    _if_conditional203) {
         head+=len_158;
@@ -5160,9 +5208,9 @@ right_value134 = (void*)0;
         head=0;
     }
     if(_if_conditional206=tail<0,    _if_conditional206) {
-        __result207__ = __result_obj__ = ((char*)(right_value132=__builtin_string(str)));
+        __result213__ = __result_obj__ = ((char*)(right_value132=__builtin_string(str)));
         right_value132 = come_decrement_ref_count2(right_value132, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result207__;
+        return __result213__;
     }
     if(_if_conditional207=tail>=len_158,    _if_conditional207) {
         tail=len_158;
@@ -5170,10 +5218,10 @@ right_value134 = (void*)0;
     sub_str_159=(char*)come_increment_ref_count(((char*)(right_value133=charp_substring(str,tail,-1))));
     right_value133 = come_decrement_ref_count2(right_value133, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     memcpy(str+head,sub_str_159,string_length(sub_str_159)+1);
-    __result208__ = __result_obj__ = ((char*)(right_value134=__builtin_string(str)));
+    __result214__ = __result_obj__ = ((char*)(right_value134=__builtin_string(str)));
     sub_str_159 = come_decrement_ref_count2(sub_str_159, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     right_value134 = come_decrement_ref_count2(right_value134, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result208__;
+    return __result214__;
     sub_str_159 = come_decrement_ref_count2(sub_str_159, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -5182,7 +5230,7 @@ void* __result_obj__;
 _Bool _if_conditional208;
 void* right_value135;
 void* right_value136;
-struct list$1charph* __result210__;
+struct list$1charph* __result216__;
 void* right_value137;
 void* right_value138;
 struct list$1charph* result_162;
@@ -5194,7 +5242,7 @@ _Bool _if_conditional210;
 void* right_value144;
 _Bool _if_conditional213;
 void* right_value145;
-struct list$1charph* __result212__;
+struct list$1charph* __result218__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value135 = (void*)0;
 right_value136 = (void*)0;
@@ -5208,10 +5256,10 @@ memset(&i_164, 0, sizeof(int));
 right_value144 = (void*)0;
 right_value145 = (void*)0;
     if(_if_conditional208=self==((void*)0),    _if_conditional208) {
-        __result210__ = __result_obj__ = ((struct list$1charph*)(right_value136=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value135=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2.c", 1968, "list$1charph")))))));
+        __result216__ = __result_obj__ = ((struct list$1charph*)(right_value136=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value135=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2.c", 1968, "list$1charph")))))));
         come_call_finalizer2(list$1charphp_finalize,right_value135, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         come_call_finalizer2(list$1charphp_finalize,right_value136, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        return __result210__;
+        return __result216__;
     }
     result_162=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value138=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value137=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2.c", 1971, "list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value137, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -5233,24 +5281,24 @@ right_value145 = (void*)0;
         list$1charph_push_back(result_162,(char*)come_increment_ref_count(((char*)(right_value145=__builtin_string(str_163->buf)))));
         right_value145 = come_decrement_ref_count2(right_value145, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
-    __result212__ = __result_obj__ = result_162;
+    __result218__ = __result_obj__ = result_162;
     come_call_finalizer2(list$1charphp_finalize,result_162, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,str_163, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-    return __result212__;
+    return __result218__;
     come_call_finalizer2(list$1charphp_finalize,result_162, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,str_163, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 static struct list$1charph* list$1charph_initialize(struct list$1charph* self){
 void* __result_obj__;
-struct list$1charph* __result209__;
+struct list$1charph* __result215__;
 memset(&__result_obj__, 0, sizeof(void*));
             self->head=((void*)0);
             self->tail=((void*)0);
             self->len=0;
-            __result209__ = __result_obj__ = self;
+            __result215__ = __result_obj__ = self;
             come_call_finalizer2(list$1charphp_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-            return __result209__;
+            return __result215__;
             come_call_finalizer2(list$1charphp_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
 }
 
@@ -5292,7 +5340,7 @@ char* __dec_obj23;
 void* right_value143;
 struct list_item$1charph* litem_167;
 char* __dec_obj24;
-struct list$1charph* __result211__;
+struct list$1charph* __result217__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value141 = (void*)0;
 memset(&litem_165, 0, sizeof(struct list_item$1charph*));
@@ -5336,9 +5384,9 @@ memset(&litem_167, 0, sizeof(struct list_item$1charph*));
                     }
                 }
                 self->len++;
-                __result211__ = __result_obj__ = self;
+                __result217__ = __result_obj__ = self;
                 item = come_decrement_ref_count2(item, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-                return __result211__;
+                return __result217__;
                 item = come_decrement_ref_count2(item, (void*)0, (void*)0, 0, 1, 0, (void*)0);
 }
 
@@ -5347,7 +5395,7 @@ void* __result_obj__;
 _Bool _if_conditional214;
 void* right_value146;
 void* right_value147;
-struct list$1charph* __result213__;
+struct list$1charph* __result219__;
 void* right_value148;
 void* right_value149;
 struct list$1charph* result_168;
@@ -5359,7 +5407,7 @@ _Bool _if_conditional215;
 void* right_value152;
 _Bool _if_conditional216;
 void* right_value153;
-struct list$1charph* __result214__;
+struct list$1charph* __result220__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value146 = (void*)0;
 right_value147 = (void*)0;
@@ -5373,10 +5421,10 @@ memset(&i_170, 0, sizeof(int));
 right_value152 = (void*)0;
 right_value153 = (void*)0;
     if(_if_conditional214=self==((void*)0),    _if_conditional214) {
-        __result213__ = __result_obj__ = ((struct list$1charph*)(right_value147=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value146=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2.c", 1994, "list$1charph")))))));
+        __result219__ = __result_obj__ = ((struct list$1charph*)(right_value147=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value146=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2.c", 1994, "list$1charph")))))));
         come_call_finalizer2(list$1charphp_finalize,right_value146, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         come_call_finalizer2(list$1charphp_finalize,right_value147, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        return __result213__;
+        return __result219__;
     }
     result_168=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value149=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value148=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2.c", 1997, "list$1charph"))))))));
     come_call_finalizer2(list$1charphp_finalize,right_value148, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -5398,10 +5446,10 @@ right_value153 = (void*)0;
         list$1charph_push_back(result_168,(char*)come_increment_ref_count(((char*)(right_value153=__builtin_string(str_169->buf)))));
         right_value153 = come_decrement_ref_count2(right_value153, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
-    __result214__ = __result_obj__ = result_168;
+    __result220__ = __result_obj__ = result_168;
     come_call_finalizer2(list$1charphp_finalize,result_168, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,str_169, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-    return __result214__;
+    return __result220__;
     come_call_finalizer2(list$1charphp_finalize,result_168, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     come_call_finalizer2(buffer_finalize,str_169, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
@@ -5410,17 +5458,17 @@ char* xbasename(char* path){
 void* __result_obj__;
 _Bool _if_conditional217;
 void* right_value154;
-char* __result215__;
+char* __result221__;
 char* p_171;
 _Bool _while_condtional4;
 _Bool _if_conditional218;
 _Bool _if_conditional219;
 void* right_value155;
-char* __result216__;
+char* __result222__;
 void* right_value156;
-char* __result217__;
+char* __result223__;
 void* right_value157;
-char* __result218__;
+char* __result224__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value154 = (void*)0;
 memset(&p_171, 0, sizeof(char*));
@@ -5428,9 +5476,9 @@ right_value155 = (void*)0;
 right_value156 = (void*)0;
 right_value157 = (void*)0;
     if(_if_conditional217=path==((void*)0),    _if_conditional217) {
-        __result215__ = __result_obj__ = ((char*)(right_value154=__builtin_string("")));
+        __result221__ = __result_obj__ = ((char*)(right_value154=__builtin_string("")));
         right_value154 = come_decrement_ref_count2(right_value154, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result215__;
+        return __result221__;
     }
     p_171=path+strlen(path);
     while(_while_condtional4=p_171>=path,    _while_condtional4) {
@@ -5442,48 +5490,48 @@ right_value157 = (void*)0;
         }
     }
     if(_if_conditional219=p_171<path,    _if_conditional219) {
-        __result216__ = __result_obj__ = ((char*)(right_value155=__builtin_string(path)));
+        __result222__ = __result_obj__ = ((char*)(right_value155=__builtin_string(path)));
         right_value155 = come_decrement_ref_count2(right_value155, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result216__;
+        return __result222__;
     }
     else {
-        __result217__ = __result_obj__ = ((char*)(right_value156=__builtin_string(p_171+1)));
+        __result223__ = __result_obj__ = ((char*)(right_value156=__builtin_string(p_171+1)));
         right_value156 = come_decrement_ref_count2(right_value156, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result217__;
+        return __result223__;
     }
-    __result218__ = __result_obj__ = ((char*)(right_value157=__builtin_string("")));
+    __result224__ = __result_obj__ = ((char*)(right_value157=__builtin_string("")));
     right_value157 = come_decrement_ref_count2(right_value157, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result218__;
+    return __result224__;
 }
 
 char* xdirname(char* path){
 void* __result_obj__;
 _Bool _if_conditional220;
 void* right_value158;
-char* __result219__;
+char* __result225__;
 void* right_value159;
 void* right_value160;
-char* __result220__;
+char* __result226__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value158 = (void*)0;
 right_value159 = (void*)0;
 right_value160 = (void*)0;
     if(_if_conditional220=path==((void*)0),    _if_conditional220) {
-        __result219__ = __result_obj__ = ((char*)(right_value158=__builtin_string("")));
+        __result225__ = __result_obj__ = ((char*)(right_value158=__builtin_string("")));
         right_value158 = come_decrement_ref_count2(right_value158, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result219__;
+        return __result225__;
     }
-    __result220__ = __result_obj__ = ((char*)(right_value160=__builtin_string(dirname(((char*)(right_value159=__builtin_string(path)))))));
+    __result226__ = __result_obj__ = ((char*)(right_value160=__builtin_string(dirname(((char*)(right_value159=__builtin_string(path)))))));
     right_value159 = come_decrement_ref_count2(right_value159, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     right_value160 = come_decrement_ref_count2(right_value160, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result220__;
+    return __result226__;
 }
 
 char* xnoextname(char* path){
 void* __result_obj__;
 _Bool _if_conditional221;
 void* right_value161;
-char* __result221__;
+char* __result227__;
 void* right_value162;
 char* path2_172;
 char* p_173;
@@ -5491,11 +5539,11 @@ _Bool _while_condtional5;
 _Bool _if_conditional222;
 _Bool _if_conditional223;
 void* right_value163;
-char* __result222__;
+char* __result228__;
 void* right_value164;
-char* __result223__;
+char* __result229__;
 void* right_value165;
-char* __result224__;
+char* __result230__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value161 = (void*)0;
 right_value162 = (void*)0;
@@ -5505,9 +5553,9 @@ right_value163 = (void*)0;
 right_value164 = (void*)0;
 right_value165 = (void*)0;
     if(_if_conditional221=path==((void*)0),    _if_conditional221) {
-        __result221__ = __result_obj__ = ((char*)(right_value161=__builtin_string("")));
+        __result227__ = __result_obj__ = ((char*)(right_value161=__builtin_string("")));
         right_value161 = come_decrement_ref_count2(right_value161, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result221__;
+        return __result227__;
     }
     path2_172=(char*)come_increment_ref_count(((char*)(right_value162=xbasename(path))));
     right_value162 = come_decrement_ref_count2(right_value162, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
@@ -5521,21 +5569,21 @@ right_value165 = (void*)0;
         }
     }
     if(_if_conditional223=p_173<path2_172,    _if_conditional223) {
-        __result222__ = __result_obj__ = ((char*)(right_value163=__builtin_string(path2_172)));
+        __result228__ = __result_obj__ = ((char*)(right_value163=__builtin_string(path2_172)));
         path2_172 = come_decrement_ref_count2(path2_172, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         right_value163 = come_decrement_ref_count2(right_value163, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result222__;
+        return __result228__;
     }
     else {
-        __result223__ = __result_obj__ = ((char*)(right_value164=string_substring(path2_172,0,p_173-path2_172)));
+        __result229__ = __result_obj__ = ((char*)(right_value164=string_substring(path2_172,0,p_173-path2_172)));
         path2_172 = come_decrement_ref_count2(path2_172, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         right_value164 = come_decrement_ref_count2(right_value164, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result223__;
+        return __result229__;
     }
-    __result224__ = __result_obj__ = ((char*)(right_value165=__builtin_string("")));
+    __result230__ = __result_obj__ = ((char*)(right_value165=__builtin_string("")));
     path2_172 = come_decrement_ref_count2(path2_172, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     right_value165 = come_decrement_ref_count2(right_value165, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result224__;
+    return __result230__;
     path2_172 = come_decrement_ref_count2(path2_172, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -5543,17 +5591,17 @@ char* xextname(char* path){
 void* __result_obj__;
 _Bool _if_conditional224;
 void* right_value166;
-char* __result225__;
+char* __result231__;
 char* p_174;
 _Bool _while_condtional6;
 _Bool _if_conditional225;
 _Bool _if_conditional226;
 void* right_value167;
-char* __result226__;
+char* __result232__;
 void* right_value168;
-char* __result227__;
+char* __result233__;
 void* right_value169;
-char* __result228__;
+char* __result234__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value166 = (void*)0;
 memset(&p_174, 0, sizeof(char*));
@@ -5561,9 +5609,9 @@ right_value167 = (void*)0;
 right_value168 = (void*)0;
 right_value169 = (void*)0;
     if(_if_conditional224=path==((void*)0),    _if_conditional224) {
-        __result225__ = __result_obj__ = ((char*)(right_value166=__builtin_string("")));
+        __result231__ = __result_obj__ = ((char*)(right_value166=__builtin_string("")));
         right_value166 = come_decrement_ref_count2(right_value166, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result225__;
+        return __result231__;
     }
     p_174=path+strlen(path);
     while(_while_condtional6=p_174>=path,    _while_condtional6) {
@@ -5575,46 +5623,46 @@ right_value169 = (void*)0;
         }
     }
     if(_if_conditional226=p_174<path,    _if_conditional226) {
-        __result226__ = __result_obj__ = ((char*)(right_value167=__builtin_string(path)));
+        __result232__ = __result_obj__ = ((char*)(right_value167=__builtin_string(path)));
         right_value167 = come_decrement_ref_count2(right_value167, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result226__;
+        return __result232__;
     }
     else {
-        __result227__ = __result_obj__ = ((char*)(right_value168=__builtin_string(p_174+1)));
+        __result233__ = __result_obj__ = ((char*)(right_value168=__builtin_string(p_174+1)));
         right_value168 = come_decrement_ref_count2(right_value168, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result227__;
+        return __result233__;
     }
-    __result228__ = __result_obj__ = ((char*)(right_value169=__builtin_string("")));
+    __result234__ = __result_obj__ = ((char*)(right_value169=__builtin_string("")));
     right_value169 = come_decrement_ref_count2(right_value169, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result228__;
+    return __result234__;
 }
 
 char* xrealpath(char* path){
 void* __result_obj__;
 _Bool _if_conditional227;
 void* right_value170;
-char* __result229__;
+char* __result235__;
 char* result_175;
 void* right_value171;
 char* result2_176;
-char* __result230__;
+char* __result236__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value170 = (void*)0;
 memset(&result_175, 0, sizeof(char*));
 right_value171 = (void*)0;
 memset(&result2_176, 0, sizeof(char*));
     if(_if_conditional227=path==((void*)0),    _if_conditional227) {
-        __result229__ = __result_obj__ = ((char*)(right_value170=__builtin_string("")));
+        __result235__ = __result_obj__ = ((char*)(right_value170=__builtin_string("")));
         right_value170 = come_decrement_ref_count2(right_value170, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result229__;
+        return __result235__;
     }
     result_175=realpath(path,((void*)0));
     result2_176=(char*)come_increment_ref_count(((char*)(right_value171=__builtin_string(result_175))));
     right_value171 = come_decrement_ref_count2(right_value171, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     free(result_175);
-    __result230__ = __result_obj__ = result2_176;
+    __result236__ = __result_obj__ = result2_176;
     result2_176 = come_decrement_ref_count2(result2_176, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result230__;
+    return __result236__;
     result2_176 = come_decrement_ref_count2(result2_176, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
 
@@ -5622,430 +5670,430 @@ char* bool_to_string(_Bool self){
 void* __result_obj__;
 _Bool _if_conditional228;
 void* right_value172;
-char* __result231__;
+char* __result237__;
 void* right_value173;
-char* __result232__;
+char* __result238__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value172 = (void*)0;
 right_value173 = (void*)0;
     if(self) {
-        __result231__ = __result_obj__ = ((char*)(right_value172=__builtin_string("true")));
+        __result237__ = __result_obj__ = ((char*)(right_value172=__builtin_string("true")));
         right_value172 = come_decrement_ref_count2(right_value172, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result231__;
+        return __result237__;
     }
     else {
-        __result232__ = __result_obj__ = ((char*)(right_value173=__builtin_string("false")));
+        __result238__ = __result_obj__ = ((char*)(right_value173=__builtin_string("false")));
         right_value173 = come_decrement_ref_count2(right_value173, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result232__;
+        return __result238__;
     }
 }
 
 char* char_to_string(char self){
 void* __result_obj__;
 void* right_value174;
-char* __result233__;
+char* __result239__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value174 = (void*)0;
-    __result233__ = __result_obj__ = ((char*)(right_value174=xsprintf("%c",self)));
+    __result239__ = __result_obj__ = ((char*)(right_value174=xsprintf("%c",self)));
     right_value174 = come_decrement_ref_count2(right_value174, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result233__;
+    return __result239__;
 }
 
 char* short_to_string(short short self){
 void* __result_obj__;
 void* right_value175;
-char* __result234__;
+char* __result240__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value175 = (void*)0;
-    __result234__ = __result_obj__ = ((char*)(right_value175=xsprintf("%d",self)));
+    __result240__ = __result_obj__ = ((char*)(right_value175=xsprintf("%d",self)));
     right_value175 = come_decrement_ref_count2(right_value175, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result234__;
+    return __result240__;
 }
 
 char* int_to_string(int self){
 void* __result_obj__;
 void* right_value176;
-char* __result235__;
+char* __result241__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value176 = (void*)0;
-    __result235__ = __result_obj__ = ((char*)(right_value176=xsprintf("%d",self)));
+    __result241__ = __result_obj__ = ((char*)(right_value176=xsprintf("%d",self)));
     right_value176 = come_decrement_ref_count2(right_value176, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result235__;
+    return __result241__;
 }
 
 char* long_to_string(long self){
 void* __result_obj__;
 void* right_value177;
-char* __result236__;
+char* __result242__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value177 = (void*)0;
-    __result236__ = __result_obj__ = ((char*)(right_value177=xsprintf("%ld",self)));
+    __result242__ = __result_obj__ = ((char*)(right_value177=xsprintf("%ld",self)));
     right_value177 = come_decrement_ref_count2(right_value177, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result236__;
+    return __result242__;
 }
 
 char* size_t_to_string(unsigned long int self){
 void* __result_obj__;
 void* right_value178;
-char* __result237__;
+char* __result243__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value178 = (void*)0;
-    __result237__ = __result_obj__ = ((char*)(right_value178=xsprintf("%ld",self)));
+    __result243__ = __result_obj__ = ((char*)(right_value178=xsprintf("%ld",self)));
     right_value178 = come_decrement_ref_count2(right_value178, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result237__;
+    return __result243__;
 }
 
 char* float_to_string(float self){
 void* __result_obj__;
 void* right_value179;
-char* __result238__;
+char* __result244__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value179 = (void*)0;
-    __result238__ = __result_obj__ = ((char*)(right_value179=xsprintf("%f",self)));
+    __result244__ = __result_obj__ = ((char*)(right_value179=xsprintf("%f",self)));
     right_value179 = come_decrement_ref_count2(right_value179, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result238__;
+    return __result244__;
 }
 
 char* double_to_string(double self){
 void* __result_obj__;
 void* right_value180;
-char* __result239__;
+char* __result245__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value180 = (void*)0;
-    __result239__ = __result_obj__ = ((char*)(right_value180=xsprintf("%lf",self)));
+    __result245__ = __result_obj__ = ((char*)(right_value180=xsprintf("%lf",self)));
     right_value180 = come_decrement_ref_count2(right_value180, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result239__;
+    return __result245__;
 }
 
 char* string_to_string(char* self){
 void* __result_obj__;
 _Bool _if_conditional229;
 void* right_value181;
-char* __result240__;
+char* __result246__;
 void* right_value182;
-char* __result241__;
+char* __result247__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value181 = (void*)0;
 right_value182 = (void*)0;
     if(_if_conditional229=self==((void*)0),    _if_conditional229) {
-        __result240__ = __result_obj__ = ((char*)(right_value181=__builtin_string("")));
+        __result246__ = __result_obj__ = ((char*)(right_value181=__builtin_string("")));
         right_value181 = come_decrement_ref_count2(right_value181, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result240__;
+        return __result246__;
     }
-    __result241__ = __result_obj__ = ((char*)(right_value182=__builtin_string(self)));
+    __result247__ = __result_obj__ = ((char*)(right_value182=__builtin_string(self)));
     right_value182 = come_decrement_ref_count2(right_value182, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result241__;
+    return __result247__;
 }
 
 char* charp_to_string(char* self){
 void* __result_obj__;
 _Bool _if_conditional230;
 void* right_value183;
-char* __result242__;
+char* __result248__;
 void* right_value184;
-char* __result243__;
+char* __result249__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value183 = (void*)0;
 right_value184 = (void*)0;
     if(_if_conditional230=self==((void*)0),    _if_conditional230) {
-        __result242__ = __result_obj__ = ((char*)(right_value183=__builtin_string("")));
+        __result248__ = __result_obj__ = ((char*)(right_value183=__builtin_string("")));
         right_value183 = come_decrement_ref_count2(right_value183, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result242__;
+        return __result248__;
     }
-    __result243__ = __result_obj__ = ((char*)(right_value184=__builtin_string(self)));
+    __result249__ = __result_obj__ = ((char*)(right_value184=__builtin_string(self)));
     right_value184 = come_decrement_ref_count2(right_value184, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result243__;
+    return __result249__;
 }
 
 int bool_compare(_Bool left, _Bool right){
 void* __result_obj__;
 _Bool _if_conditional231;
-int __result244__;
+int __result250__;
 _Bool _if_conditional232;
-int __result245__;
+int __result251__;
 _Bool _if_conditional233;
-int __result246__;
-int __result247__;
-int __result248__;
+int __result252__;
+int __result253__;
+int __result254__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional231=!left&&right,    _if_conditional231) {
-        __result244__ = -1;
-        return __result244__;
+        __result250__ = -1;
+        return __result250__;
     }
     else {
         if(_if_conditional232=left&&right,        _if_conditional232) {
-            __result245__ = 0;
-            return __result245__;
+            __result251__ = 0;
+            return __result251__;
         }
         else {
             if(_if_conditional233=!left&&!right,            _if_conditional233) {
-                __result246__ = 0;
-                return __result246__;
+                __result252__ = 0;
+                return __result252__;
             }
             else {
-                __result247__ = 1;
-                return __result247__;
+                __result253__ = 1;
+                return __result253__;
             }
         }
     }
-    __result248__ = 0;
-    return __result248__;
+    __result254__ = 0;
+    return __result254__;
 }
 
 int char_compare(char left, char right){
 void* __result_obj__;
 _Bool _if_conditional234;
-int __result249__;
+int __result255__;
 _Bool _if_conditional235;
-int __result250__;
-int __result251__;
-int __result252__;
+int __result256__;
+int __result257__;
+int __result258__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional234=left<right,    _if_conditional234) {
-        __result249__ = -1;
-        return __result249__;
+        __result255__ = -1;
+        return __result255__;
     }
     else {
         if(_if_conditional235=left>right,        _if_conditional235) {
-            __result250__ = 1;
-            return __result250__;
+            __result256__ = 1;
+            return __result256__;
         }
         else {
-            __result251__ = 0;
-            return __result251__;
+            __result257__ = 0;
+            return __result257__;
         }
     }
-    __result252__ = 0;
-    return __result252__;
+    __result258__ = 0;
+    return __result258__;
 }
 
 int short_compare(short short left, short short right){
 void* __result_obj__;
 _Bool _if_conditional236;
-int __result253__;
+int __result259__;
 _Bool _if_conditional237;
-int __result254__;
-int __result255__;
-int __result256__;
+int __result260__;
+int __result261__;
+int __result262__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional236=left<right,    _if_conditional236) {
-        __result253__ = -1;
-        return __result253__;
+        __result259__ = -1;
+        return __result259__;
     }
     else {
         if(_if_conditional237=left>right,        _if_conditional237) {
-            __result254__ = 1;
-            return __result254__;
+            __result260__ = 1;
+            return __result260__;
         }
         else {
-            __result255__ = 0;
-            return __result255__;
+            __result261__ = 0;
+            return __result261__;
         }
     }
-    __result256__ = 0;
-    return __result256__;
+    __result262__ = 0;
+    return __result262__;
 }
 
 int int_compare(int left, int right){
 void* __result_obj__;
 _Bool _if_conditional238;
-int __result257__;
+int __result263__;
 _Bool _if_conditional239;
-int __result258__;
-int __result259__;
-int __result260__;
+int __result264__;
+int __result265__;
+int __result266__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional238=left<right,    _if_conditional238) {
-        __result257__ = -1;
-        return __result257__;
+        __result263__ = -1;
+        return __result263__;
     }
     else {
         if(_if_conditional239=left>right,        _if_conditional239) {
-            __result258__ = 1;
-            return __result258__;
+            __result264__ = 1;
+            return __result264__;
         }
         else {
-            __result259__ = 0;
-            return __result259__;
+            __result265__ = 0;
+            return __result265__;
         }
     }
-    __result260__ = 0;
-    return __result260__;
+    __result266__ = 0;
+    return __result266__;
 }
 
 int long_compare(long left, long right){
 void* __result_obj__;
 _Bool _if_conditional240;
-int __result261__;
+int __result267__;
 _Bool _if_conditional241;
-int __result262__;
-int __result263__;
-int __result264__;
+int __result268__;
+int __result269__;
+int __result270__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional240=left<right,    _if_conditional240) {
-        __result261__ = -1;
-        return __result261__;
+        __result267__ = -1;
+        return __result267__;
     }
     else {
         if(_if_conditional241=left>right,        _if_conditional241) {
-            __result262__ = 1;
-            return __result262__;
+            __result268__ = 1;
+            return __result268__;
         }
         else {
-            __result263__ = 0;
-            return __result263__;
+            __result269__ = 0;
+            return __result269__;
         }
     }
-    __result264__ = 0;
-    return __result264__;
+    __result270__ = 0;
+    return __result270__;
 }
 
 int size_t_compare(unsigned long int left, unsigned long int right){
 void* __result_obj__;
 _Bool _if_conditional242;
-int __result265__;
+int __result271__;
 _Bool _if_conditional243;
-int __result266__;
-int __result267__;
-int __result268__;
+int __result272__;
+int __result273__;
+int __result274__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional242=left<right,    _if_conditional242) {
-        __result265__ = -1;
-        return __result265__;
+        __result271__ = -1;
+        return __result271__;
     }
     else {
         if(_if_conditional243=left>right,        _if_conditional243) {
-            __result266__ = 1;
-            return __result266__;
+            __result272__ = 1;
+            return __result272__;
         }
         else {
-            __result267__ = 0;
-            return __result267__;
+            __result273__ = 0;
+            return __result273__;
         }
     }
-    __result268__ = 0;
-    return __result268__;
+    __result274__ = 0;
+    return __result274__;
 }
 
 int float_compare(float left, float right){
 void* __result_obj__;
 _Bool _if_conditional244;
-int __result269__;
+int __result275__;
 _Bool _if_conditional245;
-int __result270__;
-int __result271__;
-int __result272__;
+int __result276__;
+int __result277__;
+int __result278__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional244=left<right,    _if_conditional244) {
-        __result269__ = -1;
-        return __result269__;
+        __result275__ = -1;
+        return __result275__;
     }
     else {
         if(_if_conditional245=left>right,        _if_conditional245) {
-            __result270__ = 1;
-            return __result270__;
+            __result276__ = 1;
+            return __result276__;
         }
         else {
-            __result271__ = 0;
-            return __result271__;
+            __result277__ = 0;
+            return __result277__;
         }
     }
-    __result272__ = 0;
-    return __result272__;
+    __result278__ = 0;
+    return __result278__;
 }
 
 int double_compare(double left, double right){
 void* __result_obj__;
 _Bool _if_conditional246;
-int __result273__;
+int __result279__;
 _Bool _if_conditional247;
-int __result274__;
-int __result275__;
-int __result276__;
+int __result280__;
+int __result281__;
+int __result282__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional246=left<right,    _if_conditional246) {
-        __result273__ = -1;
-        return __result273__;
+        __result279__ = -1;
+        return __result279__;
     }
     else {
         if(_if_conditional247=left>right,        _if_conditional247) {
-            __result274__ = 1;
-            return __result274__;
+            __result280__ = 1;
+            return __result280__;
         }
         else {
-            __result275__ = 0;
-            return __result275__;
+            __result281__ = 0;
+            return __result281__;
         }
     }
-    __result276__ = 0;
-    return __result276__;
+    __result282__ = 0;
+    return __result282__;
 }
 
 int string_compare(char* left, char* right){
 void* __result_obj__;
 _Bool _if_conditional248;
-int __result277__;
+int __result283__;
 _Bool _if_conditional249;
-int __result278__;
+int __result284__;
 _Bool _if_conditional250;
-int __result279__;
-int __result280__;
+int __result285__;
+int __result286__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional248=left==((void*)0)&&right==((void*)0),    _if_conditional248) {
-        __result277__ = 0;
-        return __result277__;
+        __result283__ = 0;
+        return __result283__;
     }
     else {
         if(_if_conditional249=left==((void*)0),        _if_conditional249) {
-            __result278__ = -1;
-            return __result278__;
+            __result284__ = -1;
+            return __result284__;
         }
         else {
             if(_if_conditional250=right==((void*)0),            _if_conditional250) {
-                __result279__ = 1;
-                return __result279__;
+                __result285__ = 1;
+                return __result285__;
             }
         }
     }
-    __result280__ = strcmp(left,right);
-    return __result280__;
+    __result286__ = strcmp(left,right);
+    return __result286__;
 }
 
 int charp_compare(char* left, char* right){
 void* __result_obj__;
 _Bool _if_conditional251;
-int __result281__;
+int __result287__;
 _Bool _if_conditional252;
-int __result282__;
+int __result288__;
 _Bool _if_conditional253;
-int __result283__;
-int __result284__;
+int __result289__;
+int __result290__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional251=left==((void*)0)&&right==((void*)0),    _if_conditional251) {
-        __result281__ = 0;
-        return __result281__;
+        __result287__ = 0;
+        return __result287__;
     }
     else {
         if(_if_conditional252=left==((void*)0),        _if_conditional252) {
-            __result282__ = -1;
-            return __result282__;
+            __result288__ = -1;
+            return __result288__;
         }
         else {
             if(_if_conditional253=right==((void*)0),            _if_conditional253) {
-                __result283__ = 1;
-                return __result283__;
+                __result289__ = 1;
+                return __result289__;
             }
         }
     }
-    __result284__ = strcmp(left,right);
-    return __result284__;
+    __result290__ = strcmp(left,right);
+    return __result290__;
 }
 
 char* FILE_read(struct _IO_FILE* f){
 void* __result_obj__;
 _Bool _if_conditional254;
 void* right_value185;
-char* __result285__;
+char* __result291__;
 void* right_value186;
 void* right_value187;
 struct buffer* buf_177;
@@ -6053,7 +6101,7 @@ _Bool _while_condtional7;
 int size_179;
 _Bool _if_conditional255;
 void* right_value188;
-char* __result286__;
+char* __result292__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value185 = (void*)0;
 right_value186 = (void*)0;
@@ -6062,9 +6110,9 @@ memset(&buf_177, 0, sizeof(struct buffer*));
 memset(&size_179, 0, sizeof(int));
 right_value188 = (void*)0;
     if(_if_conditional254=f==((void*)0),    _if_conditional254) {
-        __result285__ = __result_obj__ = ((char*)(right_value185=__builtin_string("")));
+        __result291__ = __result_obj__ = ((char*)(right_value185=__builtin_string("")));
         right_value185 = come_decrement_ref_count2(right_value185, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result285__;
+        return __result291__;
     }
     buf_177=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value187=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value186=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 2350, "buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value186, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -6078,65 +6126,65 @@ right_value188 = (void*)0;
             break;
         }
     }
-    __result286__ = __result_obj__ = ((char*)(right_value188=buffer_to_string(buf_177)));
+    __result292__ = __result_obj__ = ((char*)(right_value188=buffer_to_string(buf_177)));
     come_call_finalizer2(buffer_finalize,buf_177, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     right_value188 = come_decrement_ref_count2(right_value188, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result286__;
+    return __result292__;
     come_call_finalizer2(buffer_finalize,buf_177, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 int FILE_write(struct _IO_FILE* f, char* str){
 void* __result_obj__;
 _Bool _if_conditional256;
-int __result287__;
-int __result288__;
+int __result293__;
+int __result294__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional256=f==((void*)0)||str==((void*)0),    _if_conditional256) {
-        __result287__ = -1;
-        return __result287__;
+        __result293__ = -1;
+        return __result293__;
     }
-    __result288__ = fwrite(str,strlen(str),1,f);
-    return __result288__;
+    __result294__ = fwrite(str,strlen(str),1,f);
+    return __result294__;
 }
 
 int FILE_fclose(struct _IO_FILE* f){
 void* __result_obj__;
 _Bool _if_conditional257;
-int __result289__;
+int __result295__;
 int result_180;
 _Bool _if_conditional258;
-int __result290__;
-int __result291__;
+int __result296__;
+int __result297__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_180, 0, sizeof(int));
     if(_if_conditional257=f==((void*)0),    _if_conditional257) {
-        __result289__ = -1;
-        return __result289__;
+        __result295__ = -1;
+        return __result295__;
     }
     result_180=fclose(f);
     if(_if_conditional258=result_180<0,    _if_conditional258) {
-        __result290__ = result_180;
-        return __result290__;
+        __result296__ = result_180;
+        return __result296__;
     }
-    __result291__ = result_180;
-    return __result291__;
+    __result297__ = result_180;
+    return __result297__;
 }
 
 struct _IO_FILE* FILE_fprintf(struct _IO_FILE* f, const char* msg, ...){
 void* __result_obj__;
 _Bool _if_conditional259;
-struct _IO_FILE* __result292__;
+struct _IO_FILE* __result298__;
 va_list args_182;
 int result_183;
 _Bool _if_conditional260;
-struct _IO_FILE* __result293__;
-struct _IO_FILE* __result294__;
+struct _IO_FILE* __result299__;
+struct _IO_FILE* __result300__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&args_182, 0, sizeof(va_list));
 memset(&result_183, 0, sizeof(int));
     if(_if_conditional259=f==((void*)0)||msg==((void*)0),    _if_conditional259) {
-        __result292__ = __result_obj__ = f;
-        return __result292__;
+        __result298__ = __result_obj__ = f;
+        return __result298__;
     }
     char msg2_181[1024*2*2*2];
     memset(&msg2_181, 0, sizeof(char)    *(1024*2*2*2)    );
@@ -6145,38 +6193,38 @@ memset(&result_183, 0, sizeof(int));
     __builtin_va_end(args_182);
     result_183=fprintf(f,"%s",msg2_181);
     if(_if_conditional260=result_183<0,    _if_conditional260) {
-        __result293__ = __result_obj__ = f;
+        __result299__ = __result_obj__ = f;
         come_call_finalizer2(va_list_finalize,(&args_182), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
-        return __result293__;
+        return __result299__;
     }
-    __result294__ = __result_obj__ = f;
+    __result300__ = __result_obj__ = f;
     come_call_finalizer2(va_list_finalize,(&args_182), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
-    return __result294__;
+    return __result300__;
     come_call_finalizer2(va_list_finalize,(&args_182), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
 }
 
 int string_write(char* self, char* file_name, _Bool append){
 void* __result_obj__;
 _Bool _if_conditional261;
-int __result295__;
+int __result301__;
 struct _IO_FILE* f_184;
 _Bool _if_conditional262;
 _Bool _if_conditional263;
-int __result296__;
+int __result302__;
 int result_185;
 _Bool _if_conditional264;
-int __result297__;
+int __result303__;
 int result2_186;
 _Bool _if_conditional265;
-int __result298__;
-int __result299__;
+int __result304__;
+int __result305__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&f_184, 0, sizeof(struct _IO_FILE*));
 memset(&result_185, 0, sizeof(int));
 memset(&result2_186, 0, sizeof(int));
     if(_if_conditional261=self==((void*)0)||file_name==((void*)0),    _if_conditional261) {
-        __result295__ = -1;
-        return __result295__;
+        __result301__ = -1;
+        return __result301__;
     }
     if(append) {
         f_184=fopen(file_name,"a");
@@ -6185,45 +6233,45 @@ memset(&result2_186, 0, sizeof(int));
         f_184=fopen(file_name,"w");
     }
     if(_if_conditional263=f_184==((void*)0),    _if_conditional263) {
-        __result296__ = -1;
-        return __result296__;
+        __result302__ = -1;
+        return __result302__;
     }
     result_185=fwrite(self,strlen(self),1,f_184);
     if(_if_conditional264=result_185<0,    _if_conditional264) {
-        __result297__ = result_185;
-        return __result297__;
+        __result303__ = result_185;
+        return __result303__;
     }
     result2_186=fclose(f_184);
     if(_if_conditional265=result2_186<0,    _if_conditional265) {
-        __result298__ = result2_186;
-        return __result298__;
+        __result304__ = result2_186;
+        return __result304__;
     }
-    __result299__ = result_185;
-    return __result299__;
+    __result305__ = result_185;
+    return __result305__;
 }
 
 int charp_write(char* self, char* file_name, _Bool append){
 void* __result_obj__;
 _Bool _if_conditional266;
-int __result300__;
+int __result306__;
 struct _IO_FILE* f_187;
 _Bool _if_conditional267;
 _Bool _if_conditional268;
-int __result301__;
+int __result307__;
 int result_188;
 _Bool _if_conditional269;
-int __result302__;
+int __result308__;
 int result2_189;
 _Bool _if_conditional270;
-int __result303__;
-int __result304__;
+int __result309__;
+int __result310__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&f_187, 0, sizeof(struct _IO_FILE*));
 memset(&result_188, 0, sizeof(int));
 memset(&result2_189, 0, sizeof(int));
     if(_if_conditional266=self==((void*)0)||file_name==((void*)0),    _if_conditional266) {
-        __result300__ = -1;
-        return __result300__;
+        __result306__ = -1;
+        return __result306__;
     }
     if(append) {
         f_187=fopen(file_name,"a");
@@ -6232,32 +6280,32 @@ memset(&result2_189, 0, sizeof(int));
         f_187=fopen(file_name,"w");
     }
     if(_if_conditional268=f_187==((void*)0),    _if_conditional268) {
-        __result301__ = -1;
-        return __result301__;
+        __result307__ = -1;
+        return __result307__;
     }
     result_188=fwrite(self,strlen(self),1,f_187);
     if(_if_conditional269=result_188<0,    _if_conditional269) {
-        __result302__ = result_188;
-        return __result302__;
+        __result308__ = result_188;
+        return __result308__;
     }
     result2_189=fclose(f_187);
     if(_if_conditional270=result2_189<0,    _if_conditional270) {
-        __result303__ = result2_189;
-        return __result303__;
+        __result309__ = result2_189;
+        return __result309__;
     }
-    __result304__ = result_188;
-    return __result304__;
+    __result310__ = result_188;
+    return __result310__;
 }
 
 char* string_read(char* file_name){
 void* __result_obj__;
 _Bool _if_conditional271;
 void* right_value189;
-char* __result305__;
+char* __result311__;
 struct _IO_FILE* f_190;
 _Bool _if_conditional272;
 void* right_value190;
-char* __result306__;
+char* __result312__;
 void* right_value191;
 void* right_value192;
 struct buffer* buf_191;
@@ -6269,8 +6317,8 @@ char* result_194;
 int result2_195;
 _Bool _if_conditional274;
 void* right_value194;
-char* __result307__;
-char* __result308__;
+char* __result313__;
+char* __result314__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value189 = (void*)0;
 memset(&f_190, 0, sizeof(struct _IO_FILE*));
@@ -6284,15 +6332,15 @@ memset(&result_194, 0, sizeof(char*));
 memset(&result2_195, 0, sizeof(int));
 right_value194 = (void*)0;
     if(_if_conditional271=file_name==((void*)0),    _if_conditional271) {
-        __result305__ = __result_obj__ = ((char*)(right_value189=__builtin_string("")));
+        __result311__ = __result_obj__ = ((char*)(right_value189=__builtin_string("")));
         right_value189 = come_decrement_ref_count2(right_value189, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result305__;
+        return __result311__;
     }
     f_190=fopen(file_name,"r");
     if(_if_conditional272=f_190==((void*)0),    _if_conditional272) {
-        __result306__ = __result_obj__ = ((char*)(right_value190=__builtin_string("")));
+        __result312__ = __result_obj__ = ((char*)(right_value190=__builtin_string("")));
         right_value190 = come_decrement_ref_count2(right_value190, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result306__;
+        return __result312__;
     }
     buf_191=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value192=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value191=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 2490, "buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value191, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -6310,16 +6358,16 @@ right_value194 = (void*)0;
     right_value193 = come_decrement_ref_count2(right_value193, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     result2_195=fclose(f_190);
     if(_if_conditional274=result2_195<0,    _if_conditional274) {
-        __result307__ = __result_obj__ = ((char*)(right_value194=__builtin_string("")));
+        __result313__ = __result_obj__ = ((char*)(right_value194=__builtin_string("")));
         come_call_finalizer2(buffer_finalize,buf_191, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         result_194 = come_decrement_ref_count2(result_194, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         right_value194 = come_decrement_ref_count2(right_value194, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result307__;
+        return __result313__;
     }
-    __result308__ = __result_obj__ = result_194;
+    __result314__ = __result_obj__ = result_194;
     come_call_finalizer2(buffer_finalize,buf_191, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     result_194 = come_decrement_ref_count2(result_194, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result308__;
+    return __result314__;
     come_call_finalizer2(buffer_finalize,buf_191, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     result_194 = come_decrement_ref_count2(result_194, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
@@ -6328,11 +6376,11 @@ char* charp_read(char* file_name){
 void* __result_obj__;
 _Bool _if_conditional275;
 void* right_value195;
-char* __result309__;
+char* __result315__;
 struct _IO_FILE* f_196;
 _Bool _if_conditional276;
 void* right_value196;
-char* __result310__;
+char* __result316__;
 void* right_value197;
 void* right_value198;
 struct buffer* buf_197;
@@ -6344,8 +6392,8 @@ char* result_200;
 int result2_201;
 _Bool _if_conditional278;
 void* right_value200;
-char* __result311__;
-char* __result312__;
+char* __result317__;
+char* __result318__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value195 = (void*)0;
 memset(&f_196, 0, sizeof(struct _IO_FILE*));
@@ -6359,15 +6407,15 @@ memset(&result_200, 0, sizeof(char*));
 memset(&result2_201, 0, sizeof(int));
 right_value200 = (void*)0;
     if(_if_conditional275=file_name==((void*)0),    _if_conditional275) {
-        __result309__ = __result_obj__ = ((char*)(right_value195=__builtin_string("")));
+        __result315__ = __result_obj__ = ((char*)(right_value195=__builtin_string("")));
         right_value195 = come_decrement_ref_count2(right_value195, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result309__;
+        return __result315__;
     }
     f_196=fopen(file_name,"r");
     if(_if_conditional276=f_196==((void*)0),    _if_conditional276) {
-        __result310__ = __result_obj__ = ((char*)(right_value196=__builtin_string("")));
+        __result316__ = __result_obj__ = ((char*)(right_value196=__builtin_string("")));
         right_value196 = come_decrement_ref_count2(right_value196, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result310__;
+        return __result316__;
     }
     buf_197=(struct buffer*)come_increment_ref_count(((struct buffer*)(right_value198=buffer_initialize((struct buffer*)come_increment_ref_count(((struct buffer*)(right_value197=(struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2.c", 2527, "buffer"))))))));
     come_call_finalizer2(buffer_finalize,right_value197, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -6385,16 +6433,16 @@ right_value200 = (void*)0;
     right_value199 = come_decrement_ref_count2(right_value199, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     result2_201=fclose(f_196);
     if(_if_conditional278=result2_201<0,    _if_conditional278) {
-        __result311__ = __result_obj__ = ((char*)(right_value200=__builtin_string("")));
+        __result317__ = __result_obj__ = ((char*)(right_value200=__builtin_string("")));
         come_call_finalizer2(buffer_finalize,buf_197, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         result_200 = come_decrement_ref_count2(result_200, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         right_value200 = come_decrement_ref_count2(right_value200, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result311__;
+        return __result317__;
     }
-    __result312__ = __result_obj__ = result_200;
+    __result318__ = __result_obj__ = result_200;
     come_call_finalizer2(buffer_finalize,buf_197, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     result_200 = come_decrement_ref_count2(result_200, (void*)0, (void*)0, 0, 1, 0, (void*)0);
-    return __result312__;
+    return __result318__;
     come_call_finalizer2(buffer_finalize,buf_197, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
     result_200 = come_decrement_ref_count2(result_200, (void*)0, (void*)0, 0, 0, 0, (void*)0);
 }
@@ -6405,11 +6453,11 @@ void* right_value201;
 void* right_value202;
 struct list$1charph* result_202;
 _Bool _if_conditional279;
-struct list$1charph* __result313__;
+struct list$1charph* __result319__;
 _Bool _while_condtional10;
 _Bool _if_conditional280;
 void* right_value203;
-struct list$1charph* __result314__;
+struct list$1charph* __result320__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value201 = (void*)0;
 right_value202 = (void*)0;
@@ -6419,9 +6467,9 @@ right_value203 = (void*)0;
     come_call_finalizer2(list$1charphp_finalize,right_value201, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(list$1charphp_finalize,right_value202, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     if(_if_conditional279=f==((void*)0),    _if_conditional279) {
-        __result313__ = __result_obj__ = result_202;
+        __result319__ = __result_obj__ = result_202;
         come_call_finalizer2(list$1charphp_finalize,result_202, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-        return __result313__;
+        return __result319__;
     }
     while(_while_condtional10=1,    _while_condtional10) {
         char buf_203[1024];
@@ -6432,114 +6480,114 @@ right_value203 = (void*)0;
         list$1charph_push_back(result_202,(char*)come_increment_ref_count(((char*)(right_value203=__builtin_string(buf_203)))));
         right_value203 = come_decrement_ref_count2(right_value203, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
-    __result314__ = __result_obj__ = result_202;
+    __result320__ = __result_obj__ = result_202;
     come_call_finalizer2(list$1charphp_finalize,result_202, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    return __result314__;
+    return __result320__;
     come_call_finalizer2(list$1charphp_finalize,result_202, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 int fopen_block(const char* path, const char* mode, void* parent, void (*block)(void*,struct _IO_FILE*)){
 void* __result_obj__;
 _Bool _if_conditional281;
-int __result315__;
+int __result321__;
 struct _IO_FILE* f_204;
 _Bool _if_conditional282;
 _Bool _if_conditional283;
-int __result316__;
-int __result317__;
-int __result318__;
+int __result322__;
+int __result323__;
+int __result324__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&f_204, 0, sizeof(struct _IO_FILE*));
     if(_if_conditional281=path==((void*)0)||mode==((void*)0),    _if_conditional281) {
-        __result315__ = -1;
-        return __result315__;
+        __result321__ = -1;
+        return __result321__;
     }
     f_204=fopen(path,mode);
     if(f_204) {
         block(parent,f_204);
         if(_if_conditional283=((struct sDummyCurrentStack*)parent)->__method_block_result_kind__!=0,        _if_conditional283) {
             fclose(f_204);
-            __result316__ = 0;
-            return __result316__;
+            __result322__ = 0;
+            return __result322__;
         }
         fclose(f_204);
-        __result317__ = 0;
-        return __result317__;
+        __result323__ = 0;
+        return __result323__;
     }
-    __result318__ = -1;
-    return __result318__;
+    __result324__ = -1;
+    return __result324__;
 }
 
 char* charp_puts(char* self){
 void* __result_obj__;
 _Bool _if_conditional284;
 void* right_value204;
-char* __result319__;
+char* __result325__;
 void* right_value205;
-char* __result320__;
+char* __result326__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value204 = (void*)0;
 right_value205 = (void*)0;
     if(_if_conditional284=self==((void*)0),    _if_conditional284) {
-        __result319__ = __result_obj__ = ((char*)(right_value204=__builtin_string("")));
+        __result325__ = __result_obj__ = ((char*)(right_value204=__builtin_string("")));
         right_value204 = come_decrement_ref_count2(right_value204, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result319__;
+        return __result325__;
     }
     puts(self);
-    __result320__ = __result_obj__ = ((char*)(right_value205=__builtin_string(self)));
+    __result326__ = __result_obj__ = ((char*)(right_value205=__builtin_string(self)));
     right_value205 = come_decrement_ref_count2(right_value205, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result320__;
+    return __result326__;
 }
 
 char* charp_print(char* self){
 void* __result_obj__;
 _Bool _if_conditional285;
 void* right_value206;
-char* __result321__;
+char* __result327__;
 void* right_value207;
-char* __result322__;
+char* __result328__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value206 = (void*)0;
 right_value207 = (void*)0;
     if(_if_conditional285=self==((void*)0),    _if_conditional285) {
-        __result321__ = __result_obj__ = ((char*)(right_value206=__builtin_string("")));
+        __result327__ = __result_obj__ = ((char*)(right_value206=__builtin_string("")));
         right_value206 = come_decrement_ref_count2(right_value206, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result321__;
+        return __result327__;
     }
     printf("%s",self);
-    __result322__ = __result_obj__ = ((char*)(right_value207=__builtin_string(self)));
+    __result328__ = __result_obj__ = ((char*)(right_value207=__builtin_string(self)));
     right_value207 = come_decrement_ref_count2(right_value207, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result322__;
+    return __result328__;
 }
 
 char* string_printf(char* self, ...){
 void* __result_obj__;
 _Bool _if_conditional286;
 void* right_value208;
-char* __result323__;
+char* __result329__;
 char* msg2_205;
 va_list args_206;
 void* right_value209;
-char* __result324__;
+char* __result330__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value208 = (void*)0;
 memset(&msg2_205, 0, sizeof(char*));
 memset(&args_206, 0, sizeof(va_list));
 right_value209 = (void*)0;
     if(_if_conditional286=self==((void*)0),    _if_conditional286) {
-        __result323__ = __result_obj__ = ((char*)(right_value208=__builtin_string("")));
+        __result329__ = __result_obj__ = ((char*)(right_value208=__builtin_string("")));
         right_value208 = come_decrement_ref_count2(right_value208, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result323__;
+        return __result329__;
     }
     __builtin_va_start(args_206,self);
     vasprintf(&msg2_205,self,args_206);
     __builtin_va_end(args_206);
     printf("%s",msg2_205);
     free(msg2_205);
-    __result324__ = __result_obj__ = ((char*)(right_value209=__builtin_string(self)));
+    __result330__ = __result_obj__ = ((char*)(right_value209=__builtin_string(self)));
     come_call_finalizer2(va_list_finalize,(&args_206), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
     right_value209 = come_decrement_ref_count2(right_value209, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result324__;
+    return __result330__;
     come_call_finalizer2(va_list_finalize,(&args_206), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
 }
 
@@ -6547,61 +6595,61 @@ char* charp_printf(char* self, ...){
 void* __result_obj__;
 _Bool _if_conditional287;
 void* right_value210;
-char* __result325__;
+char* __result331__;
 char* msg2_207;
 va_list args_208;
 void* right_value211;
-char* __result326__;
+char* __result332__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value210 = (void*)0;
 memset(&msg2_207, 0, sizeof(char*));
 memset(&args_208, 0, sizeof(va_list));
 right_value211 = (void*)0;
     if(_if_conditional287=self==((void*)0),    _if_conditional287) {
-        __result325__ = __result_obj__ = ((char*)(right_value210=__builtin_string("")));
+        __result331__ = __result_obj__ = ((char*)(right_value210=__builtin_string("")));
         right_value210 = come_decrement_ref_count2(right_value210, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result325__;
+        return __result331__;
     }
     __builtin_va_start(args_208,self);
     vasprintf(&msg2_207,self,args_208);
     __builtin_va_end(args_208);
     printf("%s",msg2_207);
     free(msg2_207);
-    __result326__ = __result_obj__ = ((char*)(right_value211=__builtin_string(self)));
+    __result332__ = __result_obj__ = ((char*)(right_value211=__builtin_string(self)));
     come_call_finalizer2(va_list_finalize,(&args_208), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
     right_value211 = come_decrement_ref_count2(right_value211, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result326__;
+    return __result332__;
     come_call_finalizer2(va_list_finalize,(&args_208), (void*)0, (void*)0, 1, 0, 0, 0, (void*)0);
 }
 
 int int_printf(int self, char* msg){
 void* __result_obj__;
-int __result327__;
+int __result333__;
 memset(&__result_obj__, 0, sizeof(void*));
     printf(msg,self);
-    __result327__ = self;
-    return __result327__;
+    __result333__ = self;
+    return __result333__;
 }
 
 char* string_puts(char* self){
 void* __result_obj__;
 _Bool _if_conditional288;
 void* right_value212;
-char* __result328__;
+char* __result334__;
 void* right_value213;
-char* __result329__;
+char* __result335__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value212 = (void*)0;
 right_value213 = (void*)0;
     if(_if_conditional288=self==((void*)0),    _if_conditional288) {
-        __result328__ = __result_obj__ = ((char*)(right_value212=__builtin_string("")));
+        __result334__ = __result_obj__ = ((char*)(right_value212=__builtin_string("")));
         right_value212 = come_decrement_ref_count2(right_value212, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        return __result328__;
+        return __result334__;
     }
     puts(self);
-    __result329__ = __result_obj__ = ((char*)(right_value213=__builtin_string(self)));
+    __result335__ = __result_obj__ = ((char*)(right_value213=__builtin_string(self)));
     right_value213 = come_decrement_ref_count2(right_value213, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-    return __result329__;
+    return __result335__;
 }
 
 void int_times(int self, void* parent, void (*block)(void*,int)){
@@ -6620,12 +6668,12 @@ memset(&i_209, 0, sizeof(int));
 
 struct integer* integer_initialize(struct integer* self, long value){
 void* __result_obj__;
-struct integer* __result330__;
+struct integer* __result336__;
 memset(&__result_obj__, 0, sizeof(void*));
     self->value=value;
-    __result330__ = __result_obj__ = self;
+    __result336__ = __result_obj__ = self;
     come_call_finalizer2(integer_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
-    return __result330__;
+    return __result336__;
     come_call_finalizer2(integer_finalize,self, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
 }
 
@@ -6636,340 +6684,340 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 int integer_to_int(struct integer* self){
 void* __result_obj__;
-int __result331__;
+int __result337__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result331__ = self->value;
-    return __result331__;
+    __result337__ = self->value;
+    return __result337__;
 }
 
 struct integer* char_to_integer(char self){
 void* __result_obj__;
 void* right_value214;
 void* right_value215;
-struct integer* __result332__;
+struct integer* __result338__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value214 = (void*)0;
 right_value215 = (void*)0;
-    __result332__ = __result_obj__ = ((struct integer*)(right_value215=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value214=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2705, "integer")))),self)));
+    __result338__ = __result_obj__ = ((struct integer*)(right_value215=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value214=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2705, "integer")))),self)));
     come_call_finalizer2(integer_finalize,right_value214, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value215, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result332__;
+    return __result338__;
 }
 
 struct integer* short_to_integer(short short self){
 void* __result_obj__;
 void* right_value216;
 void* right_value217;
-struct integer* __result333__;
+struct integer* __result339__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value216 = (void*)0;
 right_value217 = (void*)0;
-    __result333__ = __result_obj__ = ((struct integer*)(right_value217=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value216=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2710, "integer")))),self)));
+    __result339__ = __result_obj__ = ((struct integer*)(right_value217=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value216=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2710, "integer")))),self)));
     come_call_finalizer2(integer_finalize,right_value216, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value217, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result333__;
+    return __result339__;
 }
 
 struct integer* int_to_integer(int self){
 void* __result_obj__;
 void* right_value218;
 void* right_value219;
-struct integer* __result334__;
+struct integer* __result340__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value218 = (void*)0;
 right_value219 = (void*)0;
-    __result334__ = __result_obj__ = ((struct integer*)(right_value219=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value218=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2715, "integer")))),self)));
+    __result340__ = __result_obj__ = ((struct integer*)(right_value219=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value218=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2715, "integer")))),self)));
     come_call_finalizer2(integer_finalize,right_value218, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value219, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result334__;
+    return __result340__;
 }
 
 struct integer* long_to_integer(long self){
 void* __result_obj__;
 void* right_value220;
 void* right_value221;
-struct integer* __result335__;
+struct integer* __result341__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value220 = (void*)0;
 right_value221 = (void*)0;
-    __result335__ = __result_obj__ = ((struct integer*)(right_value221=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value220=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2720, "integer")))),self)));
+    __result341__ = __result_obj__ = ((struct integer*)(right_value221=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value220=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2720, "integer")))),self)));
     come_call_finalizer2(integer_finalize,right_value220, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value221, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result335__;
+    return __result341__;
 }
 
 int integer_compare(struct integer* left, struct integer* right){
 void* __result_obj__;
 _Bool _if_conditional290;
-int __result336__;
+int __result342__;
 _Bool _if_conditional291;
-int __result337__;
-int __result338__;
-int __result339__;
+int __result343__;
+int __result344__;
+int __result345__;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional290=left->value<right->value,    _if_conditional290) {
-        __result336__ = -1;
-        return __result336__;
+        __result342__ = -1;
+        return __result342__;
     }
     else {
         if(_if_conditional291=left->value>right->value,        _if_conditional291) {
-            __result337__ = 1;
-            return __result337__;
+            __result343__ = 1;
+            return __result343__;
         }
         else {
-            __result338__ = 0;
-            return __result338__;
+            __result344__ = 0;
+            return __result344__;
         }
     }
-    __result339__ = 0;
-    return __result339__;
+    __result345__ = 0;
+    return __result345__;
 }
 
 _Bool integer_equals(struct integer* self, struct integer* right){
 void* __result_obj__;
-_Bool __result340__;
+_Bool __result346__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result340__ = self->value==right->value;
-    return __result340__;
+    __result346__ = self->value==right->value;
+    return __result346__;
 }
 
 _Bool integer_operator_equals(struct integer* self, struct integer* right){
 void* __result_obj__;
-_Bool __result341__;
+_Bool __result347__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result341__ = self->value==right->value;
-    return __result341__;
+    __result347__ = self->value==right->value;
+    return __result347__;
 }
 
 _Bool integer_operator_not_equals(struct integer* self, struct integer* right){
 void* __result_obj__;
-_Bool __result342__;
+_Bool __result348__;
 memset(&__result_obj__, 0, sizeof(void*));
-    __result342__ = self->value!=right->value;
-    return __result342__;
+    __result348__ = self->value!=right->value;
+    return __result348__;
 }
 
 struct integer* integer_operator_add(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value222;
 void* right_value223;
-struct integer* __result343__;
+struct integer* __result349__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value222 = (void*)0;
 right_value223 = (void*)0;
-    __result343__ = __result_obj__ = ((struct integer*)(right_value223=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value222=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2755, "integer")))),left->value+right->value)));
+    __result349__ = __result_obj__ = ((struct integer*)(right_value223=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value222=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2755, "integer")))),left->value+right->value)));
     come_call_finalizer2(integer_finalize,right_value222, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value223, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result343__;
+    return __result349__;
 }
 
 struct integer* integer_operator_sub(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value224;
 void* right_value225;
-struct integer* __result344__;
+struct integer* __result350__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value224 = (void*)0;
 right_value225 = (void*)0;
-    __result344__ = __result_obj__ = ((struct integer*)(right_value225=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value224=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2760, "integer")))),left->value-right->value)));
+    __result350__ = __result_obj__ = ((struct integer*)(right_value225=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value224=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2760, "integer")))),left->value-right->value)));
     come_call_finalizer2(integer_finalize,right_value224, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value225, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result344__;
+    return __result350__;
 }
 
 struct integer* integer_operator_mult(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value226;
 void* right_value227;
-struct integer* __result345__;
+struct integer* __result351__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value226 = (void*)0;
 right_value227 = (void*)0;
-    __result345__ = __result_obj__ = ((struct integer*)(right_value227=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value226=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2765, "integer")))),left->value*right->value)));
+    __result351__ = __result_obj__ = ((struct integer*)(right_value227=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value226=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2765, "integer")))),left->value*right->value)));
     come_call_finalizer2(integer_finalize,right_value226, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value227, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result345__;
+    return __result351__;
 }
 
 struct integer* integer_operator_div(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value228;
 void* right_value229;
-struct integer* __result346__;
+struct integer* __result352__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value228 = (void*)0;
 right_value229 = (void*)0;
-    __result346__ = __result_obj__ = ((struct integer*)(right_value229=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value228=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2770, "integer")))),left->value/right->value)));
+    __result352__ = __result_obj__ = ((struct integer*)(right_value229=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value228=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2770, "integer")))),left->value/right->value)));
     come_call_finalizer2(integer_finalize,right_value228, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value229, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result346__;
+    return __result352__;
 }
 
 struct integer* integer_operator_mod(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value230;
 void* right_value231;
-struct integer* __result347__;
+struct integer* __result353__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value230 = (void*)0;
 right_value231 = (void*)0;
-    __result347__ = __result_obj__ = ((struct integer*)(right_value231=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value230=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2775, "integer")))),left->value%right->value)));
+    __result353__ = __result_obj__ = ((struct integer*)(right_value231=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value230=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2775, "integer")))),left->value%right->value)));
     come_call_finalizer2(integer_finalize,right_value230, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value231, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result347__;
+    return __result353__;
 }
 
 struct integer* integer_operator_lshift(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value232;
 void* right_value233;
-struct integer* __result348__;
+struct integer* __result354__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value232 = (void*)0;
 right_value233 = (void*)0;
-    __result348__ = __result_obj__ = ((struct integer*)(right_value233=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value232=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2780, "integer")))),left->value<<right->value)));
+    __result354__ = __result_obj__ = ((struct integer*)(right_value233=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value232=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2780, "integer")))),left->value<<right->value)));
     come_call_finalizer2(integer_finalize,right_value232, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value233, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result348__;
+    return __result354__;
 }
 
 struct integer* integer_operator_rshift(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value234;
 void* right_value235;
-struct integer* __result349__;
+struct integer* __result355__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value234 = (void*)0;
 right_value235 = (void*)0;
-    __result349__ = __result_obj__ = ((struct integer*)(right_value235=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value234=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2785, "integer")))),left->value>>right->value)));
+    __result355__ = __result_obj__ = ((struct integer*)(right_value235=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value234=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2785, "integer")))),left->value>>right->value)));
     come_call_finalizer2(integer_finalize,right_value234, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value235, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result349__;
+    return __result355__;
 }
 
 struct integer* integer_operator_gteq(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value236;
 void* right_value237;
-struct integer* __result350__;
+struct integer* __result356__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value236 = (void*)0;
 right_value237 = (void*)0;
-    __result350__ = __result_obj__ = ((struct integer*)(right_value237=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value236=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2790, "integer")))),left->value>=right->value)));
+    __result356__ = __result_obj__ = ((struct integer*)(right_value237=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value236=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2790, "integer")))),left->value>=right->value)));
     come_call_finalizer2(integer_finalize,right_value236, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value237, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result350__;
+    return __result356__;
 }
 
 struct integer* integer_operator_lteq(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value238;
 void* right_value239;
-struct integer* __result351__;
+struct integer* __result357__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value238 = (void*)0;
 right_value239 = (void*)0;
-    __result351__ = __result_obj__ = ((struct integer*)(right_value239=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value238=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2795, "integer")))),left->value<=right->value)));
+    __result357__ = __result_obj__ = ((struct integer*)(right_value239=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value238=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2795, "integer")))),left->value<=right->value)));
     come_call_finalizer2(integer_finalize,right_value238, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value239, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result351__;
+    return __result357__;
 }
 
 struct integer* integer_operator_lt(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value240;
 void* right_value241;
-struct integer* __result352__;
+struct integer* __result358__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value240 = (void*)0;
 right_value241 = (void*)0;
-    __result352__ = __result_obj__ = ((struct integer*)(right_value241=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value240=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2800, "integer")))),left->value<right->value)));
+    __result358__ = __result_obj__ = ((struct integer*)(right_value241=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value240=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2800, "integer")))),left->value<right->value)));
     come_call_finalizer2(integer_finalize,right_value240, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value241, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result352__;
+    return __result358__;
 }
 
 struct integer* integer_operator_gt(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value242;
 void* right_value243;
-struct integer* __result353__;
+struct integer* __result359__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value242 = (void*)0;
 right_value243 = (void*)0;
-    __result353__ = __result_obj__ = ((struct integer*)(right_value243=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value242=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2805, "integer")))),left->value>right->value)));
+    __result359__ = __result_obj__ = ((struct integer*)(right_value243=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value242=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2805, "integer")))),left->value>right->value)));
     come_call_finalizer2(integer_finalize,right_value242, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value243, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result353__;
+    return __result359__;
 }
 
 struct integer* integer_operator_and(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value244;
 void* right_value245;
-struct integer* __result354__;
+struct integer* __result360__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value244 = (void*)0;
 right_value245 = (void*)0;
-    __result354__ = __result_obj__ = ((struct integer*)(right_value245=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value244=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2810, "integer")))),left->value&right->value)));
+    __result360__ = __result_obj__ = ((struct integer*)(right_value245=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value244=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2810, "integer")))),left->value&right->value)));
     come_call_finalizer2(integer_finalize,right_value244, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value245, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result354__;
+    return __result360__;
 }
 
 struct integer* integer_operator_xor(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value246;
 void* right_value247;
-struct integer* __result355__;
+struct integer* __result361__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value246 = (void*)0;
 right_value247 = (void*)0;
-    __result355__ = __result_obj__ = ((struct integer*)(right_value247=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value246=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2815, "integer")))),left->value^right->value)));
+    __result361__ = __result_obj__ = ((struct integer*)(right_value247=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value246=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2815, "integer")))),left->value^right->value)));
     come_call_finalizer2(integer_finalize,right_value246, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value247, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result355__;
+    return __result361__;
 }
 
 struct integer* integer_operator_or(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value248;
 void* right_value249;
-struct integer* __result356__;
+struct integer* __result362__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value248 = (void*)0;
 right_value249 = (void*)0;
-    __result356__ = __result_obj__ = ((struct integer*)(right_value249=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value248=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2820, "integer")))),left->value|right->value)));
+    __result362__ = __result_obj__ = ((struct integer*)(right_value249=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value248=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2820, "integer")))),left->value|right->value)));
     come_call_finalizer2(integer_finalize,right_value248, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value249, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result356__;
+    return __result362__;
 }
 
 struct integer* integer_operator_andand(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value250;
 void* right_value251;
-struct integer* __result357__;
+struct integer* __result363__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value250 = (void*)0;
 right_value251 = (void*)0;
-    __result357__ = __result_obj__ = ((struct integer*)(right_value251=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value250=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2825, "integer")))),left->value&&right->value)));
+    __result363__ = __result_obj__ = ((struct integer*)(right_value251=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value250=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2825, "integer")))),left->value&&right->value)));
     come_call_finalizer2(integer_finalize,right_value250, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value251, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result357__;
+    return __result363__;
 }
 
 struct integer* integer_operator_oror(struct integer* left, struct integer* right){
 void* __result_obj__;
 void* right_value252;
 void* right_value253;
-struct integer* __result358__;
+struct integer* __result364__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value252 = (void*)0;
 right_value253 = (void*)0;
-    __result358__ = __result_obj__ = ((struct integer*)(right_value253=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value252=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2830, "integer")))),left->value||right->value)));
+    __result364__ = __result_obj__ = ((struct integer*)(right_value253=integer_initialize((struct integer*)come_increment_ref_count(((struct integer*)(right_value252=(struct integer*)come_calloc(1, sizeof(struct integer)*(1), "libcomelang2.c", 2830, "integer")))),left->value||right->value)));
     come_call_finalizer2(integer_finalize,right_value252, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     come_call_finalizer2(integer_finalize,right_value253, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-    return __result358__;
+    return __result364__;
 }
 

@@ -2247,6 +2247,36 @@ string string::operator_add(char* self, char* right);
 string char*::operator_mult(char* self, int right);
 string string::operator_mult(char* self, int right);
 
+static inline size_t char[]::length(char* self, size_t len) 
+{
+    return len;
+}
+
+static inline size_t short[]::length(short* self, size_t len) 
+{
+    return len;
+}
+
+static inline size_t int[]::length(int* self, size_t len) 
+{
+    return len;
+}
+
+static inline size_t long[]::length(long* self, size_t len) 
+{
+    return len;
+}
+
+static inline size_t float[]::length(float* self, size_t len) 
+{
+    return len;
+}
+
+static inline size_t double[]::length(double* self, size_t len) 
+{
+    return len;
+}
+
 //////////////////////////////
 /// base library(get_hash key)
 //////////////////////////////

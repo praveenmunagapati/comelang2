@@ -1,12 +1,16 @@
 #include <comelang2.h>
 
+struct sData
+{
+    int a;
+    int b;
+};
+
 int main(int argc, char** argv)
 {
-    char a[3] = { 'A', 'B', 'C', '\0' };
+    sData* a = null;
     
-    var p = a.to_buffer();
-    
-    puts(p.to_string());
+    printf("%d\n", a->a);
     
     return 0;
 }

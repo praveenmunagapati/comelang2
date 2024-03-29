@@ -157,6 +157,10 @@ bool sStoreFieldNode*::compile(sStoreFieldNode* self, sInfo* info)
     CVALUE*% left_value = get_value_from_stack(-1, info);
     dec_stack_ptr(1, info);
     
+    if(gComeDebug) {
+        left_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
+    }
+    
     if(!node_compile(right)) {
         return false;
     }
@@ -620,6 +624,10 @@ bool sLoadFieldNode*::compile(sLoadFieldNode* self, sInfo* info)
     CVALUE*% left_value = get_value_from_stack(-1, info);
     dec_stack_ptr(1, info);
     
+    if(gComeDebug) {
+        left_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
+    }
+    
     sType* left_type = left_value.type;
     
     sType*% left_type2 = solve_generics(left_type, left_type, info);
@@ -772,6 +780,10 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
     
     CVALUE*% left_value = get_value_from_stack(-1, info);
     dec_stack_ptr(1, info);
+    
+    if(gComeDebug) {
+        left_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
+    }
     
     sType* left_type = left_value.type;
     
@@ -1027,6 +1039,10 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
     
     CVALUE*% left_value = get_value_from_stack(-1, info);
     dec_stack_ptr(1, info);
+    
+    if(gComeDebug) {
+        left_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
+    }
     
     sType*% left_type = clone left_value.type;
     
