@@ -1935,6 +1935,48 @@ buffer*% string::to_buffer(char* self);
 buffer*% char*::to_buffer(char* self);
 string buffer*::to_string(buffer* self);
 
+static inline buffer*% char[]::to_buffer(char* self, size_t len) 
+{
+    var result = new buffer();
+    result.append(self, sizeof(char)*len);
+    return result;
+}
+
+static inline buffer*% short[]::to_buffer(short* self, size_t len) 
+{
+    var result = new buffer();
+    result.append((char*)self, sizeof(short)*len);
+    return result;
+}
+
+static inline buffer*% int[]::to_buffer(int* self, size_t len) 
+{
+    var result = new buffer();
+    result.append((char*)self, sizeof(int)*len);
+    return result;
+}
+
+static inline buffer*% long[]::to_buffer(long* self, size_t len) 
+{
+    var result = new buffer();
+    result.append((char*)self, sizeof(long)*len);
+    return result;
+}
+
+static inline buffer*% float[]::to_buffer(float* self, size_t len) 
+{
+    var result = new buffer();
+    result.append((char*)self, sizeof(float)*len);
+    return result;
+}
+
+static inline buffer*% double[]::to_buffer(double* self, size_t len) 
+{
+    var result = new buffer();
+    result.append((char*)self, sizeof(double)*len);
+    return result;
+}
+
 //////////////////////////////
 // smart_pointer
 //////////////////////////////

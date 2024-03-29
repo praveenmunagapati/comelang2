@@ -7,7 +7,7 @@ Another modern C compiler. It has a heap system that is a cross between an autom
 
 もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。
 
-version 20.0.3
+version 20.0.4
 
 ``` C
 #include <comelang2.h>
@@ -297,6 +297,8 @@ bash all_build.sh
 ```
 
 # Histories
+
+20.0.4 配列をbufferに変換できるようになりました。
 
 20.0.3 配列のスマートポインター変換を入れました。
 
@@ -1396,6 +1398,22 @@ string buffer*::to_string(buffer* self);
 Convert buffer to string.
 
 bufferを文字列に変換します。
+
+static inline buffer*% char[]::to_buffer(char* self, size_t len) ;
+static inline buffer*% short[]::to_buffer(short* self, size_t len) ;
+static inline buffer*% int[]::to_buffer(int* self, size_t len) ;
+static inline buffer*% long[]::to_buffer(long* self, size_t len) ;
+static inline buffer*% float[]::to_buffer(float* self, size_t len) ;
+static inline buffer*% double[]::to_buffer(double* self, size_t len) ;
+
+
+```C
+    char a[4] = { 'A', 'B', 'C', '\0' };
+    
+    var buf = a.to_buffer();
+    
+    puts(buf.to_string()); // ABC
+```
 
 # smart_pointer
 

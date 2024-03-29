@@ -2,15 +2,11 @@
 
 int main(int argc, char** argv)
 {
-    int a[3] = { 1, 2, 3 };
+    char a[3] = { 'A', 'B', 'C', '\0' };
     
-    var p = a.to_pointer();
+    var p = a.to_buffer();
     
-    printf("%d\n", *p);
-    
-    p++;
-    
-    printf("%d\n", *p);
+    puts(p.to_string());
     
     return 0;
 }
