@@ -811,6 +811,87 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
     }
     
     if(!calling_fun) {
+        string check_code = null;
+        if(left_value.var && left_value.var->mType && left_value.var->mType->mArrayNum.length() > 0) 
+        {
+            sType* var_type = left_value.var.mType;
+            sType*% result_type = clone left_type;
+            
+            if(result_type->mOriginalLoadVarType->v1) {
+                result_type = result_type->mOriginalLoadVarType->v1;
+            }
+            
+            if(result_type.mArrayNum.length() > 0) {
+                int n = result_type.mArrayNum.length() - array_num.length();
+                
+                if(n == 0) {
+                    result_type = clone left_type;
+                    if(left_type->mOriginalLoadVarType.v1) {
+                        result_type = clone left_type->mOriginalLoadVarType.v1;
+                    }
+                    result_type->mArrayNum.reset();
+                }
+                else if(n > 0) {
+                    for(int i=0; i<n; i++) {
+                        result_type.mArrayNum.delete(-1, -1);
+                    }
+                }
+                else if(n < 0) {
+                    result_type.mArrayNum.reset();
+                    result_type.mPointerNum += n;
+                    
+                    if(result_type.mPointerNum < 0) {
+                        result_type.mPointerNum = 0;
+                    }
+                }
+            }
+            else {
+                if(result_type->mPointerNum > 0) {
+                    result_type->mPointerNum -= array_num.length();
+                    
+                    if(result_type->mPointerNum < 0) {
+                        result_type->mPointerNum = 0;
+                    }
+                }
+            }
+            
+            CVALUE*% come_value = new CVALUE;
+            
+            buffer*% buf = new buffer();
+            
+            
+            sType*% result_type2 = clone result_type;
+            result_type2->mPointerNum++;
+            
+            buf.append_str(xsprintf("*(%s)come_range_check(&%s"
+                , make_type_name_string(result_type2)
+                , left_value.c_value));
+            
+            foreach(it, array_num) {
+                buf.append_str(xsprintf("[%s]", it.c_value));
+            }
+            buf.append_str(xsprintf(",%s,%s+", left_value.c_value, left_value.c_value));
+            int i=0;
+            foreach(it, var_type.mArrayNum) {
+                if(!node_compile(it)) {
+                    err_msg(info, "invalid array num");
+                    exit(1);
+                }
+                
+                CVALUE*% come_value = get_value_from_stack(-1, info);
+                dec_stack_ptr(1, info);
+            
+                buf.append_str(xsprintf("%s", come_value.c_value));
+                if(i != var_type.mArrayNum.length()-1) {
+                    buf.append_str("*");
+                }
+                i++;
+            }
+            buf.append_str(xsprintf(", \"%s\", %d)", info->sname, info->sline));
+            
+            check_code = buf.to_string();
+        }
+        
         CVALUE*% come_value = new CVALUE;
         
 /*
@@ -881,6 +962,10 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
         result_type.mArrayNum = new list<sNode*%>();
         come_value.type = result_type;
         come_value.var = null;
+        
+        if(check_code) {
+            come_value.c_value = xsprintf("%s, %s", check_code, come_value.c_value);
+        }
         
         info.stack.push_back(come_value);
         

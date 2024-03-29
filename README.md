@@ -7,7 +7,7 @@ Another modern C compiler. It has a heap system that is a cross between an autom
 
 もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。
 
-version 20.0.1
+version 20.0.2
 
 ``` C
 #include <comelang2.h>
@@ -293,6 +293,8 @@ bash all_build.sh
 ```
 
 # Histories
+
+20.0.2 配列の範囲チェックを入れました。
 
 20.0.1 オプションのバグを修正しました。
 

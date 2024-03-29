@@ -1,10 +1,19 @@
 #include <comelang2.h>
 
-int main(int argc, char** argv)
+int fun()
 {
     int a[3] = { 1, 2, 3};
     
-    printf("%d\n", a[5]);
+    a[5] = 4;
+    
+    printf("%d\n", a[2]);
+    
+    return 0;
+}
+
+int main(int argc, char** argv)
+{
+    fun();
     
     return 0;
 }
