@@ -247,6 +247,7 @@ struct sType
     _Bool mInline;
     _Bool mNullValue;
     char* mAsmName;
+    _Bool mArrayPointerType;
 };
 struct sVar;
 struct CVALUE
@@ -2943,10 +2944,10 @@ struct sType* it_88;
 char* name_89;
 void* right_value108;
 char* str_90;
-_Bool _if_conditional166;
 _Bool _if_conditional167;
+_Bool _if_conditional168;
 struct sNode* node_94;
-_Bool _if_conditional170;
+_Bool _if_conditional171;
 void* right_value109;
 char* __result62__;
 void* right_value110;
@@ -2961,8 +2962,8 @@ struct sType* it_99;
 char* name_100;
 void* right_value114;
 char* str_101;
-_Bool _if_conditional171;
 _Bool _if_conditional172;
+_Bool _if_conditional173;
 void* right_value115;
 void* right_value116;
 void* right_value117;
@@ -3076,7 +3077,7 @@ right_value119 = (void*)0;
                 str_90=(char*)come_increment_ref_count(((char*)(right_value108=make_define_var(it_88,name_89,(_Bool)0,info))));
                 right_value108 = come_decrement_ref_count2(right_value108, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_55,str_90);
-                if(_if_conditional166=i_86==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional166) {
+                if(_if_conditional167=i_86==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional167) {
                     if(fun->mVarArgs) {
                         buffer_append_str(output_55,", ...");
                     }
@@ -3089,7 +3090,7 @@ right_value119 = (void*)0;
             }
             come_call_finalizer2(list$1sTypephp_finalize,o2_saved_87, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             node_94=list$1sNodephp_operator_load_element(fun->mResultType->mArrayNum,0);
-            if(_if_conditional170=!node_compile(node_94,info),            _if_conditional170) {
+            if(_if_conditional171=!node_compile(node_94,info),            _if_conditional171) {
                 err_msg(info,"invalid array number");
                 __result62__ = __result_obj__ = ((char*)(right_value109=__builtin_string("")));
                 come_call_finalizer2(sType_finalize,base_result_type_84, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -3123,7 +3124,7 @@ right_value119 = (void*)0;
                 str_101=(char*)come_increment_ref_count(((char*)(right_value114=make_define_var(it_99,name_100,(_Bool)0,info))));
                 right_value114 = come_decrement_ref_count2(right_value114, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_55,str_101);
-                if(_if_conditional171=i_97==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional171) {
+                if(_if_conditional172=i_97==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional172) {
                     if(fun->mVarArgs) {
                         buffer_append_str(output_55,", ...");
                     }
@@ -3272,6 +3273,7 @@ _Bool _if_conditional164;
 _Bool _if_conditional165;
 void* right_value103;
 char* __dec_obj28;
+_Bool _if_conditional166;
 struct sType* __result59__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value69 = (void*)0;
@@ -3480,6 +3482,9 @@ right_value103 = (void*)0;
                     result_66->mAsmName=(char*)come_increment_ref_count(((char*)(right_value103=string_clone(self->mAsmName))));
                     __dec_obj28 = come_decrement_ref_count2(__dec_obj28, (void*)0, (void*)0, 0,0,0, (void*)0);
                     right_value103 = come_decrement_ref_count2(right_value103, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
+                }
+                if(_if_conditional166=self!=((void*)0),                _if_conditional166) {
+                    result_66->mArrayPointerType=self->mArrayPointerType;
                 }
                 __result59__ = __result_obj__ = result_66;
                 come_call_finalizer2(sType_finalize,result_66, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
@@ -3935,11 +3940,11 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 static struct sNode* list$1sNodephp_operator_load_element(struct list$1sNodeph* self, int position){
 void* __result_obj__;
-_Bool _if_conditional168;
+_Bool _if_conditional169;
 struct list_item$1sNodeph* it_91;
 int i_92;
 _Bool _while_condtional9;
-_Bool _if_conditional169;
+_Bool _if_conditional170;
 struct sNode* __result60__;
 struct sNode* default_value_93;
 struct sNode* __result61__;
@@ -3947,13 +3952,13 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&it_91, 0, sizeof(struct list_item$1sNodeph*));
 memset(&i_92, 0, sizeof(int));
 memset(&default_value_93, 0, sizeof(struct sNode*));
-                if(_if_conditional168=position<0,                _if_conditional168) {
+                if(_if_conditional169=position<0,                _if_conditional169) {
                     position+=self->len;
                 }
                 it_91=self->head;
                 i_92=0;
                 while(_while_condtional9=it_91!=((void*)0),                _while_condtional9) {
-                    if(_if_conditional169=position==i_92,                    _if_conditional169) {
+                    if(_if_conditional170=position==i_92,                    _if_conditional170) {
                         __result60__ = __result_obj__ = it_91->item;
                         return __result60__;
                     }
@@ -3972,7 +3977,7 @@ void* __result_obj__;
 void* right_value120;
 void* right_value121;
 struct buffer* output_102;
-_Bool _if_conditional173;
+_Bool _if_conditional174;
 void* right_value122;
 void* right_value123;
 struct buffer* output2_103;
@@ -3982,11 +3987,11 @@ struct sType* it_106;
 char* name_107;
 void* right_value124;
 char* str_108;
-_Bool _if_conditional174;
+_Bool _if_conditional175;
 void* right_value125;
 void* right_value126;
 char* str_109;
-_Bool _if_conditional175;
+_Bool _if_conditional176;
 void* right_value127;
 struct sType* base_result_type_110;
 void* right_value128;
@@ -4000,10 +4005,10 @@ struct sType* it_114;
 char* name_115;
 void* right_value131;
 char* str_116;
-_Bool _if_conditional176;
 _Bool _if_conditional177;
-struct sNode* node_117;
 _Bool _if_conditional178;
+struct sNode* node_117;
+_Bool _if_conditional179;
 void* right_value132;
 char* __result64__;
 void* right_value133;
@@ -4017,8 +4022,8 @@ struct sType* it_122;
 char* name_123;
 void* right_value136;
 char* str_124;
-_Bool _if_conditional179;
 _Bool _if_conditional180;
+_Bool _if_conditional181;
 void* right_value137;
 char* __result65__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -4078,7 +4083,7 @@ right_value137 = (void*)0;
             str_108=(char*)come_increment_ref_count(((char*)(right_value124=make_define_var(it_106,name_107,(_Bool)0,info))));
             right_value124 = come_decrement_ref_count2(right_value124, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(output2_103,str_108);
-            if(_if_conditional174=i_104!=list$1sTypeph_length(fun->mParamTypes)-1,            _if_conditional174) {
+            if(_if_conditional175=i_104!=list$1sTypeph_length(fun->mParamTypes)-1,            _if_conditional175) {
                 buffer_append_str(output2_103,", ");
             }
             i_104++;
@@ -4095,7 +4100,7 @@ right_value137 = (void*)0;
         str_109 = come_decrement_ref_count2(str_109, (void*)0, (void*)0, 0, 0, 0, (void*)0);
     }
     else {
-        if(_if_conditional175=list$1sNodeph_length(fun->mResultType->mArrayNum)>0,        _if_conditional175) {
+        if(_if_conditional176=list$1sNodeph_length(fun->mResultType->mArrayNum)>0,        _if_conditional176) {
             base_result_type_110=(struct sType*)come_increment_ref_count(((struct sType*)(right_value127=sType_clone(fun->mResultType))));
             come_call_finalizer2(sType_finalize,right_value127, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             __dec_obj30=base_result_type_110->mArrayNum;
@@ -4115,7 +4120,7 @@ right_value137 = (void*)0;
                 str_116=(char*)come_increment_ref_count(((char*)(right_value131=make_define_var(it_114,name_115,(_Bool)0,info))));
                 right_value131 = come_decrement_ref_count2(right_value131, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_102,str_116);
-                if(_if_conditional176=i_112==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional176) {
+                if(_if_conditional177=i_112==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional177) {
                     if(fun->mVarArgs) {
                         buffer_append_str(output_102,", ...");
                     }
@@ -4128,7 +4133,7 @@ right_value137 = (void*)0;
             }
             come_call_finalizer2(list$1sTypephp_finalize,o2_saved_113, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             node_117=list$1sNodephp_operator_load_element(fun->mResultType->mArrayNum,0);
-            if(_if_conditional178=!node_compile(node_117,info),            _if_conditional178) {
+            if(_if_conditional179=!node_compile(node_117,info),            _if_conditional179) {
                 err_msg(info,"invalid array number");
                 __result64__ = __result_obj__ = ((char*)(right_value132=__builtin_string("")));
                 come_call_finalizer2(sType_finalize,base_result_type_110, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -4159,7 +4164,7 @@ right_value137 = (void*)0;
                 str_124=(char*)come_increment_ref_count(((char*)(right_value136=make_define_var(it_122,name_123,(_Bool)0,info))));
                 right_value136 = come_decrement_ref_count2(right_value136, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_102,str_124);
-                if(_if_conditional179=i_120==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional179) {
+                if(_if_conditional180=i_120==list$1sTypeph_length(fun->mParamTypes)-1,                _if_conditional180) {
                     if(fun->mVarArgs) {
                         buffer_append_str(output_102,", ...");
                     }
@@ -4195,8 +4200,8 @@ struct sType* it_129;
 char* name_130;
 void* right_value141;
 char* str_131;
-_Bool _if_conditional181;
 _Bool _if_conditional182;
+_Bool _if_conditional183;
 void* right_value142;
 char* __result66__;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -4227,7 +4232,7 @@ right_value142 = (void*)0;
         str_131=(char*)come_increment_ref_count(((char*)(right_value141=make_define_var(it_129,name_130,(_Bool)0,info))));
         right_value141 = come_decrement_ref_count2(right_value141, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         buffer_append_str(output_125,str_131);
-        if(_if_conditional181=i_127==list$1sTypeph_length(lambda_type->mParamTypes)-1,        _if_conditional181) {
+        if(_if_conditional182=i_127==list$1sTypeph_length(lambda_type->mParamTypes)-1,        _if_conditional182) {
             if(lambda_type->mVarArgs) {
                 buffer_append_str(output_125,", ...");
             }
@@ -4253,11 +4258,11 @@ right_value142 = (void*)0;
 
 void add_come_code(struct sInfo* info, const char* msg, ...){
 void* __result_obj__;
-_Bool _if_conditional183;
+_Bool _if_conditional184;
 char* msg2_132;
 va_list args_133;
 int len_134;
-_Bool _if_conditional184;
+_Bool _if_conditional185;
 int i_135;
 void* right_value143;
 void* right_value144;
@@ -4296,7 +4301,7 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 void add_come_code_at_source_head(struct sInfo* info, const char* msg, ...){
 void* __result_obj__;
-_Bool _if_conditional185;
+_Bool _if_conditional186;
 char* msg2_136;
 va_list args_137;
 int len_138;
@@ -4320,8 +4325,8 @@ right_value145 = (void*)0;
 
 void add_come_code_at_come_header(struct sInfo* info, const char* msg, ...){
 void* __result_obj__;
-_Bool _if_conditional186;
 _Bool _if_conditional187;
+_Bool _if_conditional188;
 char* msg2_139;
 va_list args_140;
 int len_141;
@@ -4334,7 +4339,7 @@ right_value146 = (void*)0;
     if(info->no_output_come_code) {
         return;
     }
-    if(_if_conditional187=string_operator_equals(info->sname,info->base_sname),    _if_conditional187) {
+    if(_if_conditional188=string_operator_equals(info->sname,info->base_sname),    _if_conditional188) {
         __builtin_va_start(args_140,msg);
         len_141=vasprintf(&msg2_139,msg,args_140);
         __builtin_va_end(args_140);
@@ -4476,11 +4481,11 @@ memset(&i_145, 0, sizeof(int));
 
 static struct list$1sTypeph* list$1sTypeph_push_back(struct list$1sTypeph* self, struct sType* item){
 void* __result_obj__;
-_Bool _if_conditional188;
+_Bool _if_conditional189;
 void* right_value154;
 struct list_item$1sTypeph* litem_146;
 struct sType* __dec_obj31;
-_Bool _if_conditional189;
+_Bool _if_conditional190;
 void* right_value155;
 struct list_item$1sTypeph* litem_147;
 struct sType* __dec_obj32;
@@ -4495,7 +4500,7 @@ right_value155 = (void*)0;
 memset(&litem_147, 0, sizeof(struct list_item$1sTypeph*));
 right_value156 = (void*)0;
 memset(&litem_148, 0, sizeof(struct list_item$1sTypeph*));
-                if(_if_conditional188=self->len==0,                _if_conditional188) {
+                if(_if_conditional189=self->len==0,                _if_conditional189) {
                     litem_146=(struct list_item$1sTypeph*)come_increment_ref_count(((struct list_item$1sTypeph*)(right_value154=(struct list_item$1sTypeph*)come_calloc(1, sizeof(struct list_item$1sTypeph)*(1), "./comelang2.h", 226, "list_item$1sTypeph"))));
                     come_call_finalizer2(list_item$1sTypephp_finalize,right_value154, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                     litem_146->prev=((void*)0);
@@ -4507,7 +4512,7 @@ memset(&litem_148, 0, sizeof(struct list_item$1sTypeph*));
                     self->head=litem_146;
                 }
                 else {
-                    if(_if_conditional189=self->len==1,                    _if_conditional189) {
+                    if(_if_conditional190=self->len==1,                    _if_conditional190) {
                         litem_147=(struct list_item$1sTypeph*)come_increment_ref_count(((struct list_item$1sTypeph*)(right_value155=(struct list_item$1sTypeph*)come_calloc(1, sizeof(struct list_item$1sTypeph)*(1), "./comelang2.h", 236, "list_item$1sTypeph"))));
                         come_call_finalizer2(list_item$1sTypephp_finalize,right_value155, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                         litem_147->prev=self->head;
@@ -4557,11 +4562,11 @@ memset(&i_151, 0, sizeof(int));
 
 static struct list$1charph* list$1charph_push_back(struct list$1charph* self, char* item){
 void* __result_obj__;
-_Bool _if_conditional190;
+_Bool _if_conditional191;
 void* right_value161;
 struct list_item$1charph* litem_152;
 char* __dec_obj34;
-_Bool _if_conditional191;
+_Bool _if_conditional192;
 void* right_value162;
 struct list_item$1charph* litem_153;
 char* __dec_obj35;
@@ -4576,7 +4581,7 @@ right_value162 = (void*)0;
 memset(&litem_153, 0, sizeof(struct list_item$1charph*));
 right_value163 = (void*)0;
 memset(&litem_154, 0, sizeof(struct list_item$1charph*));
-                if(_if_conditional190=self->len==0,                _if_conditional190) {
+                if(_if_conditional191=self->len==0,                _if_conditional191) {
                     litem_152=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value161=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 226, "list_item$1charph"))));
                     come_call_finalizer2(list_item$1charphp_finalize,right_value161, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                     litem_152->prev=((void*)0);
@@ -4588,7 +4593,7 @@ memset(&litem_154, 0, sizeof(struct list_item$1charph*));
                     self->head=litem_152;
                 }
                 else {
-                    if(_if_conditional191=self->len==1,                    _if_conditional191) {
+                    if(_if_conditional192=self->len==1,                    _if_conditional192) {
                         litem_153=(struct list_item$1charph*)come_increment_ref_count(((struct list_item$1charph*)(right_value162=(struct list_item$1charph*)come_calloc(1, sizeof(struct list_item$1charph)*(1), "./comelang2.h", 236, "list_item$1charph"))));
                         come_call_finalizer2(list_item$1charphp_finalize,right_value162, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                         litem_153->prev=self->head;
@@ -4620,107 +4625,107 @@ memset(&litem_154, 0, sizeof(struct list_item$1charph*));
 
 static void sFun_finalize(struct sFun* self){
 void* __result_obj__;
-_Bool _if_conditional192;
 _Bool _if_conditional193;
 _Bool _if_conditional194;
 _Bool _if_conditional195;
 _Bool _if_conditional196;
 _Bool _if_conditional197;
 _Bool _if_conditional198;
-_Bool _if_conditional201;
+_Bool _if_conditional199;
 _Bool _if_conditional202;
 _Bool _if_conditional203;
 _Bool _if_conditional204;
 _Bool _if_conditional205;
 _Bool _if_conditional206;
+_Bool _if_conditional207;
 memset(&__result_obj__, 0, sizeof(void*));
-        if(_if_conditional192=self!=((void*)0)&&self->mName!=((void*)0),        _if_conditional192) {
+        if(_if_conditional193=self!=((void*)0)&&self->mName!=((void*)0),        _if_conditional193) {
             self->mName = come_decrement_ref_count2(self->mName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional193=self!=((void*)0)&&self->mResultType!=((void*)0),        _if_conditional193) {
+        if(_if_conditional194=self!=((void*)0)&&self->mResultType!=((void*)0),        _if_conditional194) {
             come_call_finalizer2(sType_finalize,self->mResultType, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional194=self!=((void*)0)&&self->mParamTypes!=((void*)0),        _if_conditional194) {
+        if(_if_conditional195=self!=((void*)0)&&self->mParamTypes!=((void*)0),        _if_conditional195) {
             come_call_finalizer2(list$1sTypephp_finalize,self->mParamTypes, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional195=self!=((void*)0)&&self->mParamNames!=((void*)0),        _if_conditional195) {
+        if(_if_conditional196=self!=((void*)0)&&self->mParamNames!=((void*)0),        _if_conditional196) {
             come_call_finalizer2(list$1charphp_finalize,self->mParamNames, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional196=self!=((void*)0)&&self->mParamDefaultParametors!=((void*)0),        _if_conditional196) {
+        if(_if_conditional197=self!=((void*)0)&&self->mParamDefaultParametors!=((void*)0),        _if_conditional197) {
             come_call_finalizer2(list$1charphp_finalize,self->mParamDefaultParametors, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional197=self!=((void*)0)&&self->mLambdaType!=((void*)0),        _if_conditional197) {
+        if(_if_conditional198=self!=((void*)0)&&self->mLambdaType!=((void*)0),        _if_conditional198) {
             come_call_finalizer2(sType_finalize,self->mLambdaType, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional198=self!=((void*)0)&&self->mBlock!=((void*)0),        _if_conditional198) {
+        if(_if_conditional199=self!=((void*)0)&&self->mBlock!=((void*)0),        _if_conditional199) {
             come_call_finalizer2(sBlock_finalize,self->mBlock, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional201=self!=((void*)0)&&self->mSource!=((void*)0),        _if_conditional201) {
+        if(_if_conditional202=self!=((void*)0)&&self->mSource!=((void*)0),        _if_conditional202) {
             come_call_finalizer2(buffer_finalize,self->mSource, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional202=self!=((void*)0)&&self->mSourceHead!=((void*)0),        _if_conditional202) {
+        if(_if_conditional203=self!=((void*)0)&&self->mSourceHead!=((void*)0),        _if_conditional203) {
             come_call_finalizer2(buffer_finalize,self->mSourceHead, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional203=self!=((void*)0)&&self->mSourceHead2!=((void*)0),        _if_conditional203) {
+        if(_if_conditional204=self!=((void*)0)&&self->mSourceHead2!=((void*)0),        _if_conditional204) {
             come_call_finalizer2(buffer_finalize,self->mSourceHead2, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional204=self!=((void*)0)&&self->mSourceDefer!=((void*)0),        _if_conditional204) {
+        if(_if_conditional205=self!=((void*)0)&&self->mSourceDefer!=((void*)0),        _if_conditional205) {
             come_call_finalizer2(buffer_finalize,self->mSourceDefer, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional205=self!=((void*)0)&&self->mComeHeader!=((void*)0),        _if_conditional205) {
+        if(_if_conditional206=self!=((void*)0)&&self->mComeHeader!=((void*)0),        _if_conditional206) {
             self->mComeHeader = come_decrement_ref_count2(self->mComeHeader, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
-        if(_if_conditional206=self!=((void*)0)&&self->mDeclareSName!=((void*)0),        _if_conditional206) {
+        if(_if_conditional207=self!=((void*)0)&&self->mDeclareSName!=((void*)0),        _if_conditional207) {
             self->mDeclareSName = come_decrement_ref_count2(self->mDeclareSName, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
 }
 
 static void sBlock_finalize(struct sBlock* self){
 void* __result_obj__;
-_Bool _if_conditional199;
 _Bool _if_conditional200;
+_Bool _if_conditional201;
 memset(&__result_obj__, 0, sizeof(void*));
-                if(_if_conditional199=self!=((void*)0)&&self->mNodes!=((void*)0),                _if_conditional199) {
+                if(_if_conditional200=self!=((void*)0)&&self->mNodes!=((void*)0),                _if_conditional200) {
                     come_call_finalizer2(list$1sNodephp_finalize,self->mNodes, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                 }
-                if(_if_conditional200=self!=((void*)0)&&self->mVarTable!=((void*)0),                _if_conditional200) {
+                if(_if_conditional201=self!=((void*)0)&&self->mVarTable!=((void*)0),                _if_conditional201) {
                     come_call_finalizer2(sVarTable_finalize,self->mVarTable, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                 }
 }
 
 static struct map$2charphsFunph* map$2charphsFunph_insert(struct map$2charphsFunph* self, char* key, struct sFun* item){
 void* __result_obj__;
-_Bool _if_conditional207;
+_Bool _if_conditional208;
 unsigned int hash_175;
 unsigned int it_176;
 _Bool _while_condtional12;
-_Bool _if_conditional219;
 _Bool _if_conditional220;
 _Bool _if_conditional221;
-_Bool _if_conditional241;
+_Bool _if_conditional222;
 _Bool _if_conditional242;
 _Bool _if_conditional243;
 _Bool _if_conditional244;
 _Bool _if_conditional245;
+_Bool _if_conditional246;
 _Bool same_key_exist_193;
 char* it2_196;
-_Bool _if_conditional250;
 _Bool _if_conditional251;
+_Bool _if_conditional252;
 struct map$2charphsFunph* __result94__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&hash_175, 0, sizeof(unsigned int));
 memset(&it_176, 0, sizeof(unsigned int));
 memset(&same_key_exist_193, 0, sizeof(_Bool));
 memset(&it2_196, 0, sizeof(char*));
-        if(_if_conditional207=self->len*10>=self->size,        _if_conditional207) {
+        if(_if_conditional208=self->len*10>=self->size,        _if_conditional208) {
             map$2charphsFunph_rehash(self);
         }
         hash_175=string_get_hash_key(key)%self->size;
         it_176=hash_175;
         while(_while_condtional12=(_Bool)1,        _while_condtional12) {
-            if(_if_conditional219=self->item_existance[it_176],            _if_conditional219) {
-                if(_if_conditional220=string_equals(self->keys[it_176],key),                _if_conditional220) {
-                    if(_if_conditional221=1,                    _if_conditional221) {
+            if(_if_conditional220=self->item_existance[it_176],            _if_conditional220) {
+                if(_if_conditional221=string_equals(self->keys[it_176],key),                _if_conditional221) {
+                    if(_if_conditional222=1,                    _if_conditional222) {
                         list$1charp_remove(self->key_list,self->keys[it_176]);
                         self->keys[it_176] = come_decrement_ref_count2(self->keys[it_176], (void*)0, (void*)0, 0, 0, 0, (void*)0);
                         self->keys[it_176]=(char*)come_increment_ref_count(key);
@@ -4729,7 +4734,7 @@ memset(&it2_196, 0, sizeof(char*));
                         list$1charp_remove(self->key_list,self->keys[it_176]);
                         self->keys[it_176]=key;
                     }
-                    if(_if_conditional241=1,                    _if_conditional241) {
+                    if(_if_conditional242=1,                    _if_conditional242) {
                         come_call_finalizer2(sFun_finalize,self->items[it_176], (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                         self->items[it_176]=(struct sFun*)come_increment_ref_count(item);
                     }
@@ -4739,11 +4744,11 @@ memset(&it2_196, 0, sizeof(char*));
                     break;
                 }
                 it_176++;
-                if(_if_conditional242=it_176>=self->size,                _if_conditional242) {
+                if(_if_conditional243=it_176>=self->size,                _if_conditional243) {
                     it_176=0;
                 }
                 else {
-                    if(_if_conditional243=it_176==hash_175,                    _if_conditional243) {
+                    if(_if_conditional244=it_176==hash_175,                    _if_conditional244) {
                         printf("unexpected error in map.insert\n");
                         stackframe();
                         exit(2);
@@ -4752,13 +4757,13 @@ memset(&it2_196, 0, sizeof(char*));
             }
             else {
                 self->item_existance[it_176]=(_Bool)1;
-                if(_if_conditional244=1,                _if_conditional244) {
+                if(_if_conditional245=1,                _if_conditional245) {
                     self->keys[it_176]=(char*)come_increment_ref_count(key);
                 }
                 else {
                     self->keys[it_176]=key;
                 }
-                if(_if_conditional245=1,                _if_conditional245) {
+                if(_if_conditional246=1,                _if_conditional246) {
                     self->items[it_176]=(struct sFun*)come_increment_ref_count(item);
                 }
                 else {
@@ -4770,12 +4775,12 @@ memset(&it2_196, 0, sizeof(char*));
         }
         same_key_exist_193=(_Bool)0;
         for(        it2_196=list$1charp_begin(self->key_list);        !list$1charp_end(self->key_list);        it2_196=list$1charp_next(self->key_list)        ){
-            if(_if_conditional250=string_equals(it2_196,key),            _if_conditional250) {
+            if(_if_conditional251=string_equals(it2_196,key),            _if_conditional251) {
                 puts("SAME KEY");
                 same_key_exist_193=(_Bool)1;
             }
         }
-        if(_if_conditional251=!same_key_exist_193,        _if_conditional251) {
+        if(_if_conditional252=!same_key_exist_193,        _if_conditional252) {
             list$1charp_push_back(self->key_list,key);
         }
         __result94__ = __result_obj__ = self;
@@ -4802,9 +4807,9 @@ struct sFun* it2_171;
 unsigned int hash_172;
 int n_173;
 _Bool _while_condtional11;
-_Bool _if_conditional216;
 _Bool _if_conditional217;
 _Bool _if_conditional218;
+_Bool _if_conditional219;
 struct sFun* default_value_174;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&size_158, 0, sizeof(int));
@@ -4835,13 +4840,13 @@ memset(&default_value_174, 0, sizeof(struct sFun*));
                     hash_172=string_get_hash_key(it_165)%size_158;
                     n_173=hash_172;
                     while(_while_condtional11=(_Bool)1,                    _while_condtional11) {
-                        if(_if_conditional216=item_existance_161[n_173],                        _if_conditional216) {
+                        if(_if_conditional217=item_existance_161[n_173],                        _if_conditional217) {
                             n_173++;
-                            if(_if_conditional217=n_173>=size_158,                            _if_conditional217) {
+                            if(_if_conditional218=n_173>=size_158,                            _if_conditional218) {
                                 n_173=0;
                             }
                             else {
-                                if(_if_conditional218=n_173==hash_172,                                _if_conditional218) {
+                                if(_if_conditional219=n_173==hash_172,                                _if_conditional219) {
                                     printf("unexpected error in map.rehash(1)\n");
                                     stackframe();
                                     exit(2);
@@ -4869,17 +4874,17 @@ memset(&default_value_174, 0, sizeof(struct sFun*));
 
 static char* map$2charphsFunph_begin(struct map$2charphsFunph* self){
 void* __result_obj__;
-_Bool _if_conditional208;
+_Bool _if_conditional209;
 char* result_163;
 char* __result71__;
-_Bool _if_conditional209;
+_Bool _if_conditional210;
 char* __result72__;
 char* result_164;
 char* __result73__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_163, 0, sizeof(char*));
 memset(&result_164, 0, sizeof(char*));
-                    if(_if_conditional208=self==((void*)0),                    _if_conditional208) {
+                    if(_if_conditional209=self==((void*)0),                    _if_conditional209) {
                         memset(&result_163,0,sizeof(char*));
                         __result71__ = __result_obj__ = result_163;
                         return __result71__;
@@ -4904,17 +4909,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 static char* map$2charphsFunph_next(struct map$2charphsFunph* self){
 void* __result_obj__;
-_Bool _if_conditional210;
+_Bool _if_conditional211;
 char* result_166;
 char* __result75__;
-_Bool _if_conditional211;
+_Bool _if_conditional212;
 char* __result76__;
 char* result_167;
 char* __result77__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_166, 0, sizeof(char*));
 memset(&result_167, 0, sizeof(char*));
-                    if(_if_conditional210=self==((void*)0)||self->key_list->it==((void*)0),                    _if_conditional210) {
+                    if(_if_conditional211=self==((void*)0)||self->key_list->it==((void*)0),                    _if_conditional211) {
                         memset(&result_166,0,sizeof(char*));
                         __result75__ = __result_obj__ = result_166;
                         return __result75__;
@@ -4934,11 +4939,11 @@ void* __result_obj__;
 unsigned int hash_169;
 unsigned int it_170;
 _Bool _while_condtional10;
-_Bool _if_conditional212;
 _Bool _if_conditional213;
-struct sFun* __result78__;
 _Bool _if_conditional214;
+struct sFun* __result78__;
 _Bool _if_conditional215;
+_Bool _if_conditional216;
 struct sFun* __result79__;
 struct sFun* __result80__;
 struct sFun* __result81__;
@@ -4948,18 +4953,18 @@ memset(&it_170, 0, sizeof(unsigned int));
                         hash_169=string_get_hash_key(((char*)key))%self->size;
                         it_170=hash_169;
                         while(_while_condtional10=(_Bool)1,                        _while_condtional10) {
-                            if(_if_conditional212=self->item_existance[it_170],                            _if_conditional212) {
-                                if(_if_conditional213=string_equals(self->keys[it_170],key),                                _if_conditional213) {
+                            if(_if_conditional213=self->item_existance[it_170],                            _if_conditional213) {
+                                if(_if_conditional214=string_equals(self->keys[it_170],key),                                _if_conditional214) {
                                     __result78__ = __result_obj__ = self->items[it_170];
                                     come_call_finalizer2(sFun_finalize,default_value, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                                     return __result78__;
                                 }
                                 it_170++;
-                                if(_if_conditional214=it_170>=self->size,                                _if_conditional214) {
+                                if(_if_conditional215=it_170>=self->size,                                _if_conditional215) {
                                     it_170=0;
                                 }
                                 else {
-                                    if(_if_conditional215=it_170==hash_169,                                    _if_conditional215) {
+                                    if(_if_conditional216=it_170==hash_169,                                    _if_conditional216) {
                                         __result79__ = __result_obj__ = default_value;
                                         come_call_finalizer2(sFun_finalize,default_value, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                                         return __result79__;
@@ -4983,7 +4988,7 @@ void* __result_obj__;
 int it2_177;
 struct list_item$1charp* it_178;
 _Bool _while_condtional13;
-_Bool _if_conditional222;
+_Bool _if_conditional223;
 struct list$1charp* __result85__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&it2_177, 0, sizeof(int));
@@ -4991,7 +4996,7 @@ memset(&it_178, 0, sizeof(struct list_item$1charp*));
                             it2_177=0;
                             it_178=self->head;
                             while(_while_condtional13=it_178!=((void*)0),                            _while_condtional13) {
-                                if(_if_conditional222=string_equals(it_178->item,item),                                _if_conditional222) {
+                                if(_if_conditional223=string_equals(it_178->item,item),                                _if_conditional223) {
                                     list$1charp_delete(self,it2_177,it2_177+1);
                                     break;
                                 }
@@ -5004,40 +5009,40 @@ memset(&it_178, 0, sizeof(struct list_item$1charp*));
 
 static struct list$1charp* list$1charp_delete(struct list$1charp* self, int head, int tail){
 void* __result_obj__;
-_Bool _if_conditional223;
 _Bool _if_conditional224;
 _Bool _if_conditional225;
-int tmp_179;
 _Bool _if_conditional226;
+int tmp_179;
 _Bool _if_conditional227;
 _Bool _if_conditional228;
-struct list$1charp* __result82__;
 _Bool _if_conditional229;
+struct list$1charp* __result82__;
 _Bool _if_conditional230;
+_Bool _if_conditional231;
 struct list_item$1charp* it_182;
 int i_183;
 _Bool _while_condtional15;
-_Bool _if_conditional231;
-struct list_item$1charp* prev_it_184;
 _Bool _if_conditional232;
+struct list_item$1charp* prev_it_184;
 _Bool _if_conditional233;
+_Bool _if_conditional234;
 struct list_item$1charp* it_185;
 int i_186;
 _Bool _while_condtional16;
-_Bool _if_conditional234;
 _Bool _if_conditional235;
+_Bool _if_conditional236;
 struct list_item$1charp* prev_it_187;
 struct list_item$1charp* it_188;
 struct list_item$1charp* head_prev_it_189;
 struct list_item$1charp* tail_it_190;
 int i_191;
 _Bool _while_condtional17;
-_Bool _if_conditional236;
 _Bool _if_conditional237;
 _Bool _if_conditional238;
-struct list_item$1charp* prev_it_192;
 _Bool _if_conditional239;
+struct list_item$1charp* prev_it_192;
 _Bool _if_conditional240;
+_Bool _if_conditional241;
 struct list$1charp* __result84__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&tmp_179, 0, sizeof(int));
@@ -5052,36 +5057,36 @@ memset(&head_prev_it_189, 0, sizeof(struct list_item$1charp*));
 memset(&tail_it_190, 0, sizeof(struct list_item$1charp*));
 memset(&i_191, 0, sizeof(int));
 memset(&prev_it_192, 0, sizeof(struct list_item$1charp*));
-                                        if(_if_conditional223=head<0,                                        _if_conditional223) {
+                                        if(_if_conditional224=head<0,                                        _if_conditional224) {
                                             head+=self->len;
                                         }
-                                        if(_if_conditional224=tail<0,                                        _if_conditional224) {
+                                        if(_if_conditional225=tail<0,                                        _if_conditional225) {
                                             tail+=self->len+1;
                                         }
-                                        if(_if_conditional225=head>tail,                                        _if_conditional225) {
+                                        if(_if_conditional226=head>tail,                                        _if_conditional226) {
                                             tmp_179=tail;
                                             tail=head;
                                             head=tmp_179;
                                         }
-                                        if(_if_conditional226=head<0,                                        _if_conditional226) {
+                                        if(_if_conditional227=head<0,                                        _if_conditional227) {
                                             head=0;
                                         }
-                                        if(_if_conditional227=tail>self->len,                                        _if_conditional227) {
+                                        if(_if_conditional228=tail>self->len,                                        _if_conditional228) {
                                             tail=self->len;
                                         }
-                                        if(_if_conditional228=head==tail,                                        _if_conditional228) {
+                                        if(_if_conditional229=head==tail,                                        _if_conditional229) {
                                             __result82__ = __result_obj__ = self;
                                             return __result82__;
                                         }
-                                        if(_if_conditional229=head==0&&tail==self->len,                                        _if_conditional229) {
+                                        if(_if_conditional230=head==0&&tail==self->len,                                        _if_conditional230) {
                                             list$1charp_reset(self);
                                         }
                                         else {
-                                            if(_if_conditional230=head==0,                                            _if_conditional230) {
+                                            if(_if_conditional231=head==0,                                            _if_conditional231) {
                                                 it_182=self->head;
                                                 i_183=0;
                                                 while(_while_condtional15=it_182!=((void*)0),                                                _while_condtional15) {
-                                                    if(_if_conditional231=i_183<tail,                                                    _if_conditional231) {
+                                                    if(_if_conditional232=i_183<tail,                                                    _if_conditional232) {
                                                         prev_it_184=it_182;
                                                         it_182=it_182->next;
                                                         i_183++;
@@ -5089,7 +5094,7 @@ memset(&prev_it_192, 0, sizeof(struct list_item$1charp*));
                                                         self->len--;
                                                     }
                                                     else {
-                                                        if(_if_conditional232=i_183==tail,                                                        _if_conditional232) {
+                                                        if(_if_conditional233=i_183==tail,                                                        _if_conditional233) {
                                                             self->head=it_182;
                                                             self->head->prev=((void*)0);
                                                             break;
@@ -5102,15 +5107,15 @@ memset(&prev_it_192, 0, sizeof(struct list_item$1charp*));
                                                 }
                                             }
                                             else {
-                                                if(_if_conditional233=tail==self->len,                                                _if_conditional233) {
+                                                if(_if_conditional234=tail==self->len,                                                _if_conditional234) {
                                                     it_185=self->head;
                                                     i_186=0;
                                                     while(_while_condtional16=it_185!=((void*)0),                                                    _while_condtional16) {
-                                                        if(_if_conditional234=i_186==head,                                                        _if_conditional234) {
+                                                        if(_if_conditional235=i_186==head,                                                        _if_conditional235) {
                                                             self->tail=it_185->prev;
                                                             self->tail->next=((void*)0);
                                                         }
-                                                        if(_if_conditional235=i_186>=head,                                                        _if_conditional235) {
+                                                        if(_if_conditional236=i_186>=head,                                                        _if_conditional236) {
                                                             prev_it_187=it_185;
                                                             it_185=it_185->next;
                                                             i_186++;
@@ -5129,13 +5134,13 @@ memset(&prev_it_192, 0, sizeof(struct list_item$1charp*));
                                                     tail_it_190=((void*)0);
                                                     i_191=0;
                                                     while(_while_condtional17=it_188!=((void*)0),                                                    _while_condtional17) {
-                                                        if(_if_conditional236=i_191==head,                                                        _if_conditional236) {
+                                                        if(_if_conditional237=i_191==head,                                                        _if_conditional237) {
                                                             head_prev_it_189=it_188->prev;
                                                         }
-                                                        if(_if_conditional237=i_191==tail,                                                        _if_conditional237) {
+                                                        if(_if_conditional238=i_191==tail,                                                        _if_conditional238) {
                                                             tail_it_190=it_188;
                                                         }
-                                                        if(_if_conditional238=i_191>=head&&i_191<tail,                                                        _if_conditional238) {
+                                                        if(_if_conditional239=i_191>=head&&i_191<tail,                                                        _if_conditional239) {
                                                             prev_it_192=it_188;
                                                             it_188=it_188->next;
                                                             i_191++;
@@ -5147,10 +5152,10 @@ memset(&prev_it_192, 0, sizeof(struct list_item$1charp*));
                                                             i_191++;
                                                         }
                                                     }
-                                                    if(_if_conditional239=head_prev_it_189!=((void*)0),                                                    _if_conditional239) {
+                                                    if(_if_conditional240=head_prev_it_189!=((void*)0),                                                    _if_conditional240) {
                                                         head_prev_it_189->next=tail_it_190;
                                                     }
-                                                    if(_if_conditional240=tail_it_190!=((void*)0),                                                    _if_conditional240) {
+                                                    if(_if_conditional241=tail_it_190!=((void*)0),                                                    _if_conditional241) {
                                                         tail_it_190->prev=head_prev_it_189;
                                                     }
                                                 }
@@ -5189,17 +5194,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 static char* list$1charp_begin(struct list$1charp* self){
 void* __result_obj__;
-_Bool _if_conditional246;
+_Bool _if_conditional247;
 char* result_194;
 char* __result86__;
-_Bool _if_conditional247;
+_Bool _if_conditional248;
 char* __result87__;
 char* result_195;
 char* __result88__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_194, 0, sizeof(char*));
 memset(&result_195, 0, sizeof(char*));
-            if(_if_conditional246=self==((void*)0),            _if_conditional246) {
+            if(_if_conditional247=self==((void*)0),            _if_conditional247) {
                 memset(&result_194,0,sizeof(char*));
                 __result86__ = __result_obj__ = result_194;
                 return __result86__;
@@ -5224,17 +5229,17 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 static char* list$1charp_next(struct list$1charp* self){
 void* __result_obj__;
-_Bool _if_conditional248;
+_Bool _if_conditional249;
 char* result_197;
 char* __result90__;
-_Bool _if_conditional249;
+_Bool _if_conditional250;
 char* __result91__;
 char* result_198;
 char* __result92__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&result_197, 0, sizeof(char*));
 memset(&result_198, 0, sizeof(char*));
-            if(_if_conditional248=self==((void*)0)||self->it==((void*)0),            _if_conditional248) {
+            if(_if_conditional249=self==((void*)0)||self->it==((void*)0),            _if_conditional249) {
                 memset(&result_197,0,sizeof(char*));
                 __result90__ = __result_obj__ = result_197;
                 return __result90__;
@@ -5251,10 +5256,10 @@ memset(&result_198, 0, sizeof(char*));
 
 static struct list$1charp* list$1charp_push_back(struct list$1charp* self, char* item){
 void* __result_obj__;
-_Bool _if_conditional252;
+_Bool _if_conditional253;
 void* right_value175;
 struct list_item$1charp* litem_199;
-_Bool _if_conditional253;
+_Bool _if_conditional254;
 void* right_value176;
 struct list_item$1charp* litem_200;
 void* right_value177;
@@ -5267,7 +5272,7 @@ right_value176 = (void*)0;
 memset(&litem_200, 0, sizeof(struct list_item$1charp*));
 right_value177 = (void*)0;
 memset(&litem_201, 0, sizeof(struct list_item$1charp*));
-                if(_if_conditional252=self->len==0,                _if_conditional252) {
+                if(_if_conditional253=self->len==0,                _if_conditional253) {
                     litem_199=(struct list_item$1charp*)come_increment_ref_count(((struct list_item$1charp*)(right_value175=(struct list_item$1charp*)come_calloc(1, sizeof(struct list_item$1charp)*(1), "./comelang2.h", 226, "list_item$1charp"))));
                     come_call_finalizer2(list_item$1charpp_finalize,right_value175, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                     litem_199->prev=((void*)0);
@@ -5277,7 +5282,7 @@ memset(&litem_201, 0, sizeof(struct list_item$1charp*));
                     self->head=litem_199;
                 }
                 else {
-                    if(_if_conditional253=self->len==1,                    _if_conditional253) {
+                    if(_if_conditional254=self->len==1,                    _if_conditional254) {
                         litem_200=(struct list_item$1charp*)come_increment_ref_count(((struct list_item$1charp*)(right_value176=(struct list_item$1charp*)come_calloc(1, sizeof(struct list_item$1charp)*(1), "./comelang2.h", 236, "list_item$1charp"))));
                         come_call_finalizer2(list_item$1charpp_finalize,right_value176, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                         litem_200->prev=self->head;
@@ -5313,33 +5318,33 @@ void* right_value181;
 struct sFun* it2_209;
 void* right_value182;
 char* header_210;
-_Bool _if_conditional258;
 _Bool _if_conditional259;
 _Bool _if_conditional260;
 _Bool _if_conditional261;
+_Bool _if_conditional262;
 struct map$2charphsFunph* o2_saved_215;
 char* it_216;
 void* right_value183;
 struct sFun* it2_217;
 void* right_value184;
 char* header_218;
-_Bool _if_conditional266;
+_Bool _if_conditional267;
 void* right_value185;
 char* output_219;
-_Bool _if_conditional267;
+_Bool _if_conditional268;
 void* right_value186;
 char* output_220;
-_Bool _if_conditional268;
 _Bool _if_conditional269;
+_Bool _if_conditional270;
 struct map$2charphsFunph* o2_saved_221;
 char* it_222;
 struct sFun* it2_223;
-_Bool _if_conditional270;
+_Bool _if_conditional271;
 void* right_value187;
 char* output_224;
-_Bool _if_conditional271;
 _Bool _if_conditional272;
 _Bool _if_conditional273;
+_Bool _if_conditional274;
 _Bool __result100__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value179 = (void*)0;
@@ -5379,7 +5384,7 @@ memset(&output_224, 0, sizeof(char*));
         right_value181 = come_decrement_ref_count2(right_value181, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         header_210=(char*)come_increment_ref_count(((char*)(right_value182=header_function(it2_209,info))));
         right_value182 = come_decrement_ref_count2(right_value182, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional258=it2_209->mStatic&&it2_209->mResultType->mInline,        _if_conditional258) {
+        if(_if_conditional259=it2_209->mStatic&&it2_209->mResultType->mInline,        _if_conditional259) {
         }
         else {
             if(it2_209->mStatic) {
@@ -5389,7 +5394,7 @@ memset(&output_224, 0, sizeof(char*));
                 if(it2_209->mResultType->mInline) {
                 }
                 else {
-                    if(_if_conditional261=string_operator_not_equals(it_205,"__builtin_va_start")&&string_operator_not_equals(it_205,"__builtin_va_end"),                    _if_conditional261) {
+                    if(_if_conditional262=string_operator_not_equals(it_205,"__builtin_va_start")&&string_operator_not_equals(it_205,"__builtin_va_end"),                    _if_conditional262) {
                         fprintf(f_203,"%s\n",header_210,it_205);
                     }
                 }
@@ -5404,7 +5409,7 @@ memset(&output_224, 0, sizeof(char*));
         right_value183 = come_decrement_ref_count2(right_value183, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         header_218=(char*)come_increment_ref_count(((char*)(right_value184=header_function(it2_217,info))));
         right_value184 = come_decrement_ref_count2(right_value184, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional266=it2_217->mStatic&&it2_217->mResultType->mInline,        _if_conditional266) {
+        if(_if_conditional267=it2_217->mStatic&&it2_217->mResultType->mInline,        _if_conditional267) {
             output_219=(char*)come_increment_ref_count(((char*)(right_value185=output_function(it2_217,info))));
             right_value185 = come_decrement_ref_count2(right_value185, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             fprintf(f_203,"static inline %s",output_219);
@@ -5421,7 +5426,7 @@ memset(&output_224, 0, sizeof(char*));
                 if(it2_217->mStatic) {
                 }
                 else {
-                    if(_if_conditional269=string_operator_not_equals(it_216,"__builtin_va_start")&&string_operator_not_equals(it_216,"__builtin_va_end"),                    _if_conditional269) {
+                    if(_if_conditional270=string_operator_not_equals(it_216,"__builtin_va_start")&&string_operator_not_equals(it_216,"__builtin_va_end"),                    _if_conditional270) {
                     }
                 }
             }
@@ -5433,10 +5438,10 @@ memset(&output_224, 0, sizeof(char*));
     fprintf(f_203,"// body function\n");
     for(    o2_saved_221=(struct map$2charphsFunph*)come_increment_ref_count((info->funcs)),it_222=map$2charphsFunph_begin((o2_saved_221));    !map$2charphsFunph_end((o2_saved_221));    it_222=map$2charphsFunph_next((o2_saved_221))    ){
         it2_223=map$2charphsFunphp_operator_load_element(info->funcs,it_222);
-        if(_if_conditional270=!it2_223->mExternal,        _if_conditional270) {
+        if(_if_conditional271=!it2_223->mExternal,        _if_conditional271) {
             output_224=(char*)come_increment_ref_count(((char*)(right_value187=output_function(it2_223,info))));
             right_value187 = come_decrement_ref_count2(right_value187, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            if(_if_conditional271=it2_223->mStatic&&it2_223->mResultType->mInline,            _if_conditional271) {
+            if(_if_conditional272=it2_223->mStatic&&it2_223->mResultType->mInline,            _if_conditional272) {
             }
             else {
                 if(it2_223->mStatic) {
@@ -5468,11 +5473,11 @@ struct sFun* default_value_206;
 unsigned int hash_207;
 unsigned int it_208;
 _Bool _while_condtional18;
-_Bool _if_conditional254;
 _Bool _if_conditional255;
-struct sFun* __result96__;
 _Bool _if_conditional256;
+struct sFun* __result96__;
 _Bool _if_conditional257;
+_Bool _if_conditional258;
 struct sFun* __result97__;
 struct sFun* __result98__;
 struct sFun* __result99__;
@@ -5484,18 +5489,18 @@ memset(&it_208, 0, sizeof(unsigned int));
             hash_207=string_get_hash_key(((char*)key))%self->size;
             it_208=hash_207;
             while(_while_condtional18=(_Bool)1,            _while_condtional18) {
-                if(_if_conditional254=self->item_existance[it_208],                _if_conditional254) {
-                    if(_if_conditional255=string_equals(self->keys[it_208],key),                    _if_conditional255) {
+                if(_if_conditional255=self->item_existance[it_208],                _if_conditional255) {
+                    if(_if_conditional256=string_equals(self->keys[it_208],key),                    _if_conditional256) {
                         __result96__ = __result_obj__ = self->items[it_208];
                         come_call_finalizer2(sFun_finalize,default_value_206, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                         return __result96__;
                     }
                     it_208++;
-                    if(_if_conditional256=it_208>=self->size,                    _if_conditional256) {
+                    if(_if_conditional257=it_208>=self->size,                    _if_conditional257) {
                         it_208=0;
                     }
                     else {
-                        if(_if_conditional257=it_208==hash_207,                        _if_conditional257) {
+                        if(_if_conditional258=it_208==hash_207,                        _if_conditional258) {
                             __result97__ = __result_obj__ = default_value_206;
                             come_call_finalizer2(sFun_finalize,default_value_206, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
                             return __result97__;
@@ -5517,25 +5522,25 @@ memset(&it_208, 0, sizeof(unsigned int));
 static void map$2charphsFunphp_finalize(struct map$2charphsFunph* self){
 void* __result_obj__;
 int i_211;
-_Bool _if_conditional262;
 _Bool _if_conditional263;
-int i_212;
 _Bool _if_conditional264;
+int i_212;
 _Bool _if_conditional265;
+_Bool _if_conditional266;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_211, 0, sizeof(int));
 memset(&i_212, 0, sizeof(int));
         for(        i_211=0;        i_211<self->size;        i_211++        ){
-            if(_if_conditional262=self->item_existance[i_211],            _if_conditional262) {
-                if(_if_conditional263=1,                _if_conditional263) {
+            if(_if_conditional263=self->item_existance[i_211],            _if_conditional263) {
+                if(_if_conditional264=1,                _if_conditional264) {
                     come_call_finalizer2(sFun_finalize,self->items[i_211], (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                 }
             }
         }
         come_free((char*)self->items);
         for(        i_212=0;        i_212<self->size;        i_212++        ){
-            if(_if_conditional264=self->item_existance[i_212],            _if_conditional264) {
-                if(_if_conditional265=1,                _if_conditional265) {
+            if(_if_conditional265=self->item_existance[i_212],            _if_conditional265) {
+                if(_if_conditional266=1,                _if_conditional266) {
                     self->keys[i_212] = come_decrement_ref_count2(self->keys[i_212], (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
             }
@@ -5565,9 +5570,9 @@ _Bool output_header_file(struct sInfo* info){
 void* __result_obj__;
 char* output_file_name_225;
 struct _IO_FILE* f_226;
-_Bool _if_conditional274;
-void* right_value188;
 _Bool _if_conditional275;
+void* right_value188;
+_Bool _if_conditional276;
 _Bool __result101__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&output_file_name_225, 0, sizeof(char*));
@@ -5575,7 +5580,7 @@ memset(&f_226, 0, sizeof(struct _IO_FILE*));
 right_value188 = (void*)0;
     output_file_name_225=(char*)come_increment_ref_count(info->output_file_name);
     f_226=fopen(output_file_name_225,"a");
-    if(_if_conditional274=info->num_source_files==0&&string_operator_equals(info->output_file_name,"common.h"),    _if_conditional274) {
+    if(_if_conditional275=info->num_source_files==0&&string_operator_equals(info->output_file_name,"common.h"),    _if_conditional275) {
         fprintf(f_226,"#ifndef __COMMON_H__\n");
         fprintf(f_226,"#define __COMMON_H__\n");
         fprintf(f_226,"#include <comelang2.h>\n");
@@ -5583,7 +5588,7 @@ right_value188 = (void*)0;
     fprintf(f_226,"%s\n",((char*)(right_value188=buffer_to_string(info->module->mHeader))));
     right_value188 = come_decrement_ref_count2(right_value188, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     fprintf(f_226,"\n");
-    if(_if_conditional275=info->num_source_files==info->max_source_files-1&&string_operator_equals(info->output_file_name,"common.h"),    _if_conditional275) {
+    if(_if_conditional276=info->num_source_files==info->max_source_files-1&&string_operator_equals(info->output_file_name,"common.h"),    _if_conditional276) {
         fprintf(f_226,"#endif\n");
     }
     fclose(f_226);
@@ -5595,11 +5600,11 @@ right_value188 = (void*)0;
 
 void add_come_code_at_function_head(struct sInfo* info, char* code, ...){
 void* __result_obj__;
-_Bool _if_conditional276;
+_Bool _if_conditional277;
 char* msg2_227;
 va_list args_228;
 int len_229;
-_Bool _if_conditional277;
+_Bool _if_conditional278;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&msg2_227, 0, sizeof(char*));
 memset(&args_228, 0, sizeof(va_list));
@@ -5619,11 +5624,11 @@ memset(&len_229, 0, sizeof(int));
 
 void add_come_code_at_function_head2(struct sInfo* info, char* code, ...){
 void* __result_obj__;
-_Bool _if_conditional278;
+_Bool _if_conditional279;
 char* msg2_230;
 va_list args_231;
 int len_232;
-_Bool _if_conditional279;
+_Bool _if_conditional280;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&msg2_230, 0, sizeof(char*));
 memset(&args_231, 0, sizeof(va_list));
@@ -5643,12 +5648,12 @@ memset(&len_232, 0, sizeof(int));
 
 void add_last_code_to_source(struct sInfo* info){
 void* __result_obj__;
-_Bool _if_conditional280;
 _Bool _if_conditional281;
-char* __dec_obj37;
 _Bool _if_conditional282;
-char* __dec_obj38;
+char* __dec_obj37;
 _Bool _if_conditional283;
+char* __dec_obj38;
+_Bool _if_conditional284;
 char* __dec_obj39;
 memset(&__result_obj__, 0, sizeof(void*));
     if(info->no_output_come_code) {
@@ -5676,14 +5681,14 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 void add_last_code_to_source_with_comma(struct sInfo* info){
 void* __result_obj__;
-_Bool _if_conditional284;
 _Bool _if_conditional285;
+_Bool _if_conditional286;
 void* right_value189;
 char* __dec_obj40;
-_Bool _if_conditional286;
+_Bool _if_conditional287;
 void* right_value190;
 char* __dec_obj41;
-_Bool _if_conditional287;
+_Bool _if_conditional288;
 void* right_value191;
 char* __dec_obj42;
 memset(&__result_obj__, 0, sizeof(void*));
@@ -5718,7 +5723,7 @@ right_value191 = (void*)0;
 
 void add_come_last_code(struct sInfo* info, const char* msg, ...){
 void* __result_obj__;
-_Bool _if_conditional288;
+_Bool _if_conditional289;
 char* msg2_233;
 va_list args_234;
 int len_235;
@@ -5745,7 +5750,7 @@ right_value192 = (void*)0;
 
 void add_come_last_code2(struct sInfo* info, const char* msg, ...){
 void* __result_obj__;
-_Bool _if_conditional289;
+_Bool _if_conditional290;
 char* msg2_236;
 va_list args_237;
 int len_238;
@@ -5772,7 +5777,7 @@ right_value193 = (void*)0;
 
 void add_come_last_code3(struct sInfo* info, const char* msg, ...){
 void* __result_obj__;
-_Bool _if_conditional290;
+_Bool _if_conditional291;
 char* msg2_239;
 va_list args_240;
 int len_241;
@@ -5805,40 +5810,40 @@ memset(&__result_obj__, 0, sizeof(void*));
 
 static struct list$1CVALUEph* list$1CVALUEph_delete(struct list$1CVALUEph* self, int head, int tail){
 void* __result_obj__;
-_Bool _if_conditional291;
 _Bool _if_conditional292;
 _Bool _if_conditional293;
-int tmp_242;
 _Bool _if_conditional294;
+int tmp_242;
 _Bool _if_conditional295;
 _Bool _if_conditional296;
-struct list$1CVALUEph* __result102__;
 _Bool _if_conditional297;
-_Bool _if_conditional299;
+struct list$1CVALUEph* __result102__;
+_Bool _if_conditional298;
+_Bool _if_conditional300;
 struct list_item$1CVALUEph* it_245;
 int i_246;
 _Bool _while_condtional21;
-_Bool _if_conditional300;
-struct list_item$1CVALUEph* prev_it_247;
 _Bool _if_conditional301;
+struct list_item$1CVALUEph* prev_it_247;
 _Bool _if_conditional302;
+_Bool _if_conditional303;
 struct list_item$1CVALUEph* it_248;
 int i_249;
 _Bool _while_condtional22;
-_Bool _if_conditional303;
 _Bool _if_conditional304;
+_Bool _if_conditional305;
 struct list_item$1CVALUEph* prev_it_250;
 struct list_item$1CVALUEph* it_251;
 struct list_item$1CVALUEph* head_prev_it_252;
 struct list_item$1CVALUEph* tail_it_253;
 int i_254;
 _Bool _while_condtional23;
-_Bool _if_conditional305;
 _Bool _if_conditional306;
 _Bool _if_conditional307;
-struct list_item$1CVALUEph* prev_it_255;
 _Bool _if_conditional308;
+struct list_item$1CVALUEph* prev_it_255;
 _Bool _if_conditional309;
+_Bool _if_conditional310;
 struct list$1CVALUEph* __result104__;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&tmp_242, 0, sizeof(int));
@@ -5853,36 +5858,36 @@ memset(&head_prev_it_252, 0, sizeof(struct list_item$1CVALUEph*));
 memset(&tail_it_253, 0, sizeof(struct list_item$1CVALUEph*));
 memset(&i_254, 0, sizeof(int));
 memset(&prev_it_255, 0, sizeof(struct list_item$1CVALUEph*));
-        if(_if_conditional291=head<0,        _if_conditional291) {
+        if(_if_conditional292=head<0,        _if_conditional292) {
             head+=self->len;
         }
-        if(_if_conditional292=tail<0,        _if_conditional292) {
+        if(_if_conditional293=tail<0,        _if_conditional293) {
             tail+=self->len+1;
         }
-        if(_if_conditional293=head>tail,        _if_conditional293) {
+        if(_if_conditional294=head>tail,        _if_conditional294) {
             tmp_242=tail;
             tail=head;
             head=tmp_242;
         }
-        if(_if_conditional294=head<0,        _if_conditional294) {
+        if(_if_conditional295=head<0,        _if_conditional295) {
             head=0;
         }
-        if(_if_conditional295=tail>self->len,        _if_conditional295) {
+        if(_if_conditional296=tail>self->len,        _if_conditional296) {
             tail=self->len;
         }
-        if(_if_conditional296=head==tail,        _if_conditional296) {
+        if(_if_conditional297=head==tail,        _if_conditional297) {
             __result102__ = __result_obj__ = self;
             return __result102__;
         }
-        if(_if_conditional297=head==0&&tail==self->len,        _if_conditional297) {
+        if(_if_conditional298=head==0&&tail==self->len,        _if_conditional298) {
             list$1CVALUEph_reset(self);
         }
         else {
-            if(_if_conditional299=head==0,            _if_conditional299) {
+            if(_if_conditional300=head==0,            _if_conditional300) {
                 it_245=self->head;
                 i_246=0;
                 while(_while_condtional21=it_245!=((void*)0),                _while_condtional21) {
-                    if(_if_conditional300=i_246<tail,                    _if_conditional300) {
+                    if(_if_conditional301=i_246<tail,                    _if_conditional301) {
                         prev_it_247=it_245;
                         it_245=it_245->next;
                         i_246++;
@@ -5890,7 +5895,7 @@ memset(&prev_it_255, 0, sizeof(struct list_item$1CVALUEph*));
                         self->len--;
                     }
                     else {
-                        if(_if_conditional301=i_246==tail,                        _if_conditional301) {
+                        if(_if_conditional302=i_246==tail,                        _if_conditional302) {
                             self->head=it_245;
                             self->head->prev=((void*)0);
                             break;
@@ -5903,15 +5908,15 @@ memset(&prev_it_255, 0, sizeof(struct list_item$1CVALUEph*));
                 }
             }
             else {
-                if(_if_conditional302=tail==self->len,                _if_conditional302) {
+                if(_if_conditional303=tail==self->len,                _if_conditional303) {
                     it_248=self->head;
                     i_249=0;
                     while(_while_condtional22=it_248!=((void*)0),                    _while_condtional22) {
-                        if(_if_conditional303=i_249==head,                        _if_conditional303) {
+                        if(_if_conditional304=i_249==head,                        _if_conditional304) {
                             self->tail=it_248->prev;
                             self->tail->next=((void*)0);
                         }
-                        if(_if_conditional304=i_249>=head,                        _if_conditional304) {
+                        if(_if_conditional305=i_249>=head,                        _if_conditional305) {
                             prev_it_250=it_248;
                             it_248=it_248->next;
                             i_249++;
@@ -5930,13 +5935,13 @@ memset(&prev_it_255, 0, sizeof(struct list_item$1CVALUEph*));
                     tail_it_253=((void*)0);
                     i_254=0;
                     while(_while_condtional23=it_251!=((void*)0),                    _while_condtional23) {
-                        if(_if_conditional305=i_254==head,                        _if_conditional305) {
+                        if(_if_conditional306=i_254==head,                        _if_conditional306) {
                             head_prev_it_252=it_251->prev;
                         }
-                        if(_if_conditional306=i_254==tail,                        _if_conditional306) {
+                        if(_if_conditional307=i_254==tail,                        _if_conditional307) {
                             tail_it_253=it_251;
                         }
-                        if(_if_conditional307=i_254>=head&&i_254<tail,                        _if_conditional307) {
+                        if(_if_conditional308=i_254>=head&&i_254<tail,                        _if_conditional308) {
                             prev_it_255=it_251;
                             it_251=it_251->next;
                             i_254++;
@@ -5948,10 +5953,10 @@ memset(&prev_it_255, 0, sizeof(struct list_item$1CVALUEph*));
                             i_254++;
                         }
                     }
-                    if(_if_conditional308=head_prev_it_252!=((void*)0),                    _if_conditional308) {
+                    if(_if_conditional309=head_prev_it_252!=((void*)0),                    _if_conditional309) {
                         head_prev_it_252->next=tail_it_253;
                     }
-                    if(_if_conditional309=tail_it_253!=((void*)0),                    _if_conditional309) {
+                    if(_if_conditional310=tail_it_253!=((void*)0),                    _if_conditional310) {
                         tail_it_253->prev=head_prev_it_252;
                     }
                 }
@@ -5985,9 +5990,9 @@ memset(&prev_it_244, 0, sizeof(struct list_item$1CVALUEph*));
 
 static void list_item$1CVALUEphp_finalize(struct list_item$1CVALUEph* self){
 void* __result_obj__;
-_Bool _if_conditional298;
+_Bool _if_conditional299;
 memset(&__result_obj__, 0, sizeof(void*));
-                        if(_if_conditional298=self!=((void*)0)&&self->item!=((void*)0),                        _if_conditional298) {
+                        if(_if_conditional299=self!=((void*)0)&&self->item!=((void*)0),                        _if_conditional299) {
                             come_call_finalizer2(CVALUE_finalize,self->item, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                         }
 }
@@ -6009,11 +6014,11 @@ right_value198 = (void*)0;
 
 static struct CVALUE* list$1CVALUEphp_operator_load_element(struct list$1CVALUEph* self, int position){
 void* __result_obj__;
-_Bool _if_conditional310;
+_Bool _if_conditional311;
 struct list_item$1CVALUEph* it_256;
 int i_257;
 _Bool _while_condtional24;
-_Bool _if_conditional311;
+_Bool _if_conditional312;
 struct CVALUE* __result105__;
 struct CVALUE* default_value_258;
 struct CVALUE* __result106__;
@@ -6021,13 +6026,13 @@ memset(&__result_obj__, 0, sizeof(void*));
 memset(&it_256, 0, sizeof(struct list_item$1CVALUEph*));
 memset(&i_257, 0, sizeof(int));
 memset(&default_value_258, 0, sizeof(struct CVALUE*));
-        if(_if_conditional310=position<0,        _if_conditional310) {
+        if(_if_conditional311=position<0,        _if_conditional311) {
             position+=self->len;
         }
         it_256=self->head;
         i_257=0;
         while(_while_condtional24=it_256!=((void*)0),        _while_condtional24) {
-            if(_if_conditional311=position==i_257,            _if_conditional311) {
+            if(_if_conditional312=position==i_257,            _if_conditional312) {
                 __result105__ = __result_obj__ = it_256->item;
                 return __result105__;
             }
@@ -6043,42 +6048,42 @@ memset(&default_value_258, 0, sizeof(struct CVALUE*));
 
 static struct CVALUE* CVALUE_clone(struct CVALUE* self){
 void* __result_obj__;
-_Bool _if_conditional312;
+_Bool _if_conditional313;
 struct CVALUE* __result107__;
 void* right_value195;
 struct CVALUE* result_259;
-_Bool _if_conditional313;
+_Bool _if_conditional314;
 void* right_value196;
 char* __dec_obj47;
-_Bool _if_conditional314;
+_Bool _if_conditional315;
 void* right_value197;
 struct sType* __dec_obj48;
-_Bool _if_conditional315;
+_Bool _if_conditional316;
 struct CVALUE* __result108__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value195 = (void*)0;
 memset(&result_259, 0, sizeof(struct CVALUE*));
 right_value196 = (void*)0;
 right_value197 = (void*)0;
-        if(_if_conditional312=self==(void*)0,        _if_conditional312) {
+        if(_if_conditional313=self==(void*)0,        _if_conditional313) {
             __result107__ = __result_obj__ = (void*)0;
             return __result107__;
         }
         result_259=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value195=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "CVALUE_clone", 3, "CVALUE"))));
         come_call_finalizer2(CVALUE_finalize,right_value195, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        if(_if_conditional313=self!=((void*)0)&&self->c_value!=((void*)0),        _if_conditional313) {
+        if(_if_conditional314=self!=((void*)0)&&self->c_value!=((void*)0),        _if_conditional314) {
             __dec_obj47=result_259->c_value;
             result_259->c_value=(char*)come_increment_ref_count(((char*)(right_value196=string_clone(self->c_value))));
             __dec_obj47 = come_decrement_ref_count2(__dec_obj47, (void*)0, (void*)0, 0,0,0, (void*)0);
             right_value196 = come_decrement_ref_count2(right_value196, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
-        if(_if_conditional314=self!=((void*)0)&&self->type!=((void*)0),        _if_conditional314) {
+        if(_if_conditional315=self!=((void*)0)&&self->type!=((void*)0),        _if_conditional315) {
             __dec_obj48=result_259->type;
             result_259->type=(struct sType*)come_increment_ref_count(((struct sType*)(right_value197=sType_clone(self->type))));
             come_call_finalizer2(sType_finalize,__dec_obj48, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             come_call_finalizer2(sType_finalize,right_value197, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         }
-        if(_if_conditional315=self!=((void*)0),        _if_conditional315) {
+        if(_if_conditional316=self!=((void*)0),        _if_conditional316) {
             result_259->var=self->var;
         }
         __result108__ = __result_obj__ = result_259;

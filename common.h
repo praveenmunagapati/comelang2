@@ -120,6 +120,7 @@ struct sType
     bool mNullValue;
     
     string mAsmName;
+    bool mArrayPointerType;
 };
 
 struct sVar;

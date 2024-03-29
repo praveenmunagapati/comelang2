@@ -2228,6 +2228,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             info->p++;
             skip_spaces_and_lf();
             
+            type->mArrayPointerType = true;
             type->mPointerNum++;
             break;
         }

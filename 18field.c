@@ -863,14 +863,12 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
             sType*% result_type2 = clone result_type;
             result_type2->mPointerNum++;
             
-            buf.append_str(xsprintf("*(%s)come_range_check(&%s"
-                , make_type_name_string(result_type2)
-                , left_value.c_value));
+            buf.append_str(xsprintf("come_range_check(&%s", left_value.c_value));
             
             foreach(it, array_num) {
                 buf.append_str(xsprintf("[%s]", it.c_value));
             }
-            buf.append_str(xsprintf(",%s,%s+", left_value.c_value, left_value.c_value));
+            buf.append_str(xsprintf(",%s,%s+(", left_value.c_value, left_value.c_value));
             int i=0;
             foreach(it, var_type.mArrayNum) {
                 if(!node_compile(it)) {
@@ -887,7 +885,7 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
                 }
                 i++;
             }
-            buf.append_str(xsprintf(", \"%s\", %d)", info->sname, info->sline));
+            buf.append_str(xsprintf("), \"%s\", %d)", info->sname, info->sline));
             
             check_code = buf.to_string();
         }
@@ -964,7 +962,7 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
         come_value.var = null;
         
         if(check_code) {
-            come_value.c_value = xsprintf("%s, %s", check_code, come_value.c_value);
+            come_value.c_value = xsprintf("(%s, %s)", check_code, come_value.c_value);
         }
         
         info.stack.push_back(come_value);
@@ -1115,7 +1113,7 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
             foreach(it, array_num) {
                 buf.append_str(xsprintf("[%s]", it.c_value));
             }
-            buf.append_str(xsprintf(",%s,%s+", left_value.c_value, left_value.c_value));
+            buf.append_str(xsprintf(",%s,%s+(", left_value.c_value, left_value.c_value));
             int i=0;
             foreach(it, var_type.mArrayNum) {
                 if(!node_compile(it)) {
@@ -1132,7 +1130,7 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
                 }
                 i++;
             }
-            buf.append_str(xsprintf(", \"%s\", %d)", info->sname, info->sline));
+            buf.append_str(xsprintf("), \"%s\", %d)", info->sname, info->sline));
             
             string left_value_code = buf.to_string();
             

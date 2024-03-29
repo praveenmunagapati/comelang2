@@ -2818,6 +2818,10 @@ string create_method_name(sType* obj_type, bool no_pointer_name, char* fun_name,
         }
     }
     
+    if(obj_type->mArrayPointerType) {
+        buf.append_str("a");
+    }
+    
     return xsprintf("%s%s_%s", struct_name, buf.to_string(), fun_name);
 }
 

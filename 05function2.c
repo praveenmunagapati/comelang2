@@ -1444,6 +1444,10 @@ sNode*% parse_function(sInfo* info)
         }
         skip_spaces_and_lf();
         
+        while(*info->p == '[' && *(info->p+1) == ']') {
+            info->p+=2;
+            skip_spaces_and_lf();
+        }
         while(*info->p == '*') {
             info->p++;
             skip_spaces_and_lf();
