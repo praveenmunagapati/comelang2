@@ -1399,13 +1399,14 @@ Convert buffer to string.
 
 bufferを文字列に変換します。
 
+```C
 static inline buffer*% char[]::to_buffer(char* self, size_t len) ;
 static inline buffer*% short[]::to_buffer(short* self, size_t len) ;
 static inline buffer*% int[]::to_buffer(int* self, size_t len) ;
 static inline buffer*% long[]::to_buffer(long* self, size_t len) ;
 static inline buffer*% float[]::to_buffer(float* self, size_t len) ;
 static inline buffer*% double[]::to_buffer(double* self, size_t len) ;
-
+```
 
 ```C
     char a[4] = { 'A', 'B', 'C', '\0' };
