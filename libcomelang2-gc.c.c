@@ -2281,7 +2281,7 @@ memset(&i_6, 0, sizeof(int));
     buf_5=buffer_initialize((struct buffer*)come_calloc(1, sizeof(struct buffer)*(1), "libcomelang2-gc.c", 44, "buffer"));
     buffer_append_str(buf_5,xsprintf("%s %d\n",sname,sline));
     for(    i_6=gNumComeStackFrame-2;    i_6>=0;    i_6--    ){
-        buffer_append_str(buf_5,xsprintf("%s %d #%d\n",gComeStackFrameSName[i_6],gComeStackFrameSLine[i_6],gComeStackFrameID[i_6]));
+        buffer_append_str(buf_5,xsprintf("%s %d #%d\n",*(char**)come_range_check(&gComeStackFrameSName[i_6],gComeStackFrameSName,gComeStackFrameSName+16, "libcomelang2-gc.c", 47),*(int*)come_range_check(&gComeStackFrameSLine[i_6],gComeStackFrameSLine,gComeStackFrameSLine+16, "libcomelang2-gc.c", 47),*(int*)come_range_check(&gComeStackFrameID[i_6],gComeStackFrameID,gComeStackFrameID+1024, "libcomelang2-gc.c", 47)));
     }
     if(gComeStackFrameBuffer) {
         free(gComeStackFrameBuffer);
@@ -2301,7 +2301,7 @@ int i_7;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_7, 0, sizeof(int));
     for(    i_7=gNumComeStackFrame-1;    i_7>=0;    i_7--    ){
-        printf("%s %d #%d\n",gComeStackFrameSName[i_7],gComeStackFrameSLine[i_7],gComeStackFrameID[i_7]);
+        printf("%s %d #%d\n",*(char**)come_range_check(&gComeStackFrameSName[i_7],gComeStackFrameSName,gComeStackFrameSName+16, "libcomelang2-gc.c", 64),*(int*)come_range_check(&gComeStackFrameSLine[i_7],gComeStackFrameSLine,gComeStackFrameSLine+16, "libcomelang2-gc.c", 64),*(int*)come_range_check(&gComeStackFrameID[i_7],gComeStackFrameID,gComeStackFrameID+1024, "libcomelang2-gc.c", 64));
     }
 }
 

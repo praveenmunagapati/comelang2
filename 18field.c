@@ -972,8 +972,9 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
     }
     
     if(!calling_fun) {
-        sType* var_type = left_value.var.mType;
-        if(var_type->mArrayNum.length() > 0) {
+        if(left_value.var && left_value.var->mType && left_value.var->mType->mArrayNum.length() > 0) 
+        {
+            sType* var_type = left_value.var.mType;
             sType*% result_type = clone left_type;
             
             if(result_type->mOriginalLoadVarType->v1) {
