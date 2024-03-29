@@ -7,7 +7,7 @@ Another modern C compiler. It has a heap system that is a cross between an autom
 
 もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。
 
-version 20.0.2
+version 20.0.3
 
 ``` C
 #include <comelang2.h>
@@ -224,6 +224,8 @@ int main()
 
 12. Has memory leak detection function.
 
+13. Array range check. 
+
 1. C言語と互換性があります。Cプリプロセッサーも動きます。
 
 2. RustやVやNimのようなautomatically-free-systemがあります。
@@ -247,6 +249,8 @@ int main()
 11. メモリーセーフなセグメンテーションフォルトを起こさないスマートポインターがあります。
 
 12. メモリリーク検出機能があります。
+
+13. 配列の範囲外アクセスをチェックします。
 
 # インストール
 
@@ -293,6 +297,8 @@ bash all_build.sh
 ```
 
 # Histories
+
+20.0.3 配列のスマートポインター変換を入れました。
 
 20.0.2 配列の範囲チェックを入れました。
 
@@ -1461,6 +1467,27 @@ smart_pointer<T>* operator_plus_plus(smart_pointer<T>* self)
 smart_pointer<T>* operator_minus_minus(smart_pointer<T>* self)
 smart_pointer<T>* operator_plus_equal(smart_pointer<T>* self, int value)
 smart_pointer<T>* operator_minus_equal(smart_pointer<T>* self, int value)
+```
+
+```
+static inline smart_pointer<char>*% char[]::to_pointer(char* self, size_t len);
+static inline smart_pointer<short>*% short[]::to_pointer(short* self, size_t len);
+static inline smart_pointer<int>*% int[]::to_pointer(int* self, size_t len);
+static inline smart_pointer<long>*% long[]::to_pointer(long* self, size_t len);
+static inline smart_pointer<float>*% float[]::to_pointer(float* self, size_t len);
+static inline smart_pointer<double>*% double[]::to_pointer(double* self, size_t len);
+```
+
+```C
+   int a[3] = { 1, 2, 3 };
+   
+   var p = a.to_pointer();
+   
+   printf("%d\n", *p);  // 1
+   p++;
+   printf("%d\n", *p);  // 2
+   
+   p += 6;              // don't segmentaion fault. print out err
 ```
 
 ```C

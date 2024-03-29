@@ -965,6 +965,10 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
                         info->p++;
                         skip_spaces_and_lf();
                     }
+                    if(*info->p == '[' && *(info->p+1) == ']') {
+                        info->p += 2;
+                        skip_spaces_and_lf();
+                    }
                     if(*info->p == ':') {
                         info->p++;
                         skip_spaces_and_lf();

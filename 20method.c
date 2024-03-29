@@ -184,14 +184,14 @@ string sMethodCallNode*::sname(sMethodCallNode* self, sInfo* info)
     return string(self.sname);
 }
 
-string make_generics_function(sType* type, string fun_name, sInfo* info)
+string make_generics_function(sType* type, string fun_name, sInfo* info, bool array_equal_pointer=true)
 {
 /*
     sType*% obj_type = solve_generics(type, info.generics_type, info);
 */
     
     string none_generics_name = get_none_generics_name(type.mClass.mName);
-    string fun_name2 = create_method_name(type, false@no_pointer_name, fun_name, info);
+    string fun_name2 = create_method_name(type, false@no_pointer_name, fun_name, info, array_equal_pointer);
     string fun_name3 = xsprintf("%s_%s", none_generics_name, fun_name);
     
     sGenericsFun* generics_fun = info.generics_funcs.at(fun_name3, null);
@@ -347,18 +347,65 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
         }
         
         if(fun == null) {
-            fun = info.funcs.at(generics_fun_name, null);
-        
-            if(fun == null) {
-                generics_fun_name = create_method_name(obj_type, false@no_pointer_name, string(fun_name), info);
+            sType* obj_array_type = obj_type->mOriginalLoadVarType.v1;
+            
+            if(obj_array_type && obj_array_type.mArrayNum.length() > 0) {
+                string array_method_name = create_method_name(obj_array_type, false@no_pointer_name, fun_name, info, false@array_equal_pointer);
                 
-                fun = info.funcs.at(generics_fun_name, null);
+                fun = info.funcs.at(array_method_name, null);
                 
-                if(fun == null) {
-                    err_msg(info, "function not found(%s) at method(%s)(Z)\n", generics_fun_name, info.come_fun.mName);
-                    return true;
+                if(fun) {
+                    generics_fun_name = string(array_method_name);
+                }
+                else {
+                    string generics_fun_name = make_generics_function(obj_array_type, string(fun_name), info, false@array_equal_pointer).to_string();
+                    
+                    sFun* fun = null;
+                    
+                    for(int i=FUN_VERSION_MAX; i>=1; i--) {
+                        string new_fun_name = xsprintf("%s_v%d", generics_fun_name, i);
+                    
+                        fun = info.funcs[new_fun_name];
+                        
+                        if(fun != null) {
+                            generics_fun_name = string(new_fun_name);
+                            break;
+                        }
+                    }
+                    
+                    fun = info.funcs.at(generics_fun_name, null);
+                
+                    if(fun == null) {
+                        generics_fun_name = create_method_name(obj_type, false@no_pointer_name, string(fun_name), info);
+                        
+                        fun = info.funcs.at(generics_fun_name, null);
+                        
+                        if(fun == null) {
+                            err_msg(info, "function not found(%s) at method(%s)(Z)\n", generics_fun_name, info.come_fun.mName);
+                            return true;
+                        }
+                    }
                 }
             }
+            else {
+                fun = info.funcs.at(generics_fun_name, null);
+            
+                if(fun == null) {
+                    generics_fun_name = create_method_name(obj_type, false@no_pointer_name, string(fun_name), info);
+                    
+                    fun = info.funcs.at(generics_fun_name, null);
+                    
+                    if(fun == null) {
+                        err_msg(info, "function not found(%s) at method(%s)(Z)\n", generics_fun_name, info.come_fun.mName);
+                        return true;
+                    }
+                }
+            }
+        }
+        
+        if(fun.mParamTypes.length() == 0) {
+            err_msg(info, "Method require function parametor");
+            return true;
         }
         
         sType*% result_type = clone fun->mResultType;
@@ -441,6 +488,39 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                     label_params.insert(string(label), come_value);
                 }
                 dec_stack_ptr(1, info);
+            }
+        }
+        
+        sType* obj_array_type = obj_type->mOriginalLoadVarType.v1;
+        if(obj_array_type && obj_array_type.mArrayNum.length() > 0) {
+            if(fun_name === "to_pointer") {
+                buffer*% buf = new buffer();
+                
+                int i=0;
+                foreach(it, obj_array_type.mArrayNum) {
+                    if(!node_compile(it)) {
+                        err_msg(info, "invalid array num");
+                        exit(1);
+                    }
+                    
+                    CVALUE*% come_value = get_value_from_stack(-1, info);
+                    dec_stack_ptr(1, info);
+                
+                    buf.append_str(xsprintf("%s", come_value.c_value));
+                    if(i != obj_array_type.mArrayNum.length()-1) {
+                        buf.append_str("*");
+                    }
+                    i++;
+                }
+                
+                CVALUE*% come_value = new CVALUE;
+                
+                come_value.c_value = buf.to_string();
+                come_value.var = null;
+                come_value.type = new sType("long");
+                
+                come_params.push_back(come_value);
+                params.push_back((s"len", null));
             }
         }
         

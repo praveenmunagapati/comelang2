@@ -2784,7 +2784,7 @@ bool sExternalGlobalVariable*::compile(sExternalGlobalVariable* self, sInfo* inf
 }
 
 
-string create_method_name(sType* obj_type, bool no_pointer_name, char* fun_name, sInfo* info)
+string create_method_name(sType* obj_type, bool no_pointer_name, char* fun_name, sInfo* info, bool array_equal_pointer=true)
 {
     string struct_name;
     buffer*% buf = new buffer();
@@ -2820,6 +2820,10 @@ string create_method_name(sType* obj_type, bool no_pointer_name, char* fun_name,
     
     if(obj_type->mArrayPointerType) {
         buf.append_str("a");
+    }
+    
+    if(!array_equal_pointer && obj_type->mArrayNum.length() > 0) {
+        buf.append_str("pa");
     }
     
     return xsprintf("%s%s_%s", struct_name, buf.to_string(), fun_name);

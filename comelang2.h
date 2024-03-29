@@ -2151,6 +2151,36 @@ impl smart_pointer<T>
     }
 }
 
+static inline smart_pointer<char>*% char[]::to_pointer(char* self, size_t len) 
+{
+    return new smart_pointer<char>(self, sizeof(char)*len);
+}
+
+static inline smart_pointer<short>*% short[]::to_pointer(short* self, size_t len) 
+{
+    return new smart_pointer<short>(self, sizeof(short)*len);
+}
+
+static inline smart_pointer<int>*% int[]::to_pointer(int* self, size_t len) 
+{
+    return new smart_pointer<int>(self, sizeof(int)*len);
+}
+
+static inline smart_pointer<long>*% long[]::to_pointer(long* self, size_t len) 
+{
+    return new smart_pointer<long>(self, sizeof(long)*len);
+}
+
+static inline smart_pointer<float>*% float[]::to_pointer(float* self, size_t len) 
+{
+    return new smart_pointer<float>(self, sizeof(float)*len);
+}
+
+static inline smart_pointer<double>*% double[]::to_pointer(double* self, size_t len) 
+{
+    return new smart_pointer<double>(self, sizeof(double)*len);
+}
+
 //////////////////////////////
 /// base library(equals)
 //////////////////////////////

@@ -453,7 +453,7 @@ int transpile(sInfo* info) version 5;
 void parse_sharp(sInfo* info=info) version 5;
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 5;
 sNode*% post_position_operator(sNode*% node, sInfo* info) version 5;
-string create_method_name(sType* obj_type, bool no_pointer_name, char* fun_name, sInfo* info);
+string create_method_name(sType* obj_type, bool no_pointer_name, char* fun_name, sInfo* info, bool array_equal_pointer=true);
 
 /////////////////////////////////////////////////////////////////////
 /// 06str.c ///
@@ -556,7 +556,7 @@ sNode*% exception_get_value(sNode*% node, sInfo* info);
 /////////////////////////////////////////////////////////////////////
 /// 20method.c
 /////////////////////////////////////////////////////////////////////
-string make_generics_function(sType* type, string fun_name, sInfo* info);
+string make_generics_function(sType* type, string fun_name, sInfo* info, bool array_equal_pointer=true);
  sNode*% parse_method_call(sNode*% obj, string fun_name, sInfo* info) version 20;
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 20;
  sNode*% post_position_operator3(sNode*% node, sInfo* info) version 20;
