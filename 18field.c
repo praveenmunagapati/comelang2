@@ -871,7 +871,6 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
             
             buffer*% buf = new buffer();
             
-            
             sType*% result_type2 = clone result_type;
             result_type2->mPointerNum++;
             
@@ -973,7 +972,7 @@ bool sStoreArrayNode*::compile(sStoreArrayNode* self, sInfo* info)
         come_value.type = result_type;
         come_value.var = null;
         
-        if(check_code) {
+        if(check_code && gComeDebug) {
             come_value.c_value = xsprintf("(%s, %s)", check_code, come_value.c_value);
         }
         
@@ -1071,7 +1070,7 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
     }
     
     if(!calling_fun) {
-        if(left_value.var && left_value.var->mType && left_value.var->mType->mArrayNum.length() > 0) 
+        if(gComeDebug && left_value.var && left_value.var->mType && left_value.var->mType->mArrayNum.length() > 0) 
         {
             sType* var_type = left_value.var.mType;
             sType*% result_type = clone left_type;
