@@ -3008,7 +3008,7 @@ right_value113 = (void*)0;
                 char buf_69[p2_68-p_65+1];
                 memset(&buf_69, 0, sizeof(char)                *(p2_68-p_65+1)                );
                 memcpy(buf_69,p_65,p2_68-p_65);
-                (come_range_check(&buf_69[p2_68-p_65],buf_69,buf_69+(p2_68-p_65+1), "05function4.c", 284), buf_69[p2_68-p_65]=0);
+                buf_69[p2_68-p_65]=0;
                 list$1charph_push_back(param_default_parametors_32,(char*)come_increment_ref_count(((char*)(right_value111=__builtin_string(buf_69)))));
                 right_value111 = come_decrement_ref_count2(right_value111, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 if(node_67) { node_67 = come_decrement_ref_count2(node_67, ((struct sNode*)node_67)->finalize, ((struct sNode*)node_67)->_protocol_obj, 0, 0, 0, (void*)0); } 

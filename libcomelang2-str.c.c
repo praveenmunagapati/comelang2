@@ -3476,21 +3476,21 @@ memset(&i_49, 0, sizeof(int));
         len_46=strlen(self);
         regex_result_47=pcre_exec(re_43,(struct pcre_extra*)0,self,len_46,offset_38,options_45,ovec_value_36,ovec_max_33*3);
         for(        i_48=0;        i_48<ovec_max_33;        i_48++        ){
-            (come_range_check(&start_34[i_48],start_34,start_34+(ovec_max_33), "libcomelang2-str.c", 254), start_34[i_48]=*(int*)come_range_check(&ovec_value_36[i_48*2],ovec_value_36,ovec_value_36+(ovec_max_33*3), "libcomelang2-str.c", 254));
+            start_34[i_48]=ovec_value_36[i_48*2];
         }
         for(        i_49=0;        i_49<ovec_max_33;        i_49++        ){
-            (come_range_check(&end_35[i_49],end_35,end_35+(ovec_max_33), "libcomelang2-str.c", 257), end_35[i_49]=*(int*)come_range_check(&ovec_value_36[i_49*2+1],ovec_value_36,ovec_value_36+(ovec_max_33*3), "libcomelang2-str.c", 257));
+            end_35[i_49]=ovec_value_36[i_49*2+1];
         }
         if(_if_conditional28=regex_result_47>0,        _if_conditional28) {
             n_44++;
-            if(_if_conditional29=offset_38==*(int*)come_range_check(&end_35[0],end_35,end_35+(ovec_max_33), "libcomelang2-str.c", 264),            _if_conditional29) {
+            if(_if_conditional29=offset_38==end_35[0],            _if_conditional29) {
                 offset_38++;
             }
             else {
-                offset_38=*(int*)come_range_check(&end_35[0],end_35,end_35+(ovec_max_33), "libcomelang2-str.c", 268);
+                offset_38=end_35[0];
             }
             if(_if_conditional30=n_44==count,            _if_conditional30) {
-                result_37=*(int*)come_range_check(&start_34[0],start_34,start_34+(ovec_max_33), "libcomelang2-str.c", 272);
+                result_37=start_34[0];
                 break;
             }
         }
@@ -3580,13 +3580,13 @@ memset(&i_68, 0, sizeof(int));
         len_65=strlen(self2_57);
         regex_result_66=pcre_exec(re_56,(struct pcre_extra*)0,self2_57,len_65,offset_63,options_64,ovec_value_61,ovec_max_58*3);
         for(        i_67=0;        i_67<ovec_max_58;        i_67++        ){
-            (come_range_check(&start_59[i_67],start_59,start_59+(ovec_max_58), "libcomelang2-str.c", 330), start_59[i_67]=*(int*)come_range_check(&ovec_value_61[i_67*2],ovec_value_61,ovec_value_61+(ovec_max_58*3), "libcomelang2-str.c", 330));
+            start_59[i_67]=ovec_value_61[i_67*2];
         }
         for(        i_68=0;        i_68<ovec_max_58;        i_68++        ){
-            (come_range_check(&end_60[i_68],end_60,end_60+(ovec_max_58), "libcomelang2-str.c", 333), end_60[i_68]=*(int*)come_range_check(&ovec_value_61[i_68*2+1],ovec_value_61,ovec_value_61+(ovec_max_58*3), "libcomelang2-str.c", 333));
+            end_60[i_68]=ovec_value_61[i_68*2+1];
         }
         if(_if_conditional32=regex_result_66==1||regex_result_66>0,        _if_conditional32) {
-            result_62=strlen(self)-1-*(int*)come_range_check(&start_59[0],start_59,start_59+(ovec_max_58), "libcomelang2-str.c", 339);
+            result_62=strlen(self)-1-start_59[0];
             break;
         }
         {
@@ -3725,13 +3725,13 @@ memset(&str2_98, 0, sizeof(char*));
         len_84=strlen(self);
         regex_result_85=pcre_exec(re_82,(struct pcre_extra*)0,self,len_84,offset_73,options_83,ovec_value_77,ovec_max_74*3);
         for(        i_86=0;        i_86<ovec_max_74;        i_86++        ){
-            (come_range_check(&start_75[i_86],start_75,start_75+(ovec_max_74), "libcomelang2-str.c", 399), start_75[i_86]=*(int*)come_range_check(&ovec_value_77[i_86*2],ovec_value_77,ovec_value_77+(ovec_max_74*3), "libcomelang2-str.c", 399));
+            start_75[i_86]=ovec_value_77[i_86*2];
         }
         for(        i_87=0;        i_87<ovec_max_74;        i_87++        ){
-            (come_range_check(&end_76[i_87],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 402), end_76[i_87]=*(int*)come_range_check(&ovec_value_77[i_87*2+1],ovec_value_77,ovec_value_77+(ovec_max_74*3), "libcomelang2-str.c", 402));
+            end_76[i_87]=ovec_value_77[i_87*2+1];
         }
         if(_if_conditional35=regex_result_85==1,        _if_conditional35) {
-            str_88=(char*)come_increment_ref_count(((char*)(right_value96=charp_substring(self,*(int*)come_range_check(&start_75[0],start_75,start_75+(ovec_max_74), "libcomelang2-str.c", 408),*(int*)come_range_check(&end_76[0],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 408)))));
+            str_88=(char*)come_increment_ref_count(((char*)(right_value96=charp_substring(self,start_75[0],end_76[0]))));
             right_value96 = come_decrement_ref_count2(right_value96, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             group_strings_89=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value98=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value97=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 410, "list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value97, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -3747,11 +3747,11 @@ memset(&str2_98, 0, sizeof(char*));
                 return __result100__;
             }
             list$1charph_push_back(result_72,(char*)come_increment_ref_count(str2_90));
-            if(_if_conditional39=offset_73==*(int*)come_range_check(&end_76[0],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 420),            _if_conditional39) {
+            if(_if_conditional39=offset_73==end_76[0],            _if_conditional39) {
                 offset_73++;
             }
             else {
-                offset_73=*(int*)come_range_check(&end_76[0],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 424);
+                offset_73=end_76[0];
             }
             str_88 = come_decrement_ref_count2(str_88, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             come_call_finalizer2(list$1charphp_finalize,group_strings_89, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -3759,13 +3759,13 @@ memset(&str2_98, 0, sizeof(char*));
         }
         else {
             if(_if_conditional40=regex_result_85>1,            _if_conditional40) {
-                str_94=(char*)come_increment_ref_count(((char*)(right_value103=charp_substring(self,*(int*)come_range_check(&start_75[0],start_75,start_75+(ovec_max_74), "libcomelang2-str.c", 429),*(int*)come_range_check(&end_76[0],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 429)))));
+                str_94=(char*)come_increment_ref_count(((char*)(right_value103=charp_substring(self,start_75[0],end_76[0]))));
                 right_value103 = come_decrement_ref_count2(right_value103, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 group_strings_95=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value105=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value104=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 431, "list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value104, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value105, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 for(                i_96=1;                i_96<regex_result_85;                i_96++                ){
-                    match_string_97=(char*)come_increment_ref_count(((char*)(right_value106=charp_substring(self,*(int*)come_range_check(&start_75[i_96],start_75,start_75+(ovec_max_74), "libcomelang2-str.c", 433),*(int*)come_range_check(&end_76[i_96],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 433)))));
+                    match_string_97=(char*)come_increment_ref_count(((char*)(right_value106=charp_substring(self,start_75[i_96],end_76[i_96]))));
                     right_value106 = come_decrement_ref_count2(right_value106, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(group_strings_95,(char*)come_increment_ref_count(match_string_97));
                     match_string_97 = come_decrement_ref_count2(match_string_97, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -3781,11 +3781,11 @@ memset(&str2_98, 0, sizeof(char*));
                     return __result102__;
                 }
                 list$1charph_push_back(result_72,(char*)come_increment_ref_count(str2_98));
-                if(_if_conditional42=offset_73==*(int*)come_range_check(&end_76[0],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 445),                _if_conditional42) {
+                if(_if_conditional42=offset_73==end_76[0],                _if_conditional42) {
                     offset_73++;
                 }
                 else {
-                    offset_73=*(int*)come_range_check(&end_76[0],end_76,end_76+(ovec_max_74), "libcomelang2-str.c", 449);
+                    offset_73=end_76[0];
                 }
                 str_94 = come_decrement_ref_count2(str_94, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 come_call_finalizer2(list$1charphp_finalize,group_strings_95, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -3978,13 +3978,13 @@ memset(&str2_123, 0, sizeof(char*));
         len_112=strlen(self);
         regex_result_113=pcre_exec(re_109,(struct pcre_extra*)0,self,len_112,offset_100,options_111,ovec_value_104,ovec_max_101*3);
         for(        i_114=0;        i_114<ovec_max_101;        i_114++        ){
-            (come_range_check(&start_102[i_114],start_102,start_102+(ovec_max_101), "libcomelang2-str.c", 490), start_102[i_114]=*(int*)come_range_check(&ovec_value_104[i_114*2],ovec_value_104,ovec_value_104+(ovec_max_101*3), "libcomelang2-str.c", 490));
+            start_102[i_114]=ovec_value_104[i_114*2];
         }
         for(        i_115=0;        i_115<ovec_max_101;        i_115++        ){
-            (come_range_check(&end_103[i_115],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 493), end_103[i_115]=*(int*)come_range_check(&ovec_value_104[i_115*2+1],ovec_value_104,ovec_value_104+(ovec_max_101*3), "libcomelang2-str.c", 493));
+            end_103[i_115]=ovec_value_104[i_115*2+1];
         }
         if(_if_conditional43=regex_result_113==1,        _if_conditional43) {
-            str_116=(char*)come_increment_ref_count(((char*)(right_value110=charp_substring(self,*(int*)come_range_check(&start_102[0],start_102,start_102+(ovec_max_101), "libcomelang2-str.c", 499),*(int*)come_range_check(&end_103[0],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 499)))));
+            str_116=(char*)come_increment_ref_count(((char*)(right_value110=charp_substring(self,start_102[0],end_103[0]))));
             right_value110 = come_decrement_ref_count2(right_value110, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             group_strings_117=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value112=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value111=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 501, "list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value111, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -4000,11 +4000,11 @@ memset(&str2_123, 0, sizeof(char*));
                 return __result104__;
             }
             list$1charph_push_back(result_99,(char*)come_increment_ref_count(str2_118));
-            if(_if_conditional45=offset_100==*(int*)come_range_check(&end_103[0],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 511),            _if_conditional45) {
+            if(_if_conditional45=offset_100==end_103[0],            _if_conditional45) {
                 offset_100++;
             }
             else {
-                offset_100=*(int*)come_range_check(&end_103[0],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 515);
+                offset_100=end_103[0];
             }
             n_110++;
             if(_if_conditional46=n_110==count,            _if_conditional46) {
@@ -4019,13 +4019,13 @@ memset(&str2_123, 0, sizeof(char*));
         }
         else {
             if(_if_conditional47=regex_result_113>1,            _if_conditional47) {
-                str_119=(char*)come_increment_ref_count(((char*)(right_value114=charp_substring(self,*(int*)come_range_check(&start_102[0],start_102,start_102+(ovec_max_101), "libcomelang2-str.c", 525),*(int*)come_range_check(&end_103[0],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 525)))));
+                str_119=(char*)come_increment_ref_count(((char*)(right_value114=charp_substring(self,start_102[0],end_103[0]))));
                 right_value114 = come_decrement_ref_count2(right_value114, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 group_strings_120=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value116=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value115=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 527, "list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value115, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value116, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 for(                i_121=1;                i_121<regex_result_113;                i_121++                ){
-                    match_string_122=(char*)come_increment_ref_count(((char*)(right_value117=charp_substring(self,*(int*)come_range_check(&start_102[i_121],start_102,start_102+(ovec_max_101), "libcomelang2-str.c", 529),*(int*)come_range_check(&end_103[i_121],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 529)))));
+                    match_string_122=(char*)come_increment_ref_count(((char*)(right_value117=charp_substring(self,start_102[i_121],end_103[i_121]))));
                     right_value117 = come_decrement_ref_count2(right_value117, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(group_strings_120,(char*)come_increment_ref_count(match_string_122));
                     match_string_122 = come_decrement_ref_count2(match_string_122, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -4041,11 +4041,11 @@ memset(&str2_123, 0, sizeof(char*));
                     return __result105__;
                 }
                 list$1charph_push_back(result_99,(char*)come_increment_ref_count(str2_123));
-                if(_if_conditional49=offset_100==*(int*)come_range_check(&end_103[0],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 541),                _if_conditional49) {
+                if(_if_conditional49=offset_100==end_103[0],                _if_conditional49) {
                     offset_100++;
                 }
                 else {
-                    offset_100=*(int*)come_range_check(&end_103[0],end_103,end_103+(ovec_max_101), "libcomelang2-str.c", 545);
+                    offset_100=end_103[0];
                 }
                 n_110++;
                 if(_if_conditional50=n_110==count,                _if_conditional50) {
@@ -4181,13 +4181,13 @@ memset(&str2_150, 0, sizeof(char*));
         len_136=strlen(self);
         regex_result_137=pcre_exec(re_128,(struct pcre_extra*)0,self,len_136,offset_130,options_135,ovec_value_134,ovec_max_131*3);
         for(        i_138=0;        i_138<ovec_max_131;        i_138++        ){
-            (come_range_check(&start_132[i_138],start_132,start_132+(ovec_max_131), "libcomelang2-str.c", 589), start_132[i_138]=*(int*)come_range_check(&ovec_value_134[i_138*2],ovec_value_134,ovec_value_134+(ovec_max_131*3), "libcomelang2-str.c", 589));
+            start_132[i_138]=ovec_value_134[i_138*2];
         }
         for(        i_139=0;        i_139<ovec_max_131;        i_139++        ){
-            (come_range_check(&end_133[i_139],end_133,end_133+(ovec_max_131), "libcomelang2-str.c", 592), end_133[i_139]=*(int*)come_range_check(&ovec_value_134[i_139*2+1],ovec_value_134,ovec_value_134+(ovec_max_131*3), "libcomelang2-str.c", 592));
+            end_133[i_139]=ovec_value_134[i_139*2+1];
         }
         if(_if_conditional51=regex_result_137==1,        _if_conditional51) {
-            str_140=(char*)come_increment_ref_count(((char*)(right_value121=charp_substring(self,offset_130,*(int*)come_range_check(&start_132[0],start_132,start_132+(ovec_max_131), "libcomelang2-str.c", 598)))));
+            str_140=(char*)come_increment_ref_count(((char*)(right_value121=charp_substring(self,offset_130,start_132[0]))));
             right_value121 = come_decrement_ref_count2(right_value121, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             match_strings_141=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value123=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value122=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 600, "list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value122, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -4203,11 +4203,11 @@ memset(&str2_150, 0, sizeof(char*));
                 return __result107__;
             }
             list$1charph_push_back(result_129,(char*)come_increment_ref_count(str2_142));
-            if(_if_conditional53=offset_130==*(int*)come_range_check(&end_133[0],end_133,end_133+(ovec_max_131), "libcomelang2-str.c", 609),            _if_conditional53) {
+            if(_if_conditional53=offset_130==end_133[0],            _if_conditional53) {
                 offset_130++;
             }
             else {
-                offset_130=*(int*)come_range_check(&end_133[0],end_133,end_133+(ovec_max_131), "libcomelang2-str.c", 613);
+                offset_130=end_133[0];
             }
             str_140 = come_decrement_ref_count2(str_140, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             come_call_finalizer2(list$1charphp_finalize,match_strings_141, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -4215,19 +4215,19 @@ memset(&str2_150, 0, sizeof(char*));
         }
         else {
             if(_if_conditional54=regex_result_137>1,            _if_conditional54) {
-                str_143=(char*)come_increment_ref_count(((char*)(right_value125=charp_substring(self,offset_130,*(int*)come_range_check(&start_132[0],start_132,start_132+(ovec_max_131), "libcomelang2-str.c", 618)))));
+                str_143=(char*)come_increment_ref_count(((char*)(right_value125=charp_substring(self,offset_130,start_132[0]))));
                 right_value125 = come_decrement_ref_count2(right_value125, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                if(_if_conditional55=offset_130==*(int*)come_range_check(&end_133[0],end_133,end_133+(ovec_max_131), "libcomelang2-str.c", 620),                _if_conditional55) {
+                if(_if_conditional55=offset_130==end_133[0],                _if_conditional55) {
                     offset_130++;
                 }
                 else {
-                    offset_130=*(int*)come_range_check(&end_133[0],end_133,end_133+(ovec_max_131), "libcomelang2-str.c", 624);
+                    offset_130=end_133[0];
                 }
                 match_strings_144=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value127=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value126=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 627, "list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value126, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value127, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 for(                i_145=1;                i_145<regex_result_137;                i_145++                ){
-                    match_str_146=(char*)come_increment_ref_count(((char*)(right_value128=charp_substring(self,*(int*)come_range_check(&start_132[i_145],start_132,start_132+(ovec_max_131), "libcomelang2-str.c", 629),*(int*)come_range_check(&end_133[i_145],end_133,end_133+(ovec_max_131), "libcomelang2-str.c", 629)))));
+                    match_str_146=(char*)come_increment_ref_count(((char*)(right_value128=charp_substring(self,start_132[i_145],end_133[i_145]))));
                     right_value128 = come_decrement_ref_count2(right_value128, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(match_strings_144,(char*)come_increment_ref_count(match_str_146));
                     match_str_146 = come_decrement_ref_count2(match_str_146, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -4378,13 +4378,13 @@ memset(&str2_175, 0, sizeof(char*));
         len_164=strlen(self);
         regex_result_165=pcre_exec(re_155,(struct pcre_extra*)0,self,len_164,offset_157,options_163,ovec_value_161,ovec_max_158*3);
         for(        i_166=0;        i_166<ovec_max_158;        i_166++        ){
-            (come_range_check(&start_159[i_166],start_159,start_159+(ovec_max_158), "libcomelang2-str.c", 689), start_159[i_166]=*(int*)come_range_check(&ovec_value_161[i_166*2],ovec_value_161,ovec_value_161+(ovec_max_158*3), "libcomelang2-str.c", 689));
+            start_159[i_166]=ovec_value_161[i_166*2];
         }
         for(        i_167=0;        i_167<ovec_max_158;        i_167++        ){
-            (come_range_check(&end_160[i_167],end_160,end_160+(ovec_max_158), "libcomelang2-str.c", 692), end_160[i_167]=*(int*)come_range_check(&ovec_value_161[i_167*2+1],ovec_value_161,ovec_value_161+(ovec_max_158*3), "libcomelang2-str.c", 692));
+            end_160[i_167]=ovec_value_161[i_167*2+1];
         }
         if(_if_conditional59=regex_result_165==1,        _if_conditional59) {
-            str_168=(char*)come_increment_ref_count(((char*)(right_value136=charp_substring(self,offset_157,*(int*)come_range_check(&start_159[0],start_159,start_159+(ovec_max_158), "libcomelang2-str.c", 698)))));
+            str_168=(char*)come_increment_ref_count(((char*)(right_value136=charp_substring(self,offset_157,start_159[0]))));
             right_value136 = come_decrement_ref_count2(right_value136, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             match_strings_169=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value138=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value137=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 700, "list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value137, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -4400,11 +4400,11 @@ memset(&str2_175, 0, sizeof(char*));
                 return __result111__;
             }
             list$1charph_push_back(result_156,(char*)come_increment_ref_count(str2_170));
-            if(_if_conditional61=offset_157==*(int*)come_range_check(&end_160[0],end_160,end_160+(ovec_max_158), "libcomelang2-str.c", 708),            _if_conditional61) {
+            if(_if_conditional61=offset_157==end_160[0],            _if_conditional61) {
                 offset_157++;
             }
             else {
-                offset_157=*(int*)come_range_check(&end_160[0],end_160,end_160+(ovec_max_158), "libcomelang2-str.c", 712);
+                offset_157=end_160[0];
             }
             str_168 = come_decrement_ref_count2(str_168, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             come_call_finalizer2(list$1charphp_finalize,match_strings_169, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -4412,19 +4412,19 @@ memset(&str2_175, 0, sizeof(char*));
         }
         else {
             if(_if_conditional62=regex_result_165>1,            _if_conditional62) {
-                str_171=(char*)come_increment_ref_count(((char*)(right_value140=charp_substring(self,offset_157,*(int*)come_range_check(&start_159[0],start_159,start_159+(ovec_max_158), "libcomelang2-str.c", 717)))));
+                str_171=(char*)come_increment_ref_count(((char*)(right_value140=charp_substring(self,offset_157,start_159[0]))));
                 right_value140 = come_decrement_ref_count2(right_value140, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                if(_if_conditional63=offset_157==*(int*)come_range_check(&end_160[0],end_160,end_160+(ovec_max_158), "libcomelang2-str.c", 719),                _if_conditional63) {
+                if(_if_conditional63=offset_157==end_160[0],                _if_conditional63) {
                     offset_157++;
                 }
                 else {
-                    offset_157=*(int*)come_range_check(&end_160[0],end_160,end_160+(ovec_max_158), "libcomelang2-str.c", 723);
+                    offset_157=end_160[0];
                 }
                 match_strings_172=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value142=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value141=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 726, "list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value141, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value142, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 for(                i_173=1;                i_173<regex_result_165;                i_173++                ){
-                    match_str_174=(char*)come_increment_ref_count(((char*)(right_value143=charp_substring(self,*(int*)come_range_check(&start_159[i_173],start_159,start_159+(ovec_max_158), "libcomelang2-str.c", 728),*(int*)come_range_check(&end_160[i_173],end_160,end_160+(ovec_max_158), "libcomelang2-str.c", 728)))));
+                    match_str_174=(char*)come_increment_ref_count(((char*)(right_value143=charp_substring(self,start_159[i_173],end_160[i_173]))));
                     right_value143 = come_decrement_ref_count2(right_value143, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(match_strings_172,(char*)come_increment_ref_count(match_str_174));
                     match_str_174 = come_decrement_ref_count2(match_str_174, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -4598,37 +4598,37 @@ memset(&match_string_195, 0, sizeof(char*));
         len_188=strlen(self);
         regex_result_189=pcre_exec(re_186,(struct pcre_extra*)0,self,len_188,offset_177,options_187,ovec_value_181,ovec_max_178*3);
         for(        i_190=0;        i_190<ovec_max_178;        i_190++        ){
-            (come_range_check(&start_179[i_190],start_179,start_179+(ovec_max_178), "libcomelang2-str.c", 819), start_179[i_190]=*(int*)come_range_check(&ovec_value_181[i_190*2],ovec_value_181,ovec_value_181+(ovec_max_178*3), "libcomelang2-str.c", 819));
+            start_179[i_190]=ovec_value_181[i_190*2];
         }
         for(        i_191=0;        i_191<ovec_max_178;        i_191++        ){
-            (come_range_check(&end_180[i_191],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 822), end_180[i_191]=*(int*)come_range_check(&ovec_value_181[i_191*2+1],ovec_value_181,ovec_value_181+(ovec_max_178*3), "libcomelang2-str.c", 822));
+            end_180[i_191]=ovec_value_181[i_191*2+1];
         }
         if(_if_conditional76=regex_result_189==1,        _if_conditional76) {
-            str_192=(char*)come_increment_ref_count(((char*)(right_value147=charp_substring(self,*(int*)come_range_check(&start_179[0],start_179,start_179+(ovec_max_178), "libcomelang2-str.c", 828),*(int*)come_range_check(&end_180[0],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 828)))));
+            str_192=(char*)come_increment_ref_count(((char*)(right_value147=charp_substring(self,start_179[0],end_180[0]))));
             right_value147 = come_decrement_ref_count2(right_value147, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             list$1charph_push_back(result_176,(char*)come_increment_ref_count(str_192));
-            if(_if_conditional77=offset_177==*(int*)come_range_check(&end_180[0],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 831),            _if_conditional77) {
+            if(_if_conditional77=offset_177==end_180[0],            _if_conditional77) {
                 offset_177++;
             }
             else {
-                offset_177=*(int*)come_range_check(&end_180[0],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 835);
+                offset_177=end_180[0];
             }
             str_192 = come_decrement_ref_count2(str_192, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
             if(_if_conditional78=regex_result_189>1,            _if_conditional78) {
-                str_193=(char*)come_increment_ref_count(((char*)(right_value148=charp_substring(self,*(int*)come_range_check(&start_179[0],start_179,start_179+(ovec_max_178), "libcomelang2-str.c", 840),*(int*)come_range_check(&end_180[0],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 840)))));
+                str_193=(char*)come_increment_ref_count(((char*)(right_value148=charp_substring(self,start_179[0],end_180[0]))));
                 right_value148 = come_decrement_ref_count2(right_value148, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 list$1charph_push_back(result_176,(char*)come_increment_ref_count(str_193));
-                if(_if_conditional79=offset_177==*(int*)come_range_check(&end_180[0],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 843),                _if_conditional79) {
+                if(_if_conditional79=offset_177==end_180[0],                _if_conditional79) {
                     offset_177++;
                 }
                 else {
-                    offset_177=*(int*)come_range_check(&end_180[0],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 847);
+                    offset_177=end_180[0];
                 }
                 *num_group_string_in_regex=regex_result_189-1;
                 for(                i_194=1;                i_194<regex_result_189;                i_194++                ){
-                    match_string_195=(char*)come_increment_ref_count(((char*)(right_value149=charp_substring(self,*(int*)come_range_check(&start_179[i_194],start_179,start_179+(ovec_max_178), "libcomelang2-str.c", 852),*(int*)come_range_check(&end_180[i_194],end_180,end_180+(ovec_max_178), "libcomelang2-str.c", 852)))));
+                    match_string_195=(char*)come_increment_ref_count(((char*)(right_value149=charp_substring(self,start_179[i_194],end_180[i_194]))));
                     right_value149 = come_decrement_ref_count2(right_value149, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(group_strings,(char*)come_increment_ref_count(match_string_195));
                     match_string_195 = come_decrement_ref_count2(match_string_195, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -5032,10 +5032,10 @@ memset(&match_string_243, 0, sizeof(char*));
         len_236=strlen(self);
         regex_result_237=pcre_exec(re_233,(struct pcre_extra*)0,self,len_236,offset_224,options_235,ovec_value_228,ovec_max_225*3);
         for(        i_238=0;        i_238<ovec_max_225;        i_238++        ){
-            (come_range_check(&start_226[i_238],start_226,start_226+(ovec_max_225), "libcomelang2-str.c", 1091), start_226[i_238]=*(int*)come_range_check(&ovec_value_228[i_238*2],ovec_value_228,ovec_value_228+(ovec_max_225*3), "libcomelang2-str.c", 1091));
+            start_226[i_238]=ovec_value_228[i_238*2];
         }
         for(        i_239=0;        i_239<ovec_max_225;        i_239++        ){
-            (come_range_check(&end_227[i_239],end_227,end_227+(ovec_max_225), "libcomelang2-str.c", 1094), end_227[i_239]=*(int*)come_range_check(&ovec_value_228[i_239*2+1],ovec_value_228,ovec_value_228+(ovec_max_225*3), "libcomelang2-str.c", 1094));
+            end_227[i_239]=ovec_value_228[i_239*2+1];
         }
         if(_if_conditional95=regex_result_237==1||(group_strings==((void*)0)&&regex_result_237>0),        _if_conditional95) {
             n_234++;
@@ -5043,11 +5043,11 @@ memset(&match_string_243, 0, sizeof(char*));
                 __result141__ = (_Bool)1;
                 return __result141__;
             }
-            if(_if_conditional97=offset_224==*(int*)come_range_check(&end_227[0],end_227,end_227+(ovec_max_225), "libcomelang2-str.c", 1106),            _if_conditional97) {
+            if(_if_conditional97=offset_224==end_227[0],            _if_conditional97) {
                 offset_224++;
             }
             else {
-                offset_224=*(int*)come_range_check(&end_227[0],end_227,end_227+(ovec_max_225), "libcomelang2-str.c", 1110);
+                offset_224=end_227[0];
             }
         }
         else {
@@ -5055,7 +5055,7 @@ memset(&match_string_243, 0, sizeof(char*));
                 n_234++;
                 list$1charph_reset(group_strings);
                 for(                i_242=1;                i_242<regex_result_237;                i_242++                ){
-                    match_string_243=(char*)come_increment_ref_count(((char*)(right_value164=charp_substring(self,*(int*)come_range_check(&start_226[i_242],start_226,start_226+(ovec_max_225), "libcomelang2-str.c", 1119),*(int*)come_range_check(&end_227[i_242],end_227,end_227+(ovec_max_225), "libcomelang2-str.c", 1119)))));
+                    match_string_243=(char*)come_increment_ref_count(((char*)(right_value164=charp_substring(self,start_226[i_242],end_227[i_242]))));
                     right_value164 = come_decrement_ref_count2(right_value164, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(group_strings,(char*)come_increment_ref_count(match_string_243));
                     match_string_243 = come_decrement_ref_count2(match_string_243, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -5064,11 +5064,11 @@ memset(&match_string_243, 0, sizeof(char*));
                     __result143__ = (_Bool)1;
                     return __result143__;
                 }
-                if(_if_conditional100=offset_224==*(int*)come_range_check(&end_227[0],end_227,end_227+(ovec_max_225), "libcomelang2-str.c", 1127),                _if_conditional100) {
+                if(_if_conditional100=offset_224==end_227[0],                _if_conditional100) {
                     offset_224++;
                 }
                 else {
-                    offset_224=*(int*)come_range_check(&end_227[0],end_227,end_227+(ovec_max_225), "libcomelang2-str.c", 1131);
+                    offset_224=end_227[0];
                 }
             }
             else {
@@ -5306,13 +5306,13 @@ memset(&i_262, 0, sizeof(int));
         len_259=strlen(self);
         regex_result_260=pcre_exec(re_257,(struct pcre_extra*)0,self,len_259,offset_252,options_258,ovec_value_250,ovec_max_247*3);
         for(        i_261=0;        i_261<ovec_max_247;        i_261++        ){
-            (come_range_check(&start_248[i_261],start_248,start_248+(ovec_max_247), "libcomelang2-str.c", 1264), start_248[i_261]=*(int*)come_range_check(&ovec_value_250[i_261*2],ovec_value_250,ovec_value_250+(ovec_max_247*3), "libcomelang2-str.c", 1264));
+            start_248[i_261]=ovec_value_250[i_261*2];
         }
         for(        i_262=0;        i_262<ovec_max_247;        i_262++        ){
-            (come_range_check(&end_249[i_262],end_249,end_249+(ovec_max_247), "libcomelang2-str.c", 1267), end_249[i_262]=*(int*)come_range_check(&ovec_value_250[i_262*2+1],ovec_value_250,ovec_value_250+(ovec_max_247*3), "libcomelang2-str.c", 1267));
+            end_249[i_262]=ovec_value_250[i_262*2+1];
         }
         if(_if_conditional102=regex_result_260==1||regex_result_260>0,        _if_conditional102) {
-            result_251=*(int*)come_range_check(&start_248[0],start_248,start_248+(ovec_max_247), "libcomelang2-str.c", 1273);
+            result_251=start_248[0];
             break;
         }
         {
@@ -5454,21 +5454,21 @@ right_value177 = (void*)0;
         len_279=strlen(self);
         regex_result_280=pcre_exec(re_276,(struct pcre_extra*)0,self,len_279,offset_267,options_278,ovec_value_271,ovec_max_268*3);
         for(        i_281=0;        i_281<ovec_max_268;        i_281++        ){
-            (come_range_check(&start_269[i_281],start_269,start_269+(ovec_max_268), "libcomelang2-str.c", 1351), start_269[i_281]=*(int*)come_range_check(&ovec_value_271[i_281*2],ovec_value_271,ovec_value_271+(ovec_max_268*3), "libcomelang2-str.c", 1351));
+            start_269[i_281]=ovec_value_271[i_281*2];
         }
         for(        i_282=0;        i_282<ovec_max_268;        i_282++        ){
-            (come_range_check(&end_270[i_282],end_270,end_270+(ovec_max_268), "libcomelang2-str.c", 1354), end_270[i_282]=*(int*)come_range_check(&ovec_value_271[i_282*2+1],ovec_value_271,ovec_value_271+(ovec_max_268*3), "libcomelang2-str.c", 1354));
+            end_270[i_282]=ovec_value_271[i_282*2+1];
         }
         if(_if_conditional107=regex_result_280==1,        _if_conditional107) {
-            str_283=(char*)come_increment_ref_count(((char*)(right_value174=charp_substring(self,offset_267,*(int*)come_range_check(&start_269[0],start_269,start_269+(ovec_max_268), "libcomelang2-str.c", 1360)))));
+            str_283=(char*)come_increment_ref_count(((char*)(right_value174=charp_substring(self,offset_267,start_269[0]))));
             right_value174 = come_decrement_ref_count2(right_value174, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(result_277,str_283);
             buffer_append_str(result_277,replace);
-            if(_if_conditional108=offset_267==*(int*)come_range_check(&end_270[0],end_270,end_270+(ovec_max_268), "libcomelang2-str.c", 1365),            _if_conditional108) {
+            if(_if_conditional108=offset_267==end_270[0],            _if_conditional108) {
                 offset_267++;
             }
             else {
-                offset_267=*(int*)come_range_check(&end_270[0],end_270,end_270+(ovec_max_268), "libcomelang2-str.c", 1369);
+                offset_267=end_270[0];
             }
             if(_if_conditional109=!reg->global,            _if_conditional109) {
                 str_284=(char*)come_increment_ref_count(((char*)(right_value175=charp_substring(self,offset_267,-1))));
@@ -5575,22 +5575,22 @@ right_value184 = (void*)0;
         len_299=strlen(self);
         regex_result_300=pcre_exec(re_295,(struct pcre_extra*)0,self,len_299,offset_286,options_298,ovec_value_290,ovec_max_287*3);
         for(        i_301=0;        i_301<ovec_max_287;        i_301++        ){
-            (come_range_check(&start_288[i_301],start_288,start_288+(ovec_max_287), "libcomelang2-str.c", 1416), start_288[i_301]=*(int*)come_range_check(&ovec_value_290[i_301*2],ovec_value_290,ovec_value_290+(ovec_max_287*3), "libcomelang2-str.c", 1416));
+            start_288[i_301]=ovec_value_290[i_301*2];
         }
         for(        i_302=0;        i_302<ovec_max_287;        i_302++        ){
-            (come_range_check(&end_289[i_302],end_289,end_289+(ovec_max_287), "libcomelang2-str.c", 1419), end_289[i_302]=*(int*)come_range_check(&ovec_value_290[i_302*2+1],ovec_value_290,ovec_value_290+(ovec_max_287*3), "libcomelang2-str.c", 1419));
+            end_289[i_302]=ovec_value_290[i_302*2+1];
         }
         if(_if_conditional110=regex_result_300==1,        _if_conditional110) {
             n_297++;
-            str_303=(char*)come_increment_ref_count(((char*)(right_value180=charp_substring(self,offset_286,*(int*)come_range_check(&start_288[0],start_288,start_288+(ovec_max_287), "libcomelang2-str.c", 1426)))));
+            str_303=(char*)come_increment_ref_count(((char*)(right_value180=charp_substring(self,offset_286,start_288[0]))));
             right_value180 = come_decrement_ref_count2(right_value180, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(result_296,str_303);
             buffer_append_str(result_296,replace);
-            if(_if_conditional111=offset_286==*(int*)come_range_check(&end_289[0],end_289,end_289+(ovec_max_287), "libcomelang2-str.c", 1431),            _if_conditional111) {
+            if(_if_conditional111=offset_286==end_289[0],            _if_conditional111) {
                 offset_286++;
             }
             else {
-                offset_286=*(int*)come_range_check(&end_289[0],end_289,end_289+(ovec_max_287), "libcomelang2-str.c", 1435);
+                offset_286=end_289[0];
             }
             if(_if_conditional112=!reg->global,            _if_conditional112) {
                 str_304=(char*)come_increment_ref_count(((char*)(right_value181=charp_substring(self,offset_286,-1))));
@@ -5752,36 +5752,36 @@ memset(&match_string_329, 0, sizeof(char*));
         len_322=strlen(self);
         regex_result_323=pcre_exec(re_320,(struct pcre_extra*)0,self,len_322,offset_311,options_321,ovec_value_315,ovec_max_312*3);
         for(        i_324=0;        i_324<ovec_max_312;        i_324++        ){
-            (come_range_check(&start_313[i_324],start_313,start_313+(ovec_max_312), "libcomelang2-str.c", 1512), start_313[i_324]=*(int*)come_range_check(&ovec_value_315[i_324*2],ovec_value_315,ovec_value_315+(ovec_max_312*3), "libcomelang2-str.c", 1512));
+            start_313[i_324]=ovec_value_315[i_324*2];
         }
         for(        i_325=0;        i_325<ovec_max_312;        i_325++        ){
-            (come_range_check(&end_314[i_325],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1515), end_314[i_325]=*(int*)come_range_check(&ovec_value_315[i_325*2+1],ovec_value_315,ovec_value_315+(ovec_max_312*3), "libcomelang2-str.c", 1515));
+            end_314[i_325]=ovec_value_315[i_325*2+1];
         }
         if(_if_conditional116=regex_result_323==1,        _if_conditional116) {
-            str_326=(char*)come_increment_ref_count(((char*)(right_value193=charp_substring(self,*(int*)come_range_check(&start_313[0],start_313,start_313+(ovec_max_312), "libcomelang2-str.c", 1521),*(int*)come_range_check(&end_314[0],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1521)))));
+            str_326=(char*)come_increment_ref_count(((char*)(right_value193=charp_substring(self,start_313[0],end_314[0]))));
             right_value193 = come_decrement_ref_count2(right_value193, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             list$1charph_push_back(result_310,(char*)come_increment_ref_count(str_326));
-            if(_if_conditional117=offset_311==*(int*)come_range_check(&end_314[0],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1525),            _if_conditional117) {
+            if(_if_conditional117=offset_311==end_314[0],            _if_conditional117) {
                 offset_311++;
             }
             else {
-                offset_311=*(int*)come_range_check(&end_314[0],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1529);
+                offset_311=end_314[0];
             }
             str_326 = come_decrement_ref_count2(str_326, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
             if(_if_conditional118=regex_result_323>1,            _if_conditional118) {
-                str_327=(char*)come_increment_ref_count(((char*)(right_value194=charp_substring(self,*(int*)come_range_check(&start_313[0],start_313,start_313+(ovec_max_312), "libcomelang2-str.c", 1534),*(int*)come_range_check(&end_314[0],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1534)))));
+                str_327=(char*)come_increment_ref_count(((char*)(right_value194=charp_substring(self,start_313[0],end_314[0]))));
                 right_value194 = come_decrement_ref_count2(right_value194, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 list$1charph_push_back(result_310,(char*)come_increment_ref_count(str_327));
-                if(_if_conditional119=offset_311==*(int*)come_range_check(&end_314[0],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1537),                _if_conditional119) {
+                if(_if_conditional119=offset_311==end_314[0],                _if_conditional119) {
                     offset_311++;
                 }
                 else {
-                    offset_311=*(int*)come_range_check(&end_314[0],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1541);
+                    offset_311=end_314[0];
                 }
                 for(                i_328=1;                i_328<regex_result_323;                i_328++                ){
-                    match_string_329=(char*)come_increment_ref_count(((char*)(right_value195=charp_substring(self,*(int*)come_range_check(&start_313[i_328],start_313,start_313+(ovec_max_312), "libcomelang2-str.c", 1545),*(int*)come_range_check(&end_314[i_328],end_314,end_314+(ovec_max_312), "libcomelang2-str.c", 1545)))));
+                    match_string_329=(char*)come_increment_ref_count(((char*)(right_value195=charp_substring(self,start_313[i_328],end_314[i_328]))));
                     right_value195 = come_decrement_ref_count2(right_value195, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(result_310,(char*)come_increment_ref_count(match_string_329));
                     match_string_329 = come_decrement_ref_count2(match_string_329, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -5875,36 +5875,36 @@ memset(&str_350, 0, sizeof(char*));
         len_342=strlen(self);
         regex_result_343=pcre_exec(re_334,(struct pcre_extra*)0,self,len_342,offset_336,options_341,ovec_value_340,ovec_max_337*3);
         for(        i_344=0;        i_344<ovec_max_337;        i_344++        ){
-            (come_range_check(&start_338[i_344],start_338,start_338+(ovec_max_337), "libcomelang2-str.c", 1585), start_338[i_344]=*(int*)come_range_check(&ovec_value_340[i_344*2],ovec_value_340,ovec_value_340+(ovec_max_337*3), "libcomelang2-str.c", 1585));
+            start_338[i_344]=ovec_value_340[i_344*2];
         }
         for(        i_345=0;        i_345<ovec_max_337;        i_345++        ){
-            (come_range_check(&end_339[i_345],end_339,end_339+(ovec_max_337), "libcomelang2-str.c", 1588), end_339[i_345]=*(int*)come_range_check(&ovec_value_340[i_345*2+1],ovec_value_340,ovec_value_340+(ovec_max_337*3), "libcomelang2-str.c", 1588));
+            end_339[i_345]=ovec_value_340[i_345*2+1];
         }
         if(_if_conditional120=regex_result_343==1,        _if_conditional120) {
-            str_346=(char*)come_increment_ref_count(((char*)(right_value198=charp_substring(self,offset_336,*(int*)come_range_check(&start_338[0],start_338,start_338+(ovec_max_337), "libcomelang2-str.c", 1594)))));
+            str_346=(char*)come_increment_ref_count(((char*)(right_value198=charp_substring(self,offset_336,start_338[0]))));
             right_value198 = come_decrement_ref_count2(right_value198, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             list$1charph_push_back(result_335,(char*)come_increment_ref_count(str_346));
-            if(_if_conditional121=offset_336==*(int*)come_range_check(&end_339[0],end_339,end_339+(ovec_max_337), "libcomelang2-str.c", 1597),            _if_conditional121) {
+            if(_if_conditional121=offset_336==end_339[0],            _if_conditional121) {
                 offset_336++;
             }
             else {
-                offset_336=*(int*)come_range_check(&end_339[0],end_339,end_339+(ovec_max_337), "libcomelang2-str.c", 1601);
+                offset_336=end_339[0];
             }
             str_346 = come_decrement_ref_count2(str_346, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
             if(_if_conditional122=regex_result_343>1,            _if_conditional122) {
-                str_347=(char*)come_increment_ref_count(((char*)(right_value199=charp_substring(self,offset_336,*(int*)come_range_check(&start_338[0],start_338,start_338+(ovec_max_337), "libcomelang2-str.c", 1606)))));
+                str_347=(char*)come_increment_ref_count(((char*)(right_value199=charp_substring(self,offset_336,start_338[0]))));
                 right_value199 = come_decrement_ref_count2(right_value199, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 list$1charph_push_back(result_335,(char*)come_increment_ref_count(str_347));
-                if(_if_conditional123=offset_336==*(int*)come_range_check(&end_339[0],end_339,end_339+(ovec_max_337), "libcomelang2-str.c", 1609),                _if_conditional123) {
+                if(_if_conditional123=offset_336==end_339[0],                _if_conditional123) {
                     offset_336++;
                 }
                 else {
-                    offset_336=*(int*)come_range_check(&end_339[0],end_339,end_339+(ovec_max_337), "libcomelang2-str.c", 1613);
+                    offset_336=end_339[0];
                 }
                 for(                i_348=1;                i_348<regex_result_343;                i_348++                ){
-                    match_str_349=(char*)come_increment_ref_count(((char*)(right_value200=charp_substring(self,*(int*)come_range_check(&start_338[i_348],start_338,start_338+(ovec_max_337), "libcomelang2-str.c", 1617),*(int*)come_range_check(&end_339[i_348],end_339,end_339+(ovec_max_337), "libcomelang2-str.c", 1617)))));
+                    match_str_349=(char*)come_increment_ref_count(((char*)(right_value200=charp_substring(self,start_338[i_348],end_339[i_348]))));
                     right_value200 = come_decrement_ref_count2(right_value200, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(result_335,(char*)come_increment_ref_count(match_str_349));
                     match_str_349 = come_decrement_ref_count2(match_str_349, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -5975,10 +5975,10 @@ memset(&i_365, 0, sizeof(int));
         len_362=strlen(self);
         regex_result_363=pcre_exec(re_360,(struct pcre_extra*)0,self,len_362,offset_351,options_361,ovec_value_355,ovec_max_352*3);
         for(        i_364=0;        i_364<ovec_max_352;        i_364++        ){
-            (come_range_check(&start_353[i_364],start_353,start_353+(ovec_max_352), "libcomelang2-str.c", 1660), start_353[i_364]=*(int*)come_range_check(&ovec_value_355[i_364*2],ovec_value_355,ovec_value_355+(ovec_max_352*3), "libcomelang2-str.c", 1660));
+            start_353[i_364]=ovec_value_355[i_364*2];
         }
         for(        i_365=0;        i_365<ovec_max_352;        i_365++        ){
-            (come_range_check(&end_354[i_365],end_354,end_354+(ovec_max_352), "libcomelang2-str.c", 1663), end_354[i_365]=*(int*)come_range_check(&ovec_value_355[i_365*2+1],ovec_value_355,ovec_value_355+(ovec_max_352*3), "libcomelang2-str.c", 1663));
+            end_354[i_365]=ovec_value_355[i_365*2+1];
         }
         if(_if_conditional125=regex_result_363>0,        _if_conditional125) {
             __result171__ = (_Bool)1;
@@ -6073,36 +6073,36 @@ memset(&str_387, 0, sizeof(char*));
         len_379=strlen(self);
         regex_result_380=pcre_exec(re_370,(struct pcre_extra*)0,self,len_379,offset_372,options_378,ovec_value_376,ovec_max_373*3);
         for(        i_381=0;        i_381<ovec_max_373;        i_381++        ){
-            (come_range_check(&start_374[i_381],start_374,start_374+(ovec_max_373), "libcomelang2-str.c", 1709), start_374[i_381]=*(int*)come_range_check(&ovec_value_376[i_381*2],ovec_value_376,ovec_value_376+(ovec_max_373*3), "libcomelang2-str.c", 1709));
+            start_374[i_381]=ovec_value_376[i_381*2];
         }
         for(        i_382=0;        i_382<ovec_max_373;        i_382++        ){
-            (come_range_check(&end_375[i_382],end_375,end_375+(ovec_max_373), "libcomelang2-str.c", 1712), end_375[i_382]=*(int*)come_range_check(&ovec_value_376[i_382*2+1],ovec_value_376,ovec_value_376+(ovec_max_373*3), "libcomelang2-str.c", 1712));
+            end_375[i_382]=ovec_value_376[i_382*2+1];
         }
         if(_if_conditional126=regex_result_380==1,        _if_conditional126) {
-            str_383=(char*)come_increment_ref_count(((char*)(right_value204=charp_substring(self,offset_372,*(int*)come_range_check(&start_374[0],start_374,start_374+(ovec_max_373), "libcomelang2-str.c", 1718)))));
+            str_383=(char*)come_increment_ref_count(((char*)(right_value204=charp_substring(self,offset_372,start_374[0]))));
             right_value204 = come_decrement_ref_count2(right_value204, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             list$1charph_push_back(result_371,(char*)come_increment_ref_count(str_383));
-            if(_if_conditional127=offset_372==*(int*)come_range_check(&end_375[0],end_375,end_375+(ovec_max_373), "libcomelang2-str.c", 1721),            _if_conditional127) {
+            if(_if_conditional127=offset_372==end_375[0],            _if_conditional127) {
                 offset_372++;
             }
             else {
-                offset_372=*(int*)come_range_check(&end_375[0],end_375,end_375+(ovec_max_373), "libcomelang2-str.c", 1725);
+                offset_372=end_375[0];
             }
             str_383 = come_decrement_ref_count2(str_383, (void*)0, (void*)0, 0, 0, 0, (void*)0);
         }
         else {
             if(_if_conditional128=regex_result_380>1,            _if_conditional128) {
-                str_384=(char*)come_increment_ref_count(((char*)(right_value205=charp_substring(self,offset_372,*(int*)come_range_check(&start_374[0],start_374,start_374+(ovec_max_373), "libcomelang2-str.c", 1730)))));
+                str_384=(char*)come_increment_ref_count(((char*)(right_value205=charp_substring(self,offset_372,start_374[0]))));
                 right_value205 = come_decrement_ref_count2(right_value205, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 list$1charph_push_back(result_371,(char*)come_increment_ref_count(str_384));
-                if(_if_conditional129=offset_372==*(int*)come_range_check(&end_375[0],end_375,end_375+(ovec_max_373), "libcomelang2-str.c", 1733),                _if_conditional129) {
+                if(_if_conditional129=offset_372==end_375[0],                _if_conditional129) {
                     offset_372++;
                 }
                 else {
-                    offset_372=*(int*)come_range_check(&end_375[0],end_375,end_375+(ovec_max_373), "libcomelang2-str.c", 1737);
+                    offset_372=end_375[0];
                 }
                 for(                i_385=1;                i_385<regex_result_380;                i_385++                ){
-                    match_str_386=(char*)come_increment_ref_count(((char*)(right_value206=charp_substring(self,*(int*)come_range_check(&start_374[i_385],start_374,start_374+(ovec_max_373), "libcomelang2-str.c", 1741),*(int*)come_range_check(&end_375[i_385],end_375,end_375+(ovec_max_373), "libcomelang2-str.c", 1741)))));
+                    match_str_386=(char*)come_increment_ref_count(((char*)(right_value206=charp_substring(self,start_374[i_385],end_375[i_385]))));
                     right_value206 = come_decrement_ref_count2(right_value206, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(result_371,(char*)come_increment_ref_count(match_str_386));
                     match_str_386 = come_decrement_ref_count2(match_str_386, (void*)0, (void*)0, 0, 0, 0, (void*)0);
@@ -6189,21 +6189,21 @@ memset(&i_405, 0, sizeof(int));
         len_402=strlen(self2_393);
         regex_result_403=pcre_exec(re_392,(struct pcre_extra*)0,self2_393,len_402,offset_399,options_401,ovec_value_397,ovec_max_394*3);
         for(        i_404=0;        i_404<ovec_max_394;        i_404++        ){
-            (come_range_check(&start_395[i_404],start_395,start_395+(ovec_max_394), "libcomelang2-str.c", 1795), start_395[i_404]=*(int*)come_range_check(&ovec_value_397[i_404*2],ovec_value_397,ovec_value_397+(ovec_max_394*3), "libcomelang2-str.c", 1795));
+            start_395[i_404]=ovec_value_397[i_404*2];
         }
         for(        i_405=0;        i_405<ovec_max_394;        i_405++        ){
-            (come_range_check(&end_396[i_405],end_396,end_396+(ovec_max_394), "libcomelang2-str.c", 1798), end_396[i_405]=*(int*)come_range_check(&ovec_value_397[i_405*2+1],ovec_value_397,ovec_value_397+(ovec_max_394*3), "libcomelang2-str.c", 1798));
+            end_396[i_405]=ovec_value_397[i_405*2+1];
         }
         if(_if_conditional132=regex_result_403>0,        _if_conditional132) {
             n_400++;
-            if(_if_conditional133=offset_399==*(int*)come_range_check(&end_396[0],end_396,end_396+(ovec_max_394), "libcomelang2-str.c", 1806),            _if_conditional133) {
+            if(_if_conditional133=offset_399==end_396[0],            _if_conditional133) {
                 offset_399++;
             }
             else {
-                offset_399=*(int*)come_range_check(&end_396[0],end_396,end_396+(ovec_max_394), "libcomelang2-str.c", 1810);
+                offset_399=end_396[0];
             }
             if(_if_conditional134=n_400==count,            _if_conditional134) {
-                result_398=strlen(self)-*(int*)come_range_check(&end_396[0],end_396,end_396+(ovec_max_394), "libcomelang2-str.c", 1814);
+                result_398=strlen(self)-end_396[0];
                 break;
             }
         }
@@ -6269,10 +6269,10 @@ memset(&i_421, 0, sizeof(int));
         len_418=strlen(self);
         regex_result_419=pcre_exec(re_415,(struct pcre_extra*)0,self,len_418,offset_406,options_417,ovec_value_410,ovec_max_407*3);
         for(        i_420=0;        i_420<ovec_max_407;        i_420++        ){
-            (come_range_check(&start_408[i_420],start_408,start_408+(ovec_max_407), "libcomelang2-str.c", 1854), start_408[i_420]=*(int*)come_range_check(&ovec_value_410[i_420*2],ovec_value_410,ovec_value_410+(ovec_max_407*3), "libcomelang2-str.c", 1854));
+            start_408[i_420]=ovec_value_410[i_420*2];
         }
         for(        i_421=0;        i_421<ovec_max_407;        i_421++        ){
-            (come_range_check(&end_409[i_421],end_409,end_409+(ovec_max_407), "libcomelang2-str.c", 1857), end_409[i_421]=*(int*)come_range_check(&ovec_value_410[i_421*2+1],ovec_value_410,ovec_value_410+(ovec_max_407*3), "libcomelang2-str.c", 1857));
+            end_409[i_421]=ovec_value_410[i_421*2+1];
         }
         if(_if_conditional135=regex_result_419>0,        _if_conditional135) {
             n_416++;
@@ -6280,11 +6280,11 @@ memset(&i_421, 0, sizeof(int));
                 __result176__ = (_Bool)1;
                 return __result176__;
             }
-            if(_if_conditional137=offset_406==*(int*)come_range_check(&end_409[0],end_409,end_409+(ovec_max_407), "libcomelang2-str.c", 1869),            _if_conditional137) {
+            if(_if_conditional137=offset_406==end_409[0],            _if_conditional137) {
                 offset_406++;
             }
             else {
-                offset_406=*(int*)come_range_check(&end_409[0],end_409,end_409+(ovec_max_407), "libcomelang2-str.c", 1873);
+                offset_406=end_409[0];
             }
         }
         else {
@@ -6421,21 +6421,21 @@ right_value228 = (void*)0;
         len_434=strlen(self);
         regex_result_435=pcre_exec(re_431,(struct pcre_extra*)0,self,len_434,offset_422,options_433,ovec_value_426,ovec_max_423*3);
         for(        i_436=0;        i_436<ovec_max_423;        i_436++        ){
-            (come_range_check(&start_424[i_436],start_424,start_424+(ovec_max_423), "libcomelang2-str.c", 1911), start_424[i_436]=*(int*)come_range_check(&ovec_value_426[i_436*2],ovec_value_426,ovec_value_426+(ovec_max_423*3), "libcomelang2-str.c", 1911));
+            start_424[i_436]=ovec_value_426[i_436*2];
         }
         for(        i_437=0;        i_437<ovec_max_423;        i_437++        ){
-            (come_range_check(&end_425[i_437],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1914), end_425[i_437]=*(int*)come_range_check(&ovec_value_426[i_437*2+1],ovec_value_426,ovec_value_426+(ovec_max_423*3), "libcomelang2-str.c", 1914));
+            end_425[i_437]=ovec_value_426[i_437*2+1];
         }
         if(_if_conditional138=regex_result_435==1,        _if_conditional138) {
-            str_438=(char*)come_increment_ref_count(((char*)(right_value211=charp_substring(self,offset_422,*(int*)come_range_check(&start_424[0],start_424,start_424+(ovec_max_423), "libcomelang2-str.c", 1919)))));
+            str_438=(char*)come_increment_ref_count(((char*)(right_value211=charp_substring(self,offset_422,start_424[0]))));
             right_value211 = come_decrement_ref_count2(right_value211, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(result_432,str_438);
             group_strings_439=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value213=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value212=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1923, "list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value212, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value213, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            match_string_440=(char*)come_increment_ref_count(((char*)(right_value214=charp_substring(self,*(int*)come_range_check(&start_424[0],start_424,start_424+(ovec_max_423), "libcomelang2-str.c", 1925),*(int*)come_range_check(&end_425[0],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1925)))));
+            match_string_440=(char*)come_increment_ref_count(((char*)(right_value214=charp_substring(self,start_424[0],end_425[0]))));
             right_value214 = come_decrement_ref_count2(right_value214, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(group_strings_439,(char*)come_increment_ref_count(((char*)(right_value215=charp_substring(self,*(int*)come_range_check(&start_424[0],start_424,start_424+(ovec_max_423), "libcomelang2-str.c", 1927),*(int*)come_range_check(&end_425[0],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1927))))));
+            list$1charph_push_back(group_strings_439,(char*)come_increment_ref_count(((char*)(right_value215=charp_substring(self,start_424[0],end_425[0])))));
             right_value215 = come_decrement_ref_count2(right_value215, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             block_result_441=(char*)come_increment_ref_count(((char*)(right_value216=block(parent,match_string_440,group_strings_439))));
             right_value216 = come_decrement_ref_count2(right_value216, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
@@ -6450,11 +6450,11 @@ right_value228 = (void*)0;
                 return __result179__;
             }
             buffer_append_str(result_432,block_result_441);
-            if(_if_conditional140=offset_422==*(int*)come_range_check(&end_425[0],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1937),            _if_conditional140) {
+            if(_if_conditional140=offset_422==end_425[0],            _if_conditional140) {
                 offset_422++;
             }
             else {
-                offset_422=*(int*)come_range_check(&end_425[0],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1941);
+                offset_422=end_425[0];
             }
             if(_if_conditional141=!reg->global,            _if_conditional141) {
                 str_442=(char*)come_increment_ref_count(((char*)(right_value218=charp_substring(self,offset_422,-1))));
@@ -6475,25 +6475,25 @@ right_value228 = (void*)0;
         }
         else {
             if(_if_conditional142=regex_result_435>1,            _if_conditional142) {
-                str_443=(char*)come_increment_ref_count(((char*)(right_value219=charp_substring(self,offset_422,*(int*)come_range_check(&start_424[0],start_424,start_424+(ovec_max_423), "libcomelang2-str.c", 1952)))));
+                str_443=(char*)come_increment_ref_count(((char*)(right_value219=charp_substring(self,offset_422,start_424[0]))));
                 right_value219 = come_decrement_ref_count2(right_value219, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(result_432,str_443);
-                if(_if_conditional143=offset_422==*(int*)come_range_check(&end_425[0],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1955),                _if_conditional143) {
+                if(_if_conditional143=offset_422==end_425[0],                _if_conditional143) {
                     offset_422++;
                 }
                 else {
-                    offset_422=*(int*)come_range_check(&end_425[0],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1959);
+                    offset_422=end_425[0];
                 }
                 group_strings_444=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value221=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value220=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 1962, "list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value220, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value221, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 for(                i_445=1;                i_445<regex_result_435;                i_445++                ){
-                    match_string_446=(char*)come_increment_ref_count(((char*)(right_value222=charp_substring(self,*(int*)come_range_check(&start_424[i_445],start_424,start_424+(ovec_max_423), "libcomelang2-str.c", 1965),*(int*)come_range_check(&end_425[i_445],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1965)))));
+                    match_string_446=(char*)come_increment_ref_count(((char*)(right_value222=charp_substring(self,start_424[i_445],end_425[i_445]))));
                     right_value222 = come_decrement_ref_count2(right_value222, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(group_strings_444,(char*)come_increment_ref_count(match_string_446));
                     match_string_446 = come_decrement_ref_count2(match_string_446, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                match_string_447=(char*)come_increment_ref_count(((char*)(right_value223=charp_substring(self,*(int*)come_range_check(&start_424[0],start_424,start_424+(ovec_max_423), "libcomelang2-str.c", 1969),*(int*)come_range_check(&end_425[0],end_425,end_425+(ovec_max_423), "libcomelang2-str.c", 1969)))));
+                match_string_447=(char*)come_increment_ref_count(((char*)(right_value223=charp_substring(self,start_424[0],end_425[0]))));
                 right_value223 = come_decrement_ref_count2(right_value223, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 block_result_448=(char*)come_increment_ref_count(((char*)(right_value224=block(parent,match_string_447,group_strings_444))));
                 right_value224 = come_decrement_ref_count2(right_value224, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
@@ -6680,22 +6680,22 @@ right_value250 = (void*)0;
         len_464=strlen(self);
         regex_result_465=pcre_exec(re_460,(struct pcre_extra*)0,self,len_464,offset_451,options_463,ovec_value_455,ovec_max_452*3);
         for(        i_466=0;        i_466<ovec_max_452;        i_466++        ){
-            (come_range_check(&start_453[i_466],start_453,start_453+(ovec_max_452), "libcomelang2-str.c", 2021), start_453[i_466]=*(int*)come_range_check(&ovec_value_455[i_466*2],ovec_value_455,ovec_value_455+(ovec_max_452*3), "libcomelang2-str.c", 2021));
+            start_453[i_466]=ovec_value_455[i_466*2];
         }
         for(        i_467=0;        i_467<ovec_max_452;        i_467++        ){
-            (come_range_check(&end_454[i_467],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2024), end_454[i_467]=*(int*)come_range_check(&ovec_value_455[i_467*2+1],ovec_value_455,ovec_value_455+(ovec_max_452*3), "libcomelang2-str.c", 2024));
+            end_454[i_467]=ovec_value_455[i_467*2+1];
         }
         if(_if_conditional146=regex_result_465==1,        _if_conditional146) {
             n_462++;
-            str_468=(char*)come_increment_ref_count(((char*)(right_value231=charp_substring(self,offset_451,*(int*)come_range_check(&start_453[0],start_453,start_453+(ovec_max_452), "libcomelang2-str.c", 2030)))));
+            str_468=(char*)come_increment_ref_count(((char*)(right_value231=charp_substring(self,offset_451,start_453[0]))));
             right_value231 = come_decrement_ref_count2(right_value231, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(result_461,str_468);
             group_strings_469=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value233=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value232=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2034, "list$1charph"))))))));
             come_call_finalizer2(list$1charphp_finalize,right_value232, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             come_call_finalizer2(list$1charphp_finalize,right_value233, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            list$1charph_push_back(group_strings_469,(char*)come_increment_ref_count(((char*)(right_value234=charp_substring(self,*(int*)come_range_check(&start_453[0],start_453,start_453+(ovec_max_452), "libcomelang2-str.c", 2036),*(int*)come_range_check(&end_454[0],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2036))))));
+            list$1charph_push_back(group_strings_469,(char*)come_increment_ref_count(((char*)(right_value234=charp_substring(self,start_453[0],end_454[0])))));
             right_value234 = come_decrement_ref_count2(right_value234, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-            match_string_470=(char*)come_increment_ref_count(((char*)(right_value235=charp_substring(self,*(int*)come_range_check(&start_453[0],start_453,start_453+(ovec_max_452), "libcomelang2-str.c", 2038),*(int*)come_range_check(&end_454[0],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2038)))));
+            match_string_470=(char*)come_increment_ref_count(((char*)(right_value235=charp_substring(self,start_453[0],end_454[0]))));
             right_value235 = come_decrement_ref_count2(right_value235, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             block_result_471=(char*)come_increment_ref_count(((char*)(right_value236=block(parent,match_string_470,group_strings_469))));
             right_value236 = come_decrement_ref_count2(right_value236, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
@@ -6710,11 +6710,11 @@ right_value250 = (void*)0;
                 return __result182__;
             }
             buffer_append_str(result_461,block_result_471);
-            if(_if_conditional148=offset_451==*(int*)come_range_check(&end_454[0],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2048),            _if_conditional148) {
+            if(_if_conditional148=offset_451==end_454[0],            _if_conditional148) {
                 offset_451++;
             }
             else {
-                offset_451=*(int*)come_range_check(&end_454[0],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2052);
+                offset_451=end_454[0];
             }
             if(_if_conditional149=!reg->global,            _if_conditional149) {
                 str_472=(char*)come_increment_ref_count(((char*)(right_value238=charp_substring(self,offset_451,-1))));
@@ -6748,25 +6748,25 @@ right_value250 = (void*)0;
         else {
             if(_if_conditional151=regex_result_465>1,            _if_conditional151) {
                 n_462++;
-                str_474=(char*)come_increment_ref_count(((char*)(right_value240=charp_substring(self,offset_451,*(int*)come_range_check(&start_453[0],start_453,start_453+(ovec_max_452), "libcomelang2-str.c", 2071)))));
+                str_474=(char*)come_increment_ref_count(((char*)(right_value240=charp_substring(self,offset_451,start_453[0]))));
                 right_value240 = come_decrement_ref_count2(right_value240, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(result_461,str_474);
-                if(_if_conditional152=offset_451==*(int*)come_range_check(&end_454[0],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2074),                _if_conditional152) {
+                if(_if_conditional152=offset_451==end_454[0],                _if_conditional152) {
                     offset_451++;
                 }
                 else {
-                    offset_451=*(int*)come_range_check(&end_454[0],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2078);
+                    offset_451=end_454[0];
                 }
                 group_strings_475=(struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value242=list$1charph_initialize((struct list$1charph*)come_increment_ref_count(((struct list$1charph*)(right_value241=(struct list$1charph*)come_calloc(1, sizeof(struct list$1charph)*(1), "libcomelang2-str.c", 2081, "list$1charph"))))))));
                 come_call_finalizer2(list$1charphp_finalize,right_value241, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 come_call_finalizer2(list$1charphp_finalize,right_value242, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                 for(                i_476=1;                i_476<regex_result_465;                i_476++                ){
-                    match_string_477=(char*)come_increment_ref_count(((char*)(right_value243=charp_substring(self,*(int*)come_range_check(&start_453[i_476],start_453,start_453+(ovec_max_452), "libcomelang2-str.c", 2084),*(int*)come_range_check(&end_454[i_476],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2084)))));
+                    match_string_477=(char*)come_increment_ref_count(((char*)(right_value243=charp_substring(self,start_453[i_476],end_454[i_476]))));
                     right_value243 = come_decrement_ref_count2(right_value243, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     list$1charph_push_back(group_strings_475,(char*)come_increment_ref_count(match_string_477));
                     match_string_477 = come_decrement_ref_count2(match_string_477, (void*)0, (void*)0, 0, 0, 0, (void*)0);
                 }
-                match_string_478=(char*)come_increment_ref_count(((char*)(right_value244=charp_substring(self,*(int*)come_range_check(&start_453[0],start_453,start_453+(ovec_max_452), "libcomelang2-str.c", 2088),*(int*)come_range_check(&end_454[0],end_454,end_454+(ovec_max_452), "libcomelang2-str.c", 2088)))));
+                match_string_478=(char*)come_increment_ref_count(((char*)(right_value244=charp_substring(self,start_453[0],end_454[0]))));
                 right_value244 = come_decrement_ref_count2(right_value244, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 block_result_479=(char*)come_increment_ref_count(((char*)(right_value245=block(parent,match_string_478,group_strings_475))));
                 right_value245 = come_decrement_ref_count2(right_value245, (void*)0, (void*)0, 1, 0, 0, __result_obj__);

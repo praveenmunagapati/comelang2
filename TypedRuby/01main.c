@@ -96,7 +96,7 @@ void add_come_code(sInfo* info, const char* msg, ...)
     free(msg2);
 }
 
-void add_last_code_to_source(sInfo* info)
+void add_last_code_to_source(sInfo* info=info)
 {
     if(info->no_output_come_code) {
         return;
@@ -545,7 +545,7 @@ sNode*% add_sub_expression_node(sInfo* info=info)
     return node;
 }
 
-sNode*% expression(sInfo* info=info)
+sNode*% expression(sInfo* info=info) version 1
 {
     return add_sub_expression_node();
 }

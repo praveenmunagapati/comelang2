@@ -7178,8 +7178,8 @@ right_value422 = (void*)0;
                                     while(_while_condtional21=*info->p>=48&&*info->p<=57||*info->p>=97&&*info->p<=102||*info->p>=65&&*info->p<=70,                                    _while_condtional21) {
                                         char buf2_218[2];
                                         memset(&buf2_218, 0, sizeof(char)                                        *(2)                                        );
-                                        (come_range_check(&buf2_218[0],buf2_218,buf2_218+(2), "06str.c", 1358), buf2_218[0]=*info->p);
-                                        (come_range_check(&buf2_218[1],buf2_218,buf2_218+(2), "06str.c", 1359), buf2_218[1]=0);
+                                        buf2_218[0]=*info->p;
+                                        buf2_218[1]=0;
                                         info->p++;
                                         strncat(buf_217,buf2_218,128);
                                     }
@@ -7279,8 +7279,8 @@ right_value422 = (void*)0;
                                         while(_while_condtional24=*info->p>=48&&*info->p<=57||*info->p>=97&&*info->p<=102||*info->p>=65&&*info->p<=70,                                        _while_condtional24) {
                                             char buf2_225[2];
                                             memset(&buf2_225, 0, sizeof(char)                                            *(2)                                            );
-                                            (come_range_check(&buf2_225[0],buf2_225,buf2_225+(2), "06str.c", 1463), buf2_225[0]=*info->p);
-                                            (come_range_check(&buf2_225[1],buf2_225,buf2_225+(2), "06str.c", 1464), buf2_225[1]=0);
+                                            buf2_225[0]=*info->p;
+                                            buf2_225[1]=0;
                                             info->p++;
                                             strncat(buf_224,buf2_225,128);
                                         }
@@ -7307,7 +7307,7 @@ right_value422 = (void*)0;
                                 }
                                 else {
                                     memcpy(str_229,info->p,size_228);
-                                    (come_range_check(&str_229[size_228],str_229,str_229+(4+1), "06str.c", 1498), str_229[size_228]=0);
+                                    str_229[size_228]=0;
                                     if(_if_conditional258=mbtowc(&c_221,str_229,size_228)<0,                                    _if_conditional258) {
                                         perror("mbtowc");
                                         err_msg(info,"invalid utf-8 character. mbtowc");
@@ -7390,8 +7390,8 @@ right_value422 = (void*)0;
                                                 while(_while_condtional27=*info->p>=48&&*info->p<=57||*info->p>=97&&*info->p<=102||*info->p>=65&&*info->p<=70,                                                _while_condtional27) {
                                                     char buf2_238[2];
                                                     memset(&buf2_238, 0, sizeof(char)                                                    *(2)                                                    );
-                                                    (come_range_check(&buf2_238[0],buf2_238,buf2_238+(2), "06str.c", 1576), buf2_238[0]=*info->p);
-                                                    (come_range_check(&buf2_238[1],buf2_238,buf2_238+(2), "06str.c", 1577), buf2_238[1]=0);
+                                                    buf2_238[0]=*info->p;
+                                                    buf2_238[1]=0;
                                                     info->p++;
                                                     strncat(buf_237,buf2_238,128);
                                                 }

@@ -2347,9 +2347,9 @@ void* __result_obj__;
 _Bool _if_conditional7;
 memset(&__result_obj__, 0, sizeof(void*));
     if(_if_conditional7=gNumComeStackFrame<1024,    _if_conditional7) {
-        (come_range_check(&gComeStackFrameSName[gNumComeStackFrame],gComeStackFrameSName,gComeStackFrameSName+(1024), "libcomelang2.c", 23), gComeStackFrameSName[gNumComeStackFrame]=sname);
-        (come_range_check(&gComeStackFrameSLine[gNumComeStackFrame],gComeStackFrameSLine,gComeStackFrameSLine+(1024), "libcomelang2.c", 24), gComeStackFrameSLine[gNumComeStackFrame]=sline);
-        (come_range_check(&gComeStackFrameID[gNumComeStackFrame],gComeStackFrameID,gComeStackFrameID+(1024), "libcomelang2.c", 25), gComeStackFrameID[gNumComeStackFrame]=id);
+        gComeStackFrameSName[gNumComeStackFrame]=sname;
+        gComeStackFrameSLine[gNumComeStackFrame]=sline;
+        gComeStackFrameID[gNumComeStackFrame]=id;
         gNumComeStackFrame++;
     }
 }
@@ -2387,7 +2387,7 @@ right_value53 = (void*)0;
     buffer_append_str(buf_11,((char*)(right_value51=xsprintf("%s %d\n",sname,sline))));
     right_value51 = come_decrement_ref_count2(right_value51, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     for(    i_12=gNumComeStackFrame-2;    i_12>=0;    i_12--    ){
-        buffer_append_str(buf_11,((char*)(right_value52=xsprintf("%s %d #%d\n",*(char**)come_range_check(&gComeStackFrameSName[i_12],gComeStackFrameSName,gComeStackFrameSName+(1024), "libcomelang2.c", 43),*(int*)come_range_check(&gComeStackFrameSLine[i_12],gComeStackFrameSLine,gComeStackFrameSLine+(1024), "libcomelang2.c", 43),*(int*)come_range_check(&gComeStackFrameID[i_12],gComeStackFrameID,gComeStackFrameID+(1024), "libcomelang2.c", 43)))));
+        buffer_append_str(buf_11,((char*)(right_value52=xsprintf("%s %d #%d\n",gComeStackFrameSName[i_12],gComeStackFrameSLine[i_12],gComeStackFrameID[i_12]))));
         right_value52 = come_decrement_ref_count2(right_value52, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     }
     if(gComeStackFrameBuffer) {
@@ -2404,7 +2404,7 @@ int i_13;
 memset(&__result_obj__, 0, sizeof(void*));
 memset(&i_13, 0, sizeof(int));
     for(    i_13=gNumComeStackFrame-1;    i_13>=0;    i_13--    ){
-        printf("%s %d #%d\n",*(char**)come_range_check(&gComeStackFrameSName[i_13],gComeStackFrameSName,gComeStackFrameSName+(1024), "libcomelang2.c", 55),*(int*)come_range_check(&gComeStackFrameSLine[i_13],gComeStackFrameSLine,gComeStackFrameSLine+(1024), "libcomelang2.c", 55),*(int*)come_range_check(&gComeStackFrameID[i_13],gComeStackFrameID,gComeStackFrameID+(1024), "libcomelang2.c", 55));
+        printf("%s %d #%d\n",gComeStackFrameSName[i_13],gComeStackFrameSLine[i_13],gComeStackFrameID[i_13]);
     }
 }
 
