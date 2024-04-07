@@ -1,9 +1,0 @@
-1+1
-"AAA"
-
-class Data
-{
-    def fun(a, b) {
-        a + b
-    }
-}

@@ -148,7 +148,7 @@ void err_msg(sInfo* info, char* msg, ...)
     }
 }
 
-void skip_spaces(sInfo* info=info)
+void skip_spaces_and_lf(sInfo* info=info)
 {
     while(*info->p == ' ' || *info->p == '\t' || (*info->p == '\n' && info->sline++)) {
         info->p++;
@@ -251,7 +251,7 @@ bool sAddNode*::compile(sAddNode* self, sInfo* info)
     CVALUE*% left_value = get_value_from_stack();
     
     sNode*% right_node = self.right_node;
-    right_node.compile(info).catch {
+    right_node.compile(info).elif {
         puts("compile error");
         exit(2);
     }
@@ -319,7 +319,7 @@ string sSubNode*::kind()
 bool sSubNode*::compile(sSubNode* self, sInfo* info)
 {
     sNode*% left_node = self.left_node;
-    left_node.compile(info).catch {
+    left_node.compile(info).elif {
         puts("compile error");
         exit(2);
     }
@@ -327,7 +327,7 @@ bool sSubNode*::compile(sSubNode* self, sInfo* info)
     CVALUE*% left_value = get_value_from_stack();
     
     sNode*% right_node = self.right_node;
-    right_node.compile(info).catch {
+    right_node.compile(info).elif {
         puts("compile error");
         exit(2);
     }
@@ -454,7 +454,7 @@ sNode*% expression_node(sInfo* info=info)
                 char* p = info->p.p;
                 int sline = info->sline;
                 
-                skip_spaces();
+                skip_spaces_and_lf();
                 
                 if(*info->p == '"') {
                     info->p++;
@@ -493,7 +493,7 @@ sNode*% expression_node(sInfo* info=info)
             }
         }
 
-        skip_spaces();
+        skip_spaces_and_lf();
         
         return new sStrNode(value.to_string(), sline, info) implements sNode;
     }
@@ -509,7 +509,7 @@ sNode*% add_sub_expression_node(sInfo* info=info)
     while(true) {
         if(*info->p == '+' && ((*info->p+1) != '+' || (*info->p+1) != '=')) {
             info->p++;
-            skip_spaces();
+            skip_spaces_and_lf();
             
             sNode*% right_node = expression_node();
             
@@ -524,7 +524,7 @@ sNode*% add_sub_expression_node(sInfo* info=info)
         }
         else if(*info->p == '-' && ((*info->p+1) != '-' || (*info->p+1) != '=')) {
             info->p++;
-            skip_spaces();
+            skip_spaces_and_lf();
             
             sNode*% right_node = expression_node();
             
@@ -603,21 +603,21 @@ int main(int argc, char** argv)
     init_typed_ruby(&info);
     
     while(*info.p) {
-        skip_spaces(&info);
+        skip_spaces_and_lf(&info);
         var node = parse(&info).catch {
             puts("parser error");
             exit(2);
         }
-        skip_spaces(&info);
+        skip_spaces_and_lf(&info);
         
-        node.compile(&info).catch {
+        node.compile(&info).elif {
             puts("compile error");
             exit(2);
         }
         add_last_code_to_source(&info);
     }
     
-    output_source(&info).catch {
+    output_source(&info).elif {
         puts("output source error");
         exit(2);
     }

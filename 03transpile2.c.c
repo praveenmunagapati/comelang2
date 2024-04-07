@@ -163,6 +163,7 @@ struct sClass
     struct list$1tuple2$2charphsTypephph* mFields;
     _Bool mOutputed;
     char* mDeclareSName;
+    _Bool mNobodyStruct;
 };
 struct sInfo;
 struct sNode
@@ -6000,7 +6001,7 @@ memset(&f_232, 0, sizeof(struct _IO_FILE*));
 right_value224 = (void*)0;
     output_file_name_231=(char*)come_increment_ref_count(info->output_file_name);
     f_232=fopen(output_file_name_231,"a");
-    if(_if_conditional277=info->num_source_files==0&&string_operator_equals(info->output_file_name,"common.h"),    _if_conditional277) {
+    if(_if_conditional277=string_operator_equals(info->output_file_name,"common.h"),    _if_conditional277) {
         fprintf(f_232,"#ifndef __COMMON_H__\n");
         fprintf(f_232,"#define __COMMON_H__\n");
         fprintf(f_232,"#include <comelang2.h>\n");
@@ -6008,7 +6009,7 @@ right_value224 = (void*)0;
     fprintf(f_232,"%s\n",((char*)(right_value224=buffer_to_string(info->module->mHeader))));
     right_value224 = come_decrement_ref_count2(right_value224, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
     fprintf(f_232,"\n");
-    if(_if_conditional278=info->num_source_files==info->max_source_files-1&&string_operator_equals(info->output_file_name,"common.h"),    _if_conditional278) {
+    if(_if_conditional278=string_operator_equals(info->output_file_name,"common.h"),    _if_conditional278) {
         fprintf(f_232,"#endif\n");
     }
     fclose(f_232);

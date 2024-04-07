@@ -553,7 +553,7 @@ $(TARGET_DEBUG): $(DEBUG_OBJS)
 \#########################################
 
 header: 
-\tcomelang2 header $(SINGLE_SRCS)
+\tcomelang2 header -common-header $(SINGLE_SRCS)
 
 common.h: *.c
 \tbash -c 'shopt -s extglob; comelang2 header !(*.c).c'
@@ -724,64 +724,68 @@ int come_main(int argc, char** argv) version 2
         
         come_init();
         
-        foreach(it, files) {
-            sInfo info;
+        string tmp_file = string("tmp-common-header");
+        
+        system(s"cat \{files.join(" ")} > \{tmp_file}");
+        
+        sInfo info;
+        
+        memset(&info, 0, sizeof(sInfo));
+        
+        info.base_sname = string(tmp_file);
+        info.sname = string(tmp_file);
+        info.sline = 1;
+        info.err_num = 0;
+        info.clang_option = clang_option.to_string();
+        info.cpp_option = cpp_option.to_string();
+        info.no_output_err = false;
+        info.funcs = new map<string, sFun*%>();
+        info.generics_funcs = new map<string, sGenericsFun*%>();
+        info.classes = new map<string, sClass*%>();
+        info.types = new map<string, sType*%>();
+        info.module = new sModule();
+        info.right_value_objects = new list<sRightValueObject*%>();
+        info.stack = new list<CVALUE*%>();
+        info.gv_table = new sVarTable(global:true, parent:null);
+        sVarTable*% lv_table = new sVarTable(global:false, parent:null);
+        info.lv_table = lv_table;
+        info.generics_type_names = new list<string>();
+        info.method_generics_type_names = new list<string>();
+        info.generics_classes = new map<string, sClass*%>();
+        info.verbose = verbose;
+        info.output_header_file = true;
+        
+        static int n = 0;
+        info.num_source_files = n++;
+        info.max_source_files = files.length();
+        
+        info.output_file_name = string(output_file_name);
+        
+        init_classes(&info);
+        init_module(&info);
+        
+        clear_tmp_file(&info);
+        
+        if(!cpp(&info)) {
+            printf("%s %d: transpile failed\n", info.sname, info.sline);
+            exit(2);
+        }
+        
+        info.original_source = xsprintf("%s", tmp_file).read().to_buffer();
+        info.source = xsprintf("%s.i", tmp_file).read().to_buffer();
+        info.p = info.source.buf;
+        info.head = info.source.buf;
+        
+        if(!output_cpp_file) {
+            transpile(&info);
             
-            memset(&info, 0, sizeof(sInfo));
-            
-            info.base_sname = string(it);
-            info.sname = string(it);
-            info.sline = 1;
-            info.err_num = 0;
-            info.clang_option = clang_option.to_string();
-            info.cpp_option = cpp_option.to_string();
-            info.no_output_err = false;
-            info.funcs = new map<string, sFun*%>();
-            info.generics_funcs = new map<string, sGenericsFun*%>();
-            info.classes = new map<string, sClass*%>();
-            info.types = new map<string, sType*%>();
-            info.module = new sModule();
-            info.right_value_objects = new list<sRightValueObject*%>();
-            info.stack = new list<CVALUE*%>();
-            info.gv_table = new sVarTable(global:true, parent:null);
-            sVarTable*% lv_table = new sVarTable(global:false, parent:null);
-            info.lv_table = lv_table;
-            info.generics_type_names = new list<string>();
-            info.method_generics_type_names = new list<string>();
-            info.generics_classes = new map<string, sClass*%>();
-            info.verbose = verbose;
-            info.output_header_file = true;
-            
-            static int n = 0;
-            info.num_source_files = n++;
-            info.max_source_files = files.length();
-            
-            info.output_file_name = string(output_file_name);
-            
-            init_classes(&info);
-            init_module(&info);
-            
-            clear_tmp_file(&info);
-            
-            if(!cpp(&info)) {
-                printf("%s %d: transpile failed\n", info.sname, info.sline);
+            if(!output_header_file(&info)) {
+                printf("%s %d: output source file faield\n", info->sname, info->sline);
                 exit(2);
             }
-            
-            info.original_source = xsprintf("%s", it).read().to_buffer();
-            info.source = xsprintf("%s.i", it).read().to_buffer();
-            info.p = info.source.buf;
-            info.head = info.source.buf;
-            
-            if(!output_cpp_file) {
-                transpile(&info);
-                
-                if(!output_header_file(&info)) {
-                    printf("%s %d: output source file faield\n", info->sname, info->sline);
-                    exit(2);
-                }
-            }
         }
+        
+        system(s"rm -rf \{tmp_file}*");
         
         come_final();
     }

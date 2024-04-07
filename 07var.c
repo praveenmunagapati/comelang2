@@ -232,8 +232,8 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
         }
         
         CVALUE*% right_value = get_value_from_stack(-1, info);
-        dec_stack_ptr(1, info);
         sType* right_type = right_value.type;
+        dec_stack_ptr(1, info);
         
         if(self.multiple_assign) {
             if(right_type->mNoSolvedGenericsType.v1) {

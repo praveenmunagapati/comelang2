@@ -163,6 +163,7 @@ struct sClass
     struct list$1tuple2$2charphsTypephph* mFields;
     _Bool mOutputed;
     char* mDeclareSName;
+    _Bool mNobodyStruct;
 };
 struct sInfo;
 struct sNode

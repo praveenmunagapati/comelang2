@@ -43,6 +43,7 @@ struct sClass {
     
     bool mOutputed;
     string mDeclareSName;
+    bool mNobodyStruct;
 };
 
 struct sInfo;

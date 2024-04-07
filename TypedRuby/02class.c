@@ -1,8 +1,9 @@
+#include <comelang2.h>
 
 struct sClassNode
 {
     string name;
-    list<sNodes*%>*% nodes;
+    list<sNode*%>*% nodes;
     
     int sline;
     string sname;
@@ -42,13 +43,14 @@ bool sClassNode*::compile(sClassNode* self, sInfo* info)
 struct sFunNode
 {
     string name;
-    list<sNodes*%>*% nodes;
+    list<sNode*%>*% nodes;
+    list<tuple2<string,sType*%>*%>*% params;
     
     int sline;
     string sname;
 };
 
-sFunNode*% sFunNode*::initialize(sFunNode*% self, string name, list<sNode*%>*% nodes, sInfo* info=info)
+sFunNode*% sFunNode*::initialize(sFunNode*% self, string name, list<tuple2<string,sType*%>*%>*% params, list<sNode*%>*% nodes, sInfo* info=info)
 {
     self.name = name;
     self.nodes = nodes;
@@ -66,7 +68,7 @@ string sFunNode*::kind()
 
 bool sFunNode*::compile(sFunNode* self, sInfo* info)
 {
-    add_come_code(info, s"class \{self.name}\n");
+    add_come_code(info, s"def \{self.name}\n");
     foreach(it, self.nodes) {
         it.compile(info).catch {
             puts("compile error");
@@ -79,17 +81,17 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
     return true;
 }
 
-bool sIntNode*::terminated()
+bool sFunNode*::terminated()
 {
     return false;
 }
 
-int sIntNode*::sline(sIntNode* self, sInfo* info)
+int sFunNode*::sline(sFunNode* self, sInfo* info)
 {
     return self.sline;
 }
 
-string sIntNode*::sname(sIntNode* self, sInfo* info)
+string sFunNode*::sname(sFunNode* self, sInfo* info)
 {
     return string(self.sname);
 }
@@ -97,7 +99,6 @@ string sIntNode*::sname(sIntNode* self, sInfo* info)
 string parse_word(sInfo* info=info)
 {
     var buf = new buffer();
-    parse_sharp();
     
     while((*info->p >= 'a' && *info->p <= 'z') || (*info->p >= 'A' && *info->p <= 'Z') || *info->p == '_' || (*info->p >= '0' && *info->p <= '9') || (*info->p == '$'))
     {
@@ -153,32 +154,18 @@ sNode*% parse_class(string name, sInfo* info=info)
     return new sClassNode(name, nodes);
 }
 
-sType*% parse_type()
+sType*% parse_type(sInfo* info=info)
 {
     string type_name = parse_word();
     
     return new sType(type_name);
 }
 
-struct sParam
-{
-    string name;
-    sType*% type;
-};
-
-sParam*% sParam*::initialize(sParam*% self, string name, sType*% type, sInfo* info=info)
-{
-    self.name = name;
-    self.type = type;
-    
-    return self;
-}
-
-list<sParam*%>*% parse_params(sInfo* info=info)
+list<tuple2<string,sType*%>*%>*% parse_params(sInfo* info=info)
 {
     expected_next_character('(');
     
-    list<sParam*%>*% params = new list<sParam*%>();
+    list<tuple2<string,sType*%>*%>*% params = new list<tuple2<string,sType*%>*%>();
     
     while(true) {
         string name = parse_word();
@@ -187,9 +174,7 @@ list<sParam*%>*% parse_params(sInfo* info=info)
         
         sType*% type = parse_type();
         
-        sParam*% param = new sParam(name, type);
-        
-        params.add(param);
+        params.add((name, type));
         
         if(*info->p == ',') {
             info->p++;
@@ -207,9 +192,9 @@ list<sParam*%>*% parse_params(sInfo* info=info)
     }
 }
 
-sNode*% parse_method(string name, sInfo* info=info)
+sNode*% parse_fun(string name, sInfo* info=info)
 {
-    list<sParam*%>*% params = parse_params();
+    list<tuple2<string,sType*%>*%>*% params = parse_params();
     
     list<sNode*%>*% nodes = new list<sNode*%>();
     
@@ -232,7 +217,7 @@ sNode*% parse_method(string name, sInfo* info=info)
         }
     }
     
-    return new sMethodNode(name, params, nodes);
+    return new sFunNode(name, params, nodes);
 }
 
 void expected_next_character(char c, sInfo* info=info)
@@ -256,18 +241,14 @@ sNode*% expression(sInfo* info=info) version 2
         if(buf === "class") {
             string name = parse_word();
             
-            sNode*% node = parse_class(name).elif {
-                return null;
-            }
+            sNode*% node = parse_class(name);
             
             return node;
         }
         else if(buf === "def") {
             string name = parse_word();
             
-            sNode*% node = parse_method(name).elif {
-                return null;
-            }
+            sNode*% node = parse_fun(name);
             
             return node;
         }

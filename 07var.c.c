@@ -163,6 +163,7 @@ struct sClass
     struct list$1tuple2$2charphsTypephph* mFields;
     _Bool mOutputed;
     char* mDeclareSName;
+    _Bool mNobodyStruct;
 };
 struct sInfo;
 struct sNode
@@ -4342,8 +4343,8 @@ right_value197 = (void*)0;
             }
             right_value_83=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value130=get_value_from_stack(-1,info))));
             come_call_finalizer2(CVALUE_finalize,right_value130, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            dec_stack_ptr(1,info);
             right_type_84=right_value_83->type;
+            dec_stack_ptr(1,info);
             if(self->multiple_assign) {
                 if(right_type_84->mNoSolvedGenericsType->v1) {
                     right_type_84=right_type_84->mNoSolvedGenericsType->v1;

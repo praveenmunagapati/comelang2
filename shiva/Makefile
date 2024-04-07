@@ -6,10 +6,10 @@ exec_prefix=${prefix}
 bindir=${exec_prefix}/bin
 datadir=${datarootdir}
 mandir=${datarootdir}/man
-sharedstatedir=${prefix}/TypedRuby
-sysconfdir=${prefix}/etc/TypedRuby
-includedir=${prefix}/include/TypedRuby
-datarootdir=${prefix}/share/TypedRuby
+sharedstatedir=${prefix}/shiva
+sysconfdir=${prefix}/etc/shiva
+includedir=${prefix}/include/shiva
+datarootdir=${prefix}/share/shiva
 docdir=${datarootdir}/doc
 libdir=${exec_prefix}/lib
 
@@ -27,13 +27,13 @@ SRCS=$(wildcard *.c)
 SINGLE_SRCS=$(filter-out %.c.c, $(SRCS))
 OBJS=$(SINGLE_SRCS:.c=.o)
 DEBUG_OBJS=$(SINGLE_SRCS:.c=.debug.o)
-TARGET=TypedRuby
-TARGET_DEBUG=TypedRuby-debug
+TARGET=shiva
+TARGET_DEBUG=shiva-debug
 
 #########################################
 # main
 #########################################
-all: common.h TypedRuby
+all: common.h shiva
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
@@ -62,29 +62,29 @@ common.h: *.c
 #########################################
 install:
 	mkdir -p "$(DESTDIR)/bin"
-	$(INSTALL) -m 755 ./TypedRuby "$(DESTDIR)/bin"
+	$(INSTALL) -m 755 ./shiva "$(DESTDIR)/bin"
 	mkdir -p "$(DESTDIR)/include"
 	mkdir -p "$(DESTDIR)/lib"
-	mkdir -p "$(DESTDIR)/share/doc/TypedRuby"
-	$(INSTALL) -m 644 README.md "$(DESTDIR)/share/doc/TypedRuby/README.md"
+	mkdir -p "$(DESTDIR)/share/doc/shiva"
+	$(INSTALL) -m 644 README.md "$(DESTDIR)/share/doc/shiva/README.md"
 
 #########################################
 # clean
 #########################################
 clean:
-	rm -fR *.o *.c.i *.c.out *.c.c TypedRuby *.log *.out common.h TypedRuby-debug
+	rm -fR *.o *.c.i *.c.out *.c.c shiva *.log *.out common.h shiva-debug
 
 #########################################
 # uninstall
 #########################################
 uninstall:
-	rm -f "$(DESTDIR)"/bin/TypedRuby
-	rm -f "$(DESTDIR)/share/doc/TypedRuby/README.md"
+	rm -f "$(DESTDIR)"/bin/shiva
+	rm -f "$(DESTDIR)/share/doc/shiva/README.md"
 
-run: TypedRuby
+run: shiva
 	rm -f *.log
-	./TypedRuby
+	./shiva
 
-debug: TypedRuby-debug
+debug: shiva-debug
 	rm -f *.log
-	./TypedRuby-debug
+	./shiva-debug

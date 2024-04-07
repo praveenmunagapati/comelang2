@@ -487,15 +487,16 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
             sClass*% struct_class;
             if(info.classes.at(type_name, null) == null) {
                 struct_class = new sClass(name:type_name, struct_:true);
+                struct_class->mNobodyStruct = true;
             }
             else {
-                struct_class = clone info.classes.at(type_name, null);
+                struct_class = dummy_heap info.classes.at(type_name, null);
+                struct_class->mNobodyStruct = true;
             }
             
             char* source_tail = info.p;
             
             buffer*% header = new buffer();
-            header.append_str("struct ");
             header.append(source_head, source_tail - source_head);
             
             add_come_code_at_come_header(info, "%s", header.to_string());
@@ -684,7 +685,10 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 98
                 
                 info.generics_type_names.reset();
                 
-                if(info.classes.at(type_name, null) == null) {
+                sClass* klass2 = info.classes.at(type_name, null);
+                
+                if(klass2 == null || klass2->mNobodyStruct) {
+                    if(klass2) klass2->mNobodyStruct = false;
                     char* source_tail = info.p;
                     
                     buffer*% header = new buffer();

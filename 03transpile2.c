@@ -782,7 +782,7 @@ bool output_header_file(sInfo* info)
     
     FILE* f = fopen(output_file_name, "a");
     
-    if(info.num_source_files == 0 && info.output_file_name === "common.h") {
+    if(info.output_file_name === "common.h") {
         fprintf(f, "#ifndef __COMMON_H__\n");
         fprintf(f, "#define __COMMON_H__\n");
         fprintf(f, "#include <comelang2.h>\n");
@@ -792,7 +792,7 @@ bool output_header_file(sInfo* info)
     
     fprintf(f, "\n");
     
-    if(info.num_source_files == info.max_source_files-1 && info.output_file_name === "common.h") {
+    if(info.output_file_name === "common.h") {
         fprintf(f, "#endif\n");
     }
     
