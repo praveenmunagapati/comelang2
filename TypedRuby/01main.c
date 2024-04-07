@@ -243,7 +243,7 @@ string sAddNode*::kind()
 bool sAddNode*::compile(sAddNode* self, sInfo* info)
 {
     sNode*% left_node = self.left_node;
-    left_node.compile(info).catch {
+    if(!left_node.compile(info)) {
         puts("compile error");
         exit(2);
     }
@@ -251,7 +251,7 @@ bool sAddNode*::compile(sAddNode* self, sInfo* info)
     CVALUE*% left_value = get_value_from_stack();
     
     sNode*% right_node = self.right_node;
-    right_node.compile(info).elif {
+    if(!right_node.compile(info)) {
         puts("compile error");
         exit(2);
     }
@@ -319,7 +319,7 @@ string sSubNode*::kind()
 bool sSubNode*::compile(sSubNode* self, sInfo* info)
 {
     sNode*% left_node = self.left_node;
-    left_node.compile(info).elif {
+    if(!left_node.compile(info)) {
         puts("compile error");
         exit(2);
     }
@@ -327,7 +327,7 @@ bool sSubNode*::compile(sSubNode* self, sInfo* info)
     CVALUE*% left_value = get_value_from_stack();
     
     sNode*% right_node = self.right_node;
-    right_node.compile(info).elif {
+    if(!right_node.compile(info)) {
         puts("compile error");
         exit(2);
     }
@@ -498,7 +498,6 @@ sNode*% expression_node(sInfo* info=info)
         return new sStrNode(value.to_string(), sline, info) implements sNode;
     }
     
-puts("AAA");
     return null;
 }
 
@@ -550,17 +549,6 @@ sNode*% expression(sInfo* info=info) version 1
     return add_sub_expression_node();
 }
 
-sNode*%,bool parse(sInfo* info)
-{
-    sNode*% node = expression();
-    
-    if(node == null) {
-        return ((sNode*%)null, false);
-    }
-    
-    return (node, true);
-}
-
 bool output_source(sInfo* info)
 {
     string sname = xnoextname(info.sname) + ".rb";
@@ -604,13 +592,16 @@ int main(int argc, char** argv)
     
     while(*info.p) {
         skip_spaces_and_lf(&info);
-        var node = parse(&info).catch {
-            puts("parser error");
+        var node = expression(&info);
+        
+        if(node == null) {
+            puts("parse error");
             exit(2);
         }
+        
         skip_spaces_and_lf(&info);
         
-        node.compile(&info).elif {
+        if(!node.compile(&info)) {
             puts("compile error");
             exit(2);
         }

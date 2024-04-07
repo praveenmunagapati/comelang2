@@ -40,6 +40,21 @@ bool sClassNode*::compile(sClassNode* self, sInfo* info)
     return true;
 }
 
+bool sClassNode*::terminated()
+{
+    return false;
+}
+
+int sClassNode*::sline(sClassNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sClassNode*::sname(sClassNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
 struct sFunNode
 {
     string name;
@@ -151,7 +166,7 @@ sNode*% parse_class(string name, sInfo* info=info)
         }
     }
     
-    return new sClassNode(name, nodes);
+    return new sClassNode(name, nodes) implements sNode;
 }
 
 sType*% parse_type(sInfo* info=info)
@@ -217,7 +232,7 @@ sNode*% parse_fun(string name, sInfo* info=info)
         }
     }
     
-    return new sFunNode(name, params, nodes);
+    return new sFunNode(name, params, nodes) implements sNode;
 }
 
 void expected_next_character(char c, sInfo* info=info)
