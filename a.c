@@ -8,7 +8,7 @@ struct sData
 
 list<int>* fun(int a, int b)
 {
-    return new list<string>();
+    return new list<int>();
 }
 
 int main(int argc, char** argv)

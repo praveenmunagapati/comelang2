@@ -206,7 +206,7 @@ bool sReturnNode*::compile(sReturnNode* self, sInfo* info)
                         puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
                         exit(2);
                     }
-                    else if(result_type2->mNoSolvedGenericsType.v1 == null || come_value.type->mNoSolvedGenericsType == null) {
+                    else if(result_type2->mNoSolvedGenericsType.v1 == null || come_value.type->mNoSolvedGenericsType.v1 == null) {
                         err_msg(info, "invalid result type");
                         puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
                         puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");

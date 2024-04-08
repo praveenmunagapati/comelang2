@@ -4750,7 +4750,7 @@ right_value156 = (void*)0;
                         exit(2);
                     }
                     else {
-                        if(_if_conditional161=result_type2_72->mNoSolvedGenericsType->v1==((void*)0)||come_value_74->type->mNoSolvedGenericsType==((void*)0),                        _if_conditional161) {
+                        if(_if_conditional161=result_type2_72->mNoSolvedGenericsType->v1==((void*)0)||come_value_74->type->mNoSolvedGenericsType->v1==((void*)0),                        _if_conditional161) {
                             err_msg(info,"invalid result type");
                             puts(((char*)(right_value132=xsprintf("left type \%s pointer num \%s",((char*)(right_value129=string_to_string(result_type2_72->mClass->mName))),((char*)(right_value131=string_to_string(((char*)(right_value130=int_to_string(result_type2_72->mPointerNum))))))))));
                             right_value129 = come_decrement_ref_count2(right_value129, (void*)0, (void*)0, 1, 0, 0, __result_obj__);

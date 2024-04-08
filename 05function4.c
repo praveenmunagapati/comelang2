@@ -252,7 +252,7 @@ list<sType*%>*%, list<string>*%, list<string>*%, bool parse_params(sInfo* info)
             
             if(!err) {
                 printf("%s %d: failed to function parametor\n", info->sname, info->sline);
-                return (null, null, null, false);
+                return ((list<sType*%>*)null, (list<string>*)null, (list<string>*)null, false);
             }
             
             var param_type2 = solve_generics(param_type, info->generics_type, info);
@@ -1799,7 +1799,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         
         if(!node_compile(exp)) {
             err_msg(info, "invalid __typeof__ expression");
-            return (null,null,false);
+            return ((sType*)null,(string)null,false);
         }
         
         CVALUE*% come_value = get_value_from_stack(-1, info);
