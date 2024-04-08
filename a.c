@@ -6,16 +6,13 @@ struct sData
     int b;
 };
 
-void sData*::fun(sData* self)
+list<int>* fun(int a, int b)
 {
-    printf("%d %d\n", self.a, self.b);
+    return new list<string>();
 }
 
 int main(int argc, char** argv)
 {
-    sData* a = null;
-    
-    a.fun();
     
     return 0;
 }

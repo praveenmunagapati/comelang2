@@ -200,12 +200,42 @@ bool sReturnNode*::compile(sReturnNode* self, sInfo* info)
             if(come_value.type.mPointerNum != result_type2->mPointerNum || result_type2->mClass.mName !== come_value.type.mClass.mName)
             {
                 if(result_type2->mClass.mName !== "void" && come_value.type->mClass.mName !== "void") {
-                    if(result_type2->mNoSolvedGenericsType.v1 == null) {
+                    if(result_type2->mNoSolvedGenericsType.v1 == null && come_value.type->mNoSolvedGenericsType == null) {
                         err_msg(info, "invalid result type");
                         puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
                         puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
                         exit(2);
                     }
+                    else if(result_type2->mNoSolvedGenericsType.v1 == null || come_value.type->mNoSolvedGenericsType == null) {
+                        err_msg(info, "invalid result type");
+                        puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
+                        puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
+                        exit(2);
+                    }
+                    else {
+                        sType* left_type2 = result_type2->mNoSolvedGenericsType.v1;
+                        sType* right_type2 = come_value.type->mNoSolvedGenericsType.v1;
+                        
+                        if(left_type2.mClass.mName !== right_type2.mClass.mName && left_type2.mGenericsTypes.length() != right_type2.mGenericsTypes.length()) 
+                        {
+                            err_msg(info, "invalid result type");
+                            puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
+                            puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
+                            exit(2);
+                        }
+                        else {
+                            for(int i=0; i<left_type2.mGenericsTypes.length(); i++) {
+                                if(left_type2->mGenericsTypes[i].mClass.mName !== right_type2->mGenericsTypes[i].mClass.mName)
+                                {
+                                    err_msg(info, "invalid result type");
+                                    puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
+                                    puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
+                                    exit(2);
+                                }
+                            }
+                        }
+                    }
+                    
                 }
             }
             
