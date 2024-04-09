@@ -361,6 +361,9 @@ impl list <T>
 
     int length(list<T>* self)
     {
+        if(self == null) {
+            return 0;
+        }
         return self.len;
     }
     

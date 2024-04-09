@@ -1,7 +1,6 @@
-"AAA"
-class HelloClass {
-    def fun() {
-        "AAA"
-    }
+native class Kernel {
+    def puts(str:String);
 }
+
+puts("HELLO RUBY")
 

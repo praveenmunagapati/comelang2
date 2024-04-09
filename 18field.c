@@ -166,9 +166,9 @@ bool sStoreFieldNode*::compile(sStoreFieldNode* self, sInfo* info)
     }
     
     CVALUE*% right_value = get_value_from_stack(-1, info);
-    dec_stack_ptr(1, info);
-    
     sType* right_type = right_value.type;
+    
+    dec_stack_ptr(1, info);
     
     sType* left_type = left_value.type;
     
@@ -639,6 +639,10 @@ bool sLoadFieldNode*::compile(sLoadFieldNode* self, sInfo* info)
     int index = 0;
     string child_field_name = null;
     klass = info.classes[klass->mName];
+    if(klass == null || klass->mFields == null) {
+        err_msg(info, "invalid class %s", klass->mName);
+        return false;
+    }
     foreach(field, klass->mFields) {
         var field_name, field_type2 = field;
         

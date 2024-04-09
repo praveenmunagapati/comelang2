@@ -350,6 +350,12 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
     if(left_no_solved_generics_type && right_no_solved_generics_type) {
         if(left_type->mClass->mName === right_type2->mClass->mName && left_type->mPointerNum == right_type2->mPointerNum) {
         }
+        else if(left_type->mClass->mName === right_type2->mClass->mName && (left_type->mPointerNum != right_type2->mPointerNum || left_type->mHeap != right_type2->mHeap)) {
+            err_msg(info, "poinetr num err");
+            printf("left type generics type parametor number is %d(%s)(%s)\n", left_no_solved_generics_type->mGenericsTypes.length(), left_no_solved_generics_type->mClass->mName, left_type->mClass->mName);
+            printf("right type generics type parametor number is %d(%s)(%s)\n", right_no_solved_generics_type->mGenericsTypes.length(), right_no_solved_generics_type->mClass->mName, right_type2->mClass->mName);
+            exit(2);
+        }
         else if(left_no_solved_generics_type->mGenericsTypes.length() > 0) {
             if((left_no_solved_generics_type->mClass->mName === "void" && left_no_solved_generics_type->mPointerNum > 0 && right_no_solved_generics_type->mPointerNum > 0) || (right_no_solved_generics_type->mClass->mName === "void" && right_no_solved_generics_type->mPointerNum > 0 && left_no_solved_generics_type->mPointerNum > 0)) 
             {
@@ -368,7 +374,7 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
                 }
                 
                 for(int i=0; i<left_no_solved_generics_type->mGenericsTypes.length(); i++) {
-                    check_assign_type(msg, left_no_solved_generics_type->mGenericsTypes[i], right_no_solved_generics_type->mGenericsTypes[i], come_value, check_no_pointer:true);
+                    check_assign_type(msg, left_no_solved_generics_type->mGenericsTypes[i], right_no_solved_generics_type->mGenericsTypes[i], come_value, check_no_pointer:false);
                 }
                 
                 check_assign_type(msg, left_no_solved_generics_type, right_no_solved_generics_type, come_value);
@@ -424,17 +430,6 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
             return false;
         }
     }
-/*
-    else if(left_type->mPointerNum == 0 && right_type2->mPointerNum > 0 && !(right_type2->mClass->mName === "void")) {
-        if(print_err_msg) {
-            err_msg(info, "type error7");
-            printf("left type is %s pointer num %d\n", left_type->mClass->mName, left_type->mPointerNum);
-            printf("right type is %s pointer num %d\n", right_type2->mClass->mName, right_type2->mPointerNum);
-            exit(2);
-        }
-        return false;
-    }
-*/
     else if(!left_type->mNullValue && right_type2->mNullValue) {
         if(left_type->mClass->mName === "__builtin_va_list" || right_type2->mClass->mName === "__builtin_va_list") {
         }
@@ -605,39 +600,6 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
             }
             return false;
         }
-/*
-        else {
-            string method_name = create_method_name(right_type2, false@no_pointer_name, "to_string", info);
-            
-            if(info.funcs.at(method_name, null) == null) {
-                sType* obj_type = right_type2.mNoSolvedGenericsType.v1;
-                if(obj_type && obj_type.mGenericsTypes.length() > 0) {
-                    sType* obj_type2 = right_type2;
-                    method_name = make_generics_function(obj_type2, string("to_string"), info);
-                }
-                else {
-                    err_msg(info, "require to_string implementation(%s)", right_type2.mClass.mName);
-                    exit(1);
-                }
-            }
-            
-            var buf2 = new buffer();
-            
-            buf2.append_str(method_name);
-            buf2.append_str("(");
-            buf2.append_str(come_value.c_value);
-            buf2.append_str(")");
-            
-            sType*% type = new sType("char*");
-            type->mHeap = true;
-            
-            come_value.c_value = append_object_to_right_values(buf2.to_string(), type, info);
-            come_value.type = clone type;
-            come_value.var = null;
-            
-            right_type2 = clone type;
-        }
-*/
     }
     else if(left_type->mClass.mName === "void" && left_type->mPointerNum == 1) {
         if(right_type2->mClass.mName === "void" && right_type2->mPointerNum == 1) {
@@ -668,8 +630,8 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
             right_type2 = clone left_type;
         }
     }
-    else if(left_type->mPointerNum > 0) {
-        if(right_type2->mPointerNum > 0) {
+    else if(left_type->mPointerNum > 0 || (left_type->mPointerNum == 0 && left_type->mClass->mStruct)) {
+        if(right_type2->mPointerNum > 0 || (right_type2->mPointerNum == 0 && right_type2->mClass->mStruct)) {
             if(left_type->mClass->mName === "void" || right_type2->mClass->mName === "void") {
             }
             else if(left_type->mClass->mName === "va_list" || right_type2->mClass->mName === "va_list") {
@@ -720,6 +682,18 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
                 exit(2);
             }
             return false;
+        }
+        
+        if(left_type->mGenericsTypes.length() > 0) {
+            if(left_type->mGenericsTypes.length() != right_type2->mGenericsTypes.length()) {
+                err_msg(info, "generics type number error");
+                printf("left type is %s pointer num %d\n", left_type->mClass->mName, left_type->mPointerNum);
+                printf("right type is %s pointer num %d\n", right_type2->mClass->mName, right_type2->mPointerNum);
+                exit(2);
+            }
+            for(int i=0; i<left_type->mGenericsTypes.length(); i++) {
+                check_assign_type(msg, left_type->mGenericsTypes[i], right_type2->mGenericsTypes[i], come_value, check_no_pointer:false);
+            }
         }
     }
     

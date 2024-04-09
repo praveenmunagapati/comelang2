@@ -2,17 +2,14 @@
 
 struct sData
 {
-    int a;
-    int b;
+    list<tuple2<string,int>*%>*% a;
 };
-
-list<int>* fun(int a, int b)
-{
-    return new list<int>();
-}
 
 int main(int argc, char** argv)
 {
+    sData data;
+    
+    data.a = new list<tuple2<string,int>*%>();
     
     return 0;
 }

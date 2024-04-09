@@ -1,6 +1,1 @@
-"AAA"
-class HelloClass
-    def fun
-        "AAA"
-    end
-end
+puts("HELLO RUBY")

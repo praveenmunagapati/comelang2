@@ -1,12 +1,32 @@
 #include <comelang2.h>
 
+struct sType;
+
+struct sMethod 
+{
+    string mName;
+    list<tuple2<string,sType*%>*%>*% mParams;
+    bool mNative;
+};
+
+sMethod*% sMethod*::initialize(sMethod*% self, char* name, list<tuple2<string,sType*%>*%>*% params, bool native_=false)
+{
+    self.mName = string(name);
+    self.mParams = clone params;
+    self.mNative = native_;
+    
+    return self;
+}
+
 struct sClass {
     string mName;
+    map<string, sMethod*%>*% mMethods;
 };
 
 sClass*% sClass*::initialize(sClass*% self, char* name)
 {
     self.mName = string(name);
+    self.mMethods = new map<string, sMethod*%>();
     
     return self;
 }
@@ -59,6 +79,9 @@ struct sInfo
     sModule*% module;
     bool no_output_err;
     int nest;
+    
+    sClass* current_class;
+    map<string, sMethod*%>*% methods;
 };
 
 sModule*% sModule*::initialize(sModule*% self)
@@ -565,6 +588,7 @@ void init_typed_ruby(sInfo* info)
 {
     info.classes.insert(string("Integer"), new sClass("Integer"));
     info.classes.insert(string("String"), new sClass("String"));
+    info.classes.insert(string("Kernel"), new sClass("Kernel"));
 }
 
 int main(int argc, char** argv)
@@ -589,6 +613,7 @@ int main(int argc, char** argv)
     info.stack = new list<CVALUE*%>();
     info.type = null;
     info.classes = new map<string,sClass*%>();
+    info.methods = new map<string,sMethod*%>();
     info.no_output_come_code = false;
     info.module = new sModule();
     
@@ -619,3 +644,4 @@ int main(int argc, char** argv)
     
     return 0;
 }
+
