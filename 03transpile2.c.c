@@ -6434,15 +6434,25 @@ struct CVALUE* get_value_from_stack(int offset, struct sInfo* info){
 void* __result_obj__;
 char* __dec_obj52;
 void* right_value234;
+struct CVALUE* result_266;
+_Bool _if_conditional321;
 struct CVALUE* __result135__;
 memset(&__result_obj__, 0, sizeof(void*));
 right_value234 = (void*)0;
+memset(&result_266, 0, sizeof(struct CVALUE*));
     __dec_obj52=info->module->mLastCode;
     info->module->mLastCode=((void*)0);
     __dec_obj52 = come_decrement_ref_count2(__dec_obj52, (void*)0, (void*)0, 0,0,0, (void*)0);
-    __result135__ = __result_obj__ = ((struct CVALUE*)(right_value234=CVALUE_clone(list$1CVALUEphp_operator_load_element(info->stack,offset))));
+    result_266=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value234=CVALUE_clone(list$1CVALUEphp_operator_load_element(info->stack,offset)))));
     come_call_finalizer2(CVALUE_finalize,right_value234, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
+    if(_if_conditional321=result_266==((void*)0),    _if_conditional321) {
+        err_msg(info,"invalid stack value");
+        exit(2);
+    }
+    __result135__ = __result_obj__ = result_266;
+    come_call_finalizer2(CVALUE_finalize,result_266, (void*)0, (void*)0, 0, 0, 1, 0, (void*)0);
     return __result135__;
+    come_call_finalizer2(CVALUE_finalize,result_266, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
 }
 
 static struct CVALUE* list$1CVALUEphp_operator_load_element(struct list$1CVALUEph* self, int position){
