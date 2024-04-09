@@ -58,6 +58,7 @@ struct sInfo
     
     sModule*% module;
     bool no_output_err;
+    int nest;
 };
 
 sModule*% sModule*::initialize(sModule*% self)
@@ -91,6 +92,9 @@ void add_come_code(sInfo* info, const char* msg, ...)
     int len = vasprintf(&msg2, msg, args);
     va_end(args);
     
+    for(int i=0; i<info->nest; i++) {
+        info.module.mSource.append_str("    ");
+    }
     info.module.mSource.append_str(xsprintf("%s", msg2));
     
     free(msg2);

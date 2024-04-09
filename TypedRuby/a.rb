@@ -1,4 +1,6 @@
 "AAA"
 class HelloClass
-"HEllo"
+    def fun
+        "AAA"
+    end
 end

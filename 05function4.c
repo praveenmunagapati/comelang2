@@ -348,23 +348,31 @@ bool check_assign_type(char* msg, sType* left_type, sType* right_type, CVALUE* c
     sType* right_no_solved_generics_type = right_type2->mNoSolvedGenericsType.v1;
     
     if(left_no_solved_generics_type && right_no_solved_generics_type) {
-        if(left_no_solved_generics_type->mGenericsTypes.length() > 0) {
-            if(left_no_solved_generics_type->mGenericsTypes.length() != right_no_solved_generics_type->mGenericsTypes.length()) {
-                if(print_err_msg) {
-                    err_msg(info, "generics type parametor number error");
-                    printf("left type generics type parametor number is %d\n", left_no_solved_generics_type->mGenericsTypes.length());
-                    printf("right type generics type parametor number is %d\n", right_no_solved_generics_type->mGenericsTypes.length());
-                    exit(2);
+        if(left_type->mClass->mName === right_type2->mClass->mName && left_type->mPointerNum == right_type2->mPointerNum) {
+        }
+        else if(left_no_solved_generics_type->mGenericsTypes.length() > 0) {
+            if((left_no_solved_generics_type->mClass->mName === "void" && left_no_solved_generics_type->mPointerNum > 0 && right_no_solved_generics_type->mPointerNum > 0) || (right_no_solved_generics_type->mClass->mName === "void" && right_no_solved_generics_type->mPointerNum > 0 && left_no_solved_generics_type->mPointerNum > 0)) 
+            {
+            }
+            else {
+                if(left_no_solved_generics_type->mGenericsTypes.length() != right_no_solved_generics_type->mGenericsTypes.length()) 
+                {
+                    if(print_err_msg) {
+                        err_msg(info, "generics type parametor number error");
+                        printf("left type generics type parametor number is %d(%s)(%s)\n", left_no_solved_generics_type->mGenericsTypes.length(), left_no_solved_generics_type->mClass->mName, left_type->mClass->mName);
+                        printf("right type generics type parametor number is %d(%s)(%s)\n", right_no_solved_generics_type->mGenericsTypes.length(), right_no_solved_generics_type->mClass->mName, right_type2->mClass->mName);
+                        exit(2);
+                    }
+                    
+                    return false;
                 }
                 
-                return false;
+                for(int i=0; i<left_no_solved_generics_type->mGenericsTypes.length(); i++) {
+                    check_assign_type(msg, left_no_solved_generics_type->mGenericsTypes[i], right_no_solved_generics_type->mGenericsTypes[i], come_value, check_no_pointer:true);
+                }
+                
+                check_assign_type(msg, left_no_solved_generics_type, right_no_solved_generics_type, come_value);
             }
-            
-            for(int i=0; i<left_no_solved_generics_type->mGenericsTypes.length(); i++) {
-                check_assign_type(msg, left_no_solved_generics_type->mGenericsTypes[i], right_no_solved_generics_type->mGenericsTypes[i], come_value, check_no_pointer:true);
-            }
-            
-            check_assign_type(msg, left_no_solved_generics_type, right_no_solved_generics_type, come_value);
         }
     }
     else if(check_no_pointer) {

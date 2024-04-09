@@ -1,5 +1,7 @@
 "AAA"
 class HelloClass {
-"HEllo"
+    def fun() {
+        "AAA"
+    }
 }
 

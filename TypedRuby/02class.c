@@ -28,6 +28,7 @@ string sClassNode*::kind()
 bool sClassNode*::compile(sClassNode* self, sInfo* info)
 {
     add_come_code(info, s"class \{self.name}\n");
+    info->nest++;
     foreach(it, self.nodes) {
         it.compile(info).catch {
             puts("compile error");
@@ -35,6 +36,7 @@ bool sClassNode*::compile(sClassNode* self, sInfo* info)
         }
         add_last_code_to_source();
     }
+    info->nest--;
     add_come_code(info, s"end\n");
     
     return true;
@@ -84,6 +86,7 @@ string sFunNode*::kind()
 bool sFunNode*::compile(sFunNode* self, sInfo* info)
 {
     add_come_code(info, s"def \{self.name}\n");
+    info->nest++;
     foreach(it, self.nodes) {
         it.compile(info).catch {
             puts("compile error");
@@ -91,6 +94,7 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
         }
         add_last_code_to_source();
     }
+    info->nest--;
     add_come_code(info, s"end\n");
     
     return true;
@@ -183,6 +187,12 @@ list<tuple2<string,sType*%>*%>*% parse_params(sInfo* info=info)
     list<tuple2<string,sType*%>*%>*% params = new list<tuple2<string,sType*%>*%>();
     
     while(true) {
+        if(*info->p == ')') {
+            info->p++;
+            skip_spaces_and_lf();
+            break;
+        }
+        
         string name = parse_word();
         
         expected_next_character(':');
@@ -205,6 +215,8 @@ list<tuple2<string,sType*%>*%>*% parse_params(sInfo* info=info)
             exit(2);
         }
     }
+    
+    return params;
 }
 
 sNode*% parse_fun(string name, sInfo* info=info)

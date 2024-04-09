@@ -197,47 +197,7 @@ bool sReturnNode*::compile(sReturnNode* self, sInfo* info)
         string var_name = xsprintf("__result%d__", ++num_result);
         int num_result_stack = num_result;
         if(result_type2->mPointerNum > 0) {
-            if(come_value.type.mPointerNum != result_type2->mPointerNum || result_type2->mClass.mName !== come_value.type.mClass.mName)
-            {
-                if(result_type2->mClass.mName !== "void" && come_value.type->mClass.mName !== "void") {
-                    if(result_type2->mNoSolvedGenericsType.v1 == null && come_value.type->mNoSolvedGenericsType == null) {
-                        err_msg(info, "invalid result type");
-                        puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
-                        puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
-                        exit(2);
-                    }
-                    else if(result_type2->mNoSolvedGenericsType.v1 == null || come_value.type->mNoSolvedGenericsType.v1 == null) {
-                        err_msg(info, "invalid result type");
-                        puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
-                        puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
-                        exit(2);
-                    }
-                    else {
-                        sType* left_type2 = result_type2->mNoSolvedGenericsType.v1;
-                        sType* right_type2 = come_value.type->mNoSolvedGenericsType.v1;
-                        
-                        if(left_type2.mClass.mName !== right_type2.mClass.mName && left_type2.mGenericsTypes.length() != right_type2.mGenericsTypes.length()) 
-                        {
-                            err_msg(info, "invalid result type");
-                            puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
-                            puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
-                            exit(2);
-                        }
-                        else {
-                            for(int i=0; i<left_type2.mGenericsTypes.length(); i++) {
-                                if(left_type2->mGenericsTypes[i].mClass.mName !== right_type2->mGenericsTypes[i].mClass.mName)
-                                {
-                                    err_msg(info, "invalid result type");
-                                    puts(s"left type \{result_type2->mClass.mName} pointer num \{result_type2->mPointerNum.to_string()}");
-                                    puts(s"right type \{come_value.type->mClass.mName} pointer num \{come_value.type->mPointerNum.to_string()}");
-                                    exit(2);
-                                }
-                            }
-                        }
-                    }
-                    
-                }
-            }
+            check_assign_type("result type", result_type2, come_value.type, come_value);
             
             add_come_code_at_function_head(info, "%s;\n", make_define_var(result_type2, var_name));
             add_come_code(info, "%s = __result_obj__ = %s;\n", var_name, come_value.c_value);
