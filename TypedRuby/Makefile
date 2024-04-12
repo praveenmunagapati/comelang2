@@ -85,6 +85,7 @@ run: TypedRuby
 	rm -f *.log
 	./TypedRuby a.trb
 	cat a.rb
+	ruby a.rb
 
 debug: TypedRuby-debug
 	rm -f *.log

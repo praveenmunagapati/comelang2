@@ -2,5 +2,5 @@ native class Kernel {
     def puts(str:String);
 }
 
-puts("HELLO RUBY")
+puts(1)
 

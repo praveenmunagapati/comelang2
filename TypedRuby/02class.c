@@ -178,8 +178,32 @@ string sKernelMethodCall*::kind()
     return string("sKernelMethodCall");
 }
 
+void check_assign_type(sType* left_type, sType* right_type, CVALUE* come_value, sInfo* info=info)
+{
+    if(left_type->mClass->mName !== right_type->mClass->mName) {
+        err_msg(info, "invalid type");
+        puts(s"left type is \{left_type->mClass->mName}");
+        puts(s"right type is \{right_type->mClass->mName}");
+        exit(2);
+    }
+}
+
 bool sKernelMethodCall*::compile(sKernelMethodCall* self, sInfo* info)
 {
+    sClass* kernel_class = info.classes["Kernel"];
+    
+    if(kernel_class == null) {
+        err_msg(info, "require Kernel class");
+        return false;
+    }
+    
+    sMethod* method = kernel_class.mMethods[self.name];
+    
+    if(method == null) {
+        err_msg(info, "require Kernel method (%s)", self.name);
+        return false;
+    }
+    
     buffer*% buf = new buffer();
     buf.append_str(s"(");
     int n = 0;
@@ -190,6 +214,10 @@ bool sKernelMethodCall*::compile(sKernelMethodCall* self, sInfo* info)
         }
         CVALUE*% come_value = get_value_from_stack();
         dec_stack_ptr(1);
+        
+        sType* left_type = method->mParams[n].v2;
+        
+        check_assign_type(left_type, come_value.type, come_value);
         
         buf.append_str(s"\{come_value.c_value}");
         
