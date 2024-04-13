@@ -205,7 +205,7 @@ bool sKernelMethodCall*::compile(sKernelMethodCall* self, sInfo* info)
     }
     
     buffer*% buf = new buffer();
-    buf.append_str(s"(");
+    buf.append_str(s"\{self.name}(");
     int n = 0;
     foreach(it, self.params) {
         it.compile(info).catch {
@@ -216,6 +216,11 @@ bool sKernelMethodCall*::compile(sKernelMethodCall* self, sInfo* info)
         dec_stack_ptr(1);
         
         sType* left_type = method->mParams[n].v2;
+        
+        if(left_type == null) {
+            err_msg(info, "invalid params number(%s)", self.name);
+            exit(2);
+        }
         
         check_assign_type(left_type, come_value.type, come_value);
         
@@ -229,7 +234,7 @@ bool sKernelMethodCall*::compile(sKernelMethodCall* self, sInfo* info)
     }
     buf.append_str(s")");
     
-    add_come_code(info, s"\{self.name}\{buf.to_string()}\n");
+    add_come_code(info, s"\{buf.to_string()}\n");
     
     return true;
 }
@@ -245,6 +250,114 @@ int sKernelMethodCall*::sline(sKernelMethodCall* self, sInfo* info)
 }
 
 string sKernelMethodCall*::sname(sKernelMethodCall* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+struct sClassMethodCall
+{
+    string name;
+    string method_name;
+    list<sNode*%>*% params;
+    
+    int sline;
+    string sname;
+};
+
+sClassMethodCall*% sClassMethodCall*::initialize(sClassMethodCall*% self, string name, string method_name, list<sNode*%>*% params, sInfo* info=info)
+{
+    self.name = name;
+    self.method_name = method_name;
+    self.params = params;
+    
+    self.sline = info->sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+string sClassMethodCall*::kind()
+{
+    return string("sClassMethodCall");
+}
+
+bool sClassMethodCall*::compile(sClassMethodCall* self, sInfo* info)
+{
+    sClass* klass = info.classes[self.name];
+    
+    if(klass == null) {
+        err_msg(info, "require Kernel class");
+        return false;
+    }
+    
+    sMethod* method = klass.mMethods[self.method_name];
+    sMethod* initialize_method = klass.mMethods["initialize"];
+    
+    if(self.method_name === "new") {
+        if(initialize_method == null) {
+            err_msg(info, "require class(%s) initialize method", self.name);
+            return false;
+        }
+    }
+    else {
+        if(method == null) {
+            err_msg(info, "require class(%s) method (%s)", self.name, self.method_name);
+            return false;
+        }
+    }
+    
+    buffer*% buf = new buffer();
+    buf.append_str(s"\{self.name}.\{self.method_name}(");
+    int n = 0;
+    foreach(it, self.params) {
+        it.compile(info).catch {
+            puts("compile error");
+            exit(2);
+        }
+        CVALUE*% come_value = get_value_from_stack();
+        dec_stack_ptr(1);
+        
+        sType* left_type;
+        if(self.method_name === "new" && initialize_method != null) {
+            left_type = initialize_method->mParams[n].v2;
+        }
+        else {
+            left_type = method->mParams[n].v2;
+        }
+        
+        if(left_type == null) {
+            err_msg(info, "invalid params number(%s)", self.method_name);
+            exit(2);
+        }
+        
+        check_assign_type(left_type, come_value.type, come_value);
+        
+        buf.append_str(s"\{come_value.c_value}");
+        
+        n++;
+        
+        if(n != self.params.length()) {
+            buf.append_str(s",");
+        }
+    }
+    buf.append_str(s")");
+    
+    add_come_code(info, s"\{buf.to_string()}\n");
+    
+    return true;
+}
+
+bool sClassMethodCall*::terminated()
+{
+    return false;
+}
+
+int sClassMethodCall*::sline(sClassMethodCall* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sClassMethodCall*::sname(sClassMethodCall* self, sInfo* info)
 {
     return string(self.sname);
 }
@@ -288,6 +401,12 @@ sNode*% parse_class(string name, bool native_, sInfo* info=info)
     
     list<sNode*%>*% nodes = new list<sNode*%>();
     while(true) {
+        if(*info->p == '}') {
+            info->p++;
+            skip_spaces_and_lf();
+            break;
+        }
+        
         sNode*% node = expression();
         
         if(node == null) {
@@ -410,6 +529,12 @@ sNode*% parse_fun(string name, sInfo* info=info)
         expected_next_character('{');
         
         while(true) {
+            if(*info->p == '}') {
+                info->p++;
+                skip_spaces_and_lf();
+                break;
+            }
+            
             sNode*% node = expression();
             
             if(node == null) {
@@ -461,6 +586,17 @@ sNode*% expression(sInfo* info=info) version 2
             }
         }
         
+        bool class_method = false;
+        {
+            sClass* klass = info.classes[buf];
+            
+            if(klass) {
+                if(*info->p == '.') {
+                    class_method = true;
+                }
+            }
+        }
+        
         if(buf === "native") {
             buf = parse_word();
             
@@ -488,6 +624,15 @@ sNode*% expression(sInfo* info=info) version 2
             sNode*% node = parse_fun(name);
             
             return node;
+        }
+        else if(class_method) {
+            expected_next_character('.');
+            
+            string method_name = parse_word();
+            
+            list<sNode*%>*% params = parse_calling_params();
+            
+            return new sClassMethodCall(buf, method_name, params) implements sNode;
         }
         else if(kernel_method) {
             list<sNode*%>*% params = parse_calling_params();

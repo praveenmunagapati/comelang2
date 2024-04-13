@@ -21,12 +21,14 @@ sMethod*% sMethod*::initialize(sMethod*% self, char* name, list<tuple2<string,sT
 struct sClass {
     string mName;
     map<string, sMethod*%>*% mMethods;
+    map<string, sMethod*%>*% mClassMethods;
 };
 
 sClass*% sClass*::initialize(sClass*% self, char* name)
 {
     self.mName = string(name);
     self.mMethods = new map<string, sMethod*%>();
+    self.mClassMethods = new map<string, sMethod*%>();
     
     return self;
 }
@@ -586,9 +588,17 @@ bool output_source(sInfo* info)
 
 void init_typed_ruby(sInfo* info)
 {
-    info.classes.insert(string("Integer"), new sClass("Integer"));
-    info.classes.insert(string("String"), new sClass("String"));
-    info.classes.insert(string("Kernel"), new sClass("Kernel"));
+    sClass*% integer_class = new sClass("Integer");
+    
+    info.classes.insert(string("Integer"), integer_class);
+    
+    sClass*% string_class = new sClass("String");
+    
+    info.classes.insert(string("String"), string_class);
+    
+    sClass*% kernel_class = new sClass("Kernel");
+    
+    info.classes.insert(string("Kernel"), kernel_class);
 }
 
 int main(int argc, char** argv)

@@ -2,5 +2,11 @@ native class Kernel {
     def puts(str:String);
 }
 
-puts(1)
+class DataA
+{
+    def initialize() {
+        puts("AAA")
+    }
+}
 
+DataA.new()
