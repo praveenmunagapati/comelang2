@@ -7,13 +7,16 @@ struct sMethod
     string mName;
     list<tuple2<string,sType*%>*%>*% mParams;
     bool mNative;
+    
+    sType*% mResultType;
 };
 
-sMethod*% sMethod*::initialize(sMethod*% self, char* name, list<tuple2<string,sType*%>*%>*% params, bool native_=false)
+sMethod*% sMethod*::initialize(sMethod*% self, char* name, list<tuple2<string,sType*%>*%>*% params, sType*% result_type, bool native_=false)
 {
     self.mName = string(name);
     self.mParams = clone params;
     self.mNative = native_;
+    self.mResultType = result_type;
     
     return self;
 }
@@ -120,6 +123,23 @@ void add_come_code(sInfo* info, const char* msg, ...)
     for(int i=0; i<info->nest; i++) {
         info.module.mSource.append_str("    ");
     }
+    info.module.mSource.append_str(xsprintf("%s", msg2));
+    
+    free(msg2);
+}
+
+void add_come_code_without_nest(sInfo* info, const char* msg, ...)
+{
+    if(info->no_output_come_code) {
+        return;
+    }
+    char* msg2;
+
+    va_list args;
+    va_start(args, msg);
+    int len = vasprintf(&msg2, msg, args);
+    va_end(args);
+    
     info.module.mSource.append_str(xsprintf("%s", msg2));
     
     free(msg2);
@@ -592,6 +612,10 @@ void init_typed_ruby(sInfo* info)
     
     info.classes.insert(string("Integer"), integer_class);
     
+    sClass*% void_class = new sClass("void");
+    
+    info.classes.insert(string("void"), void_class);
+    
     sClass*% string_class = new sClass("String");
     
     info.classes.insert(string("String"), string_class);
@@ -645,6 +669,11 @@ int main(int argc, char** argv)
             exit(2);
         }
         add_last_code_to_source(&info);
+        
+        if(*info->p == ';') {
+            info->p++;
+            skip_spaces_and_lf(&info);
+        }
     }
     
     output_source(&info).elif {

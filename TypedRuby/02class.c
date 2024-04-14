@@ -83,6 +83,7 @@ struct sFunNode
     string name;
     list<sNode*%>*% nodes;
     list<tuple2<string,sType*%>*%>*% params;
+    sType*% result_type;
     
     bool native_;
     
@@ -90,12 +91,13 @@ struct sFunNode
     string sname;
 };
 
-sFunNode*% sFunNode*::initialize(sFunNode*% self, string name, list<tuple2<string,sType*%>*%>*% params, list<sNode*%>*% nodes, bool native_=false, sInfo* info=info)
+sFunNode*% sFunNode*::initialize(sFunNode*% self, string name, list<tuple2<string,sType*%>*%>*% params, sType*% result_type, list<sNode*%>*% nodes, bool native_=false, sInfo* info=info)
 {
     self.name = name;
     self.nodes = nodes;
     self.params = params;
     self.native_ = native_;
+    self.result_type = result_type;
     
     self.sline = info->sline;
     self.sname = string(info->sname);
@@ -110,7 +112,11 @@ string sFunNode*::kind()
 
 bool sFunNode*::compile(sFunNode* self, sInfo* info)
 {
-    sMethod*% method = new sMethod(self.name, self.params, self.native_);
+    if(self.name === "initialize") {
+        self.result_type = new sType(info.current_class.mName);
+    }
+    
+    sMethod*% method = new sMethod(self.name, self.params, self.result_type, self.native_);
     
     if(info.current_class) {
         info.current_class.mMethods[string(self.name)] = method;
@@ -122,7 +128,20 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
     if(self.native_) {
     }
     else {
-        add_come_code(info, s"def \{self.name}\n");
+        add_come_code(info, s"def \{self.name}(");
+        int n = 0;
+        foreach(it, self.params) {
+            add_come_code_without_nest(info, s"\{self.params[n].v1}");
+            
+            n++;
+            if(n == self.params.length()) {
+            }
+            else {
+                add_come_code_without_nest(info, ",");
+            }
+        }
+        add_come_code_without_nest(info, ")\n");
+        
         info->nest++;
         foreach(it, self.nodes) {
             it.compile(info).catch {
@@ -234,7 +253,15 @@ bool sKernelMethodCall*::compile(sKernelMethodCall* self, sInfo* info)
     }
     buf.append_str(s")");
     
-    add_come_code(info, s"\{buf.to_string()}\n");
+    CVALUE*% come_value = new CVALUE;
+    
+    come_value.c_value = buf.to_string();
+    come_value.type = method->mResultType;
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
     
     return true;
 }
@@ -253,6 +280,7 @@ string sKernelMethodCall*::sname(sKernelMethodCall* self, sInfo* info)
 {
     return string(self.sname);
 }
+
 
 struct sClassMethodCall
 {
@@ -298,6 +326,8 @@ bool sClassMethodCall*::compile(sClassMethodCall* self, sInfo* info)
             err_msg(info, "require class(%s) initialize method", self.name);
             return false;
         }
+        
+        method = initialize_method;
     }
     else {
         if(method == null) {
@@ -317,13 +347,7 @@ bool sClassMethodCall*::compile(sClassMethodCall* self, sInfo* info)
         CVALUE*% come_value = get_value_from_stack();
         dec_stack_ptr(1);
         
-        sType* left_type;
-        if(self.method_name === "new" && initialize_method != null) {
-            left_type = initialize_method->mParams[n].v2;
-        }
-        else {
-            left_type = method->mParams[n].v2;
-        }
+        sType* left_type = method->mParams[n].v2;
         
         if(left_type == null) {
             err_msg(info, "invalid params number(%s)", self.method_name);
@@ -342,7 +366,15 @@ bool sClassMethodCall*::compile(sClassMethodCall* self, sInfo* info)
     }
     buf.append_str(s")");
     
-    add_come_code(info, s"\{buf.to_string()}\n");
+    CVALUE*% come_value = new CVALUE;
+    
+    come_value.c_value = buf.to_string();
+    come_value.type = method->mResultType;
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
     
     return true;
 }
@@ -414,6 +446,11 @@ sNode*% parse_class(string name, bool native_, sInfo* info=info)
             exit(2);
         }
         
+        if(*info->p == ';') {
+            info->p++;
+            skip_spaces_and_lf();
+        }
+        
         nodes.add(node);
         
         if(*info->p == '}') {
@@ -433,7 +470,7 @@ sType*% parse_type(sInfo* info=info)
     return new sType(type_name);
 }
 
-list<tuple2<string,sType*%>*%>*% parse_params(sInfo* info=info)
+list<tuple2<string,sType*%>*%>*%, sType*% parse_params(sInfo* info=info)
 {
     expected_next_character('(');
     
@@ -469,7 +506,18 @@ list<tuple2<string,sType*%>*%>*% parse_params(sInfo* info=info)
         }
     }
     
-    return params;
+    sType*% result_type = null;
+    if(*info->p == ':') {
+        info->p++;
+        skip_spaces_and_lf();
+        
+        result_type = parse_type();
+    }
+    else {
+        result_type = new sType("void");
+    }
+    
+    return (params, result_type);
 }
 
 list<sNode*%>*% parse_calling_params(sInfo* info=info)
@@ -515,7 +563,7 @@ list<sNode*%>*% parse_calling_params(sInfo* info=info)
 sNode*% parse_fun(string name, sInfo* info=info)
 {
     bool native_ = false;
-    list<tuple2<string,sType*%>*%>*% params = parse_params();
+    var params, result_type = parse_params();
     
     list<sNode*%>*% nodes = new list<sNode*%>();
     
@@ -542,6 +590,11 @@ sNode*% parse_fun(string name, sInfo* info=info)
                 exit(2);
             }
             
+            if(*info->p == ';') {
+                info->p++;
+                skip_spaces_and_lf();
+            }
+            
             nodes.add(node);
             
             if(*info->p == '}') {
@@ -552,7 +605,7 @@ sNode*% parse_fun(string name, sInfo* info=info)
         }
     }
     
-    return new sFunNode(name, params, nodes, native_) implements sNode;
+    return new sFunNode(name, params, result_type, nodes, native_) implements sNode;
 }
 
 void expected_next_character(char c, sInfo* info=info)
@@ -567,6 +620,8 @@ void expected_next_character(char c, sInfo* info=info)
     info->p++;
     skip_spaces_and_lf();
 }
+
+
 
 sNode*% expression(sInfo* info=info) version 2
 {

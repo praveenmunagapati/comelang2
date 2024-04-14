@@ -1694,6 +1694,72 @@ bool sIsHeap*::compile(sIsHeap* self, sInfo* info)
     return true;
 }
 
+struct sIsPointer {
+    sType*% type;
+    int sline;
+    string sname;
+};
+
+sIsPointer*% sIsPointer*::initialize(sIsPointer*% self, sType*% type, sInfo* info)
+{
+    self.type = clone type;
+    
+    self.sline = info.sline;
+    self.sname = string(info.sname);
+    
+    return self;
+}
+
+int sIsPointer*::sline(sIsPointer* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sIsPointer*::sname(sIsPointer* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+bool sIsPointer*::terminated()
+{
+    return false;
+}
+
+string sIsPointer*::kind()
+{
+    return string("sIsPointer");
+}
+
+bool sIsPointer*::compile(sIsPointer* self, sInfo* info)
+{
+    sType* node = self.type;
+    
+    if(self.type.mPointerNum > 0) {
+        CVALUE*% come_value = new CVALUE;
+        
+        come_value.c_value = xsprintf("1");
+        come_value.type = new sType("int");
+        come_value.var = null;
+        
+        info.stack.push_back(come_value);
+        
+        add_come_last_code(info, "%s;\n", come_value.c_value);
+    }
+    else {
+        CVALUE*% come_value = new CVALUE;
+        
+        come_value.c_value = xsprintf("0");
+        come_value.type = new sType("int");
+        come_value.var = null;
+        
+        info.stack.push_back(come_value);
+        
+        add_come_last_code(info, "%s;\n", come_value.c_value);
+    }
+    
+    return true;
+}
+
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 21
 {
     if(buf === "new") {
@@ -1809,6 +1875,22 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         expected_next_character(')');
         
         return new sIsHeap(type2, info) implements sNode;
+    }
+    else if(buf === "ispointer" && *info->p == '(') {
+        info->p++;
+        skip_spaces_and_lf();
+        
+        var param_type, param_name,err = parse_type();
+        if(!err) {
+            err_msg(info, "parse_type failed");
+            exit(2);
+        }
+        
+        var type2 = solve_generics(param_type, info->generics_type, info);
+        
+        expected_next_character(')');
+        
+        return new sIsPointer(type2, info) implements sNode;
     }
     else if(buf === "using") {
         if(strmemcmp(info->p, "comelang")) {

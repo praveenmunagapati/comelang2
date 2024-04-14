@@ -1,6 +1,9 @@
 class DataA
-    def initialize
-        puts("AAA")
+    def initialize(a)
+        puts("HELLO")
+    end
+    def fun()
+        puts("RUBY")
     end
 end
-DataA.new()
+DataA.new(1).fun()

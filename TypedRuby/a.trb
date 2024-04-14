@@ -4,9 +4,13 @@ native class Kernel {
 
 class DataA
 {
-    def initialize() {
-        puts("AAA")
+    def initialize(a:Integer) {
+        puts("HELLO")
+    }
+    
+    def fun() {
+        puts("RUBY");
     }
 }
 
-DataA.new()
+DataA.new(1).fun()
