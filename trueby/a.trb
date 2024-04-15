@@ -13,4 +13,11 @@ class DataA
     }
 }
 
-DataA.new(1).fun()
+b:Integer = a:Integer = 123;
+a = 123;
+a:String = "123";
+
+puts(a);
+
+data:DataA = DataA.new(1)
+data.fun()

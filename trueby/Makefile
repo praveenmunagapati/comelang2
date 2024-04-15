@@ -6,10 +6,10 @@ exec_prefix=${prefix}
 bindir=${exec_prefix}/bin
 datadir=${datarootdir}
 mandir=${datarootdir}/man
-sharedstatedir=${prefix}/TypedRuby
-sysconfdir=${prefix}/etc/TypedRuby
-includedir=${prefix}/include/TypedRuby
-datarootdir=${prefix}/share/TypedRuby
+sharedstatedir=${prefix}/trueby
+sysconfdir=${prefix}/etc/trueby
+includedir=${prefix}/include/trueby
+datarootdir=${prefix}/share/trueby
 docdir=${datarootdir}/doc
 libdir=${exec_prefix}/lib
 
@@ -27,13 +27,13 @@ SRCS=$(wildcard *.c)
 SINGLE_SRCS=$(filter-out %.c.c, $(SRCS))
 OBJS=$(SINGLE_SRCS:.c=.o)
 DEBUG_OBJS=$(SINGLE_SRCS:.c=.debug.o)
-TARGET=TypedRuby
-TARGET_DEBUG=TypedRuby-debug
+TARGET=trueby
+TARGET_DEBUG=trueby-debug
 
 #########################################
 # main
 #########################################
-all: common.h TypedRuby
+all: common.h trueby
 
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
@@ -62,32 +62,30 @@ common.h: *.c
 #########################################
 install:
 	mkdir -p "$(DESTDIR)/bin"
-	$(INSTALL) -m 755 ./TypedRuby "$(DESTDIR)/bin"
+	$(INSTALL) -m 755 ./trueby "$(DESTDIR)/bin"
 	mkdir -p "$(DESTDIR)/include"
 	mkdir -p "$(DESTDIR)/lib"
-	mkdir -p "$(DESTDIR)/share/doc/TypedRuby"
-	$(INSTALL) -m 644 README.md "$(DESTDIR)/share/doc/TypedRuby/README.md"
+	mkdir -p "$(DESTDIR)/share/doc/trueby"
+	$(INSTALL) -m 644 README.md "$(DESTDIR)/share/doc/trueby/README.md"
 
 #########################################
 # clean
 #########################################
 clean:
-	rm -fR *.o *.c.i *.c.out *.c.c TypedRuby *.log *.out common.h TypedRuby-debug
+	rm -fR *.o *.c.i *.c.out *.c.c trueby *.log *.out common.h trueby-debug
 
 #########################################
 # uninstall
 #########################################
 uninstall:
-	rm -f "$(DESTDIR)"/bin/TypedRuby
-	rm -f "$(DESTDIR)/share/doc/TypedRuby/README.md"
+	rm -f "$(DESTDIR)"/bin/trueby
+	rm -f "$(DESTDIR)/share/doc/trueby/README.md"
 
-run: TypedRuby
+run: trueby
 	rm -f *.log
-	./TypedRuby a.trb
-	cat a.rb
+	./trueby a.trb
 	ruby a.rb
 
-debug: TypedRuby-debug
+debug: trueby-debug
 	rm -f *.log
-	./TypedRuby-debug a.trb
-	cat a.rb
+	./trueby-debug

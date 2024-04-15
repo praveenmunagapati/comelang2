@@ -621,7 +621,10 @@ void expected_next_character(char c, sInfo* info=info)
     skip_spaces_and_lf();
 }
 
-
+sNode*% string_node(string buf, sInfo* info=info)
+{
+    return null;
+}
 
 sNode*% expression(sInfo* info=info) version 2
 {
@@ -693,6 +696,9 @@ sNode*% expression(sInfo* info=info) version 2
             list<sNode*%>*% params = parse_calling_params();
             
             return new sKernelMethodCall(buf, params) implements sNode;
+        }
+        else {
+            return string_node(buf);
         }
     }
     

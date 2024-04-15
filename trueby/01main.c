@@ -87,6 +87,8 @@ struct sInfo
     
     sClass* current_class;
     map<string, sMethod*%>*% methods;
+    
+    map<string, sVar*%>*% lv_table;
 };
 
 sModule*% sModule*::initialize(sModule*% self)
@@ -650,6 +652,7 @@ int main(int argc, char** argv)
     info.methods = new map<string,sMethod*%>();
     info.no_output_come_code = false;
     info.module = new sModule();
+    info.lv_table = new map<string,sVar*%>();
     
     init_typed_ruby(&info);
     

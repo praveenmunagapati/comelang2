@@ -6,4 +6,9 @@ class DataA
         puts("RUBY")
     end
 end
-DataA.new(1).fun()
+b=a=123
+a=123
+a="123"
+puts(a)
+data=DataA.new(1)
+data.fun()
