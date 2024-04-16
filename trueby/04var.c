@@ -65,6 +65,11 @@ bool sStoreLocalVariable*::compile(sStoreLocalVariable* self, sInfo* info)
     else {
         sVar* var_ = info.lv_table[self.name];
         
+        if(var_ == null) {
+            err_msg(info, "require local var");
+            exit(2);
+        }
+        
         var_type = var_.mType;
         
         if(var_type == null) {
@@ -137,6 +142,11 @@ bool sLoadLocalVariable*::compile(sLoadLocalVariable* self, sInfo* info)
     
     sType* var_type = var_->mType;
     
+    if(var_type == null) {
+        err_msg(info, "require var type");
+        exit(2);
+    }
+    
     CVALUE*% come_value = new CVALUE;
     
     come_value.c_value = s"\{self.name}";
@@ -178,7 +188,7 @@ sNode*% string_node(string buf, sInfo* info=info) version 2
         info->p++;
         skip_spaces_and_lf();
         
-        if(*info->p == '=') {
+        if(*info->p == '=' && *(info->p+1) != '=') {
             info->p++;
             skip_spaces_and_lf();
             

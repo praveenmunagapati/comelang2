@@ -14,9 +14,9 @@ then
     (cd vin; make distclean)
 fi
 
-if [ -e TypedRuby/Makefile ]
+if [ -e trueby/Makefile ]
 then
-    (cd TypedRuby; make clean)
+    (cd trueby; make clean)
 fi
 
 if [ -e zed/Makefile ]

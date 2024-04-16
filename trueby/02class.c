@@ -47,11 +47,20 @@ bool sClassNode*::compile(sClassNode* self, sInfo* info)
     
     info->nest++;
     foreach(it, self.nodes) {
+        int sline = info->sline;
+        string sname = info->sname;
+        
+        info->sline = it->sline();
+        info->sname = it->sname();
+        
         it.compile(info).catch {
             puts("compile error");
             exit(2);
         }
         add_last_code_to_source();
+        
+        info->sline = sline;
+        info->sname = sname;
     }
     info->nest--;
     if(!self.native_) {
@@ -144,11 +153,20 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
         
         info->nest++;
         foreach(it, self.nodes) {
+            int sline = info->sline;
+            string sname = info->sname;
+            
+            info->sline = it->sline();
+            info->sname = it->sname();
+            
             it.compile(info).catch {
                 puts("compile error");
                 exit(2);
             }
             add_last_code_to_source();
+            
+            info->sline = sline;
+            info->sname = sname;
         }
         info->nest--;
         add_come_code(info, s"end\n");

@@ -5,11 +5,13 @@ native class Kernel {
 class DataA
 {
     def initialize(a:Integer) {
-        puts("HELLO")
+        @ruby:String = "RUBY";
+        @ruby = "TRUEBY";
+        puts("HELLO");
     }
     
     def fun() {
-        puts("RUBY");
+        puts(@ruby);
     }
 }
 
@@ -18,6 +20,10 @@ a = 123;
 a:String = "123";
 
 puts(a);
+
+c:="PRE";
+
+puts(c);
 
 data:DataA = DataA.new(1)
 data.fun()

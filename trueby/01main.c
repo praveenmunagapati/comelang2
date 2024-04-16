@@ -21,10 +21,13 @@ sMethod*% sMethod*::initialize(sMethod*% self, char* name, list<tuple2<string,sT
     return self;
 }
 
+struct sVar;
+
 struct sClass {
     string mName;
     map<string, sMethod*%>*% mMethods;
     map<string, sMethod*%>*% mClassMethods;
+    map<string, sVar*%>*% mFields;
 };
 
 sClass*% sClass*::initialize(sClass*% self, char* name)
@@ -32,6 +35,7 @@ sClass*% sClass*::initialize(sClass*% self, char* name)
     self.mName = string(name);
     self.mMethods = new map<string, sMethod*%>();
     self.mClassMethods = new map<string, sMethod*%>();
+    self.mFields = new map<string, sVar*%>();
     
     return self;
 }
