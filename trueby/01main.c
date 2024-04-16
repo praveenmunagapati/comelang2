@@ -422,6 +422,310 @@ string sSubNode*::sname(sSubNode* self, sInfo* info)
     return string(self.sname);
 }
 
+struct sGtNode
+{
+    sNode*% left_node;
+    sNode*% right_node;
+    
+    int sline;
+    string sname;
+};
+
+sGtNode*% sGtNode*::initialize(sGtNode*% self, sNode*% left_node, sNode*% right_node, sInfo* info=info)
+{
+    self.left_node = left_node;
+    self.right_node = right_node;
+    
+    self.sline = info->sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+string sGtNode*::kind()
+{
+    return string("sGtNode");
+}
+
+bool sGtNode*::compile(sGtNode* self, sInfo* info)
+{
+    sNode*% left_node = self.left_node;
+    if(!left_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% left_value = get_value_from_stack();
+    
+    sNode*% right_node = self.right_node;
+    if(!right_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% right_value = get_value_from_stack();
+    
+    CVALUE*% come_value = new CVALUE;
+    
+    if(left_value.type.mClass.mName !== right_value.type.mClass.mName) {
+        err_msg(info, "invalid type <");
+        return false;
+    }
+    
+    come_value.c_value = xsprintf("%s<%s", left_value.c_value, right_value.c_value);
+    come_value.type = new sType("bool");
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
+    
+    return true;
+}
+
+bool sGtNode*::terminated()
+{
+    return false;
+}
+
+int sGtNode*::sline(sGtNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sGtNode*::sname(sGtNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+struct sLtNode
+{
+    sNode*% left_node;
+    sNode*% right_node;
+    
+    int sline;
+    string sname;
+};
+
+sLtNode*% sLtNode*::initialize(sLtNode*% self, sNode*% left_node, sNode*% right_node, sInfo* info=info)
+{
+    self.left_node = left_node;
+    self.right_node = right_node;
+    
+    self.sline = info->sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+string sLtNode*::kind()
+{
+    return string("sLtNode");
+}
+
+bool sLtNode*::compile(sLtNode* self, sInfo* info)
+{
+    sNode*% left_node = self.left_node;
+    if(!left_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% left_value = get_value_from_stack();
+    
+    sNode*% right_node = self.right_node;
+    if(!right_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% right_value = get_value_from_stack();
+    
+    CVALUE*% come_value = new CVALUE;
+    
+    if(left_value.type.mClass.mName !== right_value.type.mClass.mName) {
+        err_msg(info, "invalid type >");
+        return false;
+    }
+    
+    come_value.c_value = xsprintf("%s<%s", left_value.c_value, right_value.c_value);
+    come_value.type = new sType("bool");
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
+    
+    return true;
+}
+
+bool sLtNode*::terminated()
+{
+    return false;
+}
+
+int sLtNode*::sline(sLtNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sLtNode*::sname(sLtNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+struct sGtEqNode
+{
+    sNode*% left_node;
+    sNode*% right_node;
+    
+    int sline;
+    string sname;
+};
+
+sGtEqNode*% sGtEqNode*::initialize(sGtEqNode*% self, sNode*% left_node, sNode*% right_node, sInfo* info=info)
+{
+    self.left_node = left_node;
+    self.right_node = right_node;
+    
+    self.sline = info->sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+string sGtEqNode*::kind()
+{
+    return string("sGtEqNode");
+}
+
+bool sGtEqNode*::compile(sGtEqNode* self, sInfo* info)
+{
+    sNode*% left_node = self.left_node;
+    if(!left_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% left_value = get_value_from_stack();
+    
+    sNode*% right_node = self.right_node;
+    if(!right_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% right_value = get_value_from_stack();
+    
+    CVALUE*% come_value = new CVALUE;
+    
+    if(left_value.type.mClass.mName !== right_value.type.mClass.mName) {
+        err_msg(info, "invalid type >=");
+        return false;
+    }
+    
+    come_value.c_value = xsprintf("%s>=%s", left_value.c_value, right_value.c_value);
+    come_value.type = new sType("bool");
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
+    
+    return true;
+}
+
+bool sGtEqNode*::terminated()
+{
+    return false;
+}
+
+int sGtEqNode*::sline(sGtEqNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sGtEqNode*::sname(sGtEqNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+struct sLtEqNode
+{
+    sNode*% left_node;
+    sNode*% right_node;
+    
+    int sline;
+    string sname;
+};
+
+sLtEqNode*% sLtEqNode*::initialize(sLtEqNode*% self, sNode*% left_node, sNode*% right_node, sInfo* info=info)
+{
+    self.left_node = left_node;
+    self.right_node = right_node;
+    
+    self.sline = info->sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+string sLtEqNode*::kind()
+{
+    return string("sLtEqNode");
+}
+
+bool sLtEqNode*::compile(sLtEqNode* self, sInfo* info)
+{
+    sNode*% left_node = self.left_node;
+    if(!left_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% left_value = get_value_from_stack();
+    
+    sNode*% right_node = self.right_node;
+    if(!right_node.compile(info)) {
+        puts("compile error");
+        exit(2);
+    }
+    
+    CVALUE*% right_value = get_value_from_stack();
+    
+    CVALUE*% come_value = new CVALUE;
+    
+    if(left_value.type.mClass.mName !== right_value.type.mClass.mName) {
+        err_msg(info, "invalid type <=");
+        return false;
+    }
+    
+    come_value.c_value = xsprintf("%s<=%s", left_value.c_value, right_value.c_value);
+    come_value.type = new sType("bool");
+    come_value.var = null;
+    
+    info.stack.push_back(come_value);
+    
+    add_come_last_code(info, "%s\n", come_value.c_value);
+    
+    return true;
+}
+
+bool sLtEqNode*::terminated()
+{
+    return false;
+}
+
+int sLtEqNode*::sline(sLtEqNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sLtEqNode*::sname(sLtEqNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
 struct sStrNode
 {
     string value;
@@ -561,7 +865,7 @@ sNode*% add_sub_expression_node(sInfo* info=info)
     sNode*% node = expression_node();
     
     while(true) {
-        if(*info->p == '+' && ((*info->p+1) != '+' || (*info->p+1) != '=')) {
+        if(*info->p == '+' && (*(info->p+1) != '+' || *(info->p+1) != '=')) {
             info->p++;
             skip_spaces_and_lf();
             
@@ -576,7 +880,7 @@ sNode*% add_sub_expression_node(sInfo* info=info)
             
             return new sAddNode(node, right_node) implements sNode;
         }
-        else if(*info->p == '-' && ((*info->p+1) != '-' || (*info->p+1) != '=')) {
+        else if(*info->p == '-' && (*(info->p+1) != '-' || *(info->p+1) != '=')) {
             info->p++;
             skip_spaces_and_lf();
             
@@ -599,9 +903,84 @@ sNode*% add_sub_expression_node(sInfo* info=info)
     return node;
 }
 
+sNode*% compare_expression_node(sInfo* info=info)
+{
+    sNode*% node = add_sub_expression_node();
+    
+    while(true) {
+        if(*info->p == '<' && *(info->p+1) == '=' && *(info->p+2) != '>') {
+            info->p+=2;
+            skip_spaces_and_lf();
+            
+            sNode*% right_node = add_sub_expression_node();
+            
+            if(node == null) {
+                return null;
+            }
+            if(right_node == null) {
+                return null;
+            }
+            
+            return new sLtEqNode(node, right_node) implements sNode;
+        }
+        else if(*info->p == '>' && *(info->p+1) == '=') {
+            info->p+=2;
+            skip_spaces_and_lf();
+            
+            sNode*% right_node = add_sub_expression_node();
+            
+            if(node == null) {
+                return null;
+            }
+            if(right_node == null) {
+                return null;
+            }
+            
+            return new sGtEqNode(node, right_node) implements sNode;
+        }
+        else if(*info->p == '<' && *(info->p+1) != '=') {
+            info->p++;
+            skip_spaces_and_lf();
+            
+            sNode*% right_node = add_sub_expression_node();
+            
+            if(node == null) {
+                return null;
+            }
+            if(right_node == null) {
+                return null;
+            }
+            
+            return new sLtNode(node, right_node) implements sNode;
+        }
+        else if(*info->p == '>' && *(info->p+1) != '=') {
+            info->p++;
+            skip_spaces_and_lf();
+            
+            sNode*% right_node = add_sub_expression_node();
+            
+            if(node == null) {
+                return null;
+            }
+            if(right_node == null) {
+                return null;
+            }
+            
+            return new sGtNode(node, right_node) implements sNode;
+        }
+        else {
+            break;
+        }
+    }
+    
+    return node;
+}
+
 sNode*% expression(sInfo* info=info) version 1
 {
-    return add_sub_expression_node();
+    sNode*% node = compare_expression_node();
+    
+    return node;
 }
 
 bool output_source(sInfo* info)
@@ -621,6 +1000,10 @@ void init_typed_ruby(sInfo* info)
     sClass*% void_class = new sClass("void");
     
     info.classes.insert(string("void"), void_class);
+    
+    sClass*% bool_class = new sClass("bool");
+    
+    info.classes.insert(string("bool"), bool_class);
     
     sClass*% string_class = new sClass("String");
     

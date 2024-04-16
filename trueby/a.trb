@@ -27,3 +27,10 @@ puts(c);
 
 data:DataA = DataA.new(1)
 data.fun()
+
+i:=0;
+while (i < 3) {
+    puts("HO!");
+    i = i + 1;
+}
+

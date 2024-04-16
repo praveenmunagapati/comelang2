@@ -45,24 +45,8 @@ bool sClassNode*::compile(sClassNode* self, sInfo* info)
     sClass* current_class = info.current_class;
     info->current_class = klass;
     
-    info->nest++;
-    foreach(it, self.nodes) {
-        int sline = info->sline;
-        string sname = info->sname;
-        
-        info->sline = it->sline();
-        info->sname = it->sname();
-        
-        it.compile(info).catch {
-            puts("compile error");
-            exit(2);
-        }
-        add_last_code_to_source();
-        
-        info->sline = sline;
-        info->sname = sname;
-    }
-    info->nest--;
+    compile_block(self.nodes);
+    
     if(!self.native_) {
         add_come_code(info, s"end\n");
     }
@@ -119,6 +103,27 @@ string sFunNode*::kind()
     return string("sFunNode");
 }
 
+void compile_block(list<sNode*%>*% nodes, sInfo* info=info)
+{
+    info->nest++;
+    foreach(it, nodes) {
+        int sline = info->sline;
+        string sname = info->sname;
+        
+        info->sline = it->sline();
+        info->sname = it->sname();
+        
+        it.compile(info).catch {
+            puts("compile error");
+            exit(2);
+        }
+        add_last_code_to_source();
+        
+        info->sline = sline;
+        info->sname = sname;
+    }
+}
+
 bool sFunNode*::compile(sFunNode* self, sInfo* info)
 {
     if(self.name === "initialize") {
@@ -151,24 +156,8 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
         }
         add_come_code_without_nest(info, ")\n");
         
-        info->nest++;
-        foreach(it, self.nodes) {
-            int sline = info->sline;
-            string sname = info->sname;
-            
-            info->sline = it->sline();
-            info->sname = it->sname();
-            
-            it.compile(info).catch {
-                puts("compile error");
-                exit(2);
-            }
-            add_last_code_to_source();
-            
-            info->sline = sline;
-            info->sname = sname;
-        }
-        info->nest--;
+        compile_block(self.nodes);
+        
         add_come_code(info, s"end\n");
     }
     
@@ -445,7 +434,7 @@ bool parse_cmp(char* word, sInfo* info=info)
     return false;
 }
 
-sNode*% parse_class(string name, bool native_, sInfo* info=info)
+list<sNode*%>*% parse_block(sInfo* info=info)
 {
     expected_next_character('{');
     
@@ -477,6 +466,13 @@ sNode*% parse_class(string name, bool native_, sInfo* info=info)
             break;
         }
     }
+    
+    return nodes;
+}
+
+sNode*% parse_class(string name, bool native_, sInfo* info=info)
+{
+    list<sNode*%>*% nodes = parse_block();
     
     return new sClassNode(name, nodes, native_) implements sNode;
 }
@@ -583,7 +579,7 @@ sNode*% parse_fun(string name, sInfo* info=info)
     bool native_ = false;
     var params, result_type = parse_params();
     
-    list<sNode*%>*% nodes = new list<sNode*%>();
+    list<sNode*%>*% nodes = null;
     
     if(*info->p == ';') {
         info->p++;
@@ -592,35 +588,7 @@ sNode*% parse_fun(string name, sInfo* info=info)
         native_ = true;
     }
     else {
-        expected_next_character('{');
-        
-        while(true) {
-            if(*info->p == '}') {
-                info->p++;
-                skip_spaces_and_lf();
-                break;
-            }
-            
-            sNode*% node = expression();
-            
-            if(node == null) {
-                err_msg(info, "null node");
-                exit(2);
-            }
-            
-            if(*info->p == ';') {
-                info->p++;
-                skip_spaces_and_lf();
-            }
-            
-            nodes.add(node);
-            
-            if(*info->p == '}') {
-                info->p++;
-                skip_spaces_and_lf();
-                break;
-            }
-        }
+        nodes = parse_block();
     }
     
     return new sFunNode(name, params, result_type, nodes, native_) implements sNode;
@@ -644,7 +612,7 @@ sNode*% string_node(string buf, sInfo* info=info)
     return null;
 }
 
-sNode*% expression(sInfo* info=info) version 2
+sNode*% expression_node(sInfo* info=info) version 2
 {
     if(xisalpha(*info->p)) {
         string buf = parse_word();
@@ -716,10 +684,12 @@ sNode*% expression(sInfo* info=info) version 2
             return new sKernelMethodCall(buf, params) implements sNode;
         }
         else {
-            return string_node(buf);
+            sNode*% node = string_node(buf);
+            
+            return node;
         }
     }
     
-    return add_sub_expression_node();
+    return inherit(info);
 }
 
