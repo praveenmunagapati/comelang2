@@ -93,7 +93,7 @@ bool sStoreAttrNode*::compile(sStoreAttrNode* self, sInfo* info)
     
     info.stack.push_back(come_value2);
     
-    add_come_last_code(info, "%s\n", come_value2.c_value);
+    add_come_last_code(info, "%s", come_value2.c_value);
     
     return true;
 }
@@ -160,7 +160,7 @@ bool sLoadAttrNode*::compile(sLoadAttrNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }

@@ -93,6 +93,8 @@ struct sInfo
     map<string, sMethod*%>*% methods;
     
     map<string, sVar*%>*% lv_table;
+    
+    int line_field;
 };
 
 sModule*% sModule*::initialize(sModule*% self)
@@ -106,6 +108,11 @@ sModule*% sModule*::initialize(sModule*% self)
 sType*% sType*::initialize(sType*% self, char* name, sInfo* info=info)
 {
     sClass* klass = info.classes[name];
+    
+    if(klass == null) {
+        err_msg(info, "no existance of %s class", name);
+        exit(2);
+    }
     
     self.mClass = klass;
     self.mMultipleTypes = new list<sType*%>();
@@ -161,6 +168,15 @@ void add_last_code_to_source(sInfo* info=info)
        info.module.mLastCode = null;
     }
 }
+void add_line_field_to_source(int line_field, sInfo* info=info)
+{
+    if(info->no_output_come_code) {
+        return;
+    }
+    for(int i=0; i<line_field; i++) {
+       add_come_code_without_nest(info, "\n");
+    }
+}
 
 void add_come_last_code(sInfo* info, const char* msg, ...)
 {
@@ -205,7 +221,7 @@ void err_msg(sInfo* info, char* msg, ...)
 
 void skip_spaces_and_lf(sInfo* info=info)
 {
-    while(*info->p == ' ' || *info->p == '\t' || (*info->p == '\n' && info->sline++)) {
+    while(*info->p == ' ' || *info->p == '\t' || (*info->p == '\n' && ++info->sline && ++info->line_field)) {
         info->p++;
     }
 }
@@ -250,7 +266,7 @@ bool sIntNode*::compile(sIntNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -326,7 +342,7 @@ bool sAddNode*::compile(sAddNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -402,7 +418,7 @@ bool sSubNode*::compile(sSubNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -478,7 +494,7 @@ bool sGtNode*::compile(sGtNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -554,7 +570,7 @@ bool sLtNode*::compile(sLtNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -630,7 +646,7 @@ bool sGtEqNode*::compile(sGtEqNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -706,7 +722,7 @@ bool sLtEqNode*::compile(sLtEqNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -764,7 +780,7 @@ bool sStrNode*::compile(sStrNode* self, sInfo* info)
     
     info.stack.push_back(come_value);
 
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -775,6 +791,51 @@ int sStrNode*::sline(sStrNode* self, sInfo* info)
 }
 
 string sStrNode*::sname(sStrNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
+struct sCommentNode
+{
+    string value;
+    int sline;
+    string sname;
+};
+
+sCommentNode*% sCommentNode*::initialize(sCommentNode*% self, string value, sInfo* info=info)
+{
+    self.value = string(value);
+    
+    self.sline = info.sline;
+    self.sname = string(info->sname);
+    
+    return self;
+}
+
+bool sCommentNode*::terminated()
+{
+    return false;
+}
+
+
+string sCommentNode*::kind()
+{
+    return string("sCommentNode");
+}
+
+bool sCommentNode*::compile(sCommentNode* self, sInfo* info)
+{
+    add_come_code(info, self.value);
+    
+    return true;
+}
+
+int sCommentNode*::sline(sCommentNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sCommentNode*::sname(sCommentNode* self, sInfo* info)
 {
     return string(self.sname);
 }
@@ -855,6 +916,30 @@ sNode*% expression_node(sInfo* info=info)
         skip_spaces_and_lf();
         
         return new sStrNode(value.to_string(), sline, info) implements sNode;
+    }
+    else if(*info->p == '#') {
+        char* head = info.p.p;
+        
+        while(*info->p) {
+            if(*info->p == '\n') {
+                info->p++;
+                info->sline++;
+                break;
+            }
+            else {
+                info->p++;
+            }
+        }
+        
+        char* tail = info.p.p;
+        
+        var buf = new buffer();
+        
+        buf.append(head, tail - head);
+        
+        skip_spaces_and_lf();
+        
+        return new sCommentNode(buf.to_string()) implements sNode;
     }
     
     return null;
@@ -1044,7 +1129,9 @@ int main(int argc, char** argv)
     init_typed_ruby(&info);
     
     while(*info.p) {
+        int sline = info.sline;
         skip_spaces_and_lf(&info);
+        
         var node = expression(&info);
         
         if(node == null) {
@@ -1052,18 +1139,20 @@ int main(int argc, char** argv)
             exit(2);
         }
         
-        skip_spaces_and_lf(&info);
-        
         if(!node.compile(&info)) {
             puts("compile error");
             exit(2);
         }
         add_last_code_to_source(&info);
+        skip_spaces_and_lf(&info);
         
         if(*info->p == ';') {
             info->p++;
             skip_spaces_and_lf(&info);
         }
+        
+        add_line_field_to_source(info->line_field, &info);
+        info.line_field = 0;
     }
     
     output_source(&info).elif {

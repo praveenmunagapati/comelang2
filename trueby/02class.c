@@ -5,20 +5,34 @@ void dec_stack_ptr(int value, sInfo* info=info)
     info.stack.delete(-value, -1);
 }
 
+struct sBlock
+{
+    list<sNode*%>*% nodes;
+    list<int>*% line_fields;
+};
+
+sBlock*% sBlock*::initialize(sBlock*% self, list<sNode*%>*% nodes, list<int>*% line_fields, sInfo* info=info)
+{
+    self.nodes = nodes;
+    self.line_fields = line_fields;
+    
+    return self;
+}
+
 struct sClassNode
 {
     string name;
-    list<sNode*%>*% nodes;
+    sBlock*% block;
     bool native_;
     
     int sline;
     string sname;
 };
 
-sClassNode*% sClassNode*::initialize(sClassNode*% self, string name, list<sNode*%>*% nodes, bool native_, sInfo* info=info)
+sClassNode*% sClassNode*::initialize(sClassNode*% self, string name, sBlock*% block, bool native_, sInfo* info=info)
 {
     self.name = name;
-    self.nodes = nodes;
+    self.block = block;
     self.native_ = native_;
     
     self.sline = info->sline;
@@ -45,10 +59,10 @@ bool sClassNode*::compile(sClassNode* self, sInfo* info)
     sClass* current_class = info.current_class;
     info->current_class = klass;
     
-    compile_block(self.nodes);
+    compile_block(self.block);
     
     if(!self.native_) {
-        add_come_code(info, s"end\n");
+        add_come_code(info, s"end");
     }
     
     info->current_class = current_class;
@@ -74,7 +88,7 @@ string sClassNode*::sname(sClassNode* self, sInfo* info)
 struct sFunNode
 {
     string name;
-    list<sNode*%>*% nodes;
+    sBlock*% block;
     list<tuple2<string,sType*%>*%>*% params;
     sType*% result_type;
     
@@ -84,10 +98,10 @@ struct sFunNode
     string sname;
 };
 
-sFunNode*% sFunNode*::initialize(sFunNode*% self, string name, list<tuple2<string,sType*%>*%>*% params, sType*% result_type, list<sNode*%>*% nodes, bool native_=false, sInfo* info=info)
+sFunNode*% sFunNode*::initialize(sFunNode*% self, string name, list<tuple2<string,sType*%>*%>*% params, sType*% result_type, sBlock*% block, bool native_=false, sInfo* info=info)
 {
     self.name = name;
-    self.nodes = nodes;
+    self.block = block;
     self.params = params;
     self.native_ = native_;
     self.result_type = result_type;
@@ -103,10 +117,11 @@ string sFunNode*::kind()
     return string("sFunNode");
 }
 
-void compile_block(list<sNode*%>*% nodes, sInfo* info=info)
+void compile_block(sBlock*% block, sInfo* info=info)
 {
+    int n = 0;
     info->nest++;
-    foreach(it, nodes) {
+    foreach(it, block.nodes) {
         int sline = info->sline;
         string sname = info->sname;
         
@@ -118,10 +133,14 @@ void compile_block(list<sNode*%>*% nodes, sInfo* info=info)
             exit(2);
         }
         add_last_code_to_source();
+        add_line_field_to_source(block.line_fields[n]);
         
         info->sline = sline;
         info->sname = sname;
+        
+        n++;
     }
+    info->nest--;
 }
 
 bool sFunNode*::compile(sFunNode* self, sInfo* info)
@@ -156,9 +175,9 @@ bool sFunNode*::compile(sFunNode* self, sInfo* info)
         }
         add_come_code_without_nest(info, ")\n");
         
-        compile_block(self.nodes);
+        compile_block(self.block);
         
-        add_come_code(info, s"end\n");
+        add_come_code(info, s"end");
     }
     
     return true;
@@ -268,7 +287,7 @@ bool sKernelMethodCall*::compile(sKernelMethodCall* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -381,7 +400,7 @@ bool sClassMethodCall*::compile(sClassMethodCall* self, sInfo* info)
     
     info.stack.push_back(come_value);
     
-    add_come_last_code(info, "%s\n", come_value.c_value);
+    add_come_last_code(info, "%s", come_value.c_value);
     
     return true;
 }
@@ -434,12 +453,18 @@ bool parse_cmp(char* word, sInfo* info=info)
     return false;
 }
 
-list<sNode*%>*% parse_block(sInfo* info=info)
+sBlock*% parse_block(sInfo* info=info)
 {
     expected_next_character('{');
     
     list<sNode*%>*% nodes = new list<sNode*%>();
+    list<int>*% line_fields = new list<int>();
+    
+    info.line_field = 0;
+    
     while(true) {
+        int sline = info.sline;
+        
         if(*info->p == '}') {
             info->p++;
             skip_spaces_and_lf();
@@ -460,21 +485,23 @@ list<sNode*%>*% parse_block(sInfo* info=info)
         
         nodes.add(node);
         
+        line_fields.add(info.line_field);
+        info.line_field = 0;
+        
         if(*info->p == '}') {
             info->p++;
             skip_spaces_and_lf();
             break;
         }
     }
-    
-    return nodes;
+    return new sBlock(nodes, line_fields);
 }
 
 sNode*% parse_class(string name, bool native_, sInfo* info=info)
 {
-    list<sNode*%>*% nodes = parse_block();
+    sBlock*% block = parse_block();
     
-    return new sClassNode(name, nodes, native_) implements sNode;
+    return new sClassNode(name, block, native_) implements sNode;
 }
 
 sType*% parse_type(sInfo* info=info)
@@ -579,7 +606,7 @@ sNode*% parse_fun(string name, sInfo* info=info)
     bool native_ = false;
     var params, result_type = parse_params();
     
-    list<sNode*%>*% nodes = null;
+    sBlock*% block = null;
     
     if(*info->p == ';') {
         info->p++;
@@ -588,10 +615,10 @@ sNode*% parse_fun(string name, sInfo* info=info)
         native_ = true;
     }
     else {
-        nodes = parse_block();
+        block = parse_block();
     }
     
-    return new sFunNode(name, params, result_type, nodes, native_) implements sNode;
+    return new sFunNode(name, params, result_type, block, native_) implements sNode;
 }
 
 void expected_next_character(char c, sInfo* info=info)

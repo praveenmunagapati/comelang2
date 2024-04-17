@@ -3,16 +3,16 @@
 struct sWhileNode
 {
     sNode*% conditional_exp;
-    list<sNode*%>*% nodes;
+    sBlock*% block;
     
     int sline;
     string sname;
 };
 
-sWhileNode*% sWhileNode*::initialize(sWhileNode*% self, sNode*% conditional_exp, list<sNode*%>*% nodes, sInfo* info=info)
+sWhileNode*% sWhileNode*::initialize(sWhileNode*% self, sNode*% conditional_exp, sBlock*% block, sInfo* info=info)
 {
     self.conditional_exp = conditional_exp;
-    self.nodes = nodes;
+    self.block = block;
     
     self.sline = info->sline;
     self.sname = string(info->sname);
@@ -45,7 +45,7 @@ bool sWhileNode*::compile(sWhileNode* self, sInfo* info)
     
     add_come_code(info, s"while \{come_value.c_value} do\n");
     
-    compile_block(self.nodes);
+    compile_block(self.block);
     
     add_come_code(info, s"end\n");
     
@@ -81,9 +81,9 @@ sNode*% string_node(string buf, sInfo* info=info) version 3
             exit(2);
         }
         
-        list<sNode*%>*% nodes = parse_block();
+        sBlock*% block = parse_block();
         
-        return new sWhileNode(conditional_exp, nodes) implements sNode;
+        return new sWhileNode(conditional_exp, block) implements sNode;
     }
     else {
         return inherit(buf, info);
