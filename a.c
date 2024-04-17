@@ -2,11 +2,9 @@
 
 int main(int argc, char** argv)
 {
-    char buf[128];
+    var m = ["AAA":"AAA", "BBB":"BBB"];
     
-    char* p2 = null;
-    *p2 = '-';
-    p2++;
+    printf("%d\n", m["CCC"]?);
     
     return 0;
 }

@@ -1003,17 +1003,19 @@ struct sLoadArrayNode
     sNode*% mLeft;
     list<sNode*%>*% mArrayNum;
     bool mQuote;
+    bool mRangeCheck;
   
     int sline;
     string sname;
 };
 
-sLoadArrayNode*% sLoadArrayNode*::initialize(sLoadArrayNode*% self, sNode* left, list<sNode*%>*% array_num, bool quote, sInfo* info)
+sLoadArrayNode*% sLoadArrayNode*::initialize(sLoadArrayNode*% self, sNode* left, list<sNode*%>*% array_num, bool quote, bool range_check, sInfo* info)
 {
     self.sline = info.sline;
     self.sname = string(info.sname);
     
     self.mArrayNum = clone array_num;
+    self.mRangeCheck = range_check;
 
     self.mLeft = clone left;
     self.mQuote = quote;
@@ -1223,6 +1225,24 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
             info.stack.push_back(come_value);
             
             add_come_last_code(info, "%s;\n", come_value.c_value);
+        }
+    }
+    else if(self.mRangeCheck) {
+        CVALUE*% left_value = get_value_from_stack(-1, info);
+        dec_stack_ptr(1, info);
+        
+        if(left_value.type.mPointerNum > 0) {
+            CVALUE*% come_value = new CVALUE;
+            
+            come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
+            
+            come_value.type = clone left_value.type;
+            come_value.var = null;
+            
+            info.stack.push_back(come_value);
+        }
+        else {
+            info.stack.push_back(left_value);
         }
     }
 
@@ -1469,6 +1489,7 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
             }
             
             bool range = false;
+            bool range_check = true;
             list<sNode*%>*% array_num = new list<sNode*%>();
             while(1) {
                 bool range_array2 = false;
@@ -1515,6 +1536,10 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
                     
                     if(*info->p == ']') {
                         info->p++;
+                        if(*info->p == '?') {
+                            info->p++;
+                            range_check = false;
+                        }
                         skip_spaces_and_lf();
                     }
                     else {
@@ -1540,7 +1565,7 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
                 node = new sStoreArrayNode(node, right_node, array_num, quote, info) implements sNode;
             }
             else {
-                node = new sLoadArrayNode(node, array_num, quote, info) implements sNode;
+                node = new sLoadArrayNode(node, array_num, quote, range_check, info) implements sNode;
             }
         }
         else if(*info->p == '!' && *(info->p+1) == '{') {
