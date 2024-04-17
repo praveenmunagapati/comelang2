@@ -1,15 +1,12 @@
 #include <comelang2.h>
 
-struct sData
-{
-    list<tuple2<string,int>*%>*% a;
-};
-
 int main(int argc, char** argv)
 {
-    sData data;
+    char buf[128];
     
-    data.a = new list<tuple2<string,int>*%>();
+    char* p2 = null;
+    *p2 = '-';
+    p2++;
     
     return 0;
 }
