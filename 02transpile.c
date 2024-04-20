@@ -310,8 +310,8 @@ sType*% sType*::initialize(sType*% self, char* name, bool heap=false, sInfo* inf
     
     string name2 = string(name).substring(0, -pointer_num-1);
     
-    sClass* klass = info.classes[name2]?;
-    sClass* generics_class = info.generics_classes[name2]?;
+    sClass* klass = info.classes[name2];
+    sClass* generics_class = info.generics_classes[name2];
     
     if(klass == null && generics_class == null) {
         printf("%s %d: class not found(%s)(1)\n", info->sname, info->sline, name2);
@@ -992,7 +992,7 @@ int come_main(int argc, char** argv) version 2
             
             memset(&info, 0, sizeof(sInfo));
             
-            info.sname = clone files[0]?;
+            info.sname = clone files[0];
             info.clang_option = clang_option.to_string();
             info.verbose = verbose;
             

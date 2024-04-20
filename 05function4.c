@@ -1710,7 +1710,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         skip_pointer_attribute();
         
         sType*% result_type;
-        if(info.types[type_name]?) {
+        if(info.types[type_name]) {
             result_type = clone info.types[type_name];
             //type.mOriginalTypeName = string(type_name);
         }
@@ -1833,8 +1833,8 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         }
     }
     else {
-        if(info.types[type_name]?) {
-            type = clone info.types[type_name]?;
+        if(info.types[type_name]) {
+            type = clone info.types[type_name];
             type.mOriginalTypeName = string(type_name);
             type.mOriginalTypeNamePointerNum = pointer_num;
             
@@ -1966,7 +1966,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         }
         else {
             if(struct_) {
-                sClass* klass = info.classes[type_name]?;
+                sClass* klass = info.classes[type_name];
                 
                 if(klass == null && *info->p != '<') {
                     info.classes.insert(type_name, new sClass(name:type_name, struct_:true));

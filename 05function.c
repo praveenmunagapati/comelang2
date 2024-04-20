@@ -40,7 +40,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
                 return false;
             }
             
-            operator_fun = info->funcs[fun_name2]?;
+            operator_fun = info->funcs[fun_name2];
         }
         else {
             if(fun_name === "operator_equals") {
@@ -56,7 +56,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
                 operator_fun = fun2;
             }
             else {
-                operator_fun = info->funcs[fun_name2]?;
+                operator_fun = info->funcs[fun_name2];
             }
         }
     }
@@ -66,7 +66,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
         int i;
         for(i=FUN_VERSION_MAX-1; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", fun_name2, i);
-            operator_fun = info->funcs[new_fun_name]?;
+            operator_fun = info->funcs[new_fun_name];
             
             if(operator_fun) {
                 fun_name2 = string(new_fun_name);
@@ -75,7 +75,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
         }
         
         if(operator_fun == NULL) {
-            operator_fun = info->funcs[fun_name2]?;
+            operator_fun = info->funcs[fun_name2];
         }
     }
     
@@ -84,9 +84,9 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
     if(operator_fun) {
         CVALUE*% come_value = new CVALUE;
         string left_value2;
-        check_assign_type(s"\{fun_name2} is assigned to", operator_fun.mParamTypes[0]?, left_value.type, left_value);
-        if(operator_fun.mParamTypes[0]?.mHeap && left_value.type.mHeap) {
-            std_move(operator_fun.mParamTypes[0]?, left_value.type, left_value);
+        check_assign_type(s"\{fun_name2} is assigned to", operator_fun.mParamTypes[0], left_value.type, left_value);
+        if(operator_fun.mParamTypes[0].mHeap && left_value.type.mHeap) {
+            std_move(operator_fun.mParamTypes[0], left_value.type, left_value);
             left_value2 = xsprintf("%s", left_value.c_value);
         }
         else {
@@ -1145,12 +1145,12 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             }
             
             CVALUE*% come_value = get_value_from_stack(-1, info);
-            if(lambda_type.mVarArgs && lambda_type.mParamTypes[i]? == null) {
+            if(lambda_type.mVarArgs && lambda_type.mParamTypes[i] == null) {
             }
             else {
-                check_assign_type(s"\{fun_name} calling param #\{i}", lambda_type.mParamTypes[i]?, come_value.type, come_value);
-                if(lambda_type.mParamTypes[i]?.mHeap && come_value.type.mHeap) {
-                    std_move(lambda_type.mParamTypes[i]?, come_value.type, come_value);
+                check_assign_type(s"\{fun_name} calling param #\{i}", lambda_type.mParamTypes[i], come_value.type, come_value);
+                if(lambda_type.mParamTypes[i].mHeap && come_value.type.mHeap) {
+                    std_move(lambda_type.mParamTypes[i], come_value.type, come_value);
                 }
             }
             
@@ -1283,7 +1283,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             for(i=version-1; i>=1; i--) {
                 string new_fun_name = xsprintf("%s_v%d", real_fun_name, i);
                 
-                if(info.funcs[new_fun_name]?) {
+                if(info.funcs[new_fun_name]) {
                     fun_name = string(new_fun_name);
                     break;
                 }
@@ -1292,7 +1292,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             if(i==0) {
                 string new_fun_name = xsprintf("%s", real_fun_name);
                 
-                if(info.funcs[new_fun_name]?) {
+                if(info.funcs[new_fun_name]) {
                     fun_name = string(new_fun_name);
                 }
                 
@@ -1306,7 +1306,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             for(int i=FUN_VERSION_MAX; i>=1; i--) {
                 string new_fun_name = xsprintf("%s_v%d", fun_name, i);
             
-                if(info.funcs[new_fun_name]?) {
+                if(info.funcs[new_fun_name]) {
                     fun_name = string(new_fun_name);
                     break;
                 }
@@ -1345,7 +1345,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             
             CVALUE*% come_value = get_value_from_stack(-1, info);
             
-            if(fun.mVarArgs && fun.mParamTypes[i]? == null) {
+            if(fun.mVarArgs && fun.mParamTypes[i] == null) {
             }
             else {
                 if(label != null) {
@@ -1392,7 +1392,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
                 char* param_name = fun.mParamNames[i];
                 //char* param_name = fun.mParamNames[i].value();
                 
-                CVALUE* come_value = label_params[param_name]?;
+                CVALUE* come_value = label_params[param_name];
                 
                 if(default_param && default_param !== "") {
                     buffer*% source = info.source;
@@ -1439,7 +1439,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             for(i=0; i<fun.mParamNames.length(); i++) {
                 char* param_name = fun.mParamNames[i];
                 
-                CVALUE* come_value = label_params[param_name]?;
+                CVALUE* come_value = label_params[param_name];
                 
                 if(come_value) {
                     check_assign_type(s"\{fun_name} calling param(4) \{i}", param_types[i], come_value.type, come_value);
@@ -2415,7 +2415,7 @@ sNode*% expression_node(sInfo* info=info) version 99
             
             fun_name.append_str(buf);
             
-            sType*% type = clone info.types[fun_name.to_string()]?;
+            sType*% type = clone info.types[fun_name.to_string()];
             
             if(type == null) {
                 sClass* klass = info.classes[fun_name.to_string()];

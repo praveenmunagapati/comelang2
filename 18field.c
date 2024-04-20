@@ -34,7 +34,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
             }
         }
         
-        operator_fun = info->funcs[fun_name2]?;
+        operator_fun = info->funcs[fun_name2];
     }
     else {
         fun_name2 = create_method_name(type, false@no_pointer_name, fun_name, info);
@@ -42,7 +42,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
         int i;
         for(i=FUN_VERSION_MAX-1; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", fun_name2, i);
-            operator_fun = info->funcs[new_fun_name]?;
+            operator_fun = info->funcs[new_fun_name];
             
             if(operator_fun) {
                 fun_name2 = string(new_fun_name);
@@ -51,7 +51,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
         }
         
         if(operator_fun == NULL) {
-            operator_fun = info->funcs[fun_name2]?;
+            operator_fun = info->funcs[fun_name2];
         }
     }
     
@@ -1538,10 +1538,12 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
                     
                     if(*info->p == ']') {
                         info->p++;
+/*
                         if(*info->p == '?') {
                             info->p++;
                             range_check = false;
                         }
+*/
                         skip_spaces_and_lf();
                     }
                     else {
