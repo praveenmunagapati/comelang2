@@ -34,7 +34,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
             }
         }
         
-        operator_fun = info->funcs[fun_name2];
+        operator_fun = info->funcs[fun_name2]?;
     }
     else {
         fun_name2 = create_method_name(type, false@no_pointer_name, fun_name, info);
@@ -42,7 +42,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
         int i;
         for(i=FUN_VERSION_MAX-1; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", fun_name2, i);
-            operator_fun = info->funcs[new_fun_name];
+            operator_fun = info->funcs[new_fun_name]?;
             
             if(operator_fun) {
                 fun_name2 = string(new_fun_name);
@@ -51,7 +51,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
         }
         
         if(operator_fun == NULL) {
-            operator_fun = info->funcs[fun_name2];
+            operator_fun = info->funcs[fun_name2]?;
         }
     }
     
@@ -1227,6 +1227,7 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
             add_come_last_code(info, "%s;\n", come_value.c_value);
         }
     }
+/*
     else if(self.mRangeCheck) {
         CVALUE*% left_value = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
@@ -1245,6 +1246,7 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
             info.stack.push_back(left_value);
         }
     }
+*/
 
     return true;
 }

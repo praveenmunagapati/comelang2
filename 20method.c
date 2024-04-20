@@ -342,7 +342,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
         for(int i=FUN_VERSION_MAX; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", generics_fun_name, i);
         
-            fun = info.funcs[new_fun_name];
+            fun = info.funcs[new_fun_name]?;
             
             if(fun != null) {
                 generics_fun_name = string(new_fun_name);
@@ -580,12 +580,12 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
         if(params.length() < fun.mParamTypes.length()+(method_block?-2:0))
         {
             for(; i<fun.mParamTypes.length()+(method_block?-2:0); i++) {
-                string default_param = clone fun.mParamDefaultParametors[i];
+                string default_param = clone fun.mParamDefaultParametors[i]?;
                 //string default_param = clone fun.mParamDefaultParametors[i].value();
                 char* param_name = fun.mParamNames[i];
                 //char* param_name = fun.mParamNames[i].value();
                 
-                CVALUE* come_value = label_params[param_name];
+                CVALUE* come_value = label_params[param_name]?;
                 //CVALUE* come_value = label_params[param_name].value();
                 
                 if(default_param && default_param !== "") {
@@ -635,7 +635,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 char* param_name = fun.mParamNames[i];
                 //char* param_name = fun.mParamNames[i].value();
                 
-                CVALUE* come_value = label_params[param_name];
+                CVALUE* come_value = label_params[param_name]?;
                 
                 if(come_value) {
                     come_params.replace(i, clone come_value);
