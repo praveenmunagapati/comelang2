@@ -2498,6 +2498,39 @@ Null can be assigned to any variable. If you want to check whether it is null or
 
 nullはすべての変数に代入できます。nullかどうかをチェックしたい場合は!をつけてください。
 
+# Null guard
+
+```
+char*?? fun()
+{
+    return null;
+}
+
+int main()
+{
+    char* m = fun();
+    return 0;
+}
+```
+
+Null checker ocurrs runtime error
+
+```
+char*?? fun()
+{
+    return null;
+}
+
+int main()
+{
+    char* m = fun()??;
+    return 0;
+}
+```
+
+m is null
+
+
 # Using C
 
 ``` C
