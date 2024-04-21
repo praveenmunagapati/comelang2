@@ -1548,7 +1548,7 @@ puts("SAME KEY");
         
         return self;
     }
-    T2& operator_load_element(map<T, T2>* self, T& key) {
+    T2&?? operator_load_element(map<T, T2>* self, T& key) {
         T2` default_value;
         memset(&default_value, 0, sizeof(T2));
         

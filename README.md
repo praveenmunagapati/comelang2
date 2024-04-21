@@ -7,7 +7,7 @@ Another modern C compiler. It has a heap system that is a cross between an autom
 
 もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。
 
-version 20.3
+version 30.0
 
 ``` C
 #include <comelang2.h>
@@ -297,6 +297,8 @@ bash all_build.sh
 ```
 
 # Histories
+
+30.0 Map load element([]) requires ?? if item was not found.
 
 20.3 Debugged.
 
@@ -1061,7 +1063,7 @@ Same as insert. I think it was used with clone. This is because if you only inse
 insertと同じです。cloneで使用していたと思います。insertだけだと無限ループするためでした。
 
 ```C
-T2& operator_load_element(map<T, T2>* self, T& key) 
+T2&?? operator_load_element(map<T, T2>* self, T& key) 
 ```
 
 ```
@@ -1070,9 +1072,20 @@ T2& operator_load_element(map<T, T2>* self, T& key)
     item.to_string().puts(); // 1
 ```
 
-Returns a value cleared to 0 if the key is not found. There's no exception handling, so there's nothing you can do about it.
+If the key is not found, null check will result in a dynamic error if ?? is not added. Only if the item is a pointer.
 
-キーが見つからない場合0クリアされた値を返します。例外処理がないので、仕方がないです。
+キーが見つからない場合??をつけないとnull checkが動的エラーとなります。アイテムがポインタの場合だけです。
+
+```
+    var ma = [1:"AAA",2:"BBB",3:"CCC"];
+    var item = ma[4]; // runtime error
+```
+
+
+```
+    var ma = [1:"AAA",2:"BBB",3:"CCC"];
+    var item = ma[4]??; // item is null
+```
 
 ```C
 T2 operator_store_element(map<T, T2>* self, T key, T2 item) 

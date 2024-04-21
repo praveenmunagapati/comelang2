@@ -2034,10 +2034,11 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
                 info->p++;
                 type->mGuardValue = true;
             }
+            else {
+                type->mNullValue = true;
+            }
             
             skip_spaces_and_lf();
-            
-            type->mNullValue = true;
         }
         if(*info->p == '`') {
             info->p++;

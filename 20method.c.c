@@ -2690,7 +2690,7 @@ right_value130 = (void*)0;
     while(vtable_45) {
         for(        o2_saved_46=(struct map$2charphsVarph*)come_increment_ref_count((vtable_45->mVars)),it_49=map$2charphsVarph_begin((o2_saved_46));        !map$2charphsVarph_end((o2_saved_46));        it_49=map$2charphsVarph_next((o2_saved_46))        ){
             key_52=it_49;
-            value_56=map$2charphsVarphp_operator_load_element(vtable_45->mVars,key_52);
+            value_56=((struct sVar*)come_null_check(map$2charphsVarphp_operator_load_element(vtable_45->mVars,key_52), "20method.c", 53, 0));
             type2_57=(struct sType*)come_increment_ref_count(((struct sType*)(right_value108=sType_clone(value_56->mType))));
             come_call_finalizer2(sType_finalize,right_value108, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             type2_57->mPointerNum++;
@@ -2749,7 +2749,7 @@ right_value130 = (void*)0;
     while(vtable_45) {
         for(        o2_saved_112=(struct map$2charphsVarph*)come_increment_ref_count((vtable_45->mVars)),it_113=map$2charphsVarph_begin((o2_saved_112));        !map$2charphsVarph_end((o2_saved_112));        it_113=map$2charphsVarph_next((o2_saved_112))        ){
             key_114=it_113;
-            value_115=map$2charphsVarphp_operator_load_element(vtable_45->mVars,key_114);
+            value_115=((struct sVar*)come_null_check(map$2charphsVarphp_operator_load_element(vtable_45->mVars,key_114), "20method.c", 104, 1));
             type2_116=(struct sType*)come_increment_ref_count(((struct sType*)(right_value124=sType_clone(value_115->mType))));
             come_call_finalizer2(sType_finalize,right_value124, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             item_117=(struct tuple2$2charphsTypeph*)come_increment_ref_count(((struct tuple2$2charphsTypeph*)(right_value126=tuple2$2charphsTypeph_initialize((struct tuple2$2charphsTypeph*)come_increment_ref_count(((struct tuple2$2charphsTypeph*)(right_value125=(struct tuple2$2charphsTypeph*)come_calloc(1, sizeof(struct tuple2$2charphsTypeph)*(1), "20method.c", 108, "struct tuple2$2charphsTypeph")))),(char*)come_increment_ref_count(value_115->mCValueName),(struct sType*)come_increment_ref_count(type2_116)))));

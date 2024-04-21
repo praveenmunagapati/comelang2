@@ -1394,7 +1394,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
                 char* param_name = fun.mParamNames[i];
                 //char* param_name = fun.mParamNames[i].value();
                 
-                CVALUE* come_value = label_params[param_name];
+                CVALUE* come_value = label_params[param_name]??;
                 
                 if(default_param && default_param !== "") {
                     buffer*% source = info.source;
@@ -1441,7 +1441,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             for(i=0; i<fun.mParamNames.length(); i++) {
                 char* param_name = fun.mParamNames[i];
                 
-                CVALUE* come_value = label_params[param_name];
+                CVALUE* come_value = label_params[param_name]??;
                 
                 if(come_value) {
                     check_assign_type(s"\{fun_name} calling param(4) \{i}", param_types[i], come_value.type, come_value);
