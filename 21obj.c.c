@@ -4420,7 +4420,7 @@ right_value134 = (void*)0;
     ((struct tuple2$2sFunpcharph*)(right_value129=create_cloner_automatically(typeX_66,"clone",info)));
     come_call_finalizer2(tuple2$2sFunpcharphp_finalize,right_value129, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     for(    i_67=1;    i_67<list$1tuple2$2charphsTypephph_length(klass_58->mFields);    i_67++    ){
-        multiple_assign_var1=list$1tuple2$2charphsTypephphp_operator_load_element(klass_58->mFields,i_67);
+        multiple_assign_var1=((struct tuple2$2charphsTypeph*)come_null_check(list$1tuple2$2charphsTypephphp_operator_load_element(klass_58->mFields,i_67), "21obj.c", 222, 0));
         name_71=(char*)come_increment_ref_count(multiple_assign_var1->v1);
         field_type_72=(struct sType*)come_increment_ref_count(multiple_assign_var1->v2);
         method_name_73=(char*)come_increment_ref_count(((char*)(right_value130=create_method_name(type_57,(_Bool)0,name_71,info,(_Bool)1))));

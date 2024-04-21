@@ -2495,7 +2495,7 @@ right_value55 = (void*)0;
         buffer_append_char(buf_12,36);
         buffer_append_char(buf_12,list$1sTypeph_length(generics_type->mGenericsTypes)+48);
         for(        i_15=0;        i_15<list$1sTypeph_length(generics_type->mGenericsTypes);        i_15++        ){
-            type_25=list$1sTypephp_operator_load_element(generics_type->mGenericsTypes,i_15);
+            type_25=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(generics_type->mGenericsTypes,i_15), "14struct.c", 33, 0));
             type_name_26=(char*)come_increment_ref_count(((char*)(right_value54=create_generics_name(type_25,info))));
             right_value54 = come_decrement_ref_count2(right_value54, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(buf_12,type_name_26);
@@ -2898,7 +2898,7 @@ memset(&result_42, 0, sizeof(_Bool));
         return __result50__;
     }
     for(    i_41=0;    i_41<list$1sTypeph_length(type->mGenericsTypes);    i_41++    ){
-        result_42=is_no_contained_generics_types(list$1sTypephp_operator_load_element(type->mGenericsTypes,i_41),info);
+        result_42=is_no_contained_generics_types(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(type->mGenericsTypes,i_41), "14struct.c", 105, 1)),info);
         if(_if_conditional42=!result_42,        _if_conditional42) {
             __result51__ = (_Bool)0;
             return __result51__;
@@ -2937,7 +2937,7 @@ memset(&result_46, 0, sizeof(_Bool));
         return __result54__;
     }
     for(    i_45=0;    i_45<list$1sTypeph_length(type->mGenericsTypes);    i_45++    ){
-        result_46=is_contained_method_generics_types(list$1sTypephp_operator_load_element(type->mGenericsTypes,i_45),info);
+        result_46=is_contained_method_generics_types(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(type->mGenericsTypes,i_45), "14struct.c", 129, 2)),info);
         if(result_46) {
             __result55__ = (_Bool)1;
             return __result55__;

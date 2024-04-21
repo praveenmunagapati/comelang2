@@ -2608,7 +2608,7 @@ memset(&new_name_79, 0, sizeof(char*));
             no_calling_destructor_57=type->mNoCallingDestructor;
             null_value_58=type->mNullValue;
             __dec_obj45=result_35;
-            result_35=(struct sType*)come_increment_ref_count(((struct sType*)(right_value98=sType_clone(list$1sTypephp_operator_load_element(info->method_generics_types,generics_number_50)))));
+            result_35=(struct sType*)come_increment_ref_count(((struct sType*)(right_value98=sType_clone(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(info->method_generics_types,generics_number_50), "04heap.c", 84, 0))))));
             come_call_finalizer2(sType_finalize,__dec_obj45, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
             come_call_finalizer2(sType_finalize,right_value98, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             if(heap_54) {
@@ -2647,7 +2647,7 @@ memset(&new_name_79, 0, sizeof(char*));
                     err_msg(info,"invalid generics parametor number");
                     exit(2);
                 }
-                klass2_63=list$1sTypephp_operator_load_element(generics_type->mGenericsTypes,generics_number_62)->mClass;
+                klass2_63=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(generics_type->mGenericsTypes,generics_number_62), "04heap.c", 123, 1))->mClass;
                 generics_number2_64=klass2_63->mGenericsNum;
                 if(_if_conditional128=generics_number_62!=generics_number2_64,                _if_conditional128) {
                     array_num_65=(struct list$1sNodeph*)come_increment_ref_count(((struct list$1sNodeph*)(right_value99=list$1sNodephp_clone(type->mArrayNum))));
@@ -2660,7 +2660,7 @@ memset(&new_name_79, 0, sizeof(char*));
                     no_calling_destructor_71=type->mNoCallingDestructor;
                     null_value_72=type->mNullValue;
                     __dec_obj47=result_35;
-                    result_35=(struct sType*)come_increment_ref_count(((struct sType*)(right_value100=sType_clone(list$1sTypephp_operator_load_element(generics_type->mGenericsTypes,generics_number_62)))));
+                    result_35=(struct sType*)come_increment_ref_count(((struct sType*)(right_value100=sType_clone(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(generics_type->mGenericsTypes,generics_number_62), "04heap.c", 139, 2))))));
                     come_call_finalizer2(sType_finalize,__dec_obj47, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                     come_call_finalizer2(sType_finalize,right_value100, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                     if(heap_68) {

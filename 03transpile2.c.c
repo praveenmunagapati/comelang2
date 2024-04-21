@@ -2881,7 +2881,7 @@ right_value61 = (void*)0;
     if(_if_conditional61=list$1sTypeph_length(type->mGenericsTypes)>0,    _if_conditional61) {
         buffer_append_str(buf_30,"<");
         for(        i_32=0;        i_32<list$1sTypeph_length(type->mGenericsTypes);        i_32++        ){
-            gtype_36=list$1sTypephp_operator_load_element(type->mGenericsTypes,i_32);
+            gtype_36=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(type->mGenericsTypes,i_32), "03transpile2.c", 156, 0));
             buffer_append_str(buf_30,((char*)(right_value60=make_come_type_name_string(gtype_36,info))));
             right_value60 = come_decrement_ref_count2(right_value60, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             if(_if_conditional64=i_32!=list$1sTypeph_length(type->mGenericsTypes)-1,            _if_conditional64) {
@@ -3463,7 +3463,7 @@ right_value155 = (void*)0;
         buffer_append_str(output2_62,"(");
         i_63=0;
         for(        o2_saved_64=(struct list$1sTypeph*)come_increment_ref_count((fun->mParamTypes)),it_65=list$1sTypeph_begin((o2_saved_64));        !list$1sTypeph_end((o2_saved_64));        it_65=list$1sTypeph_next((o2_saved_64))        ){
-            name_69=list$1charphp_operator_load_element(fun->mParamNames,i_63);
+            name_69=((char*)come_null_check(list$1charphp_operator_load_element(fun->mParamNames,i_63), "03transpile2.c", 356, 1));
             str_70=(char*)come_increment_ref_count(((char*)(right_value101=make_define_var(it_65,name_69,(_Bool)0,info))));
             right_value101 = come_decrement_ref_count2(right_value101, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(output2_62,str_70);
@@ -3507,7 +3507,7 @@ right_value155 = (void*)0;
             buffer_append_str(output_61,"(");
             i_92=0;
             for(            o2_saved_93=(struct list$1sTypeph*)come_increment_ref_count((fun->mParamTypes)),it_94=list$1sTypeph_begin((o2_saved_93));            !list$1sTypeph_end((o2_saved_93));            it_94=list$1sTypeph_next((o2_saved_93))            ){
-                name_95=list$1charphp_operator_load_element(fun->mParamNames,i_92);
+                name_95=((char*)come_null_check(list$1charphp_operator_load_element(fun->mParamNames,i_92), "03transpile2.c", 397, 2));
                 str_96=(char*)come_increment_ref_count(((char*)(right_value144=make_define_var(it_94,name_95,(_Bool)0,info))));
                 right_value144 = come_decrement_ref_count2(right_value144, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_61,str_96);
@@ -3523,7 +3523,7 @@ right_value155 = (void*)0;
                 str_96 = come_decrement_ref_count2(str_96, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             come_call_finalizer2(list$1sTypephp_finalize,o2_saved_93, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            node_100=list$1sNodephp_operator_load_element(fun->mResultType->mArrayNum,0);
+            node_100=((struct sNode*)come_null_check(list$1sNodephp_operator_load_element(fun->mResultType->mArrayNum,0), "03transpile2.c", 414, 3));
             if(_if_conditional176=!node_compile(node_100,info),            _if_conditional176) {
                 err_msg(info,"invalid array number");
                 __result88__ = __result_obj__ = ((char*)(right_value145=__builtin_string("")));
@@ -3554,7 +3554,7 @@ right_value155 = (void*)0;
             buffer_append_str(output_61,"(");
             i_103=0;
             for(            o2_saved_104=(struct list$1sTypeph*)come_increment_ref_count((fun->mParamTypes)),it_105=list$1sTypeph_begin((o2_saved_104));            !list$1sTypeph_end((o2_saved_104));            it_105=list$1sTypeph_next((o2_saved_104))            ){
-                name_106=list$1charphp_operator_load_element(fun->mParamNames,i_103);
+                name_106=((char*)come_null_check(list$1charphp_operator_load_element(fun->mParamNames,i_103), "03transpile2.c", 439, 4));
                 str_107=(char*)come_increment_ref_count(((char*)(right_value150=make_define_var(it_105,name_106,(_Bool)0,info))));
                 right_value150 = come_decrement_ref_count2(right_value150, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_61,str_107);
@@ -4517,7 +4517,7 @@ right_value173 = (void*)0;
         buffer_append_str(output2_109,"(");
         i_110=0;
         for(        o2_saved_111=(struct list$1sTypeph*)come_increment_ref_count((fun->mParamTypes)),it_112=list$1sTypeph_begin((o2_saved_111));        !list$1sTypeph_end((o2_saved_111));        it_112=list$1sTypeph_next((o2_saved_111))        ){
-            name_113=list$1charphp_operator_load_element(fun->mParamNames,i_110);
+            name_113=((char*)come_null_check(list$1charphp_operator_load_element(fun->mParamNames,i_110), "03transpile2.c", 484, 5));
             str_114=(char*)come_increment_ref_count(((char*)(right_value160=make_define_var(it_112,name_113,(_Bool)0,info))));
             right_value160 = come_decrement_ref_count2(right_value160, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(output2_109,str_114);
@@ -4554,7 +4554,7 @@ right_value173 = (void*)0;
             buffer_append_str(output_108,"(");
             i_118=0;
             for(            o2_saved_119=(struct list$1sTypeph*)come_increment_ref_count((fun->mParamTypes)),it_120=list$1sTypeph_begin((o2_saved_119));            !list$1sTypeph_end((o2_saved_119));            it_120=list$1sTypeph_next((o2_saved_119))            ){
-                name_121=list$1charphp_operator_load_element(fun->mParamNames,i_118);
+                name_121=((char*)come_null_check(list$1charphp_operator_load_element(fun->mParamNames,i_118), "03transpile2.c", 515, 6));
                 str_122=(char*)come_increment_ref_count(((char*)(right_value167=make_define_var(it_120,name_121,(_Bool)0,info))));
                 right_value167 = come_decrement_ref_count2(right_value167, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_108,str_122);
@@ -4570,7 +4570,7 @@ right_value173 = (void*)0;
                 str_122 = come_decrement_ref_count2(str_122, (void*)0, (void*)0, 0, 0, 0, (void*)0);
             }
             come_call_finalizer2(list$1sTypephp_finalize,o2_saved_119, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
-            node_123=list$1sNodephp_operator_load_element(fun->mResultType->mArrayNum,0);
+            node_123=((struct sNode*)come_null_check(list$1sNodephp_operator_load_element(fun->mResultType->mArrayNum,0), "03transpile2.c", 531, 7));
             if(_if_conditional184=!node_compile(node_123,info),            _if_conditional184) {
                 err_msg(info,"invalid array number");
                 __result90__ = __result_obj__ = ((char*)(right_value168=__builtin_string("")));
@@ -4598,7 +4598,7 @@ right_value173 = (void*)0;
             buffer_append_str(output_108,"(");
             i_126=0;
             for(            o2_saved_127=(struct list$1sTypeph*)come_increment_ref_count((fun->mParamTypes)),it_128=list$1sTypeph_begin((o2_saved_127));            !list$1sTypeph_end((o2_saved_127));            it_128=list$1sTypeph_next((o2_saved_127))            ){
-                name_129=list$1charphp_operator_load_element(fun->mParamNames,i_126);
+                name_129=((char*)come_null_check(list$1charphp_operator_load_element(fun->mParamNames,i_126), "03transpile2.c", 552, 8));
                 str_130=(char*)come_increment_ref_count(((char*)(right_value172=make_define_var(it_128,name_129,(_Bool)0,info))));
                 right_value172 = come_decrement_ref_count2(right_value172, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 buffer_append_str(output_108,str_130);
@@ -4666,7 +4666,7 @@ right_value178 = (void*)0;
     buffer_append_str(output_131,"(");
     i_133=0;
     for(    o2_saved_134=(struct list$1sTypeph*)come_increment_ref_count((lambda_type->mParamTypes)),it_135=list$1sTypeph_begin((o2_saved_134));    !list$1sTypeph_end((o2_saved_134));    it_135=list$1sTypeph_next((o2_saved_134))    ){
-        name_136=list$1charphp_operator_load_element(lambda_type->mParamNames,i_133);
+        name_136=((char*)come_null_check(list$1charphp_operator_load_element(lambda_type->mParamNames,i_133), "03transpile2.c", 588, 9));
         str_137=(char*)come_increment_ref_count(((char*)(right_value177=make_define_var(it_135,name_136,(_Bool)0,info))));
         right_value177 = come_decrement_ref_count2(right_value177, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         buffer_append_str(output_131,str_137);
@@ -6457,7 +6457,7 @@ memset(&result_266, 0, sizeof(struct CVALUE*));
     __dec_obj52=info->module->mLastCode;
     info->module->mLastCode=((void*)0);
     __dec_obj52 = come_decrement_ref_count2(__dec_obj52, (void*)0, (void*)0, 0,0,0, (void*)0);
-    result_266=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value234=CVALUE_clone(list$1CVALUEphp_operator_load_element(info->stack,offset)))));
+    result_266=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value234=CVALUE_clone(((struct CVALUE*)come_null_check(list$1CVALUEphp_operator_load_element(info->stack,offset), "03transpile2.c", 941, 10))))));
     come_call_finalizer2(CVALUE_finalize,right_value234, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
     if(_if_conditional324=result_266==((void*)0),    _if_conditional324) {
         err_msg(info,"invalid stack value");

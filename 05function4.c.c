@@ -4293,7 +4293,7 @@ memset(&i_96, 0, sizeof(int));
         come_call_finalizer2(sType_finalize,__dec_obj46, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
         come_call_finalizer2(sType_finalize,right_value118, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
         come_call_finalizer2(sType_finalize,right_value119, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        come_value->type->mHeap=list$1sTypephp_operator_load_element(left_type->mMultipleTypes,0)->mHeap;
+        come_value->type->mHeap=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(left_type->mMultipleTypes,0), "05function4.c", 341, 0))->mHeap;
         come_value->var=((void*)0);
         __result77__ = (_Bool)1;
         come_call_finalizer2(sType_finalize,left_type2_71, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -4332,7 +4332,7 @@ memset(&i_96, 0, sizeof(int));
                             return __result78__;
                         }
                         for(                        i_81=0;                        i_81<list$1sTypeph_length(left_no_solved_generics_type_79->mGenericsTypes);                        i_81++                        ){
-                            check_assign_type(msg,list$1sTypephp_operator_load_element(left_no_solved_generics_type_79->mGenericsTypes,i_81),list$1sTypephp_operator_load_element(right_no_solved_generics_type_80->mGenericsTypes,i_81),come_value,(_Bool)0,(_Bool)1,info);
+                            check_assign_type(msg,((struct sType*)come_null_check(list$1sTypephp_operator_load_element(left_no_solved_generics_type_79->mGenericsTypes,i_81), "05function4.c", 377, 1)),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(right_no_solved_generics_type_80->mGenericsTypes,i_81), "05function4.c", 377, 2)),come_value,(_Bool)0,(_Bool)1,info);
                         }
                         check_assign_type(msg,left_no_solved_generics_type_79,right_no_solved_generics_type_80,come_value,(_Bool)0,(_Bool)1,info);
                     }
@@ -4817,7 +4817,7 @@ memset(&i_96, 0, sizeof(int));
                                             exit(2);
                                         }
                                         for(                                        i_96=0;                                        i_96<list$1sTypeph_length(left_type->mGenericsTypes);                                        i_96++                                        ){
-                                            check_assign_type(msg,list$1sTypephp_operator_load_element(left_type->mGenericsTypes,i_96),list$1sTypephp_operator_load_element(right_type2_70->mGenericsTypes,i_96),come_value,(_Bool)0,(_Bool)1,info);
+                                            check_assign_type(msg,((struct sType*)come_null_check(list$1sTypephp_operator_load_element(left_type->mGenericsTypes,i_96), "05function4.c", 695, 3)),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(right_type2_70->mGenericsTypes,i_96), "05function4.c", 695, 4)),come_value,(_Bool)0,(_Bool)1,info);
                                         }
                                     }
                                 }
@@ -7329,7 +7329,7 @@ right_value369 = (void*)0;
             else {
                 if(_if_conditional379=list$1charph_contained(info->generics_type_names,(char*)come_increment_ref_count(type_name_135)),                _if_conditional379) {
                     for(                    i_214=0;                    i_214<list$1charph_length(info->generics_type_names);                    i_214++                    ){
-                        if(_if_conditional383=string_operator_equals(list$1charphp_operator_load_element(info->generics_type_names,i_214),type_name_135),                        _if_conditional383) {
+                        if(_if_conditional383=string_operator_equals(((char*)come_null_check(list$1charphp_operator_load_element(info->generics_type_names,i_214), "05function4.c", 1655, 5)),type_name_135),                        _if_conditional383) {
                             __dec_obj130=result_type_205;
                             result_type_205=(struct sType*)come_increment_ref_count(((struct sType*)(right_value279=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value277=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "05function4.c", 1656, "sType")))),((char*)(right_value278=xsprintf("generics_type%d",i_214))),(_Bool)0,info))));
                             come_call_finalizer2(sType_finalize,__dec_obj130, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -7342,7 +7342,7 @@ right_value369 = (void*)0;
                 else {
                     if(_if_conditional384=list$1charph_contained(info->method_generics_type_names,(char*)come_increment_ref_count(type_name_135)),                    _if_conditional384) {
                         for(                        i_218=0;                        i_218<list$1charph_length(info->method_generics_type_names);                        i_218++                        ){
-                            if(_if_conditional385=string_operator_equals(list$1charphp_operator_load_element(info->method_generics_type_names,i_218),type_name_135),                            _if_conditional385) {
+                            if(_if_conditional385=string_operator_equals(((char*)come_null_check(list$1charphp_operator_load_element(info->method_generics_type_names,i_218), "05function4.c", 1662, 6)),type_name_135),                            _if_conditional385) {
                                 __dec_obj131=result_type_205;
                                 result_type_205=(struct sType*)come_increment_ref_count(((struct sType*)(right_value282=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value280=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "05function4.c", 1663, "sType")))),((char*)(right_value281=xsprintf("mgenerics_type%d",i_218))),(_Bool)0,info))));
                                 come_call_finalizer2(sType_finalize,__dec_obj131, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -7430,7 +7430,7 @@ right_value369 = (void*)0;
                 else {
                     if(_if_conditional389=list$1charph_contained(info->generics_type_names,(char*)come_increment_ref_count(type_name_135)),                    _if_conditional389) {
                         for(                        i_224=0;                        i_224<list$1charph_length(info->generics_type_names);                        i_224++                        ){
-                            if(_if_conditional390=string_operator_equals(list$1charphp_operator_load_element(info->generics_type_names,i_224),type_name_135),                            _if_conditional390) {
+                            if(_if_conditional390=string_operator_equals(((char*)come_null_check(list$1charphp_operator_load_element(info->generics_type_names,i_224), "05function4.c", 1719, 7)),type_name_135),                            _if_conditional390) {
                                 __dec_obj141=result_type_223;
                                 result_type_223=(struct sType*)come_increment_ref_count(((struct sType*)(right_value294=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value292=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "05function4.c", 1720, "sType")))),((char*)(right_value293=xsprintf("generics_type%d",i_224))),(_Bool)0,info))));
                                 come_call_finalizer2(sType_finalize,__dec_obj141, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -7443,7 +7443,7 @@ right_value369 = (void*)0;
                     else {
                         if(_if_conditional391=list$1charph_contained(info->method_generics_type_names,(char*)come_increment_ref_count(type_name_135)),                        _if_conditional391) {
                             for(                            i_225=0;                            i_225<list$1charph_length(info->method_generics_type_names);                            i_225++                            ){
-                                if(_if_conditional392=string_operator_equals(list$1charphp_operator_load_element(info->method_generics_type_names,i_225),type_name_135),                                _if_conditional392) {
+                                if(_if_conditional392=string_operator_equals(((char*)come_null_check(list$1charphp_operator_load_element(info->method_generics_type_names,i_225), "05function4.c", 1726, 8)),type_name_135),                                _if_conditional392) {
                                     __dec_obj142=result_type_223;
                                     result_type_223=(struct sType*)come_increment_ref_count(((struct sType*)(right_value297=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value295=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "05function4.c", 1727, "sType")))),((char*)(right_value296=xsprintf("mgenerics_type%d",i_225))),(_Bool)0,info))));
                                     come_call_finalizer2(sType_finalize,__dec_obj142, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -7648,7 +7648,7 @@ right_value369 = (void*)0;
                     else {
                         if(_if_conditional408=list$1charph_contained(info->generics_type_names,(char*)come_increment_ref_count(type_name_135)),                        _if_conditional408) {
                             for(                            i_237=0;                            i_237<list$1charph_length(info->generics_type_names);                            i_237++                            ){
-                                if(_if_conditional409=string_operator_equals(list$1charphp_operator_load_element(info->generics_type_names,i_237),type_name_135),                                _if_conditional409) {
+                                if(_if_conditional409=string_operator_equals(((char*)come_null_check(list$1charphp_operator_load_element(info->generics_type_names,i_237), "05function4.c", 1859, 9)),type_name_135),                                _if_conditional409) {
                                     __dec_obj161=type_185;
                                     type_185=(struct sType*)come_increment_ref_count(((struct sType*)(right_value323=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value321=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "05function4.c", 1860, "sType")))),((char*)(right_value322=xsprintf("generics_type%d",i_237))),(_Bool)0,info))));
                                     come_call_finalizer2(sType_finalize,__dec_obj161, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
@@ -7678,7 +7678,7 @@ right_value369 = (void*)0;
                         else {
                             if(_if_conditional410=list$1charph_contained(info->method_generics_type_names,(char*)come_increment_ref_count(type_name_135)),                            _if_conditional410) {
                                 for(                                i_238=0;                                i_238<list$1charph_length(info->method_generics_type_names);                                i_238++                                ){
-                                    if(_if_conditional411=string_operator_equals(list$1charphp_operator_load_element(info->method_generics_type_names,i_238),type_name_135),                                    _if_conditional411) {
+                                    if(_if_conditional411=string_operator_equals(((char*)come_null_check(list$1charphp_operator_load_element(info->method_generics_type_names,i_238), "05function4.c", 1882, 10)),type_name_135),                                    _if_conditional411) {
                                         __dec_obj163=type_185;
                                         type_185=(struct sType*)come_increment_ref_count(((struct sType*)(right_value326=sType_initialize((struct sType*)come_increment_ref_count(((struct sType*)(right_value324=(struct sType*)come_calloc(1, sizeof(struct sType)*(1), "05function4.c", 1883, "sType")))),((char*)(right_value325=xsprintf("mgenerics_type%d",i_238))),(_Bool)0,info))));
                                         come_call_finalizer2(sType_finalize,__dec_obj163, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);

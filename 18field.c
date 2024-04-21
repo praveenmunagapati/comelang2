@@ -100,7 +100,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
             come_value.c_value = append_object_to_right_values(come_value.c_value, result_type2, info);
         }
         
-        if(result_type2.mGuardValue) {
+        if(result_type2.mGuardValue && result_type2->mPointerNum > 0) {
             come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(result_type2)!, come_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
         }
         

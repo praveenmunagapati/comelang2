@@ -3130,11 +3130,11 @@ right_value116 = (void*)0;
     if(_if_conditional141=operator_fun_38&&(list$1sTypeph_length(type->mGenericsTypes)>0||(string_operator_equals(left_value->type->mClass->mName,right_value->type->mClass->mName)&&left_value->type->mPointerNum==right_value->type->mPointerNum)||charp_operator_equals(fun_name,"operator_mult")),    _if_conditional141) {
         come_value_60=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value97=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "13op.c", 77, "CVALUE"))));
         come_call_finalizer2(CVALUE_finalize,right_value97, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        check_assign_type(((char*)(right_value99=xsprintf("\%s is assigned to",((char*)(right_value98=string_to_string(fun_name2_39)))))),list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0),left_value->type,left_value,(_Bool)0,(_Bool)1,info);
+        check_assign_type(((char*)(right_value99=xsprintf("\%s is assigned to",((char*)(right_value98=string_to_string(fun_name2_39)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0), "13op.c", 79, 0)),left_value->type,left_value,(_Bool)0,(_Bool)1,info);
         right_value98 = come_decrement_ref_count2(right_value98, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value99 = come_decrement_ref_count2(right_value99, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional146=list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0)->mHeap&&left_value->type->mHeap,        _if_conditional146) {
-            std_move(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0),left_value->type,left_value,info);
+        if(_if_conditional146=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0), "13op.c", 80, 1))->mHeap&&left_value->type->mHeap,        _if_conditional146) {
+            std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0), "13op.c", 81, 2)),left_value->type,left_value,info);
             __dec_obj39=left_value2_61;
             left_value2_61=(char*)come_increment_ref_count(((char*)(right_value100=xsprintf("%s",left_value->c_value))));
             __dec_obj39 = come_decrement_ref_count2(__dec_obj39, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -3146,11 +3146,11 @@ right_value116 = (void*)0;
             __dec_obj40 = come_decrement_ref_count2(__dec_obj40, (void*)0, (void*)0, 0,0,0, (void*)0);
             right_value101 = come_decrement_ref_count2(right_value101, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
-        check_assign_type(((char*)(right_value103=xsprintf("\%s is assigned to",((char*)(right_value102=string_to_string(fun_name2_39)))))),list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,1),right_value->type,right_value,(_Bool)0,(_Bool)1,info);
+        check_assign_type(((char*)(right_value103=xsprintf("\%s is assigned to",((char*)(right_value102=string_to_string(fun_name2_39)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,1), "13op.c", 88, 3)),right_value->type,right_value,(_Bool)0,(_Bool)1,info);
         right_value102 = come_decrement_ref_count2(right_value102, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value103 = come_decrement_ref_count2(right_value103, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional147=list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,1)->mHeap&&right_value->type->mHeap,        _if_conditional147) {
-            std_move(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,1),right_value->type,right_value,info);
+        if(_if_conditional147=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,1), "13op.c", 89, 4))->mHeap&&right_value->type->mHeap,        _if_conditional147) {
+            std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,1), "13op.c", 90, 5)),right_value->type,right_value,info);
             __dec_obj41=right_value2_65;
             right_value2_65=(char*)come_increment_ref_count(((char*)(right_value104=xsprintf("%s",right_value->c_value))));
             __dec_obj41 = come_decrement_ref_count2(__dec_obj41, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -3184,7 +3184,7 @@ right_value116 = (void*)0;
             __dec_obj45 = come_decrement_ref_count2(__dec_obj45, (void*)0, (void*)0, 0,0,0, (void*)0);
             right_value113 = come_decrement_ref_count2(right_value113, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
-        if(_if_conditional149=!break_guard&&type3_67->mGuardValue,        _if_conditional149) {
+        if(_if_conditional149=!break_guard&&type3_67->mGuardValue&&type3_67->mPointerNum>0,        _if_conditional149) {
             __dec_obj46=come_value_60->c_value;
             come_value_60->c_value=(char*)come_increment_ref_count(((char*)(right_value115=xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))",((char*)(right_value114=make_type_name_string(type3_67,(_Bool)0,(_Bool)0,(_Bool)0,info))),come_value_60->c_value,info->sname,info->sline,gComeDebugStackFrameID++))));
             __dec_obj46 = come_decrement_ref_count2(__dec_obj46, (void*)0, (void*)0, 0,0,0, (void*)0);

@@ -2708,11 +2708,11 @@ right_value117 = (void*)0;
     if(operator_fun_39) {
         come_value_52=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value93=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "18field.c", 61, "CVALUE"))));
         come_call_finalizer2(CVALUE_finalize,right_value93, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        check_assign_type(((char*)(right_value95=xsprintf("\%s is assigned to",((char*)(right_value94=string_to_string(fun_name2_38)))))),list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,0),left_value->type,left_value,(_Bool)0,(_Bool)1,info);
+        check_assign_type(((char*)(right_value95=xsprintf("\%s is assigned to",((char*)(right_value94=string_to_string(fun_name2_38)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,0), "18field.c", 63, 0)),left_value->type,left_value,(_Bool)0,(_Bool)1,info);
         right_value94 = come_decrement_ref_count2(right_value94, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value95 = come_decrement_ref_count2(right_value95, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional143=list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,0)->mHeap&&left_value->type->mHeap,        _if_conditional143) {
-            std_move(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,0),left_value->type,left_value,info);
+        if(_if_conditional143=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,0), "18field.c", 64, 1))->mHeap&&left_value->type->mHeap,        _if_conditional143) {
+            std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,0), "18field.c", 65, 2)),left_value->type,left_value,info);
             __dec_obj39=left_value2_53;
             left_value2_53=(char*)come_increment_ref_count(((char*)(right_value96=xsprintf("%s",left_value->c_value))));
             __dec_obj39 = come_decrement_ref_count2(__dec_obj39, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -2724,11 +2724,11 @@ right_value117 = (void*)0;
             __dec_obj40 = come_decrement_ref_count2(__dec_obj40, (void*)0, (void*)0, 0,0,0, (void*)0);
             right_value97 = come_decrement_ref_count2(right_value97, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
-        check_assign_type(((char*)(right_value99=xsprintf("\%s is assigned to",((char*)(right_value98=string_to_string(fun_name2_38)))))),list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,1),middle_value->type,middle_value,(_Bool)0,(_Bool)1,info);
+        check_assign_type(((char*)(right_value99=xsprintf("\%s is assigned to",((char*)(right_value98=string_to_string(fun_name2_38)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,1), "18field.c", 72, 3)),middle_value->type,middle_value,(_Bool)0,(_Bool)1,info);
         right_value98 = come_decrement_ref_count2(right_value98, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value99 = come_decrement_ref_count2(right_value99, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional144=list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,1)->mHeap&&middle_value->type->mHeap,        _if_conditional144) {
-            std_move(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,1),middle_value->type,middle_value,info);
+        if(_if_conditional144=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,1), "18field.c", 73, 4))->mHeap&&middle_value->type->mHeap,        _if_conditional144) {
+            std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,1), "18field.c", 74, 5)),middle_value->type,middle_value,info);
             __dec_obj41=middle_value2_57;
             middle_value2_57=(char*)come_increment_ref_count(((char*)(right_value100=xsprintf("%s",middle_value->c_value))));
             __dec_obj41 = come_decrement_ref_count2(__dec_obj41, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -2740,11 +2740,11 @@ right_value117 = (void*)0;
             __dec_obj42 = come_decrement_ref_count2(__dec_obj42, (void*)0, (void*)0, 0,0,0, (void*)0);
             right_value101 = come_decrement_ref_count2(right_value101, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
-        check_assign_type(((char*)(right_value103=xsprintf("\%s is assigned to",((char*)(right_value102=string_to_string(fun_name2_38)))))),list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,2),right_value->type,right_value,(_Bool)0,(_Bool)1,info);
+        check_assign_type(((char*)(right_value103=xsprintf("\%s is assigned to",((char*)(right_value102=string_to_string(fun_name2_38)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,2), "18field.c", 81, 6)),right_value->type,right_value,(_Bool)0,(_Bool)1,info);
         right_value102 = come_decrement_ref_count2(right_value102, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value103 = come_decrement_ref_count2(right_value103, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional145=list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,2)->mHeap&&right_value->type->mHeap,        _if_conditional145) {
-            std_move(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,2),right_value->type,right_value,info);
+        if(_if_conditional145=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,2), "18field.c", 82, 7))->mHeap&&right_value->type->mHeap,        _if_conditional145) {
+            std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_39->mParamTypes,2), "18field.c", 83, 8)),right_value->type,right_value,info);
             __dec_obj43=right_value2_58;
             right_value2_58=(char*)come_increment_ref_count(((char*)(right_value104=xsprintf("%s",right_value->c_value))));
             __dec_obj43 = come_decrement_ref_count2(__dec_obj43, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -2779,7 +2779,7 @@ right_value117 = (void*)0;
             __dec_obj47 = come_decrement_ref_count2(__dec_obj47, (void*)0, (void*)0, 0,0,0, (void*)0);
             right_value114 = come_decrement_ref_count2(right_value114, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         }
-        if(result_type2_60->mGuardValue) {
+        if(_if_conditional147=result_type2_60->mGuardValue&&result_type2_60->mPointerNum>0,        _if_conditional147) {
             __dec_obj48=come_value_52->c_value;
             come_value_52->c_value=(char*)come_increment_ref_count(((char*)(right_value116=xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))",((char*)(right_value115=make_type_name_string(result_type2_60,(_Bool)0,(_Bool)0,(_Bool)0,info))),come_value_52->c_value,info->sname,info->sline,gComeDebugStackFrameID++))));
             __dec_obj48 = come_decrement_ref_count2(__dec_obj48, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -6100,7 +6100,7 @@ right_value265 = (void*)0;
         calling_fun_173=(_Bool)0;
     }
     else {
-        calling_fun_173=operator_overload_fun2(type_171,fun_name_172,left_value_156,list$1CVALUEphp_operator_load_element(array_num_160,0),right_value_168,info);
+        calling_fun_173=operator_overload_fun2(type_171,fun_name_172,left_value_156,((struct CVALUE*)come_null_check(list$1CVALUEphp_operator_load_element(array_num_160,0), "18field.c", 830, 9)),right_value_168,info);
     }
     if(_if_conditional263=!calling_fun_173,    _if_conditional263) {
         check_code_177=((void*)0);
@@ -6984,7 +6984,7 @@ right_value305 = (void*)0;
         calling_fun_225=(_Bool)0;
     }
     else {
-        calling_fun_225=operator_overload_fun(type_223,fun_name_224,left_value_217,list$1CVALUEphp_operator_load_element(array_num_219,0),self->mBreakGuard,info);
+        calling_fun_225=operator_overload_fun(type_223,fun_name_224,left_value_217,((struct CVALUE*)come_null_check(list$1CVALUEphp_operator_load_element(array_num_219,0), "18field.c", 1079, 10)),self->mBreakGuard,info);
     }
     if(_if_conditional316=!calling_fun_225,    _if_conditional316) {
         if(_if_conditional317=gComeDebug&&left_value_217->var&&left_value_217->var->mType&&list$1sNodeph_length(left_value_217->var->mType->mArrayNum)>0,        _if_conditional317) {
@@ -7385,7 +7385,7 @@ right_value326 = (void*)0;
         calling_fun_258=(_Bool)0;
     }
     else {
-        calling_fun_258=operator_overload_fun2(type_256,fun_name_257,left_value_250,list$1CVALUEphp_operator_load_element(array_num_252,0),list$1CVALUEphp_operator_load_element(array_num_252,1),info);
+        calling_fun_258=operator_overload_fun2(type_256,fun_name_257,left_value_250,((struct CVALUE*)come_null_check(list$1CVALUEphp_operator_load_element(array_num_252,0), "18field.c", 1316, 11)),((struct CVALUE*)come_null_check(list$1CVALUEphp_operator_load_element(array_num_252,1), "18field.c", 1316, 12)),info);
     }
     if(_if_conditional344=!calling_fun_258,    _if_conditional344) {
         come_value_259=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value317=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "18field.c", 1320, "CVALUE"))));

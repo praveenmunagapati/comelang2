@@ -2,9 +2,9 @@
 
 int main(int argc, char** argv)
 {
-    var m = ["AAA":"AAA", "BBB":"BBB"];
+    var li = [1,2,3,4,5];
     
-    char* l = m["CCC"]??;
+    int a = li[0];
     
     return 0;
 }

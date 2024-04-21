@@ -4368,7 +4368,7 @@ right_value197 = (void*)0;
                     i_86=0;
                     for(                    o2_saved_87=(struct list$1charph*)come_increment_ref_count((self->multiple_assign)),it_90=list$1charph_begin((o2_saved_87));                    !list$1charph_end((o2_saved_87));                    it_90=list$1charph_next((o2_saved_87))                    ){
                         if(_if_conditional177=i_86<list$1sTypeph_length(right_type_84->mGenericsTypes),                        _if_conditional177) {
-                            right_type2_96=list$1sTypephp_operator_load_element(right_type_84->mGenericsTypes,i_86);
+                            right_type2_96=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(right_type_84->mGenericsTypes,i_86), "07var.c", 255, 0));
                             right_type2_96->mFunctionParam=(_Bool)0;
                             add_variable_to_table(it_90,(struct sType*)come_increment_ref_count(((struct sType*)(right_value131=sType_clone(right_type2_96)))),info);
                             come_call_finalizer2(sType_finalize,right_value131, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
@@ -4522,7 +4522,7 @@ right_value197 = (void*)0;
                 i_115=0;
                 for(                o2_saved_116=(struct list$1charph*)come_increment_ref_count((self->multiple_assign)),it_117=list$1charph_begin((o2_saved_116));                !list$1charph_end((o2_saved_116));                it_117=list$1charph_next((o2_saved_116))                ){
                     if(_if_conditional194=i_115<list$1sTypeph_length(right_type_84->mGenericsTypes),                    _if_conditional194) {
-                        right_type2_118=(struct sType*)come_increment_ref_count(((struct sType*)(right_value155=sType_clone(list$1sTypephp_operator_load_element(right_type_84->mGenericsTypes,i_115)))));
+                        right_type2_118=(struct sType*)come_increment_ref_count(((struct sType*)(right_value155=sType_clone(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(right_type_84->mGenericsTypes,i_115), "07var.c", 389, 1))))));
                         come_call_finalizer2(sType_finalize,right_value155, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
                         var__119=get_variable_from_table(info->lv_table,it_117);
                         var_type_120=(struct sType*)come_increment_ref_count(((struct sType*)(right_value156=sType_clone(var__119->mType))));

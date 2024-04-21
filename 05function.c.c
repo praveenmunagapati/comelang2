@@ -3201,11 +3201,11 @@ right_value107 = (void*)0;
     if(operator_fun_38) {
         come_value_60=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value97=(struct CVALUE*)come_calloc(1, sizeof(struct CVALUE)*(1), "05function.c", 85, "CVALUE"))));
         come_call_finalizer2(CVALUE_finalize,right_value97, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-        check_assign_type(((char*)(right_value99=xsprintf("\%s is assigned to",((char*)(right_value98=string_to_string(fun_name2_39)))))),list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0),left_value->type,left_value,(_Bool)0,(_Bool)1,info);
+        check_assign_type(((char*)(right_value99=xsprintf("\%s is assigned to",((char*)(right_value98=string_to_string(fun_name2_39)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0), "05function.c", 87, 0)),left_value->type,left_value,(_Bool)0,(_Bool)1,info);
         right_value98 = come_decrement_ref_count2(right_value98, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
         right_value99 = come_decrement_ref_count2(right_value99, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-        if(_if_conditional146=list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0)->mHeap&&left_value->type->mHeap,        _if_conditional146) {
-            std_move(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0),left_value->type,left_value,info);
+        if(_if_conditional146=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0), "05function.c", 88, 1))->mHeap&&left_value->type->mHeap,        _if_conditional146) {
+            std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(operator_fun_38->mParamTypes,0), "05function.c", 89, 2)),left_value->type,left_value,info);
             __dec_obj39=left_value2_61;
             left_value2_61=(char*)come_increment_ref_count(((char*)(right_value100=xsprintf("%s",left_value->c_value))));
             __dec_obj39 = come_decrement_ref_count2(__dec_obj39, (void*)0, (void*)0, 0,0,0, (void*)0);
@@ -6907,15 +6907,15 @@ right_value340 = (void*)0;
             }
             come_value_147=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value252=get_value_from_stack(-1,info))));
             come_call_finalizer2(CVALUE_finalize,right_value252, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-            if(_if_conditional238=lambda_type_133->mVarArgs&&list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138)==((void*)0),            _if_conditional238) {
+            if(_if_conditional238=lambda_type_133->mVarArgs&&((struct sType*)come_null_check(list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138), "05function.c", 1150, 3))==((void*)0),            _if_conditional238) {
             }
             else {
-                check_assign_type(((char*)(right_value255=xsprintf("\%s calling param #\%s",((char*)(right_value253=string_to_string(fun_name_130))),((char*)(right_value254=int_to_string(i_138)))))),list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138),come_value_147->type,come_value_147,(_Bool)0,(_Bool)1,info);
+                check_assign_type(((char*)(right_value255=xsprintf("\%s calling param #\%s",((char*)(right_value253=string_to_string(fun_name_130))),((char*)(right_value254=int_to_string(i_138)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138), "05function.c", 1153, 4)),come_value_147->type,come_value_147,(_Bool)0,(_Bool)1,info);
                 right_value253 = come_decrement_ref_count2(right_value253, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 right_value254 = come_decrement_ref_count2(right_value254, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                 right_value255 = come_decrement_ref_count2(right_value255, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                if(_if_conditional239=list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138)->mHeap&&come_value_147->type->mHeap,                _if_conditional239) {
-                    std_move(list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138),come_value_147->type,come_value_147,info);
+                if(_if_conditional239=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138), "05function.c", 1154, 5))->mHeap&&come_value_147->type->mHeap,                _if_conditional239) {
+                    std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(lambda_type_133->mParamTypes,i_138), "05function.c", 1155, 6)),come_value_147->type,come_value_147,info);
                 }
             }
             list$1CVALUEph_push_back(come_params_137,(struct CVALUE*)come_increment_ref_count(come_value_147));
@@ -7207,24 +7207,24 @@ right_value340 = (void*)0;
                     }
                     come_call_finalizer2(list$1charphp_finalize,o2_saved_206, (void*)0, (void*)0, 0, 0, 0, 0, (void*)0);
                     if(_if_conditional286=n_205<list$1sTypeph_length(fun_179->mParamTypes),                    _if_conditional286) {
-                        check_assign_type(((char*)(right_value307=xsprintf("\%s calling param(1) #\%s",((char*)(right_value305=string_to_string(fun_name_130))),((char*)(right_value306=int_to_string(n_205)))))),list$1sTypephp_operator_load_element(param_types_181,n_205),come_value_204->type,come_value_204,(_Bool)0,(_Bool)1,info);
+                        check_assign_type(((char*)(right_value307=xsprintf("\%s calling param(1) #\%s",((char*)(right_value305=string_to_string(fun_name_130))),((char*)(right_value306=int_to_string(n_205)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,n_205), "05function.c", 1363, 7)),come_value_204->type,come_value_204,(_Bool)0,(_Bool)1,info);
                         right_value305 = come_decrement_ref_count2(right_value305, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                         right_value306 = come_decrement_ref_count2(right_value306, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                         right_value307 = come_decrement_ref_count2(right_value307, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     }
-                    if(_if_conditional287=n_205<list$1sTypeph_length(fun_179->mParamTypes)&&list$1sTypephp_operator_load_element(param_types_181,n_205)->mHeap&&come_value_204->type->mHeap,                    _if_conditional287) {
-                        std_move(list$1sTypephp_operator_load_element(param_types_181,n_205),come_value_204->type,come_value_204,info);
+                    if(_if_conditional287=n_205<list$1sTypeph_length(fun_179->mParamTypes)&&((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,n_205), "05function.c", 1365, 8))->mHeap&&come_value_204->type->mHeap,                    _if_conditional287) {
+                        std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,n_205), "05function.c", 1366, 9)),come_value_204->type,come_value_204,info);
                     }
                 }
                 else {
                     if(_if_conditional288=i_199<list$1sTypeph_length(fun_179->mParamTypes),                    _if_conditional288) {
-                        check_assign_type(((char*)(right_value310=xsprintf("\%s calling param(2) #\%s",((char*)(right_value308=string_to_string(fun_name_130))),((char*)(right_value309=int_to_string(i_199)))))),list$1sTypephp_operator_load_element(param_types_181,i_199),come_value_204->type,come_value_204,(_Bool)0,(_Bool)1,info);
+                        check_assign_type(((char*)(right_value310=xsprintf("\%s calling param(2) #\%s",((char*)(right_value308=string_to_string(fun_name_130))),((char*)(right_value309=int_to_string(i_199)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,i_199), "05function.c", 1371, 10)),come_value_204->type,come_value_204,(_Bool)0,(_Bool)1,info);
                         right_value308 = come_decrement_ref_count2(right_value308, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                         right_value309 = come_decrement_ref_count2(right_value309, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                         right_value310 = come_decrement_ref_count2(right_value310, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     }
-                    if(_if_conditional289=i_199<list$1sTypeph_length(fun_179->mParamTypes)&&list$1sTypephp_operator_load_element(param_types_181,i_199)->mHeap&&come_value_204->type->mHeap,                    _if_conditional289) {
-                        std_move(list$1sTypephp_operator_load_element(param_types_181,i_199),come_value_204->type,come_value_204,info);
+                    if(_if_conditional289=i_199<list$1sTypeph_length(fun_179->mParamTypes)&&((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,i_199), "05function.c", 1373, 11))->mHeap&&come_value_204->type->mHeap,                    _if_conditional289) {
+                        std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,i_199), "05function.c", 1374, 12)),come_value_204->type,come_value_204,info);
                     }
                 }
             }
@@ -7243,9 +7243,9 @@ right_value340 = (void*)0;
         }
         if(_if_conditional340=list$1tuple2$2charphsNodephph_length(params_131)<list$1sTypeph_length(fun_179->mParamTypes),        _if_conditional340) {
             for(            ;            i_199<list$1sTypeph_length(fun_179->mParamTypes);            i_199++            ){
-                default_param_259=(char*)come_increment_ref_count(((char*)(right_value318=string_clone(list$1charphp_operator_load_element(fun_179->mParamDefaultParametors,i_199)))));
+                default_param_259=(char*)come_increment_ref_count(((char*)(right_value318=string_clone(((char*)come_null_check(list$1charphp_operator_load_element(fun_179->mParamDefaultParametors,i_199), "05function.c", 1392, 13))))));
                 right_value318 = come_decrement_ref_count2(right_value318, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                param_name_260=list$1charphp_operator_load_element(fun_179->mParamNames,i_199);
+                param_name_260=((char*)come_null_check(list$1charphp_operator_load_element(fun_179->mParamNames,i_199), "05function.c", 1394, 14));
                 come_value_264=map$2charphCVALUEphp_operator_load_element(label_params_198,param_name_260);
                 if(_if_conditional347=default_param_259&&string_operator_not_equals(default_param_259,""),                _if_conditional347) {
                     source_265=(struct buffer*)come_increment_ref_count(info->source);
@@ -7280,12 +7280,12 @@ right_value340 = (void*)0;
                     info->sline=sline_268;
                     come_value_270=(struct CVALUE*)come_increment_ref_count(((struct CVALUE*)(right_value321=get_value_from_stack(-1,info))));
                     come_call_finalizer2(CVALUE_finalize,right_value321, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
-                    check_assign_type(((char*)(right_value324=xsprintf("\%s calling param(3) #\%s",((char*)(right_value322=string_to_string(fun_name_130))),((char*)(right_value323=int_to_string(i_199)))))),list$1sTypephp_operator_load_element(param_types_181,i_199),come_value_270->type,come_value_270,(_Bool)0,(_Bool)1,info);
+                    check_assign_type(((char*)(right_value324=xsprintf("\%s calling param(3) #\%s",((char*)(right_value322=string_to_string(fun_name_130))),((char*)(right_value323=int_to_string(i_199)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,i_199), "05function.c", 1421, 15)),come_value_270->type,come_value_270,(_Bool)0,(_Bool)1,info);
                     right_value322 = come_decrement_ref_count2(right_value322, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     right_value323 = come_decrement_ref_count2(right_value323, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     right_value324 = come_decrement_ref_count2(right_value324, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
-                    if(_if_conditional349=list$1sTypephp_operator_load_element(param_types_181,i_199)->mHeap&&come_value_270->type->mHeap,                    _if_conditional349) {
-                        std_move(list$1sTypephp_operator_load_element(param_types_181,i_199),come_value_270->type,come_value_270,info);
+                    if(_if_conditional349=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,i_199), "05function.c", 1422, 16))->mHeap&&come_value_270->type->mHeap,                    _if_conditional349) {
+                        std_move(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,i_199), "05function.c", 1423, 17)),come_value_270->type,come_value_270,info);
                     }
                     list$1CVALUEph_push_back(come_params_192,(struct CVALUE*)come_increment_ref_count(come_value_270));
                     dec_stack_ptr(1,info);
@@ -7314,10 +7314,10 @@ right_value340 = (void*)0;
         }
         if(_if_conditional351=map$2charphCVALUEph_length(label_params_198)>0,        _if_conditional351) {
             for(            i_199=0;            i_199<list$1charph_length(fun_179->mParamNames);            i_199++            ){
-                param_name_271=list$1charphp_operator_load_element(fun_179->mParamNames,i_199);
+                param_name_271=((char*)come_null_check(list$1charphp_operator_load_element(fun_179->mParamNames,i_199), "05function.c", 1442, 18));
                 come_value_272=map$2charphCVALUEphp_operator_load_element(label_params_198,param_name_271);
                 if(come_value_272) {
-                    check_assign_type(((char*)(right_value327=xsprintf("\%s calling param(4) \%s",((char*)(right_value325=string_to_string(fun_name_130))),((char*)(right_value326=int_to_string(i_199)))))),list$1sTypephp_operator_load_element(param_types_181,i_199),come_value_272->type,come_value_272,(_Bool)0,(_Bool)1,info);
+                    check_assign_type(((char*)(right_value327=xsprintf("\%s calling param(4) \%s",((char*)(right_value325=string_to_string(fun_name_130))),((char*)(right_value326=int_to_string(i_199)))))),((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_181,i_199), "05function.c", 1447, 19)),come_value_272->type,come_value_272,(_Bool)0,(_Bool)1,info);
                     right_value325 = come_decrement_ref_count2(right_value325, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     right_value326 = come_decrement_ref_count2(right_value326, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
                     right_value327 = come_decrement_ref_count2(right_value327, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
@@ -7377,7 +7377,7 @@ right_value340 = (void*)0;
                 right_value338 = come_decrement_ref_count2(right_value338, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             }
         }
-        if(_if_conditional366=!self->guard_break&&result_type_180->mGuardValue,        _if_conditional366) {
+        if(_if_conditional366=!self->guard_break&&result_type_180->mGuardValue&&result_type_180->mPointerNum>0,        _if_conditional366) {
             __dec_obj126=come_value_280->c_value;
             come_value_280->c_value=(char*)come_increment_ref_count(((char*)(right_value340=xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))",((char*)(right_value339=make_type_name_string(result_type_180,(_Bool)0,(_Bool)0,(_Bool)0,info))),come_value_280->c_value,info->sname,info->sline,gComeDebugStackFrameID++))));
             __dec_obj126 = come_decrement_ref_count2(__dec_obj126, (void*)0, (void*)0, 0,0,0, (void*)0);

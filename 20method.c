@@ -580,7 +580,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
         if(params.length() < fun.mParamTypes.length()+(method_block?-2:0))
         {
             for(; i<fun.mParamTypes.length()+(method_block?-2:0); i++) {
-                string default_param = clone fun.mParamDefaultParametors[i];
+                string default_param = clone fun.mParamDefaultParametors[i]??;
                 //string default_param = clone fun.mParamDefaultParametors[i].value();
                 char* param_name = fun.mParamNames[i];
                 //char* param_name = fun.mParamNames[i].value();

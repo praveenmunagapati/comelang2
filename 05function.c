@@ -1347,7 +1347,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             
             CVALUE*% come_value = get_value_from_stack(-1, info);
             
-            if(fun.mVarArgs && fun.mParamTypes[i] == null) {
+            if(fun.mVarArgs && fun.mParamTypes[i]?? == null) {
             }
             else {
                 if(label != null) {
@@ -1490,7 +1490,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             }
         }
         
-        if(!self.guard_break && result_type.mGuardValue) {
+        if(!self.guard_break && result_type.mGuardValue && result_type->mPointerNum > 0) {
             come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(result_type)!, come_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
         }
         

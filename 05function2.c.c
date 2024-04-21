@@ -4144,7 +4144,7 @@ right_value126 = (void*)0;
     info->param_names=param_names;
     if(_if_conditional146=param_types&&param_names,    _if_conditional146) {
         for(        o2_saved_58=(param_names),name_61=list$1charph_begin((o2_saved_58));        !list$1charph_end((o2_saved_58));        name_61=list$1charph_next((o2_saved_58))        ){
-            type_67=(struct sType*)come_increment_ref_count(((struct sType*)(right_value120=sType_clone(list$1sTypephp_operator_load_element(param_types,i_57)))));
+            type_67=(struct sType*)come_increment_ref_count(((struct sType*)(right_value120=sType_clone(((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types,i_57), "05function2.c", 286, 0))))));
             come_call_finalizer2(sType_finalize,right_value120, (void*)0, (void*)0, 0, 1, 0, 0, __result_obj__);
             type_67->mFunctionParam=(_Bool)1;
             type_67->mAllocaValue=(_Bool)0;
@@ -10570,8 +10570,8 @@ right_value660 = (void*)0;
         buffer_append_str(header_buf_494,real_fun_name_467);
         buffer_append_str(header_buf_494,"(");
         for(        i_495=0;        i_495<list$1sTypeph_length(param_types_490);        i_495++        ){
-            param_type_496=list$1sTypephp_operator_load_element(param_types_490,i_495);
-            param_name_500=list$1charphp_operator_load_element(param_names_492,i_495);
+            param_type_496=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_490,i_495), "05function2.c", 1776, 1));
+            param_name_500=((char*)come_null_check(list$1charphp_operator_load_element(param_names_492,i_495), "05function2.c", 1777, 2));
             buffer_append_str(header_buf_494,((char*)(right_value646=make_come_type_name_string(param_type_496,info))));
             right_value646 = come_decrement_ref_count2(right_value646, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(header_buf_494," ");
@@ -11049,8 +11049,8 @@ right_value695 = (void*)0;
         buffer_append_str(header_buf_533,real_fun_name_510);
         buffer_append_str(header_buf_533,"(");
         for(        i_534=0;        i_534<list$1sTypeph_length(param_types_529);        i_534++        ){
-            param_type_535=list$1sTypephp_operator_load_element(param_types_529,i_534);
-            param_name_536=list$1charphp_operator_load_element(param_names_531,i_534);
+            param_type_535=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_529,i_534), "05function2.c", 1913, 3));
+            param_name_536=((char*)come_null_check(list$1charphp_operator_load_element(param_names_531,i_534), "05function2.c", 1914, 4));
             buffer_append_str(header_buf_533,((char*)(right_value681=make_come_type_name_string(param_type_535,info))));
             right_value681 = come_decrement_ref_count2(right_value681, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(header_buf_533," ");
@@ -11411,8 +11411,8 @@ __list_values26___569[1]=come_increment_ref_count(((char*)(right_value710=__buil
         buffer_append_str(header_buf_572,real_fun_name_546);
         buffer_append_str(header_buf_572,"(");
         for(        i_573=0;        i_573<list$1sTypeph_length(param_types_568);        i_573++        ){
-            param_type_574=list$1sTypephp_operator_load_element(param_types_568,i_573);
-            param_name_575=list$1charphp_operator_load_element(param_names_570,i_573);
+            param_type_574=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_568,i_573), "05function2.c", 2055, 5));
+            param_name_575=((char*)come_null_check(list$1charphp_operator_load_element(param_names_570,i_573), "05function2.c", 2056, 6));
             buffer_append_str(header_buf_572,((char*)(right_value718=make_come_type_name_string(param_type_574,info))));
             right_value718 = come_decrement_ref_count2(right_value718, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(header_buf_572," ");
@@ -11794,8 +11794,8 @@ __list_values28___612[1]=come_increment_ref_count(((char*)(right_value747=__buil
         buffer_append_str(header_buf_615,real_fun_name_585);
         buffer_append_str(header_buf_615,"(");
         for(        i_616=0;        i_616<list$1sTypeph_length(param_types_611);        i_616++        ){
-            param_type_617=list$1sTypephp_operator_load_element(param_types_611,i_616);
-            param_name_618=list$1charphp_operator_load_element(param_names_613,i_616);
+            param_type_617=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_611,i_616), "05function2.c", 2214, 7));
+            param_name_618=((char*)come_null_check(list$1charphp_operator_load_element(param_names_613,i_616), "05function2.c", 2215, 8));
             buffer_append_str(header_buf_615,((char*)(right_value755=make_come_type_name_string(param_type_617,info))));
             right_value755 = come_decrement_ref_count2(right_value755, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(header_buf_615," ");
@@ -12171,8 +12171,8 @@ __list_values30___651[1]=come_increment_ref_count(((char*)(right_value784=__buil
         buffer_append_str(header_buf_654,real_fun_name_628);
         buffer_append_str(header_buf_654,"(");
         for(        i_655=0;        i_655<list$1sTypeph_length(param_types_650);        i_655++        ){
-            param_type_656=list$1sTypephp_operator_load_element(param_types_650,i_655);
-            param_name_657=list$1charphp_operator_load_element(param_names_652,i_655);
+            param_type_656=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_650,i_655), "05function2.c", 2356, 9));
+            param_name_657=((char*)come_null_check(list$1charphp_operator_load_element(param_names_652,i_655), "05function2.c", 2357, 10));
             buffer_append_str(header_buf_654,((char*)(right_value792=make_come_type_name_string(param_type_656,info))));
             right_value792 = come_decrement_ref_count2(right_value792, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(header_buf_654," ");
@@ -12590,8 +12590,8 @@ right_value843 = (void*)0;
         buffer_append_str(header_buf_700,real_fun_name_667);
         buffer_append_str(header_buf_700,"(");
         for(        i_701=0;        i_701<list$1sTypeph_length(param_types_696);        i_701++        ){
-            param_type_702=list$1sTypephp_operator_load_element(param_types_696,i_701);
-            param_name_703=list$1charphp_operator_load_element(param_names_698,i_701);
+            param_type_702=((struct sType*)come_null_check(list$1sTypephp_operator_load_element(param_types_696,i_701), "05function2.c", 2539, 11));
+            param_name_703=((char*)come_null_check(list$1charphp_operator_load_element(param_names_698,i_701), "05function2.c", 2540, 12));
             buffer_append_str(header_buf_700,((char*)(right_value829=make_come_type_name_string(param_type_702,info))));
             right_value829 = come_decrement_ref_count2(right_value829, (void*)0, (void*)0, 1, 0, 0, __result_obj__);
             buffer_append_str(header_buf_700," ");

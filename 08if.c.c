@@ -3975,7 +3975,7 @@ memset(&num_elif_conditional_stack_112, 0, sizeof(int));
     add_come_code(info,"}\n");
     if(_if_conditional124=elif_num_86>0,    _if_conditional124) {
         for(        i_99=0;        i_99<elif_num_86;        i_99++        ){
-            expression_node2_103=list$1sNodephp_operator_load_element(self->mElifExpressionNodes,i_99);
+            expression_node2_103=((struct sNode*)come_null_check(list$1sNodephp_operator_load_element(self->mElifExpressionNodes,i_99), "08if.c", 124, 0));
             info->writing_source_file_position=(_Bool)1;
             info->without_semicolon=(_Bool)1;
             if(_if_conditional127=!node_compile(expression_node2_103,info),            _if_conditional127) {
@@ -3983,7 +3983,7 @@ memset(&num_elif_conditional_stack_112, 0, sizeof(int));
                 return __result82__;
             }
             info->without_semicolon=(_Bool)0;
-            elif_node_block_107=list$1sBlockphp_operator_load_element(self->mElifBlocks,i_99);
+            elif_node_block_107=((struct sBlock*)come_null_check(list$1sBlockphp_operator_load_element(self->mElifBlocks,i_99), "08if.c", 132, 1));
             normal_if_108=(_Bool)1;
             if(_if_conditional130=info->module->mLastCode||info->module->mLastCode2||info->module->mLastCode3,            _if_conditional130) {
                 normal_if_108=(_Bool)0;

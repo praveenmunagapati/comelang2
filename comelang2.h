@@ -678,7 +678,7 @@ impl list <T>
         
         return item;
     }
-    T& operator_load_element(list<T>* self, int position) {
+    T&?? operator_load_element(list<T>* self, int position) {
         if(position < 0) {
             position += self.len;
         }
