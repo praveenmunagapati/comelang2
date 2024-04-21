@@ -1,10 +1,13 @@
 #include <comelang2.h>
 
+char*?? fun()
+{
+    return null;
+}
+
 int main(int argc, char** argv)
 {
-    var m = ["AAA":"AAA", "BBB":"BBB"];
-    
-    printf("%d\n", m["CCC"]);
+    var a = fun();
     
     return 0;
 }

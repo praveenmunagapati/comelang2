@@ -342,7 +342,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
         for(int i=FUN_VERSION_MAX; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", generics_fun_name, i);
         
-            fun = info.funcs[new_fun_name];
+            fun = info.funcs[new_fun_name]??;
             
             if(fun != null) {
                 generics_fun_name = string(new_fun_name);
@@ -585,8 +585,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 char* param_name = fun.mParamNames[i];
                 //char* param_name = fun.mParamNames[i].value();
                 
-                CVALUE* come_value = label_params[param_name];
-                //CVALUE* come_value = label_params[param_name].value();
+                CVALUE* come_value = label_params[param_name]??;
                 
                 if(default_param && default_param !== "") {
                     buffer*% source = info.source;
@@ -635,7 +634,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 char* param_name = fun.mParamNames[i];
                 //char* param_name = fun.mParamNames[i].value();
                 
-                CVALUE* come_value = label_params[param_name];
+                CVALUE* come_value = label_params[param_name]??;
                 
                 if(come_value) {
                     come_params.replace(i, clone come_value);
@@ -659,9 +658,9 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
             
             string class_name = xsprintf("__current_stack%d__", info->current_stack_num);
             
-            method_block_type.mParamTypes[0].mClass = info.classes[class_name];
+            method_block_type.mParamTypes[0].mClass = info.classes[class_name]??;
             sClass* current_stack_frame_struct = info.current_stack_frame_struct;
-            info->current_stack_frame_struct = info.classes[class_name];
+            info->current_stack_frame_struct = info.classes[class_name]??;
             
             info->num_method_block++;
             

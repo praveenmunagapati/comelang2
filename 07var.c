@@ -60,7 +60,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
     string array_initializer = clone self.array_initializer;
     
     if(array_initializer) {
-        sVar* var_ = info.lv_table.mVars[self.name];
+        sVar* var_ = info.lv_table.mVars[self.name]??;
         if(var_) {
             err_msg(info, "Already appended this var name(%s)(2)", self.name);
             return false;
@@ -85,7 +85,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
         add_come_code(info, "%s=%s;\n", make_define_var(var_type, var_->mCValueName), array_initializer);
     }
     else if(self.right_value == null) {
-        sVar* var_ = info.lv_table.mVars[self.name];
+        sVar* var_ = info.lv_table.mVars[self.name]??;
         if(var_) {
             err_msg(info, "Already appended this var name(%s)(1)", self.name);
             return false;
@@ -242,7 +242,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
         }
         
         if(self.alloc) {
-            sVar* var_ = info.lv_table.mVars[self.name];
+            sVar* var_ = info.lv_table.mVars[self.name]??;
             if(var_) {
                 err_msg(info, "Already appended this var name(%s)(2)", self.name);
                 return false;
@@ -327,7 +327,7 @@ bool sStoreNode*::compile(sStoreNode* self, sInfo* info)
         
         sClass* current_stack_frame_struct = info->current_stack_frame_struct;
         
-        if(current_stack_frame_struct && info.lv_table.mVars[self.name] == null) {
+        if(current_stack_frame_struct && info.lv_table.mVars[self.name]?? == null) {
             sVar* parent_var = get_variable_from_table(info.lv_table->mParent, self.name);
             
             if(parent_var != null) {
@@ -629,7 +629,7 @@ bool sLoadNode*::compile(sLoadNode* self, sInfo* info)
 {
     sClass* current_stack_frame_struct = info->current_stack_frame_struct;
     
-    if(current_stack_frame_struct && info.lv_table.mVars[self.name] == null) {
+    if(current_stack_frame_struct && info.lv_table.mVars[self.name]?? == null) {
         sVar* parent_var = get_variable_from_table(info.lv_table->mParent, self.name);
         
         if(parent_var != null) {
@@ -658,7 +658,7 @@ bool sLoadNode*::compile(sLoadNode* self, sInfo* info)
         var_ = get_variable_from_table(info.gv_table, self.name);
         
         if(var_ == null) {
-            sFun* fun = info.funcs[self.name];
+            sFun* fun = info.funcs[self.name]??;
             
             if(fun) {
                 CVALUE*% come_value = new CVALUE;
@@ -740,7 +740,7 @@ string sFunLoadNode*::kind()
 
 bool sFunLoadNode*::compile(sFunLoadNode* self, sInfo* info)
 {
-    sFun* fun = info.funcs[self.name];
+    sFun* fun = info.funcs[self.name]??;
     
     if(fun == null) {
         err_msg(info, "fun not found(%s) at loading variable\n", self.name);
@@ -908,7 +908,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
     }
     
     parse_sharp();
-    sFun* fun = info.funcs[buf];
+    sFun* fun = info.funcs[buf]??;
     
     if(buf === "var" || buf === "auto") {
         parse_sharp();
@@ -1070,7 +1070,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
         
         return result;
     }
-    else if(!is_type_name_flag || info.funcs[buf]) {
+    else if(!is_type_name_flag || info.funcs[buf]??) {
         sNode*% node = new sLoadNode(string(buf)@name, info) implements sNode;
         
         node = post_position_operator(node, info);

@@ -710,7 +710,7 @@ bool output_source_file(sInfo* info) version 3
     
     fprintf(f, "// header function\n");
     foreach(it, info.funcs) {
-        sFun* it2 = info.funcs[string(it)];
+        sFun* it2 = info.funcs[string(it)]??;
         
         string header = header_function(it2, info);
         
@@ -728,7 +728,7 @@ bool output_source_file(sInfo* info) version 3
     
     fprintf(f, "// inline function\n");
     foreach(it, info.funcs) {
-        sFun* it2 = info.funcs[string(it)];
+        sFun* it2 = info.funcs[string(it)]??;
 
         string header = header_function(it2, info);
         
@@ -750,7 +750,7 @@ bool output_source_file(sInfo* info) version 3
     
     fprintf(f, "// body function\n");
     foreach(it, info.funcs) {
-        sFun* it2 = info.funcs[it];
+        sFun* it2 = info.funcs[it]??;
         
         if(!it2->mExternal) {
             string output = output_function(it2, info);

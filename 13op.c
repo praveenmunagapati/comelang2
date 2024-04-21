@@ -1,6 +1,6 @@
 #include "common.h"
 
-bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVALUE* right_value, sInfo* info)
+bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVALUE* right_value, bool break_guard, sInfo* info)
 {
     sType*% generics_type = clone type;
     if(generics_type->mNoSolvedGenericsType.v1) {
@@ -32,7 +32,7 @@ bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVAL
                 return false;
             }
             
-            operator_fun = info->funcs[fun_name2];
+            operator_fun = info->funcs[fun_name2]??;
         }
         else {
             if(fun_name === "operator_equals") {
@@ -48,7 +48,7 @@ bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVAL
                 operator_fun = fun2;
             }
             else {
-                operator_fun = info->funcs[fun_name2];
+                operator_fun = info->funcs[fun_name2]??;
             }
         }
     }
@@ -58,7 +58,7 @@ bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVAL
         int i;
         for(i=FUN_VERSION_MAX-1; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", fun_name2, i);
-            operator_fun = info->funcs[new_fun_name];
+            operator_fun = info->funcs[new_fun_name]??;
             
             if(operator_fun) {
                 fun_name2 = string(new_fun_name);
@@ -67,7 +67,7 @@ bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVAL
         }
         
         if(operator_fun == NULL) {
-            operator_fun = info->funcs[fun_name2];
+            operator_fun = info->funcs[fun_name2]??;
         }
     }
     
@@ -105,6 +105,10 @@ bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVAL
         
         if(type3->mHeap) {
             come_value.c_value = append_object_to_right_values(come_value.c_value, type3, info);
+        }
+        
+        if(!break_guard && type3.mGuardValue) {
+            come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(type3)!, come_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
         }
         
         come_value.c_value = append_stackframe(come_value.c_value, come_value.type, info);
@@ -293,7 +297,7 @@ bool sAddNode*::compile(sAddNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -384,7 +388,7 @@ bool sSubNode*::compile(sSubNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -475,7 +479,7 @@ bool sMultNode*::compile(sMultNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -566,7 +570,7 @@ bool sDivNode*::compile(sDivNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -657,7 +661,7 @@ bool sModNode*::compile(sModNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -748,7 +752,7 @@ bool sLShiftNode*::compile(sLShiftNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -839,7 +843,7 @@ bool sRShiftNode*::compile(sRShiftNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -930,7 +934,7 @@ bool sGtEqNode*::compile(sGtEqNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1021,7 +1025,7 @@ bool sLtEqNode*::compile(sLtEqNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1112,7 +1116,7 @@ bool sLtNode*::compile(sLtNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1203,7 +1207,7 @@ bool sGtNode*::compile(sGtNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1451,7 +1455,7 @@ bool sEq2Node*::compile(sEqNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1542,7 +1546,7 @@ bool sNotEq2Node*::compile(sNotEq2Node* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1633,7 +1637,7 @@ bool sAndNode*::compile(sAndNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     
@@ -1725,7 +1729,7 @@ bool sXOrNode*::compile(sXOrNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1815,7 +1819,7 @@ bool sOrNode*::compile(sOrNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     
@@ -1906,7 +1910,7 @@ bool sAndAndNode*::compile(sAndAndNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     
@@ -1916,7 +1920,7 @@ bool sAndAndNode*::compile(sAndAndNode* self, sInfo* info)
         come_value.c_value = xsprintf("%s&&%s", left_value.c_value, right_value.c_value);
         come_value.type = clone left_value.type;
         come_value.type->mHeap = false;
-        come_value.var = null;
+        come_value.var = left_value.var;
         
         add_come_last_code(info, "%s;\n", come_value.c_value);
         
@@ -1997,7 +2001,7 @@ bool sOrOrNode*::compile(sOrOrNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -2006,7 +2010,7 @@ bool sOrOrNode*::compile(sOrOrNode* self, sInfo* info)
         come_value.c_value = xsprintf("%s||%s", left_value.c_value, right_value.c_value);
         come_value.type = clone left_value.type;
         come_value.type->mHeap = false;
-        come_value.var = null;
+        come_value.var = left_value.var;
         
         add_come_last_code(info, "%s;\n", come_value.c_value);
         

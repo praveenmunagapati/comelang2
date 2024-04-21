@@ -8,13 +8,14 @@ struct sIfNode
   list<sBlock*%>*% mElifBlocks;
   int mElifNum;
   sBlock*% mElseBlock;
+  bool mGuard;
   
   int sline;
   string sname;
 };
 
 
-sIfNode*% sIfNode*::initialize(sIfNode*% self, sNode*% expression_node, sBlock* if_block, list<sNode*%>* elif_expression_nodes, list<sBlock*%>* elif_blocks, int elif_num, sBlock* else_block, sInfo* info)
+sIfNode*% sIfNode*::initialize(sIfNode*% self, sNode*% expression_node, sBlock* if_block, list<sNode*%>* elif_expression_nodes, list<sBlock*%>* elif_blocks, int elif_num, sBlock* else_block, bool guard_, sInfo* info)
 {
     self.sline = info.sline;
     self.sname = string(info.sname);
@@ -24,6 +25,7 @@ sIfNode*% sIfNode*::initialize(sIfNode*% self, sNode*% expression_node, sBlock* 
     self.mElifExpressionNodes = clone elif_expression_nodes;
     self.mElifBlocks = clone elif_blocks;
     self.mElifNum = elif_num;
+    self.mGuard = guard_;
     
     if(else_block) {
         self.mElseBlock = clone else_block;
@@ -49,6 +51,7 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
 {
     sBlock* else_block = self.mElseBlock;
     int elif_num = self.mElifNum;
+    bool guard_ = self.mGuard;
     
     /// compile expression ///
     sNode* expression_node = self.mExpressionNode;
@@ -82,11 +85,27 @@ bool sIfNode*::compile(sIfNode* self, sInfo* info)
         CVALUE*% conditional_value = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
         
+        if(guard_) {
+            sVar* var_ = conditional_value.var;
+            
+            if(var_) {
+                var_->mType->mGuardValue = false;
+            }
+        }
+        
         add_come_code(info, "if(%s) {\n", conditional_value.c_value);
     }
     else {
         CVALUE*% conditional_value = get_value_from_stack(-1, info);
         dec_stack_ptr(1, info);
+        
+        if(guard_) {
+            sVar* var_ = conditional_value.var;
+            
+            if(var_) {
+                var_->mType->mGuardValue = false;
+            }
+        }
         
         add_come_code(info, "if(_if_conditional%d=%s,", num_if_conditional, conditional_value.c_value);
         add_last_code_to_source_with_comma(info);
@@ -394,7 +413,7 @@ sNode*% parse_if_method_call(sNode*% expression_node, sInfo* info)
         }
     };
 
-    sNode*% result = new sIfNode(expression_node, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, info) implements sNode;
+    sNode*% result = new sIfNode(expression_node, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, false@guard, info) implements sNode;
     
     return result;
 }
@@ -467,7 +486,7 @@ sNode*% parse_elif_method_call(sNode*% expression_node, sInfo* info)
         }
     };
 
-    sNode*% result = new sIfNode(expression_node2, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, info) implements sNode;
+    sNode*% result = new sIfNode(expression_node2, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, false@guard, info) implements sNode;
     
     return result;
 }
@@ -547,10 +566,89 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
             }
         };
     
-        sNode*% result = new sIfNode(expression_node, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, info) implements sNode;
+        sNode*% result = new sIfNode(expression_node, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, false@guard, info) implements sNode;
         
         return result;
     }
+/*
+    else if(buf === "guard") {
+        string sname = clone info->sname;
+        int sline = info->sline;
+        
+        parse_sharp();
+    
+        expected_next_character('(');
+    
+        /// expression ///
+        sNode*% expression_node = expression();
+        
+        expected_next_character(')');
+        parse_sharp();
+    
+        sBlock*% if_block = parse_block();
+        
+        list<sNode*%>*% elif_expression_nodes = new list<sNode*%>();
+    
+        list<sBlock*%>*% elif_blocks = new list<sBlock*%>();
+    
+        int elif_num = 0;
+    
+        sBlock*% else_block = null;
+    
+        while(1) {
+            char* saved_p = info->p;
+            int saved_sline = info->sline;
+            parse_sharp();
+    
+            /// else ///
+            if(!xisalpha(*info->p)) {
+                break;
+            }
+            parse_sharp();
+            string buf = parse_word();
+            parse_sharp();
+    
+            if(buf === "else") {
+                if(parsecmp("if", info)) {
+                    parse_sharp();
+                    info->p+=strlen("if");
+                    skip_spaces_and_lf();
+                    parse_sharp();
+    
+                    expected_next_character('(');
+    
+                    /// expression ///
+                    sNode*% expression_node = expression();
+                    
+                    elif_expression_nodes.push_back(expression_node);
+    
+                    expected_next_character(')');
+                    parse_sharp();
+    
+                    
+                    sBlock*% elif_block = parse_block();
+                    
+                    elif_blocks.push_back(elif_block);
+    
+                    elif_num++;
+                }
+                else {
+                    else_block = parse_block();
+                    break;
+                }
+            }
+            else {
+                info->p = saved_p;
+                info->sline = saved_sline;
+                break;
+            }
+        };
+    
+        sNode*% result = new sIfNode(expression_node, if_block, elif_expression_nodes, elif_blocks, elif_num, else_block, true@guard, info) implements sNode;
+        
+        return result;
+    }
+*/
     
     return inherit(buf, head,head_sline, info);
 }

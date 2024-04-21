@@ -1647,8 +1647,8 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
     }
     else if(lambda_flag) {
         sType*% result_type;
-        if(info.types[type_name]) {
-            result_type = clone info.types[type_name];
+        if(info.types[type_name]??) {
+            result_type = clone info.types[type_name]??;
         }
         else if(info.generics_type_names.contained(type_name)) {
             for(int i=0; i<info.generics_type_names.length(); i++) {
@@ -1710,8 +1710,8 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         skip_pointer_attribute();
         
         sType*% result_type;
-        if(info.types[type_name]) {
-            result_type = clone info.types[type_name];
+        if(info.types[type_name]??) {
+            result_type = clone info.types[type_name]??;
             //type.mOriginalTypeName = string(type_name);
         }
         else if(info.generics_type_names.contained(type_name)) {
@@ -1833,8 +1833,8 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         }
     }
     else {
-        if(info.types[type_name]) {
-            type = clone info.types[type_name];
+        if(info.types[type_name]??) {
+            type = clone info.types[type_name]??;
             type.mOriginalTypeName = string(type_name);
             type.mOriginalTypeNamePointerNum = pointer_num;
             
@@ -1904,7 +1904,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
             info->p++;
             skip_spaces_and_lf();
             
-            if(info.generics_classes[type_name] == null)
+            if(info.generics_classes[type_name]?? == null)
             {
                 return new tuple3<sType*%,string,bool>((sType*%)null, (string)null, false);
             }
@@ -1966,7 +1966,7 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         }
         else {
             if(struct_) {
-                sClass* klass = info.classes[type_name];
+                sClass* klass = info.classes[type_name]??;
                 
                 if(klass == null && *info->p != '<') {
                     info.classes.insert(type_name, new sClass(name:type_name, struct_:true));
@@ -2029,6 +2029,12 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         
         if(*info->p == '?') {
             info->p++;
+            
+            if(*info->p == '?') {
+                info->p++;
+                type->mGuardValue = true;
+            }
+            
             skip_spaces_and_lf();
             
             type->mNullValue = true;

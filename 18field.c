@@ -34,7 +34,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
             }
         }
         
-        operator_fun = info->funcs[fun_name2];
+        operator_fun = info->funcs[fun_name2]??;
     }
     else {
         fun_name2 = create_method_name(type, false@no_pointer_name, fun_name, info);
@@ -42,7 +42,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
         int i;
         for(i=FUN_VERSION_MAX-1; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", fun_name2, i);
-            operator_fun = info->funcs[new_fun_name];
+            operator_fun = info->funcs[new_fun_name]??;
             
             if(operator_fun) {
                 fun_name2 = string(new_fun_name);
@@ -51,7 +51,7 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
         }
         
         if(operator_fun == NULL) {
-            operator_fun = info->funcs[fun_name2];
+            operator_fun = info->funcs[fun_name2]??;
         }
     }
     
@@ -98,6 +98,10 @@ bool operator_overload_fun2(sType* type, char* fun_name, CVALUE* left_value, CVA
         
         if(result_type2->mHeap) {
             come_value.c_value = append_object_to_right_values(come_value.c_value, result_type2, info);
+        }
+        
+        if(result_type2.mGuardValue) {
+            come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(result_type2)!, come_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
         }
         
         come_value.c_value = append_stackframe(come_value.c_value, come_value.type, info);
@@ -175,12 +179,12 @@ bool sStoreFieldNode*::compile(sStoreFieldNode* self, sInfo* info)
     sType*% left_type2 = solve_generics(left_type, left_type, info);
     
     sClass* klass = left_type2->mClass;
-    klass = info.classes[klass->mName];
+    klass = info.classes[klass->mName]??;
     
     sType*% field_type = null;
     int index = 0;
     string child_field_name = null;
-    klass = info.classes[klass->mName];
+    klass = info.classes[klass->mName]??;
     
     if(klass->mFields == null) {
         err_msg(info, "%s fields are null", klass->mName);
@@ -422,7 +426,7 @@ bool sNullCheckNode*::compile(sNullCheckNode* self, sInfo* info)
             }
         }
         
-        sFun* fun = info.funcs[method_name];
+        sFun* fun = info.funcs[method_name]??;
         
         if(fun == null) {
             err_msg(info, "function not found(%s)", method_name);
@@ -633,12 +637,12 @@ bool sLoadFieldNode*::compile(sLoadFieldNode* self, sInfo* info)
     sType*% left_type2 = solve_generics(left_type, left_type, info);
     
     sClass* klass = left_type2->mClass;
-    klass = info.classes[klass->mName];
+    klass = info.classes[klass->mName]??;
     
     sType*% field_type = null;
     int index = 0;
     string child_field_name = null;
-    klass = info.classes[klass->mName];
+    klass = info.classes[klass->mName]??;
     if(klass == null || klass->mFields == null) {
         err_msg(info, "invalid class %s", klass->mName);
         return false;
@@ -1003,19 +1007,19 @@ struct sLoadArrayNode
     sNode*% mLeft;
     list<sNode*%>*% mArrayNum;
     bool mQuote;
-    bool mRangeCheck;
+    bool mBreakGuard;
   
     int sline;
     string sname;
 };
 
-sLoadArrayNode*% sLoadArrayNode*::initialize(sLoadArrayNode*% self, sNode* left, list<sNode*%>*% array_num, bool quote, bool range_check, sInfo* info)
+sLoadArrayNode*% sLoadArrayNode*::initialize(sLoadArrayNode*% self, sNode* left, list<sNode*%>*% array_num, bool quote, bool break_guard, sInfo* info)
 {
     self.sline = info.sline;
     self.sname = string(info.sname);
     
     self.mArrayNum = clone array_num;
-    self.mRangeCheck = range_check;
+    self.mBreakGuard = break_guard;
 
     self.mLeft = clone left;
     self.mQuote = quote;
@@ -1072,7 +1076,7 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, array_num[0], info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, array_num[0], self.mBreakGuard, info);
     }
     
     if(!calling_fun) {
@@ -1227,26 +1231,6 @@ bool sLoadArrayNode*::compile(sLoadArrayNode* self, sInfo* info)
             add_come_last_code(info, "%s;\n", come_value.c_value);
         }
     }
-/*
-    else if(self.mRangeCheck) {
-        CVALUE*% left_value = get_value_from_stack(-1, info);
-        dec_stack_ptr(1, info);
-        
-        if(left_value.type.mPointerNum > 0) {
-            CVALUE*% come_value = new CVALUE;
-            
-            come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(left_value.type)!, left_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
-            
-            come_value.type = clone left_value.type;
-            come_value.var = null;
-            
-            info.stack.push_back(come_value);
-        }
-        else {
-            info.stack.push_back(left_value);
-        }
-    }
-*/
 
     return true;
 }
@@ -1491,7 +1475,6 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
             }
             
             bool range = false;
-            bool range_check = true;
             list<sNode*%>*% array_num = new list<sNode*%>();
             while(1) {
                 bool range_array2 = false;
@@ -1538,12 +1521,6 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
                     
                     if(*info->p == ']') {
                         info->p++;
-/*
-                        if(*info->p == '?') {
-                            info->p++;
-                            range_check = false;
-                        }
-*/
                         skip_spaces_and_lf();
                     }
                     else {
@@ -1554,6 +1531,13 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
                 else {
                     break;
                 }
+            }
+            
+            bool break_guard = false;
+            if(*info->p == '?' && *(info->p+1) == '?') {
+                info->p+=2;
+                skip_spaces_and_lf();
+                break_guard = true;
             }
             
             if(*info->p == '=' && *(info->p+1) != '=') {
@@ -1569,7 +1553,7 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
                 node = new sStoreArrayNode(node, right_node, array_num, quote, info) implements sNode;
             }
             else {
-                node = new sLoadArrayNode(node, array_num, quote, range_check, info) implements sNode;
+                node = new sLoadArrayNode(node, array_num, quote, break_guard, info) implements sNode;
             }
         }
         else if(*info->p == '!' && *(info->p+1) == '{') {

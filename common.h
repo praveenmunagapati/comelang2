@@ -119,6 +119,7 @@ struct sType
     
     bool mInline;
     bool mNullValue;
+    bool mGuardValue;
     
     string mAsmName;
     bool mArrayPointerType;
@@ -399,10 +400,10 @@ void decrement_ref_count_object(sType* type, char* obj, sInfo* info, bool force_
 /////////////////////////////////////////////////////////////////////
 /// 05function.c ///
 /////////////////////////////////////////////////////////////////////
+bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value, sInfo* info);
 bool strmemcmp(char* p, char* p2);
 void caller_begin(sInfo* info=info);
 void caller_end(sInfo* info=info);
-bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value, sInfo* info);
 sNode*% craete_logical_denial(sNode*% node, sInfo* info);
 void backtrace_parse_type(sInfo* info=info);
 void transpile_toplevel(bool block=false, sInfo* info=info);
@@ -504,7 +505,7 @@ sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 
 /////////////////////////////////////////////////////////////////////
 /// 13op.c
 /////////////////////////////////////////////////////////////////////
-bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVALUE* right_value, sInfo* info);
+bool operator_overload_fun(sType* type, char* fun_name, CVALUE* left_value, CVALUE* right_value, bool break_guard, sInfo* info);
  sNode*% expression(sInfo* info=info) version 13;
  sNode*% post_op(sNode*% node, sInfo* info) version 13;
 sNode*% string_node(char* buf, char* head, int head_sline, sInfo* info) version 13;

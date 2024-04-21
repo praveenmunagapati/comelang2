@@ -216,7 +216,7 @@ bool sPlusEqualNode*::compile(sPlusEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -304,7 +304,7 @@ bool sMinusEqualNode*::compile(sMinusEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -392,7 +392,7 @@ bool sMultEqualNode*::compile(sMultEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -480,7 +480,7 @@ bool sDivEqualNode*::compile(sDivEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -568,7 +568,7 @@ bool sModEqualNode*::compile(sModEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -657,7 +657,7 @@ bool sLShifEqualNode*::compile(sLShifEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -745,7 +745,7 @@ bool sRShiftEqualNode*::compile(sRShiftEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -833,7 +833,7 @@ bool sXorEqualNode*::compile(sXorEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -921,7 +921,7 @@ bool sOrEqualNode*::compile(sOrEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1009,7 +1009,7 @@ bool sAndEqualNode*::compile(sAndEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {
@@ -1097,7 +1097,7 @@ bool sExpEqualNode*::compile(sExpEqualNode* self, sInfo* info)
         calling_fun = false;
     }
     else {
-        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, info);
+        calling_fun = operator_overload_fun(type, fun_name, left_value, right_value, false@break_guard, info);
     }
     
     if(!calling_fun) {

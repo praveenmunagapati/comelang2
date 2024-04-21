@@ -40,7 +40,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
                 return false;
             }
             
-            operator_fun = info->funcs[fun_name2];
+            operator_fun = info->funcs[fun_name2]??;
         }
         else {
             if(fun_name === "operator_equals") {
@@ -56,7 +56,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
                 operator_fun = fun2;
             }
             else {
-                operator_fun = info->funcs[fun_name2];
+                operator_fun = info->funcs[fun_name2]??;
             }
         }
     }
@@ -66,7 +66,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
         int i;
         for(i=FUN_VERSION_MAX-1; i>=1; i--) {
             string new_fun_name = xsprintf("%s_v%d", fun_name2, i);
-            operator_fun = info->funcs[new_fun_name];
+            operator_fun = info->funcs[new_fun_name]??;
             
             if(operator_fun) {
                 fun_name2 = string(new_fun_name);
@@ -75,7 +75,7 @@ bool operator_overload_fun_self(sType* type, char* fun_name, CVALUE* left_value,
         }
         
         if(operator_fun == NULL) {
-            operator_fun = info->funcs[fun_name2];
+            operator_fun = info->funcs[fun_name2]??;
         }
     }
     
@@ -1078,14 +1078,16 @@ struct sFunCallNode
 {
     string fun_name;
     list<tuple2<string,sNode*%>*%>*% params;
+    bool guard_break;
     int sline;
     string sname;
 };
 
-sFunCallNode*% sFunCallNode*::initialize(sFunCallNode*% self, char* fun_name, list<tuple2<string,sNode*%>*%>* params, sInfo* info)
+sFunCallNode*% sFunCallNode*::initialize(sFunCallNode*% self, char* fun_name, list<tuple2<string,sNode*%>*%>* params, bool guard_break, sInfo* info)
 {
     self.fun_name = string(fun_name);
     self.params = clone params;
+    self.guard_break = guard_break;
     self.sline = info.sline;
     self.sname = string(info.sname);
     
@@ -1283,7 +1285,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             for(i=version-1; i>=1; i--) {
                 string new_fun_name = xsprintf("%s_v%d", real_fun_name, i);
                 
-                if(info.funcs[new_fun_name]) {
+                if(info.funcs[new_fun_name]??) {
                     fun_name = string(new_fun_name);
                     break;
                 }
@@ -1292,7 +1294,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             if(i==0) {
                 string new_fun_name = xsprintf("%s", real_fun_name);
                 
-                if(info.funcs[new_fun_name]) {
+                if(info.funcs[new_fun_name]??) {
                     fun_name = string(new_fun_name);
                 }
                 
@@ -1306,7 +1308,7 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             for(int i=FUN_VERSION_MAX; i>=1; i--) {
                 string new_fun_name = xsprintf("%s_v%d", fun_name, i);
             
-                if(info.funcs[new_fun_name]) {
+                if(info.funcs[new_fun_name]??) {
                     fun_name = string(new_fun_name);
                     break;
                 }
@@ -1486,6 +1488,10 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
             if(fun_name !== "come_alloc_mem_from_heap_pool" && fun_name !== "null_check" && fun_name !== "come_push_stackframe" && fun_name !== "come_pop_stackframe") {
                 come_value.c_value = append_stackframe(come_value.c_value, come_value.type, info);
             }
+        }
+        
+        if(!self.guard_break && result_type.mGuardValue) {
+            come_value.c_value = xsprintf("((%s)come_null_check(%s, \"%s\", %d, %d))", make_type_name_string(result_type)!, come_value.c_value, info->sname, info->sline, gComeDebugStackFrameID++);
         }
         
         add_come_last_code(info, "%s;\n", come_value.c_value);
@@ -1682,9 +1688,16 @@ sNode*% parse_function_call(char* fun_name, sInfo* info)
         }
     }
     
+    bool guard_break = false;
+    if(*info->p == '?' && *(info->p+1) == '?') {
+        info->p += 2;
+        skip_spaces_and_lf();
+        guard_break = true;
+    }
+    
     parse_sharp();
     
-    sNode*% node = new sNode(new sFunCallNode(fun_name, params, info));
+    sNode*% node = new sNode(new sFunCallNode(fun_name, params, guard_break, info));
     
     return node;
 }
@@ -2298,7 +2311,7 @@ sNode*% expression_node(sInfo* info=info) version 99
         
         /// backtrace ///
         bool define_function_pointer_flag = false;
-        if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "isheap" && buf !== "ispointer" && buf !== "__typeof__" && buf !== "dynamic_typeof" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec" && buf !== "case" && buf !== "_Alignof" && buf !== "_Alignas" && buf !== "__alignof__" && *info->p == '(' && *(info->p+1) != '*')
+        if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "isheap" && buf !== "guard" && buf !== "ispointer" && buf !== "__typeof__" && buf !== "dynamic_typeof" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec" && buf !== "case" && buf !== "_Alignof" && buf !== "_Alignas" && buf !== "__alignof__" && *info->p == '(' && *(info->p+1) != '*')
         {
             backtrace_parse_type();
             
@@ -2320,7 +2333,7 @@ sNode*% expression_node(sInfo* info=info) version 99
         
         /// backtrace2 ///
         bool lambda_flag = false;
-        if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "_Alignof" && buf !== "__alignof__" && buf !== "_Alignas" && buf !== "isheap" && buf !== "ispointer" && buf !== "__typeof__" && buf !== "dynamic_typeof" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec" && buf !== "case" && is_type_name_)
+        if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "_Alignof" && buf !== "__alignof__" && buf !== "_Alignas" && buf !== "isheap" && buf !== "guard" && buf !== "ispointer" && buf !== "__typeof__" && buf !== "dynamic_typeof" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec" && buf !== "case" && is_type_name_)
         {
             info.p = head;
             info.sline = head_sline;
@@ -2341,7 +2354,7 @@ sNode*% expression_node(sInfo* info=info) version 99
         
         /// backtrace3 ///
         bool fun_name_with_type_name = false;
-        if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "_Alignof" && buf !== "__alignof__" && buf !== "_Alignas" && buf !== "isheap" && buf !== "ispointer" && buf !== "dynamic_typeof" && buf !== "__typeof__" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec"&& buf !== "case" )
+        if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "_Alignof" && buf !== "__alignof__" && buf !== "_Alignas" && buf !== "isheap" && buf !== "guard" && buf !== "ispointer" && buf !== "dynamic_typeof" && buf !== "__typeof__" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec"&& buf !== "case" )
         {
             info.p = head;
             info.sline = head_sline;
@@ -2415,10 +2428,10 @@ sNode*% expression_node(sInfo* info=info) version 99
             
             fun_name.append_str(buf);
             
-            sType*% type = clone info.types[fun_name.to_string()];
+            sType*% type = clone info.types[fun_name.to_string()]??;
             
             if(type == null) {
-                sClass* klass = info.classes[fun_name.to_string()];
+                sClass* klass = info.classes[fun_name.to_string()]??;
                 
                 if(klass) {
                     type = new sType(buf);
@@ -2475,7 +2488,7 @@ sNode*% expression_node(sInfo* info=info) version 99
             
             return node;
         }
-        else if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "isheap" && buf !== "ispointer" && buf !== "__typeof__" && buf !== "dynamic_typeof" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec"&& buf !== "case" && buf !== "_Alignof" && buf !== "__alignof__" && buf !== "_Alignas"  && *info->p == '(' && !(*(info->p+1) == '*' && is_type_name_))
+        else if(buf !== "if" && buf !== "while" && buf !== "for" && buf !== "switch" && buf !== "return" && buf !== "sizeof" && buf !== "isheap" && buf !== "ispointer" && buf !== "guard" && buf !== "__typeof__" && buf !== "dynamic_typeof" && buf !== "typeof" && buf !== "gc_inc" && buf !== "gc_dec"&& buf !== "case" && buf !== "_Alignof" && buf !== "__alignof__" && buf !== "_Alignas"  && *info->p == '(' && !(*(info->p+1) == '*' && is_type_name_))
         {
             sNode*% node = parse_function_call(buf, info);
             

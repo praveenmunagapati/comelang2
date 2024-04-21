@@ -1249,7 +1249,7 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
                                     , true@external, var_args, null@block
                                     , false@static_, header_buf.to_string(), string(info->sname), info);
                 
-                var fun2 = info.funcs[string(fun_name)];
+                var fun2 = info.funcs[string(fun_name)]??;
                 if(fun2 == null || fun2.mExternal) {
         
                     info.funcs.insert(clone fun_name, fun);
@@ -1304,9 +1304,9 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 99
 
 bool is_type_name(char* buf, sInfo* info=info)
 {
-    sClass* klass = info.classes[buf];
-    sType* type = info.types[buf];
-    sClass* generics_class = info.generics_classes[buf];
+    sClass* klass = info.classes[buf]??;
+    sType* type = info.types[buf]??;
+    sClass* generics_class = info.generics_classes[buf]??;
     bool generics_type_name = info.generics_type_names.contained(string(buf));
     bool mgenerics_type_name = info.method_generics_type_names.contained(string(buf));
     
@@ -1335,7 +1335,7 @@ bool create_generics_fun(string fun_name, sGenericsFun* generics_fun, sType* gen
     if(generics_type->mNoSolvedGenericsType.v1) {
         generics_type = generics_type->mNoSolvedGenericsType.v1;
     }
-    sFun* funX = info.funcs[fun_name];
+    sFun* funX = info.funcs[fun_name]??;
     if(funX) {
         return true;
     }
@@ -1533,7 +1533,7 @@ sNode*% parse_function(sInfo* info)
                             , false@external, var_args, block
                             , true@static_, header_buf.to_string(), string(""), info);
         
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
     
             info.funcs.insert(clone fun_name, fun);
@@ -1601,7 +1601,7 @@ sNode*% parse_function(sInfo* info)
                                 , string(info->sname)
                                 , info);
     
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
     
             info.funcs.insert(clone fun_name, fun);
@@ -1629,7 +1629,7 @@ sNode*% parse_function(sInfo* info)
                                 , true@external, var_args, null@block
                                 , false@static_, header_buf.to_string(), string(info->sname), info);
             
-            var fun2 = info.funcs[string(fun_name)];
+            var fun2 = info.funcs[string(fun_name)]??;
             if(fun2 == null || fun2.mExternal) {
     
                 info.funcs.insert(clone fun_name, fun);
@@ -1663,7 +1663,7 @@ sNode*% parse_function(sInfo* info)
                                 , true@external, var_args, null@block
                                 , false@static_, header_buf.to_string(), string(info->sname), info);
             
-            var fun2 = info.funcs[string(fun_name)];
+            var fun2 = info.funcs[string(fun_name)]??;
             if(fun2 == null || fun2.mExternal) {
     
                 info.funcs.insert(clone fun_name, fun);
@@ -1718,7 +1718,7 @@ sFun*,string create_finalizer_automatically(sType* type, char* fun_name, sInfo* 
         
         source.append_char('{');
         
-        klass = info.classes[klass->mName];
+        klass = info.classes[klass->mName]??;
         foreach(it, klass->mFields) {
             var name, field_type = it;
             
@@ -1796,7 +1796,7 @@ sFun*,string create_finalizer_automatically(sType* type, char* fun_name, sInfo* 
                         , string("")
                         , info);
         
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
     
             info.funcs.insert(clone name, fun);
@@ -1855,7 +1855,7 @@ sFun*,string create_force_finalizer_automatically(sType* type, char* fun_name, s
         
         source.append_char('{');
         
-        klass = info.classes[klass->mName];
+        klass = info.classes[klass->mName]??;
         foreach(it, klass->mFields) {
             var name, field_type = it;
             
@@ -1933,7 +1933,7 @@ sFun*,string create_force_finalizer_automatically(sType* type, char* fun_name, s
                         , string("")
                         , info);
         
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
     
             info.funcs.insert(clone name, fun);
@@ -1997,7 +1997,7 @@ sFun*,string create_equals_automatically(sType* type, char* fun_name, sInfo* inf
             source.append_str(source2);
         }
         else {
-            klass = info.classes[klass->mName];
+            klass = info.classes[klass->mName]??;
             foreach(it, klass->mFields) {
                 var name, field_type = it;
                 
@@ -2075,7 +2075,7 @@ sFun*,string create_equals_automatically(sType* type, char* fun_name, sInfo* inf
                         , string("")
                         , info);
         
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
     
             info.funcs.insert(clone name, fun);
@@ -2145,7 +2145,7 @@ sFun*,string create_operator_not_equals_automatically(sType* type, char* fun_nam
             source.append_str(source2);
             
             int i = 0;
-            klass = info.classes[klass->mName];
+            klass = info.classes[klass->mName]??;
             foreach(it, klass->mFields) {
                 var name, field_type = it;
                 
@@ -2234,7 +2234,7 @@ sFun*,string create_operator_not_equals_automatically(sType* type, char* fun_nam
                         , string("")
                         , info);
         
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
     
             info.funcs.insert(clone name, fun);
@@ -2298,7 +2298,7 @@ sFun*,string create_operator_equals_automatically(sType* type, char* fun_name, s
             source.append_str(source2);
         }
         else {
-            klass = info.classes[klass->mName];
+            klass = info.classes[klass->mName]??;
             foreach(it, klass->mFields) {
                 var name, field_type = it;
                 
@@ -2376,7 +2376,7 @@ sFun*,string create_operator_equals_automatically(sType* type, char* fun_name, s
                         , string("")
                         , info);
         
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
     
             info.funcs.insert(clone name, fun);
@@ -2443,7 +2443,7 @@ sFun*,string create_cloner_automatically(sType* type, char* fun_name, sInfo* inf
             
             source.append_str(source2);
             
-            klass = info.classes[klass->mName];
+            klass = info.classes[klass->mName]??;
             foreach(it, klass->mFields) {
                 var name, field_type = it;
                 
@@ -2470,7 +2470,7 @@ sFun*,string create_cloner_automatically(sType* type, char* fun_name, sInfo* inf
             }
         }
         else {
-            klass = info.classes[klass->mName];
+            klass = info.classes[klass->mName]??;
             foreach(it, klass->mFields) {
                 var name, field_type = it;
                 
@@ -2561,7 +2561,7 @@ sFun*,string create_cloner_automatically(sType* type, char* fun_name, sInfo* inf
                         
         fun->mCloner = true;
         
-        var fun2 = info.funcs[string(fun_name)];
+        var fun2 = info.funcs[string(fun_name)]??;
         if(fun2 == null || fun2.mExternal) {
             info.funcs.insert(clone name, fun);
         }

@@ -63,7 +63,7 @@ void output_struct(sClass* klass, sInfo* info)
 //        if(klass.mFields.length() > 0) {
             buf.append_str(xsprintf("struct %s\n{\n", klass.mName));
             
-            //klass = info.classes[klass->mName];
+            //klass = info.classes[klass->mName]??;
             foreach(it, klass.mFields) {
                 var name, type = it;
                 
@@ -143,7 +143,7 @@ bool output_generics_struct(sType* type, sType* generics_type, sInfo* info)
     if(is_no_contained_generics_types(type, info) && !info.classes.find(new_name)) {
         sType*% type2 = clone type;
         
-        sClass* generics_class = info.generics_classes[type.mClass.mName];
+        sClass* generics_class = info.generics_classes[type.mClass.mName]??;
         
         if(generics_class == null) {
             err_msg(info, "generics_class(%s) is null", type.mClass.mName);
@@ -171,7 +171,7 @@ bool output_generics_struct(sType* type, sType* generics_type, sInfo* info)
         output_struct(new_class, info);
     }
     else if(!info.classes.find(new_name)) {
-        sClass* generics_class = info.generics_classes[type.mClass.mName];
+        sClass* generics_class = info.generics_classes[type.mClass.mName]??;
         
         if(generics_class == null) {
             err_msg(info, "generics_class(%s) is null", type.mClass.mName);
@@ -210,7 +210,7 @@ bool output_generics_struct(sType* type, sType* generics_type, sInfo* info)
             type->mNoSolvedGenericsType.v1 = clone type;
             type->mNoSolvedGenericsType.v1.mPointerNum = type->mPointerNum;
         }
-        type->mClass = info.classes[new_name];
+        type->mClass = info.classes[new_name]??;
         type->mGenericsTypes.reset();
     }
     
