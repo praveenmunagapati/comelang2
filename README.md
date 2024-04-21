@@ -736,7 +736,7 @@ list<T>*% sublist(list<T>* self, int begin, int tail)
 ```
 
 
-T& operator_load_element(list<T>* self, int position) 
+T&?? operator_load_element(list<T>* self, int position) 
 
 ```C
     var li = [1,2,3,4,5];
@@ -746,9 +746,20 @@ T& operator_load_element(list<T>* self, int position)
     printf("%d\n", li[-9999]); // 0
 ```
 
-If it is out of range, a 0cleared value will be returned.
+If the index is not found, null check will result in a dynamic error if ?? is not added. Only if the item is a pointer.
 
-範囲外は0clearされた値を返します。
+アイテムが見つからない場合??をつけないとnull checkが動的エラーとなります。アイテムがポインタの場合だけです。
+
+```
+    var li = ["AAA","BBB","CCC"];
+    var item = li[5]; // runtime error
+```
+
+
+```
+    var li = ["AAA","BBB","CCC"];
+    var item = li[5]??; // item is null
+```
 
 ```C
 T& operator_store_element(list<T>* self, int position, T item) 
