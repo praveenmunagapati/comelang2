@@ -3,9 +3,9 @@
 
 come together!
 
-Another modern C compiler. It has a heap system that is a cross between an automatically-free-system and a reference-counted GC, and includes a collection library and a string library. In debug mode almost memory safe in some context.
+Another modern C compiler. It has a heap system that is a cross between an automatically-free-system and a reference-counted GC, and includes a collection library and a string library. In debug mode, we add as many memory-safe features as possible to the C language.
 
-もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。デバッグモードではある程度はメモリセーフです。
+もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。デバッグモードではC言語にできる限りのメモリセーフの機能を加えてます。
 
 version 30.1
 
@@ -1279,7 +1279,7 @@ int main(int argc, char** argv)
     buf2.append_int(2);
     buf2.append_int(3);
     
-    int* p = (int*)buf2.buf;
+    var p = buf2.to_int_pointer();
     
     printf("%d\n", *p);  // 1
     p++;
