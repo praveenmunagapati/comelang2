@@ -2,9 +2,9 @@
 
 int main(int argc, char** argv)
 {
-    var li = [1,2,3,4,5];
+    var li = ["1", "2", "3"].map2<int> { return atoi(it); }
     
-    int a = li[0];
+    printf("%d\n", li[0]);
     
     return 0;
 }

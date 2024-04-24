@@ -2951,6 +2951,31 @@ a.c 7
 
 require -cg option for show stackframe()
 
+```
+> comelang2 new x
+> cd x; vin main.c
+#include <comelang2.h>
+
+int main(int argc, char** argv)
+{
+    int a[3];
+    
+    printf("%d\n", a[4]);
+    
+    return 0;
+}
+> comelang2 debug
+comelang2 header -common-header a.c
+comelang2 -common-header -gdwarf-4 -cg  -c a.c -o a.debug.o
+comelang2 -common-header -gdwarf-4 -cg  a.debug.o -o x-debug
+rm -f *.log
+./x-debug
+a.c 8: range check error
+a.c 8 #208
+make: *** [Makefile:90: debug] Error 2
+system: No error information
+```
+
 # Method Generics
 
 ```C
