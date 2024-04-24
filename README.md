@@ -2953,7 +2953,7 @@ require -cg option for show stackframe()
 
 ```
 > comelang2 new x
-> cd x; vin main.c
+> cd x; vin a.c
 #include <comelang2.h>
 
 int main(int argc, char** argv)
