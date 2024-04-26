@@ -7,7 +7,7 @@ Another modern C compiler. It has a heap system that is a cross between an autom
 
 もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。デバッグモードではC言語にできる限りのメモリセーフの機能を加えてます。
 
-version 40.0
+version 50.0
 
 ``` C
 #include <comelang2.h>
@@ -297,6 +297,8 @@ bash all_build.sh
 ```
 
 # Histories
+
+50.0 Fixed bug of parametor label. Maybe comelang2 is complete.
 
 40.0 Fixed bug of parametor label.
 

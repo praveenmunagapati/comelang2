@@ -584,7 +584,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 string default_param = clone fun.mParamDefaultParametors[i]??;
                 char* param_name = fun.mParamNames[i];
                 
-                if(default_param && default_param !== "") {
+                if(default_param && default_param !== "" && come_params[i]?? == null) {
                     buffer*% source = info.source;
                     char* p = info.p;
                     char* head = info.head;
@@ -616,8 +616,10 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                     dec_stack_ptr(1, info);
                 }
                 else {
-                    err_msg(info, "require parametor(%s) %d", fun.mName,i);
-                    return false;
+                    if(come_params[i]?? == null) {
+                        err_msg(info, "require parametor(%s) %d", fun.mName,i);
+                        return false;
+                    }
                 }
             }
         }

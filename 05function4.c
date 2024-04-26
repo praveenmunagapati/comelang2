@@ -800,7 +800,7 @@ tuple2<sType*%, string>*% parse_variable_name(sType*% base_type_name, bool first
         if(xisalpha(*info->p) || *info->p == '_') {
             string word = parse_word();
             
-            if(word === "const" || word === "__restrict" || word === "restrict" || word === "__user" || word === "volatile" || word === "_Nonnull" || word === "_Nullable" || word === "_Null_unspecified" || word === "__user") {
+            if(word === "const" || word === "__restrict" || word === "restrict" || word === "__user" || word === "volatile" || word === "_Nonnull" || word === "_Nullable" || word === "_Null_unspecified" || word === "__user" || word === "_Addr") {
             }
             else {
                 info.p = p;
@@ -854,7 +854,7 @@ tuple2<sType*%, string>*% parse_variable_name(sType*% base_type_name, bool first
             if(xisalpha(*info->p) || *info->p == '_') {
                 string word = parse_word();
                 
-                if(word === "const" || word === "__restrict" || word === "restrict" || word === "__user" || word === "volatile" || word === "_Nonnull" || word === "_Nullable" || word === "_Null_unspecified" || word === "__user") {
+                if(word === "const" || word === "__restrict" || word === "restrict" || word === "__user" || word === "volatile" || word === "_Nonnull" || word === "_Nullable" || word === "_Null_unspecified" || word === "__user" || word === "_Addr") {
                 }
                 else {
                     info.p = p;
@@ -914,7 +914,7 @@ tuple2<sType*%, string>*% parse_variable_name(sType*% base_type_name, bool first
             if(xisalpha(*info->p) || *info->p == '_') {
                 string word = parse_word();
                 
-                if(word === "const" || word === "__restrict" || word === "restrict" || word === "__user" || word === "volatile" || word === "_Nonnull" || word === "_Nullable" || word === "_Null_unspecified" || word === "__user") {
+                if(word === "const" || word === "__restrict" || word === "restrict" || word === "__user" || word === "volatile" || word === "_Nonnull" || word === "_Nullable" || word === "_Null_unspecified" || word === "__user" || word === "_Addr") {
                 }
                 else {
                     info.p = p;
@@ -1384,6 +1384,9 @@ tuple3<sType*%,string,bool>*% parse_type(sInfo* info=info, bool parse_variable_n
         else if(type_name === "restrict") {
             restrict_ = true;
             
+            type_name = parse_word();
+        }
+        else if(type_name === "_Addr") {
             type_name = parse_word();
         }
         else if(type_name === "__restrict") {
