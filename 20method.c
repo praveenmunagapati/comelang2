@@ -419,8 +419,45 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
         }
         
         list<CVALUE*%>*% come_params = new list<CVALUE*%>();
-
-        map<string,CVALUE*%>*% label_params = new map<string,CVALUE*%>();
+        
+        for(int i=0; i<fun.mParamTypes.length() - (method_block ? 2 :0); i++) {
+            come_params.add(null);
+        }
+        
+        bool first_param = true;
+        foreach(it, params) {
+            var label, node = it;
+            
+            if(first_param) {
+                first_param = false;
+            }
+            else if(label) {
+                if(!node_compile(node)) {
+                    return false;
+                }
+                
+                CVALUE*% come_value = get_value_from_stack(-1, info);
+                dec_stack_ptr(1, info);
+                
+                int n = 0;
+                foreach(it, fun.mParamNames) {
+                    if(label === it) {
+                        break;
+                    }
+                    
+                    n++;
+                }
+                
+                if(param_types[n]??) {
+                    check_assign_type(s"\{fun_name} param num \{n} is assinged to", param_types[n], come_value.type, come_value);
+                }
+                if(param_types[n]?? && param_types[n].mHeap && come_value.type.mHeap) {
+                    std_move(param_types[n], come_value.type, come_value);
+                }
+                
+                come_params.replace(n, come_value);
+            }
+        }
         
         int i = 0;
         foreach(it, params) {
@@ -435,9 +472,11 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                     err_msg(info, "require heap parametor(%s)", fun.mParamNames[i]);
                     exit(2);
                 }
-                come_params.push_back(obj_value);
+                come_params.replace(i, obj_value);
                 
                 i++;
+            }
+            else if(label) {
             }
             else {
                 if(!node_compile(node)) {
@@ -445,42 +484,35 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 }
                 
                 CVALUE*% come_value = get_value_from_stack(-1, info);
-                
-                if(label != null) {
-                    int n = 0;
-                    foreach(it, fun.mParamNames) {
-                        if(label === it) {
-                            break;
-                        }
-                        
-                        n++;
-                    }
-                    
-                    if(param_types[n]) {
-                        check_assign_type(s"\{fun_name} param num \{i} is assinged to", param_types[n], come_value.type, come_value);
-                    }
-                    if(param_types[n] && param_types[n].mHeap && come_value.type.mHeap) {
-                        std_move(param_types[n], come_value.type, come_value);
-                    }
-                }
-                else {
-                    if(param_types[i]) {
-                        check_assign_type(s"\{fun_name} param num \{i} is assinged to", param_types[i], come_value.type, come_value);
-                    }
-                    if(param_types[i] && param_types[i].mHeap && come_value.type.mHeap) {
-                        std_move(param_types[i], come_value.type, come_value);
-                    }
-                }
-                
-                if(label == null) {
-                    come_params.push_back(come_value);
-                    
-                    i++;
-                }
-                else {
-                    label_params.insert(string(label), come_value);
-                }
                 dec_stack_ptr(1, info);
+                
+                while(true) {
+                    if(come_params[i]?? == null) {
+                        break;
+                    }
+                    else {
+                        i++;
+                    }
+                }
+                
+                if(param_types[i]) {
+                    check_assign_type(s"\{fun_name} param num \{i} is assinged to", param_types[i], come_value.type, come_value);
+                }
+                if(param_types[i] && param_types[i].mHeap && come_value.type.mHeap) {
+                    std_move(param_types[i], come_value.type, come_value);
+                }
+                
+                come_params.replace(i, come_value);
+                i++;
+            }
+        }
+        
+        while(true) {
+            if(come_params[i]?? == null) {
+                break;
+            }
+            else {
+                i++;
             }
         }
         
@@ -544,48 +576,13 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                 come_params.push_back(come_value);
                 params.push_back((s"len", null));
             }
-/*
-            else if(fun_name === "length") {
-                buffer*% buf = new buffer();
-                
-                int i=0;
-                foreach(it, obj_array_type.mArrayNum) {
-                    if(!node_compile(it)) {
-                        err_msg(info, "invalid array num");
-                        exit(1);
-                    }
-                    
-                    CVALUE*% come_value = get_value_from_stack(-1, info);
-                    dec_stack_ptr(1, info);
-                
-                    buf.append_str(xsprintf("%s", come_value.c_value));
-                    if(i != obj_array_type.mArrayNum.length()-1) {
-                        buf.append_str("*");
-                    }
-                    i++;
-                }
-                
-                CVALUE*% come_value = new CVALUE;
-                
-                come_value.c_value = buf.to_string();
-                come_value.var = null;
-                come_value.type = new sType("long");
-                
-                come_params.push_back(come_value);
-                params.push_back((s"len", null));
-            }
-*/
         }
         
         if(params.length() < fun.mParamTypes.length()+(method_block?-2:0))
         {
             for(; i<fun.mParamTypes.length()+(method_block?-2:0); i++) {
                 string default_param = clone fun.mParamDefaultParametors[i]??;
-                //string default_param = clone fun.mParamDefaultParametors[i].value();
                 char* param_name = fun.mParamNames[i];
-                //char* param_name = fun.mParamNames[i].value();
-                
-                CVALUE* come_value = label_params[param_name]??;
                 
                 if(default_param && default_param !== "") {
                     buffer*% source = info.source;
@@ -615,29 +612,12 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
                     if(param_types[i] && param_types[i].mHeap && come_value.type.mHeap) {
                         std_move(param_types[i], come_value.type, come_value);
                     }
-                    come_params.push_back(come_value);
+                    come_params.replace(i, come_value);
                     dec_stack_ptr(1, info);
                 }
                 else {
-                    if(come_value) {
-                        come_params.push_back(null);
-                    }
-                    else {
-                        err_msg(info, "require parametor(%s)", fun.mName);
-                        return false;
-                    }
-                }
-            }
-        }
-        if(label_params.length() > 0) {
-            for(i=0; i<fun.mParamNames.length()+(method_block?-2:0); i++) {
-                char* param_name = fun.mParamNames[i];
-                //char* param_name = fun.mParamNames[i].value();
-                
-                CVALUE* come_value = label_params[param_name]??;
-                
-                if(come_value) {
-                    come_params.replace(i, clone come_value);
+                    err_msg(info, "require parametor(%s) %d", fun.mName,i);
+                    return false;
                 }
             }
         }
@@ -767,6 +747,7 @@ bool sMethodCallNode*::compile(sMethodCallNode* self, sInfo* info)
         
         buf.append_str(generics_fun_name);
         buf.append_str("(");
+        
         
         int j = 0;
         foreach(it, come_params) {

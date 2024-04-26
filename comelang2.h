@@ -1390,13 +1390,6 @@ impl map <T, T2>
         if(self.len*10 >= self.size) {
             self.rehash();
         }
-        if(ispointer(T)) {
-            if(key == null) {
-                stackframe();
-                puts("key is null");
-                exit(2);
-            }
-        }
         unsigned int hash = key.get_hash_key() % self.size;
         unsigned int it = hash;
         

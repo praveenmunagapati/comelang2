@@ -1335,66 +1335,112 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
         
         list<CVALUE*%>*% come_params = new list<CVALUE*%>();
         
-        map<string,CVALUE*%>*% label_params = new map<string,CVALUE*%>();
+        for(int i=0; i<fun.mParamTypes.length(); i++) {
+            come_params.add(null);
+        }
+        
+        foreach(it, params) {
+            var label, node = it;
+            
+            if(fun.mVarArgs || fun_name === "__builtin_va_start") {
+            }
+            else if(label) {
+                if(!node_compile(node)) {
+                    return false;
+                }
+                
+                CVALUE*% come_value = get_value_from_stack(-1, info);
+                dec_stack_ptr(1, info);
+                
+                int n = 0;
+                foreach(it, fun.mParamNames) {
+                    if(label === it) {
+                        break;
+                    }
+                    
+                    n++;
+                }
+                
+                if(param_types[n]??) {
+                    check_assign_type(s"\{fun_name} param num \{n} is assinged to", param_types[n], come_value.type, come_value);
+                }
+                if(param_types[n]?? && param_types[n].mHeap && come_value.type.mHeap) {
+                    std_move(param_types[n], come_value.type, come_value);
+                }
+                
+                come_params.replace(n, come_value);
+            }
+        }
         
         int i = 0;
         foreach(it, params) {
             var label, node = it;
             
-            if(!node_compile(node)) {
-                return false;
-            }
-            
-            CVALUE*% come_value = get_value_from_stack(-1, info);
-            
-            if(fun.mVarArgs && fun.mParamTypes[i]?? == null) {
-            }
-            else {
-                if(label != null) {
-                    int n = 0;
-                    foreach(it, fun.mParamNames) {
-                        if(label === it) {
-                            break;
-                        }
-                        
-                        n++;
-                    }
-                    if(n < fun.mParamTypes.length()) {
-                        check_assign_type(s"\{fun_name} calling param(1) #\{n}", param_types[n], come_value.type, come_value);
-                    }
-                    if(n < fun.mParamTypes.length() && param_types[n].mHeap && come_value.type.mHeap) {
-                        std_move(param_types[n], come_value.type, come_value);
-                    }
+            if(fun.mVarArgs || fun_name === "__builtin_va_start") {
+                if(!node_compile(node)) {
+                    return false;
                 }
-                else {
-                    if(i < fun.mParamTypes.length()) {
-                        check_assign_type(s"\{fun_name} calling param(2) #\{i}", param_types[i], come_value.type, come_value);
-                    }
-                    if(i < fun.mParamTypes.length() && param_types[i].mHeap && come_value.type.mHeap) {
-                        std_move(param_types[i], come_value.type, come_value);
-                    }
-                }
-            }
-            
-            if(label == null) {
-                come_params.push_back(come_value);
                 
+                CVALUE*% come_value = get_value_from_stack(-1, info);
+                dec_stack_ptr(1, info);
+                
+                while(true) {
+                    if(come_params[i]?? == null) {
+                        break;
+                    }
+                    else {
+                        i++;
+                    }
+                }
+                
+                come_params.replace(i, come_value);
                 i++;
             }
-            else {
-                label_params.insert(string(label), come_value);
+            else if(label) {
             }
-            dec_stack_ptr(1, info);
+            else {
+                if(!node_compile(node)) {
+                    return false;
+                }
+                
+                CVALUE*% come_value = get_value_from_stack(-1, info);
+                dec_stack_ptr(1, info);
+                
+                while(true) {
+                    if(come_params[i]?? == null) {
+                        break;
+                    }
+                    else {
+                        i++;
+                    }
+                }
+                
+                if(param_types[i]??) {
+                    check_assign_type(s"\{fun_name} param num \{i} is assinged to", param_types[i], come_value.type, come_value);
+                }
+                if(param_types[i]?? && param_types[i].mHeap && come_value.type.mHeap) {
+                    std_move(param_types[i], come_value.type, come_value);
+                }
+                
+                come_params.replace(i, come_value);
+                i++;
+            }
         }
         
-        if(params.length() < fun.mParamTypes.length()) {
+        while(true) {
+            if(come_params[i]?? == null) {
+                break;
+            }
+            else {
+                i++;
+            }
+        }
+        
+        if(params.length() < fun.mParamTypes.length())
+        {
             for(; i<fun.mParamTypes.length(); i++) {
-                string default_param = clone fun.mParamDefaultParametors[i];
-                //string default_param = clone fun.mParamDefaultParametors[i].value();
+                string default_param = clone fun.mParamDefaultParametors[i]??;
                 char* param_name = fun.mParamNames[i];
-                //char* param_name = fun.mParamNames[i].value();
-                
-                CVALUE* come_value = label_params[param_name]??;
                 
                 if(default_param && default_param !== "") {
                     buffer*% source = info.source;
@@ -1418,34 +1464,18 @@ bool sFunCallNode*::compile(sFunCallNode* self, sInfo* info)
                     info.sline = sline;
             
                     CVALUE*% come_value = get_value_from_stack(-1, info);
-                    check_assign_type(s"\{fun_name} calling param(3) #\{i}", param_types[i], come_value.type, come_value);
-                    if(param_types[i].mHeap && come_value.type.mHeap) {
+                    if(param_types[i]) {
+                        check_assign_type(s"\{fun_name} param num \{i} is assinged to", param_types[i], come_value.type, come_value);
+                    }
+                    if(param_types[i] && param_types[i].mHeap && come_value.type.mHeap) {
                         std_move(param_types[i], come_value.type, come_value);
                     }
-                    come_params.push_back(come_value);
+                    come_params.replace(i, come_value);
                     dec_stack_ptr(1, info);
                 }
                 else {
-                    if(come_value == null) {
-                        err_msg(info, "require parametor(%s)", fun.mName);
-                        return false;
-                    }
-                    else {
-                        come_params.push_back(null);
-                    }
-                }
-            }
-        }
-        
-        if(label_params.length() > 0) {
-            for(i=0; i<fun.mParamNames.length(); i++) {
-                char* param_name = fun.mParamNames[i];
-                
-                CVALUE* come_value = label_params[param_name]??;
-                
-                if(come_value) {
-                    check_assign_type(s"\{fun_name} calling param(4) \{i}", param_types[i], come_value.type, come_value);
-                    come_params.replace(i, clone come_value);
+                    err_msg(info, "require parametor(%s) %d", fun.mName,i);
+                    return false;
                 }
             }
         }

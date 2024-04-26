@@ -2182,7 +2182,7 @@ sNode*% top_level(char* buf, char* head, int head_sline, sInfo* info) version 94
                 
                 gComeC = true;
                 
-                transpile_toplevel(block:true);
+                transpile_toplevel(true);
                 
                 gComeC = false;
             }
