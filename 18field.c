@@ -476,6 +476,73 @@ string sNullCheckNode*::sname(sNullCheckNode* self, sInfo* info)
     return string(self.sname);
 }
 
+struct sNullableNode
+{
+    sNode*% mLeft;
+    
+    bool mOnlyNullCecker;
+  
+    int sline;
+    string sname;
+};
+
+sNullableNode*% sNullableNode*::initialize(sNullableNode*% self, sNode* left, sInfo* info)
+{
+    self.sline = info.sline;
+    self.sname = string(info.sname);
+
+    self.mLeft = clone left;
+    
+    return self;
+}
+
+bool sNullableNode*::terminated()
+{
+    return false;
+}
+
+string sNullableNode*::kind()
+{
+    return string("sNullableNode");
+}
+
+bool sNullableNode*::compile(sNullableNode* self, sInfo* info)
+{
+    sNode* left = self.mLeft;
+    
+    if(!node_compile(left)) {
+        return false;
+    }
+    
+    CVALUE*% left_value = get_value_from_stack(-1, info);
+    dec_stack_ptr(1, info);
+    
+    if(left_value.type->mPointerNum > 0 && left_value.type->mNullValue) {
+        CVALUE*% come_value = clone left_value;
+        
+        come_value.type->mNullValue = false;
+        
+        info.stack.push_back(come_value);
+        
+        add_come_last_code(info, "%s;\n", come_value.c_value);
+    }
+    else {
+        info.stack.push_back(left_value);
+    }
+
+    return true;
+}
+
+int sNullableNode*::sline(sNullableNode* self, sInfo* info)
+{
+    return self.sline;
+}
+
+string sNullableNode*::sname(sNullableNode* self, sInfo* info)
+{
+    return string(self.sname);
+}
+
 struct sRangeCheckNode
 {
     sNode*% mLeft;
@@ -1582,6 +1649,14 @@ sNode*% post_position_operator(sNode*% node, sInfo* info) version 18
             parse_sharp();
             
             node = new sNullCheckNode(node, false@only_null_checker, info) implements sNode;
+        }
+        else if(*info->p == '?' && *(info->p+1) == '?') {
+            info->p+=2;
+            skip_spaces_and_lf();
+            
+            parse_sharp();
+            
+            node = new sNullableNode(node, info) implements sNode;
         }
         else if((*info->p == '.' && *(info->p+1) != '.') || (*info->p == '-' && *(info->p+1) == '>')) {
             if(*info->p == '.') {

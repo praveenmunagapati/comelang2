@@ -14,6 +14,8 @@ then
     (cd vin; make distclean)
 fi
 
+(cd x; comelang2 clean)
+
 if [ -e trueby/Makefile ]
 then
     (cd trueby; make clean)

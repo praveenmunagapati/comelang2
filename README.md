@@ -7,7 +7,7 @@ Another modern C compiler. It has a heap system that is a cross between an autom
 
 もう一つのモダンなCコンパイラ。automatically-free-systemとリファレンスカウントGCの間をとったようなヒープシステムがありコレクションライブラリ、文字列ライブラリを備えてます。デバッグモードではC言語にできる限りのメモリセーフの機能を加えてます。
 
-version 50.0
+version 50.1
 
 ``` C
 #include <comelang2.h>
@@ -297,6 +297,8 @@ bash all_build.sh
 ```
 
 # Histories
+
+50.1 Null check. If you do not want to cause a check, please add ??
 
 50.0 Fixed bug of parametor label. Maybe comelang2 is complete.
 
@@ -2501,7 +2503,27 @@ nil can be assigned to a variable marked with ?. When assigned to a variable wit
 Cast if you don't want to cause a check.
 
 nilは?をつけた変数に代入できます。?がついていない変数に代入される時nullかどうか動的にチェックされます。(セグメンテーションフォルトを起こさない）
-チェックを起こしたくない場合はキャストしてください。
+
+``` C
+> vin a.c
+#include <stdio.h>
+
+int main(int argc, char** argv)
+{
+    char*? b = nil;
+    
+    puts(b??);
+    
+    return 0;
+}
+> comleang2 a.c
+> ./a
+Segmantion fault
+```
+
+If you do not want to cause a check, please add ??
+
+チェックを起こしたくない場合は??をつけてください。
 
 ```
     char*? a = nil;
